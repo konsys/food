@@ -1,0 +1,103 @@
+.dicesWrapper {
+  .r0 {
+    transform: rotateY(0deg) rotateX(0deg) !important;
+    transition: transform 0.3s;
+  }
+  // 1
+  .r1 {
+    transform: rotateY(900deg) rotateX(900deg) !important;
+    transition: transform 1s;
+  }
+  // 2
+  .r2 {
+    transform: rotateY(900deg) rotateX(810deg) !important;
+    transition: transform 1s;
+  }
+  // 5
+  .r5 {
+    transform: rotateY(900deg) rotateX(990deg) !important;
+    transition: transform 1s;
+  }
+  // 3
+  .r3 {
+    transform: rotateY(990deg) rotateX(900deg) !important;
+    transition: transform 1s;
+  }
+  // 4
+  .r4 {
+    transform: rotateY(810deg) rotateX(900deg) !important;
+    transition: transform 1s;
+  }
+  // 6
+  .r6 {
+    transform: rotateY(900deg) rotateX(1080deg) !important;
+    transition: transform 1s;
+  }
+
+  .rRotating1 {
+    animation: spincube1 0.5s ease-in-out infinite;
+  }
+
+  .rRotating2 {
+    animation: spincube2 0.5s ease-in-out infinite;
+  }
+
+  .dices {
+    display: flex;
+    justify-content: space-between;
+  }
+  .diceBody {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  .diceFace {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+
+    text-align: center;
+    line-height: 100px;
+    font-size: 45px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+  .dice1 {
+    background-color: rgba(255, 255, 255, 1);
+    transform: rotateX(0deg) translateZ(50px);
+  }
+  .dice2 {
+    background-color: rgba(255, 255, 255, 1);
+    transform: rotateX(90deg) translateZ(50px);
+  }
+  .dice3 {
+    background-color: rgba(255, 255, 255, 1);
+    transform: rotateY(90deg) translateZ(50px);
+  }
+  .dice4 {
+    background-color: rgba(255, 255, 255, 1);
+    transform: rotateY(-90deg) translateZ(50px);
+  }
+  .dice6 {
+    background-color: rgba(255, 255, 255, 1);
+    transform: rotateY(180deg) translateZ(50px);
+  }
+
+  .dice5 {
+    background-color: rgba(255, 255, 255, 1);
+    transform: rotateX(-90deg) translateZ(50px);
+  }
+}
+
+@keyframes spincube1 {
+  100% {
+    transform: rotateY(-2900deg) rotateZ(2900deg) rotateX(-2900deg);
+  }
+}
+
+@keyframes spincube2 {
+  100% {
+    transform: rotateY(2900deg) rotateZ(-2900deg) rotateX(2900deg);
+  }
+}
