@@ -16,10 +16,10 @@ export default function FoodMenu({ text }: Props): ReactElement {
             <div className="row">
               <div className="col-md-5 col-md-offset-3 col-sm-12 text-right">
                 <div className="call_us_text">
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-clock-o"></i> Order Foods 24/7
                   </a>
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-phone"></i>061 9876 5432
                   </a>
                 </div>
@@ -27,28 +27,28 @@ export default function FoodMenu({ text }: Props): ReactElement {
 
               <div className="col-md-4 col-sm-12">
                 <div className="head_top_social text-right">
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-facebook"></i>
                   </a>
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-google-plus"></i>
                   </a>
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-twitter"></i>
                   </a>
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-linkedin"></i>
                   </a>
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-pinterest-p"></i>
                   </a>
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-youtube"></i>
                   </a>
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-phone"></i>
                   </a>
-                  <a href="">
+                  <a href="/test">
                     <i className="fa fa-camera"></i>
                   </a>
                 </div>
@@ -75,7 +75,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                       <span className="icon-bar"></span>
                       <span className="icon-bar"></span>
                     </button>
-                    <a className="navbar-brand our_logo" href="#">
+                    <a className="navbar-brand our_logo" href="/test">
                       <img src="assets/images/logo.png" alt="" />
                     </a>
                   </div>
@@ -104,7 +104,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                         <a href="#mobaileapps">Pages</a>
                       </li>
                       <li>
-                        <a href="#" className="booking">
+                        <a href="/test" className="booking">
                           Table Booking
                         </a>
                       </li>
@@ -180,7 +180,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                     electronic typesetting
                   </p>
 
-                  <a href="" className="btn btn-primary">
+                  <a href="/test" className="btn btn-primary">
                     click here
                   </a>
                 </div>
@@ -221,7 +221,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                           typesetting
                         </p>
 
-                        <a href="" className="btn btn-primary">
+                        <a href="/test" className="btn btn-primary">
                           click here
                         </a>
                       </div>
@@ -253,7 +253,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                     <div className="portfolio_images_overlay text-center">
                       <h6>Italian Source Mushroom</h6>
                       <p className="product_price">$12</p>
-                      <a href="" className="btn btn-primary">
+                      <a href="/test" className="btn btn-primary">
                         Click here
                       </a>
                     </div>
@@ -263,7 +263,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                     <div className="portfolio_images_overlay text-center">
                       <h6>Italian Source Mushroom</h6>
                       <p className="product_price">$12</p>
-                      <a href="" className="btn btn-primary">
+                      <a href="/test" className="btn btn-primary">
                         Click here
                       </a>
                     </div>
@@ -273,7 +273,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                     <div className="portfolio_images_overlay text-center">
                       <h6>Italian Source Mushroom</h6>
                       <p className="product_price">$12</p>
-                      <a href="" className="btn btn-primary">
+                      <a href="/test" className="btn btn-primary">
                         Click here
                       </a>
                     </div>
@@ -283,7 +283,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                     <div className="portfolio_images_overlay text-center">
                       <h6>Italian Source Mushroom</h6>
                       <p className="product_price">$12</p>
-                      <a href="" className="btn btn-primary">
+                      <a href="/test" className="btn btn-primary">
                         Click here
                       </a>
                     </div>
@@ -293,7 +293,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                     <div className="portfolio_images_overlay text-center">
                       <h6>Italian Source Mushroom</h6>
                       <p className="product_price">$12</p>
-                      <a href="" className="btn btn-primary">
+                      <a href="/test" className="btn btn-primary">
                         Click here
                       </a>
                     </div>
@@ -303,7 +303,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                     <div className="portfolio_images_overlay text-center">
                       <h6>Italian Source Mushroom</h6>
                       <p className="product_price">$12</p>
-                      <a href="" className="btn btn-primary">
+                      <a href="/test" className="btn btn-primary">
                         Click here
                       </a>
                     </div>
@@ -313,7 +313,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                     <div className="portfolio_images_overlay text-center">
                       <h6>Italian Source Mushroom</h6>
                       <p className="product_price">$12</p>
-                      <a href="" className="btn btn-primary">
+                      <a href="/test" className="btn btn-primary">
                         Click here
                       </a>
                     </div>
@@ -323,7 +323,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
                     <div className="portfolio_images_overlay text-center">
                       <h6>Italian Source Mushroom</h6>
                       <p className="product_price">$12</p>
-                      <a href="" className="btn btn-primary">
+                      <a href="/test" className="btn btn-primary">
                         Click here
                       </a>
                     </div>
@@ -462,10 +462,10 @@ export default function FoodMenu({ text }: Props): ReactElement {
                       Mobile App <span>is Available in every OS platform.</span>
                     </h1>
 
-                    <a href="">
+                    <a href="/test">
                       <img src="assets/images/google.png" alt="" />
                     </a>
-                    <a href="">
+                    <a href="/test">
                       <img src="assets/images/apps.png" alt="" />
                     </a>
                   </div>
@@ -498,28 +498,28 @@ export default function FoodMenu({ text }: Props): ReactElement {
                   </div>
 
                   <div className="footer_socail_icon">
-                    <a href="">
+                    <a href="/test">
                       <i className="fa fa-facebook"></i>
                     </a>
-                    <a href="">
+                    <a href="/test">
                       <i className="fa fa-google-plus"></i>
                     </a>
-                    <a href="">
+                    <a href="/test">
                       <i className="fa fa-twitter"></i>
                     </a>
-                    <a href="">
+                    <a href="/test">
                       <i className="fa fa-linkedin"></i>
                     </a>
-                    <a href="">
+                    <a href="/test">
                       <i className="fa fa-pinterest-p"></i>
                     </a>
-                    <a href="">
+                    <a href="/test">
                       <i className="fa fa-youtube"></i>
                     </a>
-                    <a href="">
+                    <a href="/test">
                       <i className="fa fa-phone"></i>
                     </a>
-                    <a href="">
+                    <a href="/test">
                       <i className="fa fa-camera"></i>
                     </a>
                   </div>
@@ -622,7 +622,7 @@ export default function FoodMenu({ text }: Props): ReactElement {
       </footer>
 
       <div className="scrollup">
-        <a href="#">
+        <a href="/test">
           <i className="fa fa-chevron-up"></i>
         </a>
       </div>
