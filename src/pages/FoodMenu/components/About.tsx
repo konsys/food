@@ -4,50 +4,40 @@ interface Props {}
 
 export const About = (props: Props) => {
   return (
-    <section className="abouts">
+    <div className="about-section-box">
       <div className="container">
         <div className="row">
-          <div className="abouts_content">
-            <div className="col-md-6">
-              <div
-                className="single_abouts_text text-center wow slideInLeft"
-                data-wow-duration="1s"
+          <div className="col-lg-6 col-md-6 col-sm-12">
+            <img src="images/about-img.jpg" alt="" className="img-fluid" />
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 text-center">
+            <div className="inner-column">
+              <h1>
+                Welcome To <span>Yamifood Restaurant</span>
+              </h1>
+              <h4>Little Story</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
+                sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
+                odio ante sodales augue, eget lacinia lectus erat et sem.
+              </p>
+              <p>
+                Sed semper orci sit amet porta placerat. Etiam quis finibus
+                eros. Sed aliquam metus lorem, a pellentesque tellus pretium a.
+                Nulla placerat elit in justo vestibulum, et maximus sem
+                pulvinar.
+              </p>
+              <a
+                className="btn btn-lg btn-circle btn-outline-new-white"
+                href="#"
               >
-                <img src="assets/images/ab.png" alt="" />
-              </div>
-            </div>
-
-            <div className="col-md-6">
-              <div
-                className="single_abouts_text wow slideInRight"
-                data-wow-duration="1s"
-              >
-                <h4>About us</h4>
-                <h3>WE ARE TASTY</h3>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's stan
-                </p>
-
-                <p>
-                  dard dummy text ever since the 1500s,when an unknown printer
-                  took a galley of type and scrambled it to make a type specimen
-                  book. It has survived not only five centuries, but also the
-                  leap into electronic typesettingdard dummy text ever since the
-                  1500s,when an unknown printer took a galley of type and
-                  scrambled it to make a type specimen book. It has survived not
-                  only five centuries, but also the leap into electronic
-                  typesetting
-                </p>
-
-                <a href="/test" className="btn btn-primary">
-                  click here
-                </a>
-              </div>
+                Reservation
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };

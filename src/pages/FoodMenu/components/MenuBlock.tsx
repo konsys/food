@@ -4,116 +4,125 @@ interface Props {}
 
 export const MenuBlock = (props: Props) => {
   return (
-    <section className="ourPakeg">
+    <div className="menu-box">
       <div className="container">
-        <div className="main_pakeg_content">
-          <div className="row">
-            <div className="head_title text-center">
-              <h4>Amazing</h4>
-              <h3>Delicious</h3>
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="heading-title text-center">
+              <h2>Special Menu</h2>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+              </p>
             </div>
-
-            <div className="single_pakeg_one text-right wow rotateInDownRight">
-              <div className="col-md-6 col-md-offset-6 col-sm-8 col-sm-offset-4">
-                <div className="single_pakeg_text">
-                  <div className="pakeg_title">
-                    <h4>Drinks</h4>
-                  </div>
-
-                  <ul>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                  </ul>
-                </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="special-menu text-center">
+              <div className="button-group filter-button-group">
+                <button className="active" data-filter="*">
+                  All
+                </button>
+                <button data-filter=".drinks">Drinks</button>
+                <button data-filter=".lunch">Lunch</button>
+                <button data-filter=".dinner">Dinner</button>
               </div>
             </div>
-
-            <div className="single_pakeg_two text-left wow rotateInDownLeft">
-              <div className="col-md-6 col-sm-8">
-                <div className="single_pakeg_text">
-                  <div className="pakeg_title">
-                    <h4>Main course </h4>
-                  </div>
-
-                  <ul>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                  </ul>
-                </div>
+          </div>
+        </div>
+        <div className="row special-list">
+          <div className="col-lg-4 col-md-6 special-grid drinks">
+            <div className="gallery-single fix">
+              <img src="images/img-01.jpg" className="img-fluid" alt="Image" />
+              <div className="why-text">
+                <h4>Special Drinks 1</h4>
+                <p>Sed id magna vitae eros sagittis euismod.</p>
+                <h5>$7.79</h5>
               </div>
             </div>
-
-            <div className="single_pakeg_three text-left wow rotateInDownRight">
-              <div className="col-md-6 col-md-offset-6 col-sm-8 col-sm-offset-4">
-                <div className="single_pakeg_text">
-                  <div className="pakeg_title">
-                    <h4>Desserts</h4>
-                  </div>
-
-                  <ul>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                    <li>
-                      Tuna Roast
-                      Source........................................................$24.5
-                    </li>
-                  </ul>
-                </div>
+          </div>
+          <div className="col-lg-4 col-md-6 special-grid drinks">
+            <div className="gallery-single fix">
+              <img src="images/img-02.jpg" className="img-fluid" alt="Image" />
+              <div className="why-text">
+                <h4>Special Drinks 2</h4>
+                <p>Sed id magna vitae eros sagittis euismod.</p>
+                <h5>$9.79</h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-6 special-grid drinks">
+            <div className="gallery-single fix">
+              <img src="images/img-03.jpg" className="img-fluid" alt="Image" />
+              <div className="why-text">
+                <h4>Special Drinks 3</h4>
+                <p>Sed id magna vitae eros sagittis euismod.</p>
+                <h5>$10.79</h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-6 special-grid lunch">
+            <div className="gallery-single fix">
+              <img src="images/img-04.jpg" className="img-fluid" alt="Image" />
+              <div className="why-text">
+                <h4>Special Lunch 1</h4>
+                <p>Sed id magna vitae eros sagittis euismod.</p>
+                <h5>$15.79</h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-6 special-grid lunch">
+            <div className="gallery-single fix">
+              <img src="images/img-05.jpg" className="img-fluid" alt="Image" />
+              <div className="why-text">
+                <h4>Special Lunch 2</h4>
+                <p>Sed id magna vitae eros sagittis euismod.</p>
+                <h5>$18.79</h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-6 special-grid lunch">
+            <div className="gallery-single fix">
+              <img src="images/img-06.jpg" className="img-fluid" alt="Image" />
+              <div className="why-text">
+                <h4>Special Lunch 3</h4>
+                <p>Sed id magna vitae eros sagittis euismod.</p>
+                <h5>$20.79</h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-6 special-grid dinner">
+            <div className="gallery-single fix">
+              <img src="images/img-07.jpg" className="img-fluid" alt="Image" />
+              <div className="why-text">
+                <h4>Special Dinner 1</h4>
+                <p>Sed id magna vitae eros sagittis euismod.</p>
+                <h5>$25.79</h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-6 special-grid dinner">
+            <div className="gallery-single fix">
+              <img src="images/img-08.jpg" className="img-fluid" alt="Image" />
+              <div className="why-text">
+                <h4>Special Dinner 2</h4>
+                <p>Sed id magna vitae eros sagittis euismod.</p>
+                <h5>$22.79</h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-6 special-grid dinner">
+            <div className="gallery-single fix">
+              <img src="images/img-09.jpg" className="img-fluid" alt="Image" />
+              <div className="why-text">
+                <h4>Special Dinner 3</h4>
+                <p>Sed id magna vitae eros sagittis euismod.</p>
+                <h5>$24.79</h5>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };

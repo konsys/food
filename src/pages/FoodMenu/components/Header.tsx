@@ -5,111 +5,88 @@ interface Props {}
 export const Header = (props: Props) => {
   return (
     // <header className="navbar-fixed-top menu-scroll">
-    <header className="navbar-fixed-top">
-      <div className="header_top_menu clearfix">
+    <header className="top-navbar">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <div className="row">
-            <div className="col-md-5 col-md-offset-3 col-sm-12 text-right">
-              <div className="call_us_text">
-                <a href="/test">
-                  <i className="fa fa-clock-o"></i> Order Foods 24/7
+          <a className="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="" />
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbars-rs-food"
+            aria-controls="navbars-rs-food"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="navbars-rs-food">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item active">
+                <a className="nav-link" href="index.html">
+                  Home
                 </a>
-                <a href="/test">
-                  <i className="fa fa-phone"></i>061 9876 5432
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="menu.html">
+                  Menu
                 </a>
-              </div>
-            </div>
-
-            <div className="col-md-4 col-sm-12">
-              <div className="head_top_social text-right">
-                <a href="/test">
-                  <i className="fa fa-facebook"></i>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="about.html">
+                  About
                 </a>
-                <a href="/test">
-                  <i className="fa fa-google-plus"></i>
+              </li>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="dropdown-a"
+                  data-toggle="dropdown"
+                >
+                  Pages
                 </a>
-                <a href="/test">
-                  <i className="fa fa-twitter"></i>
-                </a>
-                <a href="/test">
-                  <i className="fa fa-linkedin"></i>
-                </a>
-                <a href="/test">
-                  <i className="fa fa-pinterest-p"></i>
-                </a>
-                <a href="/test">
-                  <i className="fa fa-youtube"></i>
-                </a>
-                <a href="/test">
-                  <i className="fa fa-phone"></i>
-                </a>
-                <a href="/test">
-                  <i className="fa fa-camera"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="main_menu_bg">
-        <div className="container">
-          <div className="row">
-            <nav className="navbar navbar-default">
-              <div className="container-fluid">
-                <div className="navbar-header">
-                  <button
-                    type="button"
-                    className="navbar-toggle collapsed"
-                    data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false"
-                  >
-                    <span className="sr-only">Toggle navigation</span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                  </button>
-                  <a className="navbar-brand our_logo" href="/">
-                    <img src="assets/images/logo.png" alt="" />
+                <div className="dropdown-menu" aria-labelledby="dropdown-a">
+                  <a className="dropdown-item" href="reservation.html">
+                    Reservation
+                  </a>
+                  <a className="dropdown-item" href="stuff.html">
+                    Stuff
+                  </a>
+                  <a className="dropdown-item" href="gallery.html">
+                    Gallery
                   </a>
                 </div>
-
-                <div
-                  className="collapse navbar-collapse"
-                  id="bs-example-navbar-collapse-1"
+              </li>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="dropdown-a"
+                  data-toggle="dropdown"
                 >
-                  <ul className="nav navbar-nav navbar-right">
-                    <li>
-                      <a href="#slider">Home</a>
-                    </li>
-                    <li>
-                      <a href="#abouts">Menu</a>
-                    </li>
-                    <li>
-                      <a href="#features">Features</a>
-                    </li>
-                    <li>
-                      <a href="#portfolio">Delivery</a>
-                    </li>
-                    <li>
-                      <a href="#ourPakeg">News</a>
-                    </li>
-                    <li>
-                      <a href="#mobaileapps">Pages</a>
-                    </li>
-                    <li>
-                      <a href="/" className="booking">
-                        Table Booking
-                      </a>
-                    </li>
-                  </ul>
+                  Blog
+                </a>
+                <div className="dropdown-menu" aria-labelledby="dropdown-a">
+                  <a className="dropdown-item" href="blog.html">
+                    blog
+                  </a>
+                  <a className="dropdown-item" href="blog-details.html">
+                    blog Single
+                  </a>
                 </div>
-              </div>
-            </nav>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="contact.html">
+                  Contact
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 };

@@ -4,10 +4,13 @@ interface Props {}
 
 export const ScrollButton = (props: Props) => {
   return (
-    <div className="scrollup">
-      <a href="/test">
-        <i className="fa fa-chevron-up"></i>
-      </a>
-    </div>
+    <a
+      href="#"
+      id="back-to-top"
+      title="Back to top"
+      style={{ display: "none" }}
+    >
+      ↑
+    </a>
   );
 };
