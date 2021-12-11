@@ -722,7 +722,7 @@ button:focus {
   position: relative;
   display: block;
   background-color: #010101;
-  border-top: 1px dashed rgb(207, 166, 113);
+  border-top: 1px dashed rgbaz(207, 166, 113);
   padding: 30px 0;
   z-index: 1;
 }
