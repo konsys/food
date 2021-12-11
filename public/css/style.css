@@ -22,7 +22,7 @@ body > div {
   color: #666666;
   font-size: 15px;
   font-family: "Athiti", sans-serif;
-  line-height: 1.8;
+  line-height: 1.80857;
 }
 
 a {
@@ -209,7 +209,9 @@ button:focus {
 
 .cover-slides {
   height: 100vh;
+  overflow: hidden;
 }
+
 .slides-navigation a {
   background: #cfa671;
   position: absolute;
