@@ -38,10 +38,10 @@ export const Footer = (props: Props) => {
               Ipsum Street, Lorem Tower, MO, Columbia, 508000
             </p>
             <p className="lead">
-              <a href="#">+01 2000 800 9999</a>
+              <a href="/test-root">+01 2000 800 9999</a>
             </p>
             <p>
-              <a href="#"> info@admin.com</a>
+              <a href="/test-root"> info@admin.com</a>
             </p>
           </div>
           <div className="col-lg-3 col-md-6">
@@ -63,27 +63,27 @@ export const Footer = (props: Props) => {
             </div>
             <ul className="list-inline f-social">
               <li className="list-inline-item">
-                <a href="#">
+                <a href="/test-root">
                   <i className="fa fa-facebook" aria-hidden="true" />
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="#">
+                <a href="/test-root">
                   <i className="fa fa-twitter" aria-hidden="true" />
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="#">
+                <a href="/test-root">
                   <i className="fa fa-linkedin" aria-hidden="true" />
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="#">
+                <a href="/test-root">
                   <i className="fa fa-google-plus" aria-hidden="true" />
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="#">
+                <a href="/test-root">
                   <i className="fa fa-instagram" aria-hidden="true" />
                 </a>
               </li>
@@ -97,7 +97,7 @@ export const Footer = (props: Props) => {
             <div className="col-lg-12">
               <p className="company-name">
                 All Rights Reserved. © 2018
-                <a href="#">Yamifood Restaurant</a> Design By :
+                <a href="/test-root">Yamifood Restaurant</a> Design By :
                 <a href="https://html.design/">html design</a>
               </p>
             </div>

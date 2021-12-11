@@ -42,7 +42,7 @@ export const Header = (props: Props) => {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
-                  href="#"
+                  href="/test-root"
                   id="dropdown-a"
                   data-toggle="dropdown"
                 >
@@ -63,7 +63,7 @@ export const Header = (props: Props) => {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
-                  href="#"
+                  href="/test-root"
                   id="dropdown-a"
                   data-toggle="dropdown"
                 >

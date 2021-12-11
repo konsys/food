@@ -5,7 +5,7 @@ interface Props {}
 export const ScrollButton = (props: Props) => {
   return (
     <a
-      href="#"
+      href="/test-root"
       id="back-to-top"
       title="Back to top"
       style={{ display: "none" }}

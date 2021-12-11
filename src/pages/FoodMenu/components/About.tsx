@@ -30,7 +30,7 @@ export const About = (props: Props) => {
               </p>
               <a
                 className="btn btn-lg btn-circle btn-outline-new-white"
-                href="#"
+                href="/test-root"
               >
                 Reservation
               </a>

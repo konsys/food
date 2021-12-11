@@ -33,7 +33,7 @@ export const MenuBlock = (props: Props) => {
         <div className="row special-list">
           <div className="col-lg-4 col-md-6 special-grid drinks">
             <div className="gallery-single fix">
-              <img src="images/img-01.jpg" className="img-fluid" alt="Image" />
+              <img src="images/img-01.jpg" className="img-fluid" alt="" />
               <div className="why-text">
                 <h4>Special Drinks 1</h4>
                 <p>Sed id magna vitae eros sagittis euismod.</p>
@@ -43,7 +43,7 @@ export const MenuBlock = (props: Props) => {
           </div>
           <div className="col-lg-4 col-md-6 special-grid drinks">
             <div className="gallery-single fix">
-              <img src="images/img-02.jpg" className="img-fluid" alt="Image" />
+              <img src="images/img-02.jpg" className="img-fluid" alt="" />
               <div className="why-text">
                 <h4>Special Drinks 2</h4>
                 <p>Sed id magna vitae eros sagittis euismod.</p>
@@ -53,7 +53,7 @@ export const MenuBlock = (props: Props) => {
           </div>
           <div className="col-lg-4 col-md-6 special-grid drinks">
             <div className="gallery-single fix">
-              <img src="images/img-03.jpg" className="img-fluid" alt="Image" />
+              <img src="images/img-03.jpg" className="img-fluid" alt="" />
               <div className="why-text">
                 <h4>Special Drinks 3</h4>
                 <p>Sed id magna vitae eros sagittis euismod.</p>
@@ -63,7 +63,7 @@ export const MenuBlock = (props: Props) => {
           </div>
           <div className="col-lg-4 col-md-6 special-grid lunch">
             <div className="gallery-single fix">
-              <img src="images/img-04.jpg" className="img-fluid" alt="Image" />
+              <img src="images/img-04.jpg" className="img-fluid" alt="" />
               <div className="why-text">
                 <h4>Special Lunch 1</h4>
                 <p>Sed id magna vitae eros sagittis euismod.</p>
@@ -73,7 +73,7 @@ export const MenuBlock = (props: Props) => {
           </div>
           <div className="col-lg-4 col-md-6 special-grid lunch">
             <div className="gallery-single fix">
-              <img src="images/img-05.jpg" className="img-fluid" alt="Image" />
+              <img src="images/img-05.jpg" className="img-fluid" alt="" />
               <div className="why-text">
                 <h4>Special Lunch 2</h4>
                 <p>Sed id magna vitae eros sagittis euismod.</p>
@@ -83,7 +83,7 @@ export const MenuBlock = (props: Props) => {
           </div>
           <div className="col-lg-4 col-md-6 special-grid lunch">
             <div className="gallery-single fix">
-              <img src="images/img-06.jpg" className="img-fluid" alt="Image" />
+              <img src="images/img-06.jpg" className="img-fluid" alt="" />
               <div className="why-text">
                 <h4>Special Lunch 3</h4>
                 <p>Sed id magna vitae eros sagittis euismod.</p>
@@ -93,7 +93,7 @@ export const MenuBlock = (props: Props) => {
           </div>
           <div className="col-lg-4 col-md-6 special-grid dinner">
             <div className="gallery-single fix">
-              <img src="images/img-07.jpg" className="img-fluid" alt="Image" />
+              <img src="images/img-07.jpg" className="img-fluid" alt="" />
               <div className="why-text">
                 <h4>Special Dinner 1</h4>
                 <p>Sed id magna vitae eros sagittis euismod.</p>
@@ -103,7 +103,7 @@ export const MenuBlock = (props: Props) => {
           </div>
           <div className="col-lg-4 col-md-6 special-grid dinner">
             <div className="gallery-single fix">
-              <img src="images/img-08.jpg" className="img-fluid" alt="Image" />
+              <img src="images/img-08.jpg" className="img-fluid" alt="" />
               <div className="why-text">
                 <h4>Special Dinner 2</h4>
                 <p>Sed id magna vitae eros sagittis euismod.</p>
@@ -113,7 +113,7 @@ export const MenuBlock = (props: Props) => {
           </div>
           <div className="col-lg-4 col-md-6 special-grid dinner">
             <div className="gallery-single fix">
-              <img src="images/img-09.jpg" className="img-fluid" alt="Image" />
+              <img src="images/img-09.jpg" className="img-fluid" alt="" />
               <div className="why-text">
                 <h4>Special Dinner 3</h4>
                 <p>Sed id magna vitae eros sagittis euismod.</p>

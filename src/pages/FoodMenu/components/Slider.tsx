@@ -27,7 +27,7 @@ export const Slider = (props: Props) => {
                   <p>
                     <a
                       className="btn btn-lg btn-circle btn-outline-new-white"
-                      href="#"
+                      href="/test-root"
                     >
                       Reservation
                     </a>
@@ -56,7 +56,7 @@ export const Slider = (props: Props) => {
                   <p>
                     <a
                       className="btn btn-lg btn-circle btn-outline-new-white"
-                      href="#"
+                      href="/test-root"
                     >
                       Reservation
                     </a>
@@ -85,7 +85,7 @@ export const Slider = (props: Props) => {
                   <p>
                     <a
                       className="btn btn-lg btn-circle btn-outline-new-white"
-                      href="#"
+                      href="/test-root"
                     >
                       Reservation
                     </a>
@@ -96,10 +96,10 @@ export const Slider = (props: Props) => {
           </li>
         </ul>
         <div className="slides-navigation">
-          <a href="#" className="next">
+          <a href="/test-root" className="next">
             <i className="fa fa-angle-right" aria-hidden="true" />
           </a>
-          <a href="#" className="prev">
+          <a href="/test-root" className="prev">
             <i className="fa fa-angle-left" aria-hidden="true" />
           </a>
         </div>
