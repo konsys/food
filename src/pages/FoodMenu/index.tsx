@@ -1,14 +1,14 @@
 import React, { ReactElement } from "react";
-import { About } from "./components/About";
-import { Header } from "./components/Header";
-import { MenuBlock } from "./components/MenuBlock";
-import { Slider } from "./components/Slider";
-import { Footer } from "./components/Footer";
-import { ScrollButton } from "./components/ScrollButton";
-import { Qt } from "./components/Qt";
-import { Gallery } from "./components/Gallery";
-import { CustomerReview } from "./components/CustomerReview";
-import { Contacts } from "./components/Contacts";
+import { About } from "./components/About/About";
+import { Header } from "./components/Header/Header";
+import { MenuBlock } from "./components/MenuBlock/MenuBlock";
+import { Slider } from "./components/Slider/Slider";
+import { Footer } from "./components/Footer/Footer";
+import { ScrollButton } from "./components/ScrollButton/ScrollButton";
+import { Qt } from "./components/Qt/Qt";
+import { Gallery } from "./components/Gallery/Gallery";
+import { CustomerReview } from "./components/CustomerReview/CustomerReview";
+import { Contacts } from "./components/Contacts/Contacts";
 
 interface Props {
   text: string;
