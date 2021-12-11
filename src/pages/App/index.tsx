@@ -2,7 +2,8 @@ import React from "react";
 import { Switch } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "../../routes";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./style/app.style.scss";
+import "./style/app.theme.scss";
 
 function App() {
   return (

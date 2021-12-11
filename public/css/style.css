@@ -1,17 +1,9 @@
 /*------------------------------------------------------------------
-    IMPORT FONTS
--------------------------------------------------------------------*/
-
-@import url("https://fonts.googleapis.com/css?family=Arbutus+Slab");
-@import url("https://fonts.googleapis.com/css?family=Athiti:400,500,600");
-
-/*------------------------------------------------------------------
     IMPORT FILES
 -------------------------------------------------------------------*/
 
 @import url(animate.css);
 @import url(font-awesome.min.css);
-@import url(superslides.css);
 @import url(baguetteBox.min.css);
 
 /*------------------------------------------------------------------
@@ -724,7 +716,7 @@ button:focus {
   position: relative;
   display: block;
   background-color: #010101;
-  border-top: 1px dashed rgba(207, 166, 113);
+  border-top: 1px dashed rgb(207, 166, 113);
   padding: 30px 0;
   z-index: 1;
 }

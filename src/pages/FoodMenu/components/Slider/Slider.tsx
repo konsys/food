@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 interface Props {}
 
@@ -8,6 +9,7 @@ export const Slider = (props: Props) => {
       <div id="slides" className="cover-slides">
         <ul className="slides-container">
           <li className="text-center">
+            <div className="overlay-background" />
             <img src="images/slider-01.jpg" alt="" />
             <div className="container">
               <div className="row">
