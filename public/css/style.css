@@ -18,11 +18,11 @@
     SKELETON
 -------------------------------------------------------------------*/
 
-body {
+body > div {
   color: #666666;
   font-size: 15px;
   font-family: "Athiti", sans-serif;
-  line-height: 1.80857 !important;
+  line-height: 1.8;
 }
 
 a {
