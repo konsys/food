@@ -4,7 +4,7 @@ interface Props {}
 
 export const MobileApp = (props: Props) => {
   return (
-    <section id="mobaileapps" className="mobailapps">
+    <section className="mobailapps">
       <div className="slider_overlay">
         <div className="container">
           <div className="row">

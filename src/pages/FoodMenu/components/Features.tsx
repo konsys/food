@@ -4,7 +4,7 @@ interface Props {}
 
 export const Features = (props: Props) => {
   return (
-    <section id="features" className="features">
+    <section className="features">
       <div className="slider_overlay">
         <div className="container">
           <div className="row">

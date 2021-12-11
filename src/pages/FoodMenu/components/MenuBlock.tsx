@@ -4,7 +4,7 @@ interface Props {}
 
 export const MenuBlock = (props: Props) => {
   return (
-    <section id="ourPakeg" className="ourPakeg">
+    <section className="ourPakeg">
       <div className="container">
         <div className="main_pakeg_content">
           <div className="row">

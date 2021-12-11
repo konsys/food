@@ -4,7 +4,8 @@ interface Props {}
 
 export const Header = (props: Props) => {
   return (
-    <header id="home" className="navbar-fixed-top">
+    // <header className="navbar-fixed-top menu-scroll">
+    <header className="navbar-fixed-top">
       <div className="header_top_menu clearfix">
         <div className="container">
           <div className="row">

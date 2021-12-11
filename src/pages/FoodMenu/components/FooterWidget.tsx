@@ -4,7 +4,7 @@ interface Props {}
 
 export const FooterWidget = (props: Props) => {
   return (
-    <section id="footer_widget" className="footer_widget">
+    <section className="footer_widget">
       <div className="container">
         <div className="row">
           <div className="footer_widget_content text-center">

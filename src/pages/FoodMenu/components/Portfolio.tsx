@@ -5,7 +5,7 @@ interface Props {}
 export const Portfolio = (props: Props) => {
   return (
     <div>
-      <section id="portfolio" className="portfolio">
+      <section className="portfolio">
         <div className="container">
           <div className="row">
             <div
