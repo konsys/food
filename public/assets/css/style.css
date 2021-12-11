@@ -39,7 +39,7 @@ PRE LOADER
     overflow: hidden !important;
 }
 
-.loaded {
+.loading {
     width: 60px;
     height: 60px;
     position: absolute;
