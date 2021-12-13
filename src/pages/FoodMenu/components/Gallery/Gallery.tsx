@@ -6,7 +6,6 @@ interface Props {}
 export const Gallery = (props: Props) => {
   return (
     <>
-      {" "}
       <div className="gallery-box">
         <div className="container-fluid">
           <div className="row">

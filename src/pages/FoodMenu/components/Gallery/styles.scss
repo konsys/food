@@ -1,21 +1,38 @@
+@import "../../../../config/vars.scss";
 /*------------------------------------------------------------------
     Gallery
 -------------------------------------------------------------------*/
 
 .gallery-box {
-    padding: 70px 0px;
+  padding: 70px 0px;
+}
+.heading-title {
+  margin-bottom: 50px;
+  h2 {
+    color: $colorDark;
+    font-size: $fontSizeH5;
+    font-family: $hFontFamily;
   }
-  .tz-gallery {
-    margin-top: 30px;
+  p {
+    font-size: $fontSizePBig;
+    font-weight: $fontWeightnLight;
+    margin: 0px;
   }
-  .tz-gallery .lightbox img {
-    width: 100%;
-    margin-bottom: 30px;
-    transition: 0.2s ease-in-out;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.tz-gallery {
+  margin-top: 30px;
+  .lightbox {
+    img {
+      width: 100%;
+      margin-bottom: 30px;
+      transition: 0.2s ease-in-out;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      }
+    }
   }
-  .tz-gallery .lightbox img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  }
-  
+}
