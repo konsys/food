@@ -17,19 +17,19 @@
   border-radius: 0.1875rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.btn-outline-new-white {
-  color: $colorWhite;
   background-color: transparent;
   background-image: none;
   border-color: $colorThemeMain;
+  color: $colorThemeMain;
+  &:hover {
+    color: $colorWhite;
+    background-color: $colorThemeMain;
+    border-color: $colorThemeMain;
+  }
 }
 
-.btn-outline-new-white:hover {
-  color: $colorWhite;
-  background-color: $colorThemeMain;
-  border-color: $colorThemeMain;
+.btn-outline-white {
+  color: $colorWhite !important;
 }
 
 .btn-uppercase {

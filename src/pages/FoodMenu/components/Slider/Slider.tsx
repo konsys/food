@@ -25,7 +25,7 @@ export const Slider = (props: Props) => {
                 <br />
                 trends to see any changes in performance over time.
               </p>
-              <StandardButton text="Reservation" isUppercase />
+              <StandardButton text="Reservation" isUppercase isWhiteText />
             </div>
           </div>
         </div>

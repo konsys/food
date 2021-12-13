@@ -6,18 +6,21 @@ interface Props {
   text: string;
   isUppercase?: boolean;
   isBigPadding?: boolean;
+  isWhiteText?: boolean;
 }
 
 export const StandardButton = ({
   text,
   isUppercase = false,
-  isBigPadding = false
+  isBigPadding = false,
+  isWhiteText = false
 }: Props) => {
   return (
     <>
       <Button
-        className={`btn btn-lg btn-circle btn-outline-new-white ${isUppercase &&
-          "btn-uppercase"} ${isBigPadding && "btn-big-padding"}`}
+        className={`btn btn-lg btn-circle ${isUppercase &&
+          "btn-uppercase"} ${isBigPadding &&
+          "btn-big-padding"}  ${isWhiteText && "btn-outline-white"}`}
       >
         {text}
       </Button>
