@@ -1,9 +1,9 @@
 $hFontFamily: "Arbutus Slab", serif;
 
 $colorThemeMain: #cfa671;
-
 $colorBackground: #333;
-$whiteColor: #fff;
+$colorWhite: #fff;
+$colorDark: #010101;
 
 $fontWeightnBold: 600;
 $fontWeightnSemiBold: 500;
@@ -16,3 +16,8 @@ $fontSizePNormal: 16px;
 $fontSizePSmall: 14px;
 
 $tabletBreakPoint: 767px;
+$desktopBreakPoint: 991px;
+
+$borderRadius: 4px;
+
+$boxShadow: 2px 5px 6px rgba(0, 0, 0, 0.5);

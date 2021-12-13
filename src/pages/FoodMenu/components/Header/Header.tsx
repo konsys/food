@@ -5,7 +5,6 @@ interface Props {}
 
 export const Header = (props: Props) => {
   return (
-    // <header className="navbar-fixed-top menu-scroll">
     <header className="top-navbar">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
