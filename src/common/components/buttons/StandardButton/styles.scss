@@ -1,0 +1,41 @@
+@import "../../../../config/vars.scss";
+
+.btn {
+  display: inline-block;
+  font-weight: $fontWeightnBold;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 2px solid transparent;
+  padding: 12px 30px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 0.1875rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-outline-new-white {
+  color: $colorWhite;
+  background-color: transparent;
+  background-image: none;
+  border-color: $colorThemeMain;
+}
+
+.btn-outline-new-white:hover {
+  color: $colorWhite;
+  background-color: $colorThemeMain;
+  border-color: $colorThemeMain;
+}
+
+.btn-uppercase {
+  text-transform: uppercase;
+}
+
+.btn-big-padding {
+  padding: 19px 36px;
+}

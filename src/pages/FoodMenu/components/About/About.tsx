@@ -1,4 +1,5 @@
 import React from "react";
+import { StandardButton } from "../../../../common/components/buttons/StandardButton/StandardButton";
 import "./styles.scss";
 
 interface Props {}
@@ -29,12 +30,7 @@ export const About = (props: Props) => {
                 Nulla placerat elit in justo vestibulum, et maximus sem
                 pulvinar.
               </p>
-              <a
-                className="btn btn-lg btn-circle btn-outline-new-white"
-                href="/test-root"
-              >
-                Reservation
-              </a>
+              <StandardButton text="Reservation" isBigPadding />
             </div>
           </div>
         </div>

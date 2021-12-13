@@ -1,4 +1,5 @@
 import React from "react";
+import { StandardButton } from "../../../../common/components/buttons/StandardButton/StandardButton";
 import "./styles.scss";
 
 interface Props {}
@@ -24,14 +25,7 @@ export const Slider = (props: Props) => {
                 <br />
                 trends to see any changes in performance over time.
               </p>
-              <p>
-                <a
-                  className="btn btn-lg btn-circle btn-outline-new-white"
-                  href="/test-root"
-                >
-                  Reservation
-                </a>
-              </p>
+              <StandardButton text="Reservation" isUppercase />
             </div>
           </div>
         </div>
