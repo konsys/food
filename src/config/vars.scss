@@ -1,16 +1,24 @@
 $hFontFamily: "Arbutus Slab", serif;
 
 $colorThemeMain: #cfa671;
-$colorBackground: #333;
-$colorWhite: #fff;
+$colorLightGrey: #e4e4e4;
+$colorGrey: #333;
 $colorDark: #010101;
+$colorWhite: #fff;
+
+$borderStandard: 1px solid $colorLightGrey;
+$borderRadiusStandard: 4px;
 
 $fontWeightnBold: 600;
 $fontWeightnSemiBold: 500;
+$fontWeightnNormal: 300;
+$fontWeightnLight: 200;
 
 $fontSizeH1Big: 64px;
 $fontSizeH1Normal: 22px;
-$fontSizeH4Big: 30px;
+$fontSizeH3: 35px;
+$fontSizeH4: 30px;
+$fontSizeH5: 30px;
 
 $fontSizePBig: 18px;
 $fontSizePNormal: 16px;

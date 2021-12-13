@@ -1,27 +1,28 @@
+@import "../../../../config/vars.scss";
 /*------------------------------------------------------------------
     QT
 -------------------------------------------------------------------*/
 
 .qt-background {
-    background: url(http://localhost:3000/images/qt-bg.jpg) no-repeat;
-    background-size: cover;
-    padding: 100px 0;
-    background-attachment: fixed;
-    background-position: center center;
-    position: relative;
-  }
-  .qt-background p {
-    font-size: 35px;
-    font-weight: 300;
+  background: url(http://localhost:3000/images/qt-bg.jpg) no-repeat;
+  background-size: cover;
+  padding: 100px 0;
+  background-attachment: fixed;
+  background-position: center center;
+  position: relative;
+
+  p {
+    font-size: $fontSizeH3;
+    font-weight: $fontWeightnNormal;
     line-height: 44px;
-    color: #fff;
-    font-family: "Arbutus Slab", serif;
+    color: $colorWhite;
+    font-family: $hFontFamily;
     margin-bottom: 20px;
   }
-  
-  .qt-background span {
-    color: #fff;
-    font-size: 20px;
-    font-weight: 500;
+
+  span {
+    color: $colorWhite;
+    font-size: $fontSizePBig;
+    font-weight: $fontWeightnSemiBold;
   }
-  
+}

@@ -20,7 +20,7 @@ export const StandardButton = ({
       <Button
         className={`btn btn-lg btn-circle ${isUppercase &&
           "btn-uppercase"} ${isBigPadding &&
-          "btn-big-padding"}  ${isWhiteText && "btn-outline-white"}`}
+          "btn-big-padding"}  ${isWhiteText && "btn-white"}`}
       >
         {text}
       </Button>
