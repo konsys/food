@@ -19,7 +19,7 @@ export const Slider = (props: Props) => {
                   Yamifood Restaurant
                 </strong>
               </h1>
-              <p className="m-b-40">
+              <p>
                 See how your users experience your website in realtime or view
                 <br />
                 trends to see any changes in performance over time.

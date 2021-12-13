@@ -1,7 +1,8 @@
+@import "../../../../config/vars.scss";
+
 /*------------------------------------------------------------------
     Slider
 -------------------------------------------------------------------*/
-
 .cover-slides {
   height: 100vh;
   overflow: hidden;
@@ -38,7 +39,7 @@
   }
 
   .overlay-background {
-    background: #333;
+    background: $colorBackground;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -48,26 +49,27 @@
   }
 
   h1 {
-    font-family: "Arbutus Slab", serif;
-    font-weight: 500;
-    font-size: 64px;
-    color: #fff;
+    font-family: $hFontFamily;
+    font-weight: $fontWeightnSemiBold;
+    font-size: $fontSizeH1Big;
+    color: $whiteColor;
   }
   p {
-    font-size: 18px;
-    color: #fff;
+    font-size: $fontSizePBig;
+    color: $whiteColor;
   }
-  @media (max-width: 767px) {
+
+  @media (max-width: $tabletBreakPoint) {
     h1 {
-      font-size: 22px;
+      font-size: $fontSizeH1Normal;
     }
     p {
-      font-size: 14px;
+      font-size: $fontSizePSmall;
     }
   }
 
   .slides-pagination a {
-    border: 2px solid #ffffff;
+    border: 2px solid $whiteColor;
   }
 
   .btn {
@@ -76,7 +78,7 @@
   }
   .btn {
     display: inline-block;
-    font-weight: 600;
+    font-weight: $fontWeightnBold;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -93,14 +95,14 @@
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
   .btn-outline-new-white {
-    color: #fff;
+    color: $whiteColor;
     background-color: transparent;
     background-image: none;
-    border-color: #cfa671;
+    border-color: $colorThemeMain;
   }
   .btn-outline-new-white:hover {
-    color: #ffffff;
-    background-color: #cfa671;
-    border-color: #cfa671;
+    color: $whiteColor;
+    background-color: $colorThemeMain;
+    border-color: $colorThemeMain;
   }
 }
