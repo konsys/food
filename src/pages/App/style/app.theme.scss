@@ -1,3 +1,4 @@
+@import "../../../config/vars.scss";
 /*------------------------------------------------------------------
     IMPORT FILES
 // -------------------------------------------------------------------*/
@@ -105,6 +106,20 @@ a,
   transition: all 0.3s ease-in-out;
 }
 
+.heading-title {
+  margin-bottom: 50px;
+  h2 {
+    color: $colorDark;
+    font-size: $fontSizeH5;
+    font-family: $hFontFamily;
+  }
+  p {
+    font-size: $fontSizePBig;
+    font-weight: $fontWeightnLight;
+    margin: 0px;
+  }
+}
+
 .btn-custom {
   margin-top: 20px;
   background-color: transparent !important;
@@ -141,7 +156,6 @@ button:focus {
   color: #2a2a2a;
   opacity: 1;
 }
-
 
 /*------------------------------------------------------------------
     All Pages
