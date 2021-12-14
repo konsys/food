@@ -17,18 +17,16 @@ interface Props {
 export default function FoodMenu({ text }: Props): ReactElement {
   return (
     <>
-      <div>
-        <Header />
-        <Slider />
-        <About />
-        <Qt />
-        <MenuBlock />
-        <Gallery />
-        <CustomerReview />
-        <Contacts />
-        <Footer />
-        <ScrollButton />
-      </div>
+      <Header />
+      <Slider />
+      <About />
+      <Qt />
+      <MenuBlock />
+      <Gallery />
+      <CustomerReview />
+      <Contacts />
+      <Footer />
+      <ScrollButton />
     </>
   );
 }
