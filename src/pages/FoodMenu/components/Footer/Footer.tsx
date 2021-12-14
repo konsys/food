@@ -1,4 +1,5 @@
 import React from "react";
+import { Copyright } from "./Copyright/Copyright";
 import "./styles.scss";
 
 interface Props {}
@@ -92,19 +93,7 @@ export const Footer = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="copyright">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <p className="company-name">
-                All Rights Reserved. © 2018
-                <a href="/test-root">Yamifood Restaurant</a> Design By :
-                <a href="https://html.design/">html design</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Copyright />
     </footer>
   );
 };
