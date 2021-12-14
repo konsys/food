@@ -12,10 +12,10 @@
 -------------------------------------------------------------------*/
 
 body > div {
-  color: #666666;
+  color: $colorGrey;
   font-size: 15px;
   font-family: "Athiti", sans-serif;
-  line-height: 1.80857;
+  line-height: 1.8;
 }
 
 a {
@@ -46,27 +46,27 @@ h6 {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: $fontSizeH1;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: $fontSizeH2;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: $fontSizeH3;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: $fontSizeH4;
 }
 
 h5 {
-  font-size: 14px;
+  font-size: $fontSizeH5;
 }
 
 h6 {
-  font-size: 13px;
+  font-size: $fontSizeH6;
 }
 
 h1 a,
@@ -75,7 +75,7 @@ h3 a,
 h4 a,
 h5 a,
 h6 a {
-  color: #212121;
+  color: $colorLighDark;
   text-decoration: none !important;
   opacity: 1;
 }
@@ -90,7 +90,7 @@ h6 a:hover {
 }
 
 a {
-  color: #1f1f1f;
+  color: $colorLighDark;
   text-decoration: none;
   outline: none;
 }
@@ -129,9 +129,9 @@ a,
 }
 
 .lead {
-  font-size: 18px;
+  font-size: $fontSizePBig;
   line-height: 30px;
-  color: #767676;
+  color: $colorGrey;
   margin: 0;
   padding: 0;
 }
@@ -153,7 +153,7 @@ button:focus {
 }
 
 .form-control::-moz-placeholder {
-  color: #2a2a2a;
+  color: $colorGrey;
   opacity: 1;
 }
 
@@ -163,7 +163,6 @@ button:focus {
 
 .page-breadcrumb {
   padding: 250px 0 150px;
-  // background: url(../images/all-bg.jpg) no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-position: 0 0;
@@ -174,7 +173,7 @@ button:focus {
   z-index: 2;
 }
 .all-page-title::before {
-  background: #010101;
+  background: $colorDark;
   content: "";
   height: 100%;
   left: 0;
@@ -185,9 +184,9 @@ button:focus {
   opacity: 0.8;
 }
 .all-page-title h1 {
-  font-size: 38px;
-  color: #ffffff;
-  font-family: "Arbutus Slab", serif;
+  font-size: $fontSizeH1Medium;
+  color: $colorWhite;
+  font-family: $hFontFamily;
   padding: 0px;
 }
 
@@ -195,7 +194,7 @@ button:focus {
   margin-top: 30px;
 }
 .inner-pt p {
-  font-size: 18px;
+  font-size: $fontSizePBig;
 }
 
 .stuff-box {
@@ -203,7 +202,7 @@ button:focus {
 }
 
 .our-team {
-  border: 2px solid #d0a772;
+  border: 2px solid $hFontFamily;
   border-radius: 0px;
   text-align: center;
   margin: 10px;
@@ -215,7 +214,7 @@ button:focus {
   content: "";
   width: 100%;
   height: 104%;
-  background: #d0a772;
+  background: $hFontFamily;
   position: absolute;
   top: 50%;
   left: 0;
@@ -243,7 +242,7 @@ button:focus {
 .our-team .team-content {
   width: 93%;
   padding: 25px 0 10px;
-  background: #d0a772;
+  background: $hFontFamily;
   position: absolute;
   bottom: 50px;
   left: 50%;
@@ -256,17 +255,17 @@ button:focus {
   opacity: 1;
 }
 .our-team .title {
-  font-size: 25px;
+  font-size: $fontSizeH1;
   font-weight: 600;
-  color: #fff;
+  color: $colorWhite;
   letter-spacing: 1px;
   text-transform: capitalize;
   margin: 0;
 }
 .our-team .post {
   display: block;
-  font-size: 16px;
-  color: #fff;
+  font-size: $fontSizePNormal;
+  color: $colorWhite;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
@@ -285,15 +284,15 @@ button:focus {
   height: 35px;
   line-height: 35px;
   border-radius: 50%;
-  background: #fff;
-  font-size: 20px;
-  color: #d0a772;
+  background: $colorWhite;
+  font-size: $fontSizePBig;
+  color: $hFontFamily;
   transition: all 0.3s ease 0s;
 }
 .our-team .social li a:hover {
-  background: #ffffff;
+  background: $colorWhite;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3);
-  color: #d0a772;
+  color: $hFontFamily;
 }
 @media only screen and (max-width: 990px) {
   .our-team {
@@ -316,7 +315,7 @@ button:focus {
 }
 
 .form-control[readonly] {
-  background-color: #ffffff;
+  background-color: $colorWhite;
 }
 
 .form-control {
@@ -324,27 +323,27 @@ button:focus {
   min-height: 50px;
 }
 .form-control:focus {
-  border: 1px solid #d0a772;
+  border: 1px solid $hFontFamily;
   box-shadow: none;
 }
 
 .form-group .picker__input.picker__input--active {
-  border-color: #d0a772;
+  border-color: $hFontFamily;
 }
 
 .submit-button {
   margin-top: 20px;
 }
 .btn.btn-common {
-  color: #d0a772;
+  color: $hFontFamily;
   background-color: transparent;
   background-image: none;
-  border-color: #cfa671;
+  border-color: $colorThemeMain;
 }
 .btn.btn-common:hover {
-  color: #ffffff;
-  background-color: #cfa671;
-  border-color: #cfa671;
+  color: $colorWhite;
+  background-color: $colorThemeMain;
+  border-color: $colorThemeMain;
 }
 .blog-box {
   padding: 70px 0px;
@@ -362,7 +361,7 @@ button:focus {
 .blog-box-inner .blog-detail {
   position: absolute;
   top: 0;
-  background: #fff;
+  background: $colorWhite;
   padding: 30px 25px;
   border: 1px solid #ddd;
   transition-duration: 0.5s;
@@ -370,9 +369,9 @@ button:focus {
 }
 
 .blog-detail h4 {
-  font-size: 18px;
+  font-size: $fontSizePBig;
   font-weight: 500;
-  color: #222222;
+  color: $colorThemeMain;
 }
 
 .blog-detail ul li {
@@ -380,11 +379,11 @@ button:focus {
   padding: 0px 5px;
 }
 .blog-detail ul li span {
-  color: #d0a772;
+  color: $hFontFamily;
   cursor: pointer;
 }
 .blog-detail ul li span:hover {
-  color: #010101;
+  color: $colorDark;
 }
 
 .blog-detail ul li:first-child {
@@ -397,7 +396,7 @@ button:focus {
 }
 
 .blog-detail a {
-  color: #d0a772;
+  color: $hFontFamily;
   margin-top: 20px;
 }
 
@@ -421,35 +420,35 @@ button:focus {
   position: absolute;
   right: 0px;
   top: 0px;
-  background: #cfa671;
-  font-size: 18px;
-  color: #ffffff;
+  background: $colorThemeMain;
+  font-size: $fontSizePBig;
+  color: $colorWhite;
   padding: 5px 15px 5px 5px;
 }
 .inner-blog-detail {
-  background: #ffffff;
+  background: $colorWhite;
   position: relative;
   padding: 30px 20px;
 }
 
 .inner-blog-detail h3 {
-  font-size: 20px;
+  font-size: $fontSizeH3;
   font-weight: 500;
   padding-bottom: 15px;
 }
 .inner-blog-detail ul li {
   display: inline-block;
   padding: 0px 5px;
-  color: #222222;
+  color: $colorThemeMain;
 }
 .inner-blog-detail ul li span {
-  color: #cfa671;
+  color: $colorThemeMain;
 }
 .inner-blog-detail p {
   padding: 10px 0px;
 }
 .details-page blockquote {
-  border-left: 5px solid #cfa671;
+  border-left: 5px solid $colorThemeMain;
 }
 .details-page blockquote {
   padding: 20px;
@@ -465,7 +464,7 @@ blockquote {
   width: 100%;
 }
 .line-left-social h5 {
-  font-size: 18px;
+  font-size: $fontSizeH3;
   font-weight: 600;
   padding-bottom: 15px;
 }
@@ -479,33 +478,33 @@ blockquote {
 .line-right-social ul li a {
   display: block;
   padding: 5px;
-  background: #f5f5f5;
+  background: $colorLightGrey;
   border-radius: 6px;
   font-weight: 500;
   width: 35px;
   height: 35px;
   text-align: center;
   line-height: 25px;
-  font-size: 15px;
+  font-size: $fontSizePNormal;
 }
 .line-left-social ul li a {
   display: block;
   padding: 5px 10px;
-  background: #f5f5f5;
+  background: $colorLightGrey;
   border-radius: 6px;
   font-weight: 400;
-  font-size: 12px;
+  font-size: $fontSizePSmall;
 }
 .line-left-social ul li a:hover {
-  background: #cfa671;
-  color: #ffffff;
+  background: $colorThemeMain;
+  color: $colorWhite;
 }
 .line-right-social ul li a:hover {
-  background: #cfa671;
-  color: #ffffff;
+  background: $colorThemeMain;
+  color: $colorWhite;
 }
 .line-right-social h5 {
-  font-size: 18px;
+  font-size: $fontSizePBig;
   font-weight: 600;
   padding-bottom: 15px;
 }
@@ -516,7 +515,7 @@ blockquote {
   width: 100%;
 }
 .blog-comment-box h3 {
-  font-size: 18px;
+  font-size: $fontSizePBig;
   font-weight: 600;
   padding-bottom: 20px;
 }
@@ -536,7 +535,7 @@ blockquote {
   padding-left: 110px;
 }
 .comment-item-right a {
-  font-size: 16px;
+  font-size: $fontSizePNormal;
   font-weight: 500;
 }
 .des-l {
@@ -547,21 +546,21 @@ blockquote {
   font-size: 13px;
 }
 .comment-item-right a {
-  font-size: 16px;
+  font-size: $fontSizePNormal;
   font-weight: 500;
 }
 .right-btn-re {
   float: right;
   font-style: italic;
   text-align: right;
-  font-size: 16px;
+  font-size: $fontSizePNormal;
   padding: 5px 10px;
-  background: #f5f5f5;
+  background: $colorLightGrey;
   border-radius: 6px;
 }
 .right-btn-re:hover {
-  background: #cfa671;
-  color: #ffffff !important;
+  background: $colorThemeMain;
+  color: $colorWhite !important;
 }
 .comment-respond-box {
   clear: both;
@@ -578,37 +577,37 @@ blockquote {
 
 .comment-form-respond input {
   min-height: 38px;
-  border: 1px solid #010101;
+  border: 1px solid $colorDark;
   border-radius: 0px;
   padding: 10px;
 }
 .comment-form-respond textarea {
-  border: 1px solid #010101;
+  border: 1px solid $colorDark;
   border-radius: 0px;
   padding: 10px;
   min-height: 110px;
 }
 
 .btn-submit {
-  color: #d0a772;
+  color: $hFontFamily;
   background-color: transparent;
   background-image: none;
-  border-color: #cfa671;
+  border-color: $colorThemeMain;
 }
 .btn-submit:hover {
-  color: #ffffff;
-  background-color: #cfa671;
-  border-color: #cfa671;
+  color: $colorWhite;
+  background-color: $colorThemeMain;
+  border-color: $colorThemeMain;
 }
 
 .right-side-blog h3 {
   font-weight: 600;
-  font-size: 18px;
+  font-size: $fontSizePBig;
   padding-bottom: 20px;
 }
 .blog-search-form {
   position: relative;
-  border-bottom: 1px solid #010101;
+  border-bottom: 1px solid $colorDark;
   padding-bottom: 30px;
   margin-bottom: 20px;
 }
@@ -617,22 +616,22 @@ blockquote {
   min-height: 40px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 5px 40px 5px 10px;
-  font-size: 15px;
-  color: #222222;
+  font-size: $fontSizePNormal;
+  color: $colorThemeMain;
 }
 .blog-search-form .search-btn {
   position: absolute;
   right: 0px;
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: $fontSizePBig;
   min-height: 40px;
   padding: 0px 15px;
 }
 
 .right-side-blog h3 {
   font-weight: 500;
-  font-size: 18px;
+  font-size: $fontSizePBig;
   padding-bottom: 20px;
 }
 .blog-categories {
@@ -642,7 +641,7 @@ blockquote {
 .blog-categories ul li {
   line-height: 14px;
   padding: 10px 0px;
-  border-top: 1px solid #f5f5f5;
+  border-top: 1px solid $colorLightGrey;
 }
 .blog-categories ul li a {
   display: inline-block;
@@ -650,7 +649,7 @@ blockquote {
   width: 100%;
 }
 .blog-categories ul li a:hover {
-  color: #cfa671;
+  color: $colorThemeMain;
 }
 .recent-box-blog {
   margin-bottom: 20px;
@@ -668,7 +667,7 @@ blockquote {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #cfa671;
+  background-color: $colorThemeMain;
   opacity: 0.4;
   transform: scale(0);
   -webkit-transform: scale(0);
@@ -694,12 +693,12 @@ blockquote {
 }
 .recent-info ul li {
   display: inline-block;
-  font-size: 11px;
+  font-size: $fontSizePSmaller;
   padding: 0px;
-  color: #222222;
+  color: $colorThemeMain;
 }
 .recent-info h4 {
-  font-size: 14px;
+  font-size: $fontSizePSmall;
   padding: 0px;
   margin: 11px 0px;
   font-weight: 500;
@@ -711,13 +710,13 @@ blockquote {
 .blog-tag-box ul li a {
   padding: 5px 15px;
   display: block;
-  background: #f5f5f5;
-  color: #222222;
+  background: $colorLightGrey;
+  color: $colorThemeMain;
   border-radius: 6px;
 }
 .blog-tag-box ul li a:hover {
-  color: #ffffff;
-  background: #cfa671;
+  color: $colorWhite;
+  background: $colorThemeMain;
 }
 
 .contact-box {
@@ -740,12 +739,12 @@ blockquote {
   height: 32px;
   text-align: center;
   line-height: 30px;
-  background: #d0a772;
-  color: #ffffff;
+  background: $hFontFamily;
+  color: $colorWhite;
   cursor: pointer;
   border: 0;
   border-radius: 2px;
   text-decoration: none;
   transition: opacity 0.2s ease-out;
-  font-size: 30px;
+  font-size: $fontSizeH1Medium;
 }
