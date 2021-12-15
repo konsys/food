@@ -1,4 +1,7 @@
 import React from "react";
+import { FoodMenuHeader } from "./FoodMenuHeader/FoodMenuHeader";
+import { FoodMenuItem } from "./FoodMenuItem/FoodMenuItem";
+import { FoodMenuLinks } from "./FoodMenuLinks/FoodMenuLinks";
 import "./styles.scss";
 
 interface Props {}
@@ -7,41 +10,20 @@ export const MenuBlock = (props: Props) => {
   return (
     <div className="menu-box">
       <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="heading-title text-center">
-              <h2>Special Menu</h2>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="special-menu text-center">
-              <div className="button-group filter-button-group">
-                <button className="active" data-filter="*">
-                  All
-                </button>
-                <button data-filter=".drinks">Drinks</button>
-                <button data-filter=".lunch">Lunch</button>
-                <button data-filter=".dinner">Dinner</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <FoodMenuHeader />
+        <FoodMenuLinks />
+
         <div className="row special-list">
-          <div className="col-lg-4 col-md-6 special-grid drinks">
-            <div className="gallery-single fix">
-              <img src="images/img-01.jpg" className="img-fluid" alt="" />
-              <div className="why-text">
-                <h4>Special Drinks 1</h4>
-                <p>Sed id magna vitae eros sagittis euismod.</p>
-                <h5>$7.79</h5>
-              </div>
-            </div>
-          </div>
+          {[
+            {
+              name: "Special Drinks 1",
+              description: "Sed id magna vitae eros sagittis euismod.",
+              price: "$9.79",
+              img: "images/img-01.jpg"
+            }
+          ].map(v => (
+            <FoodMenuItem foodMenuItem={v} />
+          ))}
           <div className="col-lg-4 col-md-6 special-grid drinks">
             <div className="gallery-single fix">
               <img src="images/img-02.jpg" className="img-fluid" alt="" />
