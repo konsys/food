@@ -17,7 +17,7 @@ export const About = (props: Props) => {
               <h1>
                 Welcome To <span>Yamifood Restaurant</span>
               </h1>
-              <h4>Little Story</h4>
+              <h3>Little Story</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,

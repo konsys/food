@@ -41,7 +41,7 @@
   }
 }
 
-#reviews .carousel-control-prev {
+.carousel-control-prev {
   background: $colorThemeMain;
   color: $colorWhite;
   display: block;
@@ -49,15 +49,15 @@
   width: 8%;
   height: 50px;
   top: 50%;
-  font-size: $fontSizeH5;
+  font-size: $fontSizeH1;
   opacity: 1;
 }
-#reviews .carousel-control-prev:hover {
+.carousel-control-prev:hover {
   background: #010101;
   color: #ffffff;
 }
 
-#reviews .carousel-control-next {
+.carousel-control-next {
   background: #d0a772;
   color: #ffffff;
   display: block;
@@ -65,10 +65,10 @@
   width: 8%;
   height: 50px;
   top: 50%;
-  font-size: $fontSizeH5;
+  font-size: $fontSizeH1;
   opacity: 1;
 }
-#reviews .carousel-control-next:hover {
+.carousel-control-next:hover {
   background: #010101;
   color: #ffffff;
 }

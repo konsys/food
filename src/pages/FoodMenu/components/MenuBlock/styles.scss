@@ -4,6 +4,13 @@
 -------------------------------------------------------------------*/
 .menu-box {
   padding: 70px 0px;
+
+  h2 {
+    font-size: 64px;
+    color: $colorWhite;
+    font-weight: $fontWeightnBold;
+    font-family: $hFontFamily;
+  }
 }
 
 .filter-button-group {
@@ -51,11 +58,15 @@
   padding: 12px 12px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+
   h4 {
     color: $colorWhite;
-    font-size: $fontSizeH4;
     font-weight: $fontWeightnSemiBold;
     font-family: $hFontFamily;
+  }
+  h5 {
+    font-weight: $fontWeightnBold;
+    color: $colorWhite;
   }
   p {
     color: $colorWhite;
@@ -65,11 +76,6 @@
     padding-bottom: 15px;
     margin-top: 15px;
     margin-bottom: 15px;
-  }
-  h5 {
-    font-size: $fontSizeH5;
-    font-weight: $fontWeightnBold;
-    color: $colorWhite;
   }
 }
 .gallery-single:hover .why-text {

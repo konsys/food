@@ -10,7 +10,7 @@ export const MenuBlock = (props: Props) => {
         <div className="row">
           <div className="col-lg-12">
             <div className="heading-title text-center">
-              <h2>Special Menu</h2>
+              <h2>Special Menu1</h2>
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
               </p>

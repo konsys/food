@@ -13,15 +13,11 @@
 .inner-column {
   h1 {
     font-family: $hFontFamily;
-    font-size: $fontSizeH4;
+    font-size: $fontSizeH1;
     color: $colorDark;
     span {
       color: $colorThemeMain;
     }
-  }
-  h4 {
-    font-size: $fontSizePNormal;
-    font-weight: $fontWeightnSemiBold;
   }
   p {
     font-size: $fontSizePBig;
