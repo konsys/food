@@ -1,0 +1,56 @@
+@import "../../../../../config/vars.scss";
+
+.gallery-single {
+  margin: 30px 0px;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 10px $colorLightGrey;
+  box-shadow: 0 0 10px $colorLightGrey;
+}
+
+.why-text {
+  padding: 12px 12px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+
+  h4 {
+    // color: $colorWhite;
+    font-weight: $fontWeightnSemiBold;
+    font-family: $hFontFamily;
+  }
+  h5 {
+    font-weight: $fontWeightnBold;
+  }
+  p {
+    font-size: $fontSizePBig;
+    border-bottom: 1px dashed $colorDark;
+    margin: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+.gallery-single:hover .why-text {
+  bottom: 0px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .carousel-control-prev {
+    left: -60px;
+  }
+  .carousel-control-next {
+    right: -60px;
+  }
+  .why-text h4 {
+    font-size: 18px;
+  }
+  .why-text p {
+    margin: 0px;
+  }
+}
+
+@media only screen and (min-width: 280px) and (max-width: 599px) {
+  .why-text p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+}
