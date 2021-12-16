@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { pathNames } from "../../../../routes/paths";
 import "./styles.scss";
 
 interface Props {}
@@ -24,64 +26,25 @@ export const Header = (props: Props) => {
           </button>
           <div className="collapse navbar-collapse" id="navbars-rs-food">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="index.html">
-                  Home
-                </a>
+              <li className="nav-item">
+                <NavLink to={pathNames.HOME.path} className="nav-link">
+                  {pathNames.HOME.name}
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="menu.html">
-                  Menu
-                </a>
+                <NavLink to={pathNames.CONTACTS.path} className="nav-link">
+                  {pathNames.CONTACTS.name}
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="about.html">
-                  About
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="/test-root"
-                  id="dropdown-a"
-                  data-toggle="dropdown"
-                >
-                  Pages
-                </a>
-                <div className="dropdown-menu" aria-labelledby="dropdown-a">
-                  <a className="dropdown-item" href="reservation.html">
-                    Reservation
-                  </a>
-                  <a className="dropdown-item" href="stuff.html">
-                    Stuff
-                  </a>
-                  <a className="dropdown-item" href="gallery.html">
-                    Gallery
-                  </a>
-                </div>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="/test-root"
-                  id="dropdown-a"
-                  data-toggle="dropdown"
-                >
-                  Blog
-                </a>
-                <div className="dropdown-menu" aria-labelledby="dropdown-a">
-                  <a className="dropdown-item" href="blog.html">
-                    blog
-                  </a>
-                  <a className="dropdown-item" href="blog-details.html">
-                    blog Single
-                  </a>
-                </div>
+                <NavLink to={pathNames.ABOUT.path} className="nav-link">
+                  {pathNames.ABOUT.name}
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="contact.html">
-                  Contact
-                </a>
+                <NavLink to={pathNames.MENU.path} className="nav-link">
+                  {pathNames.MENU.name}
+                </NavLink>
               </li>
             </ul>
           </div>

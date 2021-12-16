@@ -22,7 +22,7 @@ export const FoodMenuItem = ({ foodMenuItem }: Props) => {
           <div className="why-text">
             <p>{foodMenuItem.description}</p>
             <h4>{foodMenuItem.price}</h4>
-          </div>{" "}
+          </div>
         </div>
       </div>
     </>
