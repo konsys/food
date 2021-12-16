@@ -16,13 +16,13 @@ export const FoodMenuItem = ({ foodMenuItem }: Props) => {
   return (
     <>
       <div className="col-lg-4 col-md-6">
-        <div className="gallery-single fix">
+        <div className="gallery-single">
           <h2>{foodMenuItem.name}</h2>
           <img src={foodMenuItem.img} className="img-fluid" alt="" />
-        </div>
-        <div className="why-text">
-          <p>{foodMenuItem.description}</p>
-          <h5>{foodMenuItem.price}</h5>
+          <div className="why-text">
+            <p>{foodMenuItem.description}</p>
+            <h4>{foodMenuItem.price}</h4>
+          </div>{" "}
         </div>
       </div>
     </>
