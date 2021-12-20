@@ -8,7 +8,7 @@ interface Props {
   foodItems: MenuItemCard[];
 }
 
-export const MenuBlock = ({ foodItems }: Props) => {
+export const CafeMenu = ({ foodItems }: Props) => {
   return (
     <div className="menu-box">
       <div className="container">

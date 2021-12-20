@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { MenuBlock } from "../../common/template/MenuBlock";
+import { CafeMenu } from "./CafeMenu";
 
 interface Props {
   text: string;
@@ -64,7 +64,7 @@ const foodItems = [
 export default function FoodMenu({ text }: Props): ReactElement {
   return (
     <>
-      <MenuBlock foodItems={foodItems} />
+      <CafeMenu foodItems={foodItems} />
     </>
   );
 }
