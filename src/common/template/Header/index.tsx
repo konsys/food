@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { pathNames } from "../../../../routes/paths";
+import { pathNames } from "../../../routes/paths";
 import "./styles.scss";
 
 interface Props {}
