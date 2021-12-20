@@ -20,34 +20,28 @@ const { HOME, ABOUT, CONTACTS, LOGIN, FOOD_MENU } = pathNames;
 export const paths: Record<EPath, RouteProps> = {
   HOME: {
     path: HOME.path,
-    exact: true,
-    component: FoodMenu
+    element: FoodMenu
   },
   ABOUT: {
     path: ABOUT.path,
-    exact: true,
-    component: About
+    element: About
   },
   FOOD_MENU: {
     path: FOOD_MENU.path,
-    exact: true,
-    component: FoodMenu
+    element: FoodMenu
   },
   CONTACTS: {
     path: CONTACTS.path,
-    exact: true,
-    component: Contacts
+    element: Contacts
   },
   LOGIN: {
     path: LOGIN.path,
-    exact: true,
-    component: LoginPage
+    element: LoginPage
   },
 
   NOT_FOUND: {
     path: "*",
-    exact: false,
-    component: NotFound
+    element: NotFound
   }
 };
 

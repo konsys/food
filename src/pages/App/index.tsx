@@ -1,20 +1,21 @@
 import React from "react";
-import { Switch } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes } from "react-router-dom";
 import { Template } from "../../common/template";
-import Routes from "../../routes";
+import { getRoutes } from "../../routes";
 import "./style/app.style.scss";
 import "./style/app.theme.scss";
 
 function App() {
+  // useLocation();
   return (
     <BrowserRouter>
-      <Switch>
-        {/* TODO get title from routes */}
-        <Template specialHeaderTitle="Menu">
-          <Routes />
-        </Template>
-      </Switch>
+      <Template specialHeaderTitle="Menu">
+        <Routes>
+          {/* TODO get title from routes */}
+          {/* <Route path="*" element={<FoodMenu />} /> */}
+          {getRoutes()}
+        </Routes>
+      </Template>
     </BrowserRouter>
   );
 }

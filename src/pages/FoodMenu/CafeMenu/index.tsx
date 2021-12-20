@@ -16,8 +16,8 @@ export const CafeMenu = ({ foodItems }: Props) => {
         <FoodMenuLinks />
 
         <div className="row special-list">
-          {foodItems.map(v => (
-            <FoodMenuItem foodMenuItem={v} />
+          {foodItems.map((v, k) => (
+            <FoodMenuItem foodMenuItem={v} key={k} />
           ))}
         </div>
       </div>

@@ -1,10 +1,6 @@
 import React, { ReactElement } from "react";
 import { CafeMenu } from "./CafeMenu";
 
-interface Props {
-  text: string;
-}
-
 const foodItems = [
   {
     name: "Special Drinks 1",
@@ -61,7 +57,7 @@ const foodItems = [
     img: "images/img-09.jpg"
   }
 ];
-export default function FoodMenu({ text }: Props): ReactElement {
+export default function FoodMenu(): ReactElement {
   return (
     <>
       <CafeMenu foodItems={foodItems} />
