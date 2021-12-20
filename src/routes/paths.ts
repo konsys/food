@@ -1,4 +1,6 @@
 import { RouteProps } from "react-router";
+import { About } from "../pages/About";
+import { Contacts } from "../pages/Contacts";
 import FoodMenu from "../pages/FoodMenu";
 import { LoginPage } from "../pages/Login/LoginPage";
 import NotFound from "../pages/NotFound";
@@ -35,7 +37,7 @@ export const paths: Record<EPath, RouteProps> = {
   ABOUT: {
     path: pathNames.ABOUT.path,
     exact: true,
-    component: FoodMenu
+    component: About
   },
   MENU: {
     path: pathNames.MENU.path,
@@ -45,7 +47,7 @@ export const paths: Record<EPath, RouteProps> = {
   CONTACTS: {
     path: pathNames.CONTACTS.path,
     exact: true,
-    component: FoodMenu
+    component: Contacts
   },
   LOGIN: {
     path: pathNames.LOGIN.path,
