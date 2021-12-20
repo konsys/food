@@ -27,23 +27,23 @@ export const Header = (props: Props) => {
           <div className="collapse navbar-collapse" id="navbars-rs-food">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <NavLink to={pathNames.HOME.path} className="nav-link">
+                <NavLink to={HOME.path} className="nav-link">
                   {pathNames.HOME.name}
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to={pathNames.CONTACTS.path} className="nav-link">
+                <NavLink to={CONTACTS.path} className="nav-link">
                   {pathNames.CONTACTS.name}
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to={pathNames.ABOUT.path} className="nav-link">
+                <NavLink to={ABOUT.path} className="nav-link">
                   {pathNames.ABOUT.name}
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to={pathNames.MENU.path} className="nav-link">
-                  {pathNames.MENU.name}
+                <NavLink to={FOOD_MENU.path} className="nav-link">
+                  {FOOD_MENU.name}
                 </NavLink>
               </li>
             </ul>
@@ -53,3 +53,5 @@ export const Header = (props: Props) => {
     </header>
   );
 };
+
+const { HOME, ABOUT, CONTACTS, FOOD_MENU } = pathNames;

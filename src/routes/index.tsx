@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Route, Switch } from "react-router";
-import { EPath, paths } from "./paths";
+import { paths } from "./paths";
+import { EPath } from "./types";
 
 export default function Routes() {
   return <Switch>{getRoutes()}</Switch>;
