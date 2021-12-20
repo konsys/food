@@ -10,7 +10,8 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Template>
+        {/* TODO get title from routes */}
+        <Template specialHeaderTitle="Menu">
           <Routes />
         </Template>
       </Switch>

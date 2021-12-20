@@ -1,0 +1,30 @@
+@import "../../../config/vars.scss";
+
+.page-breadcrumb {
+  padding: 250px 0 150px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 0 0;
+  position: relative;
+}
+.all-page-title .container {
+  position: relative;
+  z-index: 2;
+}
+.all-page-title::before {
+  background: $colorDark;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.8;
+}
+.all-page-title h1 {
+  font-size: $fontSizeH1Medium;
+  color: $colorWhite;
+  font-family: $hFontFamily;
+  padding: 0px;
+}
