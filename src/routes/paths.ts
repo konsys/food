@@ -1,4 +1,4 @@
-import { RouteProps } from "react-router";
+import { RouteProps } from "react-router-dom";
 import { About } from "../pages/About";
 import { Contacts } from "../pages/Contacts";
 import FoodMenu from "../pages/FoodMenu";

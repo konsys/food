@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch } from "react-router";
+import { Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Template } from "../../common/template";
 import Routes from "../../routes";

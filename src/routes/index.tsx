@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Route, Switch } from "react-router";
+import { Route, Switch } from "react-router-dom";
 import { paths } from "./paths";
 import { EPath } from "./types";
 
