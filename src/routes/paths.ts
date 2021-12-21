@@ -4,9 +4,9 @@ import { Contacts } from "../pages/Contacts";
 import FoodMenu from "../pages/FoodMenu";
 import { LoginPage } from "../pages/Login/LoginPage";
 import NotFound from "../pages/NotFound";
-import { EPath, TMenuNames } from "./types";
+import { EPathName, TPath } from "./types";
 
-export const pathNames: Record<EPath, TMenuNames> = {
+export const pathNames: Record<EPathName, TPath> = {
   FOOD_MENU: { path: "/food-menu", name: "Меню" },
   ABOUT: { path: "/about", name: "О нас" },
   CONTACTS: { path: "/contacts", name: "Контакты" },
@@ -17,7 +17,7 @@ export const pathNames: Record<EPath, TMenuNames> = {
 
 const { HOME, ABOUT, CONTACTS, LOGIN, FOOD_MENU } = pathNames;
 
-export const paths: Record<EPath, RouteProps> = {
+export const paths: Record<EPathName, RouteProps> = {
   HOME: {
     path: HOME.path,
     element: FoodMenu
@@ -45,4 +45,12 @@ export const paths: Record<EPath, RouteProps> = {
   }
 };
 
-export const getRouteConfig = (id: EPath): RouteProps => paths[id];
+export const getRouteByPath = (path: string) => {
+  for (let name in pathNames) {
+    const p = pathNames[name as EPathName];
+    if (p.path === path) {
+      return p;
+    }
+  }
+  return null;
+};

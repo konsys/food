@@ -1,12 +1,12 @@
 import React, { ReactElement } from "react";
 import { Route } from "react-router-dom";
 import { paths } from "./paths";
-import { EPath } from "./types";
+import { EPathName } from "./types";
 
 export const getRoutes = () => {
-  const routes: ReactElement<EPath, string>[] = [];
+  const routes: ReactElement<EPathName, string>[] = [];
   for (let k in paths) {
-    const { element, path } = paths[k as EPath];
+    const { element, path } = paths[k as EPathName];
     routes.push(
       <Route key={k} path={path} element={createComponent(element)} />
     );

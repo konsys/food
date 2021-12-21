@@ -1,4 +1,4 @@
-export enum EPath {
+export enum EPathName {
   HOME = "HOME",
   FOOD_MENU = "FOOD_MENU",
   ABOUT = "ABOUT",
@@ -6,7 +6,7 @@ export enum EPath {
   LOGIN = "LOGIN",
   NOT_FOUND = "NOT_FOUND"
 }
-export type TMenuNames = {
+export type TPath = {
   path: string;
   name: string;
 };

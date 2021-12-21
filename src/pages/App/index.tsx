@@ -6,15 +6,10 @@ import "./style/app.style.scss";
 import "./style/app.theme.scss";
 
 function App() {
-  // useLocation();
   return (
     <BrowserRouter>
-      <Template specialHeaderTitle="Menu">
-        <Routes>
-          {/* TODO get title from routes */}
-          {/* <Route path="*" element={<FoodMenu />} /> */}
-          {getRoutes()}
-        </Routes>
+      <Template>
+        <Routes>{getRoutes()}</Routes>
       </Template>
     </BrowserRouter>
   );
