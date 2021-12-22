@@ -1,4 +1,4 @@
-import { LocalStorageParams } from "./types/types";
+import { LocalStorageParams } from './types/types';
 
 export const getRefreshToken = (): string | null => {
   return localStorage.getItem(LocalStorageParams.REFRESH_TOKEN);

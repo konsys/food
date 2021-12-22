@@ -1,8 +1,8 @@
-import React from "react";
-import { FoodMenuHeader } from "./FoodMenuHeader/FoodMenuHeader";
-import { FoodMenuItem, MenuItemCard } from "./FoodMenuItem/FoodMenuItem";
-import { FoodMenuLinks } from "./FoodMenuLinks/FoodMenuLinks";
-import "./styles.scss";
+import React from 'react';
+import { FoodMenuHeader } from './FoodMenuHeader/FoodMenuHeader';
+import { FoodMenuItem, MenuItemCard } from './FoodMenuItem/FoodMenuItem';
+import { FoodMenuLinks } from './FoodMenuLinks/FoodMenuLinks';
+import './styles.scss';
 
 interface Props {
   foodItems: MenuItemCard[];

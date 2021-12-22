@@ -1,17 +1,13 @@
-import { notification } from "antd";
-import { createDomain, sample } from "effector";
-import { createGate } from "effector-react";
-import { clearError, setError } from "../../../core/errors";
-import {
-  clearToken,
-  saveRefreshToken,
-  saveToken,
-} from "../../../http/AuthService/model";
-import { getMyProfile } from "../../User/model/store";
-import { loginFetch, loginVkFetch } from "./api";
-import { ILoginForm, ILoginResponce, TTokens, TVkCode } from "./types";
+import { notification } from 'antd';
+import { createDomain, sample } from 'effector';
+import { createGate } from 'effector-react';
+import { clearError, setError } from '../../../core/errors';
+import { clearToken, saveRefreshToken, saveToken } from '../../../http/AuthService/model';
+import { getMyProfile } from '../../User/model/store';
+import { loginFetch, loginVkFetch } from './api';
+import { ILoginForm, ILoginResponce, TTokens, TVkCode } from './types';
 
-const AuthDomain = createDomain("AuthDomain");
+const AuthDomain = createDomain('AuthDomain');
 export const clearTokenStore = AuthDomain.event();
 
 // Login
@@ -33,7 +29,7 @@ const loginVkFx = AuthDomain.effect<TVkCode, TVkCode, Error>({
 });
 
 // LoginGate
-export const LoginGate = createGate<TVkCode>("LoginGate");
+export const LoginGate = createGate<TVkCode>('LoginGate');
 LoginGate.open.watch(() => {
   clearError();
 });
@@ -54,7 +50,7 @@ export const login$ = AuthDomain.store<ILoginResponce | null>(null)
   })
   .on(loginFx.fail, () => {
     clearToken();
-    notification.error({ message: "Ошибка авторизации" });
+    notification.error({ message: 'Ошибка авторизации' });
   })
   .reset(clearTokenStore);
 
@@ -65,4 +61,4 @@ const auth = (tokens: TTokens) => {
   getMyProfile();
 };
 
-login$.updates.watch((v) => console.log("LoginStoreWatch", v));
+login$.updates.watch((v) => console.log('LoginStoreWatch', v));

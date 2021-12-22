@@ -1,9 +1,9 @@
-import { useStore } from "effector-react";
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { pathNames } from "../../../routes/paths";
-import { route$ } from "../model/store";
-import "./styles.scss";
+import { useStore } from 'effector-react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { pathNames } from '../../../routes/paths';
+import { route$ } from '../model/store';
+import './styles.scss';
 
 interface Props {}
 
@@ -29,32 +29,22 @@ export const Header = (props: Props) => {
           </button>
           <div className="collapse navbar-collapse" id="navbars-rs-food">
             <ul className="navbar-nav ml-auto">
-              <li
-                className={`nav-item ${store.path === HOME.path && "active"}`}
-              >
+              <li className={`nav-item ${store.path === HOME.path && 'active'}`}>
                 <NavLink to={HOME.path} className="nav-link">
                   {pathNames.HOME.name}
                 </NavLink>
               </li>
-              <li
-                className={`nav-item ${store.path === CONTACTS.path &&
-                  "active"}`}
-              >
+              <li className={`nav-item ${store.path === CONTACTS.path && 'active'}`}>
                 <NavLink to={CONTACTS.path} className="nav-link">
                   {pathNames.CONTACTS.name}
                 </NavLink>
               </li>
-              <li
-                className={`nav-item ${store.path === ABOUT.path && "active"}`}
-              >
+              <li className={`nav-item ${store.path === ABOUT.path && 'active'}`}>
                 <NavLink to={ABOUT.path} className="nav-link">
                   {pathNames.ABOUT.name}
                 </NavLink>
               </li>
-              <li
-                className={`nav-item ${store.path === FOOD_MENU.path &&
-                  "active"}`}
-              >
+              <li className={`nav-item ${store.path === FOOD_MENU.path && 'active'}`}>
                 <NavLink to={FOOD_MENU.path} className="nav-link">
                   {FOOD_MENU.name}
                 </NavLink>

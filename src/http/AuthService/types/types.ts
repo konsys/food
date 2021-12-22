@@ -1,4 +1,4 @@
 export enum LocalStorageParams {
-  TOKEN = "token",
-  REFRESH_TOKEN = "refreshToken",
+  TOKEN = 'token',
+  REFRESH_TOKEN = 'refreshToken',
 }

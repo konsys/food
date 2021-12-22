@@ -1,4 +1,4 @@
-import { createApi, createStore } from "effector";
+import { createApi, createStore } from 'effector';
 
 export const appStore$ = createStore<number>(0);
 

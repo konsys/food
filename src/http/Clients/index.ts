@@ -1,7 +1,7 @@
-import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 
-import { Params } from "../../config/params";
-import { getToken } from "../AuthService/model";
+import { Params } from '../../config/params';
+import { getToken } from '../AuthService/model';
 
 export const client: AxiosInstance = axios.create({
   baseURL: Params.BASE_URL,
@@ -28,10 +28,10 @@ client.interceptors.response.use(
         if (token) {
           // TODO refresh token
           // await refreshTokenFx(getRefreshToken() || "");
-          originalRequest.headers._retry = "true";
+          originalRequest.headers._retry = 'true';
           token = getToken();
 
-          client.defaults.headers.common["Authorization"] = "Bearer " + token;
+          client.defaults.headers.common['Authorization'] = 'Bearer ' + token;
           return client.request(error.config);
         }
         return;
@@ -43,5 +43,5 @@ client.interceptors.response.use(
 );
 
 async function onError(e: AxiosError) {
-  console.error("Axios error", e);
+  console.error('Axios error', e);
 }

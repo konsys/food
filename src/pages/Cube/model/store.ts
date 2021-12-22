@@ -1,9 +1,9 @@
-import { notification } from "antd";
-import { createDomain, guard } from "effector";
-import { rollDicesFetch } from "./api";
-import { TDices } from "./types";
+import { notification } from 'antd';
+import { createDomain, guard } from 'effector';
+import { rollDicesFetch } from './api';
+import { TDices } from './types';
 
-const DiceDomain = createDomain("DiceDomain");
+const DiceDomain = createDomain('DiceDomain');
 
 const setDices = DiceDomain.event<TDices>();
 
@@ -36,7 +36,7 @@ rollDicesFx.done.watch(({ result }) => {
 rollDicesFx.fail.watch(() => {
   setTimeout(stopRolling, 0);
   // TODO error type and message
-  notification.error({ message: "Ошибка сети" });
+  notification.error({ message: 'Ошибка сети' });
 });
 
 const isIdle = rollDicesFx.pending.map((pending) => !pending);

@@ -1,6 +1,6 @@
-import { createGate } from "effector-react";
+import { createGate } from 'effector-react';
 
-import { combine, createDomain, merge, sample } from "effector";
+import { combine, createDomain, merge, sample } from 'effector';
 
 import {
   fetchLogout,
@@ -9,17 +9,17 @@ import {
   fetchRegister,
   fetchUserEmail,
   fetchUserProfile,
-} from "./api";
-import { IRegistrationResponce, IUser, IUserRegistration } from "./types";
+} from './api';
+import { IRegistrationResponce, IUser, IUserRegistration } from './types';
 import {
   clearRefreshToken,
   clearToken,
   getRefreshToken,
   saveToken,
-} from "../../../http/AuthService/model";
-import { setError } from "../../../core/errors";
+} from '../../../http/AuthService/model';
+import { setError } from '../../../core/errors';
 
-const UserDomain = createDomain("UserDomain");
+const UserDomain = createDomain('UserDomain');
 
 export const ProfileGate = createGate();
 export const getProfileFx = UserDomain.effect<number, IUser, Error>({
@@ -44,11 +44,7 @@ export const logoutFx = UserDomain.effect<string, boolean, Error>({
   handler: fetchLogout,
 });
 
-export const refreshTokenFx = UserDomain.effect<
-  string,
-  { accessToken: string },
-  Error
->({
+export const refreshTokenFx = UserDomain.effect<string, { accessToken: string }, Error>({
   handler: fetchRefreshToken,
 });
 
@@ -74,24 +70,21 @@ sample({
   target: getUserFx,
 });
 
-ProfileGate.state.watch((v) => console.log("Profile gate update", v));
-ProfileGate.close.watch(() => console.log("Profile gate closes"));
+ProfileGate.state.watch((v) => console.log('Profile gate update', v));
+ProfileGate.close.watch(() => console.log('Profile gate closes'));
 
 export const setUser = UserDomain.event<IUser | null>();
 
-export const registerFx = UserDomain.effect<
-  IUserRegistration,
-  IRegistrationResponce,
-  Error
->({
+export const registerFx = UserDomain.effect<IUserRegistration, IRegistrationResponce, Error>({
   handler: fetchRegister,
 });
 
-export const register$ = UserDomain.store<IRegistrationResponce | null>(
-  null
-).on(registerFx.done, (_, { result }) => {
-  return result;
-});
+export const register$ = UserDomain.store<IRegistrationResponce | null>(null).on(
+  registerFx.done,
+  (_, { result }) => {
+    return result;
+  }
+);
 
 export const user$ = UserDomain.store<IUser | null>(null)
   .on(setUser, (_, data) => data)
@@ -112,7 +105,7 @@ sample({
     const token = getRefreshToken();
     clearRefreshToken();
     clearToken();
-    return token || "";
+    return token || '';
   },
   target: logoutFx,
 });

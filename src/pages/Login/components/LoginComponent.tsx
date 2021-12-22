@@ -1,9 +1,9 @@
-import { Typography } from "antd";
-import { cyan } from "@ant-design/colors";
-import React from "react";
-import { Link } from "react-router-dom";
-import { Nullable } from "../../../core/types";
-import { IUser } from "../../User/model/types";
+import { Typography } from 'antd';
+import { cyan } from '@ant-design/colors';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Nullable } from '../../../core/types';
+import { IUser } from '../../User/model/types';
 
 const { Title } = Typography;
 interface Props {

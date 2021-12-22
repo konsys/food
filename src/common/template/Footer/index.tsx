@@ -1,6 +1,6 @@
-import React from "react";
-import { Copyright } from "./Copyright/Copyright";
-import "./styles.scss";
+import React from 'react';
+import { Copyright } from './Copyright/Copyright';
+import './styles.scss';
 
 interface Props {}
 
@@ -12,11 +12,10 @@ export const Footer = (props: Props) => {
           <div className="col-lg-3 col-md-6">
             <h3>About Us</h3>
             <p>
-              Integer cursus scelerisque ipsum id efficitur. Donec a dui
-              fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac
-              lectus a interdum. Vivamus semper posuere dui, at ornare turpis
-              ultrices sit amet. Nulla cursus lorem ut nisi porta, ac eleifend
-              arcu ultrices.
+              Integer cursus scelerisque ipsum id efficitur. Donec a dui fringilla, gravida lorem
+              ac, semper magna. Aenean rhoncus ac lectus a interdum. Vivamus semper posuere dui, at
+              ornare turpis ultrices sit amet. Nulla cursus lorem ut nisi porta, ac eleifend arcu
+              ultrices.
             </p>
           </div>
           <div className="col-lg-3 col-md-6">
@@ -36,9 +35,7 @@ export const Footer = (props: Props) => {
           </div>
           <div className="col-lg-3 col-md-6">
             <h3>Contact information</h3>
-            <p className="lead">
-              Ipsum Street, Lorem Tower, MO, Columbia, 508000
-            </p>
+            <p className="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
             <p className="lead">
               <a href="/test-root">+01 2000 800 9999</a>
             </p>

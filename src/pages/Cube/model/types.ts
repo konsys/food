@@ -1,4 +1,4 @@
-import { TDiceValue } from "../../../core/types";
+import { TDiceValue } from '../../../core/types';
 
 export type TDices = {
   dice1: TDiceValue;

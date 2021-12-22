@@ -1,5 +1,5 @@
-import React from "react";
-import "./styles.scss";
+import React from 'react';
+import './styles.scss';
 
 interface Props {}
 
@@ -10,8 +10,7 @@ export const Qt = (props: Props) => {
         <div className="row">
           <div className="col-md-8 ml-auto mr-auto text-left lead-background">
             <p className="lead">
-              " If you're not the one cooking, stay out of the way and
-              compliment the chef. "
+              " If you're not the one cooking, stay out of the way and compliment the chef. "
             </p>
             <span className="lead">Michael Strahan</span>
           </div>

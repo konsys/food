@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 interface Props {}
 
 export const FoodMenuLinks = (props: Props) => {
   return (
     <>
-      {" "}
+      {' '}
       <div className="row">
         <div className="col-lg-12">
           <div className="special-menu text-center">

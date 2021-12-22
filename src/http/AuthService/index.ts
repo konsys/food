@@ -1,16 +1,16 @@
-import { AxiosRequestConfig } from "axios";
-import { IUser, LoginRequest } from "../../pages/User/model/types";
-import { client } from "../Clients";
-import { Paths } from "../Clients/paths";
+import { AxiosRequestConfig } from 'axios';
+import { IUser, LoginRequest } from '../../pages/User/model/types';
+import { client } from '../Clients';
+import { Paths } from '../Clients/paths';
 
-export const authTokenName = "Authorization";
+export const authTokenName = 'Authorization';
 
 enum LocalStorageKeys {
-  accessToken = "auth.token",
-  accessTokenExpiresIn = "auth.token.expires",
-  refreshToken = "refresh.token",
-  refreshTokenExpiresIn = "refresh.token.expires",
-  keepTokens = "auth.token.store",
+  accessToken = 'auth.token',
+  accessTokenExpiresIn = 'auth.token.expires',
+  refreshToken = 'refresh.token',
+  refreshTokenExpiresIn = 'refresh.token.expires',
+  keepTokens = 'auth.token.store',
 }
 
 interface AuthResponse {
@@ -33,11 +33,7 @@ export class Auth {
     }
   }
 
-  public static async login({
-    username,
-    password,
-    saveCredentials,
-  }: LoginRequest): Promise<IUser> {
+  public static async login({ username, password, saveCredentials }: LoginRequest): Promise<IUser> {
     const req = { username, password };
     const authResponse = await client.post(`${Paths.auth}/pwd`, req);
     const auth = authResponse.data as AuthResponse;
@@ -59,29 +55,22 @@ export class Auth {
 
   public static async refreshAccessToken(): Promise<string> {
     const req = { refreshToken: Auth.refreshToken };
-    const config: AxiosRequestConfig = { headers: { Authorization: "" } };
+    const config: AxiosRequestConfig = { headers: { Authorization: '' } };
 
     try {
-      const response = await client.post(
-        Paths.auth.concat("/token"),
-        req,
-        config
-      );
+      const response = await client.post(Paths.auth.concat('/token'), req, config);
       const auth = response.data as AuthResponse;
       Auth.storeTokens(auth);
       Auth.setAuthHeader();
-      console.debug("Access token has been refreshed");
+      console.debug('Access token has been refreshed');
       return auth.token;
     } catch (err) {
-      console.debug("Unable to refresh access token ", err);
+      console.debug('Unable to refresh access token ', err);
       return Promise.reject(err);
     }
   }
 
-  private static storeTokens(
-    auth: AuthResponse,
-    saveCredentials = Auth.keepTokens
-  ) {
+  private static storeTokens(auth: AuthResponse, saveCredentials = Auth.keepTokens) {
     const { token, tokenExpireIn, refreshToken, refreshTokenExpiresIn } = auth;
     const storage = saveCredentials ? localStorage : sessionStorage;
 
@@ -100,10 +89,7 @@ export class Auth {
     }
 
     if (refreshTokenExpiresIn) {
-      storage.setItem(
-        LocalStorageKeys.refreshTokenExpiresIn,
-        refreshTokenExpiresIn
-      );
+      storage.setItem(LocalStorageKeys.refreshTokenExpiresIn, refreshTokenExpiresIn);
     }
 
     if (!saveCredentials) {
@@ -134,7 +120,7 @@ export class Auth {
 
   private static get keepTokens(): boolean {
     const value = localStorage.getItem(LocalStorageKeys.keepTokens);
-    return value === "true";
+    return value === 'true';
   }
 
   private static removeTokens(storage: Storage) {

@@ -1,5 +1,5 @@
-import { client } from "../../../http/Clients";
-import { TDices } from "./types";
+import { client } from '../../../http/Clients';
+import { TDices } from './types';
 
 const URL = `/dices`;
 

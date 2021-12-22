@@ -1,5 +1,5 @@
-import React from "react";
-import "./styles.scss";
+import React from 'react';
+import './styles.scss';
 
 interface Props {}
 
@@ -12,10 +12,7 @@ export const CustomerReview = (props: Props) => {
             <div className="col-lg-12">
               <div className="heading-title text-center">
                 <h2>Customer Reviews</h2>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting
-                </p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
               </div>
             </div>
           </div>
@@ -32,17 +29,14 @@ export const CustomerReview = (props: Props) => {
                       />
                     </div>
                     <h5 className="mt-4 mb-0">
-                      <strong className="text-warning text-uppercase">
-                        Paul Mitchel
-                      </strong>
+                      <strong className="text-warning text-uppercase">Paul Mitchel</strong>
                     </h5>
                     <h6 className="text-dark m-0">Web Developer</h6>
                     <p className="m-0 pt-3">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nam eu sem tempor, varius quam at, luctus dui. Mauris
-                      magna metus, dapibus nec turpis vel, semper malesuada
-                      ante. Idac bibendum scelerisque non non purus. Suspendisse
-                      varius nibh non aliquet.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor,
+                      varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper
+                      malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius
+                      nibh non aliquet.
                     </p>
                   </div>
                   <div className="carousel-item text-center">
@@ -54,17 +48,14 @@ export const CustomerReview = (props: Props) => {
                       />
                     </div>
                     <h5 className="mt-4 mb-0">
-                      <strong className="text-warning text-uppercase">
-                        Steve Fonsi
-                      </strong>
+                      <strong className="text-warning text-uppercase">Steve Fonsi</strong>
                     </h5>
                     <h6 className="text-dark m-0">Web Designer</h6>
                     <p className="m-0 pt-3">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nam eu sem tempor, varius quam at, luctus dui. Mauris
-                      magna metus, dapibus nec turpis vel, semper malesuada
-                      ante. Idac bibendum scelerisque non non purus. Suspendisse
-                      varius nibh non aliquet.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor,
+                      varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper
+                      malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius
+                      nibh non aliquet.
                     </p>
                   </div>
                   <div className="carousel-item text-center">
@@ -76,17 +67,14 @@ export const CustomerReview = (props: Props) => {
                       />
                     </div>
                     <h5 className="mt-4 mb-0">
-                      <strong className="text-warning text-uppercase">
-                        Daniel vebar
-                      </strong>
+                      <strong className="text-warning text-uppercase">Daniel vebar</strong>
                     </h5>
                     <h6 className="text-dark m-0">Seo Analyst</h6>
                     <p className="m-0 pt-3">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nam eu sem tempor, varius quam at, luctus dui. Mauris
-                      magna metus, dapibus nec turpis vel, semper malesuada
-                      ante. Idac bibendum scelerisque non non purus. Suspendisse
-                      varius nibh non aliquet.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor,
+                      varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper
+                      malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius
+                      nibh non aliquet.
                     </p>
                   </div>
                 </div>
