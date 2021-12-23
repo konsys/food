@@ -6,6 +6,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { NounsModule } from 'src/modules/nouns/nouns.module';
 import { UsersModule } from '../users/users.module';
+import { MenuModule } from '../menu/menu.module';
+import { MenuTypeGroupModule } from '../menu-type-group/menu-type-group.module';
+import { MenuGroupModule } from '../menu-group/menu-group.module';
 
 @Module({
   imports: [
@@ -24,6 +27,9 @@ import { UsersModule } from '../users/users.module';
     AuthModule,
     UsersModule,
     NounsModule,
+    MenuModule,
+    MenuTypeGroupModule,
+    MenuGroupModule
   ],
   controllers: [AppController],
   providers: [AppService],
