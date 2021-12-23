@@ -1,15 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { FoodMenuEntity } from 'src/entities/foodmenu.entity';
+import { Repository } from 'typeorm';
 import { CreateFoodMenuDto } from './dto/create-food-menu.dto';
 import { UpdateFoodMenuDto } from './dto/update-food-menu.dto';
 
 @Injectable()
 export class FoodMenuService {
-  create(createFoodMenuDto: CreateFoodMenuDto) {
-    return 'This action adds a new foodMenu';
+  constructor(@InjectRepository(FoodMenuEntity)
+  private readonly foodMenu: Repository<FoodMenuEntity>
+) {}
+
+  create(foodMenu: CreateFoodMenuDto) {
+    return this.foodMenu.create(foodMenu);
   }
 
   findAll() {
-    return `This action returns all foodMenu`;
+    return this.foodMenu.find();
   }
 
   findOne(id: number) {
