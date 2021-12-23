@@ -39,15 +39,15 @@ rollDicesFx.fail.watch(() => {
   notification.error({ message: 'Ошибка сети' });
 });
 
-const isIdle = rollDicesFx.pending.map((pending) => !pending);
+const $isIdle = rollDicesFx.pending.map((pending) => !pending);
 
 guard({
   clock: rollDices,
-  filter: isIdle,
+  filter: $isIdle,
   target: rollDicesFx,
 });
 
-export const dices$ = DiceDomain.store<TDices>(initDices)
+export const $$dices = DiceDomain.store<TDices>(initDices)
   .on(setDices, (_, data) => data)
   .on(startRolling, (data) => ({ ...data, rolling: true }))
   .on(stopRolling, (data) => ({ ...data, rolling: false }))

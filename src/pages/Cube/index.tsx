@@ -1,14 +1,14 @@
 import { Button, Row, Col } from 'antd';
 import { useStore } from 'effector-react';
 import React, { useRef } from 'react';
-import { dices$, rollDices } from './model/store';
+import { $$dices, rollDices } from './model/store';
 import './position.less';
 import './diceDots.less';
 import './rotateDices.less';
 import { Dice } from './components/Dice';
 
 export default function Dices() {
-  const { dice1, dice2, rolling } = useStore(dices$);
+  const { dice1, dice2, rolling } = useStore($$dices);
 
   const d1 = useRef<HTMLDivElement>(null);
   const d2 = useRef<HTMLDivElement>(null);

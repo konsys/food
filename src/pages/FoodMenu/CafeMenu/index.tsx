@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { FoodMenuHeader } from './FoodMenuHeader/FoodMenuHeader';
 import { FoodMenuItem, MenuItemCard } from './FoodMenuItem/FoodMenuItem';
 import { FoodMenuLinks } from './FoodMenuLinks/FoodMenuLinks';
@@ -8,7 +8,7 @@ interface Props {
   foodItems: MenuItemCard[];
 }
 
-export const CafeMenu = ({ foodItems }: Props) => {
+export const CafeMenu = ({ foodItems }: Props): ReactElement => {
   return (
     <div className='menu-box'>
       <div className='container'>

@@ -1,5 +1,5 @@
 import { createGate } from 'effector-react';
-import { combine, createDomain, merge, sample } from 'effector';
+import { createDomain, sample } from 'effector';
 import {
   clearRefreshToken,
   clearToken,
@@ -30,7 +30,7 @@ export const getUserByEmailFx = UserDomain.effect<string, IUser, Error>({
 
 export const clearProfile = UserDomain.event();
 
-export const profile$ = UserDomain.store<IUser | null>(null)
+export const $$profile = UserDomain.store<IUser | null>(null)
   .on(getProfileFx.done, (_, { result }) => result || null)
   .reset(clearProfile);
 
@@ -62,7 +62,7 @@ export const logout = UserDomain.event();
 
 // TODO test in getMyProfile call getUserFx
 sample({
-  clock: merge([ProfileGate.open, getMyProfile]),
+  clock: [ProfileGate.open, getMyProfile],
   source: ProfileGate.state,
   fn: () => undefined,
   target: getUserFx,
@@ -77,14 +77,14 @@ export const registerFx = UserDomain.effect<IUserRegistration, IRegistrationResp
   handler: fetchRegister,
 });
 
-export const register$ = UserDomain.store<IRegistrationResponce | null>(null).on(
+export const $$register = UserDomain.store<IRegistrationResponce | null>(null).on(
   registerFx.done,
   (_, { result }) => {
     return result;
   }
 );
 
-export const user$ = UserDomain.store<IUser | null>(null)
+export const $$user = UserDomain.store<IUser | null>(null)
   .on(setUser, (_, data) => data)
   .on(getUserFx.done, (_, { result }) => result)
   .reset(logout);
@@ -95,11 +95,11 @@ getUserFx.fail.watch(({ error }) => {
 
 sample({
   clock: logout,
-  source: combine({
+  source: {
     gate: ProfileGate.state,
-    user: user$.map((v) => v),
-  }),
-  fn: ({ user }) => {
+    user: $$user.map((v) => v),
+  },
+  fn: () => {
     const token = getRefreshToken();
     clearRefreshToken();
     clearToken();

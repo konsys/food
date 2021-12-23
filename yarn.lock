@@ -4852,6 +4852,13 @@ eslint-module-utils@^2.7.1:
     find-up "^2.1.0"
     pkg-dir "^2.0.0"
 
+eslint-plugin-effector@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-effector/-/eslint-plugin-effector-0.5.2.tgz#54225f3631dbb5f6913956d53621d91bbdce3f2c"
+  integrity sha512-4LntOzMIMPlYMYFHGjkwxKArPpiIQee7z2HKMl6omyn6F85sfTCcW/Em9Mgb330wKqA25PSxwx9YuGSMwN/97A==
+  dependencies:
+    prettier "^2.3.2"
+
 eslint-plugin-flowtype@^5.2.0:
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-5.10.0.tgz#7764cc63940f215bf3f0bd2d9a1293b2b9b2b4bb"
@@ -9510,7 +9517,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.5.1:
+prettier@^2.3.2, prettier@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
   integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==

@@ -6,6 +6,9 @@
     "jest": true,
     "serviceworker": true
   },
+  "plugins": [
+    "effector"
+  ],
   "extends": [
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
@@ -13,7 +16,9 @@
     "plugin:jest/all",
     "plugin:testing-library/react",
     "prettier",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:effector/recommended",
+    "plugin:effector/scope"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -21,7 +26,11 @@
   },
   "root": true,
   "rules": {
-    "camelcase": "error",
-    "no-console": "warn"
+    "camelcase": 0,
+    "no-console": 0,
+    "jest/require-hook": 0,
+    "effector/no-watch": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-explicit-any": 0
   }
 }

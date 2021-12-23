@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import { Route } from 'react-router-dom';
 import { paths } from './paths';
 import { EPathName } from './types';
 
-export const getRoutes = () => {
+export const getRoutes = (): ReactElement<EPathName, string>[] => {
   const routes: ReactElement<EPathName, string>[] = [];
   for (const k in paths) {
     const { element, path } = paths[k as EPathName];
@@ -12,7 +12,6 @@ export const getRoutes = () => {
   return routes;
 };
 
-// TODO add type
-function createComponent(WrappedComponent: any) {
-  return <WrappedComponent />;
+function createComponent(WrappedComponent: ReactNode) {
+  return WrappedComponent;
 }

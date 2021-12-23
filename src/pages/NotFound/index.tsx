@@ -1,5 +1,3 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-export default function NotFound() {
-  return <div>404</div>;
-}
+export const NotFound = (): ReactElement => <div>404</div>;

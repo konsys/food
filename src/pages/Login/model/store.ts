@@ -1,7 +1,7 @@
 import { notification } from 'antd';
 import { createDomain, sample } from 'effector';
 import { createGate } from 'effector-react';
-import { clearError, setError } from '../../../core/errors';
+import { clearError } from '../../../core/errors';
 import { clearToken, saveRefreshToken, saveToken } from '../../../http/AuthService/model';
 import { getMyProfile } from '../../User/model/store';
 import { loginFetch, loginVkFetch } from './api';
@@ -23,7 +23,10 @@ sample({
   },
   target: loginFx,
 });
-loginFx.fail.watch((error: any) => setError(error));
+
+// TODO add fail handler
+// loginFx.fail.watch((error: string) => setError(error));
+
 const loginVkFx = AuthDomain.effect<TVkCode, TVkCode, Error>({
   handler: loginVkFetch,
 });
@@ -39,7 +42,7 @@ LoginGate.state.updates.watch((code) => {
 });
 
 // Store
-export const login$ = AuthDomain.store<ILoginResponce | null>(null)
+export const $$login = AuthDomain.store<ILoginResponce | null>(null)
   .on(loginFx.done, (_, { result }: { result: any }) => {
     auth({ ...result });
     return result;
@@ -61,4 +64,4 @@ const auth = (tokens: TTokens) => {
   getMyProfile();
 };
 
-login$.updates.watch((v) => console.log('LoginStoreWatch', v));
+$$login.updates.watch((v) => console.log('LoginStoreWatch', v));

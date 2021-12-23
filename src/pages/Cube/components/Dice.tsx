@@ -18,3 +18,5 @@ export const Dice = React.forwardRef<HTMLDivElement>((_, ref) => {
     </div>
   );
 });
+
+Dice.displayName = 'Dice';

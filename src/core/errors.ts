@@ -4,7 +4,7 @@ import { createEvent, createStore } from 'effector';
 export const clearError = createEvent();
 export const setError = createEvent<string>();
 
-export const error$ = createStore<string>('')
+export const $error = createStore<string>('')
   .on(setError, (_, v: any) => {
     if (v.error.response && v.error.response.data && v.error.response.data.message) {
       return v.error.response.data.message;
@@ -13,7 +13,7 @@ export const error$ = createStore<string>('')
   })
   .reset(clearError);
 
-error$.updates.watch((message: string) => {
+$error.updates.watch((message: string) => {
   notifyError(message);
 });
 

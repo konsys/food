@@ -27,7 +27,7 @@ export class Auth {
       return Promise.reject(new Error());
     }
     if (Auth.isAccessTokenExpired()) {
-      return Auth.refreshAccessToken().then(Auth.loadUser);
+      return Auth.refreshAccessToken().then(() => Auth.loadUser());
     }
     Auth.setAuthHeader();
     return Auth.loadUser();
@@ -112,8 +112,7 @@ export class Auth {
     return storage.getItem(LocalStorageKeys.accessTokenExpiresIn);
   }
 
-  // @ts-ignore
-  private static get refreshTokenExpiresIn(): string | null {
+  public static get refreshTokenExpiresIn(): string | null {
     const storage = Auth.keepTokens ? localStorage : sessionStorage;
     return storage.getItem(LocalStorageKeys.refreshTokenExpiresIn);
   }

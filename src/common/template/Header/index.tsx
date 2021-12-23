@@ -2,11 +2,11 @@ import { useStore } from 'effector-react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { pathNames } from '../../../routes/paths';
-import { route$ } from '../model/store';
+import { $$route } from '../model/store';
 import './styles.scss';
 
 export const Header = () => {
-  const store = useStore(route$);
+  const store = useStore($$route);
   return (
     <header className='top-navbar'>
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>

@@ -3,7 +3,7 @@ import { About } from '../pages/About';
 import { Contacts } from '../pages/Contacts';
 import FoodMenu from '../pages/FoodMenu';
 import { LoginPage } from '../pages/Login/LoginPage';
-import NotFound from '../pages/NotFound';
+import { NotFound } from '../pages/NotFound';
 import { EPathName, TPath } from './types';
 
 export const pathNames: Record<EPathName, TPath> = {
@@ -45,7 +45,7 @@ export const paths: Record<EPathName, RouteProps> = {
   },
 };
 
-export const getRouteByPath = (path: string) => {
+export const getRouteByPath = (path: string): TPath | null => {
   Object.keys(pathNames).forEach(function (key) {
     const p = pathNames[key as EPathName];
     if (p.path === path) {

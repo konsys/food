@@ -5,6 +5,4 @@ export const initialPathState: TPath = { name: '', path: '' };
 
 export const setCurrentPath = createEvent<TPath>();
 
-export const route$ = createStore<TPath>(initialPathState).on(setCurrentPath, (_, path) => path);
-
-route$.watch(console.log);
+export const $$route = createStore<TPath>(initialPathState).on(setCurrentPath, (_, path) => path);
