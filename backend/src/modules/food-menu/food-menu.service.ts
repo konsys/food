@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FoodMenuEntity } from 'src/entities/foodmenu.entity';
+import { FoodMenuEntity } from 'src/entities/food-menu.entity';
 import { Repository } from 'typeorm';
 import { CreateFoodMenuDto } from './dto/create-food-menu.dto';
 import { UpdateFoodMenuDto } from './dto/update-food-menu.dto';

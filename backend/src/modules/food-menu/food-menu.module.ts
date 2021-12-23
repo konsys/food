@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { FoodMenuService } from './food-menu.service';
 import { FoodMenuController } from './food-menu.controller';import { TypeOrmModule } from '@nestjs/typeorm';
-import { FoodMenuEntity } from 'src/entities/foodmenu.entity';
+import { FoodMenuEntity } from 'src/entities/food-menu.entity';
 
 @Module({ 
   imports:[TypeOrmModule.forFeature([FoodMenuEntity])],
