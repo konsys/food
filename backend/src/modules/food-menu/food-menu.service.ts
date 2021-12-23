@@ -11,8 +11,9 @@ export class FoodMenuService {
   private readonly foodMenu: Repository<FoodMenuEntity>
 ) {}
 
-  create(foodMenu: CreateFoodMenuDto) {
-    return this.foodMenu.create(foodMenu);
+  create(createFoodMenuDto: CreateFoodMenuDto) {
+    console.log(111111111, createFoodMenuDto)
+    return this.foodMenu.save(createFoodMenuDto);
   }
 
   findAll() {
