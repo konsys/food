@@ -1,14 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DicesModule } from 'src/modules/dices/dices.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/modules/auth/auth.module';
-import { NounsModule } from 'src/modules/nouns/nouns.module';
 import { UsersModule } from '../users/users.module';
-import { MenuModule } from '../menu/menu.module';
-import { MenuTypeGroupModule } from '../menu-type-group/menu-type-group.module';
-import { MenuGroupModule } from '../menu-group/menu-group.module';
+import { FoodMenuModule } from '../food-menu/food-menu.module';
 
 @Module({
   imports: [
@@ -23,13 +19,9 @@ import { MenuGroupModule } from '../menu-group/menu-group.module';
       synchronize: true,
       // logging: ['error'],
     }),
-    DicesModule,
     AuthModule,
     UsersModule,
-    NounsModule,
-    MenuModule,
-    MenuTypeGroupModule,
-    MenuGroupModule
+    FoodMenuModule
   ],
   controllers: [AppController],
   providers: [AppService],
