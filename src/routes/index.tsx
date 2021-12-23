@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement } from 'react';
 import { Route } from 'react-router-dom';
 import { paths } from './paths';
 import { EPathName } from './types';
@@ -12,6 +12,6 @@ export const getRoutes = (): ReactElement<EPathName, string>[] => {
   return routes;
 };
 
-function createComponent(WrappedComponent: ReactNode) {
-  return WrappedComponent;
+function createComponent(WrappedComponent: any) {
+  return <WrappedComponent />;
 }

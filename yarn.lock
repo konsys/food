@@ -10096,9 +10096,9 @@ rc-tree-select@~4.8.0:
     rc-util "^5.7.0"
 
 rc-tree@~5.3.0:
-  version "5.3.5"
-  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-5.3.5.tgz#99e5af72a619d2520961e16ee63049c67d27b894"
-  integrity sha512-nMlR7YArdL1m+FJXjl6Mt4n6S2+sVY6op2K3roB34YdVyq/Q4gDy5XT2cpiKGZrfCifX79N2LCihRrOGMO2UTw==
+  version "5.3.6"
+  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-5.3.6.tgz#878c6bfc9fc20cc81c90b54eb028bc58dd479c54"
+  integrity sha512-X5cSLSX9WVL2gmOdsOzlkPy1ITljFsYVnJvrIColWBjT0LqEg6KwehWHVEAjeQVKKHDYrSnU2EDi3gT2eWJCNA==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"

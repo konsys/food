@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { getRouteByPath } from '../../routes/paths';
 import { Footer } from './Footer';
 import { Header } from './Header';
-import { $$route, setCurrentPath } from './model/store';
+import { $route, setCurrentPath } from './model/store';
 import { ScrollButton } from './ScrollButton';
 import { SpecialHeader } from './SpecialHeader';
 
@@ -20,7 +20,7 @@ export const Template = ({ children }: Props) => {
     path && setCurrentPath(path);
   }, [path]);
 
-  const store = useStore($$route);
+  const store = useStore($route);
   return (
     <>
       <Header />
