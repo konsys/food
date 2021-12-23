@@ -1,8 +1,6 @@
 import React from 'react';
 import './styles.scss';
 
-
-
 export const Qt = () => {
   return (
     <div className='qt-box qt-background'>

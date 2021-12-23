@@ -2,7 +2,6 @@ import React from 'react';
 import { Copyright } from './Copyright/Copyright';
 import './styles.scss';
 
-
 export const Footer = () => {
   return (
     <footer className='footer-area bg-f'>

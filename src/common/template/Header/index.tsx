@@ -5,8 +5,6 @@ import { pathNames } from '../../../routes/paths';
 import { route$ } from '../model/store';
 import './styles.scss';
 
-
-
 export const Header = () => {
   const store = useStore(route$);
   return (
