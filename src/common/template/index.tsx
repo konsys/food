@@ -15,7 +15,7 @@ interface Props {
 export const Template = ({ children }: Props) => {
   const { pathname } = useLocation();
   const path = getRouteByPath(pathname);
-
+  console.log(11111111111, path);
   useEffect(() => {
     path && setCurrentPath(path);
   }, [path]);

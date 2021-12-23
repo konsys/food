@@ -46,11 +46,13 @@ export const paths: Record<EPathName, RouteProps> = {
 };
 
 export const getRouteByPath = (path: string): TPath | null => {
-  Object.keys(pathNames).forEach(function (key) {
+  let result = null;
+  Object.keys(pathNames).forEach((key) => {
     const p = pathNames[key as EPathName];
+
     if (p.path === path) {
-      return p;
+      result = p;
     }
   });
-  return null;
+  return result;
 };
