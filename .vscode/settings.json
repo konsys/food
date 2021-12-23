@@ -1,4 +1,73 @@
 {
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+    ],
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDelete": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDragAndDrop": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "easyRedis.address": "127.0.0.1:6379",
+    "editor.find.autoFindInSelection": "always",
+    "myRedis.list": "redis",
+    "myRedis.address": "127.0.0.1:6379",
+    "myRedis.password": "",
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "git.autofetch": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "redhat.telemetry.enabled": true,
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "diffEditor.codeLens": true,
+    "editor.formatOnPaste": false,
+    "editor.fontWeight": "normal",
+    "editor.quickSuggestions": null,
+    "editor.formatOnSave": true,
+    "[html]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "vs-kubernetes": {
+        "vscode-kubernetes.helm-path.linux": "/home/ksysuev/.vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vscode-kubernetes.kubectl-path.linux": "/home/ksysuev/.vs-kubernetes/tools/kubectl/kubectl",
+        "vscode-kubernetes.minikube-path.linux": "/home/ksysuev/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "window.menuBarVisibility": "compact",
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-    "editor.formatOnSave": true
+    "cloudcode.yaml.format.enable": true,
+    "editor.autoIndent": "full",
+    "[dockercompose]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

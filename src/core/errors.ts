@@ -8,9 +8,8 @@ export const error$ = createStore<string>('')
   .on(setError, (_, v: any) => {
     if (v.error.response && v.error.response.data && v.error.response.data.message) {
       return v.error.response.data.message;
-    } else {
-      return v.error.message;
     }
+    return v.error.message;
   })
   .reset(clearError);
 

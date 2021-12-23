@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
-
 import { Params } from '../../config/params';
 import { getToken } from '../AuthService/model';
 
@@ -31,7 +30,7 @@ client.interceptors.response.use(
           originalRequest.headers._retry = 'true';
           token = getToken();
 
-          client.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+          client.defaults.headers.common.Authorization = `Bearer ${token}`;
           return client.request(error.config);
         }
         return;

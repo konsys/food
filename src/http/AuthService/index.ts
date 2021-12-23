@@ -25,12 +25,12 @@ export class Auth {
   public static initialize(): Promise<IUser> {
     if (!Auth.accessToken) {
       return Promise.reject(new Error());
-    } else if (Auth.isAccessTokenExpired()) {
-      return Auth.refreshAccessToken().then(Auth.loadUser);
-    } else {
-      Auth.setAuthHeader();
-      return Auth.loadUser();
     }
+    if (Auth.isAccessTokenExpired()) {
+      return Auth.refreshAccessToken().then(Auth.loadUser);
+    }
+    Auth.setAuthHeader();
+    return Auth.loadUser();
   }
 
   public static async login({ username, password, saveCredentials }: LoginRequest): Promise<IUser> {

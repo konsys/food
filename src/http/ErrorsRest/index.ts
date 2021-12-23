@@ -35,7 +35,6 @@ export async function restError(err: any): Promise<RestError> {
       .forEach((prop) => (error[prop] = json[prop]));
 
     return error;
-  } else {
-    return err;
   }
+  return err;
 }

@@ -16,7 +16,7 @@ export const LoginComponent = ({ user }: Props) => {
       {!user ? (
         <Title level={4}>Вход</Title>
       ) : (
-        <Link to="/" color={cyan[4]}>
+        <Link to='/' color={cyan[4]}>
           Начать игру
         </Link>
       )}

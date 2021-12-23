@@ -1,7 +1,6 @@
-import { Button } from 'antd';
+import { Button, Row, Col } from 'antd';
 import { useStore } from 'effector-react';
 import React, { useRef } from 'react';
-import { Row, Col } from 'antd';
 import { dices$, rollDices } from './model/store';
 import './position.less';
 import './diceDots.less';
@@ -21,20 +20,20 @@ export default function Dices() {
 
   return (
     <>
-      <div className="dicesWrapper">
-        <Row className="dices">
-          <Col className="gutter-row dice" span={6} />
-          <Col className="gutter-row dice" span={6}>
+      <div className='dicesWrapper'>
+        <Row className='dices'>
+          <Col className='gutter-row dice' span={6} />
+          <Col className='gutter-row dice' span={6}>
             <Dice ref={d1} />
           </Col>
-          <Col className="gutter-row dice" span={6}>
+          <Col className='gutter-row dice' span={6}>
             <Dice ref={d2} />
           </Col>
-          <Col className="gutter-row dice" span={6} />
+          <Col className='gutter-row dice' span={6} />
         </Row>
-        <Row className="rollButton">
+        <Row className='rollButton'>
           <Col>
-            <Button onClick={() => rollDices()} disabled={rolling} type="primary">
+            <Button onClick={() => rollDices()} disabled={rolling} type='primary'>
               Вращать
             </Button>
           </Col>

@@ -8,7 +8,7 @@ import { TwoDice } from './TwoDice';
 
 export const Dice = React.forwardRef<HTMLDivElement>((_, ref) => {
   return (
-    <div className=" diceBody" ref={ref}>
+    <div className=' diceBody' ref={ref}>
       <OneDice />
       <TwoDice />
       <ThreeDice />

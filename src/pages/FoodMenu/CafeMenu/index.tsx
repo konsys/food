@@ -10,12 +10,12 @@ interface Props {
 
 export const CafeMenu = ({ foodItems }: Props) => {
   return (
-    <div className="menu-box">
-      <div className="container">
+    <div className='menu-box'>
+      <div className='container'>
         <FoodMenuHeader />
         <FoodMenuLinks />
 
-        <div className="row special-list">
+        <div className='row special-list'>
           {foodItems.map((v, k) => (
             <FoodMenuItem foodMenuItem={v} key={k} />
           ))}

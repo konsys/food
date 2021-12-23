@@ -23,7 +23,7 @@ export async function fetchMyProfile(): Promise<IUser> {
 }
 
 export async function fetchUserProfile(id: number): Promise<IUser> {
-  const url = profileUrl + '/' + id;
+  const url = `${profileUrl}/${id}`;
   return (await client.get<IUser>(url)).data;
 }
 

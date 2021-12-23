@@ -2,8 +2,8 @@ import { Button } from 'antd';
 import React from 'react';
 import queryString from 'query-string';
 import { useGate } from 'effector-react';
-import { LoginGate } from './model/store';
 import { VkOAuthParams } from '../../config/params';
+import { LoginGate } from './model/store';
 
 export default function LoginButton() {
   const queryObj = queryString.parse(window.location.search);
@@ -30,7 +30,7 @@ export default function LoginButton() {
 
   const comp = (
     <>
-      <Button type="primary" onClick={handleRedirect}>
+      <Button type='primary' onClick={handleRedirect}>
         Войти через ВКонтакте
       </Button>
     </>

@@ -2,19 +2,19 @@ import React from 'react';
 import { StandardButton } from '../../components/buttons/StandardButton';
 import './styles.scss';
 
-interface Props {}
 
-export const Slider = (props: Props) => {
+
+export const Slider = () => {
   return (
     <>
-      <div className="cover-slides">
-        <div className="overlay-background" />
-        <img src="images/slider-01.jpg" alt="" />
+      <div className='cover-slides'>
+        <div className='overlay-background' />
+        <img src='images/slider-01.jpg' alt='' />
 
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 text-center">
-              <h1 className="m-b-20">
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12 text-center'>
+              <h1 className='m-b-20'>
                 <strong>
                   Welcome To <br />
                   Yamifood Restaurant
@@ -25,7 +25,7 @@ export const Slider = (props: Props) => {
                 <br />
                 trends to see any changes in performance over time.
               </p>
-              <StandardButton text="Reservation" isUppercase isWhiteText />
+              <StandardButton text='Reservation' isUppercase isWhiteText />
             </div>
           </div>
         </div>

@@ -1,7 +1,12 @@
 import { createGate } from 'effector-react';
-
 import { combine, createDomain, merge, sample } from 'effector';
-
+import {
+  clearRefreshToken,
+  clearToken,
+  getRefreshToken,
+  saveToken,
+} from '../../../http/AuthService/model';
+import { setError } from '../../../core/errors';
 import {
   fetchLogout,
   fetchMyProfile,
@@ -11,13 +16,6 @@ import {
   fetchUserProfile,
 } from './api';
 import { IRegistrationResponce, IUser, IUserRegistration } from './types';
-import {
-  clearRefreshToken,
-  clearToken,
-  getRefreshToken,
-  saveToken,
-} from '../../../http/AuthService/model';
-import { setError } from '../../../core/errors';
 
 const UserDomain = createDomain('UserDomain');
 
@@ -33,7 +31,7 @@ export const getUserByEmailFx = UserDomain.effect<string, IUser, Error>({
 export const clearProfile = UserDomain.event();
 
 export const profile$ = UserDomain.store<IUser | null>(null)
-  .on(getProfileFx.done, (_, { result }) => (result ? result : null))
+  .on(getProfileFx.done, (_, { result }) => result || null)
   .reset(clearProfile);
 
 export const getUserFx = UserDomain.effect<void, IUser, Error>({

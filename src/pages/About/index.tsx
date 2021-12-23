@@ -2,18 +2,16 @@ import React from 'react';
 import { StandardButton } from '../../common/components/buttons/StandardButton';
 import './styles.scss';
 
-interface Props {}
-
-export const About = (props: Props) => {
+export const About = () => {
   return (
-    <div className="about-section-box">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-12">
-            <img src="images/about-img.jpg" alt="" className="img-fluid" />
+    <div className='about-section-box'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-lg-6 col-md-6 col-sm-12'>
+            <img src='images/about-img.jpg' alt='' className='img-fluid' />
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 text-center">
-            <div className="inner-column">
+          <div className='col-lg-6 col-md-6 col-sm-12 text-center'>
+            <div className='inner-column'>
               <h1>
                 Welcome To <span>Yamifood Restaurant</span>
               </h1>
@@ -28,7 +26,7 @@ export const About = (props: Props) => {
                 lorem, a pellentesque tellus pretium a. Nulla placerat elit in justo vestibulum, et
                 maximus sem pulvinar.
               </p>
-              <StandardButton text="Reservation" isBigPadding />
+              <StandardButton text='Reservation' isBigPadding />
             </div>
           </div>
         </div>
