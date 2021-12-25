@@ -14,7 +14,7 @@ export class MenuTimeController {
 
   @Get()
   findAll() {
-    return this.menuTimeService.findAll();
+    return  this.menuTimeService.findAll();
   }
 
   @Get(':id')
