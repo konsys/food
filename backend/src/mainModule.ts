@@ -15,4 +15,4 @@ import { OrmConfig } from './ormConfig';
     MenuTimeModule
   ],
 })
-export class AppModule {}
+export class MainModule {}

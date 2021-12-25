@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class MenuTime {
     @PrimaryGeneratedColumn()
-    foodTymeId: number;
+    menuTimeId: number;
 
     @Column()
     name: string;

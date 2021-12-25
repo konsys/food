@@ -31,6 +31,8 @@
     "jest/require-hook": 0,
     "effector/no-watch": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/no-explicit-any": 0
+    "@typescript-eslint/no-explicit-any": 0,
+    "jest/no-hooks": 0,
+    "jest/prefer-expect-assertions": 0
   }
 }

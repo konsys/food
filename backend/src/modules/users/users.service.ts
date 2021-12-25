@@ -11,7 +11,7 @@ import {
   jwtConstants,
   VkAppParams,
 } from 'src/config';
-import { client } from 'src/http/client';
+import { axiosClient } from 'src/http/client';
 
 // rCd8cviaoYS9AV1CyA8h
 @Injectable()
@@ -115,7 +115,7 @@ export class UsersService {
 
     let tokenData = {} as TVkAuthResponse;
     try {
-      tokenData = (await client.get<TVkAuthResponse>(link)).data;
+      tokenData = (await axiosClient.get<TVkAuthResponse>(link)).data;
     } catch (err) {
       if (err?.response?.data) {
         throw new BadRequestException(err?.response?.data);
@@ -133,7 +133,7 @@ export class UsersService {
 
     // TODO доделать получение данных по авторизируемому пользователю
     const user = (
-      await client.get<TVkGetUserResponce>(userGetLink)
+      await axiosClient.get<TVkGetUserResponce>(userGetLink)
     ).data.response.pop();
 
     const isUser = await this.users.findOne({ vkId: user.id });

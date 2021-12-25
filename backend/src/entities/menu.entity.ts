@@ -24,8 +24,8 @@ export class MenuEntity {
     })
     updatedAt?: Date;
 
-    @OneToMany(() => MenuTime, foodTime => foodTime.foodTymeId)
-    foodTime: MenuTime;
+    @OneToMany(() => MenuTime, menuTime => menuTime.menuTimeId)
+    menuTime: MenuTime;
 
     @OneToMany(() => MenuType, foodType => foodType.foodTypeId)
     foodType: MenuType;

@@ -5,22 +5,23 @@ import { UpdateMenuTimeDto } from './dto/update-menu-time.dto';
 @Injectable()
 export class MenuTimeService {
   create(createMenuTimeDto: CreateMenuTimeDto) {
-    return 'This action adds a new foodTime';
+    console.log(createMenuTimeDto);
+    return createMenuTimeDto;
   }
 
   findAll() {
-    return `This action returns all foodTime`;
+    return `This action returns all menuTime`;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} foodTime`;
+    return `This action returns a #${id} menuTime`;
   }
 
   update(id: number, updateMenuTimeDto: UpdateMenuTimeDto) {
-    return `This action updates a #${id} foodTime`;
+    return `This action updates a #${id} menuTime`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} foodTime`;
+    return `This action removes a #${id} menuTime`;
   }
 }

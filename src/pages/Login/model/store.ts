@@ -15,6 +15,7 @@ export const login = AuthDomain.event<ILoginForm>();
 const loginFx = AuthDomain.effect<ILoginForm, boolean, Error>({
   handler: loginFetch,
 });
+
 sample({
   clock: login,
   fn: (lg: ILoginForm) => {
