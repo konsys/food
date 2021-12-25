@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import { MenuHeader } from './MenuHeader/MenuHeader';
-import { MenuItem, MenuItemCard } from './MenuItem/MenuItem';
-import { MenuLinks } from './MenuLinks/MenuLinks';
+import { MenuHeader } from './MenuHeader/FoodMenuHeader';
+import { MenuItem, MenuItemCard } from './MenuItem/FoodMenuItem';
+import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.scss';
 
 interface Props {
