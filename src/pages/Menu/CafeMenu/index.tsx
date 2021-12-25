@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import { MenuHeader } from './MenuHeader/FoodMenuHeader';
-import { MenuItem, MenuItemCard } from './MenuItem/FoodMenuItem';
+import { MenuHeader } from './MenuHeader';
+import { MenuItem, MenuItemCard } from './MenuItem';
 import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.scss';
 

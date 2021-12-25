@@ -2,7 +2,7 @@ import { RouteProps } from 'react-router-dom';
 import { About } from '../pages/About';
 import { Contacts } from '../pages/Contacts';
 import Menu from '../pages/Menu';
-import { LoginPage } from '../pages/Login/LoginPage';
+import { LoginPage } from '../pages/Login';
 import { NotFound } from '../pages/NotFound';
 import { EPathName, TPath } from './types';
 
