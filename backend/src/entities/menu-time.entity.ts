@@ -12,6 +12,9 @@ export class MenuTime {
     @Column()
     description: string;
 
+    @Column({default:false})
+    visible: boolean;
+
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     createdAt?: Date;
   

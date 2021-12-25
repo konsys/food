@@ -22,4 +22,7 @@ export class MenuType {
       onUpdate: 'CURRENT_TIMESTAMP',
     })
     updatedAt?: Date;
+
+    @Column({default:false})
+    visible: boolean;
 }

@@ -30,5 +30,6 @@ export class MenuEntity {
     @OneToMany(() => MenuType, foodType => foodType.foodTypeId)
     foodType: MenuType;
 
-  
+    @Column({default:false})
+    visible: boolean;
 }
