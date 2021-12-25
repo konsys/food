@@ -1,11 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/modules/auth/auth.module';
-import { UsersModule } from '../users/users.module';
-import { MenuModule } from '../menu/menu.module';
-import { MenuTimeModule } from '../menu-time/menu-time.module';
+import { UsersModule } from './modules/users/users.module';
+import { MenuModule } from './modules/menu/menu.module';
+import { MenuTimeModule } from './modules/menu-time/menu-time.module';
 
 @Module({
   imports: [
@@ -16,7 +14,7 @@ import { MenuTimeModule } from '../menu-time/menu-time.module';
       username: 'mnpl',
       password: 'mnpl',
       database: 'mnpl',
-      entities: [`${__dirname}/../../entities/*.entity{.ts,.js}`],
+      entities: [`${__dirname}/entities/*.entity{.ts,.js}`],
       synchronize: true,
       // logging: ['error'],
     }),
@@ -25,7 +23,5 @@ import { MenuTimeModule } from '../menu-time/menu-time.module';
     MenuModule,
     MenuTimeModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
