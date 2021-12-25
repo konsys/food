@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const FoodMenuHeader = () => {
+export const MenuHeader = () => {
   return (
     <>
       <div className='row'>

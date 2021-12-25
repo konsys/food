@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const FoodMenuLinks = () => {
+export const MenuLinks = () => {
   return (
     <>
       <div className='row'>

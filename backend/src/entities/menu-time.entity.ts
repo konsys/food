@@ -1,9 +1,10 @@
 import { Exclude } from 'class-transformer';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
 @Entity()
-export class FoodMenuEntity {
-  @PrimaryGeneratedColumn()
-    foodMenuId: number;
+export class MenuTime {
+    @PrimaryGeneratedColumn()
+    foodTymeId: number;
 
     @Column()
     name: string;

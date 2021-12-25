@@ -1,7 +1,7 @@
 import { RouteProps } from 'react-router-dom';
 import { About } from '../pages/About';
 import { Contacts } from '../pages/Contacts';
-import FoodMenu from '../pages/FoodMenu';
+import Menu from '../pages/Menu';
 import { LoginPage } from '../pages/Login/LoginPage';
 import { NotFound } from '../pages/NotFound';
 import { EPathName, TPath } from './types';
@@ -20,7 +20,7 @@ const { HOME, ABOUT, CONTACTS, LOGIN, FOOD_MENU } = pathNames;
 export const paths: Record<EPathName, RouteProps> = {
   HOME: {
     path: HOME.path,
-    element: FoodMenu,
+    element: Menu,
   },
   ABOUT: {
     path: ABOUT.path,
@@ -28,7 +28,7 @@ export const paths: Record<EPathName, RouteProps> = {
   },
   FOOD_MENU: {
     path: FOOD_MENU.path,
-    element: FoodMenu,
+    element: Menu,
   },
   CONTACTS: {
     path: CONTACTS.path,

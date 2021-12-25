@@ -12,7 +12,7 @@ interface Props {
   foodMenuItem: MenuItemCard;
 }
 
-export const FoodMenuItem = ({ foodMenuItem }: Props) => {
+export const MenuItem = ({ foodMenuItem }: Props) => {
   return (
     <>
       <div className='col-lg-4 col-md-6'>

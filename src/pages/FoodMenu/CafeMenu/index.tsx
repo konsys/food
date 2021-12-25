@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import { FoodMenuHeader } from './FoodMenuHeader/FoodMenuHeader';
-import { FoodMenuItem, MenuItemCard } from './FoodMenuItem/FoodMenuItem';
-import { FoodMenuLinks } from './FoodMenuLinks/FoodMenuLinks';
+import { MenuHeader } from './MenuHeader/MenuHeader';
+import { MenuItem, MenuItemCard } from './MenuItem/MenuItem';
+import { MenuLinks } from './MenuLinks/MenuLinks';
 import './styles.scss';
 
 interface Props {
@@ -12,12 +12,12 @@ export const CafeMenu = ({ foodItems }: Props): ReactElement => {
   return (
     <div className='menu-box'>
       <div className='container'>
-        <FoodMenuHeader />
-        <FoodMenuLinks />
+        <MenuHeader />
+        <MenuLinks />
 
         <div className='row special-list'>
           {foodItems.map((v, k) => (
-            <FoodMenuItem foodMenuItem={v} key={k} />
+            <MenuItem foodMenuItem={v} key={k} />
           ))}
         </div>
       </div>

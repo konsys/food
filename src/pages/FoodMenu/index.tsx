@@ -57,7 +57,7 @@ const foodItems = [
     img: 'images/img-09.jpg',
   },
 ];
-export default function FoodMenu(): ReactElement {
+export default function Menu(): ReactElement {
   return (
     <>
       <CafeMenu foodItems={foodItems} />
