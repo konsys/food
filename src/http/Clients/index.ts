@@ -2,18 +2,18 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { Params } from '../../config/params';
 import { getToken } from '../AuthService/model';
 
-export const client: AxiosInstance = axios.create({
+export const axiosClient: AxiosInstance = axios.create({
   baseURL: Params.BASE_URL,
 });
 
-client.interceptors.request.use((config) => {
+axiosClient.interceptors.request.use((config) => {
   const token = `Bearer ${getToken()}`;
   config.headers && (config.headers.Authorization = token);
 
   return config;
 }, onError);
 
-client.interceptors.response.use(
+axiosClient.interceptors.response.use(
   (response: AxiosResponse) => {
     return response;
   },
@@ -30,8 +30,8 @@ client.interceptors.response.use(
           originalRequest.headers._retry = 'true';
           token = getToken();
 
-          client.defaults.headers.common.Authorization = `Bearer ${token}`;
-          return client.request(error.config);
+          axiosClient.defaults.headers.common.Authorization = `Bearer ${token}`;
+          return axiosClient.request(error.config);
         }
         return;
       }

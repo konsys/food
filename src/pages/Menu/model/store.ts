@@ -1,18 +1,34 @@
 import { createDomain } from 'effector';
-import { createTimeMenu, getAllTimeMenu } from './api';
+import { CrudService } from '../../../common/api';
 import { MenuTime } from './types';
 
 const MenuDomain = createDomain('MenuDomain');
+
+const URL = `/menu-time`;
+
+const service = new CrudService<MenuTime>(URL);
 
 export const resetMenuTimeList = MenuDomain.event();
 export const resetMenuTime = MenuDomain.event();
 
 export const createMenuTimeFx = MenuDomain.effect<MenuTime, MenuTime, Error>({
-  handler: createTimeMenu,
+  handler: (mt) => service.create(mt),
 });
 
 export const getAllMenuTimeFx = MenuDomain.effect<void, MenuTime[], Error>({
-  handler: getAllTimeMenu,
+  handler: () => service.getAll(),
+});
+
+export const getOneMenuTimeFx = MenuDomain.effect<number, MenuTime, Error>({
+  handler: (id) => service.getOne(id),
+});
+
+export const updateMenuTimeFx = MenuDomain.effect<MenuTime, MenuTime, Error>({
+  handler: (mt) => service.updateOne(mt),
+});
+
+export const deleteMenuTimeFx = MenuDomain.effect<number, number, Error>({
+  handler: (id) => service.deleteOne(id),
 });
 
 export const $menuTimeList = MenuDomain.store<MenuTime[]>([])

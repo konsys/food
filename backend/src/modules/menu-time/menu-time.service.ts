@@ -21,15 +21,15 @@ export class MenuTimeService {
     return  this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} menuTime`;
+  findOne(menuTimeId: number) {
+    return this.repository.find({menuTimeId})
   }
 
-  update(id: number, updateMenuTimeDto: UpdateMenuTimeDto) {
-    return `This action updates a #${id} menuTime`;
+  update(menuTimeId: number, updateMenuTimeDto: UpdateMenuTimeDto) {
+    return this.repository.update({menuTimeId}, updateMenuTimeDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} menuTime`;
+  remove(menuTimeId: number) {
+    return this.repository.delete({menuTimeId});
   }
 }
