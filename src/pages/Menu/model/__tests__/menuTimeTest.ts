@@ -1,6 +1,6 @@
 import { menuTimeFactory } from '../menuTimeFactory';
 import {
-  $menuTime,
+  $menuTimeOne,
   $menuTimeList,
   createMenuTimeFx,
   deleteMenuTimeFx,
@@ -27,7 +27,7 @@ describe('menu time test', () => {
   });
 
   afterAll(() => {
-    $menuTime.off(resetMenuTime);
+    $menuTimeOne.off(resetMenuTime);
     $menuTimeList.off(resetMenuTimeList);
   });
 
@@ -35,23 +35,23 @@ describe('menu time test', () => {
     await createMenuTimeFx(mt);
 
     // eslint-disable-next-line effector/no-getState
-    expect($menuTime.getState()).toStrictEqual(expect.objectContaining(mt));
+    expect($menuTimeOne.getState()).toStrictEqual(expect.objectContaining(mt));
   });
 
   it('should get all menu time', async () => {
     await getAllMenuTimeFx();
     // eslint-disable-next-line effector/no-getState
-    const list = $menuTimeList.getState();
+    const { records } = $menuTimeList.getState();
 
-    expect(Array.isArray(list)).toBeTruthy();
-    const found = list.find((v) => v.name === mt.name);
+    expect(Array.isArray(records)).toBeTruthy();
+    const found = records.find((v) => v.name === mt.name);
     expect(found).toBeTruthy();
   });
 
   it('should get one menu time', async () => {
     random.menuTimeId && (await getOneMenuTimeFx(random.menuTimeId));
     // eslint-disable-next-line effector/no-getState
-    const one = $menuTime.getState();
+    const one = $menuTimeOne.getState();
     expect(one).toStrictEqual(expect.objectContaining(mt));
   });
 
@@ -60,7 +60,7 @@ describe('menu time test', () => {
     random.menuTimeId && (await updateMenuTimeFx({ ...random, description }));
 
     // eslint-disable-next-line effector/no-getState
-    const one = $menuTime.getState();
+    const one = $menuTimeOne.getState();
     expect(one?.description).toStrictEqual(description);
   });
 
@@ -68,7 +68,13 @@ describe('menu time test', () => {
     random.menuTimeId && (await deleteMenuTimeFx(random.menuTimeId));
 
     // eslint-disable-next-line effector/no-getState
-    const one = $menuTime.getState();
+    let one = $menuTimeOne.getState();
+    expect(one).toBeNull();
+
+    random.menuTimeId && (await getOneMenuTimeFx(random.menuTimeId));
+
+    // eslint-disable-next-line effector/no-getState
+    one = $menuTimeOne.getState();
     expect(one).toBeNull();
   });
 });

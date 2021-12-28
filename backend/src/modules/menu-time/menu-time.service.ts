@@ -28,7 +28,6 @@ export class MenuTimeService {
   }
 
   async remove(menuTimeId: number) {
-    console.log(11111111111, menuTimeId);
     return await this.repository.delete({menuTimeId});
   }
 }

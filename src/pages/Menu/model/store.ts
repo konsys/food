@@ -1,5 +1,6 @@
-import { createDomain } from 'effector';
+import { combine, createDomain } from 'effector';
 import { CrudService } from '../../../common/api';
+import { $pagination } from '../../../common/api/store';
 import { MenuTime } from './types';
 
 const MenuDomain = createDomain('MenuDomain');
@@ -31,12 +32,17 @@ export const deleteMenuTimeFx = MenuDomain.effect<number, number, Error>({
   handler: (id) => service.deleteOne(id),
 });
 
-export const $menuTimeList = MenuDomain.store<MenuTime[]>([])
+const $many = MenuDomain.store<MenuTime[]>([])
   .on(getAllMenuTimeFx.done, (_, { result }) => result)
   .reset(resetMenuTimeList);
 
-export const $menuTime = MenuDomain.store<MenuTime | null>(null)
+export const $menuTimeOne = MenuDomain.store<MenuTime | null>(null)
   .on(createMenuTimeFx.done, (_, { result }) => result)
   .on(updateMenuTimeFx.done, (_, { result }) => result)
   .on(deleteMenuTimeFx.done, () => null)
   .reset(resetMenuTime);
+
+export const $menuTimeList = combine({
+  records: $many,
+  pagination: $pagination,
+});
