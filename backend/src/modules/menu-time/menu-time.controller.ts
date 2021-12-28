@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { MenuTimeService } from './menu-time.service';
 import { CreateMenuTimeDto } from './dto/create-menu-time.dto';
 import { UpdateMenuTimeDto } from './dto/update-menu-time.dto';
