@@ -12,24 +12,23 @@ export class MenuTimeService {
 ) {}
 
   async create(createMenuTimeDto: CreateMenuTimeDto) {
-    const saved = await this.repository.save(createMenuTimeDto);
-    console.log(saved);
-    return saved;
+    return await this.repository.save(createMenuTimeDto)
   }
 
-   findAll() {
-    return  this.repository.find();
+  async findAll() {
+    return await this.repository.find();
   }
 
-  findOne(menuTimeId: number) {
-    return this.repository.find({menuTimeId})
+  async findOne(menuTimeId: number) {
+    return await this.repository.findOne(menuTimeId);
   }
 
-  update(menuTimeId: number, updateMenuTimeDto: UpdateMenuTimeDto) {
-    return this.repository.update({menuTimeId}, updateMenuTimeDto);
+  async update(updateMenuTimeDto: UpdateMenuTimeDto) {
+    return await this.repository.save(updateMenuTimeDto);
   }
 
-  remove(menuTimeId: number) {
-    return this.repository.delete({menuTimeId});
+  async remove(menuTimeId: number) {
+    console.log(11111111111, menuTimeId);
+    return await this.repository.delete({menuTimeId});
   }
 }

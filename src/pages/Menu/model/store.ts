@@ -37,4 +37,6 @@ export const $menuTimeList = MenuDomain.store<MenuTime[]>([])
 
 export const $menuTime = MenuDomain.store<MenuTime | null>(null)
   .on(createMenuTimeFx.done, (_, { result }) => result)
+  .on(updateMenuTimeFx.done, (_, { result }) => result)
+  .on(deleteMenuTimeFx.done, () => null)
   .reset(resetMenuTime);

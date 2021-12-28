@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { MenuTimeService } from './menu-time.service';
 import { CreateMenuTimeDto } from './dto/create-menu-time.dto';
 import { UpdateMenuTimeDto } from './dto/update-menu-time.dto';
@@ -22,9 +22,9 @@ export class MenuTimeController {
     return this.menuTimeService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMenuTimeDto: UpdateMenuTimeDto) {
-    return this.menuTimeService.update(+id, updateMenuTimeDto);
+  @Put()
+  update(@Body() updateMenuTimeDto: UpdateMenuTimeDto) {
+    return this.menuTimeService.update(updateMenuTimeDto);
   }
 
   @Delete(':id')

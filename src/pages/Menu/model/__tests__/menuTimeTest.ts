@@ -3,6 +3,7 @@ import {
   $menuTime,
   $menuTimeList,
   createMenuTimeFx,
+  deleteMenuTimeFx,
   getAllMenuTimeFx,
   getOneMenuTimeFx,
   resetMenuTime,
@@ -54,12 +55,20 @@ describe('menu time test', () => {
     expect(one).toStrictEqual(expect.objectContaining(mt));
   });
 
-  it('should update one menu time', async () => {
+  it('should update menu time', async () => {
     const description = faker.datatype.uuid();
     random.menuTimeId && (await updateMenuTimeFx({ ...random, description }));
 
     // eslint-disable-next-line effector/no-getState
     const one = $menuTime.getState();
     expect(one?.description).toStrictEqual(description);
+  });
+
+  it('should delete menu time', async () => {
+    random.menuTimeId && (await deleteMenuTimeFx(random.menuTimeId));
+
+    // eslint-disable-next-line effector/no-getState
+    const one = $menuTime.getState();
+    expect(one).toBeNull();
   });
 });

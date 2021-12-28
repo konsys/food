@@ -19,10 +19,10 @@ export class CrudService<T> {
   }
 
   async updateOne(entity: T): Promise<T> {
-    return (await axiosClient.put<T>(this.url, { params: entity })).data;
+    return (await axiosClient.put<T>(this.url, entity)).data;
   }
 
   async deleteOne(id: number): Promise<number> {
-    return (await axiosClient.delete(this.url, { params: id })).data;
+    return await axiosClient.delete(`${this.url}/${id}`);
   }
 }
