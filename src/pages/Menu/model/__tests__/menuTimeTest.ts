@@ -1,4 +1,4 @@
-import { menuTimeFactory } from '../menuTimeFactory';
+import { menuTimeFactory } from '../menuTimeModel/menuTimeFactory';
 import {
   $menuTimeOne,
   $menuTimeList,
@@ -9,9 +9,9 @@ import {
   resetMenuTime,
   resetMenuTimeList,
   updateMenuTimeFx,
-} from '../store';
+} from '../menuTimeModel/store';
 import faker from 'faker';
-import { MenuTime } from '../types';
+import { MenuTime } from '../menuTimeModel/types';
 
 describe('menu time test', () => {
   let mt: MenuTime;
