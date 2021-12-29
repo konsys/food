@@ -1,26 +1,33 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { MenuTypeEntity } from 'src/entities/menu-type.entity';
+import { Repository } from 'typeorm';
 import { CreateMenuTypeDto } from './dto/create-menu-type.dto';
 import { UpdateMenuTypeDto } from './dto/update-menu-type.dto';
 
 @Injectable()
 export class MenuTypeService {
-  create(createMenuTypeDto: CreateMenuTypeDto) {
-    return 'This action adds a new menuType';
+  constructor(@InjectRepository(MenuTypeEntity)
+  private readonly repository: Repository<MenuTypeEntity>
+) {}
+
+  async create(createMenuTypeDto: CreateMenuTypeDto) {
+    return await this.repository.save(createMenuTypeDto)
   }
 
-  findAll() {
-    return `This action returns all menuType`;
+  async findAll() {
+    return await this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} menuType`;
+  async findOne(menuTypeId: number) {
+    return await this.repository.findOne(menuTypeId);
   }
 
-  update(id: number, updateMenuTypeDto: UpdateMenuTypeDto) {
-    return `This action updates a #${id} menuType`;
+  async update(updateMenuTypeDto: UpdateMenuTypeDto) {
+    return await this.repository.save(updateMenuTypeDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} menuType`;
+  async remove(menuTypeId: number) {
+    return await this.repository.delete({menuTypeId});
   }
 }
