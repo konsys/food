@@ -1,9 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { MenuTypeService } from './menu-type.service';
 import { CreateMenuTypeDto } from './dto/create-menu-type.dto';
 import { UpdateMenuTypeDto } from './dto/update-menu-type.dto';
 
-@Controller('food-type')
+@Controller('menu-type')
 export class MenuTypeController {
   constructor(private readonly menuTypeService: MenuTypeService) {}
 

@@ -5,6 +5,7 @@ import { UsersModule } from './modules/users/users.module';
 import { MenuModule } from './modules/menu/menu.module';
 import { MenuTimeModule } from './modules/menu-time/menu-time.module';
 import { OrmConfig } from './ormConfig';
+import { MenuTypeModule } from './modules/menu-type/menu-type.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { OrmConfig } from './ormConfig';
     AuthModule,
     UsersModule,
     MenuModule,
-    MenuTimeModule
+    MenuTimeModule,
+    MenuTypeModule
   ],
 })
 export class MainModule {}
