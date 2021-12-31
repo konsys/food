@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { CafeMenu } from './CafeMenu';
+import { CafeMenu } from './components';
 
 const foodItems = [
   {
