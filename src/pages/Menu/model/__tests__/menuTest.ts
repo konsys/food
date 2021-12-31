@@ -1,16 +1,16 @@
-import faker, { random } from 'faker';
+import faker from 'faker';
 import { menuFactory } from '../menuFactory';
 import {
-  resetMenuTime,
-  resetMenuTimeList,
-  getAllMenuTimeFx,
-  $menuTimeOne,
-  $menuTimeList,
-  createMenuTimeFx,
-  getOneMenuTimeFx,
-  updateMenuTimeFx,
-  deleteMenuTimeFx,
-} from '../menuTimeModel/store';
+  resetMenu,
+  resetMenuList,
+  getAllMenuFx,
+  $menuOne,
+  $menuList,
+  createMenuFx,
+  getOneMenuFx,
+  updateMenuFx,
+  deleteMenuFx,
+} from '../store';
 import { MenuDto } from '../types';
 
 describe('menu tests', () => {
@@ -20,61 +20,63 @@ describe('menu tests', () => {
 
   beforeAll(async () => {
     item = menuFactory.build();
-    resetMenuTime();
-    resetMenuTimeList();
-    items = await getAllMenuTimeFx();
+    resetMenu();
+    resetMenuList();
+    items = await getAllMenuFx();
     ramdomItem = items[faker.datatype.number(items.length)];
   });
 
   afterAll(() => {
-    $menuTimeOne.off(resetMenuTime);
-    $menuTimeList.off(resetMenuTimeList);
+    $menuOne.off(resetMenu);
+    $menuList.off(resetMenuList);
   });
 
-  it('should create menu time', async () => {
-    await createMenuTimeFx(item);
+  it('should create menu', async () => {
+    await createMenuFx(item);
 
     // eslint-disable-next-line effector/no-getState
-    expect($menuTimeOne.getState()).toStrictEqual(expect.objectContaining(item));
+    expect($menuOne.getState()).toBe(1);
+    // eslint-disable-next-line effector/no-getState
+    expect($menuOne.getState()).toStrictEqual(expect.objectContaining(item));
   });
 
-  it('should get all menu time', async () => {
-    await getAllMenuTimeFx();
+  it('should get all menu', async () => {
+    await getAllMenuFx();
     // eslint-disable-next-line effector/no-getState
-    const { records } = $menuTimeList.getState();
+    const { records } = $menuList.getState();
 
     expect(Array.isArray(records)).toBeTruthy();
     const found = records.find((v) => v.name === item.name);
     expect(found).toBeTruthy();
   });
 
-  it('should get one menu time', async () => {
-    random.menuItem && (await getOneMenuTimeFx(random.menuItem));
+  it.skip('should get one menu', async () => {
+    ramdomItem?.menuId && (await getOneMenuFx(ramdomItem.menuId));
     // eslint-disable-next-line effector/no-getState
-    const one = $menuTimeOne.getState();
+    const one = $menuOne.getState();
     expect(one).toStrictEqual(expect.objectContaining(item));
   });
 
-  it('should update menu time', async () => {
+  it.skip('should update menu', async () => {
     const description = faker.datatype.uuid();
-    random.menuItem && (await updateMenuTimeFx({ ...random, description }));
+    ramdomItem && (await updateMenuFx({ ...ramdomItem, description }));
 
     // eslint-disable-next-line effector/no-getState
-    const one = $menuTimeOne.getState();
+    const one = $menuOne.getState();
     expect(one?.description).toStrictEqual(description);
   });
 
-  it('should delete menu time', async () => {
-    random.menuItem && (await deleteMenuTimeFx(random.menuItem));
+  it.skip('should delete menu', async () => {
+    ramdomItem.menuId && (await deleteMenuFx(ramdomItem.menuId));
 
     // eslint-disable-next-line effector/no-getState
-    let one = $menuTimeOne.getState();
+    let one = $menuOne.getState();
     expect(one).toBeNull();
 
-    random.menuItem && (await getOneMenuTimeFx(random.menuItem));
+    ramdomItem.menuId && (await getOneMenuFx(ramdomItem.menuId));
 
     // eslint-disable-next-line effector/no-getState
-    one = $menuTimeOne.getState();
+    one = $menuOne.getState();
     expect(one).toBeNull();
   });
 });

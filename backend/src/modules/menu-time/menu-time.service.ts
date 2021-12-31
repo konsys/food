@@ -12,7 +12,7 @@ export class MenuTimeService {
 ) {}
 
   async create(createMenuTimeDto: CreateMenuTimeDto) {
-    return await this.repository.save(createMenuTimeDto)
+    return await this.repository.create(createMenuTimeDto)
   }
 
   async findAll() {
@@ -23,8 +23,8 @@ export class MenuTimeService {
     return await this.repository.findOne(menuTimeId);
   }
 
-  async update(updateMenuTimeDto: UpdateMenuTimeDto) {
-    return await this.repository.save(updateMenuTimeDto);
+  async update(updateMenuTimeDto: UpdateMenuTimeDto) {    
+    return await this.repository.save( updateMenuTimeDto);
   }
 
   async remove(menuTimeId: number) {

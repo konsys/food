@@ -15,7 +15,8 @@ export class MenuTimeEntity {
     @Column({default:false})
     visible: boolean;
 
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
+    })
     createdAt?: Date;
   
     @Exclude()

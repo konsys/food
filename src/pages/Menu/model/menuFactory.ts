@@ -7,7 +7,7 @@ import { MenuDto } from './types';
 export const menuFactory = factory.Sync.makeFactory<MenuDto>({
   menuTime: factory.each(() => menuTimeFactory.build()),
   menuType: factory.each(() => menuTypeFactory.build()),
-  description: factory.each(() => faker.lorem.text()),
+  description: factory.each(() => faker.datatype.uuid()),
   name: factory.each(() => faker.datatype.uuid()),
   visible: factory.each(() => Math.random() > 0.5),
 });

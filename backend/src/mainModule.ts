@@ -14,7 +14,8 @@ import { MenuTypeModule } from './modules/menu-type/menu-type.module';
     UsersModule,
     MenuModule,
     MenuTimeModule,
-    MenuTypeModule
+    MenuTypeModule,
+    MenuModule
   ],
 })
 export class MainModule {}

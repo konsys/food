@@ -14,16 +14,16 @@ import { MenuTypeDto } from '../menuTypeModel/types';
 import { menuTypeFactory } from '../menuTypeModel/menuTypeFactory';
 
 describe('menu type test', () => {
-  let mt: MenuTypeDto;
-  let mts: MenuTypeDto[];
+  let item: MenuTypeDto;
+  let items: MenuTypeDto[];
   let random: MenuTypeDto;
 
   beforeAll(async () => {
-    mt = menuTypeFactory.build();
+    item = menuTypeFactory.build();
     resetMenuType();
     resetMenuTypeList();
-    mts = await getAllMenuTypeFx();
-    random = mts[faker.datatype.number(mts.length)];
+    items = await getAllMenuTypeFx();
+    random = items[faker.datatype.number(items.length)];
   });
 
   afterAll(() => {
@@ -32,10 +32,10 @@ describe('menu type test', () => {
   });
 
   it('should create menu type', async () => {
-    await createMenuTypeFx(mt);
+    await createMenuTypeFx(item);
 
     // eslint-disable-next-line effector/no-getState
-    expect($menuTypeOne.getState()).toStrictEqual(expect.objectContaining(mt));
+    expect($menuTypeOne.getState()).toStrictEqual(expect.objectContaining(item));
   });
 
   it('should get all menu type', async () => {
@@ -44,7 +44,7 @@ describe('menu type test', () => {
     const { records } = $menuTypeList.getState();
 
     expect(Array.isArray(records)).toBeTruthy();
-    const found = records.find((v) => v.name === mt.name);
+    const found = records.find((v) => v.name === item.name);
     expect(found).toBeTruthy();
   });
 
@@ -52,7 +52,7 @@ describe('menu type test', () => {
     random.menuTypeId && (await getOneMenuTypeFx(random.menuTypeId));
     // eslint-disable-next-line effector/no-getState
     const one = $menuTypeOne.getState();
-    expect(one).toStrictEqual(expect.objectContaining(mt));
+    expect(one).toStrictEqual(expect.objectContaining(item));
   });
 
   it('should update menu type', async () => {

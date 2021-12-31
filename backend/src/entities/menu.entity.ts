@@ -5,7 +5,7 @@ import { MenuTypeEntity } from './menu-type.entity';
 @Entity()
 export class MenuEntity {
   @PrimaryGeneratedColumn()
-    foodMenuId: number;
+    menuId: number;
 
     @Column()
     name: string;
