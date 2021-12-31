@@ -1,4 +1,4 @@
-export type TMenuType = {
+export type MenuTypeDto = {
   menuTypeId?: number;
   description: string;
   name: string;

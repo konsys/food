@@ -10,13 +10,13 @@ import {
   updateMenuTypeFx,
 } from '../menuTypeModel/store';
 import faker from 'faker';
-import { TMenuType } from '../menuTypeModel/types';
+import { MenuTypeDto } from '../menuTypeModel/types';
 import { menuTypeFactory } from '../menuTypeModel/menuTypeFactory';
 
 describe('menu type test', () => {
-  let mt: TMenuType;
-  let mts: TMenuType[];
-  let random: TMenuType;
+  let mt: MenuTypeDto;
+  let mts: MenuTypeDto[];
+  let random: MenuTypeDto;
 
   beforeAll(async () => {
     mt = menuTypeFactory.build();

@@ -1,4 +1,4 @@
-export type TMenuTime = {
+export type MenuTimeDto = {
   name: string;
   description: string;
   visible: boolean;
