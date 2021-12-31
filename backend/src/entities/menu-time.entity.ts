@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { MenuEntity } from './menu.entity';
 
 @Entity()
 export class MenuTimeEntity {
@@ -26,4 +27,7 @@ export class MenuTimeEntity {
       onUpdate: 'CURRENT_TIMESTAMP',
     })
     updatedAt?: Date;
+
+    @OneToMany(() => MenuEntity, menu=> menu.menuId)
+    menus: MenuEntity[];
 }

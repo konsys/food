@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { MenuEntity } from './menu.entity';
 
 @Entity()
 export class MenuTypeEntity {  
@@ -25,4 +26,7 @@ export class MenuTypeEntity {
 
     @Column({default:false})
     visible: boolean;
+
+    @OneToMany(() => MenuEntity, menu=> menu.menuId)
+    menus: MenuEntity[];
 }

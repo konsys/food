@@ -8,26 +8,26 @@ import { UpdateMenuDto } from './dto/update-menu.dto';
 @Injectable()
 export class MenuService {
   constructor(@InjectRepository(MenuEntity)
-  private readonly menu: Repository<MenuEntity>
+  private readonly repository: Repository<MenuEntity>
 ) {}
 
   async create(createMenuDto: CreateMenuDto) {
-    return await this.menu.save(createMenuDto);
+    return await this.repository.save(createMenuDto);
   }
 
   async findAll() {
-    return await this.menu.find();
+    return await this.repository.find();
   }
 
-  async findOne(id: number) {
-    return `This action returns a #${id} foodMenu`;
+  async findOne(menuId: number) {
+    return await this.repository.findOne(menuId);
   }
 
-  async update(id: number, updateMenuDto: UpdateMenuDto) {
-    return `This action updates a #${id} foodMenu`;
+  async update(updateMenuDto: UpdateMenuDto) {    
+    return await this.repository.save( updateMenuDto);
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} foodMenu`;
+  async remove(menuId: number) {
+    return await this.repository.delete({menuId});
   }
 }

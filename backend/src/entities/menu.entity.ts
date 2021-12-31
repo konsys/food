@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { MenuTimeEntity } from './menu-time.entity';
 import { MenuTypeEntity } from './menu-type.entity';
 @Entity()
@@ -24,10 +24,10 @@ export class MenuEntity {
     })
     updatedAt?: Date;
 
-    @OneToMany(() => MenuTimeEntity, menuTime => menuTime.menuTimeId)
+    @ManyToOne(() => MenuTimeEntity, menuTime => menuTime.menuTimeId)
     menuTime: MenuTimeEntity;
 
-    @OneToMany(() => MenuTypeEntity, menuType => menuType.menuTypeId)
+    @ManyToOne(() => MenuTypeEntity, menuType => menuType.menuTypeId)
     menuType: MenuTypeEntity;
 
     @Column({default:false})
