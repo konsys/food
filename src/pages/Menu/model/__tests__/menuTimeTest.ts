@@ -13,7 +13,7 @@ import {
 import faker from 'faker';
 import { MenuTimeDto } from '../menuTimeModel/types';
 
-describe('menu time test', () => {
+describe.skip('menu time test', () => {
   let item: MenuTimeDto;
   let items: MenuTimeDto[];
   let random: MenuTimeDto;

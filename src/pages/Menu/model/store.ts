@@ -2,8 +2,9 @@ import { createDomain } from 'effector';
 import { CrudService } from '../../../common/api';
 import {
   createInitItemsWithPagination,
-  initPagination,
-  TItemsWithPagination,
+  TListRequest,
+  TListResponce,
+  TPaginationWithFilters,
 } from '../../../common/api/types';
 import { MenuDto } from './types';
 
@@ -20,9 +21,11 @@ export const createMenuFx = MenuDomain.effect<MenuDto, MenuDto, Error>({
   handler: (mt) => service.create(mt),
 });
 
-export const getAllMenuFx = MenuDomain.effect<void, TItemsWithPagination<MenuDto>, Error>({
-  handler: () => service.getAll(),
-});
+export const getAllMenuFx = MenuDomain.effect<TListRequest<MenuDto>, TListResponce<MenuDto>, Error>(
+  {
+    handler: (req) => service.getAll(req),
+  }
+);
 
 export const getOneMenuFx = MenuDomain.effect<number, MenuDto, Error>({
   handler: (id) => service.getOne(id),
@@ -36,7 +39,7 @@ export const deleteMenuFx = MenuDomain.effect<number, number, Error>({
   handler: (id) => service.deleteOne(id),
 });
 
-export const $menuList = MenuDomain.store<TItemsWithPagination<MenuDto>>(
+export const $menuList = MenuDomain.store<TPaginationWithFilters<MenuDto>>(
   createInitItemsWithPagination<MenuDto>()
 )
   .on(getAllMenuFx.done, (_, { result }) => result)

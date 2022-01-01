@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import {  TItemsWithPagination, TPaginationWithFilters } from 'src/common/types/paginationTypes';
+import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
 import { MenuTimeEntity } from 'src/entities/menu-time.entity';
 import { Repository } from 'typeorm';
 import { CreateMenuTimeDto } from './dto/create-menu-time.dto';
@@ -16,7 +16,7 @@ export class MenuTimeService {
     return await this.repository.create(createMenuTimeDto)
   }
 
-  async findAll({limit, page}:  TPaginationWithFilters<MenuTimeEntity>):Promise<TItemsWithPagination<MenuTimeEntity>> {
+  async findAll({limit, page}: TListRequest<MenuTimeEntity>):Promise<TListResponce<MenuTimeEntity>> {
     page = page > 0 ? page : 1;
     const take = limit || 10;
     const skip = take * page;

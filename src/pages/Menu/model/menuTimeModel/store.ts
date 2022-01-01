@@ -1,9 +1,10 @@
-import { combine, createDomain } from 'effector';
+import { createDomain } from 'effector';
 import { CrudService } from '../../../../common/api';
 import {
   createInitItemsWithPagination,
-  initPagination,
-  TItemsWithPagination,
+  TListRequest,
+  TListResponce,
+  TPaginationWithFilters,
 } from '../../../../common/api/types';
 import { MenuTimeDto } from './types';
 
@@ -20,8 +21,12 @@ export const createMenuTimeFx = MenuDomain.effect<MenuTimeDto, MenuTimeDto, Erro
   handler: (mt) => service.create(mt),
 });
 
-export const getAllMenuTimeFx = MenuDomain.effect<void, TItemsWithPagination<MenuTimeDto>, Error>({
-  handler: () => service.getAll(),
+export const getAllMenuFx = MenuDomain.effect<
+  TListRequest<MenuTimeDto>,
+  TListResponce<MenuTimeDto>,
+  Error
+>({
+  handler: (req) => service.getAll(req),
 });
 
 export const getOneMenuTimeFx = MenuDomain.effect<number, MenuTimeDto, Error>({
@@ -36,7 +41,7 @@ export const deleteMenuTimeFx = MenuDomain.effect<number, number, Error>({
   handler: (id) => service.deleteOne(id),
 });
 
-export const $menuTimeList = MenuDomain.store<TItemsWithPagination<MenuTimeDto>>(
+export const $menuTimeList = MenuDomain.store<TPaginationWithFilters<MenuTimeDto>>(
   createInitItemsWithPagination<MenuTimeDto>()
 )
   .on(getAllMenuTimeFx.done, (_, { result }) => result)

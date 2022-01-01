@@ -1,5 +1,5 @@
 import { axiosClient } from '../../http/Clients';
-import { TItemsWithPagination } from './types';
+import { TListWithPagination, TPaginationWithFilters } from './types';
 
 export class CrudService<T> {
   private url: string;
@@ -11,8 +11,8 @@ export class CrudService<T> {
     return (await axiosClient.post<T>(this.url, params)).data;
   }
 
-  async getAll(): Promise<TItemsWithPagination<T>> {
-    return (await axiosClient.get<TItemsWithPagination<T>>(this.url)).data;
+  async getAll(params: TListWithPagination<T>): Promise<TListWithPagination<T>> {
+    return await axiosClient.get<TPaginationWithFilters<T>>(this.url), params;
   }
 
   async getOne(id: number): Promise<T> {

@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/common';
-import { TPaginationWithFilters } from 'src/common/types/paginationTypes';
+import { TListRequest } from 'src/common/types/paginationTypes';
 import { MenuEntity } from 'src/entities/menu.entity';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
@@ -15,7 +15,7 @@ export class MenuController {
   }
 
   @Get()
-  findAll(@Query() params: TPaginationWithFilters<MenuEntity>) {
+  findAll(@Query() params: TListRequest<MenuEntity>) {
     return this.menuService.findAll(params);
   }
 
