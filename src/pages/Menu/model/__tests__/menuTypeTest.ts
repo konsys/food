@@ -15,15 +15,15 @@ import { menuTypeFactory } from '../menuTypeModel/menuTypeFactory';
 
 describe('menu type test', () => {
   let item: MenuTypeDto;
-  let items: MenuTypeDto[];
+  let allItems: MenuTypeDto[];
   let randomItem: MenuTypeDto;
 
   beforeAll(async () => {
     item = menuTypeFactory.build();
     resetMenuType();
     resetMenuTypeList();
-    items = (await getAllMenuTypeFx({ limit: 10, page: 1 })).items;
-    randomItem = items[faker.datatype.number(items.length)];
+    allItems = (await getAllMenuTypeFx({ limit: 10, page: 1 })).items;
+    randomItem = allItems[faker.datatype.number(allItems.length)];
   });
 
   afterAll(() => {

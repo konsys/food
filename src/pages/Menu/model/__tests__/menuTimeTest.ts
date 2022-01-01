@@ -15,20 +15,20 @@ import { MenuTimeDto } from '../menuTimeModel/types';
 
 describe('menu time test', () => {
   let item: MenuTimeDto;
-  let items: MenuTimeDto[];
+  let allItems: MenuTimeDto[];
   let randomItem: MenuTimeDto;
 
   beforeAll(async () => {
     item = menuTimeFactory.build();
     resetMenuTime();
     resetMenuTimeList();
-    items = (
+    allItems = (
       await getAllMenuTimeFx({
         limit: 4,
         page: 1,
       })
     ).items;
-    randomItem = items[faker.datatype.number(items.length)];
+    randomItem = allItems[faker.datatype.number(allItems.length)];
   });
 
   afterAll(() => {

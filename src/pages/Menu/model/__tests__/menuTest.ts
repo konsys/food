@@ -17,12 +17,14 @@ import { MenuDto } from '../types';
 
 describe('menu tests', () => {
   let item: MenuDto;
-  let items: MenuDto[];
+  let allItems: MenuDto[];
   let ramdomItem: MenuDto;
 
   beforeAll(async () => {
-    const menuTime = await getAllMenuTimeFx();
-    const menuType = await getAllMenuTypeFx();
+    resetMenu();
+    resetMenuList();
+    const menuTime = await getAllMenuTimeFx({ limit: 5, page: 1 });
+    const menuType = await getAllMenuTypeFx({ limit: 5, page: 1 });
     item = menuFactory.build();
 
     item = {
@@ -30,10 +32,8 @@ describe('menu tests', () => {
       menuTime: menuTime.items[faker.datatype.number(menuTime.items.length)],
       menuType: menuType.items[faker.datatype.number(menuType.items.length)],
     };
-    resetMenu();
-    resetMenuList();
-    items = (await getAllMenuFx()).items;
-    ramdomItem = items[faker.datatype.number(items.length)];
+    allItems = (await getAllMenuFx({ limit: 1, page: 1 })).items;
+    ramdomItem = allItems[faker.datatype.number(allItems.length)];
   });
 
   afterAll(() => {
@@ -42,6 +42,7 @@ describe('menu tests', () => {
   });
 
   it('should create menu', async () => {
+    expect(item).toBe(1);
     await createMenuFx(item);
 
     // eslint-disable-next-line effector/no-getState
@@ -49,7 +50,7 @@ describe('menu tests', () => {
   });
 
   it('should get all menu', async () => {
-    await getAllMenuFx();
+    await getAllMenuFx({ limit: 5, page: 1 });
     // eslint-disable-next-line effector/no-getState
     const { items } = $menuList.getState();
 
