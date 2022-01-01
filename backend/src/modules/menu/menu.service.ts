@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { TItemsWithPagination } from 'src/common/types/paginationTypes';
 import { MenuEntity } from 'src/entities/menu.entity';
 import { Repository } from 'typeorm';
 import { CreateMenuDto } from './dto/create-menu.dto';
@@ -15,8 +16,14 @@ export class MenuService {
     return await this.repository.save(createMenuDto);
   }
 
-  async findAll() {
-    return await this.repository.find();
+  async findAll():Promise<TItemsWithPagination<MenuEntity>> {
+    const items = await this.repository.find();
+    return {
+      items,
+      limit:0,
+      page:1,
+      totalRecords:0
+    }
   }
 
   async findOne(menuId: number) {

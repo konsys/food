@@ -1,6 +1,6 @@
 export type TPagination = {
   page: number;
-  totalRecords?: number;
+  totalRecords: number;
   limit: number;
 };
 

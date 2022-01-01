@@ -22,7 +22,7 @@ describe('menu type test', () => {
     item = menuTypeFactory.build();
     resetMenuType();
     resetMenuTypeList();
-    items = await getAllMenuTypeFx();
+    items = (await getAllMenuTypeFx()).items;
     random = items[faker.datatype.number(items.length)];
   });
 
@@ -41,10 +41,10 @@ describe('menu type test', () => {
   it('should get all menu type', async () => {
     await getAllMenuTypeFx();
     // eslint-disable-next-line effector/no-getState
-    const { records } = $menuTypeList.getState();
+    const { items } = $menuTypeList.getState();
 
-    expect(Array.isArray(records)).toBeTruthy();
-    const found = records.find((v) => v.name === item.name);
+    expect(Array.isArray(items)).toBeTruthy();
+    const found = items.find((v) => v.name === item.name);
     expect(found).toBeTruthy();
   });
 

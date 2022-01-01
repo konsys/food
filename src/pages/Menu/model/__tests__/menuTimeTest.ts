@@ -22,7 +22,7 @@ describe('menu time test', () => {
     item = menuTimeFactory.build();
     resetMenuTime();
     resetMenuTimeList();
-    items = await getAllMenuTimeFx();
+    items = (await getAllMenuTimeFx()).items;
     random = items[faker.datatype.number(items.length)];
   });
 
