@@ -16,9 +16,9 @@ export class MenuTypeService {
     return await this.repository.save(createMenuTypeDto)
   }
 
-  async findAll({limit, page}: TPaginationWithFilters):Promise<TItemsWithPagination<MenuTypeEntity>> {
-    page = page > 0 ? page : 1;
-    const take = limit || 10;
+  async findAll({limit, page}: TPaginationWithFilters<MenuTypeEntity>):Promise<TItemsWithPagination<MenuTypeEntity>> {
+    page = page > 0 ? +page : 1;
+    const take = +limit || 10;
     const skip = take * page;
     const items = await this.repository.find({take,skip});
     return {

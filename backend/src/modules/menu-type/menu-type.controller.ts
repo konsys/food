@@ -3,6 +3,7 @@ import { MenuTypeService } from './menu-type.service';
 import { CreateMenuTypeDto } from './dto/create-menu-type.dto';
 import { UpdateMenuTypeDto } from './dto/update-menu-type.dto';
 import { TPaginationWithFilters } from 'src/common/types/paginationTypes';
+import { MenuTypeEntity } from 'src/entities/menu-type.entity';
 
 @Controller('menu-type')
 export class MenuTypeController {
@@ -14,7 +15,7 @@ export class MenuTypeController {
   }
 
   @Get()
-  findAll(@Query() params: TPaginationWithFilters) {
+  findAll(@Query() params: TPaginationWithFilters<MenuTypeEntity>) {
     return this.service.findAll(params);
   }
 

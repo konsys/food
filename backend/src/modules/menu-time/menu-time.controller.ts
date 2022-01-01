@@ -3,6 +3,7 @@ import { MenuTimeService } from './menu-time.service';
 import { CreateMenuTimeDto } from './dto/create-menu-time.dto';
 import { UpdateMenuTimeDto } from './dto/update-menu-time.dto';
 import { TPaginationWithFilters } from 'src/common/types/paginationTypes';
+import { MenuTimeEntity } from 'src/entities/menu-time.entity';
 
 @Controller('menu-time')
 export class MenuTimeController {
@@ -14,7 +15,7 @@ export class MenuTimeController {
   }
 
   @Get()
-  findAll(@Query() params: TPaginationWithFilters) {
+  findAll(@Query() params: TPaginationWithFilters<MenuTimeEntity>) {
     return this.service.findAll(params);
   }
 

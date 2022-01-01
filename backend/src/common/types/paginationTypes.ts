@@ -6,8 +6,8 @@ export type TPaginationRequestParams = {
   sort?: TSort;
 };
 
-export type TPaginationWithFilters = TPaginationRequestParams & {
-    filter?: Record<string, any>
+export type TPaginationWithFilters<T> = TPaginationRequestParams & {
+    filter?: Record<keyof T, any>
   };
 
 export type TPagination = TPaginationRequestParams & {
