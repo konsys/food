@@ -4,7 +4,6 @@ import {
   createInitItemsWithPagination,
   TListRequest,
   TListResponce,
-  TPaginationWithFilters,
 } from '../../../common/api/types';
 import { MenuDto } from './types';
 
@@ -39,7 +38,7 @@ export const deleteMenuFx = MenuDomain.effect<number, number, Error>({
   handler: (id) => service.deleteOne(id),
 });
 
-export const $menuList = MenuDomain.store<TPaginationWithFilters<MenuDto>>(
+export const $menuList = MenuDomain.store<TListResponce<MenuDto>>(
   createInitItemsWithPagination<MenuDto>()
 )
   .on(getAllMenuFx.done, (_, { result }) => result)

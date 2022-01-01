@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from 'axios';
 import { IUser, LoginRequest } from '../../pages/User/model/types';
-import { client } from '../Clients';
+import { axiosClient } from '../Clients';
 import { Paths } from '../Clients/paths';
 
 export const authTokenName = 'Authorization';
@@ -35,7 +35,7 @@ export class Auth {
 
   public static async login({ username, password, saveCredentials }: LoginRequest): Promise<IUser> {
     const req = { username, password };
-    const authResponse = await client.post(`${Paths.auth}/pwd`, req);
+    const authResponse = await axiosClient.post(`${Paths.auth}/pwd`, req);
     const auth = authResponse.data as AuthResponse;
     const { profile, token } = auth;
     Auth.storeTokens(auth, saveCredentials);
@@ -50,7 +50,7 @@ export class Auth {
   }
 
   public static async loadUser(): Promise<IUser> {
-    return await client.get(Paths.user);
+    return await axiosClient.get(Paths.user);
   }
 
   public static async refreshAccessToken(): Promise<string> {
@@ -58,7 +58,7 @@ export class Auth {
     const config: AxiosRequestConfig = { headers: { Authorization: '' } };
 
     try {
-      const response = await client.post(Paths.auth.concat('/token'), req, config);
+      const response = await axiosClient.post(Paths.auth.concat('/token'), req, config);
       const auth = response.data as AuthResponse;
       Auth.storeTokens(auth);
       Auth.setAuthHeader();

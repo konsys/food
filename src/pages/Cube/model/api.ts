@@ -1,6 +1,6 @@
-import { client } from '../../../http/Clients';
+import { axiosClient } from '../../../http/Clients';
 import { TDices } from './types';
 
 const URL = `/dices`;
 
-export const rollDicesFetch = async () => (await client.get<TDices>(URL)).data;
+export const rollDicesFetch = async () => (await axiosClient.get<TDices>(URL)).data;

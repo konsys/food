@@ -2,8 +2,6 @@ import { createDomain } from 'effector';
 import { CrudService } from '../../../../common/api';
 import {
   createInitItemsWithPagination,
-  TPaginationWithFilters,
-  TListWithPagination,
   TListRequest,
   TListResponce,
 } from '../../../../common/api/types';
@@ -42,7 +40,7 @@ export const deleteMenuTypeFx = MenuDomain.effect<number, number, Error>({
   handler: (id) => service.deleteOne(id),
 });
 
-export const $menuTypeList = MenuDomain.store<TListWithPagination<MenuTypeDto>>(
+export const $menuTypeList = MenuDomain.store<TListResponce<MenuTypeDto>>(
   createInitItemsWithPagination<MenuTypeDto>()
 )
   .on(getAllMenuTypeFx.done, (_, { result }) => result)
