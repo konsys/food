@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/common';
+import { TItemsRequestParams } from 'src/common/types/paginationTypes';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 import { MenuService } from './menu.service';
@@ -13,8 +14,8 @@ export class MenuController {
   }
 
   @Get()
-  findAll() {
-    return this.menuService.findAll();
+  findAll(@Query() params: TItemsRequestParams) {
+    return this.menuService.findAll(params);
   }
 
   @Get(':id')

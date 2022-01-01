@@ -1,10 +1,13 @@
-export type TPagination = {
+export type TItemsRequestParams = {
     page: number;
-    totalRecords: number;
     limit: number;
   };
+
+export type TPagination = TItemsRequestParams & {
+    totalRecords: number;
+  };
   
-  export type TItemsWithPagination<T> = TPagination & {
+export type TItemsWithPagination<T> = TPagination & {
     items: T[];
   };
   
