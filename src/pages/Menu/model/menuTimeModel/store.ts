@@ -21,7 +21,7 @@ export const createMenuTimeFx = MenuDomain.effect<MenuTimeDto, MenuTimeDto, Erro
   handler: (mt) => service.create(mt),
 });
 
-export const getAllMenuFx = MenuDomain.effect<
+export const getAllMenuTimeFx = MenuDomain.effect<
   TListRequest<MenuTimeDto>,
   TListResponce<MenuTimeDto>,
   Error

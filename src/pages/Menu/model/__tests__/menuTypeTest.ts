@@ -15,15 +15,15 @@ import { menuTypeFactory } from '../menuTypeModel/menuTypeFactory';
 
 describe('menu type test', () => {
   let item: MenuTypeDto;
-  // let items: MenuTypeDto[];
-  let random: MenuTypeDto;
+  let items: MenuTypeDto[];
+  let randomItem: MenuTypeDto;
 
   beforeAll(async () => {
     item = menuTypeFactory.build();
     resetMenuType();
     resetMenuTypeList();
-    // items = (await getAllMenuTypeFx({ limit: 10, page: 1 })).items;
-    // random = items[faker.datatype.number(items.length)];
+    items = (await getAllMenuTypeFx({ limit: 10, page: 1 })).items;
+    randomItem = items[faker.datatype.number(items.length)];
   });
 
   afterAll(() => {
@@ -31,7 +31,7 @@ describe('menu type test', () => {
     $menuTypeList.off(resetMenuTypeList);
   });
 
-  it.skip('should create menu type', async () => {
+  it('should create menu type', async () => {
     await createMenuTypeFx(item);
 
     // eslint-disable-next-line effector/no-getState
@@ -39,7 +39,7 @@ describe('menu type test', () => {
   });
 
   it('should get limit menu type', async () => {
-    const limit = 2;
+    const limit = 7;
     const page = 1;
     await getAllMenuTypeFx({
       limit,
@@ -47,46 +47,44 @@ describe('menu type test', () => {
     });
     // eslint-disable-next-line effector/no-getState
     const { items } = $menuTypeList.getState();
+    expect(Array.isArray(items)).toBeTruthy();
+    expect(items).toHaveLength(limit);
+  });
 
-    // expect(items).toBe(2);
+  it('should get all menu type', async () => {
+    const limit = 4;
+    await getAllMenuTypeFx({ limit, page: 1 });
+    // eslint-disable-next-line effector/no-getState
+    const { items } = $menuTypeList.getState();
 
     expect(Array.isArray(items)).toBeTruthy();
     expect(items).toHaveLength(limit);
   });
 
-  it.skip('should get all menu type', async () => {
-    await getAllMenuTypeFx();
-    // eslint-disable-next-line effector/no-getState
-    const { items } = $menuTypeList.getState();
-
-    expect(Array.isArray(items)).toBeTruthy();
-    expect(items.length).toBeGreaterThan(0);
-  });
-
-  it.skip('should get one menu type', async () => {
-    random.menuTypeId && (await getOneMenuTypeFx(random.menuTypeId));
+  it('should get one menu type', async () => {
+    randomItem.menuTypeId && (await getOneMenuTypeFx(randomItem.menuTypeId));
     // eslint-disable-next-line effector/no-getState
     const one = $menuTypeOne.getState();
     expect(one).toStrictEqual(expect.objectContaining(item));
   });
 
-  it.skip('should update menu type', async () => {
+  it('should update menu type', async () => {
     const description = faker.datatype.uuid();
-    random.menuTypeId && (await updateMenuTypeFx({ ...random, description }));
+    randomItem.menuTypeId && (await updateMenuTypeFx({ ...randomItem, description }));
 
     // eslint-disable-next-line effector/no-getState
     const one = $menuTypeOne.getState();
     expect(one?.description).toStrictEqual(description);
   });
 
-  it.skip('should delete menu type', async () => {
-    random.menuTypeId && (await deleteMenuTypeFx(random.menuTypeId));
+  it('should delete menu type', async () => {
+    randomItem.menuTypeId && (await deleteMenuTypeFx(randomItem.menuTypeId));
 
     // eslint-disable-next-line effector/no-getState
     let one = $menuTypeOne.getState();
     expect(one).toBeNull();
 
-    random.menuTypeId && (await getOneMenuTypeFx(random.menuTypeId));
+    randomItem.menuTypeId && (await getOneMenuTypeFx(randomItem.menuTypeId));
 
     // eslint-disable-next-line effector/no-getState
     one = $menuTypeOne.getState();

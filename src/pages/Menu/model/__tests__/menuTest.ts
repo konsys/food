@@ -15,7 +15,7 @@ import {
 } from '../store';
 import { MenuDto } from '../types';
 
-describe.skip('menu tests', () => {
+describe('menu tests', () => {
   let item: MenuDto;
   let items: MenuDto[];
   let ramdomItem: MenuDto;
