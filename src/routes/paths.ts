@@ -7,7 +7,7 @@ import { NotFound } from '../pages/NotFound';
 import { EPathName, TPath } from './types';
 
 export const pathNames: Record<EPathName, TPath> = {
-  FOOD_MENU: { path: '/food-menu', name: 'Меню' },
+  MENU: { path: '/menu', name: 'Меню' },
   ABOUT: { path: '/about', name: 'О нас' },
   CONTACTS: { path: '/contacts', name: 'Контакты' },
   LOGIN: { path: '/login', name: 'Войти' },
@@ -15,7 +15,7 @@ export const pathNames: Record<EPathName, TPath> = {
   NOT_FOUND: { path: '/not_found', name: 'Не найдено' },
 };
 
-const { HOME, ABOUT, CONTACTS, LOGIN, FOOD_MENU } = pathNames;
+const { HOME, ABOUT, CONTACTS, LOGIN, MENU } = pathNames;
 
 export const paths: Record<EPathName, RouteProps> = {
   HOME: {
@@ -26,8 +26,8 @@ export const paths: Record<EPathName, RouteProps> = {
     path: ABOUT.path,
     element: About,
   },
-  FOOD_MENU: {
-    path: FOOD_MENU.path,
+  MENU: {
+    path: MENU.path,
     element: Menu,
   },
   CONTACTS: {

@@ -42,9 +42,9 @@ export const Header = () => {
                   {pathNames.ABOUT.name}
                 </NavLink>
               </li>
-              <li className={`nav-item ${store.path === FOOD_MENU.path && 'active'}`}>
-                <NavLink to={FOOD_MENU.path} className='nav-link'>
-                  {FOOD_MENU.name}
+              <li className={`nav-item ${store.path === MENU.path && 'active'}`}>
+                <NavLink to={MENU.path} className='nav-link'>
+                  {MENU.name}
                 </NavLink>
               </li>
             </ul>
@@ -55,4 +55,4 @@ export const Header = () => {
   );
 };
 
-const { HOME, ABOUT, CONTACTS, FOOD_MENU } = pathNames;
+const { HOME, ABOUT, CONTACTS, MENU } = pathNames;

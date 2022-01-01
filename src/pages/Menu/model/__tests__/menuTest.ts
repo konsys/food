@@ -42,7 +42,6 @@ describe('menu tests', () => {
   });
 
   it('should create menu', async () => {
-    expect(item).toBe(1);
     await createMenuFx(item);
 
     // eslint-disable-next-line effector/no-getState
@@ -50,12 +49,13 @@ describe('menu tests', () => {
   });
 
   it('should get all menu', async () => {
-    await getAllMenuFx({ limit: 5, page: 1 });
+    const limit = 2;
+    await getAllMenuFx({ limit, page: 1 });
     // eslint-disable-next-line effector/no-getState
     const { items } = $menuList.getState();
 
     expect(Array.isArray(items)).toBeTruthy();
-    expect(items.length).toBeGreaterThan(0);
+    expect(items).toHaveLength(limit);
   });
 
   it('should get one menu', async () => {

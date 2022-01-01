@@ -1,6 +1,6 @@
 export enum EPathName {
   HOME = 'HOME',
-  FOOD_MENU = 'FOOD_MENU',
+  MENU = 'MENU',
   ABOUT = 'ABOUT',
   CONTACTS = 'CONTACTS',
   LOGIN = 'LOGIN',
