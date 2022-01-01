@@ -40,10 +40,10 @@ describe('menu time test', () => {
   it('should get all menu time', async () => {
     await getAllMenuTimeFx();
     // eslint-disable-next-line effector/no-getState
-    const { records } = $menuTimeList.getState();
+    const { items } = $menuTimeList.getState();
 
-    expect(Array.isArray(records)).toBeTruthy();
-    expect(records.length).toBeGreaterThan(0);
+    expect(Array.isArray(items)).toBeTruthy();
+    expect(items.length).toBeGreaterThan(0);
   });
 
   it('should get one menu time', async () => {

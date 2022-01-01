@@ -27,12 +27,12 @@ describe('menu tests', () => {
 
     item = {
       ...item,
-      menuTime: menuTime[faker.datatype.number(menuTime.length)],
-      menuType: menuType[faker.datatype.number(menuType.length)],
+      menuTime: menuTime.items[faker.datatype.number(menuTime.items.length)],
+      menuType: menuType.items[faker.datatype.number(menuType.items.length)],
     };
     resetMenu();
     resetMenuList();
-    items = await getAllMenuFx();
+    items = (await getAllMenuFx()).items;
     ramdomItem = items[faker.datatype.number(items.length)];
   });
 
@@ -51,10 +51,10 @@ describe('menu tests', () => {
   it('should get all menu', async () => {
     await getAllMenuFx();
     // eslint-disable-next-line effector/no-getState
-    const { records } = $menuList.getState();
+    const { items } = $menuList.getState();
 
-    expect(Array.isArray(records)).toBeTruthy();
-    expect(records.length).toBeGreaterThan(0);
+    expect(Array.isArray(items)).toBeTruthy();
+    expect(items.length).toBeGreaterThan(0);
   });
 
   it('should get one menu', async () => {

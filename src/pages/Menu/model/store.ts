@@ -1,6 +1,10 @@
-import { combine, createDomain } from 'effector';
+import { createDomain } from 'effector';
 import { CrudService } from '../../../common/api';
-import { TPagination } from '../../../common/api/types';
+import {
+  createInitItemsWithPagination,
+  initPagination,
+  TItemsWithPagination,
+} from '../../../common/api/types';
 import { MenuDto } from './types';
 
 const MenuDomain = createDomain('MenuDomain');
@@ -16,7 +20,7 @@ export const createMenuFx = MenuDomain.effect<MenuDto, MenuDto, Error>({
   handler: (mt) => service.create(mt),
 });
 
-export const getAllMenuFx = MenuDomain.effect<void, TPagination<MenuDto>, Error>({
+export const getAllMenuFx = MenuDomain.effect<void, TItemsWithPagination<MenuDto>, Error>({
   handler: () => service.getAll(),
 });
 
@@ -32,7 +36,9 @@ export const deleteMenuFx = MenuDomain.effect<number, number, Error>({
   handler: (id) => service.deleteOne(id),
 });
 
-const $many = MenuDomain.store<TPagination<MenuDto>>([])
+export const $menuList = MenuDomain.store<TItemsWithPagination<MenuDto>>(
+  createInitItemsWithPagination<MenuDto>()
+)
   .on(getAllMenuFx.done, (_, { result }) => result)
   .reset(resetMenuList);
 
@@ -41,8 +47,3 @@ export const $menuOne = MenuDomain.store<MenuDto | null>(null)
   .on(updateMenuFx.done, (_, { result }) => result)
   .on(deleteMenuFx.done, () => null)
   .reset(resetMenu);
-
-export const $menuList = combine({
-  records: $many,
-  pagination: $pagination,
-});
