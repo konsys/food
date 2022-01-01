@@ -1,6 +1,6 @@
 import { combine, createDomain } from 'effector';
 import { CrudService } from '../../../common/api';
-import { $pagination } from '../../../common/api/store';
+import { TPagination } from '../../../common/api/types';
 import { MenuDto } from './types';
 
 const MenuDomain = createDomain('MenuDomain');
@@ -16,7 +16,7 @@ export const createMenuFx = MenuDomain.effect<MenuDto, MenuDto, Error>({
   handler: (mt) => service.create(mt),
 });
 
-export const getAllMenuFx = MenuDomain.effect<void, MenuDto[], Error>({
+export const getAllMenuFx = MenuDomain.effect<void, TPagination<MenuDto>, Error>({
   handler: () => service.getAll(),
 });
 
@@ -32,7 +32,7 @@ export const deleteMenuFx = MenuDomain.effect<number, number, Error>({
   handler: (id) => service.deleteOne(id),
 });
 
-const $many = MenuDomain.store<MenuDto[]>([])
+const $many = MenuDomain.store<TPagination<MenuDto>>([])
   .on(getAllMenuFx.done, (_, { result }) => result)
   .reset(resetMenuList);
 

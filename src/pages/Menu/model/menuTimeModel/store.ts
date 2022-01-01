@@ -1,6 +1,6 @@
 import { combine, createDomain } from 'effector';
 import { CrudService } from '../../../../common/api';
-import { $pagination } from '../../../../common/api/store';
+import { $pagination, TPagination } from '../../../../common/api/types';
 import { MenuTimeDto } from './types';
 
 const MenuDomain = createDomain('MenuDomain');
@@ -16,7 +16,7 @@ export const createMenuTimeFx = MenuDomain.effect<MenuTimeDto, MenuTimeDto, Erro
   handler: (mt) => service.create(mt),
 });
 
-export const getAllMenuTimeFx = MenuDomain.effect<void, MenuTimeDto[], Error>({
+export const getAllMenuTimeFx = MenuDomain.effect<void, TPagination<MenuTimeDto>, Error>({
   handler: () => service.getAll(),
 });
 
