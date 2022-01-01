@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/
 import { MenuTimeService } from './menu-time.service';
 import { CreateMenuTimeDto } from './dto/create-menu-time.dto';
 import { UpdateMenuTimeDto } from './dto/update-menu-time.dto';
-import { TItemsRequestParams } from 'src/common/types/paginationTypes';
+import { TPaginationWithFilters } from 'src/common/types/paginationTypes';
 
 @Controller('menu-time')
 export class MenuTimeController {
@@ -14,7 +14,7 @@ export class MenuTimeController {
   }
 
   @Get()
-  findAll(@Query() params: TItemsRequestParams) {
+  findAll(@Query() params: TPaginationWithFilters) {
     return this.service.findAll(params);
   }
 

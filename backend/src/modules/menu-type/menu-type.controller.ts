@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/
 import { MenuTypeService } from './menu-type.service';
 import { CreateMenuTypeDto } from './dto/create-menu-type.dto';
 import { UpdateMenuTypeDto } from './dto/update-menu-type.dto';
-import { TItemsRequestParams } from 'src/common/types/paginationTypes';
+import { TPaginationWithFilters } from 'src/common/types/paginationTypes';
 
 @Controller('menu-type')
 export class MenuTypeController {
@@ -14,7 +14,7 @@ export class MenuTypeController {
   }
 
   @Get()
-  findAll(@Query() params: TItemsRequestParams) {
+  findAll(@Query() params: TPaginationWithFilters) {
     return this.service.findAll(params);
   }
 

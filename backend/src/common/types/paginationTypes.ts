@@ -1,9 +1,16 @@
-export type TItemsRequestParams = {
-    page: number;
-    limit: number;
+export type TSort = 'asc' | 'desc';
+
+export type TPaginationRequestParams = {
+  page: number;
+  limit: number;
+  sort?: TSort;
+};
+
+export type TPaginationWithFilters = TPaginationRequestParams & {
+    filter?: Record<string, any>
   };
 
-export type TPagination = TItemsRequestParams & {
+export type TPagination = TPaginationRequestParams & {
     totalRecords: number;
   };
   

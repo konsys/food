@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { TItemsRequestParams, TItemsWithPagination } from 'src/common/types/paginationTypes';
+import { TPaginationWithFilters, TItemsWithPagination } from 'src/common/types/paginationTypes';
 import { MenuTypeEntity } from 'src/entities/menu-type.entity';
 import { Repository } from 'typeorm';
 import { CreateMenuTypeDto } from './dto/create-menu-type.dto';
@@ -16,7 +16,7 @@ export class MenuTypeService {
     return await this.repository.save(createMenuTypeDto)
   }
 
-  async findAll({limit, page}: TItemsRequestParams):Promise<TItemsWithPagination<MenuTypeEntity>> {
+  async findAll({limit, page}: TPaginationWithFilters):Promise<TItemsWithPagination<MenuTypeEntity>> {
     page = page > 0 ? page : 1;
     const take = limit || 10;
     const skip = take * page;
