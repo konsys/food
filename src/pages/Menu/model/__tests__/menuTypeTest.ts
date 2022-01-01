@@ -48,7 +48,7 @@ describe('menu type test', () => {
     // eslint-disable-next-line effector/no-getState
     const { items } = $menuTypeList.getState();
 
-    expect(items).toBe(2);
+    // expect(items).toBe(2);
 
     expect(Array.isArray(items)).toBeTruthy();
     expect(items).toHaveLength(limit);

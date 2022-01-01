@@ -1,5 +1,6 @@
+import { AxiosResponse } from 'axios';
 import { axiosClient } from '../../http/Clients';
-import { TListWithPagination, TPaginationWithFilters } from './types';
+import { TListRequest, TListResponce } from './types';
 
 export class CrudService<T> {
   private url: string;
@@ -11,8 +12,14 @@ export class CrudService<T> {
     return (await axiosClient.post<T>(this.url, params)).data;
   }
 
-  async getAll(params: TListWithPagination<T>): Promise<TListWithPagination<T>> {
-    return await axiosClient.get<TPaginationWithFilters<T>>(this.url), params;
+  async getAll(params: TListRequest<T>): Promise<TListResponce<T>> {
+    const { data } = await axiosClient.get<TListResponce<T>, AxiosResponse<TListResponce<T>>>(
+      this.url,
+      {
+        params,
+      }
+    );
+    return data;
   }
 
   async getOne(id: number): Promise<T> {

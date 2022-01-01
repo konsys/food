@@ -17,6 +17,7 @@ export class MenuTypeService {
   }
 
   async findAll({limit, page}: TListRequest<MenuTypeEntity>):Promise<TListResponce<MenuTypeEntity>> {
+    console.log(111111111, limit, page)
     page = page > 0 ? +page : 1;
     const take = +limit || 10;
     const skip = take * page;
