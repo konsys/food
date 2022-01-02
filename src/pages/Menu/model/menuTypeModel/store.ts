@@ -5,6 +5,7 @@ import {
   TListRequest,
   TListResponce,
 } from '../../../../common/api/types';
+import { Nullable } from '../../../../core/types';
 import { MenuTypeDto } from './types';
 
 const MenuDomain = createDomain('MenuDomain');
@@ -46,7 +47,7 @@ export const $menuTypeList = MenuDomain.store<TListResponce<MenuTypeDto>>(
   .on(getAllMenuTypeFx.done, (_, { result }) => result)
   .reset(resetMenuTypeList);
 
-export const $menuTypeOne = MenuDomain.store<MenuTypeDto | null>(null)
+export const $menuTypeOne = MenuDomain.store<Nullable<MenuTypeDto>>(null)
   .on(getOneMenuTypeFx.done, (_, { result }) => result)
   .on(createMenuTypeFx.done, (_, { result }) => result)
   .on(updateMenuTypeFx.done, (_, { result }) => result)

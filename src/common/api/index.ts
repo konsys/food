@@ -23,7 +23,7 @@ export class CrudService<T> {
   }
 
   async getOne(id: number): Promise<T> {
-    return (await axiosClient.get<T>(this.url, { params: { id } })).data;
+    return (await axiosClient.get<T>(`${this.url}/${id}`)).data;
   }
 
   async updateOne(entity: T): Promise<T> {

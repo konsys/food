@@ -14,12 +14,12 @@ import faker from 'faker';
 import { MenuTimeDto } from '../menuTimeModel/types';
 
 describe('menu time test', () => {
-  let item: MenuTimeDto;
+  let newItem: MenuTimeDto;
   let allItems: MenuTimeDto[];
   let randomItem: MenuTimeDto;
 
   beforeAll(async () => {
-    item = menuTimeFactory.build();
+    newItem = menuTimeFactory.build();
     resetMenuTime();
     resetMenuTimeList();
     allItems = (
@@ -37,7 +37,7 @@ describe('menu time test', () => {
   });
 
   it('should create menu time', async () => {
-    await createMenuTimeFx(item);
+    await createMenuTimeFx(newItem);
     // eslint-disable-next-line effector/no-getState
     expect($menuTimeOne.getState()).toStrictEqual(expect.objectContaining(item));
   });
