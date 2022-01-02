@@ -30,7 +30,7 @@ export class CrudService<T> {
     return (await axiosClient.put<T>(this.url, entity)).data;
   }
 
-  async deleteOne(id: number): Promise<number> {
-    return await axiosClient.delete(`${this.url}/${id}`);
+  async deleteOne(id: number): Promise<{affected?: number | null}> {
+    return (await axiosClient.delete(`${this.url}/${id}`)).data;
   }
 }

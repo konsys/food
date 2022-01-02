@@ -2,8 +2,11 @@ import { createDomain } from 'effector';
 import { CrudService } from '../../../common/api';
 import {
   createInitItemsWithPagination,
+  nullableResult,
+  OrmDeleteResult,
   TListRequest,
   TListResponce,
+  TypeOrmDeleteResult,
 } from '../../../common/api/types';
 import { MenuDto } from './types';
 
@@ -34,7 +37,7 @@ export const updateMenuFx = MenuDomain.effect<MenuDto, MenuDto, Error>({
   handler: (mt) => service.updateOne(mt),
 });
 
-export const deleteMenuFx = MenuDomain.effect<number, number, Error>({
+export const deleteMenuFx = MenuDomain.effect<number, TypeOrmDeleteResult, Error>({
   handler: (id) => service.deleteOne(id),
 });
 
@@ -45,8 +48,8 @@ export const $menuList = MenuDomain.store<TListResponce<MenuDto>>(
   .reset(resetMenuList);
 
 export const $menuOne = MenuDomain.store<MenuDto | null>(null)
-  .on(createMenuFx.done, (_, { result }) => result)
-  .on(getOneMenuFx.done, (_, { result }) => result)
-  .on(updateMenuFx.done, (_, { result }) => result)
-  .on(deleteMenuFx.done, () => null)
+  .on(createMenuFx.done, nullableResult)
+  .on(getOneMenuFx.done, nullableResult)
+  .on(updateMenuFx.done, nullableResult)
+  .on(deleteMenuFx.done, (prev, {result}) => (result?.affected ? null : prev))
   .reset(resetMenu);

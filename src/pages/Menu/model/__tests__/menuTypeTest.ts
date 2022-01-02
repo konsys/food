@@ -81,14 +81,13 @@ describe('menu type test', () => {
     randomItem.menuTypeId && (await deleteMenuTypeFx(randomItem.menuTypeId));
 
     // eslint-disable-next-line effector/no-getState
-    let one = $menuTypeOne.getState();
+    let one = $menuTypeOne.getState();    
     expect(one).toBeNull();
 
     randomItem.menuTypeId && (await getOneMenuTypeFx(randomItem.menuTypeId));
 
     // eslint-disable-next-line effector/no-getState
     one = $menuTypeOne.getState();
-    expect(one).toBe(1);
     expect(one).toBeNull();
   });
 });
