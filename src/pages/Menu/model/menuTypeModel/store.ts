@@ -47,6 +47,7 @@ export const $menuTypeList = MenuDomain.store<TListResponce<MenuTypeDto>>(
   .reset(resetMenuTypeList);
 
 export const $menuTypeOne = MenuDomain.store<MenuTypeDto | null>(null)
+  .on(getOneMenuTypeFx.done, (_, { result }) => result)
   .on(createMenuTypeFx.done, (_, { result }) => result)
   .on(updateMenuTypeFx.done, (_, { result }) => result)
   .on(deleteMenuTypeFx.done, () => null)
