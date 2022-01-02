@@ -20,7 +20,7 @@ export class MenuTimeService {
     page = page > 0 ? page : 1;
     const take = limit || 10;
     const skip = take * page;
-    const items = await this.repository.find({take,skip});
+    const items = await this.repository.find({take, skip, order:{menuTimeId: "ASC"}});
     return {
       items,
       limit,

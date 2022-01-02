@@ -20,7 +20,7 @@ export class MenuTypeService {
     page = page > 0 ? +page : 1;
     const take = +limit || 10;
     const skip = take * page;
-    const items = await this.repository.find({take,skip});
+    const items = await this.repository.find({take, skip, order: {menuTypeId: "ASC"}});
     return {
       items,
       limit,

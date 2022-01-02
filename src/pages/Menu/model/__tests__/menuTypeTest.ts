@@ -85,7 +85,7 @@ describe('menu type test', () => {
     expect(one).toBeNull();
 
     randomItem.menuTypeId && (await getOneMenuTypeFx(randomItem.menuTypeId));
-
+ 
     // eslint-disable-next-line effector/no-getState
     one = $menuTypeOne.getState();
     expect(one).toBeNull();
