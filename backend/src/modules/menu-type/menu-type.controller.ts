@@ -30,7 +30,7 @@ export class MenuTypeController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.service.remove(+id);
   }
 }

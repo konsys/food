@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
 import { MenuTypeEntity } from 'src/entities/menu-type.entity';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 import { CreateMenuTypeDto } from './dto/create-menu-type.dto';
 import { UpdateMenuTypeDto } from './dto/update-menu-type.dto';
 
@@ -13,7 +13,7 @@ export class MenuTypeService {
 ) {}
 
   async create(createMenuTypeDto: CreateMenuTypeDto) {
-    return await this.repository.save(createMenuTypeDto)
+    return this.repository.save(createMenuTypeDto)
   }
 
   async findAll({limit, page}: TListRequest<MenuTypeEntity>):Promise<TListResponce<MenuTypeEntity>> {
@@ -29,15 +29,15 @@ export class MenuTypeService {
     }
   }
 
-  async findOne(menuTypeId: number) {
-    return await this.repository.findOne(menuTypeId);
+  findOne(menuTypeId: number) {
+    return this.repository.findOne(menuTypeId);
   }
 
-  async update(updateMenuTypeDto: UpdateMenuTypeDto) {
-    return await this.repository.save(updateMenuTypeDto);
+  update(updateMenuTypeDto: UpdateMenuTypeDto) {
+    return this.repository.save(updateMenuTypeDto);
   }
 
-  async remove(menuTypeId: number) {
-    return await this.repository.delete({menuTypeId});
+ remove(menuTypeId: number): Promise<DeleteResult> {
+    return this.repository.delete({menuTypeId});
   }
 }

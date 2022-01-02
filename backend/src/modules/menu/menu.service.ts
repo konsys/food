@@ -10,34 +10,34 @@ import { UpdateMenuDto } from './dto/update-menu.dto';
 export class MenuService {
   constructor(@InjectRepository(MenuEntity)
   private readonly repository: Repository<MenuEntity>
-) {}
+  ) { }
 
-  async create(createMenuDto: CreateMenuDto) {
-    return await this.repository.save(createMenuDto);
+  create(createMenuDto: CreateMenuDto) {
+    return this.repository.save(createMenuDto);
   }
 
-  async findAll({limit, page}: TListRequest<MenuEntity>):Promise<TListResponce<MenuEntity>> {
+  async findAll({ limit, page }: TListRequest<MenuEntity>): Promise<TListResponce<MenuEntity>> {
     page = page > 0 ? page : 1;
     const take = limit || 10;
     const skip = take * page;
-    const items = await this.repository.find({take,skip});
+    const items = await this.repository.find({ take, skip });
     return {
       items,
       limit,
       page,
-      totalRecords:items.length
+      totalRecords: items.length
     }
   }
 
-  async findOne(menuId: number) {
-    return await this.repository.findOne(menuId);
+         findOne(menuId: number) {
+    return this.repository.findOne(menuId);
   }
 
-  async update(updateMenuDto: UpdateMenuDto) {    
-    return await this.repository.save( updateMenuDto);
+  update(updateMenuDto: UpdateMenuDto) {
+    return this.repository.save(updateMenuDto);
   }
 
-  async remove(menuId: number) {
-    return await this.repository.delete({menuId});
+  remove(menuId: number) {
+    return this.repository.delete({ menuId });
   }
 }

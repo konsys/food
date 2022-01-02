@@ -77,7 +77,7 @@ describe('menu type test', () => {
     expect(one?.description).toStrictEqual(description);
   });
 
-  it.skip('should delete menu type', async () => {
+  it('should delete menu type', async () => {
     randomItem.menuTypeId && (await deleteMenuTypeFx(randomItem.menuTypeId));
 
     // eslint-disable-next-line effector/no-getState
@@ -88,6 +88,7 @@ describe('menu type test', () => {
 
     // eslint-disable-next-line effector/no-getState
     one = $menuTypeOne.getState();
+    expect(one).toBe(1);
     expect(one).toBeNull();
   });
 });
