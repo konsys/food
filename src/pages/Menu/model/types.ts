@@ -10,4 +10,7 @@ export type MenuDto = {
   menuTime: MenuTimeDto;
   menuType: MenuTypeDto;
   visible: boolean;
+  bigImg: string;
+  averageImg: string;
+  smallImg: string;
 };
