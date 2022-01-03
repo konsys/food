@@ -7,7 +7,7 @@ import { MenuService } from './menu.service';
 
 @Controller('menu')
 export class MenuController {
-  constructor(private readonly menuService: MenuService) {}
+  constructor(private readonly menuService: MenuService) { }
 
   @Post()
   create(@Body() createMenuDto: CreateMenuDto) {

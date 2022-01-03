@@ -12,15 +12,18 @@ export class MenuService {
   private readonly repository: Repository<MenuEntity>
   ) { }
 
-  create(createMenuDto: CreateMenuDto) {
-    return this.repository.save(createMenuDto);
+  async create(createMenuDto: CreateMenuDto) {
+    const res = await this.repository.save(createMenuDto);
+    // console.log(111111111111, createMenuDto);
+    // console.log(222222222222, res);
+    return res;
   }
 
   async findAll({ limit, page }: TListRequest<MenuEntity>): Promise<TListResponce<MenuEntity>> {
     page = page > 0 ? page : 1;
     const take = limit || 10;
     const skip = take * page;
-    const items = await this.repository.find({take, skip, order:{menuId: "ASC"}});
+    const items = await this.repository.find({ take, skip, order: { menuId: "ASC" } });
     return {
       items,
       limit,
@@ -34,10 +37,7 @@ export class MenuService {
   }
 
   async update(updateMenuDto: UpdateMenuDto) {
-     const res = await this.repository.save(updateMenuDto);
-     console.log(1111111111111111111,updateMenuDto);
-     console.log(2222222222222222,res);
-     return res;
+    return this.repository.save(updateMenuDto);
   }
 
   remove(menuId: number) {

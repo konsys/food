@@ -32,15 +32,11 @@ const generateNewItem = async () => {
 
 describe('menu tests', () => {
   let newItem: MenuDto;
-  let allItems: MenuDto[];
-  let ramdomItem: MenuDto;
 
   beforeEach(async () => {
     resetMenu();
     resetMenuList();
     newItem = await generateNewItem();
-    allItems = (await getAllMenuFx({ limit: 10, page: 1 })).items;
-    ramdomItem = allItems[faker.datatype.number(allItems.length)];
   });
 
   afterAll(() => {
