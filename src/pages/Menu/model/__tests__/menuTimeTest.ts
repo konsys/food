@@ -18,6 +18,13 @@ describe('menu time test', () => {
   let allItems: MenuTimeDto[];
   let randomItem: MenuTimeDto;
 
+  beforeAll(async () => {
+    for (let i = 0; i < 20; i++) {
+      newItem = menuTimeFactory.build();
+      await createMenuTimeFx(newItem);
+    }
+  });
+
   beforeEach(async () => {
     newItem = menuTimeFactory.build();
     resetMenuTime();

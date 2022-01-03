@@ -33,6 +33,13 @@ const generateNewItem = async () => {
 describe('menu tests', () => {
   let newItem: MenuDto;
 
+  beforeAll(async () => {
+    for (let i = 0; i < 20; i++) {
+      newItem = await generateNewItem();
+      await createMenuFx(newItem);
+    }
+  });
+
   beforeEach(async () => {
     resetMenu();
     resetMenuList();

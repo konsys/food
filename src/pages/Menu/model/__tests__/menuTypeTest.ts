@@ -18,6 +18,13 @@ describe('menu type test', () => {
   let allItems: MenuTypeDto[];
   let randomItem: MenuTypeDto;
 
+  beforeAll(async () => {
+    for (let i = 0; i < 20; i++) {
+      newItem = menuTypeFactory.build();
+      await createMenuTypeFx(newItem);
+    }
+  });
+
   beforeEach(async () => {
     newItem = menuTypeFactory.build();
     resetMenuType();
