@@ -18,7 +18,7 @@ describe('menu time test', () => {
   let allItems: MenuTimeDto[];
   let randomItem: MenuTimeDto;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     newItem = menuTimeFactory.build();
     resetMenuTime();
     resetMenuTimeList();

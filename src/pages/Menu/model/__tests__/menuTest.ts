@@ -46,7 +46,6 @@ describe('menu tests', () => {
 
   it('should create menu', async () => {
     await createMenuFx(newItem);
-
     // eslint-disable-next-line effector/no-getState
     expect($menuOne.getState()).toStrictEqual(expect.objectContaining(newItem));
   });

@@ -18,7 +18,7 @@ describe('menu type test', () => {
   let allItems: MenuTypeDto[];
   let randomItem: MenuTypeDto;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     newItem = menuTypeFactory.build();
     resetMenuType();
     resetMenuTypeList();
@@ -83,14 +83,13 @@ describe('menu type test', () => {
     item?.menuTypeId && (await deleteMenuTypeFx(item.menuTypeId));
 
     // eslint-disable-next-line effector/no-getState
-    let one = $menuTypeOne.getState();    
+    let one = $menuTypeOne.getState();
     expect(one).toBeNull();
 
     item?.menuTypeId && (await getOneMenuTypeFx(item.menuTypeId));
- 
+
     // eslint-disable-next-line effector/no-getState
     one = $menuTypeOne.getState();
     expect(one).toBeNull();
   });
 });
- 
