@@ -78,16 +78,19 @@ describe('menu type test', () => {
   });
 
   it('should delete menu type', async () => {
-    randomItem.menuTypeId && (await deleteMenuTypeFx(randomItem.menuTypeId));
+    await createMenuTypeFx(newItem);
+    const item = $menuTypeOne.getState();
+    item?.menuTypeId && (await deleteMenuTypeFx(item.menuTypeId));
 
     // eslint-disable-next-line effector/no-getState
     let one = $menuTypeOne.getState();    
     expect(one).toBeNull();
 
-    randomItem.menuTypeId && (await getOneMenuTypeFx(randomItem.menuTypeId));
+    item?.menuTypeId && (await getOneMenuTypeFx(item.menuTypeId));
  
     // eslint-disable-next-line effector/no-getState
     one = $menuTypeOne.getState();
     expect(one).toBeNull();
   });
 });
+ 

@@ -72,13 +72,15 @@ describe('menu time test', () => {
   });
 
   it('should delete menu time', async () => {
-    randomItem.menuTimeId && (await deleteMenuTimeFx(randomItem.menuTimeId));
+    await createMenuTimeFx(newItem);
+    const item = $menuTimeOne.getState();
+    item?.menuTimeId && (await deleteMenuTimeFx(item.menuTimeId));
 
     // eslint-disable-next-line effector/no-getState
     let one = $menuTimeOne.getState();
     expect(one).toBeNull();
 
-    randomItem.menuTimeId && (await getOneMenuTimeFx(randomItem.menuTimeId));
+    item?.menuTimeId && (await getOneMenuTimeFx(item.menuTimeId));
 
     // eslint-disable-next-line effector/no-getState
     one = $menuTimeOne.getState();

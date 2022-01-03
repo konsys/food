@@ -3,7 +3,6 @@ import { CrudService } from '../../../common/api';
 import {
   createInitItemsWithPagination,
   nullableResult,
-  OrmDeleteResult,
   TListRequest,
   TListResponce,
   TypeOrmDeleteResult,

@@ -27,8 +27,8 @@ describe('menu tests', () => {
     const menuType = await getAllMenuTypeFx({ limit: 5, page: 1 });
     newItem = menuFactory.build();
 
-    item = {
-      ...item,
+    newItem = {
+      ...newItem,
       menuTime: menuTime.items[faker.datatype.number(menuTime.items.length)],
       menuType: menuType.items[faker.datatype.number(menuType.items.length)],
     };
@@ -45,7 +45,7 @@ describe('menu tests', () => {
     await createMenuFx(newItem);
 
     // eslint-disable-next-line effector/no-getState
-    expect($menuOne.getState()).toStrictEqual(expect.objectContaining(item));
+    expect($menuOne.getState()).toStrictEqual(expect.objectContaining(newItem));
   });
 
   it('should get all menu', async () => {
@@ -62,7 +62,7 @@ describe('menu tests', () => {
     ramdomItem?.menuId && (await getOneMenuFx(ramdomItem.menuId));
     // eslint-disable-next-line effector/no-getState
     const one = $menuOne.getState();
-    expect(one).toStrictEqual(expect.objectContaining(item));
+    expect(one).toStrictEqual(expect.objectContaining(ramdomItem));
   });
 
   it('should update menu', async () => {
@@ -75,13 +75,15 @@ describe('menu tests', () => {
   });
 
   it('should delete menu', async () => {
-    ramdomItem.menuId && (await deleteMenuFx(ramdomItem.menuId));
+    await createMenuFx(newItem);
+    const item = $menuOne.getState();
+    item?.menuId && (await deleteMenuFx(item.menuId));
 
     // eslint-disable-next-line effector/no-getState
     let one = $menuOne.getState();
     expect(one).toBeNull();
 
-    ramdomItem.menuId && (await getOneMenuFx(ramdomItem.menuId));
+    item?.menuId && (await getOneMenuFx(item.menuId));
 
     // eslint-disable-next-line effector/no-getState
     one = $menuOne.getState();
