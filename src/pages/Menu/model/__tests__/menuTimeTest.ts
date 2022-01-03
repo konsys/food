@@ -36,7 +36,7 @@ describe('menu time test', () => {
     $menuTimeList.off(resetMenuTimeList);
   });
 
-  it('should create menu time', async () => { 
+  it('should create menu time', async () => {
     await createMenuTimeFx(newItem);
     // eslint-disable-next-line effector/no-getState
     expect($menuTimeOne.getState()).toStrictEqual(expect.objectContaining(newItem));
