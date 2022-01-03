@@ -15,24 +15,31 @@ import {
 } from '../store';
 import { MenuDto } from '../types';
 
+const generateNewItem = async () => {
+  resetMenu();
+  resetMenuList();
+  const menuTime = await getAllMenuTimeFx({ limit: 5, page: 1 });
+  const menuType = await getAllMenuTypeFx({ limit: 5, page: 1 });
+  let newItem = menuFactory.build();
+
+  newItem = {
+    ...newItem,
+    menuTime: menuTime.items[faker.datatype.number(menuTime.items.length)],
+    menuType: menuType.items[faker.datatype.number(menuType.items.length)],
+  };
+  return newItem;
+}
+
 describe('menu tests', () => {
   let newItem: MenuDto;
   let allItems: MenuDto[];
   let ramdomItem: MenuDto;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     resetMenu();
     resetMenuList();
-    const menuTime = await getAllMenuTimeFx({ limit: 5, page: 1 });
-    const menuType = await getAllMenuTypeFx({ limit: 5, page: 1 });
-    newItem = menuFactory.build();
-
-    newItem = {
-      ...newItem,
-      menuTime: menuTime.items[faker.datatype.number(menuTime.items.length)],
-      menuType: menuType.items[faker.datatype.number(menuType.items.length)],
-    };
-    allItems = (await getAllMenuFx({ limit: 1, page: 1 })).items;
+    newItem = await generateNewItem();
+    allItems = (await getAllMenuFx({ limit: 10, page: 1 })).items;
     ramdomItem = allItems[faker.datatype.number(allItems.length)];
   });
 
@@ -59,18 +66,23 @@ describe('menu tests', () => {
   });
 
   it('should get one menu', async () => {
-    ramdomItem?.menuId && (await getOneMenuFx(ramdomItem.menuId));
-    // eslint-disable-next-line effector/no-getState
+    await createMenuFx(newItem);
     const one = $menuOne.getState();
-    expect(one).toStrictEqual(expect.objectContaining(ramdomItem));
+    one?.menuId && (await getOneMenuFx(one.menuId));
+    // eslint-disable-next-line effector/no-getState
+    const two = $menuOne.getState();
+    expect(one).toStrictEqual(expect.objectContaining(two));
   });
 
   it('should update menu', async () => {
+    await createMenuFx(newItem);
+    let one = $menuOne.getState();
+
     const description = faker.datatype.uuid();
-    ramdomItem && (await updateMenuFx({ ...ramdomItem, description }));
+    one && (await updateMenuFx({ ...one, description }));
 
     // eslint-disable-next-line effector/no-getState
-    const one = $menuOne.getState();
+    one = $menuOne.getState();
     expect(one?.description).toStrictEqual(description);
   });
 

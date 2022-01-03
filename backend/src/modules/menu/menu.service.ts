@@ -33,8 +33,11 @@ export class MenuService {
     return this.repository.findOne(menuId);
   }
 
-  update(updateMenuDto: UpdateMenuDto) {
-    return this.repository.save(updateMenuDto);
+  async update(updateMenuDto: UpdateMenuDto) {
+     const res = await this.repository.save(updateMenuDto);
+     console.log(1111111111111111111,updateMenuDto);
+     console.log(2222222222222222,res);
+     return res;
   }
 
   remove(menuId: number) {

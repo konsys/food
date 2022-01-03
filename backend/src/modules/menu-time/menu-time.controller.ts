@@ -7,11 +7,11 @@ import { TListRequest } from 'src/common/types/paginationTypes';
 
 @Controller('menu-time')
 export class MenuTimeController {
-  constructor(private readonly service: MenuTimeService) {}
-  
+  constructor(private readonly service: MenuTimeService) { }
+
   @Post()
   create(@Body() createMenuTimeDto: CreateMenuTimeDto) {
-    return this.service.create(createMenuTimeDto);
+    return this.service.create(createMenuTimeDto);;
   }
 
   @Get()

@@ -36,10 +36,10 @@ describe('menu time test', () => {
     $menuTimeList.off(resetMenuTimeList);
   });
 
-  it('should create menu time', async () => {
+  it('should create menu time', async () => { 
     await createMenuTimeFx(newItem);
     // eslint-disable-next-line effector/no-getState
-    expect($menuTimeOne.getState()).toStrictEqual(expect.objectContaining(item));
+    expect($menuTimeOne.getState()).toStrictEqual(expect.objectContaining(newItem));
   });
 
   it('should get all menu time', async () => {
@@ -59,7 +59,7 @@ describe('menu time test', () => {
     randomItem.menuTimeId && (await getOneMenuTimeFx(randomItem.menuTimeId));
     // randomItem-disable-next-line effector/no-getState
     const one = $menuTimeOne.getState();
-    expect(one).toStrictEqual(expect.objectContaining(item));
+    expect(one).toStrictEqual(expect.objectContaining(randomItem));
   });
 
   it('should update menu time', async () => {
@@ -68,7 +68,7 @@ describe('menu time test', () => {
 
     // eslint-disable-next-line effector/no-getState
     const one = $menuTimeOne.getState();
-    expect(one?.description).toStrictEqual(description);
+    expect(one?.description).toBe(description);
   });
 
   it('should delete menu time', async () => {

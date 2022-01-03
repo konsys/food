@@ -12,9 +12,8 @@ export class MenuTimeService {
   private readonly repository: Repository<MenuTimeEntity>
 ) {}
 
-   create(createMenuTimeDto: CreateMenuTimeDto) {
-    console.log(1111111, createMenuTimeDto)
-    return this.repository.create(createMenuTimeDto)
+  create(createMenuTimeDto: CreateMenuTimeDto) {
+    return this.repository.save(createMenuTimeDto)
   }
 
   async findAll({limit, page}: TListRequest<MenuTimeEntity>):Promise<TListResponce<MenuTimeEntity>> {
@@ -31,7 +30,7 @@ export class MenuTimeService {
   }
 
   findOne(menuTimeId: number) {
-    return  this.repository.findOne(menuTimeId);
+    return this.repository.findOne(menuTimeId);
   }
 
   update(updateMenuTimeDto: UpdateMenuTimeDto) {    
