@@ -18,8 +18,9 @@ export const StandardButton = ({
   return (
     <>
       <Button
-        className={`btn btn-lg btn-circle ${isUppercase && 'btn-uppercase'} ${isBigPadding && 'btn-big-padding'
-          }  ${isWhiteText && 'btn-white'}`}
+        className={`btn btn-lg btn-circle ${isUppercase && 'btn-uppercase'} ${
+          isBigPadding && 'btn-big-padding'
+        }  ${isWhiteText && 'btn-white'}`}
       >
         {text}
       </Button>

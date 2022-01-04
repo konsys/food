@@ -2,7 +2,6 @@ import React from 'react';
 import { MenuDto } from '../../model/types';
 import './styles.scss';
 
-
 interface Props {
   foodMenuItem: MenuDto;
 }
