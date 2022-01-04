@@ -1,4 +1,5 @@
-import { createDomain } from 'effector';
+import { createDomain, sample } from 'effector';
+import { createGate } from 'effector-react';
 import { CrudService } from '../../../../common/api';
 import {
   createInitItemsWithPagination,
@@ -55,3 +56,12 @@ export const $menuTypeOne = MenuDomain.store<Nullable<MenuTypeDto>>(null)
   .on(updateMenuTypeFx.done, nullableResult)
   .on(deleteMenuTypeFx.done, (prev, { result }) => (result?.affected ? null : prev))
   .reset(resetMenuType);
+
+export const MenuGate = createGate();
+
+sample({
+  clock: [MenuGate.open],
+  source: MenuGate.state,
+  fn: () => ({ limit: 10, page: 1 }),
+  target: getAllMenuTypeFx,
+});
