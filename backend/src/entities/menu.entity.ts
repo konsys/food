@@ -41,4 +41,7 @@ export class MenuEntity {
 
   @Column({ default: false })
   visible: boolean;
+
+  @Column({ default: 0 })
+  price: number;
 }

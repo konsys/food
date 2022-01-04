@@ -23,7 +23,7 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDragAndDrop": false,
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     },
     "easyRedis.address": "127.0.0.1:6379",
     "editor.find.autoFindInSelection": "always",
@@ -31,7 +31,7 @@
     "myRedis.address": "127.0.0.1:6379",
     "myRedis.password": "",
     "[scss]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     },
     "git.autofetch": true,
     "editor.suggestSelection": "first",
@@ -68,6 +68,6 @@
     "cloudcode.yaml.format.enable": true,
     "editor.autoIndent": "full",
     "[dockercompose]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
     }
 }

@@ -1,11 +1,12 @@
 import React, { ReactElement } from 'react';
+import { MenuDto } from '../model/types';
 import { MenuHeader } from './MenuHeader';
-import { MenuItem, MenuItemCard } from './MenuItem';
+import { MenuItem } from './MenuItem';
 import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.scss';
 
 interface Props {
-  foodItems: MenuItemCard[];
+  foodItems: MenuDto[];
 }
 
 export const CafeMenu = ({ foodItems }: Props): ReactElement => {

@@ -53,5 +53,5 @@ export const $menuTypeOne = MenuDomain.store<Nullable<MenuTypeDto>>(null)
   .on(getOneMenuTypeFx.done, nullableResult)
   .on(createMenuTypeFx.done, nullableResult)
   .on(updateMenuTypeFx.done, nullableResult)
-  .on(deleteMenuTypeFx.done, (prev, {result}) => (result?.affected ? null : prev))
+  .on(deleteMenuTypeFx.done, (prev, { result }) => (result?.affected ? null : prev))
   .reset(resetMenuType);

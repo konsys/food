@@ -1,15 +1,10 @@
 import React from 'react';
+import { MenuDto } from '../../model/types';
 import './styles.scss';
 
-export interface MenuItemCard {
-  price: string;
-  description: string;
-  name: string;
-  img: string;
-}
 
 interface Props {
-  foodMenuItem: MenuItemCard;
+  foodMenuItem: MenuDto;
 }
 
 export const MenuItem = ({ foodMenuItem }: Props) => {
@@ -18,7 +13,7 @@ export const MenuItem = ({ foodMenuItem }: Props) => {
       <div className='col-lg-4 col-md-6'>
         <div className='gallery-single'>
           <h2>{foodMenuItem.name}</h2>
-          <img src={foodMenuItem.img} className='img-fluid' alt='' />
+          <img src={foodMenuItem.averageImg} className='img-fluid' alt='' />
           <div className='why-text'>
             <p>{foodMenuItem.description}</p>
             <h4>{foodMenuItem.price}</h4>

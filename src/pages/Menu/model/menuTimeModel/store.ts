@@ -49,8 +49,8 @@ export const $menuTimeList = MenuDomain.store<TListResponce<MenuTimeDto>>(
   .reset(resetMenuTimeList);
 
 export const $menuTimeOne = MenuDomain.store<MenuTimeDto | null>(null)
-.on(createMenuTimeFx.done, nullableResult)
-.on(getOneMenuTimeFx.done, nullableResult)
-.on(updateMenuTimeFx.done, nullableResult)
-.on(deleteMenuTimeFx.done, (prev, {result}) => (result?.affected ? null : prev))
+  .on(createMenuTimeFx.done, nullableResult)
+  .on(getOneMenuTimeFx.done, nullableResult)
+  .on(updateMenuTimeFx.done, nullableResult)
+  .on(deleteMenuTimeFx.done, (prev, { result }) => (result?.affected ? null : prev))
   .reset(resetMenuTime);

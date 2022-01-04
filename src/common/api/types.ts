@@ -22,6 +22,7 @@ export const createInitItemsWithPagination = <T>(): TListResponce<T> => ({
   totalRecords: 0,
 });
 
-export const nullableResult = <R, T extends {result: any}>(_: R, { result }: T) => ( result ? result : null);
+export const nullableResult = <R, T extends { result: any }>(_: R, { result }: T) =>
+  result ? result : null;
 
-export type TypeOrmDeleteResult = {affected?: number | null}
+export type TypeOrmDeleteResult = { affected?: number | null };
