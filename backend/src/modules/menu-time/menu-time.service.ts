@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
 import { MenuTimeEntity } from 'src/entities/menu-time.entity';
-import { Repository } from 'typeorm';
+import { FindManyOptions, Repository } from 'typeorm';
 import { CreateMenuTimeDto } from './dto/create-menu-time.dto';
 import { UpdateMenuTimeDto } from './dto/update-menu-time.dto';
 
@@ -21,7 +21,15 @@ export class MenuTimeService {
     const take = limit || 10;
     const skip = take * page;
     const totalRecords = await this.repository.count(filter);
-    const items = await this.repository.find({ where: { filter }, take, skip, order: { menuTimeId: "ASC" } });
+    const allFilters: FindManyOptions = {
+      take,
+      skip,
+      order: { menuTimeId: "ASC" },
+    }
+    if (filter) {
+      allFilters.where = filter;
+    }
+    const items = await this.repository.find(allFilters);
     return {
       items,
       limit,
