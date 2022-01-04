@@ -2,13 +2,13 @@
 
 .gallery-single {
   margin: 30px 0px;
+  h4{
+    color: $colorThemeMain;
+    font-weight: $fontWeightnBold;
+  }
 }
 
 .why-text {
-  h4 {
-    font-weight: $fontWeightnSemiBold;
-    font-family: $hFontFamily;
-  }
   p {
     font-size: $fontSizePBig;
     margin: 0px;

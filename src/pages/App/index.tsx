@@ -4,6 +4,7 @@ import { Template } from '../../common/template';
 import { getRoutes } from '../../routes';
 import './style/app.style.scss';
 import './style/app.theme.scss';
+import 'antd/dist/antd.css';
 
 function App() {
   return (
