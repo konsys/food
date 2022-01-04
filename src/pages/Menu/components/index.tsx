@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { TListResponce } from '../../../common/api/types';
 import { MenuDto } from '../model/types';
 import { MenuHeader } from './MenuHeader';
 import { MenuItem } from './MenuItem';
@@ -6,7 +7,7 @@ import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.scss';
 
 interface Props {
-  foodItems: MenuDto[];
+  foodItems: TListResponce<MenuDto>;
 }
 
 export const CafeMenu = ({ foodItems }: Props): ReactElement => {
@@ -17,7 +18,7 @@ export const CafeMenu = ({ foodItems }: Props): ReactElement => {
         <MenuLinks />
 
         <div className='row special-list'>
-          {foodItems.map((v, k) => (
+          {foodItems.items.map((v, k) => (
             <MenuItem foodMenuItem={v} key={k} />
           ))}
         </div>
