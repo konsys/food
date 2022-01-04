@@ -13,5 +13,5 @@ export type MenuDto = {
   bigImg: string;
   averageImg: string;
   smallImg: string;
-  price: number;
+  price: string;
 };
