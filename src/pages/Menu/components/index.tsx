@@ -1,6 +1,7 @@
+import { Pagination } from 'antd';
 import React, { ReactElement } from 'react';
 import { TListResponce } from '../../../common/api/types';
-import TemplatePagination from '../../../common/components/pagination/TemplatePagination';
+import { TVoidFn } from '../../../common/types';
 import { MenuDto } from '../model/types';
 import { MenuHeader } from './MenuHeader';
 import { MenuItem } from './MenuItem';
@@ -9,9 +10,10 @@ import './styles.scss';
 
 interface Props {
   foodItems: TListResponce<MenuDto>;
+  setPage: TVoidFn<number>;
 }
 
-export const CafeMenu = ({ foodItems }: Props): ReactElement => {
+export const CafeMenu = ({ foodItems, setPage }: Props): ReactElement => {
   return (
     <>
       <div className='menu-box'>
@@ -24,7 +26,11 @@ export const CafeMenu = ({ foodItems }: Props): ReactElement => {
             ))}
           </div>
           <div className='row'>
-            <TemplatePagination />
+            <Pagination
+              defaultCurrent={foodItems.page}
+              total={foodItems.totalRecords}
+              onChange={setPage}
+            />
           </div>
         </div>
       </div>

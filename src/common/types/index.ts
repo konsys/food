@@ -1,0 +1,1 @@
+export type TVoidFn<T> = (arg: T) => void
