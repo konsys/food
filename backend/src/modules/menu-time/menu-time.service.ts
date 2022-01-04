@@ -16,13 +16,14 @@ export class MenuTimeService {
     return this.repository.save(createMenuTimeDto)
   }
 
+
   async findAll({ limit, page, filter }: TListRequest<MenuTimeEntity>): Promise<TListResponce<MenuTimeEntity>> {
-    page = page > 0 ? page : 1;
-    const take = limit || 10;
+    page = +(page > 0 ? page : 1);
+    const take = limit = +limit;
     const skip = take * page;
     const totalRecords = await this.repository.count(filter);
     const allFilters: FindManyOptions = {
-      take,
+      take: limit,
       skip,
       order: { menuTimeId: "ASC" },
     }

@@ -17,12 +17,12 @@ export class MenuService {
   }
 
   async findAll({ limit, page, filter }: TListRequest<MenuEntity>): Promise<TListResponce<MenuEntity>> {
-    page = page > 0 ? page : 1;
-    const take = limit || 10;
+    page = +(page > 0 ? page : 1);
+    const take = limit = +limit;
     const skip = take * page;
     const totalRecords = await this.repository.count(filter);
     const allFilters: FindManyOptions = {
-      take,
+      take: limit,
       skip,
       order: { menuId: "ASC" },
     }

@@ -27,8 +27,9 @@ export const CafeMenu = ({ foodItems, setPage }: Props): ReactElement => {
           </div>
           <div className='row'>
             <Pagination
-              defaultCurrent={foodItems.page}
-              total={foodItems.totalRecords}
+              current={+foodItems.page}
+              defaultCurrent={1}
+              total={+foodItems.totalRecords}
               onChange={setPage}
             />
           </div>

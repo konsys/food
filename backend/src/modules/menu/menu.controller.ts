@@ -15,8 +15,10 @@ export class MenuController {
   }
 
   @Get()
-  findAll(@Query() params: TListRequest<MenuEntity>) {
-    return this.menuService.findAll(params);
+  async findAll(@Query() params: TListRequest<MenuEntity>) {
+    const res = await this.menuService.findAll(params);
+    console.log(1111111111111, res);
+    return res;
   }
 
   @Get(':id')
