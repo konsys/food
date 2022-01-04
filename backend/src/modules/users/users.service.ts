@@ -23,7 +23,7 @@ export class UsersService {
     private readonly users: Repository<UsersEntity>,
     @InjectRepository(TokensEntity)
     private readonly tokens: Repository<TokensEntity>,
-  ) {}
+  ) { }
 
   async getAllUsers(filter?: FindManyOptions): Promise<UsersEntity[]> {
     try {

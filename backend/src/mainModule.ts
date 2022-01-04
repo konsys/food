@@ -18,4 +18,4 @@ import { MenuTypeModule } from './modules/menu-type/menu-type.module';
     MenuModule
   ],
 })
-export class MainModule {}
+export class MainModule { }

@@ -5,8 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MenuTimeEntity } from 'src/entities/menu-time.entity';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([MenuTimeEntity])],
+  imports: [TypeOrmModule.forFeature([MenuTimeEntity])],
   controllers: [MenuTimeController],
   providers: [MenuTimeService]
 })
-export class MenuTimeModule {}
+export class MenuTimeModule { }

@@ -10,22 +10,23 @@ import { UpdateMenuTypeDto } from './dto/update-menu-type.dto';
 export class MenuTypeService {
   constructor(@InjectRepository(MenuTypeEntity)
   private readonly repository: Repository<MenuTypeEntity>
-) {}
+  ) { }
 
   async create(createMenuTypeDto: CreateMenuTypeDto) {
     return this.repository.save(createMenuTypeDto)
   }
 
-  async findAll({limit, page}: TListRequest<MenuTypeEntity>):Promise<TListResponce<MenuTypeEntity>> {
+  async findAll({ limit, page, filter }: TListRequest<MenuTypeEntity>): Promise<TListResponce<MenuTypeEntity>> {
     page = page > 0 ? +page : 1;
     const take = +limit || 10;
     const skip = take * page;
-    const items = await this.repository.find({take, skip, order: {menuTypeId: "ASC"}});
+    const totalRecords = await this.repository.count(filter);
+    const items = await this.repository.find({ where: { filter }, take, skip, order: { menuTypeId: "ASC" } });
     return {
       items,
       limit,
       page,
-      totalRecords:items.length
+      totalRecords: items.length
     }
   }
 
@@ -37,7 +38,7 @@ export class MenuTypeService {
     return this.repository.save(updateMenuTypeDto);
   }
 
- remove(menuTypeId: number): Promise<DeleteResult> {
-    return this.repository.delete({menuTypeId});
+  remove(menuTypeId: number): Promise<DeleteResult> {
+    return this.repository.delete({ menuTypeId });
   }
 }

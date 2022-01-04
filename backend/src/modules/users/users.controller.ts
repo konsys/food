@@ -25,7 +25,7 @@ export class UsersController {
   constructor(
     private readonly service: UsersService,
     private readonly authService: AuthService,
-  ) {}
+  ) { }
 
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')

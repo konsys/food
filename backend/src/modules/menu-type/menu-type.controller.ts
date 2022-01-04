@@ -7,7 +7,7 @@ import { TListRequest } from 'src/common/types/paginationTypes';
 
 @Controller('menu-type')
 export class MenuTypeController {
-  constructor(private readonly service: MenuTypeService) {}
+  constructor(private readonly service: MenuTypeService) { }
 
   @Post()
   create(@Body() createMenuTypeDto: CreateMenuTypeDto) {
