@@ -8,6 +8,13 @@ import { MenuItem } from './MenuItem';
 import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.scss';
 
+export enum EFoodType {
+  ALL = 'All',
+  DRINKS = 'Drinks',
+  SALADS = 'Salads',
+  HOT = 'Hot',
+}
+
 interface Props {
   foodItems: TListResponce<MenuDto>;
   setPage: TVoidFn<number>;
@@ -20,7 +27,7 @@ export const CafeMenu = ({ foodItems, setPage, setPageSize }: Props): ReactEleme
       <div className='menu-box'>
         <div className='container'>
           <MenuHeader />
-          <MenuLinks />
+          <MenuLinks menuType={EFoodType.DRINKS} />
           <div className='row special-list'>
             {foodItems.items.map((v, k) => (
               <MenuItem foodMenuItem={v} key={k} />
