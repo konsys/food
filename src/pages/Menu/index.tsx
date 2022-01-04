@@ -4,8 +4,9 @@ import { CafeMenu } from './components';
 import { $menuList, MenuGate, setPage } from './model/store';
 
 export const Menu = (): ReactElement => {
-  useGate(MenuGate, { limit: 10, page: 1 });
   const list = useStore($menuList);
+  useGate(MenuGate, { limit: list.limit, page: list.page });
+
   return (
     <>
       <CafeMenu foodItems={list} setPage={setPage} />

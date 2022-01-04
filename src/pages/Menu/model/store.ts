@@ -59,8 +59,8 @@ export const $menuOne = MenuDomain.store<MenuDto | null>(null)
 export const MenuGate = createGate();
 
 sample({
-  clock: [MenuGate.open],
-  source: MenuGate.state,
-  fn: () => ({ limit: 10, page: 1 }),
+  clock: [MenuGate.open, MenuGate.state],
+  source: $menuList,
+  fn: (list) => ({ limit: list.limit, page: list.page }),
   target: getAllMenuFx,
 });
