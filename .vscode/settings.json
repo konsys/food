@@ -18,7 +18,7 @@
     "explorer.confirmDelete": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
     },
     "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDragAndDrop": false,
@@ -45,7 +45,7 @@
     "redhat.telemetry.enabled": true,
     "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m",
     "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
     },
     "diffEditor.codeLens": true,
     "editor.formatOnPaste": false,
