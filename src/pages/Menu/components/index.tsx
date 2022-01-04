@@ -11,9 +11,10 @@ import './styles.scss';
 interface Props {
   foodItems: TListResponce<MenuDto>;
   setPage: TVoidFn<number>;
+  setPageSize: TVoidFn<number>;
 }
 
-export const CafeMenu = ({ foodItems, setPage }: Props): ReactElement => {
+export const CafeMenu = ({ foodItems, setPage, setPageSize }: Props): ReactElement => {
   return (
     <>
       <div className='menu-box'>
@@ -31,6 +32,7 @@ export const CafeMenu = ({ foodItems, setPage }: Props): ReactElement => {
               defaultCurrent={1}
               total={+foodItems.totalRecords}
               onChange={setPage}
+              onShowSizeChange={(_, size) => setPageSize(size)}
             />
           </div>
         </div>

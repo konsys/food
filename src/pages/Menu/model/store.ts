@@ -19,6 +19,7 @@ const service = new CrudService<MenuDto>(URL);
 export const resetMenuList = MenuDomain.event();
 export const resetMenu = MenuDomain.event();
 export const setPage = MenuDomain.event<number>();
+export const setPageSize = MenuDomain.event<number>();
 
 export const createMenuFx = MenuDomain.effect<MenuDto, MenuDto, Error>({
   handler: (mt) => service.create(mt),
@@ -47,6 +48,7 @@ export const $menuList = MenuDomain.store<TListResponce<MenuDto>>(
 )
   .on(getAllMenuFx.done, (_, { result }) => result)
   .on(setPage, (prev, page) => ({ ...prev, page }))
+  .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
   .reset(resetMenuList);
 
 export const $menuOne = MenuDomain.store<MenuDto | null>(null)
