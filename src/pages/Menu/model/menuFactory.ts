@@ -13,5 +13,5 @@ export const menuFactory = factory.Sync.makeFactory<MenuDto>({
   bigImg: factory.each(() => faker.datatype.uuid()),
   averageImg: factory.each(() => faker.datatype.uuid()),
   smallImg: factory.each(() => faker.datatype.uuid()),
-  price: factory.each(() => faker.datatype.float(10000)),
+  price: factory.each(() => faker.datatype.number(100)),
 });
