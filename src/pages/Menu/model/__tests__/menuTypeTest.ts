@@ -29,7 +29,7 @@ describe('menu type test', () => {
     newItem = menuTypeFactory.build();
     resetMenuType();
     resetMenuTypeList();
-    allItems = (await getAllMenuTypeFx({ limit: 10, page: 1 })).items;
+    allItems = (await getAllMenuTypeFx({ limit: 40, page: 1 })).items;
     randomItem = allItems[faker.datatype.number(allItems.length)];
   });
 

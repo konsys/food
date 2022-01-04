@@ -31,7 +31,7 @@ describe('menu time test', () => {
     resetMenuTimeList();
     allItems = (
       await getAllMenuTimeFx({
-        limit: 4,
+        limit: 40,
         page: 1,
       })
     ).items;
