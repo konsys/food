@@ -15,9 +15,9 @@ export class AbstractService<R, T, U> {
     }
 
     async findAll({ limit, page, filter }: TListRequest<R>): Promise<TListResponce<R>> {
-        page = +(page > 0 ? page : 1);
+        page = +(page >= 0 ? page : 0);
         const take = limit = +limit;
-        const skip = take * page;
+        const skip = take * (page - 1);
         const totalRecords = await this.repository.count(filter);
         const allFilters: FindManyOptions = {
             take: limit,
@@ -40,7 +40,7 @@ export class AbstractService<R, T, U> {
         return this.repository.findOne(id);
     }
 
-    async update(updateMenuDto: U) {
+    update(updateMenuDto: U) {
         return this.repository.save(updateMenuDto);
     }
 
