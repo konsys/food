@@ -1,5 +1,5 @@
 import { createEffect, createEvent, createStore, sample } from 'effector';
-import { createGate } from 'effector-react';
+import { createGate, useGate } from 'effector-react';
 import { Nullable } from '../../../core/types';
 import { CrudService } from '../../api';
 import {
@@ -13,6 +13,7 @@ import {
 export const useCrudStores = <D>(url: string) => {
   const $oneStore = createStore<Nullable<D>>(null);
   const $listStore = createStore<TListResponce<D>>(createInitItemsWithPagination<D>());
+
   const service = new CrudService<D>(url);
 
   const createFx = createEffect<D, D, Error>({
@@ -41,7 +42,7 @@ export const useCrudStores = <D>(url: string) => {
   const setPageSize = createEvent<number>();
 
   $listStore
-    .on(getAllFx.done, (_, { result }) => result)
+    .on(getAllFx.done, nullableResult)
     .on(setPage, (prev, page) => ({ ...prev, page }))
     .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
     .reset(resetList);
@@ -62,5 +63,18 @@ export const useCrudStores = <D>(url: string) => {
     target: getAllFx,
   });
 
-  return { $oneStore, $listStore, Gate, setPage, setPageSize };
+  let items: TListResponce<D>;
+  $listStore.watch((v) => {
+    items = v;
+  });
+
+  let item: Nullable<D>;
+  $oneStore.watch((v) => {
+    item = v;
+  });
+  //   useGate(Gate, { limit: items.limit, page: items.page });
+
+  //   console.log(4444444444444, items);
+
+  return { item, items, setPage, setPageSize, $listStore };
 };
