@@ -8,6 +8,7 @@ import {
   TListResponce,
   TypeOrmDeleteResult,
 } from '../../../common/api/types';
+import { Nullable } from '../../../core/types';
 import { MenuDto } from './types';
 
 const MenuDomain = createDomain('MenuDomain');
@@ -46,12 +47,12 @@ export const deleteMenuFx = MenuDomain.effect<number, TypeOrmDeleteResult, Error
 export const $menuList = MenuDomain.store<TListResponce<MenuDto>>(
   createInitItemsWithPagination<MenuDto>()
 )
-  .on(getAllMenuFx.done, (_, { result }) => result)
+  .on(getAllMenuFx.done, nullableResult)
   .on(setPage, (prev, page) => ({ ...prev, page }))
   .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
   .reset(resetMenuList);
 
-export const $menuOne = MenuDomain.store<MenuDto | null>(null)
+export const $menuOne = MenuDomain.store<Nullable<MenuDto>>(null)
   .on(createMenuFx.done, nullableResult)
   .on(getOneMenuFx.done, nullableResult)
   .on(updateMenuFx.done, nullableResult)
