@@ -5,7 +5,7 @@ import { MenuEntity } from './menu.entity';
 @Entity()
 export class MenuTypeEntity {
   @PrimaryGeneratedColumn()
-  menuTypeId: number;
+  id: number;
 
   @Column()
   name: string;
@@ -27,6 +27,6 @@ export class MenuTypeEntity {
   @Column({ default: false })
   visible: boolean;
 
-  @OneToMany(() => MenuEntity, menu => menu.menuId)
+  @OneToMany(() => MenuEntity, menu => menu.id)
   menus: MenuEntity[];
 }

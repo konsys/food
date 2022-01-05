@@ -5,7 +5,7 @@ import { MenuTypeEntity } from './menu-type.entity';
 @Entity()
 export class MenuEntity {
   @PrimaryGeneratedColumn()
-  menuId: number;
+  id: number;
 
   @Column()
   name: string;
@@ -33,10 +33,10 @@ export class MenuEntity {
   })
   updatedAt?: Date;
 
-  @ManyToOne(() => MenuTimeEntity, menuTime => menuTime.menuTimeId)
+  @ManyToOne(() => MenuTimeEntity, menuTime => menuTime.id)
   menuTime: MenuTimeEntity;
 
-  @ManyToOne(() => MenuTypeEntity, menuType => menuType.menuTypeId)
+  @ManyToOne(() => MenuTypeEntity, menuType => menuType.id)
   menuType: MenuTypeEntity;
 
   @Column({ default: false })

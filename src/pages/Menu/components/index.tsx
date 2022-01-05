@@ -35,9 +35,9 @@ export const CafeMenu = ({ foodItems, setPage, setPageSize }: Props): ReactEleme
           </div>
           <div className='row'>
             <Pagination
-              current={+foodItems.page}
+              current={foodItems.page}
               defaultCurrent={1}
-              total={+foodItems.totalRecords}
+              total={foodItems.totalRecords}
               onChange={setPage}
               onShowSizeChange={(_, size) => setPageSize(size)}
             />

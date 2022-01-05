@@ -5,7 +5,7 @@ import { MenuEntity } from './menu.entity';
 @Entity()
 export class MenuTimeEntity {
   @PrimaryGeneratedColumn()
-  menuTimeId: number;
+  id: number;
 
   @Column()
   name: string;
@@ -29,6 +29,6 @@ export class MenuTimeEntity {
   })
   updatedAt?: Date;
 
-  @OneToMany(() => MenuEntity, menu => menu.menuId)
+  @OneToMany(() => MenuEntity, menu => menu.id)
   menus: MenuEntity[];
 }
