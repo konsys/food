@@ -22,7 +22,7 @@ export class AbstractService<R, T, U> {
         const allFilters: FindManyOptions = {
             take: limit,
             skip,
-            order: { menuId: "ASC" },
+            order: { id: "ASC" },
         }
         if (filter) {
             allFilters.where = filter;
@@ -36,8 +36,8 @@ export class AbstractService<R, T, U> {
         }
     }
 
-    findOne(menuId: number) {
-        return this.repository.findOne(menuId);
+    findOne(id: number) {
+        return this.repository.findOne(id);
     }
 
     async update(updateMenuDto: U) {

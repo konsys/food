@@ -2,7 +2,7 @@ import { MenuTimeDto } from './menuTimeModel/types';
 import { MenuTypeDto } from './menuTypeModel/types';
 
 export type MenuDto = {
-  menuId?: number;
+  id?: number;
   name: string;
   description: string;
   createdAt?: Date;

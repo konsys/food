@@ -70,7 +70,7 @@ describe('menu tests', () => {
   it('should get one menu', async () => {
     await createMenuFx(newItem);
     const one = $menuOne.getState();
-    one?.menuId && (await getOneMenuFx(one.menuId));
+    one?.id && (await getOneMenuFx(one.id));
     // eslint-disable-next-line effector/no-getState
     const two = $menuOne.getState();
     expect(one).toStrictEqual(expect.objectContaining(two));
@@ -91,13 +91,13 @@ describe('menu tests', () => {
   it('should delete menu', async () => {
     await createMenuFx(newItem);
     const item = $menuOne.getState();
-    item?.menuId && (await deleteMenuFx(item.menuId));
+    item?.id && (await deleteMenuFx(item.id));
 
     // eslint-disable-next-line effector/no-getState
     let one = $menuOne.getState();
     expect(one).toBeNull();
 
-    item?.menuId && (await getOneMenuFx(item.menuId));
+    item?.id && (await getOneMenuFx(item.id));
 
     // eslint-disable-next-line effector/no-getState
     one = $menuOne.getState();
