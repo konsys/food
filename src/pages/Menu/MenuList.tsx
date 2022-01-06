@@ -26,9 +26,7 @@ export const MenuList = (): ReactElement => {
         activeFilter={activeFilter}
         setActiveFilter={(v) => {
           setActiveFilter(v);
-          setFilter({
-            name: 'sadfsdf',
-          });
+          setFilter({ name: 'fwefeh' });
         }}
       />
     </>

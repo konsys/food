@@ -20,7 +20,10 @@ export const createCrudStore = <D>(url: string) => {
   });
 
   const getAllFx = createEffect<TListRequest<D>, TListResponce<D>, Error>({
-    handler: (req) => service.getAll(req),
+    handler: (req) => {
+      console.log(1111111111, req);
+      return service.getAll(req);
+    },
   });
 
   const getOneFx = createEffect<number, D, Error>({
@@ -61,7 +64,8 @@ export const createCrudStore = <D>(url: string) => {
   sample({
     clock: [Gate.state],
     source: $listStore,
-    fn: (list: TListResponce<D>) => ({ limit: list.limit, page: list.page, filter: list.filter }),
+    fn: ({ limit, page, filter }: TListResponce<D>) =>
+      filter ? { limit, page, filter } : { limit, page },
     target: getAllFx,
   });
 

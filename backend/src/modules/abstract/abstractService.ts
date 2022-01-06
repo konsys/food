@@ -18,15 +18,17 @@ export class AbstractService<R, T, U> {
         page = +(page >= 0 ? page : 0);
         const take = limit = +limit;
         const skip = take * (page - 1);
-        const totalRecords = await this.repository.count(filter);
-        const allFilters: FindManyOptions = {
+        const whereFilter = filter ? { where: JSON.parse(filter) } : null;
+        const totalRecords = await this.repository.count(whereFilter);
+        let allFilters: FindManyOptions = {
             take: limit,
             skip,
             order: { id: "ASC" },
         }
-        if (filter) {
-            allFilters.where = filter;
+        if (whereFilter) {
+            allFilters = { ...allFilters, ...whereFilter };
         }
+
         const items = await this.repository.find(allFilters);
         return {
             items,

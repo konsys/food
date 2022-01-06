@@ -7,7 +7,7 @@ export type TPaginationRequestParams = {
 };
 
 export type TListRequest<T> = TPaginationRequestParams & {
-  filter?: Record<keyof T, any>;
+  filter?: string;
 };
 
 export type TListResponce<T> = TListRequest<T> & {

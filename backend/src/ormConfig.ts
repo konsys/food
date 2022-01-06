@@ -9,5 +9,5 @@ export const OrmConfig: TypeOrmModuleOptions = {
   database: 'mnpl',
   entities: [`${__dirname}/entities/*.entity{.ts,.js}`],
   synchronize: true,
-  // logging: ['error'],
+  logging: ['error'],
 };
