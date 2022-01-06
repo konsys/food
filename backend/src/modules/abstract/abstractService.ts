@@ -34,6 +34,7 @@ export class AbstractService<R, T, U> {
             items,
             limit,
             page,
+            filter,
             totalRecords
         }
     }
