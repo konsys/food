@@ -26,7 +26,7 @@ export const MenuList = (): ReactElement => {
         activeFilter={activeFilter}
         setActiveFilter={(v) => {
           setActiveFilter(v);
-          setFilter({ name: 'fwefeh' });
+          setFilter({ name: 'Handcrafted Soft Mouse' });
         }}
       />
     </>

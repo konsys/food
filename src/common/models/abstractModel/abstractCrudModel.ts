@@ -20,10 +20,7 @@ export const createCrudStore = <D>(url: string) => {
   });
 
   const getAllFx = createEffect<TListRequest<D>, TListResponce<D>, Error>({
-    handler: (req) => {
-      console.log(1111111111, req);
-      return service.getAll(req);
-    },
+    handler: (req) => service.getAll(req),
   });
 
   const getOneFx = createEffect<number, D, Error>({
