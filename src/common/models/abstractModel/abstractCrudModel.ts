@@ -1,5 +1,4 @@
-import { createEffect, createEvent, createStore, sample } from 'effector';
-import { createGate, useGate } from 'effector-react';
+import { createEffect, createEvent, createStore } from 'effector';
 import { Nullable } from '../../../core/types';
 import { CrudService } from '../../api';
 import {
@@ -10,10 +9,7 @@ import {
   TypeOrmDeleteResult,
 } from '../../api/types';
 
-export const useCrudStores = <D>(url: string) => {
-  const $oneStore = createStore<Nullable<D>>(null);
-  const $listStore = createStore<TListResponce<D>>(createInitItemsWithPagination<D>());
-
+export const createCrudStore = <D>(url: string) => {
   const service = new CrudService<D>(url);
 
   const createFx = createEffect<D, D, Error>({
@@ -38,13 +34,16 @@ export const useCrudStores = <D>(url: string) => {
 
   const resetOne = createEvent();
   const resetList = createEvent();
-  const setPage = createEvent<number>();
-  const setPageSize = createEvent<number>();
+  const setCurrentPage = createEvent<number>();
+  const setCurrentPageSize = createEvent<number>();
+
+  const $oneStore = createStore<Nullable<D>>(null);
+  const $listStore = createStore<TListResponce<D>>(createInitItemsWithPagination<D>());
 
   $listStore
     .on(getAllFx.done, nullableResult)
-    .on(setPage, (prev, page) => ({ ...prev, page }))
-    .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
+    .on(setCurrentPage, (prev, page) => ({ ...prev, page }))
+    .on(setCurrentPageSize, (prev, limit) => ({ ...prev, limit }))
     .reset(resetList);
 
   $oneStore
@@ -54,27 +53,5 @@ export const useCrudStores = <D>(url: string) => {
     .on(deleteFx.done, nullableResult)
     .reset(resetOne);
 
-  const Gate = createGate();
-
-  sample({
-    clock: [Gate.state],
-    source: $listStore,
-    fn: (list) => ({ limit: list.limit, page: list.page }),
-    target: getAllFx,
-  });
-
-  let items: TListResponce<D>;
-  $listStore.watch((v) => {
-    items = v;
-  });
-
-  let item: Nullable<D>;
-  $oneStore.watch((v) => {
-    item = v;
-  });
-  //   useGate(Gate, { limit: items.limit, page: items.page });
-
-  //   console.log(4444444444444, items);
-
-  return { item, items, setPage, setPageSize, $listStore };
+  return { setCurrentPage, setCurrentPageSize, $listStore, $oneStore, getAllFx };
 };
