@@ -2,9 +2,13 @@
 
 .gallery-single {
   margin: 30px 0px;
-  h4{
+
+  .order-price{
     color: $colorThemeMain;
     font-weight: $fontWeightnBold;
+  }
+  .order-button{
+    margin-bottom: 20px;
   }
 }
 

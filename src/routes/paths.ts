@@ -5,11 +5,9 @@ import { MenuList } from '../pages/Menu/MenuList';
 import { LoginPage } from '../pages/Login';
 import { NotFound } from '../pages/NotFound';
 import { EPathName, TPath } from './types';
-import { MenuItem } from '../pages/Menu/MenuItem';
 
 export const pathNames: Record<EPathName, TPath> = {
   MENU: { path: '/menu', name: 'Меню' },
-  MENU_ITEM: { path: '/menu/:id', name: 'Блюдо' },
   ABOUT: { path: '/about', name: 'О нас' },
   CONTACTS: { path: '/contacts', name: 'Контакты' },
   LOGIN: { path: '/login', name: 'Войти' },
@@ -17,7 +15,7 @@ export const pathNames: Record<EPathName, TPath> = {
   NOT_FOUND: { path: '/not_found', name: 'Не найдено' },
 };
 
-const { HOME, ABOUT, CONTACTS, LOGIN, MENU, MENU_ITEM } = pathNames;
+const { HOME, ABOUT, CONTACTS, LOGIN, MENU } = pathNames;
 
 export const paths: Record<EPathName, RouteProps> = {
   HOME: {
@@ -31,10 +29,6 @@ export const paths: Record<EPathName, RouteProps> = {
   MENU: {
     path: MENU.path,
     element: MenuList,
-  },
-  MENU_ITEM: {
-    path: MENU_ITEM.path,
-    element: MenuItem,
   },
   CONTACTS: {
     path: CONTACTS.path,
