@@ -1,13 +1,14 @@
 import { RouteProps } from 'react-router-dom';
 import { About } from '../pages/About';
 import { Contacts } from '../pages/Contacts';
-import { Menu } from '../pages/Menu';
+import { MenuList } from '../pages/Menu/MenuList';
 import { LoginPage } from '../pages/Login';
 import { NotFound } from '../pages/NotFound';
 import { EPathName, TPath } from './types';
 
 export const pathNames: Record<EPathName, TPath> = {
   MENU: { path: '/menu', name: 'Меню' },
+  MENU_ITEM: { path: '/menu/:id', name: 'Блюдо' },
   ABOUT: { path: '/about', name: 'О нас' },
   CONTACTS: { path: '/contacts', name: 'Контакты' },
   LOGIN: { path: '/login', name: 'Войти' },
@@ -15,12 +16,12 @@ export const pathNames: Record<EPathName, TPath> = {
   NOT_FOUND: { path: '/not_found', name: 'Не найдено' },
 };
 
-const { HOME, ABOUT, CONTACTS, LOGIN, MENU } = pathNames;
+const { HOME, ABOUT, CONTACTS, LOGIN, MENU, MENU_ITEM } = pathNames;
 
 export const paths: Record<EPathName, RouteProps> = {
   HOME: {
     path: HOME.path,
-    element: Menu,
+    element: MenuList,
   },
   ABOUT: {
     path: ABOUT.path,
@@ -28,7 +29,11 @@ export const paths: Record<EPathName, RouteProps> = {
   },
   MENU: {
     path: MENU.path,
-    element: Menu,
+    element: MenuList,
+  },
+  MENU_ITEM: {
+    path: MENU_ITEM.path,
+    element: MenuList,
   },
   CONTACTS: {
     path: CONTACTS.path,

@@ -4,7 +4,7 @@ import { TListResponce } from '../../../common/api/types';
 import { TVoidFn } from '../../../common/types';
 import { MenuDto } from '../model/types';
 import { MenuHeader } from './MenuHeader';
-import { MenuItem } from './MenuItem';
+import { MenuListItem } from './MenuListItem';
 import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.scss';
 
@@ -30,7 +30,7 @@ export const CafeMenu = ({ foodItems, setPage, setPageSize }: Props): ReactEleme
           <MenuLinks menuType={EFoodType.DRINKS} />
           <div className='row special-list'>
             {foodItems.items.map((v, k) => (
-              <MenuItem foodMenuItem={v} key={k} />
+              <MenuListItem foodMenuItem={v} key={k} />
             ))}
           </div>
           <div className='row'>
