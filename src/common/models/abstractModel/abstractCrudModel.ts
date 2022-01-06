@@ -1,4 +1,4 @@
-import { createEffect, createEvent, createStore } from 'effector';
+import { createEffect, createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { Nullable } from '../../../core/types';
 import { CrudService } from '../../api';
@@ -56,5 +56,12 @@ export const createCrudStore = <D>(url: string) => {
     .on(deleteFx.done, nullableResult)
     .reset(resetOne);
 
-  return { setCurrentPage, setCurrentPageSize, $listStore, $oneStore, getAllFx, Gate };
+  sample({
+    clock: [Gate.state],
+    source: $listStore,
+    fn: (list: TListResponce<D>) => ({ limit: list.limit, page: list.page }),
+    target: getAllFx,
+  });
+
+  return { setCurrentPage, setCurrentPageSize, $listStore, $oneStore, Gate };
 };

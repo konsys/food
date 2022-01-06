@@ -1,15 +1,18 @@
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement } from 'react';
+import { createCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { CafeMenu } from './components';
-import { $menuListStore, MenuListGate, setPage, setPageSize } from './model/store';
+import { MenuDto } from './model/types';
+
+const { $listStore, setCurrentPage, setCurrentPageSize, Gate } = createCrudStore<MenuDto>('/menu');
 
 export const Menu = (): ReactElement => {
-  const items = useStore($menuListStore);
-  useGate(MenuListGate, { limit: items.limit, page: items.page });
+  const items = useStore($listStore);
+  useGate(Gate, { limit: items.limit, page: items.page });
 
   return (
     <>
-      <CafeMenu foodItems={items} setPage={setPage} setPageSize={setPageSize} />
+      <CafeMenu foodItems={items} setPage={setCurrentPage} setPageSize={setCurrentPageSize} />
     </>
   );
 };
