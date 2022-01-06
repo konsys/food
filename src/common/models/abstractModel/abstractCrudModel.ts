@@ -1,4 +1,5 @@
 import { createEffect, createEvent, createStore } from 'effector';
+import { createGate } from 'effector-react';
 import { Nullable } from '../../../core/types';
 import { CrudService } from '../../api';
 import {
@@ -10,6 +11,8 @@ import {
 } from '../../api/types';
 
 export const createCrudStore = <D>(url: string) => {
+  const Gate = createGate();
+
   const service = new CrudService<D>(url);
 
   const createFx = createEffect<D, D, Error>({
@@ -53,5 +56,5 @@ export const createCrudStore = <D>(url: string) => {
     .on(deleteFx.done, nullableResult)
     .reset(resetOne);
 
-  return { setCurrentPage, setCurrentPageSize, $listStore, $oneStore, getAllFx };
+  return { setCurrentPage, setCurrentPageSize, $listStore, $oneStore, getAllFx, Gate };
 };
