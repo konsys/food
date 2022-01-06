@@ -37,16 +37,18 @@ export const createCrudStore = <D>(url: string) => {
 
   const resetOne = createEvent();
   const resetList = createEvent();
-  const setCurrentPage = createEvent<number>();
-  const setCurrentPageSize = createEvent<number>();
+  const setPage = createEvent<number>();
+  const setPageSize = createEvent<number>();
+  const setFilter = createEvent<any>();
 
   const $oneStore = createStore<Nullable<D>>(null);
   const $listStore = createStore<TListResponce<D>>(createInitItemsWithPagination<D>());
 
   $listStore
     .on(getAllFx.done, nullableResult)
-    .on(setCurrentPage, (prev, page) => ({ ...prev, page }))
-    .on(setCurrentPageSize, (prev, limit) => ({ ...prev, limit }))
+    .on(setPage, (prev, page) => ({ ...prev, page }))
+    .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
+    .on(setFilter, (prev, filter) => ({ ...prev, filter }))
     .reset(resetList);
 
   $oneStore
@@ -59,9 +61,9 @@ export const createCrudStore = <D>(url: string) => {
   sample({
     clock: [Gate.state],
     source: $listStore,
-    fn: (list: TListResponce<D>) => ({ limit: list.limit, page: list.page }),
+    fn: (list: TListResponce<D>) => ({ limit: list.limit, page: list.page, filter: list.filter }),
     target: getAllFx,
   });
 
-  return { setCurrentPage, setCurrentPageSize, $listStore, $oneStore, Gate };
+  return { setFilter, setPage, setPageSize, $listStore, $oneStore, Gate };
 };

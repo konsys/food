@@ -7,27 +7,29 @@ import { MenuHeader } from './MenuHeader';
 import { MenuListItem } from './MenuListItem';
 import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.scss';
-
-export enum EFoodType {
-  ALL = 'All',
-  DRINKS = 'Drinks',
-  SALADS = 'Salads',
-  HOT = 'Hot',
-}
+import { EFoodType } from '../MenuList';
 
 interface Props {
   foodItems: TListResponce<MenuDto>;
   setPage: TVoidFn<number>;
   setPageSize: TVoidFn<number>;
+  activeFilter: EFoodType;
+  setActiveFilter: TVoidFn<EFoodType>;
 }
 
-export const CafeMenu = ({ foodItems, setPage, setPageSize }: Props): ReactElement => {
+export const CafeMenu = ({
+  foodItems,
+  setPage,
+  setPageSize,
+  activeFilter,
+  setActiveFilter,
+}: Props): ReactElement => {
   return (
     <>
       <div className='menu-box'>
         <div className='container'>
           <MenuHeader />
-          <MenuLinks menuType={EFoodType.DRINKS} />
+          <MenuLinks activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
           <div className='row special-list'>
             {foodItems.items.map((v, k) => (
               <MenuListItem foodMenuItem={v} key={k} />

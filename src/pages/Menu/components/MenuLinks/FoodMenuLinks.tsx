@@ -1,21 +1,43 @@
 import React from 'react';
-import { EFoodType } from '..';
+import { TVoidFn } from '../../../../common/types';
+import { EFoodType } from '../../MenuList';
 
 interface Props {
-  menuType: EFoodType;
+  setActiveFilter: TVoidFn<EFoodType>;
+  activeFilter: EFoodType;
 }
 
-export const MenuLinks = ({ menuType }: Props) => {
+export const MenuLinks = ({ activeFilter, setActiveFilter }: Props) => {
   return (
     <>
       <div className='row'>
         <div className='col-lg-12'>
           <div className='special-menu text-center'>
             <div className='button-group filter-button-group'>
-              <button className={menuType === EFoodType.ALL ? 'active' : ''}>All</button>
-              <button className={menuType === EFoodType.DRINKS ? 'active' : ''}>Drinks</button>
-              <button className={menuType === EFoodType.SALADS ? 'active' : ''}>Salads</button>
-              <button className={menuType === EFoodType.HOT ? 'active' : ''}>Hot</button>
+              <button
+                className={activeFilter === EFoodType.ALL ? 'active' : ''}
+                onClick={() => setActiveFilter(EFoodType.ALL)}
+              >
+                All
+              </button>
+              <button
+                className={activeFilter === EFoodType.DRINKS ? 'active' : ''}
+                onClick={() => setActiveFilter(EFoodType.DRINKS)}
+              >
+                Drinks
+              </button>
+              <button
+                className={activeFilter === EFoodType.SALADS ? 'active' : ''}
+                onClick={() => setActiveFilter(EFoodType.SALADS)}
+              >
+                Salads
+              </button>
+              <button
+                className={activeFilter === EFoodType.HOT ? 'active' : ''}
+                onClick={() => setActiveFilter(EFoodType.HOT)}
+              >
+                Hot
+              </button>
             </div>
           </div>
         </div>
