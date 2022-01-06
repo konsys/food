@@ -5,6 +5,7 @@ import { MenuList } from '../pages/Menu/MenuList';
 import { LoginPage } from '../pages/Login';
 import { NotFound } from '../pages/NotFound';
 import { EPathName, TPath } from './types';
+import { MenuItem } from '../pages/Menu/MenuItem';
 
 export const pathNames: Record<EPathName, TPath> = {
   MENU: { path: '/menu', name: 'Меню' },
@@ -33,7 +34,7 @@ export const paths: Record<EPathName, RouteProps> = {
   },
   MENU_ITEM: {
     path: MENU_ITEM.path,
-    element: MenuList,
+    element: MenuItem,
   },
   CONTACTS: {
     path: CONTACTS.path,
