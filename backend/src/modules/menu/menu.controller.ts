@@ -14,8 +14,9 @@ export class MenuController {
     return this.menuService.create(createMenuDto);
   }
 
-  @Get()
-  async findAll(@Query() params: TListRequest<MenuEntity>) {
+  @Post('filter')
+  filter(@Body() params: TListRequest<MenuEntity>) {
+    console.log(1111111, params);
     return this.menuService.findAll(params);
   }
 

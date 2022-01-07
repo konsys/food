@@ -15,6 +15,7 @@ export class AbstractService<R, T, U> {
     }
 
     async findAll({ limit, page, filter }: TListRequest<R>): Promise<TListResponce<R>> {
+     
         page = +(page >= 0 ? page : 0);
         const take = limit = +limit;
         const skip = take * (page - 1);

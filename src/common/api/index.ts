@@ -13,11 +13,9 @@ export class CrudService<T> {
   }
 
   async getAll(params: TListRequest<T>): Promise<TListResponce<T>> {
-    const { data } = await axiosClient.get<TListResponce<T>, AxiosResponse<TListResponce<T>>>(
-      this.url,
-      {
-        params,
-      }
+    const { data } = await axiosClient.post<TListResponce<T>, AxiosResponse<TListResponce<T>>>(
+      `${this.url}/filter`,
+      params
     );
     return data;
   }
