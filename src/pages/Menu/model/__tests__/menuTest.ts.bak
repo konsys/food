@@ -28,6 +28,7 @@ const generateNewItem = async () => {
     menuTime: menuTime.items[faker.datatype.number(menuTime.items.length)],
     menuType: menuType.items[faker.datatype.number(menuType.items.length)],
   };
+
   return newItem;
 };
 

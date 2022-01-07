@@ -16,7 +16,6 @@ export class MenuController {
 
   @Post('filter')
   filter(@Body() params: TListRequest<MenuEntity>) {
-    console.log(1111111, params);
     return this.menuService.findAll(params);
   }
 
