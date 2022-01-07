@@ -25,8 +25,9 @@ export const MenuList = (): ReactElement => {
         setPageSize={setPageSize}
         activeFilter={activeFilter}
         setActiveFilter={(v) => {
+          console.log(11111111111111, v);
           setActiveFilter(v);
-          setFilter({ name: 'Handcrafted Soft Mouse' });
+          setFilter({ menuType: 1 });
         }}
       />
     </>
