@@ -45,7 +45,7 @@ export const createCrudStore = <D>(url: string) => {
   const $listStore = createStore<TListResponce<D>>(createInitItemsWithPagination<D>());
 
   $listStore
-    .on(getAllFx.done, nullableResult)
+    .on(getAllFx.done, (prev, { result }) => ({ ...prev, items: result.items }))
     .on(setPage, (prev, page) => ({ ...prev, page }))
     .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
     .on(setFilter, (prev, filter) => ({ ...prev, filter }))

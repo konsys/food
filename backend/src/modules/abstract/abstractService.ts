@@ -19,7 +19,7 @@ export class AbstractService<R, T, U> {
         page = +(page >= 0 ? page : 0);
         const take = limit = +limit;
         const skip = take * (page - 1);
-        const whereFilter = filter ? { where: JSON.parse(filter) } : null;
+        const whereFilter = filter ? { where: filter } : null;
         const totalRecords = await this.repository.count(whereFilter);
         let allFilters: FindManyOptions = {
             take: limit,
