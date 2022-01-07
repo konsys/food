@@ -9,7 +9,6 @@ export class CrudService<T> {
     this.url = url;
   }
   async create(params: T): Promise<T> {
-    console.log(1111111111111111, this.url);
     return (await axiosClient.post<T>(this.url, params)).data;
   }
 
