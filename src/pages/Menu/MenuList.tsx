@@ -26,7 +26,9 @@ export const MenuList = (): ReactElement => {
         activeFilter={activeFilter}
         setActiveFilter={(v) => {
           setActiveFilter(v);
-          setFilter({ menuType: { name: v.toLowerCase() } });
+          v !== EFoodType.ALL
+            ? setFilter({ menuType: { name: v.toLowerCase() } })
+            : setFilter(null);
         }}
       />
     </>
