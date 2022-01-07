@@ -25,9 +25,8 @@ export const MenuList = (): ReactElement => {
         setPageSize={setPageSize}
         activeFilter={activeFilter}
         setActiveFilter={(v) => {
-          console.log(11111111111111, v);
           setActiveFilter(v);
-          setFilter({ menuType: 1 });
+          setFilter({ menuType: { name: v.toLowerCase() } });
         }}
       />
     </>

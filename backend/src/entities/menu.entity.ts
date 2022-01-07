@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { Column, Entity, JoinTable, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { MenuTimeEntity } from './menu-time.entity';
 import { MenuTypeEntity } from './menu-type.entity';
 @Entity()
@@ -36,13 +36,11 @@ export class MenuEntity {
   @ManyToOne(() => MenuTimeEntity, menuTime => menuTime.id, {
     eager: true
   })
-  @JoinTable()
   menuTime: MenuTimeEntity;
 
   @ManyToOne(() => MenuTypeEntity, menuType => menuType.id, {
     eager: true
   })
-  @JoinTable()
   menuType: MenuTypeEntity;
 
   @Column({ default: false })

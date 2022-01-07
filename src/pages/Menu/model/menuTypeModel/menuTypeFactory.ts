@@ -8,4 +8,4 @@ export const menuTypeFactory = factory.Sync.makeFactory<MenuTypeDto>({
   visible: factory.each(() => Math.random() > 0.5),
 });
 
-const types = ['drinks', 'salads', 'hot'];
+const types = ['hot', 'drinks', 'salads'];
