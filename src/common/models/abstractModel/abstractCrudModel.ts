@@ -55,7 +55,7 @@ export const createCrudStore = <D>(url: string) => {
     .on(createFx.done, nullableResult)
     .on(getOneFx.done, nullableResult)
     .on(updateFx.done, nullableResult)
-    .on(deleteFx.done, nullableResult)
+    .on(deleteFx.done, (prev, { result }) => (result.affected ? null : prev))
     .reset(resetOne);
 
   sample({
@@ -66,5 +66,19 @@ export const createCrudStore = <D>(url: string) => {
     target: getAllFx,
   });
 
-  return { setFilter, setPage, setPageSize, $listStore, $oneStore, Gate };
+  return {
+    createFx,
+    resetList,
+    resetOne,
+    setFilter,
+    setPage,
+    setPageSize,
+    $listStore,
+    $oneStore,
+    getAllFx,
+    updateFx,
+    getOneFx,
+    deleteFx,
+    Gate,
+  };
 };
