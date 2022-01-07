@@ -1,20 +1,21 @@
 import { Injectable } from '@nestjs/common';
+import { TPromiseFn } from 'src/common/types';
 import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
-import { FindManyOptions, Repository } from 'typeorm';
+import { DeleteResult, FindManyOptions, Repository } from 'typeorm';
 
 @Injectable()
-export class AbstractService<R, T, U> {
-    private repository: Repository<R> = null;
+export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
+    private repository: Repository<E> = null;
 
-    constructor(repository: Repository<R>) {
+    constructor(repository: Repository<E>) {
         this.repository = repository;
     }
 
-    create(createMenuDto: T) {
+    create(createMenuDto: C) {
         return this.repository.save(createMenuDto);
     }
 
-    async findAll({ limit, page, filter }: TListRequest<R>): Promise<TListResponce<R>> {
+    async findAll({ limit, page, filter }: TListRequest<E>): Promise<TListResponce<E>> {
      
         page = +(page >= 0 ? page : 0);
         const take = limit = +limit;
@@ -51,4 +52,12 @@ export class AbstractService<R, T, U> {
     remove(id: number) {
         return this.repository.delete(id);
     }
+}
+
+export interface IAbstractService<R, C, U> {
+    create: TPromiseFn<C, R>;
+    findAll: TPromiseFn<TListRequest<R>, TListResponce<R>>
+    findOne: TPromiseFn<number, R>
+    update: TPromiseFn<U, R>
+    remove: TPromiseFn<number, DeleteResult>
 }

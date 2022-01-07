@@ -1,36 +1,13 @@
-import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/common';
-import { TListRequest } from 'src/common/types/paginationTypes';
+import { Controller} from '@nestjs/common';
 import { MenuEntity } from 'src/entities/menu.entity';
+import { AbstractController } from '../abstract/abstractController';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 import { MenuService } from './menu.service';
 
-@Controller('menu')
-export class MenuController {
-  constructor(private readonly menuService: MenuService) { }
-
-  @Post()
-  create(@Body() createMenuDto: CreateMenuDto) {
-    return this.menuService.create(createMenuDto);
+  @Controller('menu')
+  export class MenuController extends AbstractController<MenuEntity, CreateMenuDto, UpdateMenuDto> {
+    constructor(service: MenuService) {
+      super(service)
+    }
   }
-
-  @Post('filter')
-  filter(@Body() params: TListRequest<MenuEntity>) {
-    return this.menuService.findAll(params);
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.menuService.findOne(+id);
-  }
-
-  @Put()
-  update(@Body() updateMenuDto: UpdateMenuDto) {
-    return this.menuService.update(updateMenuDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.menuService.remove(+id);
-  }
-}
