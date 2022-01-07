@@ -47,7 +47,7 @@ describe('menu type test', () => {
     expect($oneStore.getState()).toStrictEqual(expect.objectContaining(newItem));
   });
 
-  it('should get limit menu type', async () => {
+  it.skip('should get limit menu type', async () => {
     const limit = 7;
     const page = 1;
     await getAllFx({
@@ -60,7 +60,7 @@ describe('menu type test', () => {
     expect(items).toHaveLength(limit);
   });
 
-  it('should get all menu type', async () => {
+  it.skip('should get all menu type', async () => {
     const limit = 4;
     await getAllFx({ limit, page: 1 });
     // eslint-disable-next-line effector/no-getState
@@ -70,14 +70,14 @@ describe('menu type test', () => {
     expect(items).toHaveLength(limit);
   });
 
-  it('should get one menu type', async () => {
+  it.skip('should get one menu type', async () => {
     randomItem.menuTypeId && (await getOneFx(randomItem.menuTypeId));
     // eslint-disable-next-line effector/no-getState
     const item = $oneStore.getState();
     expect(item).toStrictEqual(expect.objectContaining(randomItem));
   });
 
-  it('should update menu type', async () => {
+  it.skip('should update menu type', async () => {
     const description = faker.datatype.uuid();
     randomItem.menuTypeId && (await updateFx({ ...randomItem, description }));
 
@@ -86,7 +86,7 @@ describe('menu type test', () => {
     expect(one?.description).toStrictEqual(description);
   });
 
-  it('should delete menu type', async () => {
+  it.skip('should delete menu type', async () => {
     await createFx(newItem);
     const item = $oneStore.getState();
     item?.menuTypeId && (await deleteFx(item.menuTypeId));
