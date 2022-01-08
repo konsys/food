@@ -5,7 +5,7 @@ import { TVoidFn } from '../../../common/types';
 import { MenuDto } from '../model/types';
 import { MenuHeader } from './MenuHeader';
 import { MenuListItem } from './MenuListItem';
-import { MenuLinks } from './MenuLinks/FoodMenuLinks';
+import { MenuLinks } from './MenuLinks/MenuLinks';
 import './styles.scss';
 import { EFoodType } from '../MenuList';
 
