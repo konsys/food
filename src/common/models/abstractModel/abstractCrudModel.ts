@@ -36,9 +36,6 @@ export const createCrudStore = <D>(url: string) => {
     handler: (id) => service.deleteOne(id),
   });
 
-  // getAllFx.pending.watch((v) => console.log('pending', v));
-  // getAllFx.done.watch((v) => console.log('done', v));
-
   const resetOne = createEvent();
   const resetList = createEvent();
   const setPage = createEvent<number>();
@@ -56,7 +53,6 @@ export const createCrudStore = <D>(url: string) => {
       ...prev,
       items: result.items,
       totalRecords: result.totalRecords,
-      pending: false,
     }))
     .on(setPage, (prev, page) => ({ ...prev, page }))
     .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
@@ -70,14 +66,10 @@ export const createCrudStore = <D>(url: string) => {
     .on(deleteFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
       result.affected ? createInitItem<D>() : prev
     )
-    .on(createFx.pending, (prev) => ({ ...prev, pending: true }))
-    .on(getOneFx.pending, (prev) => ({ ...prev, pending: true }))
-    .on(updateFx.pending, (prev) => ({ ...prev, pending: true }))
-    .on(deleteFx.pending, (prev) => ({ ...prev, pending: true }))
-    .on(createFx.finally, (prev) => ({ ...prev, pending: false }))
-    .on(getOneFx.finally, (prev) => ({ ...prev, pending: false }))
-    .on(updateFx.finally, (prev) => ({ ...prev, pending: false }))
-    .on(deleteFx.finally, (prev) => ({ ...prev, pending: false }))
+    .on(createFx.pending, (prev, pending) => ({ ...prev, pending }))
+    .on(getOneFx.pending, (prev, pending) => ({ ...prev, pending }))
+    .on(updateFx.pending, (prev, pending) => ({ ...prev, pending }))
+    .on(deleteFx.pending, (prev, pending) => ({ ...prev, pending }))
     .reset(resetOne);
 
   sample({
