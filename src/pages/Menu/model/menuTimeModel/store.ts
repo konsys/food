@@ -1,10 +1,12 @@
 import { createDomain } from 'effector';
 import { CrudService } from '../../../../common/api';
 import {
+  createInitItem,
   createInitItemsWithPagination,
   nullableResult,
   TListRequest,
   TListResponce,
+  TRequestProcess,
   TypeOrmDeleteResult,
 } from '../../../../common/api/types';
 import { MenuTimeDto } from './types';
@@ -48,9 +50,13 @@ export const $menuTimeList = MenuDomain.store<TListResponce<MenuTimeDto>>(
   .on(getAllMenuTimeFx.done, (_, { result }) => result)
   .reset(resetMenuTimeList);
 
-export const $menuTimeOne = MenuDomain.store<MenuTimeDto | null>(null)
+export const $menuTimeOne = MenuDomain.store<TRequestProcess<MenuTimeDto>>(
+  createInitItem<MenuTimeDto>()
+)
   .on(createMenuTimeFx.done, nullableResult)
   .on(getOneMenuTimeFx.done, nullableResult)
   .on(updateMenuTimeFx.done, nullableResult)
-  .on(deleteMenuTimeFx.done, (prev, { result }) => (result?.affected ? null : prev))
+  .on(deleteMenuTimeFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
+    result.affected ? createInitItem<MenuTimeDto>() : prev
+  )
   .reset(resetMenuTime);

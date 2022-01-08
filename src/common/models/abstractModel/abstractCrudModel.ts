@@ -1,12 +1,13 @@
 import { createEffect, createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
-import { Nullable } from '../../../core/types';
 import { CrudService } from '../../api';
 import {
+  createInitItem,
   createInitItemsWithPagination,
   nullableResult,
   TListRequest,
   TListResponce,
+  TRequestProcess,
   TypeOrmDeleteResult,
 } from '../../api/types';
 
@@ -41,10 +42,13 @@ export const createCrudStore = <D>(url: string) => {
   const setPageSize = createEvent<number>();
   const setFilter = createEvent<any>();
 
-  const $oneStore = createStore<Nullable<D>>(null);
+  const $oneStore = createStore<TRequestProcess<D>>(createInitItem());
+  const $oneLoading = createStore<boolean>(false);
   const $listStore = createStore<TListResponce<D>>(createInitItemsWithPagination<D>());
 
   $listStore
+    .on(getAllFx.pending, (prev) => ({ ...prev, loading: true }))
+    .on(getAllFx.finally, (prev) => ({ ...prev, loading: false }))
     .on(getAllFx.done, (prev, { result }) => ({
       ...prev,
       items: result.items,
@@ -59,14 +63,24 @@ export const createCrudStore = <D>(url: string) => {
     .on(createFx.done, nullableResult)
     .on(getOneFx.done, nullableResult)
     .on(updateFx.done, nullableResult)
-    .on(deleteFx.done, (prev, { result }) => (result.affected ? null : prev))
+    .on(deleteFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
+      result.affected ? createInitItem<D>() : prev
+    )
+    .on(createFx.pending, (prev) => ({ ...prev, loading: true }))
+    .on(getOneFx.pending, (prev) => ({ ...prev, loading: true }))
+    .on(updateFx.pending, (prev) => ({ ...prev, loading: true }))
+    .on(deleteFx.pending, (prev) => ({ ...prev, loading: true }))
+    .on(createFx.finally, (prev) => ({ ...prev, loading: false }))
+    .on(getOneFx.finally, (prev) => ({ ...prev, loading: false }))
+    .on(updateFx.finally, (prev) => ({ ...prev, loading: false }))
+    .on(deleteFx.finally, (prev) => ({ ...prev, loading: false }))
     .reset(resetOne);
 
   sample({
     clock: [Gate.state],
     source: $listStore,
-    fn: ({ limit, page, filter }: TListResponce<D>) =>
-      filter ? { limit, page, filter } : { limit, page },
+    fn: ({ limit, page, filter, loading }: TListResponce<D>) =>
+      filter ? { limit, page, filter, loading } : { limit, page, loading },
     target: getAllFx,
   });
 
@@ -79,6 +93,7 @@ export const createCrudStore = <D>(url: string) => {
     setPageSize,
     $listStore,
     $oneStore,
+    $oneLoading,
     getAllFx,
     updateFx,
     getOneFx,

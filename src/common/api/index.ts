@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { axiosClient } from '../../http/Clients';
-import { TListRequest, TListResponce } from './types';
+import { TListRequest, TListResponce, TypeOrmDeleteResult } from './types';
 
 export class CrudService<T> {
   private url: string;
@@ -28,7 +28,7 @@ export class CrudService<T> {
     return (await axiosClient.put<T>(this.url, entity)).data;
   }
 
-  async deleteOne(id: number): Promise<{ affected?: number | null }> {
+  async deleteOne(id: number): Promise<TypeOrmDeleteResult> {
     return (await axiosClient.delete(`${this.url}/${id}`)).data;
   }
 }

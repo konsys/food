@@ -1,10 +1,12 @@
 import { createDomain } from 'effector';
 import { CrudService } from '../../../../common/api';
 import {
+  createInitItem,
   createInitItemsWithPagination,
   nullableResult,
   TListRequest,
   TListResponce,
+  TRequestProcess,
   TypeOrmDeleteResult,
 } from '../../../../common/api/types';
 import { Nullable } from '../../../../core/types';
@@ -49,9 +51,13 @@ export const $menuTypeList = MenuDomain.store<TListResponce<MenuTypeDto>>(
   .on(getAllMenuTypeFx.done, (_, { result }) => result)
   .reset(resetMenuTypeList);
 
-export const $menuTypeOne = MenuDomain.store<Nullable<MenuTypeDto>>(null)
+export const $menuTypeOne = MenuDomain.store<TRequestProcess<MenuTypeDto>>(
+  createInitItem<MenuTypeDto>()
+)
   .on(getOneMenuTypeFx.done, nullableResult)
   .on(createMenuTypeFx.done, nullableResult)
   .on(updateMenuTypeFx.done, nullableResult)
-  .on(deleteMenuTypeFx.done, (prev, { result }) => (result?.affected ? null : prev))
+  .on(deleteMenuTypeFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
+    result.affected ? createInitItem<MenuTypeDto>() : prev
+  )
   .reset(resetMenuType);

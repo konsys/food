@@ -5,9 +5,10 @@ import { TVoidFn } from '../../../common/types';
 import { MenuDto } from '../model/types';
 import { MenuHeader } from './MenuHeader';
 import { MenuListItem } from './MenuListItem';
-import { MenuLinks } from './MenuLinks/MenuLinks';
+import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.scss';
 import { EFoodType } from '../MenuList';
+import { Spinner } from 'react-bootstrap';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -31,9 +32,11 @@ export const CafeMenu = ({
           <MenuHeader />
           <MenuLinks activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
           <div className='row special-list'>
-            {menu.items.map((v, k) => (
-              <MenuListItem foodMenuItem={v} key={k} />
-            ))}
+            {menu.loading ? (
+              <Spinner animation='grow' />
+            ) : (
+              menu.items.map((v, k) => <MenuListItem foodMenuItem={v} key={k} />)
+            )}
           </div>
           <div className='row'>
             <Pagination
