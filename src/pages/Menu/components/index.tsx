@@ -1,4 +1,4 @@
-import { Pagination } from 'antd';
+import { Pagination, Spin } from 'antd';
 import React, { ReactElement } from 'react';
 import { TListResponce } from '../../../common/api/types';
 import { TVoidFn } from '../../../common/types';
@@ -8,7 +8,6 @@ import { MenuListItem } from './MenuListItem';
 import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.scss';
 import { EFoodType } from '../MenuList';
-import { Spinner } from 'react-bootstrap';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -31,22 +30,27 @@ export const CafeMenu = ({
         <div className='container'>
           <MenuHeader />
           <MenuLinks activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
-          <div className='row special-list'>
-            {menu.pending ? (
-              <Spinner animation='grow' />
-            ) : (
-              menu.items.map((v, k) => <MenuListItem foodMenuItem={v} key={k} />)
-            )}
-          </div>
-          <div className='row'>
-            <Pagination
-              current={menu.page}
-              defaultCurrent={1}
-              total={menu.totalRecords}
-              onChange={setPage}
-              onShowSizeChange={(_, size) => setPageSize(size)}
-            />
-          </div>
+          {!menu.pending ? (
+            <>
+              <div className='row special-list'>
+                {!menu.items.length && 'Нет результатов'}
+                {menu.items.map((v, k) => (
+                  <MenuListItem foodMenuItem={v} key={k} />
+                ))}
+              </div>
+              <div className='row'>
+                <Pagination
+                  current={menu.page}
+                  defaultCurrent={1}
+                  total={menu.totalRecords}
+                  onChange={setPage}
+                  onShowSizeChange={(_, size) => setPageSize(size)}
+                />
+              </div>
+            </>
+          ) : (
+            <Spin />
+          )}
         </div>
       </div>
     </>
