@@ -38,19 +38,19 @@ export const CafeMenu = ({
                   <MenuListItem foodMenuItem={v} key={k} />
                 ))}
               </div>
-              <div className='row'>
-                <Pagination
-                  current={menu.page}
-                  defaultCurrent={1}
-                  total={menu.totalRecords}
-                  onChange={setPage}
-                  onShowSizeChange={(_, size) => setPageSize(size)}
-                />
-              </div>
             </>
           ) : (
             <Spin />
           )}
+          <div className='row'>
+            <Pagination
+              current={menu.page}
+              defaultCurrent={1}
+              total={menu.totalRecords}
+              onChange={setPage}
+              onShowSizeChange={(_, size) => setPageSize(size)}
+            />
+          </div>
         </div>
       </div>
     </>

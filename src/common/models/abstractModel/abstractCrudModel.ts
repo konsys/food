@@ -59,6 +59,8 @@ export const createCrudStore = <D>(url: string) => {
     .on(setFilter, (prev, filter) => ({ ...prev, filter }))
     .reset(resetList);
 
+  $listStore.watch(console.log);
+
   $oneStore
     .on(createFx.done, nullableResult)
     .on(getOneFx.done, nullableResult)
