@@ -14,13 +14,13 @@ export enum EFoodType {
 const { $listStore, setPage, setPageSize, Gate, setFilter } = createCrudStore<MenuDto>('/menu');
 
 export const MenuList = (): ReactElement => {
-  const items = useStore($listStore);
-  useGate(Gate, { limit: items.limit, page: items.page, filter: items.filter });
+  const menu = useStore($listStore);
+  useGate(Gate, { limit: menu.limit, page: menu.page, filter: menu.filter });
   const [activeFilter, setActiveFilter] = useState<EFoodType>(EFoodType.ALL);
   return (
     <>
       <CafeMenu
-        foodItems={items}
+        menu={menu}
         setPage={setPage}
         setPageSize={setPageSize}
         activeFilter={activeFilter}

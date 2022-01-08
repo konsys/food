@@ -10,7 +10,7 @@ import './styles.scss';
 import { EFoodType } from '../MenuList';
 
 interface Props {
-  foodItems: TListResponce<MenuDto>;
+  menu: TListResponce<MenuDto>;
   setPage: TVoidFn<number>;
   setPageSize: TVoidFn<number>;
   activeFilter: EFoodType;
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export const CafeMenu = ({
-  foodItems,
+  menu,
   setPage,
   setPageSize,
   activeFilter,
@@ -31,15 +31,15 @@ export const CafeMenu = ({
           <MenuHeader />
           <MenuLinks activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
           <div className='row special-list'>
-            {foodItems.items.map((v, k) => (
+            {menu.items.map((v, k) => (
               <MenuListItem foodMenuItem={v} key={k} />
             ))}
           </div>
           <div className='row'>
             <Pagination
-              current={foodItems.page}
+              current={menu.page}
               defaultCurrent={1}
-              total={foodItems.totalRecords}
+              total={menu.totalRecords}
               onChange={setPage}
               onShowSizeChange={(_, size) => setPageSize(size)}
             />
