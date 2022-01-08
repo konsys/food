@@ -10,7 +10,7 @@ export type TPaginationRequestParams = {
 
 export type TListRequest<T> = TPaginationRequestParams & {
   filter?: Record<keyof T, any>;
-  loading: boolean;
+  pending: boolean;
 };
 
 export type TListResponce<T> = TListRequest<T> & {
@@ -20,12 +20,12 @@ export type TListResponce<T> = TListRequest<T> & {
 
 export type TRequestProcess<T> = {
   item: Nullable<T>;
-  loading: boolean;
+  pending: boolean;
 };
 
 export const createInitItem = <T>(): TRequestProcess<T> => ({
   item: null,
-  loading: false,
+  pending: false,
 });
 
 export const createInitItemsWithPagination = <T>(): TListResponce<T> => ({
@@ -33,12 +33,12 @@ export const createInitItemsWithPagination = <T>(): TListResponce<T> => ({
   limit: 10,
   page: 1,
   totalRecords: 0,
-  loading: false,
+  pending: false,
 });
 
 export const nullableResult = <D>(_: TRequestProcess<D>, { result }: { result: D }) => ({
   item: result,
-  loading: false,
+  pending: false,
 });
 
 export type TypeOrmDeleteResult = { affected?: number | null };

@@ -17,8 +17,8 @@
   // Has the map zoom been set?
   var zoomSet = false;
 
-  // Has the Google Maps API started loading?
-  var googleLoading = false;
+  // Has the Google Maps API started pending?
+  var googlepending = false;
 
   // Has the Google Maps API already loaded?
   var googleLoaded = function () {
@@ -204,8 +204,8 @@
 
     // If the API has not been loaded and script loader has not been run,
     // load the Google Maps API script.
-    if (!googleLoaded || !googleLoading) {
-      googleLoading = true;
+    if (!googleLoaded || !googlepending) {
+      googlepending = true;
 
       $.getScript('https://maps.google.com/maps/api/js?language=en', function () {
         mapify(collection, settings);

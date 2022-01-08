@@ -32,7 +32,7 @@ export const CafeMenu = ({
           <MenuHeader />
           <MenuLinks activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
           <div className='row special-list'>
-            {menu.loading ? (
+            {menu.pending ? (
               <Spinner animation='grow' />
             ) : (
               menu.items.map((v, k) => <MenuListItem foodMenuItem={v} key={k} />)

@@ -36,6 +36,9 @@ export const createCrudStore = <D>(url: string) => {
     handler: (id) => service.deleteOne(id),
   });
 
+  // getAllFx.pending.watch((v) => console.log('pending', v));
+  // getAllFx.done.watch((v) => console.log('done', v));
+
   const resetOne = createEvent();
   const resetList = createEvent();
   const setPage = createEvent<number>();
@@ -43,16 +46,17 @@ export const createCrudStore = <D>(url: string) => {
   const setFilter = createEvent<any>();
 
   const $oneStore = createStore<TRequestProcess<D>>(createInitItem());
-  const $oneLoading = createStore<boolean>(false);
+  const $onepending = createStore<boolean>(false);
   const $listStore = createStore<TListResponce<D>>(createInitItemsWithPagination<D>());
 
   $listStore
-    .on(getAllFx.pending, (prev) => ({ ...prev, loading: true }))
-    .on(getAllFx.finally, (prev) => ({ ...prev, loading: false }))
+    .on(getAllFx.pending, (prev, pending) => ({ ...prev, pending }))
+    .on(getAllFx.fail, (prev) => ({ ...prev, pending: false }))
     .on(getAllFx.done, (prev, { result }) => ({
       ...prev,
       items: result.items,
       totalRecords: result.totalRecords,
+      pending: false,
     }))
     .on(setPage, (prev, page) => ({ ...prev, page }))
     .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
@@ -66,21 +70,21 @@ export const createCrudStore = <D>(url: string) => {
     .on(deleteFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
       result.affected ? createInitItem<D>() : prev
     )
-    .on(createFx.pending, (prev) => ({ ...prev, loading: true }))
-    .on(getOneFx.pending, (prev) => ({ ...prev, loading: true }))
-    .on(updateFx.pending, (prev) => ({ ...prev, loading: true }))
-    .on(deleteFx.pending, (prev) => ({ ...prev, loading: true }))
-    .on(createFx.finally, (prev) => ({ ...prev, loading: false }))
-    .on(getOneFx.finally, (prev) => ({ ...prev, loading: false }))
-    .on(updateFx.finally, (prev) => ({ ...prev, loading: false }))
-    .on(deleteFx.finally, (prev) => ({ ...prev, loading: false }))
+    .on(createFx.pending, (prev) => ({ ...prev, pending: true }))
+    .on(getOneFx.pending, (prev) => ({ ...prev, pending: true }))
+    .on(updateFx.pending, (prev) => ({ ...prev, pending: true }))
+    .on(deleteFx.pending, (prev) => ({ ...prev, pending: true }))
+    .on(createFx.finally, (prev) => ({ ...prev, pending: false }))
+    .on(getOneFx.finally, (prev) => ({ ...prev, pending: false }))
+    .on(updateFx.finally, (prev) => ({ ...prev, pending: false }))
+    .on(deleteFx.finally, (prev) => ({ ...prev, pending: false }))
     .reset(resetOne);
 
   sample({
     clock: [Gate.state],
     source: $listStore,
-    fn: ({ limit, page, filter, loading }: TListResponce<D>) =>
-      filter ? { limit, page, filter, loading } : { limit, page, loading },
+    fn: ({ limit, page, filter, pending }: TListResponce<D>) =>
+      filter ? { limit, page, filter, pending } : { limit, page, pending },
     target: getAllFx,
   });
 
@@ -93,7 +97,7 @@ export const createCrudStore = <D>(url: string) => {
     setPageSize,
     $listStore,
     $oneStore,
-    $oneLoading,
+    $onepending,
     getAllFx,
     updateFx,
     getOneFx,
