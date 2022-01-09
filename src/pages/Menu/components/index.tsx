@@ -8,6 +8,7 @@ import { MenuListItem } from './MenuListItem';
 import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.less';
 import { EFoodType } from '../MenuList';
+import Text from 'antd/lib/typography/Text';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -33,7 +34,11 @@ export const CafeMenu = ({
           {!menu.pending ? (
             <>
               <div className='row special-list'>
-                {!menu.items.length && 'Нет результатов'}
+                {!menu.items.length && (
+                  <div className='mx-auto mt-5 mb-5'>
+                    <Text disabled>Нет результатов</Text>
+                  </div>
+                )}
                 {menu.items.map((v, k) => (
                   <MenuListItem foodMenuItem={v} key={k} />
                 ))}
