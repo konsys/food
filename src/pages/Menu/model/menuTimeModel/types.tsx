@@ -4,5 +4,5 @@ export type MenuTimeDto = {
   visible: boolean;
   createdAt?: Date;
   updatedAt?: Date;
-  menuTimeId?: number;
+  id?: number;
 };

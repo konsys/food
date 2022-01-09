@@ -65,7 +65,7 @@ describe('menu time test', () => {
   });
 
   it('should get one menu time', async () => {
-    randomItem.menuTimeId && (await getOneFx(randomItem.menuTimeId));
+    randomItem.id && (await getOneFx(randomItem.id));
     // randomItem-disable-next-line effector/no-getState
     const one = $oneStore.getState();
     expect(one).toStrictEqual(expect.objectContaining(randomItem));
@@ -73,7 +73,7 @@ describe('menu time test', () => {
 
   it('should update menu time', async () => {
     const description = faker.datatype.uuid();
-    randomItem.menuTimeId && (await updateFx({ ...randomItem, description }));
+    randomItem.id && (await updateFx({ ...randomItem, description }));
 
     // eslint-disable-next-line effector/no-getState
     const one = $oneStore.getState();
@@ -83,13 +83,13 @@ describe('menu time test', () => {
   it('should delete menu time', async () => {
     await createFx(newItem);
     const item = $oneStore.getState();
-    item?.menuTimeId && (await deleteFx(item.menuTimeId));
+    item?.id && (await deleteFx(item.id));
 
     // eslint-disable-next-line effector/no-getState
     let one = $oneStore.getState();
     expect(one).toBeNull();
 
-    item?.menuTimeId && (await getOneFx(item.menuTimeId));
+    item?.id && (await getOneFx(item.id));
 
     // eslint-disable-next-line effector/no-getState
     one = $oneStore.getState();

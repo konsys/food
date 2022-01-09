@@ -71,7 +71,7 @@ describe('menu type test', () => {
   });
 
   it('should get one menu type', async () => {
-    randomItem.menuTypeId && (await getOneFx(randomItem.menuTypeId));
+    randomItem.id && (await getOneFx(randomItem.id));
     // eslint-disable-next-line effector/no-getState
     const item = $oneStore.getState();
     expect(item).toStrictEqual(expect.objectContaining(randomItem));
@@ -79,7 +79,7 @@ describe('menu type test', () => {
 
   it('should update menu type', async () => {
     const description = faker.datatype.uuid();
-    randomItem.menuTypeId && (await updateFx({ ...randomItem, description }));
+    randomItem.id && (await updateFx({ ...randomItem, description }));
 
     // eslint-disable-next-line effector/no-getState
     const one = $oneStore.getState();
@@ -89,13 +89,13 @@ describe('menu type test', () => {
   it('should delete menu type', async () => {
     await createFx(newItem);
     const item = $oneStore.getState();
-    item?.menuTypeId && (await deleteFx(item.menuTypeId));
+    item?.id && (await deleteFx(item.id));
 
     // eslint-disable-next-line effector/no-getState
     let one = $oneStore.getState();
     expect(one).toBeNull();
 
-    item?.menuTypeId && (await getOneFx(item.menuTypeId));
+    item?.id && (await getOneFx(item.id));
 
     // eslint-disable-next-line effector/no-getState
     one = $oneStore.getState();

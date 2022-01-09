@@ -1,5 +1,5 @@
 export type MenuTypeDto = {
-  menuTypeId?: number;
+  id?: number;
   description: string;
   name: string;
   visible: boolean;

@@ -10,7 +10,7 @@ export type TPaginationRequestParams = {
 
 export type TListRequest<T> = TPaginationRequestParams & {
   filter?: Record<keyof T, any>;
-  pending: boolean;
+  pending?: boolean;
 };
 
 export type TListResponce<T> = TListRequest<T> & {
@@ -20,7 +20,7 @@ export type TListResponce<T> = TListRequest<T> & {
 
 export type TRequestProcess<T> = {
   item: Nullable<T>;
-  pending: boolean;
+  pending?: boolean;
 };
 
 export const createInitItem = <T>(): TRequestProcess<T> => ({
