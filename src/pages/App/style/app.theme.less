@@ -1,4 +1,4 @@
-@import "../../../config/vars.scss";
+@import "../../../config/vars.less";
 /*------------------------------------------------------------------
     IMPORT FILES
 // -------------------------------------------------------------------*/
@@ -12,14 +12,14 @@
 -------------------------------------------------------------------*/
 
 body > div {
-  color: $colorGrey;
+  color: @colorGrey;
   font-size: 15px;
   font-family: "Athiti", sans-serif;
   line-height: 1.8;
 }
 
 a {
-  color: $colorDark;
+  color: @colorDark;
   text-decoration: none !important;
   outline: none !important;
   -webkit-transition: all 0.3s ease-in-out;
@@ -41,32 +41,32 @@ h6 {
   padding: 0 0 10px 0;
   font-weight: normal;
   line-height: 120% !important;
-  color: $colorDark;
+  color: @colorDark;
   margin: 0;
 }
 
 h1 {
-  font-size: $fontSizeH1;
+  font-size: @fontSizeH1;
 }
 
 h2 {
-  font-size: $fontSizeH2;
+  font-size: @fontSizeH2;
 }
 
 h3 {
-  font-size: $fontSizeH3;
+  font-size: @fontSizeH3;
 }
 
 h4 {
-  font-size: $fontSizeH4;
+  font-size: @fontSizeH4;
 }
 
 h5 {
-  font-size: $fontSizeH5;
+  font-size: @fontSizeH5;
 }
 
 h6 {
-  font-size: $fontSizeH6;
+  font-size: @fontSizeH6;
 }
 
 h1 a,
@@ -75,7 +75,7 @@ h3 a,
 h4 a,
 h5 a,
 h6 a {
-  color: $colorLighDark;
+  color: @colorLighDark;
   text-decoration: none !important;
   opacity: 1;
 }
@@ -90,7 +90,7 @@ h6 a:hover {
 }
 
 a {
-  color: $colorLighDark;
+  color: @colorLighDark;
   text-decoration: none;
   outline: none;
 }
@@ -109,13 +109,13 @@ a,
 .heading-title {
   margin-bottom: 50px;
   h2 {
-    color: $colorDark;
-    font-size: $fontSizeH2Big;
-    font-family: $hFontFamily;
+    color: @colorDark;
+    font-size: @fontSizeH2Big;
+    font-family: @hFontFamily;
   }
   p {
-    font-size: $fontSizePBig;
-    font-weight: $fontWeightnLight;
+    font-size: @fontSizePBig;
+    font-weight: @fontWeightnLight;
     margin: 0px;
   }
 }
@@ -129,9 +129,9 @@ a,
 }
 
 .lead {
-  font-size: $fontSizePBig;
+  font-size: @fontSizePBig;
   line-height: 30px;
-  color: $colorGrey;
+  color: @colorGrey;
   margin: 0;
   padding: 0;
 }
@@ -153,7 +153,7 @@ button:focus {
 }
 
 .form-control::-moz-placeholder {
-  color: $colorGrey;
+  color: @colorGrey;
   opacity: 1;
 }
 
@@ -174,7 +174,7 @@ button:focus {
   z-index: 2;
 }
 .all-page-title::before {
-  background: $colorDark;
+  background: @colorDark;
   content: "";
   height: 100%;
   left: 0;
@@ -185,9 +185,9 @@ button:focus {
   opacity: 0.8;
 }
 .all-page-title h1 {
-  font-size: $fontSizeH1Medium;
-  color: $colorWhite;
-  font-family: $hFontFamily;
+  font-size: @fontSizeH1Medium;
+  color: @colorWhite;
+  font-family: @hFontFamily;
   padding: 0px;
 }
 
@@ -195,7 +195,7 @@ button:focus {
   margin-top: 30px;
 }
 .inner-pt p {
-  font-size: $fontSizePBig;
+  font-size: @fontSizePBig;
 }
 
 .stuff-box {
@@ -203,7 +203,7 @@ button:focus {
 }
 
 .our-team {
-  border: 2px solid $hFontFamily;
+  border: 2px solid @hFontFamily;
   border-radius: 0px;
   text-align: center;
   margin: 10px;
@@ -215,7 +215,7 @@ button:focus {
   content: "";
   width: 100%;
   height: 104%;
-  background: $hFontFamily;
+  background: @hFontFamily;
   position: absolute;
   top: 50%;
   left: 0;
@@ -243,7 +243,7 @@ button:focus {
 .our-team .team-content {
   width: 93%;
   padding: 25px 0 10px;
-  background: $hFontFamily;
+  background: @hFontFamily;
   position: absolute;
   bottom: 50px;
   left: 50%;
@@ -256,17 +256,17 @@ button:focus {
   opacity: 1;
 }
 .our-team .title {
-  font-size: $fontSizeH1;
+  font-size: @fontSizeH1;
   font-weight: 600;
-  color: $colorWhite;
+  color: @colorWhite;
   letter-spacing: 1px;
   text-transform: capitalize;
   margin: 0;
 }
 .our-team .post {
   display: block;
-  font-size: $fontSizePNormal;
-  color: $colorWhite;
+  font-size: @fontSizePNormal;
+  color: @colorWhite;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
@@ -285,15 +285,15 @@ button:focus {
   height: 35px;
   line-height: 35px;
   border-radius: 50%;
-  background: $colorWhite;
-  font-size: $fontSizePBig;
-  color: $hFontFamily;
+  background: @colorWhite;
+  font-size: @fontSizePBig;
+  color: @hFontFamily;
   transition: all 0.3s ease 0s;
 }
 .our-team .social li a:hover {
-  background: $colorWhite;
+  background: @colorWhite;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3);
-  color: $hFontFamily;
+  color: @hFontFamily;
 }
 @media only screen and (max-width: 990px) {
   .our-team {
@@ -316,7 +316,7 @@ button:focus {
 }
 
 .form-control[readonly] {
-  background-color: $colorWhite;
+  background-color: @colorWhite;
 }
 
 .form-control {
@@ -324,27 +324,27 @@ button:focus {
   min-height: 50px;
 }
 .form-control:focus {
-  border: 1px solid $hFontFamily;
+  border: 1px solid @hFontFamily;
   box-shadow: none;
 }
 
 .form-group .picker__input.picker__input--active {
-  border-color: $hFontFamily;
+  border-color: @hFontFamily;
 }
 
 .submit-button {
   margin-top: 20px;
 }
 .btn.btn-common {
-  color: $hFontFamily;
+  color: @hFontFamily;
   background-color: transparent;
   background-image: none;
-  border-color: $colorThemeMain;
+  border-color: @colorThemeMain;
 }
 .btn.btn-common:hover {
-  color: $colorWhite;
-  background-color: $colorThemeMain;
-  border-color: $colorThemeMain;
+  color: @colorWhite;
+  background-color: @colorThemeMain;
+  border-color: @colorThemeMain;
 }
 .blog-box {
   padding: 70px 0px;
@@ -362,7 +362,7 @@ button:focus {
 .blog-box-inner .blog-detail {
   position: absolute;
   top: 0;
-  background: $colorWhite;
+  background: @colorWhite;
   padding: 30px 25px;
   border: 1px solid #ddd;
   transition-duration: 0.5s;
@@ -370,9 +370,9 @@ button:focus {
 }
 
 .blog-detail h4 {
-  font-size: $fontSizePBig;
+  font-size: @fontSizePBig;
   font-weight: 500;
-  color: $colorThemeMain;
+  color: @colorThemeMain;
 }
 
 .blog-detail ul li {
@@ -380,11 +380,11 @@ button:focus {
   padding: 0px 5px;
 }
 .blog-detail ul li span {
-  color: $hFontFamily;
+  color: @hFontFamily;
   cursor: pointer;
 }
 .blog-detail ul li span:hover {
-  color: $colorDark;
+  color: @colorDark;
 }
 
 .blog-detail ul li:first-child {
@@ -397,7 +397,7 @@ button:focus {
 }
 
 .blog-detail a {
-  color: $hFontFamily;
+  color: @hFontFamily;
   margin-top: 20px;
 }
 
@@ -421,35 +421,35 @@ button:focus {
   position: absolute;
   right: 0px;
   top: 0px;
-  background: $colorThemeMain;
-  font-size: $fontSizePBig;
-  color: $colorWhite;
+  background: @colorThemeMain;
+  font-size: @fontSizePBig;
+  color: @colorWhite;
   padding: 5px 15px 5px 5px;
 }
 .inner-blog-detail {
-  background: $colorWhite;
+  background: @colorWhite;
   position: relative;
   padding: 30px 20px;
 }
 
 .inner-blog-detail h3 {
-  font-size: $fontSizeH3;
+  font-size: @fontSizeH3;
   font-weight: 500;
   padding-bottom: 15px;
 }
 .inner-blog-detail ul li {
   display: inline-block;
   padding: 0px 5px;
-  color: $colorThemeMain;
+  color: @colorThemeMain;
 }
 .inner-blog-detail ul li span {
-  color: $colorThemeMain;
+  color: @colorThemeMain;
 }
 .inner-blog-detail p {
   padding: 10px 0px;
 }
 .details-page blockquote {
-  border-left: 5px solid $colorThemeMain;
+  border-left: 5px solid @colorThemeMain;
 }
 .details-page blockquote {
   padding: 20px;
@@ -465,7 +465,7 @@ blockquote {
   width: 100%;
 }
 .line-left-social h5 {
-  font-size: $fontSizeH3;
+  font-size: @fontSizeH3;
   font-weight: 600;
   padding-bottom: 15px;
 }
@@ -479,33 +479,33 @@ blockquote {
 .line-right-social ul li a {
   display: block;
   padding: 5px;
-  background: $colorLightGrey;
+  background: @colorLightGrey;
   border-radius: 6px;
   font-weight: 500;
   width: 35px;
   height: 35px;
   text-align: center;
   line-height: 25px;
-  font-size: $fontSizePNormal;
+  font-size: @fontSizePNormal;
 }
 .line-left-social ul li a {
   display: block;
   padding: 5px 10px;
-  background: $colorLightGrey;
+  background: @colorLightGrey;
   border-radius: 6px;
   font-weight: 400;
-  font-size: $fontSizePSmall;
+  font-size: @fontSizePSmall;
 }
 .line-left-social ul li a:hover {
-  background: $colorThemeMain;
-  color: $colorWhite;
+  background: @colorThemeMain;
+  color: @colorWhite;
 }
 .line-right-social ul li a:hover {
-  background: $colorThemeMain;
-  color: $colorWhite;
+  background: @colorThemeMain;
+  color: @colorWhite;
 }
 .line-right-social h5 {
-  font-size: $fontSizePBig;
+  font-size: @fontSizePBig;
   font-weight: 600;
   padding-bottom: 15px;
 }
@@ -516,7 +516,7 @@ blockquote {
   width: 100%;
 }
 .blog-comment-box h3 {
-  font-size: $fontSizePBig;
+  font-size: @fontSizePBig;
   font-weight: 600;
   padding-bottom: 20px;
 }
@@ -536,7 +536,7 @@ blockquote {
   padding-left: 110px;
 }
 .comment-item-right a {
-  font-size: $fontSizePNormal;
+  font-size: @fontSizePNormal;
   font-weight: 500;
 }
 .des-l {
@@ -547,21 +547,21 @@ blockquote {
   font-size: 13px;
 }
 .comment-item-right a {
-  font-size: $fontSizePNormal;
+  font-size: @fontSizePNormal;
   font-weight: 500;
 }
 .right-btn-re {
   float: right;
   font-style: italic;
   text-align: right;
-  font-size: $fontSizePNormal;
+  font-size: @fontSizePNormal;
   padding: 5px 10px;
-  background: $colorLightGrey;
+  background: @colorLightGrey;
   border-radius: 6px;
 }
 .right-btn-re:hover {
-  background: $colorThemeMain;
-  color: $colorWhite !important;
+  background: @colorThemeMain;
+  color: @colorWhite !important;
 }
 .comment-respond-box {
   clear: both;
@@ -578,37 +578,37 @@ blockquote {
 
 .comment-form-respond input {
   min-height: 38px;
-  border: 1px solid $colorDark;
+  border: 1px solid @colorDark;
   border-radius: 0px;
   padding: 10px;
 }
 .comment-form-respond textarea {
-  border: 1px solid $colorDark;
+  border: 1px solid @colorDark;
   border-radius: 0px;
   padding: 10px;
   min-height: 110px;
 }
 
 .btn-submit {
-  color: $hFontFamily;
+  color: @hFontFamily;
   background-color: transparent;
   background-image: none;
-  border-color: $colorThemeMain;
+  border-color: @colorThemeMain;
 }
 .btn-submit:hover {
-  color: $colorWhite;
-  background-color: $colorThemeMain;
-  border-color: $colorThemeMain;
+  color: @colorWhite;
+  background-color: @colorThemeMain;
+  border-color: @colorThemeMain;
 }
 
 .right-side-blog h3 {
   font-weight: 600;
-  font-size: $fontSizePBig;
+  font-size: @fontSizePBig;
   padding-bottom: 20px;
 }
 .blog-search-form {
   position: relative;
-  border-bottom: 1px solid $colorDark;
+  border-bottom: 1px solid @colorDark;
   padding-bottom: 30px;
   margin-bottom: 20px;
 }
@@ -617,22 +617,22 @@ blockquote {
   min-height: 40px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 5px 40px 5px 10px;
-  font-size: $fontSizePNormal;
-  color: $colorThemeMain;
+  font-size: @fontSizePNormal;
+  color: @colorThemeMain;
 }
 .blog-search-form .search-btn {
   position: absolute;
   right: 0px;
   background: none;
   border: none;
-  font-size: $fontSizePBig;
+  font-size: @fontSizePBig;
   min-height: 40px;
   padding: 0px 15px;
 }
 
 .right-side-blog h3 {
   font-weight: 500;
-  font-size: $fontSizePBig;
+  font-size: @fontSizePBig;
   padding-bottom: 20px;
 }
 .blog-categories {
@@ -642,7 +642,7 @@ blockquote {
 .blog-categories ul li {
   line-height: 14px;
   padding: 10px 0px;
-  border-top: 1px solid $colorLightGrey;
+  border-top: 1px solid @colorLightGrey;
 }
 .blog-categories ul li a {
   display: inline-block;
@@ -650,7 +650,7 @@ blockquote {
   width: 100%;
 }
 .blog-categories ul li a:hover {
-  color: $colorThemeMain;
+  color: @colorThemeMain;
 }
 .recent-box-blog {
   margin-bottom: 20px;
@@ -668,7 +668,7 @@ blockquote {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $colorThemeMain;
+  background-color: @colorThemeMain;
   opacity: 0.4;
   transform: scale(0);
   -webkit-transform: scale(0);
@@ -694,12 +694,12 @@ blockquote {
 }
 .recent-info ul li {
   display: inline-block;
-  font-size: $fontSizePSmaller;
+  font-size: @fontSizePSmaller;
   padding: 0px;
-  color: $colorThemeMain;
+  color: @colorThemeMain;
 }
 .recent-info h4 {
-  font-size: $fontSizePSmall;
+  font-size: @fontSizePSmall;
   padding: 0px;
   margin: 11px 0px;
   font-weight: 500;
@@ -711,13 +711,13 @@ blockquote {
 .blog-tag-box ul li a {
   padding: 5px 15px;
   display: block;
-  background: $colorLightGrey;
-  color: $colorThemeMain;
+  background: @colorLightGrey;
+  color: @colorThemeMain;
   border-radius: 6px;
 }
 .blog-tag-box ul li a:hover {
-  color: $colorWhite;
-  background: $colorThemeMain;
+  color: @colorWhite;
+  background: @colorThemeMain;
 }
 
 .contact-box {
@@ -740,12 +740,12 @@ blockquote {
   height: 32px;
   text-align: center;
   line-height: 30px;
-  background: $hFontFamily;
-  color: $colorWhite;
+  background: @hFontFamily;
+  color: @colorWhite;
   cursor: pointer;
   border: 0;
   border-radius: 2px;
   text-decoration: none;
   transition: opacity 0.2s ease-out;
-  font-size: $fontSizeH1Medium;
+  font-size: @fontSizeH1Medium;
 }

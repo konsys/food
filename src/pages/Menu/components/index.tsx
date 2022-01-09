@@ -1,4 +1,4 @@
-import { Pagination, Spin } from 'antd';
+import { Button, Pagination, Spin } from 'antd';
 import React, { ReactElement } from 'react';
 import { TListResponce } from '../../../common/api/types';
 import { TVoidFn } from '../../../common/types';
@@ -6,7 +6,7 @@ import { MenuDto } from '../model/types';
 import { MenuHeader } from './MenuHeader';
 import { MenuListItem } from './MenuListItem';
 import { MenuLinks } from './MenuLinks/FoodMenuLinks';
-import './styles.scss';
+import './styles.less';
 import { EFoodType } from '../MenuList';
 
 interface Props {

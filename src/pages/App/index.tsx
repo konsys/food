@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { Template } from '../../common/template';
 import { getRoutes } from '../../routes';
-import './style/app.style.scss';
-import './style/app.theme.scss';
-import 'antd/dist/antd.css';
+import './style/app.style.less';
+import './style/app.theme.less';
+import '../../common/template/theme/style.less';
 
 function App() {
   return (

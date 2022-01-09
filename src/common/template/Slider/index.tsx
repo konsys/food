@@ -1,6 +1,6 @@
 import React from 'react';
 import { StandardButton } from '../../components/buttons/StandardButton';
-import './styles.scss';
+import './styles.less';
 
 export const Slider = () => {
   return (

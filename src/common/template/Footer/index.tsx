@@ -1,6 +1,6 @@
 import React from 'react';
 import { Copyright } from './Copyright/Copyright';
-import './styles.scss';
+import './styles.less';
 
 export const Footer = () => {
   return (

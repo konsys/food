@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { pathNames } from '../../../routes/paths';
 import { $route } from '../model/store';
 import ShoppingCartOutlined from '@ant-design/icons/ShoppingCartOutlined';
-import './styles.scss';
+import './styles.less';
 import { Button } from 'antd';
 
 export const Header = () => {

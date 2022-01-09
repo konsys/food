@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import React from 'react';
 import { MenuDto } from '../../model/types';
-import './styles.scss';
+import './styles.less';
 
 interface Props {
   foodMenuItem: MenuDto;
