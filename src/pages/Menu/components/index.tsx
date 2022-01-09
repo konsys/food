@@ -9,6 +9,7 @@ import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.less';
 import { EFoodType } from '../MenuList';
 import Text from 'antd/lib/typography/Text';
+import { CreateMenuButton } from '../containers/CreateMenuItem';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -30,7 +31,9 @@ export const CafeMenu = ({
       <div className='menu-box'>
         <div className='container'>
           <MenuHeader />
+
           <MenuLinks activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
+          <CreateMenuButton />
           {!menu.pending ? (
             <>
               <div className='row special-list'>
