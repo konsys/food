@@ -10,6 +10,7 @@ import {
   TRequestProcess,
   TypeOrmDeleteResult,
 } from '../../api/types';
+import { notification } from 'antd';
 
 export const createCrudStore = <D>(url: string) => {
   const Gate = createGate();
@@ -48,7 +49,6 @@ export const createCrudStore = <D>(url: string) => {
 
   $listStore
     .on(getAllFx.pending, (prev, pending) => ({ ...prev, pending }))
-    .on(getAllFx.fail, (prev) => ({ ...prev, pending: false }))
     .on(getAllFx.done, (prev, { result }) => ({
       ...prev,
       items: result.items,
@@ -57,6 +57,7 @@ export const createCrudStore = <D>(url: string) => {
     .on(setPage, (prev, page) => ({ ...prev, page }))
     .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
     .on(setFilter, (prev, filter) => ({ ...prev, filter }))
+    .on(getAllFx.fail, () => notification.error({ message: 'Ошибка получения списка меню' }))
     .reset(resetList);
 
   $oneStore
@@ -70,6 +71,10 @@ export const createCrudStore = <D>(url: string) => {
     .on(getOneFx.pending, (prev, pending) => ({ ...prev, pending }))
     .on(updateFx.pending, (prev, pending) => ({ ...prev, pending }))
     .on(deleteFx.pending, (prev, pending) => ({ ...prev, pending }))
+    .on(createFx.fail, () => notification.error({ message: 'Ошибка создания меню' }))
+    .on(getOneFx.fail, () => notification.error({ message: 'Ошибка получения меню' }))
+    .on(updateFx.fail, () => notification.error({ message: 'Ошибка обновления меню' }))
+    .on(deleteFx.fail, () => notification.error({ message: 'Ошибка удаления меню' }))
     .reset(resetOne);
 
   sample({
