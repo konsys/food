@@ -1,10 +1,9 @@
 import { Button, Form, Input, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
-import { Option } from 'antd/lib/mentions';
 import { useStore } from 'effector-react';
 import React, { useEffect, useState } from 'react';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
-import { TVoidFn } from '../../../../common/types';
+import { createListOptions } from '../../../../common/utils/selectUtils';
 import { MenuTimeDto } from '../../model/menuTimeModel/types';
 import { MenuTypeDto } from '../../model/menuTypeModel/types';
 import { CreateMenuItemModal } from './CreateMenuItemModal.tsx';
@@ -22,30 +21,19 @@ export const CreateMenuButton = () => {
   const menuTime = useStore($menuTimeList);
   const menuType = useStore($menuTypeList);
 
-  const getListOptions = (items: MenuTimeDto[], fn: TVoidFn<any>) => {
-    const options = items.map((v) => (
-      <Option key={v.id?.toString()} value={v.id?.toString()}>
-        {v.name}
-      </Option>
-    ));
-
-    fn(options);
-  };
-
   useEffect(() => {
     getAllMenuTypeFx({ limit: 20, page: 1 });
     getAllMenuTimeFx({ limit: 20, page: 1 });
   }, []);
 
   useEffect(() => {
-    getListOptions(menuTime.items, setMenuTimeItems);
+    createListOptions(menuTime.items, setMenuTimeItems);
   }, [menuTime.items]);
 
   useEffect(() => {
-    getListOptions(menuType.items, setMenuTypeItems);
+    createListOptions(menuType.items, setMenuTypeItems);
   }, [menuType.items]);
 
-  console.log(1111111, menuTime);
   const [modalOpened, setModalOpened] = useState<boolean>(false);
   return (
     <>
