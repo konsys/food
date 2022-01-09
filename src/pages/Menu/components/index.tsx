@@ -1,4 +1,4 @@
-import { Button, Pagination, Spin } from 'antd';
+import { Pagination, Spin } from 'antd';
 import React, { ReactElement } from 'react';
 import { TListResponce } from '../../../common/api/types';
 import { TVoidFn } from '../../../common/types';

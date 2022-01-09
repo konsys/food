@@ -23,12 +23,12 @@
 
 .text-warning {
   color: #d0a772 !important;
-  font-size: $fontSizeH1;
+  font-size: @fontSizeH1;
 }
 
-@media (min-width: $mobileBreakPoint) and (max-width: $tabletBreakPoint) {
+@media (min-width: @mobileBreakPoint) and (max-width: @tabletBreakPoint) {
   .carousel-inner .carousel-item p {
-    font-size: $fontSizePSmall;
+    font-size: @fontSizePSmall;
   }
   .carousel-control-prev {
     left: -5px;
@@ -42,14 +42,14 @@
 }
 
 .carousel-control-prev {
-  background: $colorThemeMain;
-  color: $colorWhite;
+  background: @colorThemeMain;
+  color: @colorWhite;
   display: block;
   position: absolute;
   width: 8%;
   height: 50px;
   top: 50%;
-  font-size: $fontSizeH1;
+  font-size: @fontSizeH1;
   opacity: 1;
 }
 .carousel-control-prev:hover {
@@ -65,7 +65,7 @@
   width: 8%;
   height: 50px;
   top: 50%;
-  font-size: $fontSizeH1;
+  font-size: @fontSizeH1;
   opacity: 1;
 }
 .carousel-control-next:hover {

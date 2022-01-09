@@ -19,36 +19,36 @@
 }
 
 .top-navbar .navbar-light .navbar-nav .nav-link {
-  color: $colorDark;
-  font-size: $fontSizePBig;
+  color: @colorDark;
+  font-size: @fontSizePBig;
   padding: 0px 20px;
-  border-radius: $borderRadius;
+  border-radius: @borderRadius;
 }
 
 .top-navbar .navbar-light .navbar-nav .nav-item .nav-link:hover {
-  background: $colorThemeMain;
-  color: $colorWhite;
+  background: @colorThemeMain;
+  color: @colorWhite;
 }
 .top-navbar .navbar-light .navbar-nav .nav-item.active .nav-link {
-  background: $colorThemeMain;
-  color: $colorWhite;
-  border-radius: $borderRadius;
+  background: @colorThemeMain;
+  color: @colorWhite;
+  border-radius: @borderRadius;
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-menu {
   border: none;
-  box-shadow: $boxShadow;
+  box-shadow: @boxShadow;
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-menu a.dropdown-item:hover {
-  background: $colorThemeMain;
-  color: $colorWhite;
+  background: @colorThemeMain;
+  color: @colorWhite;
 }
 .navbar-light .navbar-toggler:hover {
-  background: $colorThemeMain;
+  background: @colorThemeMain;
 }
 
-@media (max-width: $tabletBreakPoint) {
+@media (max-width: @tabletBreakPoint) {
   .navbar-light .navbar-brand {
     margin-left: 15px;
   }
@@ -61,7 +61,7 @@
   }
 }
 
-@media (min-width: $tabletBreakPoint) and (max-width: $desktopBreakPoint) {
+@media (min-width: @tabletBreakPoint) and (max-width: @desktopBreakPoint) {
   .navbar-light .navbar-brand {
     margin-left: 15px;
   }
