@@ -4,7 +4,7 @@ import { Template } from '../../common/template';
 import { getRoutes } from '../../routes';
 import './style/app.style.less';
 import './style/app.theme.less';
-import '../../common/template/theme/style.less';
+import '../../config/theme/style.less';
 
 function App() {
   return (
