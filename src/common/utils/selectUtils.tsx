@@ -8,7 +8,7 @@ export const createListOptions = <D extends { id?: number; name: string }>(
   cb: TVoidFn<JSX.Element[]>
 ) => {
   const options = items.map((v) => (
-    <Option key={v.id?.toString()} value={v.id?.toString()}>
+    <Option key={v.id?.toString()} value={v.id}>
       {v.name}
     </Option>
   ));

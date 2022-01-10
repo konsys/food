@@ -14,6 +14,7 @@ import { notification } from 'antd';
 
 export class CrudStore<D> {
   private url: string;
+
   constructor(url: string) {
     this.url = url;
   }
@@ -47,6 +48,7 @@ export class CrudStore<D> {
     const setPage = createEvent<number>();
     const setPageSize = createEvent<number>();
     const setFilter = createEvent<any>();
+    const setItem = createEvent<D>();
 
     const $oneStore = createStore<TRequestProcess<D>>(createInitItem());
     const $onepending = createStore<boolean>(false);
@@ -66,6 +68,7 @@ export class CrudStore<D> {
       .reset(resetList);
 
     $oneStore
+      .on(setItem, (prev, item) => ({ ...prev, item }))
       .on(createFx.done, nullableResult)
       .on(getOneFx.done, nullableResult)
       .on(updateFx.done, nullableResult)
@@ -105,6 +108,7 @@ export class CrudStore<D> {
       getOneFx,
       deleteFx,
       Gate,
+      setItem,
     };
   }
 }

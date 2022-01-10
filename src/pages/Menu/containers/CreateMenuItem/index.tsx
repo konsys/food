@@ -9,14 +9,29 @@ import { MenuTypeDto } from '../../model/menuTypeModel/types';
 import { MenuDto } from '../../model/types';
 import { CreateMenuItemModal } from './CreateMenuItemModal.tsx';
 
+enum EListType {
+  MENU_TIME,
+  MENU_TYPE,
+}
+
 const MenuTimeCrud = new CrudStore<MenuTimeDto>('/menu-time');
-const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeCrud.createCrudStore();
+const {
+  $oneStore: $oneMenuTime,
+  $listStore: $menuTimeList,
+  getAllFx: getAllMenuTimeFx,
+  setItem: setMenuTimeItem,
+} = MenuTimeCrud.createCrudStore();
 
 const MenuTypeCrud = new CrudStore<MenuTypeDto>('/menu-type');
-const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = MenuTypeCrud.createCrudStore();
+const {
+  $oneStore: $oneMenuType,
+  $listStore: $menuTypeList,
+  getAllFx: getAllMenuTypeFx,
+  setItem: setMenuTypeItem,
+} = MenuTypeCrud.createCrudStore();
 
 const MenuCrud = new CrudStore<MenuDto>('/menu');
-const { createFx } = MenuCrud.createCrudStore();
+const { createFx, $oneStore: $oneMenu } = MenuCrud.createCrudStore();
 
 export const CreateMenuButton = () => {
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
@@ -24,6 +39,9 @@ export const CreateMenuButton = () => {
 
   const menuTime = useStore($menuTimeList);
   const menuType = useStore($menuTypeList);
+  const menuTimeOne = useStore($oneMenuTime);
+  const menuTypeOne = useStore($oneMenuType);
+  const menuOne = useStore($oneMenu);
 
   const [modalOpened, setModalOpened] = useState<boolean>(false);
 
@@ -44,8 +62,28 @@ export const CreateMenuButton = () => {
 
   const [form] = Form.useForm();
 
+  // TODO add imgs
   const onFinish = (menu: MenuDto) => {
-    createFx(menu);
+    createFx({
+      ...menu,
+      menuTime: menuTimeOne.item!,
+      menuType: menuTypeOne.item!,
+      averageImg: '111',
+      bigImg: '222',
+      smallImg: '333',
+      description: menu.description,
+    }).then(() => setModalOpened(false));
+  };
+
+  const onListChange = (k: EListType, id: number) => {
+    let v;
+    if (k === EListType.MENU_TIME) {
+      v = menuTime.items.find((v) => v.id === id);
+      setMenuTimeItem(v as MenuTimeDto);
+    } else {
+      v = menuType.items.find((v) => v.id === id);
+      setMenuTypeItem(v as MenuTypeDto);
+    }
   };
 
   return (
@@ -71,14 +109,24 @@ export const CreateMenuButton = () => {
           <Form.Item label='Название' name='name' rules={[{ required: true }]}>
             <Input />
           </Form.Item>
-          <Form.Item label='Описание' name='description' rules={[]}>
+          <Form.Item label='Описание' name='description'>
             <TextArea />
           </Form.Item>
           <Form.Item label='Тип' name='menuType' rules={[{ required: true }]}>
-            <Select loading={menuType.pending}>{menuTypeItems}</Select>
+            <Select
+              loading={menuType.pending}
+              onChange={(value) => onListChange(EListType.MENU_TYPE, value)}
+            >
+              {menuTypeItems}
+            </Select>
           </Form.Item>
           <Form.Item label='Время меню' name='menuTime' rules={[{ required: true }]}>
-            <Select loading={menuTime.pending}>{menuTimeItems}</Select>
+            <Select
+              loading={menuTime.pending}
+              onChange={(value) => onListChange(EListType.MENU_TIME, value)}
+            >
+              {menuTimeItems}
+            </Select>
           </Form.Item>
         </CreateMenuItemModal>
       </Form>

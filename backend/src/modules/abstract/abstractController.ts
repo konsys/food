@@ -13,7 +13,7 @@ export class AbstractController<E, C, U> {
 
   @Post()
   create(@Body() item: C) {
-    return this.service.create(item);;
+    return this.service.create(item);
   }
 
   @Post('filter')
