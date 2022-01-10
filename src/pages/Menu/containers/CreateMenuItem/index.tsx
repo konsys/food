@@ -31,7 +31,7 @@ const {
 } = MenuTypeCrud.createCrudStore();
 
 const MenuCrud = new CrudStore<MenuDto>('/menu');
-const { createFx, $oneStore: $oneMenu } = MenuCrud.createCrudStore();
+const { createFx } = MenuCrud.createCrudStore();
 
 export const CreateMenuButton = () => {
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
@@ -41,7 +41,6 @@ export const CreateMenuButton = () => {
   const menuType = useStore($menuTypeList);
   const menuTimeOne = useStore($oneMenuTime);
   const menuTypeOne = useStore($oneMenuType);
-  const menuOne = useStore($oneMenu);
 
   const [modalOpened, setModalOpened] = useState<boolean>(false);
 
@@ -66,8 +65,8 @@ export const CreateMenuButton = () => {
   const onFinish = (menu: MenuDto) => {
     createFx({
       ...menu,
-      menuTime: menuTimeOne.item!,
-      menuType: menuTypeOne.item!,
+      menuTime: menuTimeOne.item ?? ({} as MenuTimeDto),
+      menuType: menuTypeOne.item ?? ({} as MenuTypeDto),
       averageImg: '111',
       bigImg: '222',
       smallImg: '333',
