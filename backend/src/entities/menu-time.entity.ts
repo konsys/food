@@ -1,34 +1,9 @@
-import { Exclude } from 'class-transformer';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { AbstractDictionary } from 'src/common/abstractProperties';
+import {  Entity, OneToMany } from 'typeorm';
 import { MenuEntity } from './menu.entity';
 
 @Entity()
-export class MenuTimeEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
-  name: string;
-
-  @Column()
-  description: string;
-
-  @Column({ default: false })
-  visible: boolean;
-
-  @Column({
-    type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
-  })
-  createdAt?: Date;
-
-  @Exclude()
-  @Column({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
-    onUpdate: 'CURRENT_TIMESTAMP',
-  })
-  updatedAt?: Date;
-
+export class MenuTimeDictEntity extends AbstractDictionary {
   @OneToMany(() => MenuEntity, menu => menu.id)
   menus: MenuEntity[];
 }
