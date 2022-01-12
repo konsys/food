@@ -10,9 +10,9 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
     constructor(repository: Repository<E>) {
         this.repository = repository;
     }
-
+ 
     create(createDto: C) {
-        console.log(111111111111111, createDto);
+        console.log(111111111111111, createDto); 
         return this.repository.save(createDto);
     }
 

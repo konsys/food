@@ -9,24 +9,11 @@ import { MenuTimeDto } from '../../model/menuTimeModel/types';
 import { MenuTypeDto } from '../../model/menuTypeModel/types';
 import { MenuDto } from '../../model/types';
 
-enum EListType {
-  MENU_TIME,
-  MENU_TYPE,
-}
-
 const MenuTimeCrud = new CrudStore<MenuTimeDto>('/menu-time');
-const {
-  $listStore: $menuTimeList,
-  getAllFx: getAllMenuTimeFx,
-  setItem: setMenuTimeItem,
-} = MenuTimeCrud.createCrudStore();
+const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeCrud.createCrudStore();
 
 const MenuTypeCrud = new CrudStore<MenuTypeDto>('/menu-type');
-const {
-  $listStore: $menuTypeList,
-  getAllFx: getAllMenuTypeFx,
-  setItem: setMenuTypeItem,
-} = MenuTypeCrud.createCrudStore();
+const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = MenuTypeCrud.createCrudStore();
 
 const MenuCrud = new CrudStore<MenuDto>('/menu');
 const { createFx } = MenuCrud.createCrudStore();
@@ -61,17 +48,6 @@ export const CreateMenuButton = () => {
     createListOptions(menuType.items, setMenuTypeItems);
   }, [menuType.items]);
 
-  const onListChange = (k: EListType, id: number) => {
-    let v;
-    if (k === EListType.MENU_TIME) {
-      v = menuTime.items.find((time) => time.id === id);
-      setMenuTimeItem(v as MenuTimeDto);
-    } else {
-      v = menuType.items.find((type) => type.id === id);
-      setMenuTypeItem(v as MenuTypeDto);
-    }
-  };
-
   return (
     <>
       <Modal visible={modalVisible} title='Меню' onOk={createFx} onCancel={onClose} destroyOnClose>
@@ -81,21 +57,11 @@ export const CreateMenuButton = () => {
         <Form.Item label='Описание' name='description'>
           <TextArea />
         </Form.Item>
-        <Form.Item label='Тип' name='menuType' rules={[{ required: true }]}>
-          <Select
-            loading={menuType.pending}
-            onChange={(value) => onListChange(EListType.MENU_TYPE, value)}
-          >
-            {menuTypeItems}
-          </Select>
+        <Form.Item label='Тип' name='typeId' rules={[{ required: true }]}>
+          <Select loading={menuType.pending}>{menuTypeItems}</Select>
         </Form.Item>
-        <Form.Item label='Время меню' name='menuTime' rules={[{ required: true }]}>
-          <Select
-            loading={menuTime.pending}
-            onChange={(value) => onListChange(EListType.MENU_TIME, value)}
-          >
-            {menuTimeItems}
-          </Select>
+        <Form.Item label='Время меню' name='timeId' rules={[{ required: true }]}>
+          <Select loading={menuTime.pending}>{menuTimeItems}</Select>
         </Form.Item>
       </Modal>
       <Button type='primary' onClick={() => setModalVisible(true)}>
