@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MenuTypeDict } from 'src/entities/menu-type.';
+import { MenuTypeDict } from 'src/entities/menu-type.dict';
 import { Repository } from 'typeorm';
 import { AbstractService } from '../abstract/abstractService';
 import { CreateMenuTypeDto } from './dto/create-menu-type.dto';

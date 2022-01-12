@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MenuTypeService } from './menu-type.service';
 import { MenuTypeController } from './menu-type.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MenuTypeDict } from 'src/entities/menu-type.';
+import { MenuTypeDict } from 'src/entities/menu-type.dict';
 
 @Module({
   imports: [TypeOrmModule.forFeature([MenuTypeDict])],

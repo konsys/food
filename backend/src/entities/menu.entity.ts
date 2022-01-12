@@ -1,7 +1,7 @@
 import { Exclude } from 'class-transformer';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { MenuTimeDict } from './menu-time.dict';
-import { MenuTypeDict } from './menu-type.';
+import { MenuTypeDict } from './menu-type.dict';
 @Entity()
 export class MenuEntity {
   @PrimaryGeneratedColumn()
