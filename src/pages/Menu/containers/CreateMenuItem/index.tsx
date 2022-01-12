@@ -64,10 +64,10 @@ export const CreateMenuButton = () => {
   const onListChange = (k: EListType, id: number) => {
     let v;
     if (k === EListType.MENU_TIME) {
-      v = menuTime.items.find((v) => v.id === id);
+      v = menuTime.items.find((time) => time.id === id);
       setMenuTimeItem(v as MenuTimeDto);
     } else {
-      v = menuType.items.find((v) => v.id === id);
+      v = menuType.items.find((type) => type.id === id);
       setMenuTypeItem(v as MenuTypeDto);
     }
   };
