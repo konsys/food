@@ -26,24 +26,20 @@ export class MenuEntity extends AbstractDictionary {
   })
   updatedAt?: Date;
 
-  @ManyToOne(type => MenuTimeDict, {
-    eager: true
-  })
-  @JoinColumn({ name: "timeId" })
-  menuTime: MenuTimeDict;
-
-  @ManyToOne(type => MenuTypeDict, {
-    eager: true
-  })
-  @JoinColumn({ name: "typeId" })
-  menuType: MenuTypeDict;
-
   @Column({ default: null })
   price: string;
 
   @Column({ type: "int", nullable: true })
   timeId: number;
 
+  @ManyToOne(() => MenuTimeDict, {eager: true})
+  @JoinColumn({ name: "timeId" })
+  time: MenuTimeDict;
+
   @Column({ type: "int", nullable: true })
   typeId: number;
+
+  @ManyToOne(() => MenuTypeDict, {eager: true})
+  @JoinColumn({ name: "typeId" })
+  type: MenuTypeDict;
 }
