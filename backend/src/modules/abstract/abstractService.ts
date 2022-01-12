@@ -12,7 +12,7 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
     }
 
     create(createDto: C) {
-        console.log(111111111111111)
+        console.log(111111111111111, createDto);
         return this.repository.save(createDto);
     }
 

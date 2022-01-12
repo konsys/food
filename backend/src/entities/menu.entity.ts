@@ -1,25 +1,18 @@
 import { Exclude } from 'class-transformer';
+import { AbstractDictionary } from 'src/common/abstractProperties';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { MenuTimeDict } from './menu-time.dict';
 import { MenuTypeDict } from './menu-type.dict';
 @Entity()
-export class MenuEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class MenuEntity extends AbstractDictionary {
 
-  @Column()
-  name: string;
-
-  @Column()
-  description: string;
-
-  @Column()
+  @Column({default: null})
   bigImg: string;
 
-  @Column()
+  @Column({default: null})
   averageImg: string;
 
-  @Column()
+  @Column({default: null})
   smallImg: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
@@ -42,9 +35,6 @@ export class MenuEntity {
     eager: true
   })
   menuType: MenuTypeDict;
-
-  @Column({ default: false })
-  visible: boolean;
 
   @Column({ default: null })
   price: string;
