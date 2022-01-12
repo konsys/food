@@ -3,7 +3,7 @@ import {  Entity, OneToMany } from 'typeorm';
 import { MenuEntity } from './menu.entity';
 
 @Entity()
-export class MenuTimeDictEntity extends AbstractDictionary {
+export class MenuTypeDict extends AbstractDictionary {
   @OneToMany(() => MenuEntity, menu => menu.id)
   menus: MenuEntity[];
 }

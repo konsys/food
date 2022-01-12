@@ -1,12 +1,12 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { MenuTimeService } from './menu-time.service';
 import { CreateMenuTimeDto } from './dto/create-menu-time.dto';
 import { UpdateMenuTimeDto } from './dto/update-menu-time.dto';
-import { MenuTimeEntity } from 'src/entities/menu-time.entity';
 import { AbstractController } from '../abstract/abstractController';
+import { MenuTimeDict } from 'src/entities/menu-time.dict';
 
 @Controller('menu-time')
-export class MenuTimeController extends AbstractController<MenuTimeEntity, CreateMenuTimeDto, UpdateMenuTimeDto> {
+export class MenuTimeController extends AbstractController<MenuTimeDict, CreateMenuTimeDto, UpdateMenuTimeDto> {
   constructor(service: MenuTimeService) {
     super(service)
   }

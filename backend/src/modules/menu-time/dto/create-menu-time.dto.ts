@@ -1,4 +1,4 @@
 import { PartialType } from "@nestjs/mapped-types";
-import { MenuTimeEntity } from "src/entities/menu-time.entity";
+import { MenuTimeDict } from "src/entities/menu-time.dict";
 
-export class CreateMenuTimeDto extends PartialType(MenuTimeEntity) { }
+export class CreateMenuTimeDto extends PartialType(MenuTimeDict) { }
