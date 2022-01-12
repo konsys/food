@@ -16,7 +16,6 @@ enum EListType {
 
 const MenuTimeCrud = new CrudStore<MenuTimeDto>('/menu-time');
 const {
-  $oneStore: $oneMenuTime,
   $listStore: $menuTimeList,
   getAllFx: getAllMenuTimeFx,
   setItem: setMenuTimeItem,
@@ -24,7 +23,6 @@ const {
 
 const MenuTypeCrud = new CrudStore<MenuTypeDto>('/menu-type');
 const {
-  $oneStore: $oneMenuType,
   $listStore: $menuTypeList,
   getAllFx: getAllMenuTypeFx,
   setItem: setMenuTypeItem,
@@ -39,8 +37,6 @@ export const CreateMenuButton = () => {
 
   const menuTime = useStore($menuTimeList);
   const menuType = useStore($menuTypeList);
-  const menuTimeOne = useStore($oneMenuTime);
-  const menuTypeOne = useStore($oneMenuType);
 
   const { Modal, formInstance } = useValidatedForm<MenuDto>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -64,21 +60,6 @@ export const CreateMenuButton = () => {
   useEffect(() => {
     createListOptions(menuType.items, setMenuTypeItems);
   }, [menuType.items]);
-
-  // const [form] = Form.useForm();
-
-  // // TODO add imgs
-  // const onFinish = (menu: MenuDto) => {
-  //   createFx({
-  //     ...menu,
-  //     menuTime: menuTimeOne.item ?? ({} as MenuTimeDto),
-  //     menuType: menuTypeOne.item ?? ({} as MenuTypeDto),
-  //     averageImg: '111',
-  //     bigImg: '222',
-  //     smallImg: '333',
-  //     description: menu.description,
-  //   }).then(() => setModalOpened(false));
-  // };
 
   const onListChange = (k: EListType, id: number) => {
     let v;
