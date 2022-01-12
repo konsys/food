@@ -20,7 +20,7 @@ export const ErrorMessage: FC<Props> = ({ error, message = 'Произошла �
       {desc && (
         <ul>
           {desc.map((d, index) => (
-            <li children={d} key={index} />
+            <li key={index}>{d}</li>
           ))}
         </ul>
       )}

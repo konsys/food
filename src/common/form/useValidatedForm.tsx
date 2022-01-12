@@ -97,20 +97,20 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             onCancel?.(e);
           }}
           onOk={modalOnOk}
-          children={
-            <ReturnedForm
-              initialValues={initialValues}
-              isEdit
-              layout='vertical'
-              children={children}
-              onKeyPress={(e: any) => {
-                if (wasEnterOnInput(e) && !disabledOkBtn) {
-                  modalOnOk();
-                }
-              }}
-            />
-          }
-        />
+        >
+          <ReturnedForm
+            initialValues={initialValues}
+            isEdit
+            layout='vertical'
+            onKeyPress={(e: any) => {
+              if (wasEnterOnInput(e) && !disabledOkBtn) {
+                modalOnOk();
+              }
+            }}
+          >
+            {children}
+          </ReturnedForm>
+        </MainModal>
       );
     },
     [ReturnedForm, form, initialValues]
@@ -119,6 +119,6 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
   return {
     formInstance: returnedFormInstance,
     Form: ReturnedForm,
-    useFormOnModal,
+    Modal: useFormOnModal,
   };
 }

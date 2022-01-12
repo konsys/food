@@ -4,10 +4,9 @@ import { ModalProps, Modal } from 'antd';
 type Props = PropsWithChildren<ModalProps>;
 
 export const MainModal = (props: Props) => {
-  const { wrapProps, ...otherProps } = props;
   return (
     <>
-      <Modal {...otherProps} />
+      <Modal {...props} />
     </>
   );
 };

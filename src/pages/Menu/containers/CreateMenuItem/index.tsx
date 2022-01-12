@@ -2,12 +2,12 @@ import { Button, Form, Input, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { useStore } from 'effector-react';
 import React, { useEffect, useState } from 'react';
+import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { MenuTimeDto } from '../../model/menuTimeModel/types';
 import { MenuTypeDto } from '../../model/menuTypeModel/types';
 import { MenuDto } from '../../model/types';
-import { CreateMenuItemModal } from './CreateMenuItemModal.tsx';
 
 enum EListType {
   MENU_TIME,
@@ -42,14 +42,20 @@ export const CreateMenuButton = () => {
   const menuTimeOne = useStore($oneMenuTime);
   const menuTypeOne = useStore($oneMenuType);
 
-  const [modalOpened, setModalOpened] = useState<boolean>(false);
+  const { Modal, formInstance } = useValidatedForm<MenuDto>();
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+  const onClose = () => {
+    setModalVisible(false);
+    formInstance.resetFields();
+  };
 
   useEffect(() => {
-    if (modalOpened) {
+    if (modalVisible) {
       getAllMenuTypeFx({ limit: 20, page: 1 });
       getAllMenuTimeFx({ limit: 20, page: 1 });
     }
-  }, [modalOpened]);
+  }, [modalVisible]);
 
   useEffect(() => {
     createListOptions(menuTime.items, setMenuTimeItems);
@@ -59,20 +65,20 @@ export const CreateMenuButton = () => {
     createListOptions(menuType.items, setMenuTypeItems);
   }, [menuType.items]);
 
-  const [form] = Form.useForm();
+  // const [form] = Form.useForm();
 
-  // TODO add imgs
-  const onFinish = (menu: MenuDto) => {
-    createFx({
-      ...menu,
-      menuTime: menuTimeOne.item ?? ({} as MenuTimeDto),
-      menuType: menuTypeOne.item ?? ({} as MenuTypeDto),
-      averageImg: '111',
-      bigImg: '222',
-      smallImg: '333',
-      description: menu.description,
-    }).then(() => setModalOpened(false));
-  };
+  // // TODO add imgs
+  // const onFinish = (menu: MenuDto) => {
+  //   createFx({
+  //     ...menu,
+  //     menuTime: menuTimeOne.item ?? ({} as MenuTimeDto),
+  //     menuType: menuTypeOne.item ?? ({} as MenuTypeDto),
+  //     averageImg: '111',
+  //     bigImg: '222',
+  //     smallImg: '333',
+  //     description: menu.description,
+  //   }).then(() => setModalOpened(false));
+  // };
 
   const onListChange = (k: EListType, id: number) => {
     let v;
@@ -87,48 +93,33 @@ export const CreateMenuButton = () => {
 
   return (
     <>
-      <Button type='primary' onClick={() => setModalOpened(true)}>
+      <Modal visible={modalVisible} title='Меню' onOk={createFx} onCancel={onClose} destroyOnClose>
+        <Form.Item label='Название' name='name' rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item label='Описание' name='description'>
+          <TextArea />
+        </Form.Item>
+        <Form.Item label='Тип' name='menuType' rules={[{ required: true }]}>
+          <Select
+            loading={menuType.pending}
+            onChange={(value) => onListChange(EListType.MENU_TYPE, value)}
+          >
+            {menuTypeItems}
+          </Select>
+        </Form.Item>
+        <Form.Item label='Время меню' name='menuTime' rules={[{ required: true }]}>
+          <Select
+            loading={menuTime.pending}
+            onChange={(value) => onListChange(EListType.MENU_TIME, value)}
+          >
+            {menuTimeItems}
+          </Select>
+        </Form.Item>
+      </Modal>
+      <Button type='primary' onClick={() => setModalVisible(true)}>
         Создать
       </Button>
-      <Form<MenuDto>
-        onFinish={onFinish}
-        form={form}
-        name='basic'
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        initialValues={{ remember: true }}
-        autoComplete='off'
-      >
-        <CreateMenuItemModal
-          isModalVisible={modalOpened}
-          onCancel={() => setModalOpened(false)}
-          onOk={form.submit}
-          title={'Создать'}
-        >
-          <Form.Item label='Название' name='name' rules={[{ required: true }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item label='Описание' name='description'>
-            <TextArea />
-          </Form.Item>
-          <Form.Item label='Тип' name='menuType' rules={[{ required: true }]}>
-            <Select
-              loading={menuType.pending}
-              onChange={(value) => onListChange(EListType.MENU_TYPE, value)}
-            >
-              {menuTypeItems}
-            </Select>
-          </Form.Item>
-          <Form.Item label='Время меню' name='menuTime' rules={[{ required: true }]}>
-            <Select
-              loading={menuTime.pending}
-              onChange={(value) => onListChange(EListType.MENU_TIME, value)}
-            >
-              {menuTimeItems}
-            </Select>
-          </Form.Item>
-        </CreateMenuItemModal>
-      </Form>
     </>
   );
 };
