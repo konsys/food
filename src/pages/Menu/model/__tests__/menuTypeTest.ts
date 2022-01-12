@@ -1,7 +1,9 @@
 import faker from 'faker';
 import { MenuTypeDto } from '../menuTypeModel/types';
 import { menuTypeFactory } from '../menuTypeModel/menuTypeFactory';
-import { createCrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
+import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
+
+const model = new CrudStore<MenuTypeDto>('/menu-type');
 
 const {
   createFx,
@@ -13,7 +15,7 @@ const {
   updateFx,
   getOneFx,
   deleteFx,
-} = createCrudStore<MenuTypeDto>('/menu-type');
+} = model.createCrudStore();
 
 describe('menu type test', () => {
   let newItem: MenuTypeDto;

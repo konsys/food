@@ -1,7 +1,9 @@
 import { menuTimeFactory } from '../menuTimeModel/menuTimeFactory';
 import faker from 'faker';
 import { MenuTimeDto } from '../menuTimeModel/types';
-import { createCrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
+import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
+
+const model = new CrudStore<MenuTimeDto>('/menu-time');
 
 const {
   createFx,
@@ -13,7 +15,7 @@ const {
   updateFx,
   getOneFx,
   deleteFx,
-} = createCrudStore<MenuTimeDto>('/menu-time');
+} = model.createCrudStore();
 
 describe('menu time test', () => {
   let newItem: MenuTimeDto;

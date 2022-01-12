@@ -11,8 +11,9 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
         this.repository = repository;
     }
 
-    create(createMenuDto: C) {
-        return this.repository.save(createMenuDto);
+    create(createDto: C) {
+        console.log(111111111111111)
+        return this.repository.save(createDto);
     }
 
     async findAll({ limit, page, filter }: TListRequest<E>): Promise<TListResponce<E>> {
@@ -46,8 +47,8 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
         return this.repository.findOne(id);
     }
 
-    update(updateMenuDto: U) {
-        return this.repository.save(updateMenuDto);
+    update(updateDto: U) {
+        return this.repository.save(updateDto);
     }
 
     remove(id: number) {

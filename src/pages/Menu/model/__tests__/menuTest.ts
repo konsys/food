@@ -1,10 +1,12 @@
 import faker from 'faker';
-import { createCrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
+import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
 import { menuFactory } from '../menuFactory';
 import { getAllMenuTimeFx } from '../menuTimeModel/store';
 import { getAllMenuTypeFx } from '../menuTypeModel/store';
 
 import { MenuDto } from '../types';
+
+const model = new CrudStore<MenuDto>('/menu');
 
 const {
   createFx,
@@ -16,7 +18,7 @@ const {
   updateFx,
   getOneFx,
   deleteFx,
-} = createCrudStore<MenuDto>('/menu');
+} = model.createCrudStore();
 
 const generateNewItem = async () => {
   const menuTime = await getAllMenuTimeFx({ limit: 5, page: 1 });
