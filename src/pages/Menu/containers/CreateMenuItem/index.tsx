@@ -33,6 +33,10 @@ export const CreateMenuButton = () => {
     formInstance.resetFields();
   };
 
+  const onSave = (v: MenuDto) => {
+    return createFx(v).then(() => setModalVisible(false));
+  };
+
   useEffect(() => {
     if (modalVisible) {
       getAllMenuTypeFx({ limit: 20, page: 1 });
@@ -50,7 +54,7 @@ export const CreateMenuButton = () => {
 
   return (
     <>
-      <Modal visible={modalVisible} title='Меню' onOk={createFx} onCancel={onClose} destroyOnClose>
+      <Modal visible={modalVisible} title='Меню' onOk={onSave} onCancel={onClose} destroyOnClose>
         <Form.Item label='Название' name='name' rules={[{ required: true }]}>
           <Input />
         </Form.Item>
