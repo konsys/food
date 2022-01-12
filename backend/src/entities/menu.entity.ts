@@ -29,7 +29,7 @@ export class MenuEntity extends AbstractDictionary {
   @Column({ default: null })
   price: string;
 
-  @Column({ type: "int", nullable: true })
+  @Column({ type: 'int', nullable: true })
   timeId: number;
 
   @ManyToOne(() => MenuTimeDict, {eager: true})

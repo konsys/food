@@ -9,7 +9,7 @@ export class AbstractDictionary {
   @Column()
   name: string;
 
-  @Column()
+  @Column({default: null})
   description: string;
 
   @Column({ default: false })

@@ -12,7 +12,6 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
     }
  
     create(createDto: C) {
-        console.log(111111111111111, createDto); 
         return this.repository.save(createDto);
     }
 
@@ -21,8 +20,7 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
         page = +(page >= 0 ? page : 0);
         const take = limit = +limit;
         const skip = take * (page - 1);
-        // TODO add relations parameter
-        const whereFilter = filter ? { where: filter, relations: ['menuType','menuTime'] } : null;
+        const whereFilter = filter ? { where: filter } : null;
         const totalRecords = await this.repository.count(whereFilter);
         let allFilters: FindManyOptions = {
             take: limit,
