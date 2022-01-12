@@ -5,7 +5,7 @@ import { TReturnedForm, TModalWithFormProps, TSetFieldsValue } from './types';
 import { MainModal } from '../modal/Modal';
 import { AbstractForm } from './AbstractForm';
 import { ErrorMessage } from '../errors/ErrorMessage';
-import { wasEnterOnInput } from './utils';
+import { enterKeyPressed } from './utils';
 
 export function useValidatedForm<T>(initialValues?: Partial<T>) {
   const [form] = Form.useForm();
@@ -103,7 +103,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             isEdit
             layout='vertical'
             onKeyPress={(e: any) => {
-              if (wasEnterOnInput(e) && !disabledOkBtn) {
+              if (enterKeyPressed(e) && !disabledOkBtn) {
                 modalOnOk();
               }
             }}
