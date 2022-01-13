@@ -9,7 +9,7 @@ import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.less';
 import { EFoodType } from '../MenuList';
 import Text from 'antd/lib/typography/Text';
-import { CreateMenuButton } from '../containers/CreateMenuItem';
+import { CreateMenuButton } from '../containers/CreateMenu';
 
 interface Props {
   menu: TListResponce<MenuDto>;

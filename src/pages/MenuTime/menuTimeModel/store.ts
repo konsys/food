@@ -1,5 +1,5 @@
 import { createDomain } from 'effector';
-import { CrudService } from '../../../../common/api';
+import { CrudService } from '../../../common/api';
 import {
   createInitItem,
   createInitItemsWithPagination,
@@ -8,7 +8,7 @@ import {
   TListResponce,
   TRequestProcess,
   TypeOrmDeleteResult,
-} from '../../../../common/api/types';
+} from '../../../common/api/types';
 import { MenuTimeDto } from './types';
 
 const MenuDomain = createDomain('MenuDomain');
