@@ -2,6 +2,7 @@ import { Button, Form, Input, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { useStore } from 'effector-react';
 import React, { useEffect, useState } from 'react';
+import { DragDrop } from '../../../../common/components/drag/DragDrop';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
 import { createListOptions } from '../../../../common/utils/selectUtils';
@@ -67,6 +68,7 @@ export const CreateMenuButton = () => {
         <Form.Item label='Время меню' name='timeId' rules={[{ required: true }]}>
           <Select loading={menuTime.pending}>{menuTimeItems}</Select>
         </Form.Item>
+        <DragDrop />
       </Modal>
       <Button type='primary' onClick={() => setModalVisible(true)}>
         Создать

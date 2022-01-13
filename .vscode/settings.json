@@ -9,7 +9,7 @@
         "typescript",
     ],
     "[typescriptreact]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[typescript]": {
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
