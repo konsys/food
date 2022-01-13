@@ -7,7 +7,7 @@ import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
-import { MenuTypeDto } from '../../../MenuType/menuTypeModel/types';
+import { MenuTypeDto } from '../../model/menuTypeModel/types';
 import { MenuDto } from '../../model/types';
 
 const MenuTimeCrud = new CrudStore<MenuTimeDto>('/menu-time');

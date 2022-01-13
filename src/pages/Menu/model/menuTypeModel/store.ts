@@ -1,9 +1,17 @@
 import { createDomain } from 'effector';
-import { CrudService } from '../../../common/api';
-import { createInitItem, createInitItemsWithPagination, nullableResult, TListRequest, TListResponce, TRequestProcess, TypeOrmDeleteResult } from '../../../common/api/types';
+import { CrudService } from '../../../../common/api';
+import {
+  createInitItem,
+  createInitItemsWithPagination,
+  nullableResult,
+  TListRequest,
+  TListResponce,
+  TRequestProcess,
+  TypeOrmDeleteResult,
+} from '../../../../common/api/types';
 import { MenuTypeDto } from './types';
 
-const MenuDomain = createDomain('MenuDomain'); 
+const MenuDomain = createDomain('MenuDomain');
 
 const URL = `/menu-type`;
 
