@@ -12,7 +12,7 @@ export class UploadController {
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: './uploadFilesDir',
+        destination: './upload',
         filename:  (req, file, cb) => {
           cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
         }

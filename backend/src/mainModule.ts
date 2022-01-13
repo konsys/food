@@ -8,6 +8,7 @@ import { OrmConfig } from './ormConfig';
 import { MenuTypeModule } from './modules/menu-type/menu-type.module';
 import { UploadModule } from './modules/upload/upload.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
@@ -19,9 +20,10 @@ import { MulterModule } from '@nestjs/platform-express';
     MenuTypeModule,
     MenuModule,
     UploadModule,
-    MulterModule.register({
-      dest: '../uploadFilesDir',
-    })
+    MulterModule,
+    ServeStaticModule.forRoot({
+      rootPath: `${__dirname}/upload`,
+    }),
   ],
 })
 export class MainModule { }

@@ -629,7 +629,7 @@
     "@types/jsonwebtoken" "8.5.4"
     jsonwebtoken "8.5.1"
 
-"@nestjs/mapped-types@*":
+"@nestjs/mapped-types@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-1.0.1.tgz#78b62041c7a407db4a90eb140567321602bed18e"
   integrity sha512-NFvofzSinp00j5rzUd4tf+xi9od6383iY0JP7o0Bnu1fuItAUkWBgc4EKuIQ3D+c2QI3i9pG1kDWAeY27EMGtg==
@@ -660,6 +660,13 @@
     fs-extra "10.0.0"
     jsonc-parser "3.0.0"
     pluralize "8.0.0"
+
+"@nestjs/serve-static@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/serve-static/-/serve-static-2.2.2.tgz#8e9dc2fc6c042ddac5133b957d6bc25d9f8fa225"
+  integrity sha512-3Mr+Q/npS3N7iGoF3Wd6Lj9QcjMGxbNrSqupi5cviM0IKrZ1BHl5qekW95rWYNATAVqoTmjGROAq+nKKpuUagQ==
+  dependencies:
+    path-to-regexp "0.1.7"
 
 "@nestjs/testing@^8.0.0":
   version "8.2.5"
