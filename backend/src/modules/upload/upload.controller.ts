@@ -1,16 +1,15 @@
-import { Controller, Post, Body} from '@nestjs/common';
+import { Controller, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { UploadService } from './upload.service';
-import { CreateUploadDto } from './dto/create-upload.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('upload')
 export class UploadController {
-  constructor(private readonly uploadService: UploadService) {}
-
+  constructor(private readonly uploadService: UploadService) { }
+  
   @Post()
-  create(@Body() createUploadDto: CreateUploadDto) {
-    console.log(111111, createUploadDto);
-    return this.uploadService.create(createUploadDto);
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    console.log(111111, file);
+    console.log(file);
   }
-
 }
- 

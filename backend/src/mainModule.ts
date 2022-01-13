@@ -7,6 +7,7 @@ import { MenuTimeModule } from './modules/menu-time/menu-time.module';
 import { OrmConfig } from './ormConfig';
 import { MenuTypeModule } from './modules/menu-type/menu-type.module';
 import { UploadModule } from './modules/upload/upload.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -17,7 +18,12 @@ import { UploadModule } from './modules/upload/upload.module';
     MenuTimeModule,
     MenuTypeModule,
     MenuModule,
-    UploadModule
+    UploadModule,
+    MulterModule.registerAsync({
+      useFactory: () => ({
+        dest: './upload',
+      }),
+    })
   ],
 })
 export class MainModule { }
