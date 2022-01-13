@@ -7,7 +7,7 @@ import { ExtractInterceptor } from './ExtractInterceptor';
 @UseInterceptors(ExtractInterceptor)
 @Controller('menu-time')
 export class AbstractController<E, C, U> {
-    private service: IAbstractService<E, C, U>;
+  private service: IAbstractService<E, C, U>;
 
   constructor(service: IAbstractService<E, C, U>) { 
       this.service = service;
