@@ -19,10 +19,8 @@ import { MulterModule } from '@nestjs/platform-express';
     MenuTypeModule,
     MenuModule,
     UploadModule,
-    MulterModule.registerAsync({
-      useFactory: () => ({
-        dest: './upload',
-      }),
+    MulterModule.register({
+      dest: '../uploadFilesDir',
     })
   ],
 })
