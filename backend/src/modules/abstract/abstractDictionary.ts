@@ -3,6 +3,10 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class AbstractDictionary {
+  constructor(partial: Partial<AbstractDictionary>) {
+    Object.assign(this, partial);
+  }
+
   @PrimaryGeneratedColumn()
   id: number;
 

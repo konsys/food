@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
 
 import { TListRequest } from 'src/common/types/paginationTypes';
 import { IAbstractService } from './abstractService';
+import { ExtractInterceptor } from './ExtractInterceptor';
 
+@UseInterceptors(ExtractInterceptor)
 @Controller('menu-time')
 export class AbstractController<E, C, U> {
     private service: IAbstractService<E, C, U>;
@@ -18,7 +20,7 @@ export class AbstractController<E, C, U> {
 
   @Post('filter')
   filter(@Body() params: TListRequest<E>) {
-    return this.service.findAll(params);
+    return (this.service.findAll(params));
   }
 
   @Get(':id')

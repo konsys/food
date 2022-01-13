@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { AbstractDictionary } from 'src/common/abstractProperties';
+import { AbstractDictionary } from 'src/modules/abstract/abstractDictionary';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { MenuTimeDict } from './menu-time.dict';
 import { MenuTypeDict } from './menu-type.dict';
@@ -15,20 +15,10 @@ export class MenuEntity extends AbstractDictionary {
   @Column({ default: null })
   smallImg: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt?: Date;
-
-  @Exclude()
-  @Column({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
-    onUpdate: 'CURRENT_TIMESTAMP',
-  })
-  updatedAt?: Date;
-
   @Column({ default: null })
   price: string;
 
+  @Exclude()
   @Column({ type: 'int', nullable: true })
   timeId: number;
 
@@ -36,6 +26,7 @@ export class MenuEntity extends AbstractDictionary {
   @JoinColumn({ name: "timeId" })
   time: MenuTimeDict;
 
+  @Exclude()
   @Column({ type: "int", nullable: true })
   typeId: number;
 

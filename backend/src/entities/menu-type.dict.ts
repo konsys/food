@@ -1,4 +1,4 @@
-import { AbstractDictionary } from 'src/common/abstractProperties';
+import { AbstractDictionary } from 'src/modules/abstract/abstractDictionary';
 import {  Entity, OneToMany } from 'typeorm';
 import { MenuEntity } from './menu.entity';
 
