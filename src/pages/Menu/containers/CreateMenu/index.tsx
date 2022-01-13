@@ -59,16 +59,16 @@ export const CreateMenuButton = () => {
   const props: IDragDropProps = {
     name: 'file',
     multiple: true,
-    action: 'http://localhost:8000/uploadFile',
+    action: 'http://localhost:8000/upload',
     onChange(info) {
       const { status } = info.file;
       if (status !== 'uploading') {
         console.log(info.file, info.fileList);
       }
       if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
+        message.success(`${info.file.name}. Успешно загружено.`);
       } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
+        message.error(`${info.file.name}. Ошибка загрузки.`);
       }
     },
     onDrop(e) {
