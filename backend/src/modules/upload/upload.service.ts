@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUploadDto } from './dto/create-upload.dto';
-import { UpdateUploadDto } from './dto/update-upload.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { UploadEntity } from 'src/entities/upload.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UploadService {
-  create(createUploadDto: CreateUploadDto) {
-    return 'This action adds a new upload';
+
+  constructor(
+  @InjectRepository(UploadEntity)
+  private readonly repository:Repository<UploadEntity>
+  ) {}
+
+  saveFileData(file: Express.Multer.File) {
+    return this.repository.save(file);
   }
 
-  findAll() {
-    return `This action returns all upload`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} upload`;
-  }
-
-  update(id: number, updateUploadDto: UpdateUploadDto) {
-    return `This action updates a #${id} upload`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} upload`;
-  }
 }
+
+
+// @Injectable()
+// export class MenuTypeService extends AbstractService<MenuTypeDict, CreateMenuTypeDto, UpdateMenuTypeDto> {
+//   constructor(@InjectRepository(MenuTypeDict)
+//   repository: Repository<MenuTypeDict>
+//   ) { super(repository); }
+// }

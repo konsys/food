@@ -14,4 +14,26 @@ export class UploadEntity extends AbstractDictionary {
 
     @Column({ default: null })
     smallImg: string;
+
+    @Column({ default: null })
+    encoding: string;
+
+    @Column({ default: null })
+    fieldname: string;
+
+    @Column({ default: null })
+    filename: string;
+
+    @Column({ default: null })
+    mimetype: string;
+
+    @Column({ default: null })
+    originalname: string;
+
+    @Column({ default: null })
+    path: string;
+
+    @Column({ default: null })
+    size: number;
 }
+
