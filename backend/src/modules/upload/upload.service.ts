@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { uiid } from 'src/common/random';
 import { UploadEntity } from 'src/entities/upload.entity';
 import { Repository } from 'typeorm';
 
@@ -12,15 +13,11 @@ export class UploadService {
   ) {}
 
   saveFileData(file: Express.Multer.File) {
-    return this.repository.save(file);
+    const save: Partial<UploadEntity> = {
+      ...file, 
+      name: uiid(),
+      original:file.destination
+    }
+    return this.repository.save(save);
   }
-
 }
-
-
-// @Injectable()
-// export class MenuTypeService extends AbstractService<MenuTypeDict, CreateMenuTypeDto, UpdateMenuTypeDto> {
-//   constructor(@InjectRepository(MenuTypeDict)
-//   repository: Repository<MenuTypeDict>
-//   ) { super(repository); }
-// }

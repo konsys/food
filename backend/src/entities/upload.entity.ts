@@ -1,6 +1,6 @@
 import { AbstractDictionary } from "src/modules/abstract/abstractDictionary";
-import { Column } from "typeorm";
-
+import { Column, Entity } from "typeorm";
+@Entity()
 export class UploadEntity extends AbstractDictionary {
 
     @Column()

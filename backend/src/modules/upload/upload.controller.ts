@@ -20,8 +20,6 @@ export class UploadController {
     }),
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
-    const response = {...file
-    };
-    return response;
+    return this.service.saveFileData(file);
   }
 }
