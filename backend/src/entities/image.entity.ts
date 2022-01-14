@@ -1,7 +1,7 @@
 import { AbstractDictionary } from "src/modules/abstract/abstractDictionary";
 import { Column, Entity } from "typeorm";
 @Entity()
-export class UploadEntity extends AbstractDictionary {
+export class ImageEntity extends AbstractDictionary {
 
     @Column()
     original: string;

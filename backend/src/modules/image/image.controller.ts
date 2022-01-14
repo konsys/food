@@ -1,12 +1,12 @@
 import { Controller, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
-import { UploadService } from './upload.service';
+import { ImageService } from './image.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import * as path from 'path';
 
 @Controller('upload')
-export class UploadController {
-  constructor(private readonly service: UploadService) { }
+export class ImageController {
+  constructor(private readonly service: ImageService) { }
 
   @Post()
   @UseInterceptors(

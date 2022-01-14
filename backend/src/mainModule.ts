@@ -6,7 +6,7 @@ import { MenuModule } from './modules/menu/menu.module';
 import { MenuTimeModule } from './modules/menu-time/menu-time.module';
 import { OrmConfig } from './ormConfig';
 import { MenuTypeModule } from './modules/menu-type/menu-type.module';
-import { UploadModule } from './modules/upload/upload.module';
+import { ImageModule } from './modules/image/image.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
 
@@ -19,7 +19,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
     MenuTimeModule,
     MenuTypeModule,
     MenuModule,
-    UploadModule,
+    ImageModule,
     MulterModule,
     ServeStaticModule.forRoot({
       rootPath: `${__dirname}/upload`,

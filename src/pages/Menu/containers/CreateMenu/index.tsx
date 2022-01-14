@@ -6,6 +6,7 @@ import { DragDrop, IDragDropProps } from '../../../../common/components/drag/Dra
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
+import { TFileImage } from '../../../../common/types';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
 import { MenuTypeDto } from '../../model/menuTypeModel/types';
@@ -41,6 +42,12 @@ export const CreateMenuButton = () => {
     return createFx(v).then(() => setModalVisible(false));
   };
 
+  const onFileImage = (f: TFileImage) => {
+    formInstance.setField();
+    console.log(11111111111, f);
+    // return createFx(v).then(() => setModalVisible(false));
+  };
+
   useEffect(() => {
     if (modalVisible) {
       getAllMenuTypeFx({ limit: 20, page: 1 });
@@ -61,11 +68,10 @@ export const CreateMenuButton = () => {
     multiple: true,
     action: 'http://localhost:8000/upload',
     onChange(info) {
-      const { status } = info.file;
-      if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (status === 'done') {
+      const { status, response } = info.file;
+
+      if (status === 'done' && response) {
+        onFileImage(response);
         message.success(`${info.file.name}. Успешно загружено.`);
       } else if (status === 'error') {
         message.error(`${info.file.name}. Ошибка загрузки.`);

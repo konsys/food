@@ -3,17 +3,9 @@ import { AbstractDictionary } from 'src/modules/abstract/abstractDictionary';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { MenuTimeDict } from './menu-time.dict';
 import { MenuTypeDict } from './menu-type.dict';
+import { ImageEntity } from './image.entity';
 @Entity()
 export class MenuEntity extends AbstractDictionary {
-
-  @Column({ default: null })
-  bigImg: string;
-
-  @Column({ default: null })
-  averageImg: string;
-
-  @Column({ default: null })
-  smallImg: string;
 
   @Column({ default: null })
   price: string;
@@ -33,4 +25,12 @@ export class MenuEntity extends AbstractDictionary {
   @ManyToOne(() => MenuTypeDict, {eager: true})
   @JoinColumn({ name: "typeId" })
   type: MenuTypeDict;
+
+  @Exclude()
+  @Column({ type: "int", nullable: true })
+  imgId: number;
+
+  @ManyToOne(() => ImageEntity, {eager: true})
+  @JoinColumn({ name: "imgId" })
+  image: MenuTypeDict;
 }
