@@ -2,13 +2,13 @@ import React, { DragEvent } from 'react';
 import { InboxOutlined } from '@ant-design/icons';
 import Dragger from 'antd/lib/upload/Dragger';
 import { TVoidFn } from '../../types';
-import { ImageChangeParam } from 'antd/lib/upload';
+import { UploadChangeParam } from 'antd/lib/upload';
 
 export interface IDragDropProps {
   name: string;
   multiple: true;
   action: string;
-  onChange: TVoidFn<ImageChangeParam>;
+  onChange: TVoidFn<UploadChangeParam>;
   onDrop: TVoidFn<DragEvent<HTMLDivElement>>;
 }
 

@@ -7,8 +7,6 @@ export type MenuDto = {
   timeId: number;
   typeId: number;
   visible: boolean;
-  bigImg: string;
-  averageImg: string;
-  smallImg: string;
   price: string;
+  imgId: number;
 };

@@ -4,7 +4,7 @@ export type TVoidFn<T extends any = void> = (arg: T) => void;
 export type TPromiseFn<T extends any = void, R = void> = (arg: T) => Promise<R>;
 export type TOnlyView = { onlyView: boolean };
 
-export type TFileImage = {
+export type ImageDto = {
   averageImg: string | null;
   bigImg: string | null;
   createdAt: Date;

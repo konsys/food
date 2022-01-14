@@ -8,10 +8,8 @@ export const menuFactory = factory.Sync.makeFactory<MenuDto>({
   description: factory.each(() => faker.commerce.productDescription()),
   name: factory.each(() => faker.commerce.productName()),
   visible: factory.each(() => Math.random() > 0.5),
-  bigImg: factory.each(() => images[faker.datatype.number(images.length - 1)]),
-  averageImg: factory.each(() => images[faker.datatype.number(images.length - 1)]),
-  smallImg: factory.each(() => images[faker.datatype.number(images.length - 1)]),
   price: factory.each(() => faker.commerce.price()),
+  imgId: factory.each((n) => n),
 });
 
 const images = [

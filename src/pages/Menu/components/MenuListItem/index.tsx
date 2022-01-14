@@ -25,7 +25,7 @@ export const MenuListItem = ({ foodMenuItem }: Props) => {
               <Button type='ghost'>Заказать</Button>
             </div>
           </div>
-          <img src={foodMenuItem.averageImg} className='img-fluid' alt='' />
+          <img src={foodMenuItem.imgId.toString()} className='img-fluid' alt='' />
           <div className='why-text'>
             <p>{foodMenuItem.description}</p>
           </div>

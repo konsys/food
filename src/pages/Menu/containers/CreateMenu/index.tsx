@@ -6,11 +6,12 @@ import { DragDrop, IDragDropProps } from '../../../../common/components/drag/Dra
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
-import { TFileImage } from '../../../../common/types';
+import { ImageDto } from '../../../../common/types';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
 import { MenuTypeDto } from '../../model/menuTypeModel/types';
 import { MenuDto } from '../../model/types';
+import { FieldData } from 'rc-field-form/es/interface';
 
 const MenuTimeCrud = new CrudStore<MenuTimeDto>('/menu-time');
 const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeCrud.createCrudStore();
@@ -42,10 +43,8 @@ export const CreateMenuButton = () => {
     return createFx(v).then(() => setModalVisible(false));
   };
 
-  const onFileImage = (f: TFileImage) => {
-    formInstance.setField();
-    console.log(11111111111, f);
-    // return createFx(v).then(() => setModalVisible(false));
+  const onFileImage = ({ id }: ImageDto) => {
+    formInstance.setField({ name: 'imgId', value: id });
   };
 
   useEffect(() => {
@@ -97,8 +96,11 @@ export const CreateMenuButton = () => {
         <Form.Item label='Время' name={names('timeId')} rules={[{ required: true }]}>
           <Select loading={menuTime.pending}>{menuTimeItems}</Select>
         </Form.Item>
-        <Form.Item label='Фото' name={names('bigImg')} rules={[{ required: true }]}>
+        <Form.Item label='Фото' rules={[{ required: true }]}>
           <DragDrop {...props} />
+        </Form.Item>
+        <Form.Item label='Ид фото' name={names('imgId')}>
+          <Input />
         </Form.Item>
       </Modal>
       <Button type='primary' onClick={() => setModalVisible(true)}>
