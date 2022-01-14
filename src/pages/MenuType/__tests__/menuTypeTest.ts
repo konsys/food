@@ -85,19 +85,19 @@ describe('menu type test', () => {
 
     // eslint-disable-next-line effector/no-getState
     const one = $oneStore.getState();
-    expect(one?.description).toStrictEqual(description);
+    expect(one?.item.description).toStrictEqual(description);
   });
 
   it('should delete menu type', async () => {
     await createFx(newItem);
     const item = $oneStore.getState();
-    item?.id && (await deleteFx(item.id));
+    item?.item?.id && (await deleteFx(item.item.id));
 
     // eslint-disable-next-line effector/no-getState
     let one = $oneStore.getState();
     expect(one).toBeNull();
 
-    item?.id && (await getOneFx(item.id));
+    item?.item?.id && (await getOneFx(item.item.id));
 
     // eslint-disable-next-line effector/no-getState
     one = $oneStore.getState();
