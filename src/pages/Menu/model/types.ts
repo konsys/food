@@ -1,3 +1,5 @@
+import { ImageDto } from '../../Image/model/types';
+
 export type MenuDto = {
   id?: number;
   name: string;
@@ -9,4 +11,5 @@ export type MenuDto = {
   visible: boolean;
   price: string;
   imgId: number;
+  image: ImageDto;
 };

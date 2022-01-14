@@ -6,8 +6,8 @@ import { DragDrop, IDragDropProps } from '../../../../common/components/drag/Dra
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
-import { ImageDto } from '../../../../common/types';
 import { createListOptions } from '../../../../common/utils/selectUtils';
+import { ImageDto } from '../../../Image/model/types';
 import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
 import { MenuTypeDto } from '../../../MenuType/model/types';
 import { MenuDto } from '../../model/types';

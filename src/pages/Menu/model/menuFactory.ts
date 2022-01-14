@@ -1,5 +1,6 @@
 import * as factory from 'factory.ts';
 import faker from 'faker';
+import { imageFactory } from '../../Image/model/imageFactory';
 import { MenuDto } from './types';
 
 export const menuFactory = factory.Sync.makeFactory<MenuDto>({
@@ -10,6 +11,7 @@ export const menuFactory = factory.Sync.makeFactory<MenuDto>({
   visible: factory.each(() => Math.random() > 0.5),
   price: factory.each(() => faker.commerce.price()),
   imgId: factory.each((n) => n),
+  image: factory.each(() => imageFactory.build()),
 });
 
 const images = [
