@@ -79,22 +79,22 @@ describe('menu time test', () => {
 
     // eslint-disable-next-line effector/no-getState
     const one = $oneStore.getState();
-    expect(one?.description).toBe(description);
+    expect(one?.item?.description).toBe(description);
   });
 
   it('should delete menu time', async () => {
     await createFx(newItem);
-    const item = $oneStore.getState();
-    item?.id && (await deleteFx(item.id));
+    const state = $oneStore.getState();
+    state?.item?.id && (await deleteFx(state.item.id));
 
     // eslint-disable-next-line effector/no-getState
     let one = $oneStore.getState();
-    expect(one).toBeNull();
+    expect(one.item).toBeNull();
 
-    item?.id && (await getOneFx(item.id));
+    state?.item?.id && (await getOneFx(state?.item?.id));
 
     // eslint-disable-next-line effector/no-getState
     one = $oneStore.getState();
-    expect(one).toBeNull();
+    expect(one.item).toBeNull();
   });
 });
