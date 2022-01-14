@@ -9,9 +9,8 @@ import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudM
 import { ImageDto } from '../../../../common/types';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
-import { MenuTypeDto } from '../../model/menuTypeModel/types';
+import { MenuTypeDto } from '../../../MenuType/model/types';
 import { MenuDto } from '../../model/types';
-import { FieldData } from 'rc-field-form/es/interface';
 
 const MenuTimeCrud = new CrudStore<MenuTimeDto>('/menu-time');
 const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeCrud.createCrudStore();

@@ -1,9 +1,9 @@
+import { menuTimeFactory } from '../menuTimeModel/menuTimeFactory';
 import faker from 'faker';
-import { MenuTypeDto } from '../menuTypeModel/types';
-import { menuTypeFactory } from '../menuTypeModel/menuTypeFactory';
-import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
+import { MenuTimeDto } from '../menuTimeModel/types';
+import { CrudStore } from '../../../common/models/abstractModel/abstractCrudModel';
 
-const model = new CrudStore<MenuTypeDto>('/menu-type');
+const model = new CrudStore<MenuTimeDto>('/menu-time');
 
 const {
   createFx,
@@ -17,23 +17,28 @@ const {
   deleteFx,
 } = model.createCrudStore();
 
-describe('menu type test', () => {
-  let newItem: MenuTypeDto;
-  let allItems: MenuTypeDto[];
-  let randomItem: MenuTypeDto;
+describe('menu time test', () => {
+  let newItem: MenuTimeDto;
+  let allItems: MenuTimeDto[];
+  let randomItem: MenuTimeDto;
 
   beforeAll(async () => {
     for (let i = 0; i < 20; i++) {
-      newItem = menuTypeFactory.build();
+      newItem = menuTimeFactory.build();
       await createFx(newItem);
     }
   });
 
   beforeEach(async () => {
-    newItem = menuTypeFactory.build();
+    newItem = menuTimeFactory.build();
     resetOne();
     resetList();
-    allItems = (await getAllFx({ limit: 40, page: 1 })).items;
+    allItems = (
+      await getAllFx({
+        limit: 40,
+        page: 1,
+      })
+    ).items;
     randomItem = allItems[faker.datatype.number(allItems.length)];
   });
 
@@ -42,53 +47,42 @@ describe('menu type test', () => {
     $listStore.off(resetList);
   });
 
-  it('should create menu type', async () => {
+  it('should create menu time', async () => {
     await createFx(newItem);
-
     // eslint-disable-next-line effector/no-getState
     expect($oneStore.getState()).toStrictEqual(expect.objectContaining(newItem));
   });
 
-  it('should get limit menu type', async () => {
-    const limit = 7;
-    const page = 1;
+  it('should get all menu time', async () => {
+    const limit = 3;
     await getAllFx({
       limit,
-      page,
+      page: 1,
     });
     // eslint-disable-next-line effector/no-getState
     const { items } = $listStore.getState();
-    expect(Array.isArray(items)).toBeTruthy();
-    expect(items).toHaveLength(limit);
-  });
-
-  it('should get all menu type', async () => {
-    const limit = 4;
-    await getAllFx({ limit, page: 1 });
-    // eslint-disable-next-line effector/no-getState
-    const { items } = $listStore.getState();
 
     expect(Array.isArray(items)).toBeTruthy();
     expect(items).toHaveLength(limit);
   });
 
-  it('should get one menu type', async () => {
+  it('should get one menu time', async () => {
     randomItem.id && (await getOneFx(randomItem.id));
-    // eslint-disable-next-line effector/no-getState
-    const item = $oneStore.getState();
-    expect(item).toStrictEqual(expect.objectContaining(randomItem));
+    // randomItem-disable-next-line effector/no-getState
+    const one = $oneStore.getState();
+    expect(one).toStrictEqual(expect.objectContaining(randomItem));
   });
 
-  it('should update menu type', async () => {
+  it('should update menu time', async () => {
     const description = faker.datatype.uuid();
     randomItem.id && (await updateFx({ ...randomItem, description }));
 
     // eslint-disable-next-line effector/no-getState
     const one = $oneStore.getState();
-    expect(one?.description).toStrictEqual(description);
+    expect(one?.description).toBe(description);
   });
 
-  it('should delete menu type', async () => {
+  it('should delete menu time', async () => {
     await createFx(newItem);
     const item = $oneStore.getState();
     item?.id && (await deleteFx(item.id));
