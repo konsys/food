@@ -49,9 +49,7 @@ export const CreateMenuModal = ({ create, loadAll }: Props) => {
   };
 
   const onSave = (v: MenuDto) => {
-    return create(v)
-      .then(() => setModalVisible(false))
-      .then(loadAll);
+    return create(v).then(onClose).then(loadAll);
   };
 
   const onFileImage = ({ id, smallImg }: ImageDto) => {
