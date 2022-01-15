@@ -7,7 +7,7 @@ export class ImageEntity extends AbstractDictionary {
     original: string;
 
     @Column({ default: null })
-    bigImg: string;
+    largeImg: string;
 
     @Column({ default: null })
     averageImg: string;

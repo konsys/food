@@ -3,6 +3,7 @@ import { ImageService } from './image.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import * as path from 'path';
+import { IMAGE_DESTINATION } from 'src/config';
 
 @Controller('upload')
 export class ImageController {
@@ -12,8 +13,8 @@ export class ImageController {
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
-        destination: './upload',
-        filename:  (req, file, cb) => {
+        destination: IMAGE_DESTINATION,
+        filename: (req, file, cb) => {
           cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
         }
       }),

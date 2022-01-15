@@ -1,6 +1,6 @@
 export type ImageDto = {
   averageImg: string | null;
-  bigImg: string | null;
+  largeImg: string | null;
   createdAt: Date;
   description: string | null;
   destination: string;
