@@ -31,7 +31,7 @@ export class ImageService {
   convert(inFileName: string, width: number): Promise<string> {
 
     return new Promise((resolve, reject) => {
-      const outFileName = `${uiid()}${path.extname(inFileName)}`;
+      const outFileName = `${uiid()}${path.extname(inFileName).toLowerCase()}`;
 
       const inPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${inFileName}`;
       const outPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${outFileName}`;
