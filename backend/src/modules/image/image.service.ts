@@ -21,9 +21,13 @@ export class ImageService {
       name: uiid(),
       original: file.destination
     }
-    const largeImg = await this.convert(file.filename, LargeImageSize.width);
-    const averageImg = await this.convert(file.filename, AverageImageSize.width);
-    const smallImg = await this.convert(file.filename, smallImageSize.width);
+
+    const [largeImg, averageImg, smallImg] = await Promise.all([
+      this.convert(file.filename, LargeImageSize.width),
+      this.convert(file.filename, AverageImageSize.width),
+      this.convert(file.filename, smallImageSize.width)
+    ])
+
 
     return this.repository.save({ ...save, averageImg, smallImg, largeImg });
   }

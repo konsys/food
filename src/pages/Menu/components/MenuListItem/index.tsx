@@ -29,7 +29,7 @@ export const MenuListItem = ({ foodMenuItem }: Props) => {
           <img
             src={`${Params.BASE_URL}/${foodMenuItem.image.averageImg}` ?? ''}
             className='img-fluid'
-            alt=''
+            alt={foodMenuItem.name}
           />
           <div className='why-text'>
             <p>{foodMenuItem.description}</p>
