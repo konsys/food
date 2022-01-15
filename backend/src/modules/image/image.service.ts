@@ -36,17 +36,13 @@ export class ImageService {
       const inPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${inFileName}`;
       const outPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${outFileName}`;
 
-
-      console.log(111111111, inPath);
-      console.log(222222222, outPath);
-
       return gm(`${inPath}`)
         .resize(width)
         .write(outPath, (err) => {
           if (err) {
             reject(err);
           }
-          resolve(outPath);
+          resolve(outFileName);
         });
     })
   }
