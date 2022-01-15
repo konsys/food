@@ -1,6 +1,7 @@
 import { Button, Form, Input, message, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { useStore } from 'effector-react';
+import { noop } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { DragDrop, IDragDropProps } from '../../../../common/components/drag/DragDrop';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
@@ -21,7 +22,7 @@ const MenuTypeCrud = new CrudStore<MenuTypeDto>('/menu-type');
 const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = MenuTypeCrud.createCrudStore();
 
 const MenuCrud = new CrudStore<MenuDto>('/menu');
-const { createFx } = MenuCrud.createCrudStore();
+const { createFx, getAllDefault } = MenuCrud.createCrudStore();
 
 const names = columnsNamesGenerator<MenuDto>();
 
@@ -43,7 +44,9 @@ export const CreateMenuModal = () => {
   };
 
   const onSave = (v: MenuDto) => {
-    return createFx(v).then(() => setModalVisible(false));
+    return createFx(v)
+      .then(() => setModalVisible(false))
+      .then(getAllDefault);
   };
 
   const onFileImage = ({ id, smallImg }: ImageDto) => {
@@ -80,8 +83,8 @@ export const CreateMenuModal = () => {
         message.error(`${info.file.name}. Ошибка загрузки.`);
       }
     },
-    onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
+    onDrop() {
+      noop();
     },
   };
 

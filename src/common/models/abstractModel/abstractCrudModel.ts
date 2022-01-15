@@ -43,6 +43,7 @@ export class CrudStore<D> {
       handler: (id) => service.deleteOne(id),
     });
 
+    const getAllDefault = createEvent();
     const resetOne = createEvent();
     const resetList = createEvent();
     const setPage = createEvent<number>();
@@ -86,7 +87,7 @@ export class CrudStore<D> {
       .reset(resetOne);
 
     sample({
-      clock: [Gate.state],
+      clock: [Gate.state, getAllDefault],
       source: $listStore,
       fn: ({ limit, page, filter, pending }: TListResponce<D>) =>
         filter ? { limit, page, filter, pending } : { limit, page, pending },
@@ -109,6 +110,7 @@ export class CrudStore<D> {
       deleteFx,
       Gate,
       setItem,
+      getAllDefault,
     };
   }
 }
