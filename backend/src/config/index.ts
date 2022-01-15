@@ -116,19 +116,19 @@ export const getVkGetUserRequest = ({
 };
 
 export enum LargeImageSize {
-  width=1024,
-  height=800
+  width = 1024,
+  height = 800
 }
 
 export enum AverageImageSize {
-  width=800,
-  height=600
+  width = 800,
+  height = 600
 }
 
 export enum smallImageSize {
-  width=400,
-  height=300
+  width = 400,
+  height = 300
 }
 
-export const IMAGE_DESTINATION = '/home/ksysuev/projects/food/backend/upload';
-
+export const IMAGE_DESTINATION = '/home/ksysuev/projects/food/backend';
+export const IMAGE_UPLOAD = 'upload';

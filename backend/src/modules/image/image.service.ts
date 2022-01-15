@@ -5,7 +5,7 @@ import { ImageEntity } from 'src/entities/image.entity';
 import { Repository } from 'typeorm';
 import * as path from 'path';
 const gm = require('gm').subClass({ imageMagick: true });
-import { AverageImageSize, IMAGE_DESTINATION, LargeImageSize, smallImageSize } from 'src/config';
+import { AverageImageSize, IMAGE_DESTINATION, IMAGE_UPLOAD, LargeImageSize, smallImageSize } from 'src/config';
 
 @Injectable()
 export class ImageService {
@@ -30,7 +30,7 @@ export class ImageService {
 
   convert(fileName: string, width: number): Promise<string> {
     return new Promise((resolve, reject) => {
-      const inPath = `${IMAGE_DESTINATION}/${fileName}`;
+      const inPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${fileName}`;
       const outPath = `${uiid()}${path.extname(fileName)}`;
 
 
