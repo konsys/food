@@ -1,6 +1,6 @@
 import React from 'react';
 import { TVoidFn } from '../../../../common/types';
-import { EFoodType } from '../../MenuList';
+import { EFoodType } from '../../MenuListPage';
 
 interface Props {
   setActiveFilter: TVoidFn<EFoodType>;

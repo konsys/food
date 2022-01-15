@@ -7,7 +7,7 @@ import { MenuHeader } from './MenuHeader';
 import { MenuListItem } from './MenuListItem';
 import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.less';
-import { EFoodType } from '../MenuList';
+import { EFoodType } from '../MenuListPage';
 import Text from 'antd/lib/typography/Text';
 import { CreateMenuButton } from '../containers/CreateMenu';
 
@@ -19,7 +19,7 @@ interface Props {
   setActiveFilter: TVoidFn<EFoodType>;
 }
 
-export const CafeMenu = ({
+export const MenuList = ({
   menu,
   setPage,
   setPageSize,

@@ -22,7 +22,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
     ImageModule,
     MulterModule,
     ServeStaticModule.forRoot({
-      rootPath: `${__dirname}/upload`,
+      rootPath: `${__dirname}/../upload`,
     }),
   ],
 })

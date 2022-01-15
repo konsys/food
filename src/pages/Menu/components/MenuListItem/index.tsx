@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import React from 'react';
+import { Params } from '../../../../config/params';
 import { MenuDto } from '../../model/types';
 import './styles.less';
 
@@ -25,7 +26,11 @@ export const MenuListItem = ({ foodMenuItem }: Props) => {
               <Button type='ghost'>Заказать</Button>
             </div>
           </div>
-          <img src={foodMenuItem.image.averageImg ?? ''} className='img-fluid' alt='' />
+          <img
+            src={`${Params.BASE_URL}/${foodMenuItem.image.filename}` ?? ''}
+            className='img-fluid'
+            alt=''
+          />
           <div className='why-text'>
             <p>{foodMenuItem.description}</p>
           </div>
