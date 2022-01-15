@@ -1,7 +1,7 @@
 import { Pagination, Spin } from 'antd';
 import React, { ReactElement } from 'react';
 import { TListResponce } from '../../../common/api/types';
-import { TVoidFn } from '../../../common/types';
+import { TPromiseFn, TVoidFn } from '../../../common/types';
 import { MenuDto } from '../model/types';
 import { MenuHeader } from './MenuHeader';
 import { MenuListItem } from './MenuListItem';
@@ -10,6 +10,7 @@ import './styles.less';
 import { EFoodType } from '../MenuListPage';
 import Text from 'antd/lib/typography/Text';
 import { CreateMenuModal } from '../containers/CreateMenu/CreateMenuModal';
+import { Effect, Event } from 'effector';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -17,6 +18,8 @@ interface Props {
   setPageSize: TVoidFn<number>;
   activeFilter: EFoodType;
   setActiveFilter: TVoidFn<EFoodType>;
+  create: Effect<MenuDto, MenuDto, Error>;
+  loadAll: Event<void>;
 }
 
 export const MenuList = ({
@@ -25,6 +28,8 @@ export const MenuList = ({
   setPageSize,
   activeFilter,
   setActiveFilter,
+  create,
+  loadAll,
 }: Props): ReactElement => {
   return (
     <>
@@ -33,7 +38,7 @@ export const MenuList = ({
           <MenuHeader />
 
           <MenuLinks activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
-          <CreateMenuModal />
+          <CreateMenuModal create={create} loadAll={loadAll} />
           {!menu.pending ? (
             <>
               <div className='row special-list'>

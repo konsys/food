@@ -10,9 +10,8 @@ export enum EFoodType {
   SALADS = 'Salads',
   HOT = 'Hot',
 }
-
-const MenuCrud = new CrudStore<MenuDto>('/menu');
-const { $listStore, setPage, setPageSize, Gate, setFilter } = MenuCrud.createCrudStore();
+const { $listStore, setPage, setPageSize, Gate, setFilter, createFx, getAllDefault } =
+  new CrudStore<MenuDto>('/menu').createCrudStore();
 
 export const MenuListPage = (): ReactElement => {
   const menu = useStore($listStore);
@@ -31,6 +30,8 @@ export const MenuListPage = (): ReactElement => {
             ? setFilter({ menuType: { name: v.toLowerCase() } })
             : setFilter(null);
         }}
+        create={createFx}
+        loadAll={getAllDefault}
       />
     </>
   );

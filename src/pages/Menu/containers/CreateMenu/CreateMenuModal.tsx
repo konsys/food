@@ -1,5 +1,6 @@
 import { Button, Form, Input, message, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
+import { Effect, Event } from 'effector';
 import { useStore } from 'effector-react';
 import { noop } from 'lodash';
 import React, { useEffect, useState } from 'react';
@@ -7,6 +8,7 @@ import { DragDrop, IDragDropProps } from '../../../../common/components/drag/Dra
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
+import { TPromiseFn } from '../../../../common/types';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { Params } from '../../../../config/params';
 import { Nullable } from '../../../../core/types';
@@ -15,18 +17,21 @@ import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
 import { MenuTypeDto } from '../../../MenuType/model/types';
 import { MenuDto } from '../../model/types';
 
-const MenuTimeCrud = new CrudStore<MenuTimeDto>('/menu-time');
-const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeCrud.createCrudStore();
+interface Props {
+  create: Effect<MenuDto, MenuDto, Error>;
+  loadAll: Event<void>;
+}
+const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = new CrudStore<MenuTimeDto>(
+  '/menu-time'
+).createCrudStore();
 
-const MenuTypeCrud = new CrudStore<MenuTypeDto>('/menu-type');
-const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = MenuTypeCrud.createCrudStore();
-
-const MenuCrud = new CrudStore<MenuDto>('/menu');
-const { createFx, getAllDefault } = MenuCrud.createCrudStore();
+const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = new CrudStore<MenuTypeDto>(
+  '/menu-type'
+).createCrudStore();
 
 const names = columnsNamesGenerator<MenuDto>();
 
-export const CreateMenuModal = () => {
+export const CreateMenuModal = ({ create, loadAll }: Props) => {
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -44,9 +49,9 @@ export const CreateMenuModal = () => {
   };
 
   const onSave = (v: MenuDto) => {
-    return createFx(v)
+    return create(v)
       .then(() => setModalVisible(false))
-      .then(getAllDefault);
+      .then(loadAll);
   };
 
   const onFileImage = ({ id, smallImg }: ImageDto) => {
