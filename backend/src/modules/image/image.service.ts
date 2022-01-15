@@ -28,11 +28,17 @@ export class ImageService {
     return this.repository.save({ ...save, averageImg, smallImg, largeImg });
   }
 
-  convert(fileName: string, width: number): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const inPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${fileName}`;
-      const outPath = `${uiid()}${path.extname(fileName)}`;
+  convert(inFileName: string, width: number): Promise<string> {
 
+    return new Promise((resolve, reject) => {
+      const outFileName = `${uiid()}${path.extname(inFileName)}`;
+
+      const inPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${inFileName}`;
+      const outPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${outFileName}`;
+
+
+      console.log(111111111, inPath);
+      console.log(222222222, outPath);
 
       return gm(`${inPath}`)
         .resize(width)
