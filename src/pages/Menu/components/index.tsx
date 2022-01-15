@@ -9,7 +9,7 @@ import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.less';
 import { EFoodType } from '../MenuListPage';
 import Text from 'antd/lib/typography/Text';
-import { CreateMenuButton } from '../containers/CreateMenu';
+import { CreateMenuModal } from '../containers/CreateMenu/CreateMenuModal';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -33,7 +33,7 @@ export const MenuList = ({
           <MenuHeader />
 
           <MenuLinks activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
-          <CreateMenuButton />
+          <CreateMenuModal />
           {!menu.pending ? (
             <>
               <div className='row special-list'>

@@ -7,6 +7,7 @@ import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGener
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
 import { createListOptions } from '../../../../common/utils/selectUtils';
+import { Params } from '../../../../config/params';
 import { ImageDto } from '../../../Image/model/types';
 import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
 import { MenuTypeDto } from '../../../MenuType/model/types';
@@ -23,7 +24,7 @@ const { createFx } = MenuCrud.createCrudStore();
 
 const names = columnsNamesGenerator<MenuDto>();
 
-export const CreateMenuButton = () => {
+export const CreateMenuModal = () => {
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
 
@@ -64,7 +65,7 @@ export const CreateMenuButton = () => {
   const props: IDragDropProps = {
     name: 'file',
     multiple: true,
-    action: 'http://localhost:8000/upload',
+    action: `${Params.BASE_URL}/upload`,
     onChange(info) {
       const { status, response } = info.file;
 
