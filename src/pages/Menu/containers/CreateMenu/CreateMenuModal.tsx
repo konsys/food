@@ -8,6 +8,7 @@ import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { Params } from '../../../../config/params';
+import { Nullable } from '../../../../core/types';
 import { ImageDto } from '../../../Image/model/types';
 import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
 import { MenuTypeDto } from '../../../MenuType/model/types';
@@ -27,24 +28,27 @@ const names = columnsNamesGenerator<MenuDto>();
 export const CreateMenuModal = () => {
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [uploadImagePath, setUloadImagePath] = useState<Nullable<string>>(null);
 
   const menuTime = useStore($menuTimeList);
   const menuType = useStore($menuTypeList);
 
   const { Modal, formInstance } = useValidatedForm<MenuDto>();
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const onClose = () => {
     setModalVisible(false);
     formInstance.resetFields();
+    setUloadImagePath(null);
   };
 
   const onSave = (v: MenuDto) => {
     return createFx(v).then(() => setModalVisible(false));
   };
 
-  const onFileImage = ({ id }: ImageDto) => {
+  const onFileImage = ({ id, smallImg }: ImageDto) => {
     formInstance.setField({ name: 'imgId', value: id });
+    setUloadImagePath(`${Params.BASE_URL}/${smallImg}`);
   };
 
   useEffect(() => {
@@ -97,9 +101,9 @@ export const CreateMenuModal = () => {
           <Select loading={menuTime.pending}>{menuTimeItems}</Select>
         </Form.Item>
         <Form.Item label='Фото' rules={[{ required: true }]}>
-          <DragDrop {...props} />
+          {!uploadImagePath ? <DragDrop {...props} /> : <img src={uploadImagePath} />}
         </Form.Item>
-        <Form.Item label='Ид фото' name={names('imgId')}>
+        <Form.Item name={names('imgId')} hidden>
           <Input />
         </Form.Item>
       </Modal>

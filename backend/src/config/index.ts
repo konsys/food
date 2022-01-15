@@ -126,7 +126,7 @@ export enum AverageImageSize {
 }
 
 export enum smallImageSize {
-  width = 400,
+  width = 470,
   height = 300
 }
 

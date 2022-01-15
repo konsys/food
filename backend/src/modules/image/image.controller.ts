@@ -15,7 +15,7 @@ export class ImageController {
       storage: diskStorage({
         destination: `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}`,
         filename: (req, file, cb) => {
-          cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
+          cb(null, Date.now() + path.extname(file.originalname))
         }
       }),
     }),
