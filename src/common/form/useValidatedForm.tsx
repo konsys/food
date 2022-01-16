@@ -7,6 +7,8 @@ import { AbstractForm } from './AbstractForm';
 import { ErrorMessage } from '../errors/ErrorMessage';
 import { enterKeyPressed } from './utils';
 
+export type TFormInstance = ReturnType<typeof useValidatedForm>;
+
 export function useValidatedForm<T>(initialValues?: Partial<T>) {
   const [form] = Form.useForm();
 
