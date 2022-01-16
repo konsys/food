@@ -12,6 +12,7 @@ import { ImageDto } from '../../../Image/model/types';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { noop } from 'lodash';
 import { TVoidFn } from '../../../../common/types';
+import { ImageCrop } from '../../../../common/components/ImageCrop';
 
 const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeModel;
 const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = MenuTypeModel;
@@ -91,6 +92,9 @@ export const MenuForm = ({
       </Form.Item>
       <Form.Item label='Фото' rules={[{ required: true }]}>
         {!uploadImagePath ? <DragDrop {...props} /> : <img src={uploadImagePath} />}
+      </Form.Item>
+      <Form.Item>
+        <ImageCrop />
       </Form.Item>
       <Form.Item name={names('imgId')} hidden>
         <Input />

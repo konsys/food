@@ -3,7 +3,6 @@ import { InboxOutlined } from '@ant-design/icons';
 import Dragger from 'antd/lib/upload/Dragger';
 import { TVoidFn } from '../../types';
 import { UploadChangeParam } from 'antd/lib/upload';
-
 export interface IDragDropProps {
   name: string;
   multiple: true;
