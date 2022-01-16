@@ -1,17 +1,22 @@
-import React, { useRef, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 import ReactCrop, { Crop } from 'react-image-crop';
+import { TVoidFn } from '../../types';
 import './style.less';
 
 type IState = {
-  croppedImageUrl: any;
+  croppedImageUrl: string;
   src: string | ArrayBuffer | null;
   crop: Crop;
 };
 
-export const ImageCrop = () => {
+interface Props {
+  setImageUrl: TVoidFn<string>;
+}
+
+export const ImageCrop = ({ setImageUrl }: Props) => {
   const [state, setState] = useState<IState>({
     src: null,
-    croppedImageUrl: null,
+    croppedImageUrl: '',
     crop: {
       unit: '%',
       width: 30,
@@ -22,9 +27,9 @@ export const ImageCrop = () => {
     },
   });
 
-  const imageRef = useRef(null);
+  const imageRef = useRef<HTMLImageElement>();
 
-  const onSelectFile = (e: any) => {
+  const onSelectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const reader = new FileReader();
       reader.addEventListener('load', () => setState({ ...state, src: reader.result }));
@@ -33,28 +38,21 @@ export const ImageCrop = () => {
   };
 
   // If you setState the crop in here you should return false.
-  const onImageLoaded = (image: any) => {
+  const onImageLoaded = (image: HTMLImageElement) => {
     imageRef.current = image;
   };
 
-  const onCropComplete = (crop: Crop) => {
-    makeClientCrop(crop);
-  };
-
-  const onCropChange = (crop: Crop) => {
-    // You could also use percentCrop:
-    // this.setState({ crop: percentCrop });
-    setState({ ...state, crop });
-  };
+  const onCropComplete = (c: Crop) => makeClientCrop(c);
+  const onCropChange = (crop: Crop) => setState({ ...state, crop });
 
   async function makeClientCrop(crop: Crop) {
     if (imageRef.current && crop.width && crop.height) {
-      const croppedImageUrl = await getCroppedImg(imageRef.current, crop, 'newFile.jpeg');
+      const croppedImageUrl = await getCroppedImg(imageRef.current, crop);
       setState({ ...state, croppedImageUrl });
     }
   }
 
-  const getCroppedImg = (image: any, crop: Crop, fileName: string) => {
+  const getCroppedImg = (image: HTMLImageElement, crop: Crop): Promise<string> => {
     const canvas = document.createElement('canvas');
     const pixelRatio = window.devicePixelRatio;
     const scaleX = image.naturalWidth / image.width;
@@ -83,13 +81,14 @@ export const ImageCrop = () => {
 
     return new Promise((resolve, reject) => {
       canvas.toBlob(
-        (blob: any) => {
+        (blob: Blob | null) => {
           if (!blob) {
             reject(new Error('Canvas is empty'));
           } else {
-            // blob.name = fileName;
             window.URL.revokeObjectURL(blob.arrayBuffer.toString());
-            resolve({ ...blob, name: fileName, fileUrl: window.URL.createObjectURL(blob) });
+            const imgUrl = window.URL.createObjectURL(blob);
+            setImageUrl(imgUrl);
+            resolve(imgUrl);
           }
         },
         'image/jpeg',
@@ -100,7 +99,6 @@ export const ImageCrop = () => {
 
   const { crop, croppedImageUrl, src } = state;
 
-  console.log(111111111111, croppedImageUrl);
   return (
     <>
       <div>

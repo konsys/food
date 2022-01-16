@@ -38,6 +38,7 @@ export const MenuForm = ({
 
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
+  const [imgUrl, setImageUrl] = useState<string>();
 
   const onFileImage = ({ id, smallImg }: ImageDto) => {
     formInstance.setField({ name: 'imgId', value: id });
@@ -72,7 +73,8 @@ export const MenuForm = ({
         message.error(`${info.file.name}. Ошибка загрузки.`);
       }
     },
-    onDrop() {
+    onDrop(v) {
+      imgUrl;
       noop();
     },
   };
@@ -94,7 +96,7 @@ export const MenuForm = ({
         {!uploadImagePath ? <DragDrop {...props} /> : <img src={uploadImagePath} />}
       </Form.Item>
       <Form.Item>
-        <ImageCrop />
+        <ImageCrop setImageUrl={setImageUrl} />
       </Form.Item>
       <Form.Item name={names('imgId')} hidden>
         <Input />
