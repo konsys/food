@@ -1,8 +1,7 @@
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement, useState } from 'react';
-import { CrudStore } from '../../common/models/abstractModel/abstractCrudModel';
+import { MenuStore } from '../../store';
 import { MenuList } from './components';
-import { MenuDto } from './model/types';
 
 export enum EFoodType {
   ALL = 'All',
@@ -10,8 +9,7 @@ export enum EFoodType {
   SALADS = 'Salads',
   HOT = 'Hot',
 }
-const { $listStore, setPage, setPageSize, Gate, setFilter, createFx, getAllDefault } =
-  new CrudStore<MenuDto>('/menu').createCrudStore();
+const { $listStore, setPage, setPageSize, Gate, setFilter } = MenuStore;
 
 export const MenuListPage = (): ReactElement => {
   const menu = useStore($listStore);
@@ -30,8 +28,6 @@ export const MenuListPage = (): ReactElement => {
             ? setFilter({ menuType: { name: v.toLowerCase() } })
             : setFilter(null);
         }}
-        create={createFx}
-        loadAll={getAllDefault}
       />
     </>
   );

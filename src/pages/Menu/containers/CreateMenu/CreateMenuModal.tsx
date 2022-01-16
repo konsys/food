@@ -8,19 +8,15 @@ import { DragDrop, IDragDropProps } from '../../../../common/components/drag/Dra
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
-import { TPromiseFn } from '../../../../common/types';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { Params } from '../../../../config/params';
 import { Nullable } from '../../../../core/types';
+import { MenuStore } from '../../../../store';
 import { ImageDto } from '../../../Image/model/types';
 import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
 import { MenuTypeDto } from '../../../MenuType/model/types';
 import { MenuDto } from '../../model/types';
 
-interface Props {
-  create: Effect<MenuDto, MenuDto, Error>;
-  loadAll: Event<void>;
-}
 const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = new CrudStore<MenuTimeDto>(
   '/menu-time'
 ).createCrudStore();
@@ -30,8 +26,9 @@ const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = new CrudStore<
 ).createCrudStore();
 
 const names = columnsNamesGenerator<MenuDto>();
+const { createFx, getAllDefault } = MenuStore;
 
-export const CreateMenuModal = ({ create, loadAll }: Props) => {
+export const CreateMenuModal = () => {
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -49,7 +46,7 @@ export const CreateMenuModal = ({ create, loadAll }: Props) => {
   };
 
   const onSave = (v: MenuDto) => {
-    return create(v).then(onClose).then(loadAll);
+    return createFx(v).then(onClose).then(getAllDefault);
   };
 
   const onFileImage = ({ id, smallImg }: ImageDto) => {
