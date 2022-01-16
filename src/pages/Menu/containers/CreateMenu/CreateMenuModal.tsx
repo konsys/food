@@ -1,6 +1,5 @@
 import { Button, Form, Input, message, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
-import { Effect, Event } from 'effector';
 import { useStore } from 'effector-react';
 import { noop } from 'lodash';
 import React, { useEffect, useState } from 'react';
@@ -11,7 +10,7 @@ import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudM
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { Params } from '../../../../config/params';
 import { Nullable } from '../../../../core/types';
-import { MenuStore } from '../../../../store';
+import { MenuModel } from '../../../../store';
 import { ImageDto } from '../../../Image/model/types';
 import { MenuTimeDto } from '../../../MenuTime/menuTimeModel/types';
 import { MenuTypeDto } from '../../../MenuType/model/types';
@@ -26,7 +25,7 @@ const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = new CrudStore<
 ).createCrudStore();
 
 const names = columnsNamesGenerator<MenuDto>();
-const { createFx, getAllDefault } = MenuStore;
+const { createFx, getAllDefault } = MenuModel;
 
 export const CreateMenuModal = () => {
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();

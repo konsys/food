@@ -1,6 +1,6 @@
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement, useState } from 'react';
-import { MenuStore } from '../../store';
+import { MenuModel } from '../../store';
 import { MenuList } from './components';
 
 export enum EFoodType {
@@ -9,7 +9,7 @@ export enum EFoodType {
   SALADS = 'Salads',
   HOT = 'Hot',
 }
-const { $listStore, setPage, setPageSize, Gate, setFilter } = MenuStore;
+const { $listStore, setPage, setPageSize, Gate, setFilter } = MenuModel;
 
 export const MenuListPage = (): ReactElement => {
   const menu = useStore($listStore);
