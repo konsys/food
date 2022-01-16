@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import ReactCrop, { Crop } from 'react-image-crop';
 import { TVoidFn } from '../../types';
 import './style.less';
@@ -43,24 +43,24 @@ export const ImageCrop = ({ setImageUrl }: Props) => {
   };
 
   const onCropComplete = (c: Crop) => makeClientCrop(c);
-  const onCropChange = (crop: Crop) => setState({ ...state, crop });
+  const onCropChange = (cropChange: Crop) => setState({ ...state, crop: cropChange });
 
-  async function makeClientCrop(crop: Crop) {
-    if (imageRef.current && crop.width && crop.height) {
-      const croppedImageUrl = await getCroppedImg(imageRef.current, crop);
-      setState({ ...state, croppedImageUrl });
+  async function makeClientCrop(makeCrop: Crop) {
+    if (imageRef.current && makeCrop.width && makeCrop.height) {
+      const img = await getCroppedImg(imageRef.current, makeCrop);
+      setState({ ...state, croppedImageUrl: img });
     }
   }
 
-  const getCroppedImg = (image: HTMLImageElement, crop: Crop): Promise<string> => {
+  const getCroppedImg = (image: HTMLImageElement, getCrop: Crop): Promise<string> => {
     const canvas = document.createElement('canvas');
     const pixelRatio = window.devicePixelRatio;
     const scaleX = image.naturalWidth / image.width;
     const scaleY = image.naturalHeight / image.height;
     const ctx = canvas.getContext('2d');
 
-    canvas.width = crop.width * pixelRatio * scaleX;
-    canvas.height = crop.height * pixelRatio * scaleY;
+    canvas.width = getCrop.width * pixelRatio * scaleX;
+    canvas.height = getCrop.height * pixelRatio * scaleY;
 
     if (ctx) {
       ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
@@ -68,14 +68,14 @@ export const ImageCrop = ({ setImageUrl }: Props) => {
 
       ctx.drawImage(
         image,
-        crop.x * scaleX,
-        crop.y * scaleY,
-        crop.width * scaleX,
-        crop.height * scaleY,
+        getCrop.x * scaleX,
+        getCrop.y * scaleY,
+        getCrop.width * scaleX,
+        getCrop.height * scaleY,
         0,
         0,
-        crop.width * scaleX,
-        crop.height * scaleY
+        getCrop.width * scaleX,
+        getCrop.height * scaleY
       );
     }
 
