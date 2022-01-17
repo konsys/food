@@ -5,9 +5,12 @@ import { TVoidFn } from '../../types';
 import './style.less';
 import { UploadOutlined } from '@ant-design/icons';
 import { IDragDropProps } from '../drag/DragDrop';
-import { Params } from '../../../config/params';
 import { noop } from 'lodash';
 import { apiUrls } from '../../api/urls';
+import { Params } from '../../../config/params';
+import { RcFile } from 'antd/lib/upload';
+
+export type TFile = (Blob & RcFile) | undefined;
 
 type IState = {
   croppedImageUrl: string;
@@ -33,14 +36,12 @@ export const ImageCrop = ({ setImageUrl }: Props) => {
     },
   });
 
-  console.log(111111111111, state);
-
   const imageRef = useRef<HTMLImageElement>();
 
-  const onSelectFile = (file: any) => {
+  const onSelectFile = (file: TFile) => {
     const reader = new FileReader();
     reader.addEventListener('load', () => setState({ ...state, src: reader.result }));
-    reader.readAsDataURL(file);
+    file && reader.readAsDataURL(file);
   };
 
   const onImageLoaded = (image: HTMLImageElement) => {
@@ -107,12 +108,12 @@ export const ImageCrop = ({ setImageUrl }: Props) => {
   const props: IDragDropProps = {
     name: 'file',
     multiple: false,
-    action: apiUrls.img.start,
+    action: `${Params.BASE_URL}${apiUrls.img.start}`,
 
     onChange(info) {
       onSelectFile(info.file.originFileObj);
     },
-    onDrop(e) {
+    onDrop() {
       noop();
     },
   };

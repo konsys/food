@@ -1,17 +1,15 @@
-import { Params } from '../../config/params';
-
 export const apiUrls = {
   img: {
-    main: `${Params.BASE_URL}/img`,
-    start: `${Params.BASE_URL}/img/start`,
+    main: `/img`,
+    start: `/img/start`,
   },
   menu: {
-    main: `${Params.BASE_URL}/menu`,
+    main: `/menu`,
   },
   menuTime: {
-    main: `${Params.BASE_URL}/menuTime`,
+    main: `/menu-time`,
   },
   menuType: {
-    main: `${Params.BASE_URL}/menuType`,
+    main: `/menu-type`,
   },
 };

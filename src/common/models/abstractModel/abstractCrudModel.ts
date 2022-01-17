@@ -12,7 +12,7 @@ import {
 } from '../../api/types';
 import { notification } from 'antd';
 
-export class CrudStore<D> {
+export class CrudStore<Entity> {
   private url: string;
 
   constructor(url: string) {
@@ -21,21 +21,21 @@ export class CrudStore<D> {
   public createCrudStore() {
     const Gate = createGate();
 
-    const service = new CrudService<D>(this.url);
+    const service = new CrudService<Entity>(this.url);
 
-    const createFx = createEffect<D, D, Error>({
+    const createFx = createEffect<Partial<Entity>, Entity, Error>({
       handler: (mt) => service.create(mt),
     });
 
-    const getAllFx = createEffect<TListRequest<D>, TListResponce<D>, Error>({
+    const getAllFx = createEffect<TListRequest<Entity>, TListResponce<Entity>, Error>({
       handler: (req) => service.getAll(req),
     });
 
-    const getOneFx = createEffect<number, D, Error>({
+    const getOneFx = createEffect<number, Entity, Error>({
       handler: (id) => service.getOne(id),
     });
 
-    const updateFx = createEffect<D, D, Error>({
+    const updateFx = createEffect<Entity, Entity, Error>({
       handler: (mt) => service.updateOne(mt),
     });
 
@@ -49,11 +49,11 @@ export class CrudStore<D> {
     const setPage = createEvent<number>();
     const setPageSize = createEvent<number>();
     const setFilter = createEvent<any>();
-    const setItem = createEvent<D>();
+    const setItem = createEvent<Entity>();
 
-    const $oneStore = createStore<TRequestProcess<D>>(createInitItem());
+    const $oneStore = createStore<TRequestProcess<Entity>>(createInitItem());
     const $onepending = createStore<boolean>(false);
-    const $listStore = createStore<TListResponce<D>>(createInitItemsWithPagination<D>());
+    const $listStore = createStore<TListResponce<Entity>>(createInitItemsWithPagination<Entity>());
 
     $listStore
       .on(getAllFx.pending, (prev, pending) => ({ ...prev, pending }))
@@ -74,7 +74,7 @@ export class CrudStore<D> {
       .on(getOneFx.done, nullableResult)
       .on(updateFx.done, nullableResult)
       .on(deleteFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
-        result.affected ? createInitItem<D>() : prev
+        result.affected ? createInitItem<Entity>() : prev
       )
       .on(createFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(getOneFx.pending, (prev, pending) => ({ ...prev, pending }))
@@ -89,7 +89,7 @@ export class CrudStore<D> {
     sample({
       clock: [Gate.state, getAllDefault],
       source: $listStore,
-      fn: ({ limit, page, filter, pending }: TListResponce<D>) =>
+      fn: ({ limit, page, filter, pending }: TListResponce<Entity>) =>
         filter ? { limit, page, filter, pending } : { limit, page, pending },
       target: getAllFx,
     });

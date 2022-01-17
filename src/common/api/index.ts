@@ -8,7 +8,7 @@ export class CrudService<T> {
   constructor(url: string) {
     this.url = url;
   }
-  async create(params: T): Promise<T> {
+  async create(params: Partial<T>): Promise<T> {
     return (await axiosClient.post<T>(this.url, params)).data;
   }
 
