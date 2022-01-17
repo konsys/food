@@ -1,7 +1,13 @@
+import { Button, Upload } from 'antd';
 import React, { useRef, useState } from 'react';
 import ReactCrop, { Crop } from 'react-image-crop';
 import { TVoidFn } from '../../types';
 import './style.less';
+import { UploadOutlined } from '@ant-design/icons';
+import { IDragDropProps } from '../drag/DragDrop';
+import { Params } from '../../../config/params';
+import { noop } from 'lodash';
+import { apiUrls } from '../../api/urls';
 
 type IState = {
   croppedImageUrl: string;
@@ -27,17 +33,16 @@ export const ImageCrop = ({ setImageUrl }: Props) => {
     },
   });
 
+  console.log(111111111111, state);
+
   const imageRef = useRef<HTMLImageElement>();
 
-  const onSelectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const reader = new FileReader();
-      reader.addEventListener('load', () => setState({ ...state, src: reader.result }));
-      reader.readAsDataURL(e.target.files[0]);
-    }
+  const onSelectFile = (file: any) => {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => setState({ ...state, src: reader.result }));
+    reader.readAsDataURL(file);
   };
 
-  // If you setState the crop in here you should return false.
   const onImageLoaded = (image: HTMLImageElement) => {
     imageRef.current = image;
   };
@@ -99,10 +104,25 @@ export const ImageCrop = ({ setImageUrl }: Props) => {
 
   const { crop, croppedImageUrl, src } = state;
 
+  const props: IDragDropProps = {
+    name: 'file',
+    multiple: false,
+    action: apiUrls.img.start,
+
+    onChange(info) {
+      onSelectFile(info.file.originFileObj);
+    },
+    onDrop(e) {
+      noop();
+    },
+  };
+
   return (
     <>
       <div>
-        <input type='file' accept='image/*' onChange={onSelectFile} />
+        <Upload {...props}>
+          <Button icon={<UploadOutlined />}>Click to Upload</Button>
+        </Upload>
       </div>
       {src && (
         <ReactCrop

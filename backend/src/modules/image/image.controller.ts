@@ -5,7 +5,7 @@ import { diskStorage } from 'multer';
 import * as path from 'path';
 import { IMAGE_DESTINATION, IMAGE_UPLOAD } from 'src/config';
 
-@Controller('upload')
+@Controller('img')
 export class ImageController {
   constructor(private readonly service: ImageService) { }
 
@@ -22,5 +22,10 @@ export class ImageController {
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
     return this.service.saveFileData(file);
+  }
+
+  @Post('/start')
+  uploadStart() {
+    return {success: true};
   }
 }

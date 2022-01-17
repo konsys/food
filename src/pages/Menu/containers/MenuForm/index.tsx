@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Input, message, Select } from 'antd';
+import { Form, Input, Select } from 'antd';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import TextArea from 'antd/lib/input/TextArea';
 import { MenuDto } from '../../model/types';
-import { DragDrop, IDragDropProps } from '../../../../common/components/drag/DragDrop';
 import { Nullable } from '../../../../core/types';
-import { Params } from '../../../../config/params';
 import { useStore } from 'effector-react';
 import { MenuTimeModel, MenuTypeModel } from '../../../../store';
-import { ImageDto } from '../../../Image/model/types';
 import { createListOptions } from '../../../../common/utils/selectUtils';
-import { noop } from 'lodash';
 import { TVoidFn } from '../../../../common/types';
 import { ImageCrop } from '../../../../common/components/ImageCrop';
 
@@ -27,23 +23,13 @@ interface Props {
   setUploadImagePath: TVoidFn<string>;
 }
 
-export const MenuForm = ({
-  modalVisible,
-  formInstance,
-  uploadImagePath,
-  setUploadImagePath,
-}: Props) => {
+export const MenuForm = ({ modalVisible }: Props) => {
   const menuTime = useStore($menuTimeList);
   const menuType = useStore($menuTypeList);
 
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
   const [imgUrl, setImageUrl] = useState<string>();
-
-  const onFileImage = ({ id, smallImg }: ImageDto) => {
-    formInstance.setField({ name: 'imgId', value: id });
-    setUploadImagePath(`${Params.BASE_URL}/${smallImg}`);
-  };
 
   useEffect(() => {
     createListOptions(menuTime.items, setMenuTimeItems);
@@ -59,25 +45,7 @@ export const MenuForm = ({
       getAllMenuTimeFx({ limit: 20, page: 1 });
     }
   }, [modalVisible]);
-  const props: IDragDropProps = {
-    name: 'file',
-    multiple: true,
-    action: `${Params.BASE_URL}/upload`,
-    onChange(info) {
-      const { status, response } = info.file;
 
-      if (status === 'done' && response) {
-        onFileImage(response);
-        message.success(`${info.file.name}. Успешно загружено.`);
-      } else if (status === 'error') {
-        message.error(`${info.file.name}. Ошибка загрузки.`);
-      }
-    },
-    onDrop(v) {
-      imgUrl;
-      noop();
-    },
-  };
   return (
     <>
       <Form.Item label='Название' name={names('name')} rules={[{ required: true }]}>
@@ -93,9 +61,6 @@ export const MenuForm = ({
         <Select loading={menuTime.pending}>{menuTimeItems}</Select>
       </Form.Item>
       <Form.Item label='Фото' rules={[{ required: true }]}>
-        {!uploadImagePath ? <DragDrop {...props} /> : <img src={uploadImagePath} />}
-      </Form.Item>
-      <Form.Item>
         <ImageCrop setImageUrl={setImageUrl} />
       </Form.Item>
       <Form.Item name={names('imgId')} hidden>

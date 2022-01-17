@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { Nullable } from '../../../../core/types';
 import { MenuModel } from '../../../../store';
-import { MenuForm } from '../../components/MenuForm';
+import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
 
 const { createFx, getAllDefault } = MenuModel;
