@@ -2,12 +2,13 @@ import { Button } from 'antd';
 import React, { useState } from 'react';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { Nullable } from '../../../../core/types';
-import { ImageModel, MenuModel } from '../../../../store';
+import { CreateImageModel, MenuModel } from '../../../../store';
 import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
+import { uniqueId } from 'lodash';
 
 const { createFx, getAllDefault } = MenuModel;
-const { createFx: uploadImage } = ImageModel;
+const { createFx: uploadImage } = CreateImageModel;
 
 export const CreateMenuModal = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -28,9 +29,9 @@ export const CreateMenuModal = () => {
       return;
     }
     const fd = new FormData();
-    fd.append('file', imageBlob, 'wefwvwefwef.jpg');
+    fd.append('file', imageBlob, `${uniqueId()}.jpg`);
 
-    await uploadImage(fd as any);
+    await uploadImage(fd);
     return createFx(menu).then(onClose).then(getAllDefault);
   };
 

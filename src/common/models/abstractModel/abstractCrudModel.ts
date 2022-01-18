@@ -12,7 +12,7 @@ import {
 } from '../../api/types';
 import { notification } from 'antd';
 
-export class CrudStore<Entity> {
+export class CrudStore<CreateEntity, ReturnEntity = CreateEntity> {
   private url: string;
 
   constructor(url: string) {
@@ -21,21 +21,21 @@ export class CrudStore<Entity> {
   public createCrudStore() {
     const Gate = createGate();
 
-    const service = new CrudService<Entity>(this.url);
+    const service = new CrudService<CreateEntity, ReturnEntity>(this.url);
 
-    const createFx = createEffect<Partial<Entity>, Entity, Error>({
+    const createFx = createEffect<Partial<CreateEntity>, ReturnEntity, Error>({
       handler: (mt) => service.create(mt),
     });
 
-    const getAllFx = createEffect<TListRequest<Entity>, TListResponce<Entity>, Error>({
+    const getAllFx = createEffect<TListRequest<ReturnEntity>, TListResponce<ReturnEntity>, Error>({
       handler: (req) => service.getAll(req),
     });
 
-    const getOneFx = createEffect<number, Entity, Error>({
+    const getOneFx = createEffect<number, ReturnEntity, Error>({
       handler: (id) => service.getOne(id),
     });
 
-    const updateFx = createEffect<Entity, Entity, Error>({
+    const updateFx = createEffect<ReturnEntity, ReturnEntity, Error>({
       handler: (mt) => service.updateOne(mt),
     });
 
@@ -49,11 +49,13 @@ export class CrudStore<Entity> {
     const setPage = createEvent<number>();
     const setPageSize = createEvent<number>();
     const setFilter = createEvent<any>();
-    const setItem = createEvent<Entity>();
+    const setItem = createEvent<ReturnEntity>();
 
-    const $oneStore = createStore<TRequestProcess<Entity>>(createInitItem());
-    const $onepending = createStore<boolean>(false);
-    const $listStore = createStore<TListResponce<Entity>>(createInitItemsWithPagination<Entity>());
+    const $oneStore = createStore<TRequestProcess<ReturnEntity>>(createInitItem());
+    const $itemPending = createStore<boolean>(false);
+    const $listStore = createStore<TListResponce<ReturnEntity>>(
+      createInitItemsWithPagination<ReturnEntity>()
+    );
 
     $listStore
       .on(getAllFx.pending, (prev, pending) => ({ ...prev, pending }))
@@ -74,7 +76,7 @@ export class CrudStore<Entity> {
       .on(getOneFx.done, nullableResult)
       .on(updateFx.done, nullableResult)
       .on(deleteFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
-        result.affected ? createInitItem<Entity>() : prev
+        result.affected ? createInitItem<ReturnEntity>() : prev
       )
       .on(createFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(getOneFx.pending, (prev, pending) => ({ ...prev, pending }))
@@ -89,7 +91,7 @@ export class CrudStore<Entity> {
     sample({
       clock: [Gate.state, getAllDefault],
       source: $listStore,
-      fn: ({ limit, page, filter, pending }: TListResponce<Entity>) =>
+      fn: ({ limit, page, filter, pending }: TListResponce<ReturnEntity>) =>
         filter ? { limit, page, filter, pending } : { limit, page, pending },
       target: getAllFx,
     });
@@ -103,7 +105,7 @@ export class CrudStore<Entity> {
       setPageSize,
       $listStore,
       $oneStore,
-      $onepending,
+      $itemPending,
       getAllFx,
       updateFx,
       getOneFx,

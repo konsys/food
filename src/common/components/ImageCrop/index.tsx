@@ -91,7 +91,6 @@ export const ImageCrop = ({ setImageBlob }: Props) => {
           if (!blob) {
             reject(new Error('Canvas is empty'));
           } else {
-            console.log(666666666, blob);
             setImageBlob(blob);
 
             resolve();
@@ -103,7 +102,7 @@ export const ImageCrop = ({ setImageBlob }: Props) => {
     });
   };
 
-  const { crop, croppedImageUrl, src } = state;
+  const { crop, src } = state;
 
   const props: IDragDropProps = {
     name: 'file',
