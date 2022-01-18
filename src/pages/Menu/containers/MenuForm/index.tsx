@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Input, Select } from 'antd';
+import { Form, Input, InputNumber, Select } from 'antd';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import TextArea from 'antd/lib/input/TextArea';
 import { MenuDto } from '../../model/types';
@@ -21,15 +21,16 @@ interface Props {
   formInstance: any;
   uploadImagePath: Nullable<string>;
   setUploadImagePath: TVoidFn<string>;
+  imgUrl: Nullable<string>;
+  setImageUrl: TVoidFn<string>;
 }
 
-export const MenuForm = ({ modalVisible }: Props) => {
+export const MenuForm = ({ modalVisible, setImageUrl }: Props) => {
   const menuTime = useStore($menuTimeList);
   const menuType = useStore($menuTypeList);
 
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
-  const [imgUrl, setImageUrl] = useState<string>();
 
   useEffect(() => {
     createListOptions(menuTime.items, setMenuTimeItems);
@@ -63,8 +64,8 @@ export const MenuForm = ({ modalVisible }: Props) => {
       <Form.Item label='Фото' rules={[{ required: true }]}>
         <ImageCrop setImageUrl={setImageUrl} />
       </Form.Item>
-      <Form.Item name={names('imgId')} hidden>
-        <Input />
+      <Form.Item name={names('imgId')}>
+        <InputNumber value={1} />
       </Form.Item>
     </>
   );

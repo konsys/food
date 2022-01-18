@@ -14,17 +14,28 @@ const { createFx: uploadImage } = ImageModel;
 export const CreateMenuModal = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
+  const [imgUrl, setImageUrl] = useState<string>('');
 
-  const { Modal, formInstance } = useValidatedForm<TSaveMenu>();
+  const { Modal, formInstance } = useValidatedForm<MenuDto>();
 
   const onClose = () => {
     setModalVisible(false);
     formInstance.resetFields();
     setUploadImagePath(null);
+    setImageUrl('');
   };
 
-  const onSave = async ({ img, menu }: TSaveMenu) => {
-    await uploadImage(img);
+  const onSave = async (menu: MenuDto) => {
+    const res = await fetch(imgUrl).then((v) => v.blob());
+
+    console.log(2222222222, imgUrl, uploadImagePath);
+
+    const fd = new FormData();
+    fd.append('name', 'test2.jpg');
+    fd.append('filename', 'test.jpg');
+    fd.append('file', res);
+
+    await uploadImage(fd as any);
     return createFx(menu).then(onClose).then(getAllDefault);
   };
 
@@ -36,6 +47,8 @@ export const CreateMenuModal = () => {
           modalVisible={modalVisible}
           uploadImagePath={uploadImagePath}
           setUploadImagePath={setUploadImagePath}
+          setImageUrl={setImageUrl}
+          imgUrl={imgUrl}
         />
       </Modal>
       <Button type='primary' onClick={() => setModalVisible(true)}>
