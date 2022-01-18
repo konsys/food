@@ -56,3 +56,7 @@ export const removeEntryFromRecord = (record: Record<string, any>, deleteKey: st
 export const isObject = <T>(value: T) => {
   return typeof value === 'object' && value !== null;
 };
+
+export const getFileExtension = (filename: string) => {
+  return filename.split('.').pop();
+};

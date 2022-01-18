@@ -5,9 +5,9 @@ import { Nullable } from '../../../../core/types';
 import { ImageModel, MenuModel } from '../../../../store';
 import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
-import { ImageDto } from '../../../Image/model/types';
+import uniqueId from 'lodash/uniqueId';
+import { getFileExtension } from '../../../../common/utils/utils';
 
-type TSaveMenu = { img: Partial<ImageDto>; menu: MenuDto };
 const { createFx, getAllDefault } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
 
@@ -28,11 +28,8 @@ export const CreateMenuModal = () => {
   const onSave = async (menu: MenuDto) => {
     const res = await fetch(imgUrl).then((v) => v.blob());
 
-    console.log(2222222222, imgUrl, uploadImagePath);
-
     const fd = new FormData();
-    fd.append('name', 'test2.jpg');
-    fd.append('filename', 'test.jpg');
+    fd.append('originalname', `${uniqueId()}${getFileExtension(imgUrl)}`);
     fd.append('file', res);
 
     await uploadImage(fd as any);

@@ -11,5 +11,5 @@ export type MenuDto = {
   visible: boolean;
   price: string;
   imgId: number;
-  image: ImageDto;
+  image?: ImageDto;
 };

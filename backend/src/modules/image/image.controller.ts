@@ -4,6 +4,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import * as path from 'path';
 import { FULL_UPLOAD_PATH } from 'src/config';
+import { uiid } from 'src/common/random';
 
 @Controller('img')
 export class ImageController {
@@ -14,9 +15,8 @@ export class ImageController {
     FileInterceptor('file', {
       storage: diskStorage({
         destination: `${FULL_UPLOAD_PATH}`,
-        filename: (req, file, cb) => {
-          console.log(444444, file)
-          cb(null, Date.now() + path.extname(file.originalname))
+        filename: ({body}, file, cb) => {
+          cb(null, `${uiid()}${path.extname(body.originalname)}`)
         }
       }),
     }), 
