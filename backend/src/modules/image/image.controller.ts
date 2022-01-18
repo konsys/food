@@ -19,7 +19,7 @@ export class ImageController {
           cb(null, Date.now() + path.extname(file.originalname))
         }
       }),
-    }),
+    }), 
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
     return this.service.saveFileData(file);
