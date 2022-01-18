@@ -15,8 +15,8 @@ export class ImageController {
     FileInterceptor('file', {
       storage: diskStorage({
         destination: `${FULL_UPLOAD_PATH}`,
-        filename: ({body}, file, cb) => {
-          cb(null, `${uiid()}${path.extname(body.originalname)}`)
+        filename: (req, file, cb) => {
+          cb(null, `${uiid()}${path.extname(file.originalname)}`)
         }
       }),
     }), 

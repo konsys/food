@@ -9,23 +9,24 @@ import { noop } from 'lodash';
 import { apiUrls } from '../../api/urls';
 import { Params } from '../../../config/params';
 import { RcFile } from 'antd/lib/upload';
+import { Nullable } from '../../../core/types';
 
 export type TFile = (Blob & RcFile) | undefined;
 
 type IState = {
-  croppedImageUrl: string;
+  croppedImageUrl: Nullable<Blob>;
   src: string | ArrayBuffer | null;
   crop: Crop;
 };
 
 interface Props {
-  setImageUrl: TVoidFn<string>;
+  setImageBlob: TVoidFn<Blob>;
 }
 
-export const ImageCrop = ({ setImageUrl }: Props) => {
+export const ImageCrop = ({ setImageBlob }: Props) => {
   const [state, setState] = useState<IState>({
     src: null,
-    croppedImageUrl: '',
+    croppedImageUrl: null,
     crop: {
       unit: '%',
       width: 30,
@@ -53,12 +54,11 @@ export const ImageCrop = ({ setImageUrl }: Props) => {
 
   async function makeClientCrop(makeCrop: Crop) {
     if (imageRef.current && makeCrop.width && makeCrop.height) {
-      const img = await getCroppedImg(imageRef.current, makeCrop);
-      setState({ ...state, croppedImageUrl: img });
+      await getCroppedImg(imageRef.current, makeCrop);
     }
   }
 
-  const getCroppedImg = (image: HTMLImageElement, getCrop: Crop): Promise<string> => {
+  const getCroppedImg = (image: HTMLImageElement, getCrop: Crop): Promise<void> => {
     const canvas = document.createElement('canvas');
     const pixelRatio = window.devicePixelRatio;
     const scaleX = image.naturalWidth / image.width;
@@ -91,10 +91,10 @@ export const ImageCrop = ({ setImageUrl }: Props) => {
           if (!blob) {
             reject(new Error('Canvas is empty'));
           } else {
-            window.URL.revokeObjectURL(blob.arrayBuffer.toString());
-            const imgUrl = window.URL.createObjectURL(blob);
-            setImageUrl(imgUrl);
-            resolve(imgUrl);
+            console.log(666666666, blob);
+            setImageBlob(blob);
+
+            resolve();
           }
         },
         'image/jpeg',
@@ -135,7 +135,6 @@ export const ImageCrop = ({ setImageUrl }: Props) => {
           onChange={onCropChange}
         />
       )}
-      {croppedImageUrl && <img alt='Crop' style={{ maxWidth: '100%' }} src={croppedImageUrl} />}
     </>
   );
 };

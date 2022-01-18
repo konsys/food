@@ -5,8 +5,6 @@ import { Nullable } from '../../../../core/types';
 import { ImageModel, MenuModel } from '../../../../store';
 import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
-import uniqueId from 'lodash/uniqueId';
-import { getFileExtension } from '../../../../common/utils/utils';
 
 const { createFx, getAllDefault } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
@@ -14,7 +12,7 @@ const { createFx: uploadImage } = ImageModel;
 export const CreateMenuModal = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
-  const [imgUrl, setImageUrl] = useState<string>('');
+  const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
 
   const { Modal, formInstance } = useValidatedForm<MenuDto>();
 
@@ -22,15 +20,15 @@ export const CreateMenuModal = () => {
     setModalVisible(false);
     formInstance.resetFields();
     setUploadImagePath(null);
-    setImageUrl('');
+    setImageBlob(null);
   };
 
   const onSave = async (menu: MenuDto) => {
-    const res = await fetch(imgUrl).then((v) => v.blob());
-
+    if (!imageBlob) {
+      return;
+    }
     const fd = new FormData();
-    fd.append('originalname', `${uniqueId()}${getFileExtension(imgUrl)}`);
-    fd.append('file', res);
+    fd.append('file', imageBlob, 'wefwvwefwef.jpg');
 
     await uploadImage(fd as any);
     return createFx(menu).then(onClose).then(getAllDefault);
@@ -44,8 +42,8 @@ export const CreateMenuModal = () => {
           modalVisible={modalVisible}
           uploadImagePath={uploadImagePath}
           setUploadImagePath={setUploadImagePath}
-          setImageUrl={setImageUrl}
-          imgUrl={imgUrl}
+          setImageBlob={setImageBlob}
+          imageBlob={imageBlob}
         />
       </Modal>
       <Button type='primary' onClick={() => setModalVisible(true)}>

@@ -21,11 +21,11 @@ interface Props {
   formInstance: any;
   uploadImagePath: Nullable<string>;
   setUploadImagePath: TVoidFn<string>;
-  imgUrl: Nullable<string>;
-  setImageUrl: TVoidFn<string>;
+  imageBlob: Nullable<Blob>;
+  setImageBlob: TVoidFn<Blob>;
 }
 
-export const MenuForm = ({ modalVisible, setImageUrl }: Props) => {
+export const MenuForm = ({ modalVisible, setImageBlob }: Props) => {
   const menuTime = useStore($menuTimeList);
   const menuType = useStore($menuTypeList);
 
@@ -62,7 +62,7 @@ export const MenuForm = ({ modalVisible, setImageUrl }: Props) => {
         <Select loading={menuTime.pending}>{menuTimeItems}</Select>
       </Form.Item>
       <Form.Item label='Фото' rules={[{ required: true }]}>
-        <ImageCrop setImageUrl={setImageUrl} />
+        <ImageCrop setImageBlob={setImageBlob} />
       </Form.Item>
       <Form.Item name={names('imgId')}>
         <InputNumber value={1} />
