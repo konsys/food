@@ -1,5 +1,6 @@
 import pickBy from 'lodash/pickBy';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
+import { v4 as uuidv4 } from 'uuid';
 
 export const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -60,3 +61,5 @@ export const isObject = <T>(value: T) => {
 export const getFileExtension = (filename: string) => {
   return filename.split('.').pop();
 };
+
+export const uuid = () => uuidv4();

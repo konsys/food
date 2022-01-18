@@ -37,7 +37,7 @@ export const createInitItemsWithPagination = <T>(): TListResponce<T> => ({
 });
 
 export const nullableResult = <D>(_: TRequestProcess<D>, { result }: { result: D }) => ({
-  item: result,
+  item: result ?? null,
   pending: false,
 });
 
