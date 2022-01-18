@@ -82,10 +82,10 @@ export class CrudStore<CreateEntity, ReturnEntity = CreateEntity> {
       .on(getOneFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(updateFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(deleteFx.pending, (prev, pending) => ({ ...prev, pending }))
-      .on(createFx.fail, () => notification.error({ message: 'Ошибка создания меню' }))
-      .on(getOneFx.fail, () => notification.error({ message: 'Ошибка получения меню' }))
-      .on(updateFx.fail, () => notification.error({ message: 'Ошибка обновления меню' }))
-      .on(deleteFx.fail, () => notification.error({ message: 'Ошибка удаления меню' }))
+      .on(createFx.fail, () => notification.error({ message: 'Ошибка создания' }))
+      .on(getOneFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
+      .on(updateFx.fail, () => notification.error({ message: 'Ошибка обновления' }))
+      .on(deleteFx.fail, () => notification.error({ message: 'Ошибка удаления' }))
       .reset(resetOne);
 
     sample({
