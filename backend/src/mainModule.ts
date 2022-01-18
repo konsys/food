@@ -9,6 +9,7 @@ import { MenuTypeModule } from './modules/menu-type/menu-type.module';
 import { ImageModule } from './modules/image/image.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { FULL_UPLOAD_PATH } from './config';
 
 @Module({
   imports: [
@@ -22,7 +23,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
     ImageModule,
     MulterModule,
     ServeStaticModule.forRoot({
-      rootPath: `${__dirname}/../upload`,
+      rootPath: `${FULL_UPLOAD_PATH}`,
     }),
   ],
 })
