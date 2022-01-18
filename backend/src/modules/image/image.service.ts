@@ -1,11 +1,11 @@
-import { Injectable, Param } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { uiid } from 'src/common/random';
 import { ImageEntity } from 'src/entities/image.entity';
 import { Repository } from 'typeorm';
 import * as path from 'path';
 const gm = require('gm').subClass({ imageMagick: true });
-import { AverageImageSize, IMAGE_DESTINATION, IMAGE_UPLOAD, LargeImageSize, smallImageSize } from 'src/config';
+import { AverageImageSize, FILE_DESTINATION_PATH, FILE_UPLOAD_DIR, LargeImageSize, smallImageSize } from 'src/config';
 
 @Injectable()
 export class ImageService {
@@ -37,8 +37,8 @@ export class ImageService {
     return new Promise((resolve, reject) => {
       const outFileName = `${uiid()}${path.extname(inFileName).toLowerCase()}`;
 
-      const inPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${inFileName}`;
-      const outPath = `${IMAGE_DESTINATION}/${IMAGE_UPLOAD}/${outFileName}`;
+      const inPath = `${FILE_DESTINATION_PATH}/${FILE_UPLOAD_DIR}/${inFileName}`;
+      const outPath = `${FILE_DESTINATION_PATH}/${FILE_UPLOAD_DIR}/${outFileName}`;
 
       return gm(`${inPath}`)
         .resize(width)
