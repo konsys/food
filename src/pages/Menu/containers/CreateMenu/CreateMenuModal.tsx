@@ -5,8 +5,8 @@ import { Nullable } from '../../../../core/types';
 import { ImageModel, MenuModel } from '../../../../store';
 import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
-import { uniqueId } from 'lodash';
 import { useStore } from 'effector-react';
+import { uuid } from '../../../../common/utils/utils';
 
 const { createFx, getAllDefault } = MenuModel;
 const { createFx: uploadImage, $oneStore: $image } = ImageModel;
@@ -28,14 +28,18 @@ export const CreateMenuModal = () => {
   };
 
   const onSave = async (menu: MenuDto) => {
+    let id = null;
     if (imageBlob) {
       const fd = new FormData();
-      fd.append('file', imageBlob, `${uniqueId()}.jpg`);
+      fd.append('file', imageBlob, `${uuid()}.jpg`);
 
-      await uploadImage(fd);
+      const res = await uploadImage(fd);
+      id = res.id;
     }
 
-    return createFx(menu).then(onClose).then(getAllDefault);
+    return createFx({ ...menu, imgId: id })
+      .then(onClose)
+      .then(getAllDefault);
   };
 
   return (
