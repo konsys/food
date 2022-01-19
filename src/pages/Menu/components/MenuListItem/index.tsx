@@ -13,13 +13,9 @@ export const MenuListItem = ({ foodMenuItem }: Props) => {
     <>
       <Row>
         <Col span={24}>
-          <Row>
-            <Col span={8}>
-              <h2>{foodMenuItem.name}</h2>
-            </Col>
-            <Col span={8}>
-              <span>{foodMenuItem.price}</span>
-            </Col>
+          <Row justify='space-between'>
+            <Col span={8}>{foodMenuItem.name}</Col>
+            <Col span={8}>{foodMenuItem.price}</Col>
             <Col span={8}>
               <Button type='ghost'>Заказать</Button>
             </Col>
@@ -35,9 +31,7 @@ export const MenuListItem = ({ foodMenuItem }: Props) => {
             </Col>
           </Row>
           <Row>
-            <Col span={24}>
-              <div>{foodMenuItem.description}</div>
-            </Col>
+            <Col span={24}>{foodMenuItem.description}</Col>
           </Row>
         </Col>
       </Row>
