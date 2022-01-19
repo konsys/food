@@ -1,4 +1,4 @@
-import { Button, Col, Image, Row } from 'antd';
+import { Button, Col, Image, Row, Space } from 'antd';
 import React from 'react';
 import { Params } from '../../../../config/params';
 import { MenuDto } from '../../model/types';
@@ -14,10 +14,14 @@ export const MenuListItem = ({ foodMenuItem }: Props) => {
       <Row>
         <Col span={24}>
           <Row justify='space-between'>
-            <Col span={8}>{foodMenuItem.name}</Col>
+            <Col span={8}>
+              <Space style={{ width: '100%', justifyContent: 'left' }}>{foodMenuItem.name}</Space>
+            </Col>
             <Col span={8}>{foodMenuItem.price}</Col>
             <Col span={8}>
-              <Button type='ghost'>Заказать</Button>
+              <Space style={{ width: '100%', justifyContent: 'right' }}>
+                <Button type='ghost'>Заказать</Button>
+              </Space>
             </Col>
           </Row>
           <Row>
