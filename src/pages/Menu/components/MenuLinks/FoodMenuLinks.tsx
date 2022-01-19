@@ -1,3 +1,4 @@
+import { Col, Row } from 'antd';
 import React from 'react';
 import { TVoidFn } from '../../../../common/types';
 import { EFoodType } from '../../MenuListPage';
@@ -10,8 +11,8 @@ interface Props {
 export const MenuLinks = ({ activeFilter, setActiveFilter }: Props) => {
   return (
     <>
-      <div className='row'>
-        <div className='col-lg-12'>
+      <Row>
+        <Col span={24}>
           <div className='special-menu text-center'>
             <div className='button-group filter-button-group'>
               <button
@@ -40,8 +41,8 @@ export const MenuLinks = ({ activeFilter, setActiveFilter }: Props) => {
               </button>
             </div>
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </>
   );
 };

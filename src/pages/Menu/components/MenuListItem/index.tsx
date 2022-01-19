@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, Col, Row } from 'antd';
 import React from 'react';
 import { Params } from '../../../../config/params';
 import { MenuDto } from '../../model/types';
@@ -11,31 +11,35 @@ interface Props {
 export const MenuListItem = ({ foodMenuItem }: Props) => {
   return (
     <>
-      <div className='col-lg-4 col-md-6'>
-        <div className='gallery-single'>
-          <div className='row'>
-            <div className='col-sm-9'>
+      <Row>
+        <Col span={24}>
+          <Row>
+            <Col span={8}>
               <h2>{foodMenuItem.name}</h2>
-            </div>
-            <div className='col-sm-3 order-price'>
+            </Col>
+            <Col span={8}>
               <span>{foodMenuItem.price}</span>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-sm-12 order-button'>
+            </Col>
+            <Col span={8}>
               <Button type='ghost'>Заказать</Button>
-            </div>
-          </div>
-          <img
-            src={`${Params.BASE_URL}/${foodMenuItem.image?.averageImg}` ?? ''}
-            className='img-fluid'
-            alt={foodMenuItem.name}
-          />
-          <div className='why-text'>
-            <p>{foodMenuItem.description}</p>
-          </div>
-        </div>
-      </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <img
+                src={`${Params.BASE_URL}/${foodMenuItem.image?.averageImg}` ?? ''}
+                className='img-fluid'
+                alt={foodMenuItem.name}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <div>{foodMenuItem.description}</div>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     </>
   );
 };

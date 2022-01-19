@@ -1,16 +1,21 @@
 import React from 'react';
+import { Row, Col, Space } from 'antd';
 
 export const MenuHeader = () => {
   return (
     <>
-      <div className='row'>
-        <div className='col-lg-12'>
-          <div className='heading-title text-center'>
+      <Row>
+        <Col span={24}>
+          <Space
+            direction='vertical'
+            style={{ width: '100%', justifyContent: 'center' }}
+            className='heading-title text-center'
+          >
             <h2>Special Menu</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-          </div>
-        </div>
-      </div>
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting</div>
+          </Space>
+        </Col>
+      </Row>
     </>
   );
 };

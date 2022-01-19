@@ -1,4 +1,4 @@
-import { Pagination, Spin } from 'antd';
+import { Col, Pagination, Row, Spin } from 'antd';
 import React, { ReactElement } from 'react';
 import { TListResponce } from '../../../common/api/types';
 import { TVoidFn } from '../../../common/types';
@@ -42,9 +42,13 @@ export const MenuList = ({
                     <Text disabled>Нет результатов</Text>
                   </div>
                 )}
-                {menu.items.map((v, k) => (
-                  <MenuListItem foodMenuItem={v} key={k} />
-                ))}
+                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                  {menu.items.map((v, k) => (
+                    <Col xs={24} md={12} xl={8} key={k}>
+                      <MenuListItem foodMenuItem={v} />
+                    </Col>
+                  ))}
+                </Row>
               </div>
             </>
           ) : (
