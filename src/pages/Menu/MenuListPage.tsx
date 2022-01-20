@@ -1,10 +1,10 @@
 import { Button, Col, Row, Space } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement, useState } from 'react';
-import { Nullable } from '../../core/types';
+import { NullableNumber } from '../../core/types';
 import { MenuModel } from '../../store';
 import { MenuList } from './components';
-import { CreateMenuModal } from './containers/CreateMenu/CreateMenuModal';
+import { CreateMenuModal } from './containers/MenuModal/MenuModal';
 
 export enum EFoodType {
   ALL = 'All',
@@ -16,7 +16,7 @@ const { $listStore, setPage, setPageSize, Gate, setFilter } = MenuModel;
 
 export const MenuListPage = (): ReactElement => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [editId, setEditId] = useState<Nullable<number>>(null);
+  const [editId, setEditId] = useState<NullableNumber>(null);
   const menu = useStore($listStore);
   useGate(Gate, { limit: menu.limit, page: menu.page, filter: menu.filter });
   const [activeFilter, setActiveFilter] = useState<EFoodType>(EFoodType.ALL);
@@ -27,7 +27,7 @@ export const MenuListPage = (): ReactElement => {
           <Row>
             <Col span={24}>
               <Space>
-                <CreateMenuModal />
+                <CreateMenuModal id={editId} />
                 <Button onClick={() => setIsEdit(isEdit ? false : true)}>
                   {!isEdit ? 'Редактировать' : 'Завершить'}
                 </Button>

@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import React, { useState } from 'react';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
-import { Nullable } from '../../../../core/types';
+import { Nullable, NullableNumber } from '../../../../core/types';
 import { ImageModel, MenuModel } from '../../../../store';
 import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
@@ -10,7 +10,10 @@ import { uuid } from '../../../../common/utils/utils';
 const { createFx, getAllDefault } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
 
-export const CreateMenuModal = () => {
+interface Props {
+  id: NullableNumber;
+}
+export const CreateMenuModal = ({ id }: Props) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
@@ -25,16 +28,16 @@ export const CreateMenuModal = () => {
   };
 
   const onSave = async (menu: MenuDto) => {
-    let id = null;
+    let imgId = null;
     if (imageBlob) {
       const fd = new FormData();
       fd.append('file', imageBlob, `${uuid()}.jpg`);
 
       const res = await uploadImage(fd);
-      id = res.id;
+      imgId = res.id;
     }
 
-    return createFx({ ...menu, imgId: id })
+    return createFx({ ...menu, imgId })
       .then(onClose)
       .then(getAllDefault);
   };

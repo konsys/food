@@ -7,7 +7,7 @@ import { MenuListItem } from './MenuListItem';
 import './styles.less';
 import { EFoodType } from '../MenuListPage';
 import Text from 'antd/lib/typography/Text';
-import { Nullable } from '../../../core/types';
+import { NullableNumber } from '../../../core/types';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -16,7 +16,7 @@ interface Props {
   activeFilter: EFoodType;
   setActiveFilter: TVoidFn<EFoodType>;
   isEdit: boolean;
-  setEditId: TVoidFn<Nullable<number>>;
+  setEditId: TVoidFn<NullableNumber>;
 }
 
 export const MenuList = ({

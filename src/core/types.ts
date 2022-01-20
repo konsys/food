@@ -3,3 +3,6 @@ export type TChildren = {
 };
 
 export type Nullable<T> = T | null;
+
+export type NullableNumber = number | null;
+export type NullableString = number | string;

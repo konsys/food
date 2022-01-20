@@ -2,7 +2,7 @@ import { Button, Card, Col, Image, Row, Space } from 'antd';
 import React from 'react';
 import { TVoidFn } from '../../../../common/types';
 import { Params } from '../../../../config/params';
-import { Nullable } from '../../../../core/types';
+import { NullableNumber } from '../../../../core/types';
 import { MenuDto } from '../../model/types';
 import { MenuItemDescription } from '../MenuItemDescription/MenuItemDescription';
 import { MenuItemPrice } from '../MenuItemPrice/MenuItemPrice';
@@ -12,7 +12,7 @@ import './style.less';
 
 interface Props {
   foodMenuItem: MenuDto;
-  setEditId: TVoidFn<Nullable<number>>;
+  setEditId: TVoidFn<NullableNumber>;
   isEdit: boolean;
 }
 

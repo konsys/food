@@ -1,4 +1,4 @@
-import { Nullable } from '../../../core/types';
+import { NullableNumber } from '../../../core/types';
 import { ImageDto } from '../../Image/model/types';
 
 export type MenuDto = {
@@ -12,6 +12,6 @@ export type MenuDto = {
   visible: boolean;
   price: number;
   weight: number;
-  imgId: Nullable<number>;
+  imgId: NullableNumber;
   image: ImageDto;
 };
