@@ -7,8 +7,9 @@ import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
 import { uuid } from '../../../../common/utils/utils';
 import { TVoidFn } from '../../../../common/types';
+import { useGate } from 'effector-react';
 
-const { createFx, getAllDefault } = MenuModel;
+const { createFx, getAllDefault, OneGate } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
 
 interface Props {
@@ -16,11 +17,18 @@ interface Props {
   isVisible: boolean;
   setIsVisible: TVoidFn<boolean>;
 }
+
 export const CreateMenuModal = ({ id, setIsVisible, isVisible }: Props) => {
+  useGate(OneGate, id);
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
 
   const { Modal, formInstance } = useValidatedForm<MenuDto>();
+
+  const onOpen = () => {
+    onClose();
+    setIsVisible(true);
+  };
 
   const onClose = () => {
     setIsVisible(false);
@@ -56,7 +64,7 @@ export const CreateMenuModal = ({ id, setIsVisible, isVisible }: Props) => {
           imageBlob={imageBlob}
         />
       </Modal>
-      <Button type='primary' onClick={() => setIsVisible(true)}>
+      <Button type='primary' onClick={onOpen}>
         Создать
       </Button>
     </>

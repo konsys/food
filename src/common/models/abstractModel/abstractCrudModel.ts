@@ -11,6 +11,7 @@ import {
   TypeOrmDeleteResult,
 } from '../../api/types';
 import { notification } from 'antd';
+import { MenuModel } from '../../../store';
 
 export class CrudStore<CreateEntity, ReturnEntity = CreateEntity> {
   private url: string;
@@ -19,8 +20,8 @@ export class CrudStore<CreateEntity, ReturnEntity = CreateEntity> {
     this.url = url;
   }
   public createCrudStore() {
-    const Gate = createGate();
-
+    const ListGate = createGate();
+    const OneGate = createGate();
     const service = new CrudService<CreateEntity, ReturnEntity>(this.url);
 
     const createFx = createEffect<Partial<CreateEntity>, ReturnEntity, Error>({
@@ -89,11 +90,18 @@ export class CrudStore<CreateEntity, ReturnEntity = CreateEntity> {
       .reset(resetOne);
 
     sample({
-      clock: [Gate.state, getAllDefault],
+      clock: [ListGate.state, getAllDefault],
       source: $listStore,
       fn: ({ limit, page, filter, pending }: TListResponce<ReturnEntity>) =>
         filter ? { limit, page, filter, pending } : { limit, page, pending },
       target: getAllFx,
+    });
+
+    sample({
+      clock: [OneGate.state],
+      source: $oneStore,
+      fn: () => 1,
+      target: getOneFx,
     });
 
     return {
@@ -110,7 +118,8 @@ export class CrudStore<CreateEntity, ReturnEntity = CreateEntity> {
       updateFx,
       getOneFx,
       deleteFx,
-      Gate,
+      ListGate,
+      OneGate,
       setItem,
       getAllDefault,
     };
