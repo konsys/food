@@ -6,22 +6,24 @@ import { ImageModel, MenuModel } from '../../../../store';
 import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
 import { uuid } from '../../../../common/utils/utils';
+import { TVoidFn } from '../../../../common/types';
 
 const { createFx, getAllDefault } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
 
 interface Props {
   id: NullableNumber;
+  isVisible: boolean;
+  setIsVisible: TVoidFn<boolean>;
 }
-export const CreateMenuModal = ({ id }: Props) => {
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
+export const CreateMenuModal = ({ id, setIsVisible, isVisible }: Props) => {
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
 
   const { Modal, formInstance } = useValidatedForm<MenuDto>();
 
   const onClose = () => {
-    setModalVisible(false);
+    setIsVisible(false);
     formInstance.resetFields();
     setUploadImagePath(null);
     setImageBlob(null);
@@ -44,17 +46,17 @@ export const CreateMenuModal = ({ id }: Props) => {
 
   return (
     <>
-      <Modal visible={modalVisible} title='Меню' onOk={onSave} onCancel={onClose} destroyOnClose>
+      <Modal visible={isVisible} title='Меню' onOk={onSave} onCancel={onClose} destroyOnClose>
         <MenuForm
           formInstance={formInstance}
-          modalVisible={modalVisible}
+          modalVisible={isVisible}
           uploadImagePath={uploadImagePath}
           setUploadImagePath={setUploadImagePath}
           setImageBlob={setImageBlob}
           imageBlob={imageBlob}
         />
       </Modal>
-      <Button type='primary' onClick={() => setModalVisible(true)}>
+      <Button type='primary' onClick={() => setIsVisible(true)}>
         Создать
       </Button>
     </>

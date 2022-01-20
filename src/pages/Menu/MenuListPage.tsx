@@ -17,6 +17,8 @@ const { $listStore, setPage, setPageSize, Gate, setFilter } = MenuModel;
 export const MenuListPage = (): ReactElement => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [editId, setEditId] = useState<NullableNumber>(null);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
   const menu = useStore($listStore);
   useGate(Gate, { limit: menu.limit, page: menu.page, filter: menu.filter });
   const [activeFilter, setActiveFilter] = useState<EFoodType>(EFoodType.ALL);
@@ -27,7 +29,7 @@ export const MenuListPage = (): ReactElement => {
           <Row>
             <Col span={24}>
               <Space>
-                <CreateMenuModal id={editId} />
+                <CreateMenuModal id={editId} isVisible={isVisible} setIsVisible={setIsVisible} />
                 <Button onClick={() => setIsEdit(isEdit ? false : true)}>
                   {!isEdit ? 'Редактировать' : 'Завершить'}
                 </Button>
