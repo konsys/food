@@ -1,11 +1,9 @@
-import { Card, Col, Pagination, Row, Spin } from 'antd';
+import { Col, Pagination, Row, Spin } from 'antd';
 import React, { ReactElement } from 'react';
 import { TListResponce } from '../../../common/api/types';
 import { TVoidFn } from '../../../common/types';
 import { MenuDto } from '../model/types';
-import { MenuHeader } from './MenuHeader';
 import { MenuListItem } from './MenuListItem';
-import { MenuLinks } from './MenuLinks/FoodMenuLinks';
 import './styles.less';
 import { EFoodType } from '../MenuListPage';
 import Text from 'antd/lib/typography/Text';
@@ -19,13 +17,7 @@ interface Props {
   setActiveFilter: TVoidFn<EFoodType>;
 }
 
-export const MenuList = ({
-  menu,
-  setPage,
-  setPageSize,
-  activeFilter,
-  setActiveFilter,
-}: Props): ReactElement => {
+export const MenuList = ({ menu, setPage, setPageSize }: Props): ReactElement => {
   return (
     <>
       <div className='menu-box'>
@@ -38,20 +30,18 @@ export const MenuList = ({
 
           {!menu.pending ? (
             <>
-              <div className='row special-list'>
-                {!menu.items.length && (
-                  <div className='mx-auto mt-5 mb-5'>
-                    <Text disabled>Нет результатов</Text>
-                  </div>
-                )}
-                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                  {menu.items.map((v, k) => (
-                    <Col xs={24} md={12} xl={8} key={k}>
-                      <MenuListItem foodMenuItem={v} />
-                    </Col>
-                  ))}
-                </Row>
-              </div>
+              {!menu.items.length && (
+                <div className='mx-auto mt-5 mb-5'>
+                  <Text disabled>Нет результатов</Text>
+                </div>
+              )}
+              <Row>
+                {menu.items.map((v, k) => (
+                  <Col xs={24} md={12} xl={8} key={k}>
+                    <MenuListItem foodMenuItem={v} />
+                  </Col>
+                ))}
+              </Row>
             </>
           ) : (
             <Spin />
