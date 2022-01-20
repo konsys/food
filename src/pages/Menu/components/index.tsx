@@ -1,4 +1,4 @@
-import { Col, Pagination, Row, Spin } from 'antd';
+import { Col, Pagination, Row, Space, Spin } from 'antd';
 import React, { ReactElement } from 'react';
 import { TListResponce } from '../../../common/api/types';
 import { TVoidFn } from '../../../common/types';
@@ -27,26 +27,25 @@ export const MenuList = ({ menu, setPage, setPageSize }: Props): ReactElement =>
               <CreateMenuModal />
             </Col>
           </Row>
-
-          {!menu.pending ? (
-            <>
-              {!menu.items.length && (
-                <div className='mx-auto mt-5 mb-5'>
-                  <Text disabled>Нет результатов</Text>
-                </div>
-              )}
-              <Row>
-                {menu.items.map((v, k) => (
-                  <Col xs={24} md={12} xl={8} key={k}>
-                    <MenuListItem foodMenuItem={v} />
-                  </Col>
-                ))}
-              </Row>
-            </>
-          ) : (
-            <Spin />
-          )}
-          <div className='row'>
+          <Space direction='vertical'>
+            {!menu.pending ? (
+              <>
+                {!menu.items.length && (
+                  <div className='mx-auto mt-5 mb-5'>
+                    <Text disabled>Нет результатов</Text>
+                  </div>
+                )}
+                <Row>
+                  {menu.items.map((v, k) => (
+                    <Col xs={24} md={12} xl={8} key={k}>
+                      <MenuListItem foodMenuItem={v} />
+                    </Col>
+                  ))}
+                </Row>
+              </>
+            ) : (
+              <Spin />
+            )}
             <Pagination
               current={menu.page}
               defaultCurrent={1}
@@ -54,7 +53,7 @@ export const MenuList = ({ menu, setPage, setPageSize }: Props): ReactElement =>
               onChange={setPage}
               onShowSizeChange={(_, size) => setPageSize(size)}
             />
-          </div>
+          </Space>
         </div>
       </div>
     </>
