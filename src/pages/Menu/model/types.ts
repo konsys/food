@@ -10,7 +10,8 @@ export type MenuDto = {
   timeId: number;
   typeId: number;
   visible: boolean;
-  price: string;
+  price: number;
+  weight: number;
   imgId: Nullable<number>;
   image: ImageDto;
 };

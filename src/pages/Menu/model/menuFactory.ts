@@ -9,7 +9,8 @@ export const menuFactory = factory.Sync.makeFactory<MenuDto>({
   description: factory.each(() => faker.commerce.productDescription()),
   name: factory.each(() => faker.commerce.productName()),
   visible: factory.each(() => Math.random() > 0.5),
-  price: factory.each(() => faker.commerce.price()),
+  price: factory.each(() => faker.datatype.number(1000)),
+  weight: factory.each(() => faker.datatype.number(2000)),
   imgId: factory.each((n) => n),
   image: factory.each(() => imageFactory.build()),
 });

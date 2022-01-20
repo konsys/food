@@ -5,11 +5,10 @@ import { Nullable } from '../../../../core/types';
 import { ImageModel, MenuModel } from '../../../../store';
 import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
-import { useStore } from 'effector-react';
 import { uuid } from '../../../../common/utils/utils';
 
 const { createFx, getAllDefault } = MenuModel;
-const { createFx: uploadImage, $oneStore: $image } = ImageModel;
+const { createFx: uploadImage } = ImageModel;
 
 export const CreateMenuModal = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -17,8 +16,6 @@ export const CreateMenuModal = () => {
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
 
   const { Modal, formInstance } = useValidatedForm<MenuDto>();
-
-  const img = useStore($image);
 
   const onClose = () => {
     setModalVisible(false);

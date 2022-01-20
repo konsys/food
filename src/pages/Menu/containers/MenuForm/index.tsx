@@ -55,11 +55,17 @@ export const MenuForm = ({ modalVisible, setImageBlob }: Props) => {
       <Form.Item label='Описание' name={names('description')}>
         <TextArea />
       </Form.Item>
-      <Form.Item label='Тип' name={names('typeId')} rules={[{ required: true }]}>
+      <Form.Item label='Цена' name={names('price')} rules={[{ required: true }]}>
+        <InputNumber />
+      </Form.Item>
+      <Form.Item label='Тип кухни' name={names('typeId')} rules={[{ required: true }]}>
         <Select loading={menuType.pending}>{menuTypeItems}</Select>
       </Form.Item>
-      <Form.Item label='Время' name={names('timeId')} rules={[{ required: true }]}>
+      <Form.Item label='Время приема пищи' name={names('timeId')} rules={[{ required: true }]}>
         <Select loading={menuTime.pending}>{menuTimeItems}</Select>
+      </Form.Item>
+      <Form.Item label='Вес' name={names('weight')} rules={[{ required: true }]}>
+        <InputNumber />
       </Form.Item>
       <Form.Item label='Фото' rules={[{ required: true }]}>
         <ImageCrop setImageBlob={setImageBlob} />

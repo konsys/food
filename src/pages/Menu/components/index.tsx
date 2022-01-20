@@ -1,4 +1,4 @@
-import { Col, Pagination, Row, Spin } from 'antd';
+import { Card, Col, Pagination, Row, Spin } from 'antd';
 import React, { ReactElement } from 'react';
 import { TListResponce } from '../../../common/api/types';
 import { TVoidFn } from '../../../common/types';
@@ -30,10 +30,12 @@ export const MenuList = ({
     <>
       <div className='menu-box'>
         <div className='container'>
-          <MenuHeader />
+          <Row>
+            <Col span={24}>
+              <CreateMenuModal />
+            </Col>
+          </Row>
 
-          <MenuLinks activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
-          <CreateMenuModal />
           {!menu.pending ? (
             <>
               <div className='row special-list'>

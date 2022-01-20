@@ -8,7 +8,10 @@ import { ImageEntity } from './image.entity';
 export class MenuEntity extends AbstractDictionary {
 
   @Column({ default: null })
-  price: string;
+  price: number;
+
+  @Column({ default: null })
+  weight: number;
 
   @Exclude()
   @Column({ type: 'int', nullable: true })
