@@ -1,4 +1,4 @@
-import { createEffect, createEvent, createStore, sample } from 'effector';
+import { createEffect, createEvent, createStore, guard, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { CrudService } from '../../api';
 import {
@@ -11,9 +11,10 @@ import {
   TypeOrmDeleteResult,
 } from '../../api/types';
 import { notification } from 'antd';
-import { MenuModel } from '../../../store';
+import { TId, TWithId } from '../../types';
+import { NullableNumber } from '../../../core/types';
 
-export class CrudStore<CreateEntity, ReturnEntity = CreateEntity> {
+export class CrudStore<CreateEntity, ReturnEntity extends { id: TId } = CreateEntity & TWithId> {
   private url: string;
 
   constructor(url: string) {
@@ -21,7 +22,7 @@ export class CrudStore<CreateEntity, ReturnEntity = CreateEntity> {
   }
   public createCrudStore() {
     const ListGate = createGate();
-    const OneGate = createGate();
+    const OneGate = createGate<NullableNumber>();
     const service = new CrudService<CreateEntity, ReturnEntity>(this.url);
 
     const createFx = createEffect<Partial<CreateEntity>, ReturnEntity, Error>({
@@ -97,11 +98,12 @@ export class CrudStore<CreateEntity, ReturnEntity = CreateEntity> {
       target: getAllFx,
     });
 
-    sample({
-      clock: [OneGate.state],
-      source: $oneStore,
-      fn: () => 1,
-      target: getOneFx,
+    guard({
+      clock: OneGate.state,
+      filter: OneGate.state.map((v) => !v),
+      // source: OneGate.state,
+
+      target: getAllDefault,
     });
 
     return {
