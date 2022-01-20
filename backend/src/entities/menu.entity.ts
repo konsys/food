@@ -7,10 +7,13 @@ import { ImageEntity } from './image.entity';
 @Entity()
 export class MenuEntity extends AbstractDictionary {
 
-  @Column({ default: null })
+  @Column()
+  description: string;
+
+  @Column()
   price: number;
 
-  @Column({ default: null })
+  @Column()
   weight: number;
 
   @Exclude()

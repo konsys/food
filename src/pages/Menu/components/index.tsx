@@ -7,7 +7,7 @@ import { MenuListItem } from './MenuListItem';
 import './styles.less';
 import { EFoodType } from '../MenuListPage';
 import Text from 'antd/lib/typography/Text';
-import { CreateMenuModal } from '../containers/CreateMenu/CreateMenuModal';
+import { Nullable } from '../../../core/types';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -15,47 +15,48 @@ interface Props {
   setPageSize: TVoidFn<number>;
   activeFilter: EFoodType;
   setActiveFilter: TVoidFn<EFoodType>;
+  isEdit: boolean;
+  setEditId: TVoidFn<Nullable<number>>;
 }
 
-export const MenuList = ({ menu, setPage, setPageSize }: Props): ReactElement => {
+export const MenuList = ({
+  menu,
+  setPage,
+  setPageSize,
+  setEditId,
+  isEdit,
+}: Props): ReactElement => {
   return (
     <>
-      <div className='menu-box'>
-        <div className='container'>
-          <Row>
-            <Col span={24}>
-              <CreateMenuModal />
-            </Col>
-          </Row>
-          <Space direction='vertical'>
-            {!menu.pending ? (
-              <>
-                {!menu.items.length && (
-                  <div className='mx-auto mt-5 mb-5'>
-                    <Text disabled>Нет результатов</Text>
-                  </div>
-                )}
-                <Row>
-                  {menu.items.map((v, k) => (
-                    <Col xs={24} md={12} xl={8} key={k}>
-                      <MenuListItem foodMenuItem={v} />
-                    </Col>
-                  ))}
-                </Row>
-              </>
-            ) : (
-              <Spin />
+      <Space direction='vertical'>
+        {!menu.pending ? (
+          <>
+            {!menu.items.length && (
+              <div className='mx-auto mt-5 mb-5'>
+                <Text disabled>Нет результатов</Text>
+              </div>
             )}
-            <Pagination
-              current={menu.page}
-              defaultCurrent={1}
-              total={menu.totalRecords}
-              onChange={setPage}
-              onShowSizeChange={(_, size) => setPageSize(size)}
-            />
-          </Space>
-        </div>
-      </div>
+            <Space direction='horizontal'>
+              <Row>
+                {menu.items.map((v, k) => (
+                  <Col xs={24} md={12} xl={8} key={k}>
+                    <MenuListItem foodMenuItem={v} setEditId={setEditId} isEdit={isEdit} />
+                  </Col>
+                ))}
+              </Row>
+            </Space>
+          </>
+        ) : (
+          <Spin />
+        )}
+        <Pagination
+          current={menu.page}
+          defaultCurrent={1}
+          total={menu.totalRecords}
+          onChange={setPage}
+          onShowSizeChange={(_, size) => setPageSize(size)}
+        />
+      </Space>
     </>
   );
 };
