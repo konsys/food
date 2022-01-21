@@ -36,7 +36,7 @@ export const MenuList = ({
             </div>
           )}
 
-          <Row gutter={32}>
+          <Row gutter={[16, 16]}>
             {menu.items.map((v, k) => (
               <Col xs={24} md={12} xl={6} key={k}>
                 <MenuListItem foodMenuItem={v} setEditId={setEditId} isEdit={isEdit} />
