@@ -31,7 +31,6 @@ export const MenuListItem = ({ foodMenuItem, setEditId, isEdit }: Props) => {
           )
         }
         extra={<Button type='link'>В корзину</Button>}
-        style={{ width: 300 }}
       >
         <Space direction='vertical' size='large'>
           <Image

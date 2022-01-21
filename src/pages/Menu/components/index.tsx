@@ -37,9 +37,9 @@ export const MenuList = ({
               </div>
             )}
             <Space direction='horizontal'>
-              <Row>
+              <Row gutter={16} align='stretch'>
                 {menu.items.map((v, k) => (
-                  <Col xs={24} md={12} xl={8} key={k}>
+                  <Col xs={24} md={12} xl={6} key={k}>
                     <MenuListItem foodMenuItem={v} setEditId={setEditId} isEdit={isEdit} />
                   </Col>
                 ))}
