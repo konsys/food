@@ -28,35 +28,32 @@ export const MenuList = ({
 }: Props): ReactElement => {
   return (
     <>
-      <Space direction='vertical'>
-        {!menu.pending ? (
-          <>
-            {!menu.items.length && (
-              <div className='mx-auto mt-5 mb-5'>
-                <Text disabled>Нет результатов</Text>
-              </div>
-            )}
-            <Space direction='horizontal'>
-              <Row gutter={16} align='stretch'>
-                {menu.items.map((v, k) => (
-                  <Col xs={24} md={12} xl={6} key={k}>
-                    <MenuListItem foodMenuItem={v} setEditId={setEditId} isEdit={isEdit} />
-                  </Col>
-                ))}
-              </Row>
-            </Space>
-          </>
-        ) : (
-          <Spin />
-        )}
-        <Pagination
-          current={menu.page}
-          defaultCurrent={1}
-          total={menu.totalRecords}
-          onChange={setPage}
-          onShowSizeChange={(_, size) => setPageSize(size)}
-        />
-      </Space>
+      {!menu.pending ? (
+        <>
+          {!menu.items.length && (
+            <div className='mx-auto mt-5 mb-5'>
+              <Text disabled>Нет результатов</Text>
+            </div>
+          )}
+
+          <Row gutter={32}>
+            {menu.items.map((v, k) => (
+              <Col xs={24} md={12} xl={6} key={k}>
+                <MenuListItem foodMenuItem={v} setEditId={setEditId} isEdit={isEdit} />
+              </Col>
+            ))}
+          </Row>
+        </>
+      ) : (
+        <Spin />
+      )}
+      <Pagination
+        current={menu.page}
+        defaultCurrent={1}
+        total={menu.totalRecords}
+        onChange={setPage}
+        onShowSizeChange={(_, size) => setPageSize(size)}
+      />
     </>
   );
 };

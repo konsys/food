@@ -43,8 +43,8 @@ export const MenuListItem = ({ foodMenuItem, setEditId, isEdit }: Props) => {
         }
       >
         <Space direction='vertical'>
-          <Row className='menu-item-img'>
-            <Col span={24}>
+          <Row justify='center'>
+            <Col span={24} flex='center' className='menu-item-img'>
               <Image
                 alt={foodMenuItem.name}
                 src={`${Params.BASE_URL}/${foodMenuItem.image?.averageImg}` ?? 'error'}

@@ -29,12 +29,10 @@ export const MenuListPage = (): ReactElement => {
         <div className='container'>
           <Row>
             <Col span={24}>
-              <Space>
-                <CreateMenuModal id={editId} isVisible={isVisible} setIsVisible={setIsVisible} />
-                <Button onClick={() => setIsEdit(isEdit ? false : true)}>
-                  {!isEdit ? 'Редактировать' : 'Завершить'}
-                </Button>
-              </Space>
+              <CreateMenuModal id={editId} isVisible={isVisible} setIsVisible={setIsVisible} />
+              <Button onClick={() => setIsEdit(isEdit ? false : true)}>
+                {!isEdit ? 'Редактировать' : 'Завершить'}
+              </Button>
             </Col>
           </Row>
 
