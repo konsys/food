@@ -1,4 +1,4 @@
-import { Button, Col, Row, Space } from 'antd';
+import { Button, Col, Row } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement, useState } from 'react';
 import { NullableNumber } from '../../core/types';
