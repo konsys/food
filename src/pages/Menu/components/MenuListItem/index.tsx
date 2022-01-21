@@ -26,7 +26,7 @@ export const MenuListItem = ({ foodMenuItem, setEditId, isEdit }: Props) => {
         title={
           !isEdit ? (
             <>
-              <Row className='menu-item-img' align='middle'>
+              <Row align='middle' justify='space-between'>
                 <Col span={20}>
                   <MenuItemTitle text={foodMenuItem.name} />
                 </Col>
