@@ -27,29 +27,31 @@ export const MenuListPage = (): ReactElement => {
     <>
       <div className='menu-box'>
         <div className='container'>
-          <Row>
+          <Row gutter={[16, 16]}>
             <Col span={24}>
               <CreateMenuModal id={editId} isVisible={isVisible} setIsVisible={setIsVisible} />
               <Button onClick={() => setIsEdit(isEdit ? false : true)}>
                 {!isEdit ? 'Редактировать' : 'Завершить'}
               </Button>
             </Col>
-          </Row>
 
-          <MenuList
-            isEdit={isEdit}
-            setEditId={setEditId}
-            menu={menu}
-            setPage={setPage}
-            setPageSize={setPageSize}
-            activeFilter={activeFilter}
-            setActiveFilter={(v) => {
-              setActiveFilter(v);
-              v !== EFoodType.ALL
-                ? setFilter({ menuType: { name: v.toLowerCase() } })
-                : setFilter(null);
-            }}
-          />
+            <Col span={24}>
+              <MenuList
+                isEdit={isEdit}
+                setEditId={setEditId}
+                menu={menu}
+                setPage={setPage}
+                setPageSize={setPageSize}
+                activeFilter={activeFilter}
+                setActiveFilter={(v) => {
+                  setActiveFilter(v);
+                  v !== EFoodType.ALL
+                    ? setFilter({ menuType: { name: v.toLowerCase() } })
+                    : setFilter(null);
+                }}
+              />{' '}
+            </Col>
+          </Row>
         </div>
       </div>
     </>
