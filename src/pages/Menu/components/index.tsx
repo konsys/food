@@ -46,13 +46,15 @@ export const MenuList = ({
         ) : (
           <Spin />
         )}
-        <Pagination
-          current={menu.page}
-          defaultCurrent={1}
-          total={menu.totalRecords}
-          onChange={setPage}
-          onShowSizeChange={(_, size) => setPageSize(size)}
-        />
+        <Col span={24}>
+          <Pagination
+            current={menu.page}
+            defaultCurrent={1}
+            total={menu.totalRecords}
+            onChange={setPage}
+            onShowSizeChange={(_, size) => setPageSize(size)}
+          />
+        </Col>
       </Row>
     </>
   );

@@ -49,7 +49,7 @@ export const MenuListPage = (): ReactElement => {
                     ? setFilter({ menuType: { name: v.toLowerCase() } })
                     : setFilter(null);
                 }}
-              />{' '}
+              />
             </Col>
           </Row>
         </div>
