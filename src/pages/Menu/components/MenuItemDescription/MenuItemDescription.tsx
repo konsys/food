@@ -6,5 +6,5 @@ interface IProps {
 }
 
 export const MenuItemDescription = ({ text }: IProps) => (
-  <div className='menu-item-description'>{text} р.</div>
+  <div className='menu-item-description'>{text}</div>
 );
