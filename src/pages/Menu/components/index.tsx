@@ -7,7 +7,6 @@ import { MenuListItem } from './MenuListItem';
 import './styles.less';
 import { EFoodType } from '../MenuListPage';
 import Text from 'antd/lib/typography/Text';
-import { NullableNumber } from '../../../core/types';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -16,16 +15,9 @@ interface Props {
   activeFilter: EFoodType;
   setActiveFilter: TVoidFn<EFoodType>;
   isEdit: boolean;
-  setEditId: TVoidFn<NullableNumber>;
 }
 
-export const MenuList = ({
-  menu,
-  setPage,
-  setPageSize,
-  setEditId,
-  isEdit,
-}: Props): ReactElement => {
+export const MenuList = ({ menu, setPage, setPageSize, isEdit }: Props): ReactElement => {
   return (
     <>
       <Row gutter={[16, 16]}>
@@ -39,7 +31,7 @@ export const MenuList = ({
 
             {menu.items.map((v, k) => (
               <Col xs={24} md={12} xl={6} key={k}>
-                <MenuListItem foodMenuItem={v} setEditId={setEditId} isEdit={isEdit} />
+                <MenuListItem foodMenuItem={v} isEdit={isEdit} />
               </Col>
             ))}
           </>

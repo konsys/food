@@ -16,9 +16,10 @@ interface Props {
   id: NullableNumber;
   isVisible: boolean;
   setIsVisible: TVoidFn<boolean>;
+  title?: string;
 }
 
-export const CreateMenuModal = ({ id, setIsVisible, isVisible }: Props) => {
+export const MenuModalForm = ({ id, setIsVisible, isVisible, title = 'Создать' }: Props) => {
   useGate(OneGate, id);
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
@@ -65,7 +66,7 @@ export const CreateMenuModal = ({ id, setIsVisible, isVisible }: Props) => {
         />
       </Modal>
       <Button type='primary' onClick={onOpen}>
-        Создать
+        {title}
       </Button>
     </>
   );

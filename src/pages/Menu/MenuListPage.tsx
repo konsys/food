@@ -1,10 +1,9 @@
 import { Button, Col, Row, Space } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement, useState } from 'react';
-import { NullableNumber } from '../../core/types';
 import { MenuModel } from '../../store';
 import { MenuList } from './components';
-import { CreateMenuModal } from './containers/MenuModal/MenuModal';
+import { MenuModalForm } from './containers/MenuModal/MenuModal';
 
 export enum EFoodType {
   ALL = 'All',
@@ -16,7 +15,6 @@ const { $listStore, setPage, setPageSize, ListGate, setFilter } = MenuModel;
 
 export const MenuListPage = (): ReactElement => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [editId, setEditId] = useState<NullableNumber>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const menu = useStore($listStore);
@@ -30,7 +28,7 @@ export const MenuListPage = (): ReactElement => {
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Space>
-                <CreateMenuModal id={editId} isVisible={isVisible} setIsVisible={setIsVisible} />
+                <MenuModalForm id={null} isVisible={isVisible} setIsVisible={setIsVisible} />
                 <Button onClick={() => setIsEdit(isEdit ? false : true)}>
                   {!isEdit ? 'Редактировать' : 'Завершить'}
                 </Button>
@@ -40,7 +38,6 @@ export const MenuListPage = (): ReactElement => {
             <Col span={24}>
               <MenuList
                 isEdit={isEdit}
-                setEditId={setEditId}
                 menu={menu}
                 setPage={setPage}
                 setPageSize={setPageSize}

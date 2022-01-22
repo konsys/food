@@ -1,8 +1,6 @@
-import { Button, Card, Col, Image, Row } from 'antd';
-import React from 'react';
-import { TVoidFn } from '../../../../common/types';
+import { Card, Col, Image, Row } from 'antd';
+import React, { useState } from 'react';
 import { Params } from '../../../../config/params';
-import { NullableNumber } from '../../../../core/types';
 import { MenuDto } from '../../model/types';
 import { MenuItemAddToCard } from '../MenuItemAddToCard/MenuItemAddToCard';
 import { MenuItemDescription } from '../MenuItemDescription/MenuItemDescription';
@@ -11,14 +9,15 @@ import { MenuItemTitle } from '../MenuItemTitle/MenuItemTitle';
 import { MenuItemWeigth } from '../MenuItemWeigth/MenuItemWeigth';
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 import './style.less';
+import { MenuModalForm } from '../../containers/MenuModal/MenuModal';
 
 interface Props {
   foodMenuItem: MenuDto;
-  setEditId: TVoidFn<NullableNumber>;
   isEdit: boolean;
 }
 
-export const MenuListItem = ({ foodMenuItem, setEditId, isEdit }: Props) => {
+export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   return (
     <>
       <Card
@@ -36,9 +35,21 @@ export const MenuListItem = ({ foodMenuItem, setEditId, isEdit }: Props) => {
               </Row>
             </>
           ) : (
-            <Button onClick={() => setEditId(foodMenuItem.id ?? null)} type='link'>
-              {foodMenuItem.name}
-            </Button>
+            <>
+              <Row gutter={[8, 8]}>
+                <Col span={24}>
+                  <MenuItemTitle text={foodMenuItem.name} />
+                </Col>
+                <Col span={24}>
+                  <MenuModalForm
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                    id={foodMenuItem.id ?? null}
+                    title='Редактировать'
+                  />
+                </Col>
+              </Row>
+            </>
           )
         }
       >
