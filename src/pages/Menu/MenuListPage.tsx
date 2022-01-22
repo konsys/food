@@ -28,7 +28,12 @@ export const MenuListPage = (): ReactElement => {
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Space>
-                <MenuModalForm id={null} isVisible={isVisible} setIsVisible={setIsVisible} />
+                <MenuModalForm
+                  id={null}
+                  isVisible={isVisible}
+                  setIsVisible={setIsVisible}
+                  isEdit={isEdit}
+                />
                 <Button onClick={() => setIsEdit(isEdit ? false : true)}>
                   {!isEdit ? 'Редактировать' : 'Завершить'}
                 </Button>

@@ -98,12 +98,14 @@ export class CrudStore<CreateEntity, ReturnEntity extends { id: TId } = CreateEn
       target: getAllFx,
     });
 
+    const $rt = createStore<number>(2);
+
     guard({
       clock: OneGate.state,
       filter: OneGate.state.map((v) => !v),
-      // source: OneGate.state,
+      source: $rt,
 
-      target: getAllDefault,
+      target: getOneFx,
     });
 
     return {

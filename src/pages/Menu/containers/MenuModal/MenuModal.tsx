@@ -9,17 +9,24 @@ import { uuid } from '../../../../common/utils/utils';
 import { TVoidFn } from '../../../../common/types';
 import { useGate } from 'effector-react';
 
-const { createFx, getAllDefault, OneGate } = MenuModel;
+const { createFx, getAllDefault, OneGate, updateFx } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
 
 interface Props {
   id: NullableNumber;
   isVisible: boolean;
   setIsVisible: TVoidFn<boolean>;
+  isEdit: boolean;
   title?: string;
 }
 
-export const MenuModalForm = ({ id, setIsVisible, isVisible, title = 'Создать' }: Props) => {
+export const MenuModalForm = ({
+  id,
+  setIsVisible,
+  isVisible,
+  isEdit,
+  title = 'Создать',
+}: Props) => {
   useGate(OneGate, id);
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
@@ -48,7 +55,7 @@ export const MenuModalForm = ({ id, setIsVisible, isVisible, title = 'Созда
       imgId = res.id;
     }
 
-    return createFx({ ...menu, imgId })
+    return (isEdit ? updateFx({ ...menu, id: menu.id }) : createFx({ ...menu, imgId }))
       .then(onClose)
       .then(getAllDefault);
   };

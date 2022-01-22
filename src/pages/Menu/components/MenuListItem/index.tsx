@@ -46,6 +46,7 @@ export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
                     setIsVisible={setIsVisible}
                     id={foodMenuItem.id ?? null}
                     title='Редактировать'
+                    isEdit={isEdit}
                   />
                 </Col>
               </Row>
