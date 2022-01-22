@@ -5,13 +5,15 @@ import TextArea from 'antd/lib/input/TextArea';
 import { MenuDto } from '../../model/types';
 import { Nullable } from '../../../../core/types';
 import { useStore } from 'effector-react';
-import { MenuTimeModel, MenuTypeModel } from '../../../../store';
+import { MenuModel, MenuTimeModel, MenuTypeModel } from '../../../../store';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { TVoidFn } from '../../../../common/types';
 import { ImageCrop } from '../../../../common/components/ImageCrop';
+import { isNullOrUndefined } from '../../../../common/utils/utils';
 
 const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeModel;
 const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = MenuTypeModel;
+const { $oneStore: $menuStore, getOneFx } = MenuModel;
 
 const names = columnsNamesGenerator<MenuDto>();
 
@@ -23,22 +25,34 @@ interface Props {
   setUploadImagePath: TVoidFn<string>;
   imageBlob: Nullable<Blob>;
   setImageBlob: TVoidFn<Blob>;
+  id: Nullable<number>;
 }
 
-export const MenuForm = ({ modalVisible, setImageBlob }: Props) => {
-  const menuTime = useStore($menuTimeList);
-  const menuType = useStore($menuTypeList);
+export const MenuForm = ({ modalVisible, setImageBlob, id, formInstance }: Props) => {
+  const menuTimeList = useStore($menuTimeList);
+  const menuTypeList = useStore($menuTypeList);
+  const menu = useStore($menuStore);
 
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
 
   useEffect(() => {
-    createListOptions(menuTime.items, setMenuTimeItems);
-  }, [menuTime.items]);
+    if (!isNullOrUndefined(id)) {
+      getOneFx(id);
+    }
+  }, [id]);
 
   useEffect(() => {
-    createListOptions(menuType.items, setMenuTypeItems);
-  }, [menuType.items]);
+    formInstance.setFieldsValue(menu.item);
+  }, [menu.item]);
+
+  useEffect(() => {
+    createListOptions(menuTimeList.items, setMenuTimeItems);
+  }, [menuTimeList.items]);
+
+  useEffect(() => {
+    createListOptions(menuTypeList.items, setMenuTypeItems);
+  }, [menuTypeList.items]);
 
   useEffect(() => {
     if (modalVisible) {
@@ -59,10 +73,10 @@ export const MenuForm = ({ modalVisible, setImageBlob }: Props) => {
         <InputNumber />
       </Form.Item>
       <Form.Item label='Тип кухни' name={names('typeId')} rules={[{ required: true }]}>
-        <Select loading={menuType.pending}>{menuTypeItems}</Select>
+        <Select loading={menuTypeList.pending}>{menuTypeItems}</Select>
       </Form.Item>
       <Form.Item label='Время приема пищи' name={names('timeId')} rules={[{ required: true }]}>
-        <Select loading={menuTime.pending}>{menuTimeItems}</Select>
+        <Select loading={menuTimeList.pending}>{menuTimeItems}</Select>
       </Form.Item>
       <Form.Item label='Вес' name={names('weight')} rules={[{ required: true }]}>
         <InputNumber />

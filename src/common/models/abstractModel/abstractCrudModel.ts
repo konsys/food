@@ -1,4 +1,4 @@
-import { createEffect, createEvent, createStore, guard, sample } from 'effector';
+import { createEffect, createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { CrudService } from '../../api';
 import {
@@ -98,15 +98,20 @@ export class CrudStore<CreateEntity, ReturnEntity extends { id: TId } = CreateEn
       target: getAllFx,
     });
 
-    const $rt = createStore<number>(2);
-
-    guard({
-      clock: OneGate.state,
-      filter: OneGate.state.map((v) => !v),
-      source: $rt,
-
+    sample({
+      clock: OneGate.open,
+      source: OneGate.state,
+      fn: () => (!isNaN(Number(OneGate.state)) ? Number(OneGate.state) : 9),
       target: getOneFx,
     });
+
+    // guard({
+    //   clock: OneGate.state,
+    //   filter: OneGate.state.map((v) => !!v && v > 0),
+    //   source: $rt,
+
+    //   target: getOneFx,
+    // });
 
     return {
       createFx,

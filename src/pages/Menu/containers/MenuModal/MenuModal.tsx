@@ -7,9 +7,8 @@ import { MenuForm } from '../MenuForm';
 import { MenuDto } from '../../model/types';
 import { uuid } from '../../../../common/utils/utils';
 import { TVoidFn } from '../../../../common/types';
-import { useGate } from 'effector-react';
 
-const { createFx, getAllDefault, OneGate, updateFx } = MenuModel;
+const { createFx, getAllDefault, updateFx } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
 
 interface Props {
@@ -27,7 +26,6 @@ export const MenuModalForm = ({
   isEdit,
   title = 'Создать',
 }: Props) => {
-  useGate(OneGate, id);
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
 
@@ -70,6 +68,7 @@ export const MenuModalForm = ({
           setUploadImagePath={setUploadImagePath}
           setImageBlob={setImageBlob}
           imageBlob={imageBlob}
+          id={id}
         />
       </Modal>
       <Button type='primary' onClick={onOpen}>
