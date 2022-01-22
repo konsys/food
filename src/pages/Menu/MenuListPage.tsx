@@ -1,4 +1,4 @@
-import { Button, Col, Row } from 'antd';
+import { Button, Col, Row, Space } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement, useState } from 'react';
 import { NullableNumber } from '../../core/types';
@@ -29,10 +29,12 @@ export const MenuListPage = (): ReactElement => {
         <div className='container'>
           <Row gutter={[16, 16]}>
             <Col span={24}>
-              <CreateMenuModal id={editId} isVisible={isVisible} setIsVisible={setIsVisible} />
-              <Button onClick={() => setIsEdit(isEdit ? false : true)}>
-                {!isEdit ? 'Редактировать' : 'Завершить'}
-              </Button>
+              <Space>
+                <CreateMenuModal id={editId} isVisible={isVisible} setIsVisible={setIsVisible} />
+                <Button onClick={() => setIsEdit(isEdit ? false : true)}>
+                  {!isEdit ? 'Редактировать' : 'Завершить'}
+                </Button>
+              </Space>
             </Col>
 
             <Col span={24}>
