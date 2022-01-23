@@ -1,9 +1,8 @@
 import { Button, Col, Row } from 'antd';
 import { Effect, Event } from 'effector';
-import React, { useState } from 'react';
+import React, { ReactNode } from 'react';
 import { Nullable, NullableNumber } from '../../../core/types';
 import { ImageDto } from '../../../pages/Image/model/types';
-import { MenuForm } from '../../../pages/Menu/containers/MenuForm';
 import { useValidatedForm } from '../../form/useValidatedForm';
 import { TId, TPromiseFn, TVoidFn, TWithId } from '../../types';
 import { uuid } from '../../utils/utils';
@@ -18,6 +17,9 @@ interface Props<T> {
   getList: Event<void>;
   onDelete?: TPromiseFn<number>;
   uploadImage?: TPromiseFn<FormData, ImageDto>;
+  children: ReactNode;
+  formInstance?: any;
+  imageBlob?: Nullable<Blob>;
 }
 
 export function ModalWithForm<T extends { id?: TId }>({
@@ -30,12 +32,11 @@ export function ModalWithForm<T extends { id?: TId }>({
   onCreate,
   onUpdate,
   getList,
+  children,
+  formInstance,
+  imageBlob,
 }: Props<T>) {
-  const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
-  const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
-
-  const { Modal, formInstance } = useValidatedForm<T>();
-
+  const { Modal } = useValidatedForm<T>();
   const onOpen = () => {
     onClose();
     setIsVisible(true);
@@ -43,9 +44,7 @@ export function ModalWithForm<T extends { id?: TId }>({
 
   const onClose = () => {
     setIsVisible(false);
-    formInstance.resetFields();
-    setUploadImagePath(null);
-    setImageBlob(null);
+    formInstance && formInstance.resetFields();
   };
 
   const onSave = async (item: T) => {
@@ -69,15 +68,7 @@ export function ModalWithForm<T extends { id?: TId }>({
   return (
     <>
       <Modal visible={isVisible} title={title} onOk={onFormSave} onCancel={onClose} destroyOnClose>
-        <MenuForm
-          formInstance={formInstance}
-          modalVisible={isVisible}
-          uploadImagePath={uploadImagePath}
-          setUploadImagePath={setUploadImagePath}
-          setImageBlob={setImageBlob}
-          imageBlob={imageBlob}
-          id={id}
-        />
+        {children}
       </Modal>
       <Row gutter={[8, 8]}>
         <Col span={onDelete ? 14 : 24}>
