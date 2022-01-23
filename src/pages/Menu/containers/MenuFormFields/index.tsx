@@ -7,9 +7,9 @@ import { Nullable } from '../../../../core/types';
 import { useStore } from 'effector-react';
 import { MenuModel, MenuTimeModel, MenuTypeModel } from '../../../../store';
 import { createListOptions } from '../../../../common/utils/selectUtils';
-import { TVoidFn } from '../../../../common/types';
 import { ImageCrop } from '../../../../common/components/ImageCrop';
 import { isNullOrUndefined } from '../../../../common/utils/utils';
+import { setImageBlob } from '../../../Image/model/store';
 
 const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeModel;
 const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = MenuTypeModel;
@@ -21,14 +21,10 @@ interface Props {
   modalVisible: boolean;
   // TODO add type
   formInstance: any;
-  uploadImagePath: Nullable<string>;
-  setUploadImagePath: TVoidFn<string>;
-  imageBlob: Nullable<Blob>;
-  setImageBlob: TVoidFn<Blob>;
   id: Nullable<number>;
 }
 
-export const MenuFormFields = ({ modalVisible, setImageBlob, id, formInstance }: Props) => {
+export const MenuFormFields = ({ modalVisible, id, formInstance }: Props) => {
   const menuTimeList = useStore($menuTimeList);
   const menuTypeList = useStore($menuTypeList);
   const menu = useStore($menuStore);

@@ -1,18 +1,12 @@
 import { Button, Col, Row } from 'antd';
 import { Effect, Event } from 'effector';
+import { useStore } from 'effector-react';
 import React, { ReactNode } from 'react';
 import { Nullable, NullableNumber } from '../../../core/types';
+import { $imageBlob, resetImageBlob, resetUploadImagePath } from '../../../pages/Image/model/store';
 import { ImageDto } from '../../../pages/Image/model/types';
 import { TId, TPromiseFn, TVoidFn, TWithId } from '../../types';
 import { uuid } from '../../utils/utils';
-
-export type TImageFormUpload = {
-  uploadImagePath: Nullable<string>;
-  setUploadImagePath: TVoidFn<Nullable<string>>;
-
-  imageBlob: Nullable<Blob>;
-  setImageBlob: TVoidFn<Nullable<Blob>>;
-};
 
 interface Props<T> {
   id: NullableNumber;
@@ -28,7 +22,6 @@ interface Props<T> {
   formInstance: any;
   Modal: any;
   imageBlob?: Nullable<Blob>;
-  imageHandler?: TImageFormUpload;
 }
 
 export function ModalWithForm<T extends { id?: TId }>({
@@ -42,10 +35,11 @@ export function ModalWithForm<T extends { id?: TId }>({
   onUpdate,
   getList,
   children,
-  imageHandler,
   Modal,
   formInstance,
 }: Props<T>) {
+  const imgBlob = useStore($imageBlob);
+
   const onOpen = () => {
     onClose();
     setIsVisible(true);
@@ -54,19 +48,21 @@ export function ModalWithForm<T extends { id?: TId }>({
   const onClose = () => {
     setIsVisible(false);
     formInstance.resetFields();
-    imageHandler && imageHandler.setUploadImagePath(null);
-    imageHandler && imageHandler.setImageBlob(null);
+    resetUploadImagePath();
+    resetImageBlob();
   };
 
   const onSave = async (item: T) => {
-    return (item?.id ? onUpdate({ ...item, id: item.id }) : onCreate(item)).then(() => getList());
+    return (item?.id ? onUpdate({ ...item, id: item.id }) : onCreate(item))
+      .then(() => getList())
+      .then(onClose);
   };
 
   const onFormSave = async (item: T) => {
     let imgId = null;
-    if (imageHandler?.imageBlob && uploadImage) {
+    if (uploadImage && imgBlob) {
       const fd = new FormData();
-      fd.append('file', imageHandler.imageBlob, `${uuid()}.jpg`);
+      fd.append('file', imgBlob, `${uuid()}.jpg`);
 
       const res = await uploadImage(fd);
       imgId = res.id;

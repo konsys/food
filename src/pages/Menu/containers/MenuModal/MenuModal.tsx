@@ -1,8 +1,7 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { ModalWithForm } from '../../../../common/components/ModalWithForm/ModalWithForm';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { TVoidFn } from '../../../../common/types';
-import { Nullable } from '../../../../core/types';
 import { ImageModel, MenuModel } from '../../../../store';
 import { MenuDto } from '../../model/types';
 import { MenuFormFields } from '../MenuFormFields';
@@ -21,9 +20,6 @@ const { createFx: uploadImage } = ImageModel;
 export const MenuModal: FC<Props> = ({ isVisible, setIsVisible, id, title }: Props) => {
   const { formInstance, Modal } = useValidatedForm<MenuDto>();
 
-  const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
-  const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
-
   return (
     <ModalWithForm<MenuDto>
       isVisible={isVisible}
@@ -37,15 +33,7 @@ export const MenuModal: FC<Props> = ({ isVisible, setIsVisible, id, title }: Pro
       Modal={Modal}
       formInstance={formInstance}
     >
-      <MenuFormFields
-        formInstance={formInstance}
-        modalVisible={isVisible}
-        uploadImagePath={uploadImagePath}
-        setUploadImagePath={setUploadImagePath}
-        setImageBlob={setImageBlob}
-        imageBlob={imageBlob}
-        id={id ?? null}
-      />
+      <MenuFormFields formInstance={formInstance} modalVisible={isVisible} id={id ?? null} />
     </ModalWithForm>
   );
 };
