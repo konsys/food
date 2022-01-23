@@ -1,5 +1,4 @@
 import { Button, Col, Row } from 'antd';
-import { Event } from 'effector';
 import React, { useState } from 'react';
 import { Nullable, NullableNumber } from '../../../core/types';
 import { ImageDto } from '../../../pages/Image/model/types';

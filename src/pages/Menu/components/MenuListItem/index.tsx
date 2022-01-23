@@ -9,25 +9,15 @@ import { MenuItemTitle } from '../MenuItemTitle/MenuItemTitle';
 import { MenuItemWeigth } from '../MenuItemWeigth/MenuItemWeigth';
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 import './style.less';
-import { ModalWithForm } from '../../../../common/components/ModalWithForm/ModalWithForm';
-import { ImageModel, MenuModel } from '../../../../store';
+import { MenuModal } from '../../containers/MenuModal/MenuModal';
 
 interface Props {
   foodMenuItem: MenuDto;
   isEdit: boolean;
 }
 
-const { createFx, getAllDefault, updateFx } = MenuModel;
-const { createFx: uploadImage } = ImageModel;
-
 export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  const onSave = async (menu: MenuDto) => {
-    return (isEdit ? updateFx({ ...menu, id: menu.id }) : createFx(menu)).then(() =>
-      getAllDefault()
-    );
-  };
 
   return (
     <>
@@ -52,14 +42,7 @@ export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
                   <MenuItemTitle text={foodMenuItem.name} />
                 </Col>
                 <Col span={24}>
-                  <ModalWithForm<any>
-                    isVisible={isVisible}
-                    setIsVisible={setIsVisible}
-                    id={foodMenuItem.id ?? null}
-                    title='Редактировать'
-                    onSave={onSave}
-                    uploadImage={uploadImage}
-                  />
+                  <MenuModal isEdit={isEdit} isVisible={isVisible} setIsVisible={setIsVisible} />
                 </Col>
               </Row>
             </>

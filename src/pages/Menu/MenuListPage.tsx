@@ -3,7 +3,7 @@ import { useGate, useStore } from 'effector-react';
 import React, { ReactElement, useState } from 'react';
 import { MenuModel } from '../../store';
 import { MenuList } from './components';
-import { MenuModalForm } from './containers/MenuModal/MenuModal';
+import { MenuModal } from './containers/MenuModal/MenuModal';
 
 export enum EFoodType {
   ALL = 'All',
@@ -21,6 +21,7 @@ export const MenuListPage = (): ReactElement => {
   useGate(ListGate, { limit: menu.limit, page: menu.page, filter: menu.filter });
 
   const [activeFilter, setActiveFilter] = useState<EFoodType>(EFoodType.ALL);
+
   return (
     <>
       <div className='menu-box'>
@@ -28,12 +29,14 @@ export const MenuListPage = (): ReactElement => {
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Space>
-                <MenuModalForm
+                {/* <MenuModalForm
                   id={null}
                   isVisible={isVisible}
                   setIsVisible={setIsVisible}
                   isEdit={isEdit}
-                />
+                /> */}
+                <MenuModal isEdit={isEdit} isVisible={isVisible} setIsVisible={setIsVisible} />
+
                 <Button onClick={() => setIsEdit(isEdit ? false : true)}>
                   {!isEdit ? 'Редактировать' : 'Завершить'}
                 </Button>
