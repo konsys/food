@@ -1,10 +1,11 @@
 import { Button, Col, Row } from 'antd';
+import { Effect, Event } from 'effector';
 import React, { useState } from 'react';
 import { Nullable, NullableNumber } from '../../../core/types';
 import { ImageDto } from '../../../pages/Image/model/types';
 import { MenuForm } from '../../../pages/Menu/containers/MenuForm';
 import { useValidatedForm } from '../../form/useValidatedForm';
-import { TPromiseFn, TVoidFn } from '../../types';
+import { TId, TPromiseFn, TVoidFn, TWithId } from '../../types';
 import { uuid } from '../../utils/utils';
 
 interface Props<T> {
@@ -12,19 +13,23 @@ interface Props<T> {
   isVisible: boolean;
   setIsVisible: TVoidFn<boolean>;
   title?: string;
-  onSave: TPromiseFn<T>;
+  onCreate: Effect<Partial<T>, T & TWithId, Error>;
+  onUpdate: Effect<T & TWithId, T & TWithId, Error>;
+  getList: Event<void>;
   onDelete?: TPromiseFn<number>;
   uploadImage?: TPromiseFn<FormData, ImageDto>;
 }
 
-export function ModalWithForm<T>({
+export function ModalWithForm<T extends { id?: TId }>({
   id,
   setIsVisible,
   isVisible,
   onDelete,
   title = 'Создать',
   uploadImage,
-  onSave,
+  onCreate,
+  onUpdate,
+  getList,
 }: Props<T>) {
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
@@ -41,6 +46,10 @@ export function ModalWithForm<T>({
     formInstance.resetFields();
     setUploadImagePath(null);
     setImageBlob(null);
+  };
+
+  const onSave = async (item: T) => {
+    return (item?.id ? onUpdate({ ...item, id: item.id }) : onCreate(item)).then(() => getList());
   };
 
   const onFormSave = async (item: T) => {

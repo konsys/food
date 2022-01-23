@@ -15,21 +15,17 @@ interface Props {
 const { createFx, getAllDefault, updateFx } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
 
-export const MenuModal: FC<Props> = ({ isEdit, isVisible, setIsVisible, id, title }: Props) => {
-  const onSave = async (menu: MenuDto) => {
-    return (isEdit ? updateFx({ ...menu, id: menu.id }) : createFx(menu)).then(() =>
-      getAllDefault()
-    );
-  };
-
+export const MenuModal: FC<Props> = ({ isVisible, setIsVisible, id, title }: Props) => {
   return (
     <ModalWithForm<MenuDto>
       isVisible={isVisible}
       setIsVisible={setIsVisible}
       id={id ?? null}
-      onSave={onSave}
       uploadImage={uploadImage}
       title={title}
+      onCreate={createFx}
+      getList={getAllDefault}
+      onUpdate={updateFx}
     />
   );
 };
