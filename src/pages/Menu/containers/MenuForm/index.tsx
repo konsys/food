@@ -86,6 +86,12 @@ export const MenuForm = ({ modalVisible, setImageBlob, id, formInstance }: Props
       <Form.Item label='Фото' rules={[{ required: true }]}>
         <ImageCrop setImageBlob={setImageBlob} inImgSrc={inImgSrc} />
       </Form.Item>
+      <Form.Item name={names('imgId')} hidden>
+        <Input />
+      </Form.Item>
+      <Form.Item name={names('id')} hidden>
+        <Input />
+      </Form.Item>
     </>
   );
 };
