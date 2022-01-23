@@ -1,37 +1,36 @@
 import { Button, Col, Row } from 'antd';
+import { Event } from 'effector';
 import React, { useState } from 'react';
-import { useValidatedForm } from '../../../../common/form/useValidatedForm';
-import { Nullable, NullableNumber } from '../../../../core/types';
-import { ImageModel, MenuModel } from '../../../../store';
-import { MenuForm } from '../MenuForm';
-import { MenuDto } from '../../model/types';
-import { uuid } from '../../../../common/utils/utils';
-import { TVoidFn } from '../../../../common/types';
+import { Nullable, NullableNumber } from '../../../core/types';
+import { ImageDto } from '../../../pages/Image/model/types';
+import { MenuForm } from '../../../pages/Menu/containers/MenuForm';
+import { useValidatedForm } from '../../form/useValidatedForm';
+import { TId, TItemWithId, TPromiseFn, TVoidFn } from '../../types';
+import { uuid } from '../../utils/utils';
 
-const { createFx, getAllDefault, updateFx } = MenuModel;
-const { createFx: uploadImage } = ImageModel;
-
-interface Props {
+interface Props<T> {
   id: NullableNumber;
   isVisible: boolean;
   setIsVisible: TVoidFn<boolean>;
-  isEdit: boolean;
   title?: string;
-  canDelete?: boolean;
+  onSave: TPromiseFn<T, TItemWithId<T>>;
+  onDelete?: TPromiseFn<number>;
+  uploadImage?: TPromiseFn<FormData, ImageDto>;
 }
 
-export const MenuModalForm = ({
+export function ModalWithForm<T extends { id: TId }>({
   id,
   setIsVisible,
   isVisible,
-  isEdit,
-  canDelete,
+  onDelete,
   title = 'Создать',
-}: Props) => {
+  uploadImage,
+  onSave,
+}: Props<T>) {
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
 
-  const { Modal, formInstance } = useValidatedForm<MenuDto>();
+  const { Modal, formInstance } = useValidatedForm<T>();
 
   const onOpen = () => {
     onClose();
@@ -45,28 +44,23 @@ export const MenuModalForm = ({
     setImageBlob(null);
   };
 
-  const onSave = async (menu: MenuDto) => {
+  const onFormSave = async (item: T) => {
     let imgId = null;
-    if (imageBlob) {
+    if (imageBlob && uploadImage) {
       const fd = new FormData();
       fd.append('file', imageBlob, `${uuid()}.jpg`);
 
       const res = await uploadImage(fd);
       imgId = res.id;
+      item = { ...item, imgId };
     }
 
-    return (isEdit ? updateFx({ ...menu, id: menu.id }) : createFx({ ...menu, imgId }))
-      .then(onClose)
-      .then(getAllDefault);
-  };
-
-  const onDelete = () => {
-    console.log('deleting', id);
+    return onSave(item);
   };
 
   return (
     <>
-      <Modal visible={isVisible} title={title} onOk={onSave} onCancel={onClose} destroyOnClose>
+      <Modal visible={isVisible} title='Меню' onOk={onFormSave} onCancel={onClose} destroyOnClose>
         <MenuForm
           formInstance={formInstance}
           modalVisible={isVisible}
@@ -78,14 +72,14 @@ export const MenuModalForm = ({
         />
       </Modal>
       <Row gutter={[8, 8]}>
-        <Col span={canDelete ? 14 : 24}>
+        <Col span={onDelete ? 14 : 24}>
           <Button type={id ? 'default' : 'primary'} onClick={onOpen}>
             {title}
           </Button>
         </Col>
-        {canDelete && (
+        {onDelete && id && (
           <Col span={10}>
-            <Button type='default' onClick={() => onDelete()}>
+            <Button type='default' onClick={() => onDelete(id)}>
               Удалить
             </Button>
           </Col>
@@ -93,4 +87,4 @@ export const MenuModalForm = ({
       </Row>
     </>
   );
-};
+}

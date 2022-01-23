@@ -5,3 +5,4 @@ export type TPromiseFn<T extends any = void, R = void> = (arg: T) => Promise<R>;
 export type TOnlyView = { onlyView: boolean };
 export type TId = number | null | undefined;
 export type TWithId = { id: TId };
+export type TItemWithId<T> = T & { id: TId };
