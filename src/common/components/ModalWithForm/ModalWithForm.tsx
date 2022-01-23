@@ -3,7 +3,7 @@ import { Effect, Event } from 'effector';
 import { useStore } from 'effector-react';
 import React, { ReactNode } from 'react';
 import { Nullable, NullableNumber } from '../../../core/types';
-import { $imageBlob, resetImageBlob, resetUploadImagePath } from '../../../pages/Image/model/store';
+import { $imageBlob, resetImageBlob } from '../../../pages/Image/model/store';
 import { ImageDto } from '../../../pages/Image/model/types';
 import { TId, TPromiseFn, TVoidFn, TWithId } from '../../types';
 import { uuid } from '../../utils/utils';
@@ -48,7 +48,6 @@ export function ModalWithForm<T extends { id?: TId }>({
   const onClose = () => {
     setIsVisible(false);
     formInstance.resetFields();
-    resetUploadImagePath();
     resetImageBlob();
   };
 
