@@ -53,7 +53,7 @@ export function ModalWithForm<T extends { id?: TId }>({
 
   const onClose = () => {
     setIsVisible(false);
-    formInstance.resetFields();
+    formInstance && formInstance.resetFields();
     imageHandler && imageHandler.setUploadImagePath(null);
     imageHandler && imageHandler.setImageBlob(null);
   };

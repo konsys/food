@@ -28,7 +28,7 @@ interface Props {
   id: Nullable<number>;
 }
 
-export const MenuForm = ({ modalVisible, setImageBlob, id, formInstance }: Props) => {
+export const MenuFormFields = ({ modalVisible, setImageBlob, id, formInstance }: Props) => {
   const menuTimeList = useStore($menuTimeList);
   const menuTypeList = useStore($menuTypeList);
   const menu = useStore($menuStore);

@@ -5,7 +5,7 @@ import { TVoidFn } from '../../../../common/types';
 import { Nullable } from '../../../../core/types';
 import { ImageModel, MenuModel } from '../../../../store';
 import { MenuDto } from '../../model/types';
-import { MenuForm } from '../MenuForm';
+import { MenuFormFields } from '../MenuFormFields';
 
 interface Props {
   isEdit: boolean;
@@ -35,7 +35,7 @@ export const MenuModal: FC<Props> = ({ isVisible, setIsVisible, id, title }: Pro
       getList={getAllDefault}
       onUpdate={updateFx}
     >
-      <MenuForm
+      <MenuFormFields
         formInstance={formInstance}
         modalVisible={isVisible}
         uploadImagePath={uploadImagePath}
