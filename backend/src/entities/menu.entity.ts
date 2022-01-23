@@ -16,7 +16,6 @@ export class MenuEntity extends AbstractDictionary {
   @Column()
   weight: number;
 
-  @Exclude()
   @Column({ type: 'int', nullable: true })
   timeId: number;
 
@@ -24,7 +23,6 @@ export class MenuEntity extends AbstractDictionary {
   @JoinColumn({ name: "timeId" })
   time: MenuTimeDict;
 
-  @Exclude()
   @Column({ type: "int", nullable: true })
   typeId: number;
 
@@ -32,7 +30,6 @@ export class MenuEntity extends AbstractDictionary {
   @JoinColumn({ name: "typeId" })
   type: MenuTypeDict;
 
-  @Exclude()
   @Column({ type: "int", nullable: true })
   imgId: number;
 

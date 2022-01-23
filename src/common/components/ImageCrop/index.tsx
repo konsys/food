@@ -1,5 +1,5 @@
 import { Button, Upload } from 'antd';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactCrop, { Crop } from 'react-image-crop';
 import { TVoidFn } from '../../types';
 import './style.less';
@@ -21,11 +21,12 @@ type IState = {
 
 interface Props {
   setImageBlob: TVoidFn<Blob>;
+  inImgSrc?: string;
 }
 
-export const ImageCrop = ({ setImageBlob }: Props) => {
+export const ImageCrop = ({ setImageBlob, inImgSrc }: Props) => {
   const [state, setState] = useState<IState>({
-    src: null,
+    src: inImgSrc ?? null,
     croppedImageUrl: null,
     crop: {
       unit: '%',
@@ -36,6 +37,10 @@ export const ImageCrop = ({ setImageBlob }: Props) => {
       y: 0,
     },
   });
+
+  useEffect(() => {
+    inImgSrc && setState({ ...state, src: inImgSrc });
+  }, [inImgSrc]);
 
   const imageRef = useRef<HTMLImageElement>();
 
@@ -104,6 +109,8 @@ export const ImageCrop = ({ setImageBlob }: Props) => {
 
   const { crop, src } = state;
 
+  console.log(1111111111, src);
+
   const props: IDragDropProps = {
     name: 'file',
     multiple: false,
@@ -126,7 +133,7 @@ export const ImageCrop = ({ setImageBlob }: Props) => {
       </div>
       {src && (
         <ReactCrop
-          src={src.toString()}
+          src={`${Params.BASE_URL}/${src.toString()}`}
           crop={crop}
           ruleOfThirds
           onImageLoaded={onImageLoaded}
