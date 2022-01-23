@@ -42,7 +42,13 @@ export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
                   <MenuItemTitle text={foodMenuItem.name} />
                 </Col>
                 <Col span={24}>
-                  <MenuModal isEdit={isEdit} isVisible={isVisible} setIsVisible={setIsVisible} />
+                  <MenuModal
+                    isEdit={isEdit}
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                    title='Редактировать'
+                    id={foodMenuItem.id}
+                  />
                 </Col>
               </Row>
             </>

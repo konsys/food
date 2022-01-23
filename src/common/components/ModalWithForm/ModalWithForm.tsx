@@ -59,7 +59,7 @@ export function ModalWithForm<T extends { id: TId }>({
 
   return (
     <>
-      <Modal visible={isVisible} title='Меню' onOk={onFormSave} onCancel={onClose} destroyOnClose>
+      <Modal visible={isVisible} title={title} onOk={onFormSave} onCancel={onClose} destroyOnClose>
         <MenuForm
           formInstance={formInstance}
           modalVisible={isVisible}
