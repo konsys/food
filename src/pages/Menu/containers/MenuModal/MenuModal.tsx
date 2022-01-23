@@ -19,7 +19,7 @@ const { createFx, getAllDefault, updateFx } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
 
 export const MenuModal: FC<Props> = ({ isVisible, setIsVisible, id, title }: Props) => {
-  const { formInstance } = useValidatedForm<MenuDto>();
+  const { formInstance, Modal } = useValidatedForm<MenuDto>();
 
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
   const [imageBlob, setImageBlob] = useState<Nullable<Blob>>(null);
@@ -34,6 +34,8 @@ export const MenuModal: FC<Props> = ({ isVisible, setIsVisible, id, title }: Pro
       onCreate={createFx}
       getList={getAllDefault}
       onUpdate={updateFx}
+      Modal={Modal}
+      formInstance={formInstance}
     >
       <MenuFormFields
         formInstance={formInstance}

@@ -3,7 +3,6 @@ import { Effect, Event } from 'effector';
 import React, { ReactNode } from 'react';
 import { Nullable, NullableNumber } from '../../../core/types';
 import { ImageDto } from '../../../pages/Image/model/types';
-import { useValidatedForm } from '../../form/useValidatedForm';
 import { TId, TPromiseFn, TVoidFn, TWithId } from '../../types';
 import { uuid } from '../../utils/utils';
 
@@ -26,7 +25,8 @@ interface Props<T> {
   onDelete?: TPromiseFn<number>;
   uploadImage?: TPromiseFn<FormData, ImageDto>;
   children: ReactNode;
-  formInstance?: any;
+  formInstance: any;
+  Modal: any;
   imageBlob?: Nullable<Blob>;
   imageHandler?: TImageFormUpload;
 }
@@ -42,10 +42,10 @@ export function ModalWithForm<T extends { id?: TId }>({
   onUpdate,
   getList,
   children,
-  formInstance,
   imageHandler,
+  Modal,
+  formInstance,
 }: Props<T>) {
-  const { Modal } = useValidatedForm<T>();
   const onOpen = () => {
     onClose();
     setIsVisible(true);
@@ -53,7 +53,7 @@ export function ModalWithForm<T extends { id?: TId }>({
 
   const onClose = () => {
     setIsVisible(false);
-    formInstance && formInstance.resetFields();
+    formInstance.resetFields();
     imageHandler && imageHandler.setUploadImagePath(null);
     imageHandler && imageHandler.setImageBlob(null);
   };
