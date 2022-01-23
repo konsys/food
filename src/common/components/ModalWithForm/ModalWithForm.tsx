@@ -7,6 +7,14 @@ import { useValidatedForm } from '../../form/useValidatedForm';
 import { TId, TPromiseFn, TVoidFn, TWithId } from '../../types';
 import { uuid } from '../../utils/utils';
 
+export type TImageFormUpload = {
+  uploadImagePath: Nullable<string>;
+  setUploadImagePath: TVoidFn<Nullable<string>>;
+
+  imageBlob: Nullable<Blob>;
+  setImageBlob: TVoidFn<Nullable<Blob>>;
+};
+
 interface Props<T> {
   id: NullableNumber;
   isVisible: boolean;
@@ -20,6 +28,7 @@ interface Props<T> {
   children: ReactNode;
   formInstance?: any;
   imageBlob?: Nullable<Blob>;
+  imageHandler?: TImageFormUpload;
 }
 
 export function ModalWithForm<T extends { id?: TId }>({
@@ -34,7 +43,7 @@ export function ModalWithForm<T extends { id?: TId }>({
   getList,
   children,
   formInstance,
-  imageBlob,
+  imageHandler,
 }: Props<T>) {
   const { Modal } = useValidatedForm<T>();
   const onOpen = () => {
@@ -44,7 +53,9 @@ export function ModalWithForm<T extends { id?: TId }>({
 
   const onClose = () => {
     setIsVisible(false);
-    formInstance && formInstance.resetFields();
+    formInstance.resetFields();
+    imageHandler && imageHandler.setUploadImagePath(null);
+    imageHandler && imageHandler.setImageBlob(null);
   };
 
   const onSave = async (item: T) => {
@@ -53,9 +64,9 @@ export function ModalWithForm<T extends { id?: TId }>({
 
   const onFormSave = async (item: T) => {
     let imgId = null;
-    if (imageBlob && uploadImage) {
+    if (imageHandler?.imageBlob && uploadImage) {
       const fd = new FormData();
-      fd.append('file', imageBlob, `${uuid()}.jpg`);
+      fd.append('file', imageHandler.imageBlob, `${uuid()}.jpg`);
 
       const res = await uploadImage(fd);
       imgId = res.id;
