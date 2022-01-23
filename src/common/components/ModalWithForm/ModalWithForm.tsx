@@ -4,7 +4,7 @@ import { Nullable, NullableNumber } from '../../../core/types';
 import { ImageDto } from '../../../pages/Image/model/types';
 import { MenuForm } from '../../../pages/Menu/containers/MenuForm';
 import { useValidatedForm } from '../../form/useValidatedForm';
-import { TId, TItemWithId, TPromiseFn, TVoidFn } from '../../types';
+import { TPromiseFn, TVoidFn } from '../../types';
 import { uuid } from '../../utils/utils';
 
 interface Props<T> {
@@ -12,12 +12,12 @@ interface Props<T> {
   isVisible: boolean;
   setIsVisible: TVoidFn<boolean>;
   title?: string;
-  onSave: TPromiseFn<T, TItemWithId<T>>;
+  onSave: TPromiseFn<T>;
   onDelete?: TPromiseFn<number>;
   uploadImage?: TPromiseFn<FormData, ImageDto>;
 }
 
-export function ModalWithForm<T extends { id: TId }>({
+export function ModalWithForm<T>({
   id,
   setIsVisible,
   isVisible,

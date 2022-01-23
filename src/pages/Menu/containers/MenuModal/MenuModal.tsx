@@ -23,7 +23,7 @@ export const MenuModal: FC<Props> = ({ isEdit, isVisible, setIsVisible, id, titl
   };
 
   return (
-    <ModalWithForm<any>
+    <ModalWithForm<MenuDto>
       isVisible={isVisible}
       setIsVisible={setIsVisible}
       id={id ?? null}
