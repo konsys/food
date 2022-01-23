@@ -26,7 +26,7 @@ interface Props {
 
 export const ImageCrop = ({ setImageBlob, inImgSrc }: Props) => {
   const [state, setState] = useState<IState>({
-    src: inImgSrc ?? null,
+    src: null,
     croppedImageUrl: null,
     crop: {
       unit: '%',
@@ -39,7 +39,7 @@ export const ImageCrop = ({ setImageBlob, inImgSrc }: Props) => {
   });
 
   useEffect(() => {
-    inImgSrc && setState({ ...state, src: inImgSrc });
+    inImgSrc && setState({ ...state, crop: { ...crop, width: 100, height: 100 } });
   }, [inImgSrc]);
 
   const imageRef = useRef<HTMLImageElement>();
@@ -109,8 +109,6 @@ export const ImageCrop = ({ setImageBlob, inImgSrc }: Props) => {
 
   const { crop, src } = state;
 
-  console.log(1111111111, src);
-
   const props: IDragDropProps = {
     name: 'file',
     multiple: false,
@@ -127,15 +125,16 @@ export const ImageCrop = ({ setImageBlob, inImgSrc }: Props) => {
   return (
     <>
       <div>
-        <Upload {...props}>
+        <Upload {...props} multiple={false}>
           <Button icon={<UploadOutlined />}>Click to Upload</Button>
         </Upload>
       </div>
-      {src && (
+
+      {(src || inImgSrc) && (
         <ReactCrop
-          src={`${Params.BASE_URL}/${src.toString()}`}
+          src={src ? src.toString() : `${Params.BASE_URL}/${inImgSrc}`}
           crop={crop}
-          ruleOfThirds
+          // ruleOfThirds
           onImageLoaded={onImageLoaded}
           onComplete={onCropComplete}
           onChange={onCropChange}
