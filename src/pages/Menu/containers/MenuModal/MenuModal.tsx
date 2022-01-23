@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, Col, Row } from 'antd';
 import React, { useState } from 'react';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { Nullable, NullableNumber } from '../../../../core/types';
@@ -17,6 +17,7 @@ interface Props {
   setIsVisible: TVoidFn<boolean>;
   isEdit: boolean;
   title?: string;
+  canDelete?: boolean;
 }
 
 export const MenuModalForm = ({
@@ -24,6 +25,7 @@ export const MenuModalForm = ({
   setIsVisible,
   isVisible,
   isEdit,
+  canDelete,
   title = 'Создать',
 }: Props) => {
   const [uploadImagePath, setUploadImagePath] = useState<Nullable<string>>(null);
@@ -58,6 +60,10 @@ export const MenuModalForm = ({
       .then(getAllDefault);
   };
 
+  const onDelete = () => {
+    console.log('deleting', id);
+  };
+
   return (
     <>
       <Modal visible={isVisible} title='Меню' onOk={onSave} onCancel={onClose} destroyOnClose>
@@ -71,9 +77,20 @@ export const MenuModalForm = ({
           id={id}
         />
       </Modal>
-      <Button type='primary' onClick={onOpen}>
-        {title}
-      </Button>
+      <Row gutter={[8, 8]}>
+        <Col span={canDelete ? 14 : 24}>
+          <Button type={id ? 'default' : 'primary'} onClick={onOpen}>
+            {title}
+          </Button>
+        </Col>
+        {canDelete && (
+          <Col span={10}>
+            <Button type='default' onClick={() => onDelete()}>
+              Удалить
+            </Button>
+          </Col>
+        )}
+      </Row>
     </>
   );
 };
