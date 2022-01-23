@@ -13,7 +13,7 @@ import { isNullOrUndefined } from '../../../../common/utils/utils';
 
 const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeModel;
 const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = MenuTypeModel;
-const { $oneStore: $menuStore, getOneFx } = MenuModel;
+const { $oneStore: $menuStore, getOneFx, resetOne } = MenuModel;
 
 const names = columnsNamesGenerator<MenuDto>();
 
@@ -40,6 +40,7 @@ export const MenuForm = ({ modalVisible, setImageBlob, id, formInstance }: Props
     if (!isNullOrUndefined(id)) {
       getOneFx(id);
     }
+    return () => resetOne();
   }, [id]);
 
   useEffect(() => {
