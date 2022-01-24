@@ -10,13 +10,20 @@ interface Props {
 }
 
 const { createFx, getAllDefault, updateFx } = MenuModel;
-const { createFx: uploadImage } = ImageModel;
+const { createFx: createImage } = ImageModel;
 
 export const MenuModal: FC<Props> = ({ id }: Props) => {
   const { formInstance, ModalForm } = useValidatedForm<MenuDto>();
 
   return (
-    <ModalForm onCreate={createFx} onUpdate={updateFx} id={id} width={600} getList={getAllDefault}>
+    <ModalForm
+      onCreate={createFx}
+      onUpdate={updateFx}
+      id={id}
+      width={600}
+      getList={getAllDefault}
+      createImage={createImage}
+    >
       <MenuFormFields formInstance={formInstance} id={id} />
     </ModalForm>
   );

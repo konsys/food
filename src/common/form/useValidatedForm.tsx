@@ -6,7 +6,9 @@ import { MainModal } from '../modal/Modal';
 import { AbstractForm } from './AbstractForm';
 import { ErrorMessage } from '../errors/ErrorMessage';
 import { enterKeyPressed } from './utils';
-import { resetImageBlob } from '../../pages/Image/model/store';
+import { $imageBlob, resetImageBlob } from '../../pages/Image/model/store';
+import { useStore } from 'effector-react';
+import { uuid } from '../utils/utils';
 
 export type TFormInstance = ReturnType<typeof useValidatedForm>;
 
@@ -71,17 +73,31 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
   const useFormOnModal: FC<TModalWithFormProps<T>> = useCallback(
     (props) => {
-      const { children, okButtonProps, onCreate, onUpdate, onDelete, id, getList } = props;
+      const { children, okButtonProps, onCreate, onUpdate, onDelete, id, getList, createImage } =
+        props;
 
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
       const [visible, setVisible] = useState<boolean>(false);
 
+      const imageBlob = useStore($imageBlob);
       const modalOnOk = () => {
         setIsFormPending(true);
         form
           .validateFields()
+          .then(async (item) => {
+            if (imageBlob && createImage) {
+              const fd = new FormData();
+              fd.append('file', imageBlob, `${uuid()}.jpg`);
+
+              const res = await createImage(fd);
+              const imgId = res.id;
+              item = { ...item, imgId };
+            }
+            return item;
+          })
           .then(id ? onUpdate : onCreate)
           .then(() => getList())
+          .then(() => setVisible(false))
           .catch((reason) => {
             notification.error({ message: <ErrorMessage error={reason} /> });
             return reason;
