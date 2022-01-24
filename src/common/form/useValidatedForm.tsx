@@ -1,4 +1,4 @@
-import { Button, Col, Form, notification, Row } from 'antd';
+import { Button, Col, Form, notification, Popconfirm, Row } from 'antd';
 import React, { FC, useCallback, useMemo, useState } from 'react';
 import { FieldData, NamePath } from 'rc-field-form/es/interface';
 import { TReturnedForm, TModalWithFormProps, TSetFieldsValue } from './types';
@@ -78,6 +78,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
       const [visible, setVisible] = useState<boolean>(false);
+      const [confirmVisible, setConfirmVisible] = useState(false);
 
       const imageBlob = useStore($imageBlob);
       const modalOnOk = () => {
@@ -118,6 +119,18 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         resetImageBlob();
       };
 
+      const deleteItem = async (id: number) => {
+        setIsFormPending(true);
+        onDelete &&
+          onDelete(id)
+            .then(() => getList())
+            .catch((reason) => {
+              notification.error({ message: <ErrorMessage error={reason} /> });
+              return reason;
+            })
+            .finally(() => setIsFormPending(false));
+      };
+
       return (
         <>
           <Row gutter={[8, 8]}>
@@ -128,9 +141,16 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             </Col>
             {onDelete && id && (
               <Col span={10}>
-                <Button type='default' onClick={() => onDelete(id)}>
-                  Удалить
-                </Button>
+                <Popconfirm
+                  title='Удалить?'
+                  visible={confirmVisible}
+                  onConfirm={() => deleteItem(id)}
+                  onCancel={() => setConfirmVisible(false)}
+                >
+                  <Button type='default' onClick={() => setConfirmVisible(true)}>
+                    Удалить
+                  </Button>
+                </Popconfirm>
               </Col>
             )}
           </Row>
