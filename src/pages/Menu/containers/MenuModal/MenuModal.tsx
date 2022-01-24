@@ -5,14 +5,14 @@ import { MenuDto } from '../../model/types';
 import { MenuFormFields } from '../MenuFormFields';
 
 interface Props {
-  isEdit: boolean;
   id?: number;
+  title?: string;
 }
 
 const { createFx, getAllDefault, updateFx, deleteFx } = MenuModel;
 const { createFx: createImage } = ImageModel;
 
-export const MenuModal: FC<Props> = ({ id }: Props) => {
+export const MenuModal: FC<Props> = ({ id, title }: Props) => {
   const { formInstance, ModalForm } = useValidatedForm<MenuDto>();
 
   return (
@@ -24,6 +24,7 @@ export const MenuModal: FC<Props> = ({ id }: Props) => {
       getList={getAllDefault}
       createImage={createImage}
       onDelete={deleteFx}
+      title={title}
     >
       <MenuFormFields formInstance={formInstance} id={id} />
     </ModalForm>

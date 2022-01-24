@@ -73,9 +73,19 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
   const useFormOnModal: FC<TModalWithFormProps<T>> = useCallback(
     (props) => {
-      const { children, okButtonProps, onCreate, onUpdate, onDelete, id, getList, createImage } =
-        props;
+      const {
+        children,
+        okButtonProps,
+        onCreate,
+        onUpdate,
+        onDelete,
+        id,
+        getList,
+        createImage,
+        title,
+      } = props;
 
+      console.log(44444444, title);
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
       const [visible, setVisible] = useState<boolean>(false);
       const [confirmVisible, setConfirmVisible] = useState(false);
@@ -136,7 +146,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
           <Row gutter={[8, 8]}>
             <Col span={onDelete ? 14 : 24}>
               <Button type={id ? 'default' : 'primary'} onClick={onOpen}>
-                {id ? 'Редактировать' : 'Создать'}
+                {!title ? (id ? 'Редактировать' : 'Создать') : title}
               </Button>
             </Col>
             {onDelete && id && (
