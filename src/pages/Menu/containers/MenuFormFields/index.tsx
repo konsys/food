@@ -3,7 +3,6 @@ import { Form, Input, InputNumber, Select } from 'antd';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import TextArea from 'antd/lib/input/TextArea';
 import { MenuDto } from '../../model/types';
-import { Nullable } from '../../../../core/types';
 import { useStore } from 'effector-react';
 import { MenuModel, MenuTimeModel, MenuTypeModel } from '../../../../store';
 import { createListOptions } from '../../../../common/utils/selectUtils';
@@ -18,13 +17,12 @@ const { $oneStore: $menuStore, getOneFx, resetOne } = MenuModel;
 const names = columnsNamesGenerator<MenuDto>();
 
 interface Props {
-  modalVisible: boolean;
   // TODO add type
   formInstance: any;
-  id: Nullable<number>;
+  id?: number;
 }
 
-export const MenuFormFields = ({ modalVisible, id, formInstance }: Props) => {
+export const MenuFormFields = ({ id, formInstance }: Props) => {
   const menuTimeList = useStore($menuTimeList);
   const menuTypeList = useStore($menuTypeList);
   const menu = useStore($menuStore);
@@ -52,11 +50,9 @@ export const MenuFormFields = ({ modalVisible, id, formInstance }: Props) => {
   }, [menuTypeList.items]);
 
   useEffect(() => {
-    if (modalVisible) {
-      getAllMenuTypeFx({ limit: 20, page: 1 });
-      getAllMenuTimeFx({ limit: 20, page: 1 });
-    }
-  }, [modalVisible]);
+    getAllMenuTypeFx({ limit: 20, page: 1 });
+    getAllMenuTimeFx({ limit: 20, page: 1 });
+  }, []);
 
   const inImgSrc = formInstance.getFieldValue('image')?.largeImg;
   return (

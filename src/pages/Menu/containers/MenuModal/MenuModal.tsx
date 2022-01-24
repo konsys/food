@@ -1,39 +1,23 @@
 import React, { FC } from 'react';
-import { ModalWithForm } from '../../../../common/components/ModalWithForm/ModalWithForm';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
-import { TVoidFn } from '../../../../common/types';
 import { ImageModel, MenuModel } from '../../../../store';
 import { MenuDto } from '../../model/types';
 import { MenuFormFields } from '../MenuFormFields';
 
 interface Props {
   isEdit: boolean;
-  isVisible: boolean;
-  setIsVisible: TVoidFn<boolean>;
   id?: number;
-  title?: string;
 }
 
 const { createFx, getAllDefault, updateFx } = MenuModel;
 const { createFx: uploadImage } = ImageModel;
 
-export const MenuModal: FC<Props> = ({ isVisible, setIsVisible, id, title }: Props) => {
-  const { formInstance, Modal } = useValidatedForm<MenuDto>();
+export const MenuModal: FC<Props> = ({ id }: Props) => {
+  const { formInstance, ModalForm } = useValidatedForm<MenuDto>();
 
   return (
-    <ModalWithForm<MenuDto>
-      isVisible={isVisible}
-      setIsVisible={setIsVisible}
-      id={id ?? null}
-      uploadImage={uploadImage}
-      title={title}
-      onCreate={createFx}
-      getList={getAllDefault}
-      onUpdate={updateFx}
-      Modal={Modal}
-      formInstance={formInstance}
-    >
-      <MenuFormFields formInstance={formInstance} modalVisible={isVisible} id={id ?? null} />
-    </ModalWithForm>
+    <ModalForm onCreate={createFx} onUpdate={updateFx} id={id} width={600} getList={getAllDefault}>
+      <MenuFormFields formInstance={formInstance} id={id} />
+    </ModalForm>
   );
 };

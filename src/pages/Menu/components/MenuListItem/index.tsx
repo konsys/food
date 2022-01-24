@@ -1,5 +1,5 @@
 import { Card, Col, Image, Row } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 import { Params } from '../../../../config/params';
 import { MenuDto } from '../../model/types';
 import { MenuItemAddToCard } from '../MenuItemAddToCard/MenuItemAddToCard';
@@ -17,8 +17,6 @@ interface Props {
 }
 
 export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-
   return (
     <>
       <Card
@@ -42,13 +40,7 @@ export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
                   <MenuItemTitle text={foodMenuItem.name} />
                 </Col>
                 <Col span={24}>
-                  <MenuModal
-                    isEdit={isEdit}
-                    isVisible={isVisible}
-                    setIsVisible={setIsVisible}
-                    title='Редактировать'
-                    id={foodMenuItem.id}
-                  />
+                  <MenuModal isEdit={isEdit} id={foodMenuItem.id} />
                 </Col>
               </Row>
             </>
