@@ -142,7 +142,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             {onDelete && id && (
               <Col span={10}>
                 <Popconfirm
-                  title='Удалить?'
+                  title={`Удалить?`}
                   visible={confirmVisible}
                   onConfirm={() => deleteItem(id)}
                   onCancel={() => setConfirmVisible(false)}
