@@ -29,7 +29,6 @@ export const MenuListPage = (): ReactElement => {
             <Col span={24}>
               <Space>
                 <MenuModal title='Создать элемент меню' />
-
                 <Button onClick={() => setIsEdit(isEdit ? false : true)}>
                   {!isEdit ? 'Редактировать' : 'Завершить'}
                 </Button>
