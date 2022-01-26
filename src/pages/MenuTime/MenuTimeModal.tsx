@@ -12,7 +12,7 @@ interface Props {
 
 const { createFx, getAllDefault, updateFx, deleteFx, $oneStore } = MenuTimeModel;
 
-export const MenuModal: FC<Props> = ({ id, title }: Props) => {
+export const MenuTimeModal: FC<Props> = ({ id, title }: Props) => {
   const { formInstance, ModalForm } = useValidatedForm<MenuTimeDto>();
   const item = useStore($oneStore);
 

@@ -173,6 +173,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             onCancel={onClose}
             visible={visible}
             onOk={modalOnOk}
+            title={title}
           >
             <ReturnedForm
               initialValues={initialValues}

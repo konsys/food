@@ -2,6 +2,7 @@ import { Button, Col, Row, Space } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement, useState } from 'react';
 import { MenuModel } from '../../store';
+import { MenuTimeModal } from '../MenuTime/MenuTimeModal';
 import { MenuList } from './components';
 import { MenuModal } from './containers/MenuModal/MenuModal';
 
@@ -29,6 +30,7 @@ export const MenuListPage = (): ReactElement => {
             <Col span={24}>
               <Space>
                 <MenuModal title='Создать элемент меню' />
+                <MenuTimeModal title='Создать элемент кухни' />
                 <Button onClick={() => setIsEdit(isEdit ? false : true)}>
                   {!isEdit ? 'Редактировать' : 'Завершить'}
                 </Button>
