@@ -3,7 +3,7 @@ import React from 'react';
 import { MenuTimeModel } from '../../../store';
 import { useValidatedForm } from '../../form/useValidatedForm';
 import { DictionaryDto } from '../../types/dto';
-import { DictionaryFields } from './DictionaryField';
+import { DictionaryFields } from './DictionaryFields';
 
 interface Props {
   id?: number;

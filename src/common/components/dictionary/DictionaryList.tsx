@@ -31,9 +31,13 @@ function getColumns<T>(): ColumnsType<T> {
   ];
 }
 
-export function DictionaryList<CreateEntity, FullEntity>(
-  model: TCrudStore<CreateEntity, FullEntity>
-): ReactElement {
+interface Props<CreateEntity, FullEntity> {
+  model: TCrudStore<CreateEntity, FullEntity>;
+}
+
+export function DictionaryList<CreateEntity, FullEntity>({
+  model,
+}: Props<CreateEntity, FullEntity>): ReactElement {
   const { $listStore, ListGate } = useMemo(() => model, []);
 
   const list = useStore($listStore);
