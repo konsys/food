@@ -1,14 +1,12 @@
 import { Button, Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useMemo } from 'react';
 import { ColumnsType } from '../../types';
 import DeleteOutlined from '@ant-design/icons';
 import { columnsNamesGenerator } from '../../form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
-import { MenuTimeModel } from '../../../store';
 import { MenuTimeModal } from '../../../pages/MenuTime/MenuTimeModal';
-
-const { $listStore, ListGate, deleteFx } = MenuTimeModel;
+import { TCrudStore } from '../../models/abstractModel/abstractCrudModel';
 
 function getColumns<T>(): ColumnsType<T> {
   const name = columnsNamesGenerator<DictionaryDto>();
@@ -33,7 +31,11 @@ function getColumns<T>(): ColumnsType<T> {
   ];
 }
 
-export function MenuTimeListPage<T>(): ReactElement {
+export function DictionaryList<CreateEntity, FullEntity>(
+  model: TCrudStore<CreateEntity, FullEntity>
+): ReactElement {
+  const { $listStore, ListGate } = useMemo(() => model, []);
+
   const list = useStore($listStore);
   useGate(ListGate);
 

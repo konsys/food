@@ -1,7 +1,7 @@
 import faker from 'faker';
-import { MenuTypeDto } from '../menuTypeModel/types';
 import { menuTypeFactory } from '../model/menuTypeFactory';
 import { CrudStore } from '../../../common/models/abstractModel/abstractCrudModel';
+import { MenuTypeDto } from '../model/types';
 
 const model = new CrudStore<MenuTypeDto>('/menu-type');
 
