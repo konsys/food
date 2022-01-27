@@ -1,4 +1,4 @@
-import { Button, Col, Row, Table } from 'antd';
+import { Button, Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement } from 'react';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
@@ -6,6 +6,7 @@ import { ColumnsType } from '../../common/types';
 import { MenuTimeModel } from '../../store';
 import { MenuTimeDto } from './menuTimeModel/types';
 import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
+import { MenuTimeModal } from './MenuTimeModal';
 
 const { $listStore, ListGate } = MenuTimeModel;
 
@@ -23,7 +24,7 @@ const columns: ColumnsType<MenuTimeDto> = [
   },
   {
     title: 'Удалить',
-    render: (v) => (
+    render: () => (
       <Button danger type='link' icon={<DeleteOutlined />}>
         Удалить
       </Button>
@@ -39,7 +40,13 @@ export const MenuTimeListPage = (): ReactElement => {
     <>
       <div className='menu-box'>
         <div className='container'>
-          <Row>
+          <Row gutter={[16, 16]}>
+            <Col span={24}>
+              <Space>
+                <MenuTimeModal title='Создать время меню' />
+              </Space>
+            </Col>
+
             <Col span={24}>
               <Table columns={columns} dataSource={list.items}></Table>
             </Col>

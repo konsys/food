@@ -1,5 +1,5 @@
-import { createEffect, createEvent, createStore, sample } from 'effector';
-import { createGate } from 'effector-react';
+import { createEffect, createEvent, createStore, Effect, Event, sample, Store } from 'effector';
+import { createGate, Gate } from 'effector-react';
 import { CrudService } from '../../api';
 import {
   createInitItem,
@@ -14,14 +14,35 @@ import { notification } from 'antd';
 import { TId, TWithId } from '../../types';
 import { NullableNumber } from '../../../core/types';
 
+export type TCrudStore<CreateEntity, ReturnEntity> = {
+  createFx: Effect<Partial<CreateEntity>, ReturnEntity, Error>;
+  resetList: Event<void>;
+  resetOne: Event<void>;
+  setFilter: Event<any>;
+  setPage: Event<number>;
+  setPageSize: Event<number>;
+  $listStore: Store<any>;
+  $oneStore: Store<any>;
+  $itemPending: Store<boolean>;
+  getAllFx: Effect<TListRequest<ReturnEntity>, TListResponce<ReturnEntity>>;
+  updateFx: Effect<ReturnEntity, ReturnEntity, Error>;
+  getOneFx: Effect<number, ReturnEntity, Error>;
+  deleteFx: Effect<number, TypeOrmDeleteResult, Error>;
+  ListGate: Gate<TListRequest<ReturnEntity>>;
+  OneGate: Gate<NullableNumber>;
+  setItem: Event<ReturnEntity>;
+  getAllDefault: Event<void>;
+};
+
 export class CrudStore<CreateEntity, ReturnEntity extends { id: TId } = CreateEntity & TWithId> {
   private url: string;
 
   constructor(url: string) {
     this.url = url;
   }
-  public createCrudStore() {
-    const ListGate = createGate();
+
+  public createCrudStore(): TCrudStore<CreateEntity, ReturnEntity> {
+    const ListGate = createGate<TListRequest<ReturnEntity>>();
     const OneGate = createGate<NullableNumber>();
     const service = new CrudService<CreateEntity, ReturnEntity>(this.url);
 
@@ -104,14 +125,6 @@ export class CrudStore<CreateEntity, ReturnEntity extends { id: TId } = CreateEn
       fn: () => (!isNaN(Number(OneGate.state)) ? Number(OneGate.state) : 9),
       target: getOneFx,
     });
-
-    // guard({
-    //   clock: OneGate.state,
-    //   filter: OneGate.state.map((v) => !!v && v > 0),
-    //   source: $rt,
-
-    //   target: getOneFx,
-    // });
 
     return {
       createFx,

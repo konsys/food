@@ -1,9 +1,9 @@
 import { useStore } from 'effector-react';
-import React, { FC } from 'react';
-import { DictionaryFields } from '../../common/components/dictionary/DictionaryField';
-import { useValidatedForm } from '../../common/form/useValidatedForm';
-import { MenuTimeModel } from '../../store';
-import { MenuTimeDto } from './menuTimeModel/types';
+import React from 'react';
+import { MenuTimeModel } from '../../../store';
+import { useValidatedForm } from '../../form/useValidatedForm';
+import { DictionaryDto } from '../../types/dto';
+import { DictionaryFields } from './DictionaryField';
 
 interface Props {
   id?: number;
@@ -12,8 +12,9 @@ interface Props {
 
 const { createFx, getAllDefault, updateFx, $oneStore } = MenuTimeModel;
 
-export const MenuTimeModal: FC<Props> = ({ id, title }: Props) => {
-  const { formInstance, ModalForm } = useValidatedForm<MenuTimeDto>();
+export function DictionaryModal({ id, title }: Props) {
+  const { formInstance, ModalForm } = useValidatedForm<DictionaryDto>();
+
   const item = useStore($oneStore);
 
   return (
@@ -28,4 +29,4 @@ export const MenuTimeModal: FC<Props> = ({ id, title }: Props) => {
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>
   );
-};
+}
