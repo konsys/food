@@ -10,8 +10,6 @@ import { $imageBlob, resetImageBlob } from '../../pages/Image/model/store';
 import { useStore } from 'effector-react';
 import { uuid } from '../utils/utils';
 
-export type TFormInstance = ReturnType<typeof useValidatedForm>;
-
 export function useValidatedForm<T>(initialValues?: Partial<T>) {
   const [form] = Form.useForm();
 
@@ -79,13 +77,13 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         onCreate,
         onUpdate,
         onDelete,
-        id,
         getList,
         createImage,
         title,
+        item,
+        buttonType,
       } = props;
 
-      console.log(44444444, title);
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
       const [visible, setVisible] = useState<boolean>(false);
       const [confirmVisible, setConfirmVisible] = useState(false);
@@ -95,18 +93,18 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         setIsFormPending(true);
         form
           .validateFields()
-          .then(async (item) => {
+          .then(async (validatedFormItem) => {
             if (imageBlob && createImage) {
               const fd = new FormData();
               fd.append('file', imageBlob, `${uuid()}.jpg`);
 
               const res = await createImage(fd);
               const imgId = res.id;
-              item = { ...item, imgId };
+              validatedFormItem = { ...validatedFormItem, imgId };
             }
-            return item;
+            return validatedFormItem;
           })
-          .then(id ? onUpdate : onCreate)
+          .then((v) => (v?.id ? onUpdate : onCreate))
           .then(() => getList())
           .then(() => setVisible(false))
           .catch((reason) => {
@@ -145,19 +143,19 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         <>
           <Row gutter={[8, 8]}>
             <Col span={onDelete ? 14 : 24}>
-              <Button type={id ? 'default' : 'primary'} onClick={onOpen}>
-                {!title ? (id ? 'Редактировать' : 'Создать') : title}
+              <Button type={'primary'} onClick={onOpen}>
+                {!title ? (item?.id ? 'Редактировать' : 'Создать') : title}
               </Button>
             </Col>
-            {onDelete && id && (
+            {onDelete && (
               <Col span={10}>
                 <Popconfirm
                   title={`Удалить?`}
                   visible={confirmVisible}
-                  onConfirm={() => deleteItem(id)}
+                  onConfirm={() => item?.id && deleteItem(+item.id)}
                   onCancel={() => setConfirmVisible(false)}
                 >
-                  <Button type='default' onClick={() => setConfirmVisible(true)}>
+                  <Button type={buttonType ?? 'primary'} onClick={() => setConfirmVisible(true)}>
                     Удалить
                   </Button>
                 </Popconfirm>

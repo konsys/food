@@ -1,9 +1,10 @@
 import { ModalProps } from 'antd';
+import { ButtonType } from 'antd/lib/button';
 import { Effect, Event } from 'effector';
 import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
 import { ImageDto } from '../../pages/Image/model/types';
 import { TypeOrmDeleteResult } from '../api/types';
-import { TId, TPromiseFn, TVoidFn, TWithId } from '../types';
+import { TId, TItemWithId, TPromiseFn, TVoidFn, TWithId } from '../types';
 import { AbstractFormProps } from './AbstractForm';
 
 export type TSetFieldsValue<T> = (item: Partial<T> | null) => void;
@@ -20,7 +21,8 @@ export type TModalWithFormProps<T> = ModalProps & {
   onUpdate: Effect<T & TWithId, T & TWithId, Error>;
   onDelete?: Effect<number, TypeOrmDeleteResult, Error>;
   createImage?: Effect<Partial<FormData>, ImageDto, Error>;
-  id: TId;
+  item?: Partial<TItemWithId<T>>;
+  buttonType: ButtonType;
   getList: Event<void>;
 };
 

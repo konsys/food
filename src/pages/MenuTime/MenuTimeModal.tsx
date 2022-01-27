@@ -12,7 +12,7 @@ interface Props {
 
 const { createFx, getAllDefault, updateFx, $oneStore } = MenuTimeModel;
 
-export const MenuTimeModal: FC<Props> = ({ id, title }: Props) => {
+export const MenuTimeModal: FC<Props> = ({ title }: Props) => {
   const { formInstance, ModalForm } = useValidatedForm<MenuTimeDto>();
   const item = useStore($oneStore);
 
@@ -20,10 +20,10 @@ export const MenuTimeModal: FC<Props> = ({ id, title }: Props) => {
     <ModalForm
       onCreate={createFx}
       onUpdate={updateFx}
-      id={id}
       width={600}
       getList={getAllDefault}
       title={title}
+      buttonType='link'
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>

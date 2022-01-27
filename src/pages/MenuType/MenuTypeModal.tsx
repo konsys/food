@@ -20,11 +20,11 @@ export const MenuTypeModal: FC<Props> = ({ id, title }: Props) => {
     <ModalForm
       onCreate={createFx}
       onUpdate={updateFx}
-      id={id}
       width={600}
       getList={getAllDefault}
       onDelete={deleteFx}
       title={title}
+      buttonType='link'
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>

@@ -6,13 +6,12 @@ import { DictionaryDto } from '../../types/dto';
 import { DictionaryFields } from './DictionaryFields';
 
 interface Props {
-  id?: number;
   title?: string;
 }
 
 const { createFx, getAllDefault, updateFx, $oneStore } = MenuTimeModel;
 
-export function DictionaryModal({ id, title }: Props) {
+export function DictionaryModal({ title }: Props) {
   const { formInstance, ModalForm } = useValidatedForm<DictionaryDto>();
 
   const item = useStore($oneStore);
@@ -21,10 +20,10 @@ export function DictionaryModal({ id, title }: Props) {
     <ModalForm
       onCreate={createFx}
       onUpdate={updateFx}
-      id={id}
       width={600}
       getList={getAllDefault}
       title={title}
+      buttonType={'link'}
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>

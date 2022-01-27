@@ -7,6 +7,7 @@ import { columnsNamesGenerator } from '../../form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
 import { MenuTimeModal } from '../../../pages/MenuTime/MenuTimeModal';
 import { TCrudStore } from '../../models/abstractModel/abstractCrudModel';
+import { DictionaryModal } from './DictionaryModal';
 
 function getColumns<T>(): ColumnsType<T> {
   const name = columnsNamesGenerator<DictionaryDto>();
@@ -14,7 +15,7 @@ function getColumns<T>(): ColumnsType<T> {
     {
       title: 'Название',
       dataIndex: name('name'),
-      render: (v) => <Button type='link'>{v}</Button>,
+      render: (v) => <DictionaryModal title={v} />,
     },
     {
       title: 'Описание',
