@@ -143,7 +143,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         <>
           <Row gutter={[8, 8]}>
             <Col span={onDelete ? 14 : 24}>
-              <Button type={'primary'} onClick={onOpen}>
+              <Button type={buttonType} onClick={onOpen}>
                 {!title ? (item?.id ? 'Редактировать' : 'Создать') : title}
               </Button>
             </Col>

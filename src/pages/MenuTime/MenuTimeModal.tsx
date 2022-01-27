@@ -23,7 +23,7 @@ export const MenuTimeModal: FC<Props> = ({ title }: Props) => {
       width={600}
       getList={getAllDefault}
       title={title}
-      buttonType='link'
+      buttonType='primary'
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>
