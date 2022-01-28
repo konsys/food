@@ -1,5 +1,5 @@
 import React from 'react';
-import { DictionaryList } from '../../common/components/dictionary/DictionaryList';
+import { DictionaryList } from '../../core/dictionary/DictionaryList';
 import { MenuTypeModel } from '../../store';
 
 const model = MenuTypeModel;

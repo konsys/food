@@ -1,12 +1,12 @@
 import { Button, Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement, useMemo } from 'react';
-import { ColumnsType } from '../../types';
+import { ColumnsType } from '../../common/types';
 import DeleteOutlined from '@ant-design/icons';
-import { columnsNamesGenerator } from '../../form/columnsNamesGenerator';
+import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
-import { MenuTimeModal } from '../../../pages/MenuTime/MenuTimeModal';
-import { TCrudStore } from '../../models/abstractModel/abstractCrudModel';
+import { MenuTimeModal } from '../../pages/MenuTime/MenuTimeModal';
+import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
 
 function getColumns<T>(): ColumnsType<T> {

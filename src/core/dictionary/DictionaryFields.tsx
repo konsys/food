@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Form, Input } from 'antd';
-import { columnsNamesGenerator } from '../../form/columnsNamesGenerator';
-import { DictionaryDto } from '../../types/dto';
+import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
+import { DictionaryDto } from '../../common/types/dto';
 import TextArea from 'antd/lib/input/TextArea';
 
 const names = columnsNamesGenerator<DictionaryDto>();

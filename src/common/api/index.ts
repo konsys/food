@@ -2,30 +2,30 @@ import { AxiosResponse } from 'axios';
 import { axiosClient } from '../../http/Clients';
 import { TListRequest, TListResponce, TypeOrmDeleteResult } from './types';
 
-export class CrudService<CreateEntity, ReturnEntity> {
+export class CrudService<CreateEntity, FullEntity> {
   private url: string;
 
   constructor(url: string) {
     this.url = url;
   }
-  async create(params: Partial<CreateEntity>): Promise<ReturnEntity> {
-    return (await axiosClient.post<ReturnEntity>(this.url, params)).data;
+  async create(params: Partial<CreateEntity>): Promise<FullEntity> {
+    return (await axiosClient.post<FullEntity>(this.url, params)).data;
   }
 
-  async getAll(params: TListRequest<ReturnEntity>): Promise<TListResponce<ReturnEntity>> {
+  async getAll(params: TListRequest<FullEntity>): Promise<TListResponce<FullEntity>> {
     const { data } = await axiosClient.post<
-      TListResponce<ReturnEntity>,
-      AxiosResponse<TListResponce<ReturnEntity>>
+      TListResponce<FullEntity>,
+      AxiosResponse<TListResponce<FullEntity>>
     >(`${this.url}/filter`, params);
     return data;
   }
 
-  async getOne(id: number): Promise<ReturnEntity> {
-    return (await axiosClient.get<ReturnEntity>(`${this.url}/${id}`)).data;
+  async getOne(id: number): Promise<FullEntity> {
+    return (await axiosClient.get<FullEntity>(`${this.url}/${id}`)).data;
   }
 
-  async updateOne(entity: ReturnEntity): Promise<ReturnEntity> {
-    return (await axiosClient.put<ReturnEntity>(this.url, entity)).data;
+  async updateOne(entity: FullEntity): Promise<FullEntity> {
+    return (await axiosClient.put<FullEntity>(this.url, entity)).data;
   }
 
   async deleteOne(id: number): Promise<TypeOrmDeleteResult> {

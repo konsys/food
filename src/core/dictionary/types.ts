@@ -1,4 +1,4 @@
-import { TId } from '../../types';
+import { TId } from '../../common/types';
 
 export type DictionaryDto = {
   id: TId;

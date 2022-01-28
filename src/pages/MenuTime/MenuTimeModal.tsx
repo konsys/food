@@ -1,6 +1,6 @@
 import { useStore } from 'effector-react';
 import React, { FC } from 'react';
-import { DictionaryFields } from '../../common/components/dictionary/DictionaryFields';
+import { DictionaryFields } from '../../core/dictionary/DictionaryFields';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { MenuTimeModel } from '../../store';
 import { MenuTimeDto } from './menuTimeModel/types';

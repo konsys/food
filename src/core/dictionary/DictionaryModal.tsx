@@ -1,17 +1,17 @@
 import { useStore } from 'effector-react';
 import React from 'react';
-import { MenuTimeModel } from '../../../store';
-import { useValidatedForm } from '../../form/useValidatedForm';
-import { DictionaryDto } from '../../types/dto';
+import { useValidatedForm } from '../../common/form/useValidatedForm';
+import { DictionaryDto } from '../../common/types/dto';
+import { MenuTimeModel } from '../../store';
 import { DictionaryFields } from './DictionaryFields';
 
 interface Props {
+  // model: TCrudStore<DictionaryDto, >;
   title?: string;
 }
 
-const { createFx, getAllDefault, updateFx, $oneStore } = MenuTimeModel;
-
 export function DictionaryModal({ title }: Props) {
+  const { $oneStore, createFx, updateFx, getAllDefault } = MenuTimeModel;
   const { formInstance, ModalForm } = useValidatedForm<DictionaryDto>();
 
   const item = useStore($oneStore);
