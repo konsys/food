@@ -83,6 +83,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         item,
         buttonType,
         pending,
+        createButtonText,
       } = props;
 
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
@@ -145,7 +146,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
           <Row gutter={[8, 8]}>
             <Col span={onDelete ? 14 : 24}>
               <Button type={buttonType} onClick={onOpen}>
-                {!title ? (item?.id ? 'Редактировать' : 'Создать') : title}
+                {!createButtonText ? (item?.id ? 'Редактировать' : 'Создать') : createButtonText}
               </Button>
             </Col>
             {onDelete && (

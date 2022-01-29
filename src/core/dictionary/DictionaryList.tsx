@@ -8,13 +8,15 @@ import { DictionaryDto } from './types';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
 
-function getColumns(): ColumnsType<DictionaryDto> {
+function getColumns(modalTitle: string): ColumnsType<DictionaryDto> {
   const name = columnsNamesGenerator<DictionaryDto>();
   return [
     {
       title: 'Название',
       dataIndex: name('name'),
-      render: (v, row) => <DictionaryModal modalTitle={v} id={row.id} />,
+      render: (v, row) => (
+        <DictionaryModal createButtonText={v} modalTitle={modalTitle} id={row.id} />
+      ),
     },
     {
       title: 'Описание',
@@ -59,7 +61,7 @@ export function DictionaryList<CreateEntity, FullEntity>({
             </Col>
 
             <Col span={24}>
-              <Table rowKey={'id'} columns={getColumns()} dataSource={list.items}></Table>
+              <Table rowKey={'id'} columns={getColumns(modalTitle)} dataSource={list.items}></Table>
             </Col>
           </Row>
         </div>
