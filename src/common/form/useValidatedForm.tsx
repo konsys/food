@@ -82,6 +82,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         title,
         item,
         buttonType,
+        pending,
       } = props;
 
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
@@ -166,7 +167,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             okButtonProps={{
               ...okButtonProps,
               disabled: disabledOkBtn,
-              loading: isFormPending || okButtonProps?.loading,
+              loading: isFormPending || okButtonProps?.loading || pending,
             }}
             onCancel={onClose}
             visible={visible}

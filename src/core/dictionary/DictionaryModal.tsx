@@ -7,7 +7,6 @@ import { MenuTimeModel } from '../../store';
 import { DictionaryFields } from './DictionaryFields';
 
 interface Props {
-  // model: TCrudStore<DictionaryDto, >;
   title?: string;
   id?: TId;
 }
@@ -17,7 +16,7 @@ export function DictionaryModal({ title, id }: Props) {
   const { formInstance, ModalForm } = useValidatedForm<DictionaryDto>();
 
   useGate(OneGate, id);
-  const item = useStore($oneStore);
+  const { item, pending } = useStore($oneStore);
 
   return (
     <ModalForm
@@ -27,6 +26,7 @@ export function DictionaryModal({ title, id }: Props) {
       getList={getAllDefault}
       title={title}
       buttonType={'link'}
+      pending={pending}
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>

@@ -19,11 +19,12 @@ export type TResetFields = (fields?: any[]) => void;
 export type TModalWithFormProps<T> = ModalProps & {
   onCreate: Effect<Partial<T>, T & TWithId, Error>;
   onUpdate: Effect<T & TWithId, T & TWithId, Error>;
+  buttonType: ButtonType;
+  getList: Event<void>;
   onDelete?: Effect<number, TypeOrmDeleteResult, Error>;
   createImage?: Effect<Partial<FormData>, ImageDto, Error>;
   item?: Partial<TItemWithId<T>>;
-  buttonType: ButtonType;
-  getList: Event<void>;
+  pending?: boolean;
 };
 
 export type TReturnedForm = AbstractFormProps;

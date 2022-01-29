@@ -129,6 +129,7 @@ export class CrudStore<CreateEntity, FullEntity extends { id: TId } = CreateEnti
     });
 
     guard({
+      clock: OneGate.state,
       source: OneGate.state.map((state) => (state ? state : UN_EXISTING_ID)),
       filter: OneGate.state.map((state) => !isNaN(Number(state))),
       target: getOneFx,
