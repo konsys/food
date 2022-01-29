@@ -21,6 +21,8 @@ export type TModalWithFormProps<T> = ModalProps & {
   onUpdate: Effect<T & TWithId, T & TWithId, Error>;
   buttonType: ButtonType;
   getList: Event<void>;
+  createButtonText?: string;
+  modalTitle: string;
   onDelete?: Effect<number, TypeOrmDeleteResult, Error>;
   createImage?: Effect<Partial<FormData>, ImageDto, Error>;
   item?: Partial<TItemWithId<T>>;

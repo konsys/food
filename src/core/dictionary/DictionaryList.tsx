@@ -5,7 +5,6 @@ import { ColumnsType } from '../../common/types';
 import DeleteOutlined from '@ant-design/icons';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
-import { MenuTimeModal } from '../../pages/MenuTime/MenuTimeModal';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
 
@@ -15,7 +14,7 @@ function getColumns(): ColumnsType<DictionaryDto> {
     {
       title: 'Название',
       dataIndex: name('name'),
-      render: (v, row) => <DictionaryModal title={v} id={row.id} />,
+      render: (v, row) => <DictionaryModal modalTitle={v} id={row.id} />,
     },
     {
       title: 'Описание',
@@ -34,10 +33,14 @@ function getColumns(): ColumnsType<DictionaryDto> {
 
 interface Props<CreateEntity, FullEntity> {
   model: TCrudStore<CreateEntity, FullEntity>;
+  modalTitle: string;
+  createButtonText?: string;
 }
 
 export function DictionaryList<CreateEntity, FullEntity>({
   model,
+  modalTitle,
+  createButtonText,
 }: Props<CreateEntity, FullEntity>): ReactElement {
   const { $listStore, ListGate } = useMemo(() => model, []);
 
@@ -51,7 +54,7 @@ export function DictionaryList<CreateEntity, FullEntity>({
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Space>
-                <MenuTimeModal title='Создать время меню' />
+                <DictionaryModal modalTitle={modalTitle} createButtonText={createButtonText} />
               </Space>
             </Col>
 

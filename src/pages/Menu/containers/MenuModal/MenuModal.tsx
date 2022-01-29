@@ -25,6 +25,7 @@ export const MenuModal: FC<Props> = ({ title, onlyCreate }: Props) => {
       onDelete={onlyCreate ? undefined : deleteFx}
       title={title}
       buttonType='primary'
+      modalTitle='Элемент меню'
     >
       <MenuFormFields formInstance={formInstance} />
     </ModalForm>
