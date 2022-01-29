@@ -4,23 +4,22 @@ import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { TId } from '../../common/types';
 import { DictionaryFields } from './DictionaryFields';
-import { DictionaryDto } from './types';
 
-interface Props<CreateEntity, FullEntity> {
-  model: TCrudStore<CreateEntity, FullEntity>;
+interface Props<CreateEntity> {
+  model: TCrudStore<CreateEntity>;
   modalTitle: string;
   createButtonText?: string;
   id?: TId;
 }
 
-export function DictionaryModal<CreateEntity, FullEntity>({
+export function DictionaryModal<CreateEntity>({
   modalTitle,
   id,
   createButtonText,
   model,
-}: Props<CreateEntity, FullEntity>) {
+}: Props<CreateEntity>) {
   const { $oneStore, createFx, updateFx, getAllDefault, OneGate } = model;
-  const { formInstance, ModalForm } = useValidatedForm<FullEntity>();
+  const { formInstance, ModalForm } = useValidatedForm<CreateEntity>();
 
   useGate(OneGate, id);
   const { item, pending } = useStore($oneStore);

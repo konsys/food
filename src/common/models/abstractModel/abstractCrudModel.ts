@@ -20,10 +20,10 @@ import {
   TypeOrmDeleteResult,
 } from '../../api/types';
 import { notification } from 'antd';
-import { TId, TWithId } from '../../types';
+import { TItemWithId } from '../../types';
 import { NullableNumber } from '../../../core/types';
 
-export type TCrudStore<CreateEntity, FullEntity> = {
+export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   createFx: Effect<Partial<CreateEntity>, FullEntity, Error>;
   resetList: Event<void>;
   resetOne: Event<void>;
@@ -43,7 +43,7 @@ export type TCrudStore<CreateEntity, FullEntity> = {
   getAllDefault: Event<void>;
 };
 
-export class CrudStore<CreateEntity, FullEntity extends { id: TId } = CreateEntity & TWithId> {
+export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
   private url: string;
 
   constructor(url: string) {

@@ -4,7 +4,7 @@ import { Effect, Event } from 'effector';
 import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
 import { ImageDto } from '../../pages/Image/model/types';
 import { TypeOrmDeleteResult } from '../api/types';
-import { TId, TItemWithId, TPromiseFn, TVoidFn, TWithId } from '../types';
+import { TItemWithId, TPromiseFn, TVoidFn } from '../types';
 import { AbstractFormProps } from './AbstractForm';
 
 export type TSetFieldsValue<T> = (item: Partial<T> | null) => void;
@@ -17,8 +17,8 @@ export type TActionAfterCancel<T> = TPromiseFn<void, T>;
 export type TResetFields = (fields?: any[]) => void;
 
 export type TModalWithFormProps<T> = ModalProps & {
-  onCreate: Effect<Partial<T>, T & TWithId, Error>;
-  onUpdate: Effect<T & TWithId, T & TWithId, Error>;
+  onCreate: Effect<Partial<T>, TItemWithId<T>, Error>;
+  onUpdate: Effect<TItemWithId<T>, TItemWithId<T>, Error>;
   buttonType: ButtonType;
   getList: Event<void>;
   createButtonText?: string;
