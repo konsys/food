@@ -9,13 +9,13 @@ import { MenuTimeModal } from '../../pages/MenuTime/MenuTimeModal';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
 
-function getColumns<T>(): ColumnsType<T> {
+function getColumns(): ColumnsType<DictionaryDto> {
   const name = columnsNamesGenerator<DictionaryDto>();
   return [
     {
       title: 'Название',
       dataIndex: name('name'),
-      render: (v) => <DictionaryModal title={v} />,
+      render: (v, row) => <DictionaryModal title={v} id={row.id} />,
     },
     {
       title: 'Описание',
@@ -56,7 +56,7 @@ export function DictionaryList<CreateEntity, FullEntity>({
             </Col>
 
             <Col span={24}>
-              <Table columns={getColumns<DictionaryDto>()} dataSource={list.items}></Table>
+              <Table rowKey={'id'} columns={getColumns()} dataSource={list.items}></Table>
             </Col>
           </Row>
         </div>

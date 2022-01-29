@@ -1,4 +1,13 @@
-import { createEffect, createEvent, createStore, Effect, Event, sample, Store } from 'effector';
+import {
+  createEffect,
+  createEvent,
+  createStore,
+  Effect,
+  Event,
+  guard,
+  sample,
+  Store,
+} from 'effector';
 import { createGate, Gate } from 'effector-react';
 import { CrudService } from '../../api';
 import {
@@ -119,10 +128,9 @@ export class CrudStore<CreateEntity, FullEntity extends { id: TId } = CreateEnti
       target: getAllFx,
     });
 
-    sample({
-      clock: OneGate.open,
-      source: OneGate.state,
-      fn: () => (!isNaN(Number(OneGate.state)) ? Number(OneGate.state) : 9),
+    guard({
+      source: OneGate.state.map((state) => (state ? state : UN_EXISTING_ID)),
+      filter: OneGate.state.map((state) => !isNaN(Number(state))),
       target: getOneFx,
     });
 
@@ -147,3 +155,5 @@ export class CrudStore<CreateEntity, FullEntity extends { id: TId } = CreateEnti
     };
   }
 }
+
+const UN_EXISTING_ID = -1000;
