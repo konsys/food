@@ -106,7 +106,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             }
             return validatedFormItem;
           })
-          .then((v) => (v?.id ? onUpdate : onCreate))
+          .then((v) => (v?.id ? onUpdate(v) : onCreate(v)))
           .then(() => getList())
           .then(() => setVisible(false))
           .catch((reason) => {
