@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Form, Input } from 'antd';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
-import { DictionaryDto } from '../../common/types/dto';
 import TextArea from 'antd/lib/input/TextArea';
+import { DictionaryDto } from './types';
 
 const names = columnsNamesGenerator<DictionaryDto>();
 
@@ -12,7 +12,7 @@ interface Props<T> {
   item?: T;
 }
 
-export function DictionaryFields<T>({ item, formInstance }: Props<T>) {
+export function DictionaryFields({ item, formInstance }: Props<DictionaryDto>) {
   useEffect(() => {
     formInstance.setFieldsValue(item);
   }, [item]);
