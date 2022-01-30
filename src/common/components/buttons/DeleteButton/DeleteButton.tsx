@@ -9,19 +9,24 @@ interface Props {
 }
 
 export function DeleteButton({ id, onDelete }: Props) {
-  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [confirmDeleteVisible, setConfirmDeleteVisible] = useState(false);
   return (
     <Popconfirm
       title={`Удалить?`}
-      visible={confirmDelete}
+      visible={confirmDeleteVisible}
       onConfirm={() => {
         onDelete(id);
-        setConfirmDelete(false);
+        setConfirmDeleteVisible(false);
       }}
-      onCancel={() => setConfirmDelete(false)}
+      onCancel={() => setConfirmDeleteVisible(false)}
     >
       {/* TODO add color */}
-      <Button type={'link'} danger onClick={() => setConfirmDelete(true)} icon={<DeleteOutlined />}>
+      <Button
+        type={'link'}
+        danger
+        onClick={() => setConfirmDeleteVisible(true)}
+        icon={<DeleteOutlined />}
+      >
         Удалить
       </Button>
     </Popconfirm>

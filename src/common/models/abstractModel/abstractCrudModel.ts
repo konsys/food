@@ -114,7 +114,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       .on(createFx.fail, () => notification.error({ message: 'Ошибка создания' }))
       .on(getOneFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
       .on(updateFx.fail, () => notification.error({ message: 'Ошибка обновления' }))
-      .on(deleteFx.fail, () => notification.error({ message: 'Ошибка удаления' }))
+      .on(deleteFx.fail, () => notification.error({ message: `Ошибка удаления` }))
       .reset(resetOne);
 
     sample({
@@ -148,12 +148,12 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     });
 
     sample({
-      clock: getAll,
-      target: getAllFx,
+      clock: deleteItem,
+      target: deleteFx,
     });
 
     sample({
-      clock: [deleteFx.done, updateFx.done, createFx.done],
+      clock: [getAll, deleteFx.done, updateFx.done, createFx.done],
       target: getAllDefault,
     });
 

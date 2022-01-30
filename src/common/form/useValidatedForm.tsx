@@ -92,6 +92,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
       const [modalVisible, setModalVisible] = useState<boolean>(false);
 
       const imageBlob = useStore($imageBlob);
+
       const modalOnOk = () => {
         setIsFormPending(true);
         form
@@ -127,10 +128,10 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         afterClose && afterClose();
       };
 
-      const deleteItem = async (id: number) => {
+      const deleteItem = (dId: number) => {
         setIsFormPending(true);
         try {
-          onDelete && onDelete(id);
+          onDelete && onDelete(dId);
         } finally {
           setIsFormPending(false);
         }
@@ -150,7 +151,11 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             </Col>
             {onDelete && (
               <Col span={10}>
-                {item && isNumber(item?.id) && <DeleteButton id={item.id} onDelete={deleteItem} />}
+                {item && isNumber(item?.id) ? (
+                  <DeleteButton id={item.id} onDelete={deleteItem} />
+                ) : (
+                  ''
+                )}
               </Col>
             )}
           </Row>
