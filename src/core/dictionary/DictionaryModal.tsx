@@ -2,12 +2,14 @@ import { useStore } from 'effector-react';
 import React from 'react';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
+import { TId } from '../../common/types';
 import { DictionaryFields } from './DictionaryFields';
 
 interface Props<CreateEntity> {
   model: TCrudStore<CreateEntity>;
   modalTitle: string;
   createButtonText?: string;
+  id?: TId;
 }
 
 export function DictionaryModal<CreateEntity>({

@@ -4,7 +4,7 @@ import { Effect, Event } from 'effector';
 import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
 import { ImageDto } from '../../pages/Image/model/types';
 import { TypeOrmDeleteResult } from '../api/types';
-import { TItemWithId, TPromiseFn, TVoidFn } from '../types';
+import { TId, TItemWithId, TPromiseFn, TVoidFn } from '../types';
 import { AbstractFormProps } from './AbstractForm';
 
 export type TSetFieldsValue<T> = (item: Partial<T> | null) => void;
@@ -28,6 +28,8 @@ export type TModalWithFormProps<T> = ModalProps & {
   item?: Partial<TItemWithId<T>>;
   pending?: boolean;
   afterClose?: Event<void>;
+  id?: TId;
+  loadItem?: Event<TId>;
 };
 
 export type TReturnedForm = AbstractFormProps;
