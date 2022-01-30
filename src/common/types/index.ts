@@ -2,8 +2,6 @@ import {
   ColumnGroupType as AntdColumnGroupType,
   ColumnType as AntdColumnType,
 } from 'antd/lib/table/interface';
-import { Effect } from 'effector';
-import { TypeOrmDeleteResult } from '../api/types';
 import { TColumnKeys } from '../form/columnsNamesGenerator';
 
 export type ColumnType<RecordType> = Omit<AntdColumnType<RecordType>, 'dataIndex'> & {
