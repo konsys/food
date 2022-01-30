@@ -3,6 +3,7 @@ import { Form, Input } from 'antd';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import TextArea from 'antd/lib/input/TextArea';
 import { DictionaryDto } from './types';
+import { TId } from '../../common/types';
 
 const names = columnsNamesGenerator<DictionaryDto>();
 
@@ -12,7 +13,7 @@ interface Props<T> {
   item?: T;
 }
 
-export function DictionaryFields({ item, formInstance }: Props<DictionaryDto>) {
+export function DictionaryFields<T extends { id: TId }>({ formInstance, item }: Props<T>) {
   useEffect(() => {
     formInstance.setFieldsValue(item);
   }, [item]);

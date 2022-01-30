@@ -17,9 +17,7 @@ function getColumns<CreateEntity>(
     {
       title: 'Название',
       dataIndex: name('name'),
-      render: (v, row) => (
-        <DictionaryModal model={model} createButtonText={v} modalTitle={modalTitle} id={row.id} />
-      ),
+      render: (v) => <DictionaryModal model={model} createButtonText={v} modalTitle={modalTitle} />,
     },
     {
       title: 'Описание',

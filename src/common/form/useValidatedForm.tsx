@@ -84,11 +84,12 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         buttonType,
         pending,
         createButtonText,
+        afterClose,
       } = props;
 
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
-      const [visible, setVisible] = useState<boolean>(false);
-      const [confirmVisible, setConfirmVisible] = useState(false);
+      const [modalVisible, setModalVisible] = useState<boolean>(false);
+      const [confirmDelete, setConfirmDelete] = useState(false);
 
       const imageBlob = useStore($imageBlob);
       const modalOnOk = () => {
@@ -108,7 +109,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
           })
           .then((v) => (v?.id ? onUpdate(v) : onCreate(v)))
           .then(() => getList())
-          .then(() => setVisible(false))
+          .then(() => setModalVisible(false))
           .catch((reason) => {
             notification.error({ message: <ErrorMessage error={reason} /> });
             return reason;
@@ -120,13 +121,14 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
       const onOpen = () => {
         onClose();
-        setVisible(true);
+        setModalVisible(true);
       };
 
       const onClose = () => {
-        setVisible(false);
+        setModalVisible(false);
         returnedFormInstance.resetFields();
         resetImageBlob();
+        afterClose && afterClose();
       };
 
       const deleteItem = async (id: number) => {
@@ -153,11 +155,11 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
               <Col span={10}>
                 <Popconfirm
                   title={`Удалить?`}
-                  visible={confirmVisible}
+                  visible={confirmDelete}
                   onConfirm={() => item?.id && deleteItem(+item.id)}
-                  onCancel={() => setConfirmVisible(false)}
+                  onCancel={() => setConfirmDelete(false)}
                 >
-                  <Button type={buttonType ?? 'primary'} onClick={() => setConfirmVisible(true)}>
+                  <Button type={buttonType ?? 'primary'} onClick={() => setConfirmDelete(true)}>
                     Удалить
                   </Button>
                 </Popconfirm>
@@ -171,7 +173,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
               loading: isFormPending || okButtonProps?.loading || pending,
             }}
             onCancel={onClose}
-            visible={visible}
+            visible={modalVisible}
             onOk={modalOnOk}
             title={title}
           >

@@ -131,7 +131,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     guard({
       clock: OneGate.state,
       source: OneGate.state.map((state) => (state ? state : UN_EXISTING_ID)),
-      filter: OneGate.state.map((state) => !isNaN(Number(state))),
+      filter: OneGate.state.map((state) => !isNaN(Number(state)) || state === UN_EXISTING_ID),
       target: getOneFx,
     });
 
@@ -157,4 +157,4 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
   }
 }
 
-const UN_EXISTING_ID = -1000;
+const UN_EXISTING_ID = -100000;

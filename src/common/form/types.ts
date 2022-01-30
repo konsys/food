@@ -27,6 +27,7 @@ export type TModalWithFormProps<T> = ModalProps & {
   createImage?: Effect<Partial<FormData>, ImageDto, Error>;
   item?: Partial<TItemWithId<T>>;
   pending?: boolean;
+  afterClose?: Event<void>;
 };
 
 export type TReturnedForm = AbstractFormProps;
