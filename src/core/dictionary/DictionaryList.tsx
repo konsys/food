@@ -1,14 +1,14 @@
-import { Button, Col, Row, Space, Table } from 'antd';
+import { Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement } from 'react';
 import { ColumnsType } from '../../common/types';
-import DeleteOutlined from '@ant-design/icons';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
 import { Event } from 'effector';
 import { isNumber } from '../../common/utils/utils';
+import { DeleteButton } from '../../common/components/buttons/DeleteButton/DeleteButton';
 
 function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
@@ -38,16 +38,9 @@ function getColumns<CreateEntity>(
     },
     {
       title: 'Удалить',
-      render: (_, row) => (
-        <Button
-          danger
-          type='link'
-          icon={<DeleteOutlined />}
-          onClick={() => isNumber(row.id) && onDelete(row.id)}
-        >
-          Удалить
-        </Button>
-      ),
+      render: (_, row) => {
+        return isNumber(row.id) && <DeleteButton id={row.id} onDelete={onDelete} />;
+      },
     },
   ];
 }

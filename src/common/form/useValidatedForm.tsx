@@ -110,12 +110,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             return validatedFormItem;
           })
           .then((v) => (v?.id ? onUpdate(v) : onCreate(v)))
-          .then(() => getList())
           .then(() => setModalVisible(false))
-          .catch((reason) => {
-            notification.error({ message: <ErrorMessage error={reason} /> });
-            return reason;
-          })
           .finally(() => setIsFormPending(false));
       };
 
