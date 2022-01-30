@@ -7,22 +7,21 @@ import { useStore } from 'effector-react';
 import { MenuModel, MenuTimeModel, MenuTypeModel } from '../../../../store';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { ImageCrop } from '../../../../common/components/ImageCrop';
-import { isNullOrUndefined } from '../../../../common/utils/utils';
+import { isNullOrUndefined, isNumber } from '../../../../common/utils/utils';
 import { setImageBlob } from '../../../Image/model/store';
 
 const { $listStore: $menuTimeList, getAll: getAllMenuTimeFx } = MenuTimeModel;
 const { $listStore: $menuTypeList, getAll: getAllMenuTypeFx } = MenuTypeModel;
-const { $oneStore: $menuStore, getItem, resetOne } = MenuModel;
+const { $itemStore: $menuStore, getItem, resetOne } = MenuModel;
 
 const names = columnsNamesGenerator<MenuDto>();
 
 interface Props {
   // TODO add type
   formInstance: any;
-  id?: number;
 }
 
-export const MenuFormFields = ({ id, formInstance }: Props) => {
+export const MenuFormFields = ({ formInstance }: Props) => {
   const menuTimeList = useStore($menuTimeList);
   const menuTypeList = useStore($menuTypeList);
   const menu = useStore($menuStore);
@@ -31,11 +30,11 @@ export const MenuFormFields = ({ id, formInstance }: Props) => {
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
 
   useEffect(() => {
-    if (!isNullOrUndefined(id)) {
-      getItem(id);
+    if (isNumber(menu.id)) {
+      getItem(menu.id);
     }
     return () => resetOne();
-  }, [id]);
+  }, [menu.id]);
 
   useEffect(() => {
     formInstance.setFieldsValue(menu.item);

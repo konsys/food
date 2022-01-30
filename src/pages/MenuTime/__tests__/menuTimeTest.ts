@@ -10,7 +10,7 @@ const {
   resetList,
   resetOne,
   $listStore,
-  $oneStore,
+  $itemStore,
   getAllFx,
   updateFx,
   getOneFx,
@@ -43,14 +43,14 @@ describe('menu time test', () => {
   });
 
   afterAll(() => {
-    $oneStore.off(resetOne);
+    $itemStore.off(resetOne);
     $listStore.off(resetList);
   });
 
   it('should create menu time', async () => {
     await createFx(newItem);
     // eslint-disable-next-line effector/no-getState
-    expect($oneStore.getState()).toStrictEqual(expect.objectContaining(newItem));
+    expect($itemStore.getState()).toStrictEqual(expect.objectContaining(newItem));
   });
 
   it('should get all menu time', async () => {
@@ -69,7 +69,7 @@ describe('menu time test', () => {
   it('should get one menu time', async () => {
     randomItem.id && (await getOneFx(randomItem.id));
     // randomItem-disable-next-line effector/no-getState
-    const one = $oneStore.getState();
+    const one = $itemStore.getState();
     expect(one).toStrictEqual(expect.objectContaining(randomItem));
   });
 
@@ -78,23 +78,23 @@ describe('menu time test', () => {
     randomItem.id && (await updateFx({ ...randomItem, description }));
 
     // eslint-disable-next-line effector/no-getState
-    const one = $oneStore.getState();
+    const one = $itemStore.getState();
     expect(one?.item?.description).toBe(description);
   });
 
   it('should delete menu time', async () => {
     await createFx(newItem);
-    const state = $oneStore.getState();
+    const state = $itemStore.getState();
     state?.item?.id && (await deleteFx(state.item.id));
 
     // eslint-disable-next-line effector/no-getState
-    let one = $oneStore.getState();
+    let one = $itemStore.getState();
     expect(one.item).toBeNull();
 
     state?.item?.id && (await getOneFx(state?.item?.id));
 
     // eslint-disable-next-line effector/no-getState
-    one = $oneStore.getState();
+    one = $itemStore.getState();
     expect(one.item).toBeNull();
   });
 });

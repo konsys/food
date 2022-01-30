@@ -44,7 +44,7 @@ export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   setPage: Event<number>;
   setPageSize: Event<number>;
   $listStore: Store<any>;
-  $oneStore: Store<any>;
+  $itemStore: Store<any>;
   $itemPending: Store<boolean>;
   ListGate: Gate<TListRequest<FullEntity>>;
   OneGate: Gate<NullableNumber>;
@@ -99,7 +99,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     const setFilter = createEvent<any>();
     const setItem = createEvent<FullEntity>();
 
-    const $oneStore = createStore<TRequestProcess<FullEntity>>(createInitItem());
+    const $itemStore = createStore<TRequestProcess<FullEntity>>(createInitItem());
     const $itemPending = createStore<boolean>(false);
     const $listStore = createStore<TListResponce<FullEntity>>(
       createInitItemsWithPagination<FullEntity>()
@@ -118,7 +118,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       .on(getAllFx.fail, () => notification.error({ message: 'Ошибка получения списка меню' }))
       .reset(resetList);
 
-    $oneStore
+    $itemStore
       .on(setItem, (prev, item) => ({ ...prev, item }))
       .on(createItemFx.done, nullableResult)
       .on(getItemFx.done, nullableResult)
@@ -173,7 +173,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       setPage,
       setPageSize,
       $listStore,
-      $oneStore,
+      $itemStore,
       $itemPending,
       ListGate,
       OneGate,

@@ -10,7 +10,7 @@ const {
   resetList,
   resetOne,
   $listStore,
-  $oneStore,
+  $itemStore,
   getAllFx,
   updateFx,
   getOneFx,
@@ -38,7 +38,7 @@ describe('menu type test', () => {
   });
 
   afterAll(() => {
-    $oneStore.off(resetOne);
+    $itemStore.off(resetOne);
     $listStore.off(resetList);
   });
 
@@ -46,7 +46,7 @@ describe('menu type test', () => {
     await createFx(newItem);
 
     // eslint-disable-next-line effector/no-getState
-    expect($oneStore.getState()).toStrictEqual(expect.objectContaining(newItem));
+    expect($itemStore.getState()).toStrictEqual(expect.objectContaining(newItem));
   });
 
   it('should get limit menu type', async () => {
@@ -75,7 +75,7 @@ describe('menu type test', () => {
   it('should get one menu type', async () => {
     randomItem.id && (await getOneFx(randomItem.id));
     // eslint-disable-next-line effector/no-getState
-    const item = $oneStore.getState();
+    const item = $itemStore.getState();
     expect(item).toStrictEqual(expect.objectContaining(randomItem));
   });
 
@@ -84,23 +84,23 @@ describe('menu type test', () => {
     randomItem.id && (await updateFx({ ...randomItem, description }));
 
     // eslint-disable-next-line effector/no-getState
-    const one = $oneStore.getState();
+    const one = $itemStore.getState();
     expect(one?.item.description).toStrictEqual(description);
   });
 
   it('should delete menu type', async () => {
     await createFx(newItem);
-    const item = $oneStore.getState();
+    const item = $itemStore.getState();
     item?.item?.id && (await deleteFx(item.item.id));
 
     // eslint-disable-next-line effector/no-getState
-    let one = $oneStore.getState();
+    let one = $itemStore.getState();
     expect(one).toBeNull();
 
     item?.item?.id && (await getOneFx(item.item.id));
 
     // eslint-disable-next-line effector/no-getState
-    one = $oneStore.getState();
+    one = $itemStore.getState();
     expect(one).toBeNull();
   });
 });
