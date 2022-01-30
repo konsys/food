@@ -86,6 +86,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         createButtonText,
         afterClose,
         loadItem,
+        id,
       } = props;
 
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
@@ -122,7 +123,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
       const onOpen = () => {
         onClose();
-        loadItem && loadItem();
+        loadItem && id && loadItem(id);
         setModalVisible(true);
       };
 

@@ -1,6 +1,6 @@
 import { Button, Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
-import React, { ReactElement, useMemo } from 'react';
+import React, { ReactElement } from 'react';
 import { ColumnsType } from '../../common/types';
 import DeleteOutlined from '@ant-design/icons';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
@@ -8,7 +8,7 @@ import { DictionaryDto } from './types';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
 import { Event } from 'effector';
-import { isNullOrUndefined, isNumber } from '../../common/utils/utils';
+import { isNumber } from '../../common/utils/utils';
 
 function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
@@ -25,7 +25,8 @@ function getColumns<CreateEntity>(
           model={model}
           createButtonText={v}
           modalTitle={modalTitle}
-          loadItem={isNumber(row.id) && loadItem(row.id)}
+          loadItem={loadItem}
+          id={isNumber(row.id) ? row.id : undefined}
         />
       ),
     },
@@ -55,7 +56,7 @@ export function DictionaryList<CreateEntity>({
   modalTitle,
   createButtonText,
 }: Props<CreateEntity>): ReactElement {
-  const { $listStore, ListGate, loadItem } = useMemo(() => model, []);
+  const { $listStore, ListGate, loadItem } = model;
 
   const list = useStore($listStore);
   useGate(ListGate);

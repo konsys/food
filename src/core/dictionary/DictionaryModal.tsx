@@ -10,12 +10,15 @@ interface Props<CreateEntity> {
   modalTitle: string;
   createButtonText?: string;
   loadItem?: Event<number>;
+  id?: number;
 }
 
 export function DictionaryModal<CreateEntity>({
   modalTitle,
   createButtonText,
   model,
+  loadItem,
+  id,
 }: Props<CreateEntity>) {
   const { $oneStore, createFx, updateFx, getAllDefault, resetOne } = model;
   const { formInstance, ModalForm } = useValidatedForm<CreateEntity>();
@@ -33,6 +36,8 @@ export function DictionaryModal<CreateEntity>({
       pending={pending}
       afterClose={resetOne}
       createButtonText={createButtonText}
+      loadItem={loadItem}
+      id={id}
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>
