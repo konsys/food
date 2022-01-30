@@ -73,7 +73,6 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
     (props) => {
       const {
         children,
-        okButtonProps,
         onCreate,
         onUpdate,
         onDelete,
@@ -113,7 +112,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
           .finally(() => setIsFormPending(false));
       };
 
-      const disabledOkBtn = isFormPending || okButtonProps?.disabled;
+      const disabledOkBtn = isFormPending;
 
       const onOpen = () => {
         onClose();
@@ -161,9 +160,8 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
           </Row>
           <MainModal
             okButtonProps={{
-              ...okButtonProps,
               disabled: disabledOkBtn,
-              loading: isFormPending || okButtonProps?.loading || pending,
+              loading: isFormPending || pending,
             }}
             onCancel={onClose}
             visible={modalVisible}
