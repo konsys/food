@@ -1,4 +1,13 @@
-import { createEffect, createEvent, createStore, Event, guard, sample, Store } from 'effector';
+import {
+  createEffect,
+  createEvent,
+  createStore,
+  Effect,
+  Event,
+  guard,
+  sample,
+  Store,
+} from 'effector';
 import { createGate, Gate } from 'effector-react';
 import { CrudService } from '../../api';
 import {
@@ -11,9 +20,22 @@ import {
   TypeOrmDeleteResult,
 } from '../../api/types';
 import { notification } from 'antd';
-import { TEffect, TItemWithId } from '../../types';
 import { NullableNumber } from '../../../core/types';
 import { isNumber } from '../../utils/utils';
+import { TItemWithId } from '../../types';
+
+export type TCreateItemFx<CreateEntity, FullEntity> = Effect<
+  Partial<CreateEntity>,
+  FullEntity,
+  Error
+>;
+export type TUpdateItemFx<FullEntity> = Effect<FullEntity, FullEntity>;
+export type TDeleteItemFx = Effect<number, TypeOrmDeleteResult>;
+export type TGetAllFx<FullEntity> = Effect<
+  TListRequest<FullEntity>,
+  TListResponce<FullEntity>,
+  Error
+>;
 
 export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   resetList: Event<void>;
@@ -29,9 +51,9 @@ export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   setItem: Event<FullEntity>;
   getAllDefault: Event<void>;
   getItem: Event<number>;
-  createItemFx: TEffect<Partial<CreateEntity>, FullEntity>;
-  updateItemFx: TEffect<FullEntity, FullEntity>;
-  deleteItemFx: TEffect<number, void>;
+  createItemFx: TCreateItemFx<Partial<CreateEntity>, FullEntity>;
+  updateItemFx: TUpdateItemFx<FullEntity>;
+  deleteItemFx: TDeleteItemFx;
   getAll: Event<TListRequest<FullEntity>>;
 };
 
@@ -59,16 +81,17 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       handler: (id) => service.getOne(id),
     });
 
-    const updateFx = createEffect<FullEntity, FullEntity, Error>({
+    const updateItemFx = createEffect<FullEntity, FullEntity, Error>({
       handler: (mt) => service.updateOne(mt),
     });
 
-    const deleteFx = createEffect<number, TypeOrmDeleteResult, Error>({
+    const deleteItemFx = createEffect<number, TypeOrmDeleteResult, Error>({
       handler: (id) => service.deleteOne(id),
     });
 
     const getItem = createEvent<number>();
     const getAllDefault = createEvent();
+    const getAll = createEvent<TListRequest<FullEntity>>();
     const resetOne = createEvent();
     const resetList = createEvent();
     const setPage = createEvent<number>();
@@ -99,18 +122,18 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       .on(setItem, (prev, item) => ({ ...prev, item }))
       .on(createItemFx.done, nullableResult)
       .on(getItemFx.done, nullableResult)
-      .on(updateFx.done, nullableResult)
-      .on(deleteFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
+      .on(updateItemFx.done, nullableResult)
+      .on(deleteItemFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
         result.affected ? createInitItem<FullEntity>() : prev
       )
       .on(createItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(getItemFx.pending, (prev, pending) => ({ ...prev, pending }))
-      .on(updateFx.pending, (prev, pending) => ({ ...prev, pending }))
-      .on(deleteFx.pending, (prev, pending) => ({ ...prev, pending }))
+      .on(updateItemFx.pending, (prev, pending) => ({ ...prev, pending }))
+      .on(deleteItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(createItemFx.fail, () => notification.error({ message: 'Ошибка создания' }))
       .on(getItemFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
-      .on(updateFx.fail, () => notification.error({ message: 'Ошибка обновления' }))
-      .on(deleteFx.fail, () => notification.error({ message: `Ошибка удаления` }))
+      .on(updateItemFx.fail, () => notification.error({ message: 'Ошибка обновления' }))
+      .on(deleteItemFx.fail, () => notification.error({ message: `Ошибка удаления` }))
       .reset(resetOne);
 
     sample({
@@ -129,7 +152,12 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     });
 
     sample({
-      clock: [deleteFx.done, updateFx.done, createItemFx.done],
+      clock: getAll,
+      target: getAllFx,
+    });
+
+    sample({
+      clock: [deleteItemFx.done, updateItemFx.done, createItemFx.done],
       target: getAllDefault,
     });
 
@@ -153,8 +181,9 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       getAllDefault,
       getItem,
       createItemFx,
-      // deleteItemFx,
-      // updateItemFx,
+      deleteItemFx,
+      updateItemFx,
+      getAll,
     };
   }
 }

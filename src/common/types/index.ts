@@ -3,6 +3,7 @@ import {
   ColumnType as AntdColumnType,
 } from 'antd/lib/table/interface';
 import { Effect } from 'effector';
+import { TypeOrmDeleteResult } from '../api/types';
 import { TColumnKeys } from '../form/columnsNamesGenerator';
 
 export type ColumnType<RecordType> = Omit<AntdColumnType<RecordType>, 'dataIndex'> & {
@@ -22,4 +23,3 @@ export type TOnlyView = { onlyView: boolean };
 export type TId = number | null | undefined;
 export type TWithId = { id: TId };
 export type TItemWithId<T> = T & { id: TId };
-export type TEffect<InType, OutType> = Effect<InType, OutType, void>;

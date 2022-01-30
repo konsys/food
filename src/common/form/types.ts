@@ -3,7 +3,12 @@ import { ButtonType } from 'antd/lib/button';
 import { Event } from 'effector';
 import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
 import { ImageDto } from '../../pages/Image/model/types';
-import { TEffect, TItemWithId, TPromiseFn, TVoidFn } from '../types';
+import {
+  TCreateItemFx,
+  TDeleteItemFx,
+  TUpdateItemFx,
+} from '../models/abstractModel/abstractCrudModel';
+import { TItemWithId, TPromiseFn, TVoidFn } from '../types';
 import { AbstractFormProps } from './AbstractForm';
 
 export type TSetFieldsValue<T> = (item: Partial<T> | null) => void;
@@ -15,20 +20,15 @@ export type TActionOnRemove<T> = TPromiseFn<T, unknown>;
 export type TActionAfterCancel<T> = TPromiseFn<void, T>;
 export type TResetFields = (fields?: any[]) => void;
 
-export type TIdWithCb = {
-  id: number;
-  cb?: TVoidFn;
-};
-
 export type TModalWithFormProps<T> = ModalProps & {
-  onCreate: TEffect<Partial<T>, TItemWithId<T>>;
-  onUpdate: TEffect<TItemWithId<T>, TItemWithId<T>>;
+  onCreate: TCreateItemFx<Partial<T>, T>;
+  onUpdate: TUpdateItemFx<TItemWithId<T>>;
+  onDelete?: TDeleteItemFx;
   buttonType: ButtonType;
   getList: Event<void>;
   createButtonText?: string;
   modalTitle: string;
-  onDelete?: TEffect<number, void>;
-  createImage?: TEffect<Partial<FormData>, ImageDto>;
+  createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
   item?: Partial<TItemWithId<T>>;
   pending?: boolean;
   afterClose?: Event<void>;

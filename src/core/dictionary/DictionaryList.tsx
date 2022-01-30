@@ -1,10 +1,10 @@
 import { Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement } from 'react';
-import { ColumnsType, TEffect } from '../../common/types';
+import { ColumnsType } from '../../common/types';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
-import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
+import { TCrudStore, TDeleteItemFx } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
 import { isNumber } from '../../common/utils/utils';
 import { DeleteButton } from '../../common/components/buttons/DeleteButton/DeleteButton';
@@ -14,7 +14,7 @@ function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
   modalTitle: string,
   getItem: Event<number>,
-  onDelete: TEffect<number, void>
+  onDelete: TDeleteItemFx
 ): ColumnsType<DictionaryDto> {
   const name = columnsNamesGenerator<DictionaryDto>();
   return [
