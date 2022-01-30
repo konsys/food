@@ -8,7 +8,7 @@ interface Props {
   modalTitle: string;
 }
 
-const { createItemFx, getAllDefault, updateItemFx, deleteItemFx } = MenuModel;
+const { createItemFx, getAllDefault, updateItemFx, deleteItemFx, $itemStore } = MenuModel;
 const { createItemFx: createImage } = ImageModel;
 
 export const MenuModal: FC<Props> = ({ modalTitle }: Props) => {

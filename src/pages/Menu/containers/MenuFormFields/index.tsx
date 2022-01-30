@@ -7,7 +7,7 @@ import { useStore } from 'effector-react';
 import { MenuModel, MenuTimeModel, MenuTypeModel } from '../../../../store';
 import { createListOptions } from '../../../../common/utils/selectUtils';
 import { ImageCrop } from '../../../../common/components/ImageCrop';
-import { isNullOrUndefined, isNumber } from '../../../../common/utils/utils';
+import { isNumber } from '../../../../common/utils/utils';
 import { setImageBlob } from '../../../Image/model/store';
 
 const { $listStore: $menuTimeList, getAll: getAllMenuTimeFx } = MenuTimeModel;

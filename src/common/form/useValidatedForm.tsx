@@ -1,7 +1,7 @@
 import { Button, Col, Form, Row } from 'antd';
 import React, { FC, useCallback, useMemo, useState } from 'react';
 import { FieldData, NamePath } from 'rc-field-form/es/interface';
-import { TReturnedForm, TModalWithFormProps, TSetFieldsValue } from './types';
+import { TModalWithFormProps, TReturnedForm, TSetFieldsValue } from './types';
 import { MainModal } from '../modal/Modal';
 import { AbstractForm } from './AbstractForm';
 import { enterKeyPressed } from './utils';
