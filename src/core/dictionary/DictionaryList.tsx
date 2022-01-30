@@ -7,10 +7,13 @@ import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
+import { Event } from 'effector';
+import { isNullOrUndefined, isNumber } from '../../common/utils/utils';
 
 function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
-  modalTitle: string
+  modalTitle: string,
+  loadItem: Event<number>
 ): ColumnsType<DictionaryDto> {
   const name = columnsNamesGenerator<DictionaryDto>();
   return [
@@ -18,7 +21,12 @@ function getColumns<CreateEntity>(
       title: 'Название',
       dataIndex: name('name'),
       render: (v, row) => (
-        <DictionaryModal model={model} createButtonText={v} modalTitle={modalTitle} id={row.id} />
+        <DictionaryModal
+          model={model}
+          createButtonText={v}
+          modalTitle={modalTitle}
+          loadItem={isNumber(row.id) && loadItem(row.id)}
+        />
       ),
     },
     {
@@ -47,7 +55,7 @@ export function DictionaryList<CreateEntity>({
   modalTitle,
   createButtonText,
 }: Props<CreateEntity>): ReactElement {
-  const { $listStore, ListGate } = useMemo(() => model, []);
+  const { $listStore, ListGate, loadItem } = useMemo(() => model, []);
 
   const list = useStore($listStore);
   useGate(ListGate);
@@ -70,7 +78,7 @@ export function DictionaryList<CreateEntity>({
             <Col span={24}>
               <Table
                 rowKey={'id'}
-                columns={getColumns<CreateEntity>(model, modalTitle)}
+                columns={getColumns<CreateEntity>(model, modalTitle, loadItem)}
                 dataSource={list.items}
               ></Table>
             </Col>

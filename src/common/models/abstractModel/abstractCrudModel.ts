@@ -22,6 +22,7 @@ import {
 import { notification } from 'antd';
 import { TItemWithId } from '../../types';
 import { NullableNumber } from '../../../core/types';
+import { isNumber } from '../../utils/utils';
 
 export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   createFx: Effect<Partial<CreateEntity>, FullEntity, Error>;
@@ -41,6 +42,7 @@ export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   OneGate: Gate<NullableNumber>;
   setItem: Event<FullEntity>;
   getAllDefault: Event<void>;
+  loadItem: Event<number>;
 };
 
 export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
@@ -75,6 +77,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       handler: (id) => service.deleteOne(id),
     });
 
+    const loadItem = createEvent<number>();
     const getAllDefault = createEvent();
     const resetOne = createEvent();
     const resetList = createEvent();
@@ -131,7 +134,12 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     guard({
       clock: OneGate.state,
       source: OneGate.state.map((state) => (state ? state : UN_EXISTING_ID)),
-      filter: OneGate.state.map((state) => !isNaN(Number(state)) || state === UN_EXISTING_ID),
+      filter: OneGate.state.map((state) => isNumber(state) || state === UN_EXISTING_ID),
+      target: getOneFx,
+    });
+
+    sample({
+      clock: loadItem,
       target: getOneFx,
     });
 
@@ -153,6 +161,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       OneGate,
       setItem,
       getAllDefault,
+      loadItem,
     };
   }
 }

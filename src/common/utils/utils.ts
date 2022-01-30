@@ -63,3 +63,5 @@ export const getFileExtension = (filename: string) => {
 };
 
 export const uuid = () => uuidv4();
+
+export const isNumber = (item: any): item is number => !isNaN(Number(item));

@@ -28,8 +28,7 @@ export type TModalWithFormProps<T> = ModalProps & {
   item?: Partial<TItemWithId<T>>;
   pending?: boolean;
   afterClose?: Event<void>;
-  id?: TId;
-  loadItem?: Event<TId>;
+  loadItem?: Event<void>;
 };
 
 export type TReturnedForm = AbstractFormProps;
