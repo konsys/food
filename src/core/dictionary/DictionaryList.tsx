@@ -22,6 +22,7 @@ function getColumns<CreateEntity>(
       dataIndex: name('name'),
       render: (v, row) => (
         <DictionaryModal
+          buttonType='link'
           model={model}
           createButtonText={v}
           modalTitle={modalTitle}
@@ -69,6 +70,7 @@ export function DictionaryList<CreateEntity>({
             <Col span={24}>
               <Space>
                 <DictionaryModal
+                  buttonType='primary'
                   model={model}
                   modalTitle={modalTitle}
                   createButtonText={createButtonText}

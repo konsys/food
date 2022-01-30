@@ -1,3 +1,4 @@
+import { ButtonType } from 'antd/lib/button';
 import { Event } from 'effector';
 import { useStore } from 'effector-react';
 import React from 'react';
@@ -8,6 +9,7 @@ import { DictionaryFields } from './DictionaryFields';
 interface Props<CreateEntity> {
   model: TCrudStore<CreateEntity>;
   modalTitle: string;
+  buttonType: ButtonType;
   createButtonText?: string;
   loadItem?: Event<number>;
   id?: number;
@@ -15,6 +17,7 @@ interface Props<CreateEntity> {
 
 export function DictionaryModal<CreateEntity>({
   modalTitle,
+  buttonType,
   createButtonText,
   model,
   loadItem,
@@ -32,7 +35,7 @@ export function DictionaryModal<CreateEntity>({
       width={600}
       getList={getAllDefault}
       modalTitle={modalTitle}
-      buttonType={'primary'}
+      buttonType={buttonType}
       pending={pending}
       afterClose={resetOne}
       createButtonText={createButtonText}
