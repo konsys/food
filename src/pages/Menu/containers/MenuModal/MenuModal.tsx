@@ -5,26 +5,25 @@ import { MenuDto } from '../../model/types';
 import { MenuFormFields } from '../MenuFormFields';
 
 interface Props {
-  title?: string;
+  modalTitle: string;
 }
 
-const { createItem, getAllDefault, updateItem, deleteItem } = MenuModel;
-const { createItem: createImage } = ImageModel;
+const { createItemFx, getAllDefault, updateItemFx, deleteItemFx } = MenuModel;
+const { createItemFx: createImage } = ImageModel;
 
-export const MenuModal: FC<Props> = ({ title }: Props) => {
+export const MenuModal: FC<Props> = ({ modalTitle }: Props) => {
   const { formInstance, ModalForm } = useValidatedForm<MenuDto>();
 
   return (
     <ModalForm
-      onCreate={createItem}
-      onUpdate={updateItem}
+      onCreate={createItemFx}
+      onUpdate={updateItemFx}
       width={600}
       getList={getAllDefault}
       createImage={createImage}
-      onDelete={deleteItem}
-      title={title}
+      onDelete={deleteItemFx}
+      modalTitle={modalTitle}
       buttonType='primary'
-      modalTitle='Элемент меню'
     >
       <MenuFormFields formInstance={formInstance} />
     </ModalForm>

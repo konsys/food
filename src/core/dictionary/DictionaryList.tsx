@@ -1,7 +1,7 @@
 import { Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement } from 'react';
-import { ColumnsType } from '../../common/types';
+import { ColumnsType, TEffect } from '../../common/types';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
@@ -14,7 +14,7 @@ function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
   modalTitle: string,
   getItem: Event<number>,
-  onDelete: Event<number>
+  onDelete: TEffect<number, void>
 ): ColumnsType<DictionaryDto> {
   const name = columnsNamesGenerator<DictionaryDto>();
   return [
@@ -56,7 +56,7 @@ export function DictionaryList<CreateEntity>({
   modalTitle,
   createButtonText,
 }: Props<CreateEntity>): ReactElement {
-  const { $listStore, ListGate, deleteItem, getItem } = model;
+  const { $listStore, ListGate, deleteItemFx, getItem } = model;
 
   const list = useStore($listStore);
   useGate(ListGate);
@@ -80,7 +80,7 @@ export function DictionaryList<CreateEntity>({
             <Col span={24}>
               <Table
                 rowKey={'id'}
-                columns={getColumns<CreateEntity>(model, modalTitle, getItem, deleteItem)}
+                columns={getColumns<CreateEntity>(model, modalTitle, getItem, deleteItemFx)}
                 dataSource={list.items}
               ></Table>
             </Col>

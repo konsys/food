@@ -2,7 +2,8 @@ import { ModalProps } from 'antd';
 import { ButtonType } from 'antd/lib/button';
 import { Event } from 'effector';
 import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
-import { TItemWithId, TPromiseFn, TVoidFn } from '../types';
+import { ImageDto } from '../../pages/Image/model/types';
+import { TEffect, TItemWithId, TPromiseFn, TVoidFn } from '../types';
 import { AbstractFormProps } from './AbstractForm';
 
 export type TSetFieldsValue<T> = (item: Partial<T> | null) => void;
@@ -20,14 +21,14 @@ export type TIdWithCb = {
 };
 
 export type TModalWithFormProps<T> = ModalProps & {
-  onCreate: Event<Partial<T>>;
-  onUpdate: Event<TItemWithId<T>>;
+  onCreate: TEffect<Partial<T>, TItemWithId<T>>;
+  onUpdate: TEffect<TItemWithId<T>, TItemWithId<T>>;
   buttonType: ButtonType;
   getList: Event<void>;
   createButtonText?: string;
   modalTitle: string;
-  onDelete?: Event<number>;
-  createImage?: Event<Partial<TItemWithId<FormData>>>;
+  onDelete?: TEffect<number, void>;
+  createImage?: TEffect<Partial<FormData>, ImageDto>;
   item?: Partial<TItemWithId<T>>;
   pending?: boolean;
   afterClose?: Event<void>;

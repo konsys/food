@@ -78,7 +78,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         onUpdate,
         onDelete,
         createImage,
-        title,
+        modalTitle,
         item,
         buttonType,
         pending,
@@ -168,7 +168,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             onCancel={onClose}
             visible={modalVisible}
             onOk={modalOnOk}
-            title={title}
+            title={modalTitle}
           >
             <ReturnedForm
               initialValues={initialValues}
