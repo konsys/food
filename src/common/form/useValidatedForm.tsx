@@ -1,10 +1,9 @@
-import { Button, Col, Form, notification, Row } from 'antd';
+import { Button, Col, Form, Row } from 'antd';
 import React, { FC, useCallback, useMemo, useState } from 'react';
 import { FieldData, NamePath } from 'rc-field-form/es/interface';
 import { TReturnedForm, TModalWithFormProps, TSetFieldsValue } from './types';
 import { MainModal } from '../modal/Modal';
 import { AbstractForm } from './AbstractForm';
-import { ErrorMessage } from '../errors/ErrorMessage';
 import { enterKeyPressed } from './utils';
 import { $imageBlob, resetImageBlob } from '../../pages/Image/model/store';
 import { useStore } from 'effector-react';
@@ -78,7 +77,6 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         onCreate,
         onUpdate,
         onDelete,
-        getList,
         createImage,
         title,
         item,
@@ -131,7 +129,6 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
       const deleteItem = async (id: number) => {
         setIsFormPending(true);
-
         try {
           onDelete && onDelete(id);
         } finally {

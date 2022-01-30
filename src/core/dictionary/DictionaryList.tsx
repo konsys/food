@@ -6,9 +6,9 @@ import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
-import { Event } from 'effector';
 import { isNumber } from '../../common/utils/utils';
 import { DeleteButton } from '../../common/components/buttons/DeleteButton/DeleteButton';
+import { Event } from 'effector';
 
 function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
