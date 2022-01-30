@@ -152,6 +152,16 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       target: getAllFx,
     });
 
+    sample({
+      clock: deleteFx.done,
+      target: getAllDefault,
+    });
+
+    sample({
+      clock: deleteFx.fail,
+      target: getAllDefault,
+    });
+
     return {
       resetList,
       resetOne,

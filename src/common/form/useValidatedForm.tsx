@@ -139,9 +139,6 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
         try {
           onDelete && onDelete(id);
-          getList();
-        } catch (err) {
-          notification.error({ message: <ErrorMessage error={err} /> });
         } finally {
           setIsFormPending(false);
         }
