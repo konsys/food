@@ -153,12 +153,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     });
 
     sample({
-      clock: deleteFx.done,
-      target: getAllDefault,
-    });
-
-    sample({
-      clock: deleteFx.fail,
+      clock: [deleteFx.done, updateFx.done, createFx.done],
       target: getAllDefault,
     });
 
