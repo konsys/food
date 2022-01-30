@@ -10,9 +10,9 @@ import { ImageCrop } from '../../../../common/components/ImageCrop';
 import { isNullOrUndefined } from '../../../../common/utils/utils';
 import { setImageBlob } from '../../../Image/model/store';
 
-const { $listStore: $menuTimeList, getAllFx: getAllMenuTimeFx } = MenuTimeModel;
-const { $listStore: $menuTypeList, getAllFx: getAllMenuTypeFx } = MenuTypeModel;
-const { $oneStore: $menuStore, getOneFx, resetOne } = MenuModel;
+const { $listStore: $menuTimeList, getAll: getAllMenuTimeFx } = MenuTimeModel;
+const { $listStore: $menuTypeList, getAll: getAllMenuTypeFx } = MenuTypeModel;
+const { $oneStore: $menuStore, getItem, resetOne } = MenuModel;
 
 const names = columnsNamesGenerator<MenuDto>();
 
@@ -32,7 +32,7 @@ export const MenuFormFields = ({ id, formInstance }: Props) => {
 
   useEffect(() => {
     if (!isNullOrUndefined(id)) {
-      getOneFx(id);
+      getItem(id);
     }
     return () => resetOne();
   }, [id]);

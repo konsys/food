@@ -25,7 +25,6 @@ import { NullableNumber } from '../../../core/types';
 import { isNumber } from '../../utils/utils';
 
 export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
-  createFx: Effect<Partial<CreateEntity>, FullEntity, Error>;
   resetList: Event<void>;
   resetOne: Event<void>;
   setFilter: Event<any>;
@@ -34,15 +33,15 @@ export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   $listStore: Store<any>;
   $oneStore: Store<any>;
   $itemPending: Store<boolean>;
-  getAllFx: Effect<TListRequest<FullEntity>, TListResponce<FullEntity>>;
-  updateFx: Effect<FullEntity, FullEntity, Error>;
-  getOneFx: Effect<number, FullEntity, Error>;
-  deleteFx: Effect<number, TypeOrmDeleteResult, Error>;
   ListGate: Gate<TListRequest<FullEntity>>;
   OneGate: Gate<NullableNumber>;
   setItem: Event<FullEntity>;
   getAllDefault: Event<void>;
-  loadItem: Event<number>;
+  getItem: Event<number>;
+  createItem: Event<Partial<CreateEntity>>;
+  updateItem: Event<FullEntity>;
+  deleteItem: Event<number>;
+  getAll: Event<TListRequest<FullEntity>>;
 };
 
 export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
@@ -77,7 +76,11 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       handler: (id) => service.deleteOne(id),
     });
 
-    const loadItem = createEvent<number>();
+    const getAll = createEvent<TListRequest<FullEntity>>();
+    const getItem = createEvent<number>();
+    const deleteItem = createEvent<number>();
+    const updateItem = createEvent<FullEntity>();
+    const createItem = createEvent<Partial<CreateEntity>>();
     const getAllDefault = createEvent();
     const resetOne = createEvent();
     const resetList = createEvent();
@@ -139,12 +142,31 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     });
 
     sample({
-      clock: loadItem,
+      clock: getItem,
       target: getOneFx,
     });
 
+    sample({
+      clock: deleteItem,
+      target: deleteFx,
+    });
+
+    sample({
+      clock: createItem,
+      target: createFx,
+    });
+
+    sample({
+      clock: updateItem,
+      target: updateFx,
+    });
+
+    sample({
+      clock: getAll,
+      target: getAllFx,
+    });
+
     return {
-      createFx,
       resetList,
       resetOne,
       setFilter,
@@ -153,15 +175,15 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       $listStore,
       $oneStore,
       $itemPending,
-      getAllFx,
-      updateFx,
-      getOneFx,
-      deleteFx,
+      getAll,
       ListGate,
       OneGate,
       setItem,
       getAllDefault,
-      loadItem,
+      getItem,
+      deleteItem,
+      updateItem,
+      createItem,
     };
   }
 }

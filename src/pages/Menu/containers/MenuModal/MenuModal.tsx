@@ -9,20 +9,20 @@ interface Props {
   onlyCreate?: boolean;
 }
 
-const { createFx, getAllDefault, updateFx, deleteFx } = MenuModel;
-const { createFx: createImage } = ImageModel;
+const { createItem, getAllDefault, updateItem, deleteItem } = MenuModel;
+const { createItem: createImage } = ImageModel;
 
 export const MenuModal: FC<Props> = ({ title, onlyCreate }: Props) => {
   const { formInstance, ModalForm } = useValidatedForm<MenuDto>();
 
   return (
     <ModalForm
-      onCreate={createFx}
-      onUpdate={updateFx}
+      onCreate={createItem}
+      onUpdate={updateItem}
       width={600}
       getList={getAllDefault}
       createImage={createImage}
-      onDelete={onlyCreate ? undefined : deleteFx}
+      onDelete={onlyCreate ? undefined : deleteItem}
       title={title}
       buttonType='primary'
       modalTitle='Элемент меню'

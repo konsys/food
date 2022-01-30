@@ -17,14 +17,14 @@ export type TActionAfterCancel<T> = TPromiseFn<void, T>;
 export type TResetFields = (fields?: any[]) => void;
 
 export type TModalWithFormProps<T> = ModalProps & {
-  onCreate: Effect<Partial<T>, TItemWithId<T>, Error>;
-  onUpdate: Effect<TItemWithId<T>, TItemWithId<T>, Error>;
+  onCreate: Event<Partial<T>>;
+  onUpdate: Event<TItemWithId<T>>;
   buttonType: ButtonType;
   getList: Event<void>;
   createButtonText?: string;
   modalTitle: string;
-  onDelete?: Effect<number, TypeOrmDeleteResult, Error>;
-  createImage?: Effect<Partial<FormData>, ImageDto, Error>;
+  onDelete?: Event<number>;
+  createImage?: Event<Partial<FormData>>;
   item?: Partial<TItemWithId<T>>;
   pending?: boolean;
   afterClose?: Event<void>;

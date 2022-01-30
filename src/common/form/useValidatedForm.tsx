@@ -1,4 +1,4 @@
-import { Button, Col, Form, notification, Popconfirm, Row } from 'antd';
+import { Button, Col, Form, notification, Row } from 'antd';
 import React, { FC, useCallback, useMemo, useState } from 'react';
 import { FieldData, NamePath } from 'rc-field-form/es/interface';
 import { TReturnedForm, TModalWithFormProps, TSetFieldsValue } from './types';
@@ -9,6 +9,7 @@ import { enterKeyPressed } from './utils';
 import { $imageBlob, resetImageBlob } from '../../pages/Image/model/store';
 import { useStore } from 'effector-react';
 import { uuid } from '../utils/utils';
+import { DeleteButton } from '../components/buttons/DeleteButton/DeleteButton';
 
 export function useValidatedForm<T>(initialValues?: Partial<T>) {
   const [form] = Form.useForm();
@@ -91,7 +92,6 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
       const [modalVisible, setModalVisible] = useState<boolean>(false);
-      const [confirmDelete, setConfirmDelete] = useState(false);
 
       const imageBlob = useStore($imageBlob);
       const modalOnOk = () => {
@@ -156,7 +156,8 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             </Col>
             {onDelete && (
               <Col span={10}>
-                <Popconfirm
+                {item?.id && <DeleteButton id={item.id} onDelete={deleteItem} />}
+                {/* <Popconfirm
                   title={`Удалить?`}
                   visible={confirmDelete}
                   onConfirm={() => item?.id && deleteItem(+item.id)}
@@ -165,7 +166,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
                   <Button type={buttonType ?? 'primary'} onClick={() => setConfirmDelete(true)}>
                     Удалить
                   </Button>
-                </Popconfirm>
+                </Popconfirm> */}
               </Col>
             )}
           </Row>

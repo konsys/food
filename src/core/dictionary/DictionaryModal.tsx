@@ -23,15 +23,15 @@ export function DictionaryModal<CreateEntity>({
   loadItem,
   id,
 }: Props<CreateEntity>) {
-  const { $oneStore, createFx, updateFx, getAllDefault, resetOne } = model;
+  const { $oneStore, createItem, updateItem, getAllDefault, resetOne } = model;
   const { formInstance, ModalForm } = useValidatedForm<CreateEntity>();
 
   const { item, pending } = useStore($oneStore);
 
   return (
     <ModalForm
-      onCreate={createFx}
-      onUpdate={updateFx}
+      onCreate={createItem}
+      onUpdate={updateItem}
       width={600}
       getList={getAllDefault}
       modalTitle={modalTitle}

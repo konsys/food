@@ -1,7 +1,7 @@
 import { Button, Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement } from 'react';
-import { ColumnsType } from '../../common/types';
+import { ColumnsType, TVoidFn } from '../../common/types';
 import DeleteOutlined from '@ant-design/icons';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
@@ -14,6 +14,7 @@ function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
   modalTitle: string,
   loadItem: Event<number>
+  onDelete: Event<number>
 ): ColumnsType<DictionaryDto> {
   const name = columnsNamesGenerator<DictionaryDto>();
   return [
@@ -37,8 +38,8 @@ function getColumns<CreateEntity>(
     },
     {
       title: 'Удалить',
-      render: () => (
-        <Button danger type='link' icon={<DeleteOutlined />}>
+      render: (_, row) => (
+        <Button danger type='link' icon={<DeleteOutlined />} onClick={()=>isNumber(row.id) && onDelete(row.id)}>
           Удалить
         </Button>
       ),
@@ -81,7 +82,7 @@ export function DictionaryList<CreateEntity>({
             <Col span={24}>
               <Table
                 rowKey={'id'}
-                columns={getColumns<CreateEntity>(model, modalTitle, loadItem)}
+                columns={getColumns<CreateEntity>(model, modalTitle, loadItem, onDelete={})}
                 dataSource={list.items}
               ></Table>
             </Col>
