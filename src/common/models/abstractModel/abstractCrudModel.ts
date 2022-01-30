@@ -1,13 +1,4 @@
-import {
-  createEffect,
-  createEvent,
-  createStore,
-  Effect,
-  Event,
-  guard,
-  sample,
-  Store,
-} from 'effector';
+import { createEffect, createEvent, createStore, Event, guard, sample, Store } from 'effector';
 import { createGate, Gate } from 'effector-react';
 import { CrudService } from '../../api';
 import {
@@ -144,11 +135,6 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     sample({
       clock: getItem,
       target: getOneFx,
-    });
-
-    sample({
-      clock: deleteItem,
-      target: deleteFx,
     });
 
     sample({

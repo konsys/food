@@ -6,13 +6,12 @@ import { MenuFormFields } from '../MenuFormFields';
 
 interface Props {
   title?: string;
-  onlyCreate?: boolean;
 }
 
 const { createItem, getAllDefault, updateItem, deleteItem } = MenuModel;
 const { createItem: createImage } = ImageModel;
 
-export const MenuModal: FC<Props> = ({ title, onlyCreate }: Props) => {
+export const MenuModal: FC<Props> = ({ title }: Props) => {
   const { formInstance, ModalForm } = useValidatedForm<MenuDto>();
 
   return (
@@ -22,7 +21,7 @@ export const MenuModal: FC<Props> = ({ title, onlyCreate }: Props) => {
       width={600}
       getList={getAllDefault}
       createImage={createImage}
-      onDelete={onlyCreate ? undefined : deleteItem}
+      onDelete={deleteItem}
       title={title}
       buttonType='primary'
       modalTitle='Элемент меню'

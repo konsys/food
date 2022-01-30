@@ -28,7 +28,7 @@ export const MenuListPage = (): ReactElement => {
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Space>
-                <MenuModal title='Создать элемент меню' onlyCreate />
+                <MenuModal title='Создать элемент меню' />
                 <Button onClick={() => setIsEdit(isEdit ? false : true)}>
                   {!isEdit ? 'Редактировать' : 'Завершить'}
                 </Button>

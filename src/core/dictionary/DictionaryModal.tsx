@@ -11,7 +11,7 @@ interface Props<CreateEntity> {
   modalTitle: string;
   buttonType: ButtonType;
   createButtonText?: string;
-  loadItem?: Event<number>;
+  getItem?: Event<number>;
   id?: number;
 }
 
@@ -20,7 +20,7 @@ export function DictionaryModal<CreateEntity>({
   buttonType,
   createButtonText,
   model,
-  loadItem,
+  getItem,
   id,
 }: Props<CreateEntity>) {
   const { $oneStore, createItem, updateItem, getAllDefault, resetOne } = model;
@@ -39,7 +39,7 @@ export function DictionaryModal<CreateEntity>({
       pending={pending}
       afterClose={resetOne}
       createButtonText={createButtonText}
-      loadItem={loadItem}
+      getItem={getItem}
       id={id}
     >
       <DictionaryFields formInstance={formInstance} item={item} />

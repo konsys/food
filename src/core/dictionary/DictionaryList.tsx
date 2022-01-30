@@ -1,7 +1,7 @@
 import { Button, Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement } from 'react';
-import { ColumnsType, TVoidFn } from '../../common/types';
+import { ColumnsType } from '../../common/types';
 import DeleteOutlined from '@ant-design/icons';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
@@ -13,7 +13,7 @@ import { isNumber } from '../../common/utils/utils';
 function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
   modalTitle: string,
-  loadItem: Event<number>
+  getItem: Event<number>,
   onDelete: Event<number>
 ): ColumnsType<DictionaryDto> {
   const name = columnsNamesGenerator<DictionaryDto>();
@@ -27,7 +27,7 @@ function getColumns<CreateEntity>(
           model={model}
           createButtonText={v}
           modalTitle={modalTitle}
-          loadItem={loadItem}
+          getItem={getItem}
           id={isNumber(row.id) ? row.id : undefined}
         />
       ),
@@ -39,7 +39,12 @@ function getColumns<CreateEntity>(
     {
       title: 'Удалить',
       render: (_, row) => (
-        <Button danger type='link' icon={<DeleteOutlined />} onClick={()=>isNumber(row.id) && onDelete(row.id)}>
+        <Button
+          danger
+          type='link'
+          icon={<DeleteOutlined />}
+          onClick={() => isNumber(row.id) && onDelete(row.id)}
+        >
           Удалить
         </Button>
       ),
@@ -58,7 +63,7 @@ export function DictionaryList<CreateEntity>({
   modalTitle,
   createButtonText,
 }: Props<CreateEntity>): ReactElement {
-  const { $listStore, ListGate, loadItem } = model;
+  const { $listStore, ListGate, deleteItem, getItem } = model;
 
   const list = useStore($listStore);
   useGate(ListGate);
@@ -82,7 +87,7 @@ export function DictionaryList<CreateEntity>({
             <Col span={24}>
               <Table
                 rowKey={'id'}
-                columns={getColumns<CreateEntity>(model, modalTitle, loadItem, onDelete={})}
+                columns={getColumns<CreateEntity>(model, modalTitle, getItem, deleteItem)}
                 dataSource={list.items}
               ></Table>
             </Col>

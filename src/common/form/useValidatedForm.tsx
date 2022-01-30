@@ -8,7 +8,7 @@ import { ErrorMessage } from '../errors/ErrorMessage';
 import { enterKeyPressed } from './utils';
 import { $imageBlob, resetImageBlob } from '../../pages/Image/model/store';
 import { useStore } from 'effector-react';
-import { uuid } from '../utils/utils';
+import { isNumber, uuid } from '../utils/utils';
 import { DeleteButton } from '../components/buttons/DeleteButton/DeleteButton';
 
 export function useValidatedForm<T>(initialValues?: Partial<T>) {
@@ -86,7 +86,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         pending,
         createButtonText,
         afterClose,
-        loadItem,
+        getItem,
         id,
       } = props;
 
@@ -123,7 +123,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
       const onOpen = () => {
         onClose();
-        loadItem && id && loadItem(id);
+        getItem && id && getItem(id);
         setModalVisible(true);
       };
 
@@ -136,14 +136,15 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
       const deleteItem = async (id: number) => {
         setIsFormPending(true);
-        onDelete &&
-          onDelete(id)
-            .then(() => getList())
-            .catch((reason) => {
-              notification.error({ message: <ErrorMessage error={reason} /> });
-              return reason;
-            })
-            .finally(() => setIsFormPending(false));
+
+        try {
+          onDelete && onDelete(id);
+          getList();
+        } catch (err) {
+          notification.error({ message: <ErrorMessage error={err} /> });
+        } finally {
+          setIsFormPending(false);
+        }
       };
 
       return (
@@ -151,22 +152,16 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
           <Row gutter={[8, 8]}>
             <Col span={onDelete ? 14 : 24}>
               <Button type={buttonType} onClick={onOpen}>
-                {!createButtonText ? (item?.id ? 'Редактировать' : 'Создать') : createButtonText}
+                {!createButtonText
+                  ? isNumber(item?.id)
+                    ? 'Редактировать'
+                    : 'Создать'
+                  : createButtonText}
               </Button>
             </Col>
             {onDelete && (
               <Col span={10}>
-                {item?.id && <DeleteButton id={item.id} onDelete={deleteItem} />}
-                {/* <Popconfirm
-                  title={`Удалить?`}
-                  visible={confirmDelete}
-                  onConfirm={() => item?.id && deleteItem(+item.id)}
-                  onCancel={() => setConfirmDelete(false)}
-                >
-                  <Button type={buttonType ?? 'primary'} onClick={() => setConfirmDelete(true)}>
-                    Удалить
-                  </Button>
-                </Popconfirm> */}
+                {item && isNumber(item?.id) && <DeleteButton id={item.id} onDelete={deleteItem} />}
               </Col>
             )}
           </Row>
