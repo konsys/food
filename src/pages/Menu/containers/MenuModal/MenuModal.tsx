@@ -9,7 +9,7 @@ interface Props {
   id?: TId;
 }
 
-const { createItemFx, getAllDefault, updateItemFx, deleteItemFx } = MenuModel;
+const { createItemFx, getAllDefault, updateItemFx, deleteItemFx, getItem } = MenuModel;
 const { createItemFx: createImage } = ImageModel;
 
 export const MenuModal: FC<Props> = ({ id }: Props) => {
@@ -23,6 +23,7 @@ export const MenuModal: FC<Props> = ({ id }: Props) => {
       getList={getAllDefault}
       createImage={createImage}
       onDelete={deleteItemFx}
+      getItem={getItem}
       id={id}
     >
       <MenuFormFields formInstance={formInstance} />
