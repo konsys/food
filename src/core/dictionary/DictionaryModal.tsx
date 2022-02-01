@@ -12,8 +12,8 @@ type Props<CreateEntity> = {
 };
 
 export function DictionaryModal<CreateEntity>({ model, buttonText, id }: Props<CreateEntity>) {
-  const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne } = model;
-  const { formInstance, ModalForm } = useValidatedForm<CreateEntity>();
+  const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne, getItem } = model;
+  const { ModalForm } = useValidatedForm<CreateEntity>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const item = useStore($itemStore);
 
@@ -29,8 +29,10 @@ export function DictionaryModal<CreateEntity>({ model, buttonText, id }: Props<C
       setModalVisible={setModalVisible}
       buttonText={buttonText}
       id={id}
+      getItem={getItem}
+      item={item}
     >
-      <DictionaryFields formInstance={formInstance} item={item} />
+      <DictionaryFields />
     </ModalForm>
   );
 }
