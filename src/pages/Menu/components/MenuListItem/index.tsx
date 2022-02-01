@@ -37,7 +37,7 @@ export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
             <>
               <Row gutter={[8, 8]}>
                 <Col span={24}>
-                  <MenuModal buttonText={foodMenuItem.name} />
+                  <MenuModal buttonText={foodMenuItem.name} id={foodMenuItem.id} />
                 </Col>
               </Row>
             </>

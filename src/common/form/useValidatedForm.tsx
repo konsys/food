@@ -147,7 +147,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         <>
           <Row gutter={[8, 8]}>
             <Col span={onDelete ? 14 : 24} style={{ textAlign: 'left' }}>
-              <Button type={itemState?.item ? 'link' : 'primary'} onClick={onOpen}>
+              <Button type={'link'} onClick={onOpen}>
                 {buttonText ? buttonText : itemState?.item ? 'Редактировать' : 'Создать'}
               </Button>
             </Col>
