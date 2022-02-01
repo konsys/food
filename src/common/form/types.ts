@@ -22,6 +22,8 @@ export type TActionAfterCancel<T> = TPromiseFn<void, T>;
 export type TResetFields = (fields?: any[]) => void;
 
 export type TModalWithFormProps<T> = ModalProps & {
+  setModalVisible: TVoidFn<boolean>;
+  modalVisible: boolean;
   onCreate: TCreateItemFx<Partial<T>, TItemWithId<T>>;
   onUpdate: TUpdateItemFx<TItemWithId<T>>;
   onDelete?: TDeleteItemFx;

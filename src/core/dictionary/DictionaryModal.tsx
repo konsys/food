@@ -1,5 +1,5 @@
 import { useStore } from 'effector-react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryFields } from './DictionaryFields';
@@ -12,7 +12,7 @@ interface Props<CreateEntity> {
 export function DictionaryModal<CreateEntity>({ model, id }: Props<CreateEntity>) {
   const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne, getItem } = model;
   const { formInstance, ModalForm } = useValidatedForm<CreateEntity>();
-
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
   const { item, pending } = useStore($itemStore);
 
   return (
@@ -25,6 +25,8 @@ export function DictionaryModal<CreateEntity>({ model, id }: Props<CreateEntity>
       afterClose={resetOne}
       getItem={getItem}
       id={id}
+      modalVisible={modalVisible}
+      setModalVisible={setModalVisible}
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>

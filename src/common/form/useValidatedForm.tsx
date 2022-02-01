@@ -72,6 +72,8 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
   const useFormOnModal: FC<TModalWithFormProps<T>> = useCallback(
     (props) => {
       const {
+        modalVisible,
+        setModalVisible,
         children,
         buttonText,
         onCreate,
@@ -85,7 +87,6 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
       } = props;
 
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
-      const [modalVisible, setModalVisible] = useState<boolean>(false);
 
       const imageBlob = useStore($imageBlob);
 
