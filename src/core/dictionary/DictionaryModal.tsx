@@ -8,9 +8,14 @@ import { DictionaryFields } from './DictionaryFields';
 type Props<CreateEntity> = {
   model: TCrudStore<CreateEntity>;
   itemProps: TGetItem<CreateEntity>;
+  buttonText?: string;
 };
 
-export function DictionaryModal<CreateEntity>({ model, itemProps }: Props<CreateEntity>) {
+export function DictionaryModal<CreateEntity>({
+  model,
+  itemProps,
+  buttonText,
+}: Props<CreateEntity>) {
   const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne } = model;
   const { formInstance, ModalForm } = useValidatedForm<CreateEntity>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -27,6 +32,7 @@ export function DictionaryModal<CreateEntity>({ model, itemProps }: Props<Create
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
       itemProps={itemProps}
+      buttonText={buttonText}
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>

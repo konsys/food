@@ -28,6 +28,7 @@ function getColumns<T extends DictionaryDto>(
             getItem: model.getItem,
             item,
           }}
+          buttonText={v}
         />
       ),
     },
