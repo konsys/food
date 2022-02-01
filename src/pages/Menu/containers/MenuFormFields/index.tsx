@@ -3,15 +3,14 @@ import { Form, Input, InputNumber, Select } from 'antd';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import TextArea from 'antd/lib/input/TextArea';
 import { MenuDto } from '../../model/types';
-import { useStore } from 'effector-react';
+import { useGate, useStore } from 'effector-react';
 import { MenuModel, MenuTimeModel, MenuTypeModel } from '../../../../store';
-import { createListOptions } from '../../../../common/utils/selectUtils';
+import { createOptionsList } from '../../../../common/utils/selectUtils';
 import { ImageCrop } from '../../../../common/components/ImageCrop';
-import { isNumber } from '../../../../common/utils/utils';
 import { setImageBlob } from '../../../Image/model/store';
 
-const { $listStore: $menuTimeList, getAll: getAllMenuTimeFx } = MenuTimeModel;
-const { $listStore: $menuTypeList, getAll: getAllMenuTypeFx } = MenuTypeModel;
+const { $listStore: $menuTimeList, getAll: getAllMenuTimeFx, ListGate: TimeGate } = MenuTimeModel;
+const { $listStore: $menuTypeList, getAll: getAllMenuTypeFx, ListGate: TypeGate } = MenuTypeModel;
 const { $itemStore: $menuStore, getItem, resetOne } = MenuModel;
 
 const names = columnsNamesGenerator<MenuDto>();
@@ -30,28 +29,19 @@ export const MenuFormFields = ({ formInstance }: Props) => {
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
 
   useEffect(() => {
-    if (isNumber(menu.id)) {
-      getItem(menu.id);
-    }
-    return () => resetOne();
-  }, [menu.id]);
-
-  useEffect(() => {
     formInstance.setFieldsValue(menu.item);
   }, [menu.item]);
 
   useEffect(() => {
-    createListOptions(menuTimeList.items, setMenuTimeItems);
+    createOptionsList(menuTimeList.items, setMenuTimeItems);
   }, [menuTimeList.items]);
 
   useEffect(() => {
-    createListOptions(menuTypeList.items, setMenuTypeItems);
+    createOptionsList(menuTypeList.items, setMenuTypeItems);
   }, [menuTypeList.items]);
 
-  useEffect(() => {
-    getAllMenuTypeFx({ limit: 20, page: 1 });
-    getAllMenuTimeFx({ limit: 20, page: 1 });
-  }, []);
+  useGate(TimeGate);
+  useGate(TypeGate);
 
   const inImgSrc = formInstance.getFieldValue('image')?.largeImg;
   return (

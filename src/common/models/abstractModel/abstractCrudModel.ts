@@ -47,7 +47,7 @@ export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   $itemStore: Store<any>;
   $itemPending: Store<boolean>;
   ListGate: Gate<TListRequest<FullEntity>>;
-  OneGate: Gate<NullableNumber>;
+  ItemGate: Gate<NullableNumber>;
   setItem: Event<FullEntity>;
   getAllDefault: Event<void>;
   getItem: Event<number>;
@@ -66,7 +66,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
 
   public createCrudStore(): TCrudStore<CreateEntity, FullEntity> {
     const ListGate = createGate<TListRequest<FullEntity>>();
-    const OneGate = createGate<NullableNumber>();
+    const ItemGate = createGate<NullableNumber>();
     const service = new CrudService<CreateEntity, FullEntity>(this.url);
 
     const createItemFx = createEffect<Partial<CreateEntity>, FullEntity, Error>({
@@ -145,9 +145,9 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     });
 
     guard({
-      clock: OneGate.state,
-      source: OneGate.state.map((state) => (state ? state : UN_EXISTING_ID)),
-      filter: OneGate.state.map((state) => isNumber(state) || state === UN_EXISTING_ID),
+      clock: ItemGate.state,
+      source: ItemGate.state.map((state) => (state ? state : UN_EXISTING_ID)),
+      filter: ItemGate.state.map((state) => isNumber(state) || state === UN_EXISTING_ID),
       target: getItemFx,
     });
 
@@ -176,7 +176,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
       $itemStore,
       $itemPending,
       ListGate,
-      OneGate,
+      ItemGate,
       setItem,
       getAllDefault,
       getItem,
