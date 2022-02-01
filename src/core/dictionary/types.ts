@@ -1,7 +1,7 @@
 import { TId } from '../../common/types';
 
 export type DictionaryDto = {
-  id: TId;
+  id?: TId;
   name: string;
   description: string;
   createDate?: Date;

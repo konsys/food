@@ -36,9 +36,9 @@ export type TModalWithFormProps<T> = ModalProps & {
 };
 
 export type TGetItem<T> = {
-  id: TId;
-  getItem: Event<number>;
-  item: TItemStore<T>;
+  id?: TId;
+  getItem?: Event<number>;
+  item?: TItemStore<T>;
 };
 
 export type TReturnedForm = AbstractFormProps;

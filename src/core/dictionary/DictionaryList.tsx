@@ -8,17 +8,28 @@ import { TCrudStore, TDeleteItemFx } from '../../common/models/abstractModel/abs
 import { DictionaryModal } from './DictionaryModal';
 import { isNumber } from '../../common/utils/utils';
 import { DeleteButton } from '../../common/components/buttons/DeleteButton/DeleteButton';
+import { TItemStore } from '../../common/api/types';
 
 function getColumns<T extends DictionaryDto>(
   model: TCrudStore<T>,
-  onDelete: TDeleteItemFx
+  onDelete: TDeleteItemFx,
+  item: TItemStore<T>
 ): ColumnsType<T> {
   const name = columnsNamesGenerator<T>();
   return [
     {
       title: 'Название',
       dataIndex: name('name'),
-      render: (v, row) => <DictionaryModal model={model} />,
+      render: (v, row) => (
+        <DictionaryModal
+          model={model}
+          itemProps={{
+            id: row.id,
+            getItem: model.getItem,
+            item,
+          }}
+        />
+      ),
     },
     {
       title: 'Описание',
@@ -38,9 +49,10 @@ interface Props<T> {
 }
 
 export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): ReactElement {
-  const { $listStore, ListGate, deleteItemFx } = model;
+  const { $listStore, ListGate, deleteItemFx, $itemStore } = model;
 
   const list = useStore($listStore);
+  const item = useStore($itemStore);
   useGate(ListGate);
 
   return (
@@ -50,14 +62,19 @@ export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): Re
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Space>
-                <DictionaryModal model={model} />
+                <DictionaryModal
+                  model={model}
+                  itemProps={{
+                    id: null,
+                  }}
+                />
               </Space>
             </Col>
 
             <Col span={24}>
               <Table
                 rowKey={'id'}
-                columns={getColumns<T>(model, deleteItemFx)}
+                columns={getColumns<T>(model, deleteItemFx, item)}
                 dataSource={list.items}
               ></Table>
             </Col>
