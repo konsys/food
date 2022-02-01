@@ -20,7 +20,6 @@ import {
   TypeOrmDeleteResult,
 } from '../../api/types';
 import { notification } from 'antd';
-import { NullableNumber } from '../../../core/types';
 import { isNumber } from '../../utils/utils';
 import { TId, TItemWithId } from '../../types';
 
@@ -47,7 +46,7 @@ export type TCrudStore<CreateEntity extends { id: TId }, FullEntity = CreateEnti
   $itemStore: Store<TItemStore<FullEntity>>;
   $itemPending: Store<boolean>;
   ListGate: Gate<TListRequest<FullEntity>>;
-  ItemGate: Gate<NullableNumber>;
+  ItemGate: Gate<TId>;
   setItem: Event<FullEntity>;
   getAllDefault: Event<void>;
   getItem: Event<number>;
@@ -66,7 +65,7 @@ export class CrudStore<CreateEntity extends { id: TId }, FullEntity = TItemWithI
 
   public createCrudStore(): TCrudStore<CreateEntity, FullEntity> {
     const ListGate = createGate<TListRequest<FullEntity>>();
-    const ItemGate = createGate<NullableNumber>();
+    const ItemGate = createGate<TId>();
     const service = new CrudService<CreateEntity, FullEntity>(this.url);
 
     const createItemFx = createEffect<Partial<CreateEntity>, FullEntity, Error>({
@@ -146,8 +145,8 @@ export class CrudStore<CreateEntity extends { id: TId }, FullEntity = TItemWithI
 
     guard({
       clock: ItemGate.state,
-      source: ItemGate.state.map((state) => (state ? state : UN_EXISTING_ID)),
-      filter: ItemGate.state.map((state) => isNumber(state) || state === UN_EXISTING_ID),
+      source: ItemGate.state.map((state) => (isNumber(state) ? state : 0)),
+      filter: ItemGate.state.map((state) => !!state),
       target: getItemFx,
     });
 
@@ -187,5 +186,3 @@ export class CrudStore<CreateEntity extends { id: TId }, FullEntity = TItemWithI
     };
   }
 }
-
-const UN_EXISTING_ID = -100000;

@@ -18,7 +18,7 @@ function getColumns<T extends DictionaryDto>(
     {
       title: 'Название',
       dataIndex: name('name'),
-      render: (v) => <DictionaryModal model={model} buttonText={v} />,
+      render: (v, row) => <DictionaryModal model={model} buttonText={v} id={row.id} />,
     },
     {
       title: 'Описание',
@@ -50,7 +50,7 @@ export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): Re
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Space>
-                <DictionaryModal model={model} />
+                <DictionaryModal model={model} id={null} />
               </Space>
             </Col>
 
