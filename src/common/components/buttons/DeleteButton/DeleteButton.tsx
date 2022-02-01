@@ -26,9 +26,7 @@ export function DeleteButton({ id, onDelete }: Props) {
         danger
         onClick={() => setConfirmDeleteVisible(true)}
         icon={<DeleteOutlined />}
-      >
-        Удалить
-      </Button>
+      />
     </Popconfirm>
   );
 }

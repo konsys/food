@@ -4,14 +4,13 @@ import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGener
 import TextArea from 'antd/lib/input/TextArea';
 import { MenuDto } from '../../model/types';
 import { useGate, useStore } from 'effector-react';
-import { MenuModel, MenuTimeModel, MenuTypeModel } from '../../../../store';
+import { MenuTimeModel, MenuTypeModel } from '../../../../store';
 import { createOptionsList } from '../../../../common/utils/selectUtils';
 import { ImageCrop } from '../../../../common/components/ImageCrop';
 import { setImageBlob } from '../../../Image/model/store';
 
-const { $listStore: $menuTimeList, getAll: getAllMenuTimeFx, ListGate: TimeGate } = MenuTimeModel;
-const { $listStore: $menuTypeList, getAll: getAllMenuTypeFx, ListGate: TypeGate } = MenuTypeModel;
-const { $itemStore: $menuStore, getItem, resetOne } = MenuModel;
+const { $listStore: $menuTimeList, ListGate: TimeGate } = MenuTimeModel;
+const { $listStore: $menuTypeList, ListGate: TypeGate } = MenuTypeModel;
 
 const names = columnsNamesGenerator<MenuDto>();
 
@@ -23,14 +22,9 @@ interface Props {
 export const MenuFormFields = ({ formInstance }: Props) => {
   const menuTimeList = useStore($menuTimeList);
   const menuTypeList = useStore($menuTypeList);
-  const menu = useStore($menuStore);
 
   const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
   const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
-
-  useEffect(() => {
-    formInstance.setFieldsValue(menu.item);
-  }, [menu.item]);
 
   useEffect(() => {
     createOptionsList(menuTimeList.items, setMenuTimeItems);

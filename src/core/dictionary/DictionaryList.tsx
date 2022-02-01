@@ -8,11 +8,9 @@ import { TCrudStore, TDeleteItemFx } from '../../common/models/abstractModel/abs
 import { DictionaryModal } from './DictionaryModal';
 import { isNumber } from '../../common/utils/utils';
 import { DeleteButton } from '../../common/components/buttons/DeleteButton/DeleteButton';
-import { Event } from 'effector';
 
 function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
-  getItem: Event<number>,
   onDelete: TDeleteItemFx
 ): ColumnsType<DictionaryDto> {
   const name = columnsNamesGenerator<DictionaryDto>();
@@ -21,11 +19,7 @@ function getColumns<CreateEntity>(
       title: 'Название',
       dataIndex: name('name'),
       render: (v, row) => (
-        <DictionaryModal
-          model={model}
-          getItem={getItem}
-          id={isNumber(row.id) ? row.id : undefined}
-        />
+        <DictionaryModal model={model} id={isNumber(row.id) ? row.id : undefined} />
       ),
     },
     {
@@ -46,7 +40,7 @@ interface Props<CreateEntity> {
 }
 
 export function DictionaryList<CreateEntity>({ model }: Props<CreateEntity>): ReactElement {
-  const { $listStore, ListGate, deleteItemFx, getItem } = model;
+  const { $listStore, ListGate, deleteItemFx } = model;
 
   const list = useStore($listStore);
   useGate(ListGate);
@@ -65,7 +59,7 @@ export function DictionaryList<CreateEntity>({ model }: Props<CreateEntity>): Re
             <Col span={24}>
               <Table
                 rowKey={'id'}
-                columns={getColumns<CreateEntity>(model, getItem, deleteItemFx)}
+                columns={getColumns<CreateEntity>(model, deleteItemFx)}
                 dataSource={list.items}
               ></Table>
             </Col>
