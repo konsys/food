@@ -2,6 +2,7 @@ import { ModalProps } from 'antd';
 import { ButtonType } from 'antd/lib/button';
 import { Event } from 'effector';
 import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
+import { ReactNode } from 'react';
 import { ImageDto } from '../../pages/Image/model/types';
 import {
   TCreateItemFx,
@@ -29,6 +30,7 @@ export type TModalWithFormProps<T> = ModalProps & {
   pending?: boolean;
   getItem?: Event<number>;
   id?: TId;
+  buttonText?: string;
 };
 
 export type TReturnedForm = AbstractFormProps;

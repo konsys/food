@@ -73,6 +73,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
     (props) => {
       const {
         children,
+        buttonText,
         onCreate,
         onUpdate,
         onDelete,
@@ -135,13 +136,13 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
       return (
         <>
           <Row gutter={[8, 8]}>
-            <Col span={onDelete ? 14 : 24}>
+            <Col span={onDelete ? 14 : 24} style={{ textAlign: 'left' }}>
               <Button type={id ? 'link' : 'primary'} onClick={onOpen}>
-                {id ? 'Редактировать' : 'Создать'}
+                {buttonText ? buttonText : id ? 'Редактировать' : 'Создать'}
               </Button>
             </Col>
             {onDelete && (
-              <Col span={10}>
+              <Col span={10} style={{ textAlign: 'right' }}>
                 {id && isNumber(id) ? <DeleteButton id={id} onDelete={deleteItem} /> : ''}
               </Col>
             )}
@@ -154,7 +155,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             onCancel={onClose}
             visible={modalVisible}
             onOk={modalOnOk}
-            title={id ? 'Редкатировать' : 'Создать'}
+            title={id ? 'Редактировать' : 'Создать'}
           >
             <ReturnedForm
               initialValues={initialValues}
