@@ -4,6 +4,7 @@ import { Event } from 'effector';
 import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
 import { ReactNode } from 'react';
 import { ImageDto } from '../../pages/Image/model/types';
+import { TItemStore } from '../api/types';
 import {
   TCreateItemFx,
   TDeleteItemFx,
@@ -30,9 +31,14 @@ export type TModalWithFormProps<T> = ModalProps & {
   getList: Event<void>;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
   pending?: boolean;
-  getItem?: Event<number>;
-  id?: TId;
   buttonText?: string;
+  itemProps: TGetItem<T>;
+};
+
+export type TGetItem<T> = {
+  id: TId;
+  getItem: Event<number>;
+  item: TItemStore<T>;
 };
 
 export type TReturnedForm = AbstractFormProps;

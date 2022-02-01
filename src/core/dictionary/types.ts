@@ -6,4 +6,5 @@ export type DictionaryDto = {
   description: string;
   createDate?: Date;
   updateDate?: Date;
+  visible?: boolean;
 };

@@ -16,7 +16,7 @@ import {
   nullableResult,
   TListRequest,
   TListResponce,
-  TRequestProcess,
+  TItemStore,
   TypeOrmDeleteResult,
 } from '../../api/types';
 import { notification } from 'antd';
@@ -43,8 +43,8 @@ export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   setFilter: Event<any>;
   setPage: Event<number>;
   setPageSize: Event<number>;
-  $listStore: Store<any>;
-  $itemStore: Store<any>;
+  $listStore: Store<TListResponce<FullEntity>>;
+  $itemStore: Store<TItemStore<FullEntity>>;
   $itemPending: Store<boolean>;
   ListGate: Gate<TListRequest<FullEntity>>;
   ItemGate: Gate<NullableNumber>;
@@ -99,7 +99,7 @@ export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
     const setFilter = createEvent<any>();
     const setItem = createEvent<FullEntity>();
 
-    const $itemStore = createStore<TRequestProcess<FullEntity>>(createInitItem());
+    const $itemStore = createStore<TItemStore<FullEntity>>(createInitItem());
     const $itemPending = createStore<boolean>(false);
     const $listStore = createStore<TListResponce<FullEntity>>(
       createInitItemsWithPagination<FullEntity>()

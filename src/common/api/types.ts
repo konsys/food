@@ -18,12 +18,12 @@ export type TListResponce<T> = TListRequest<T> & {
   totalRecords: number;
 };
 
-export type TRequestProcess<T> = {
+export type TItemStore<T> = {
   item: Nullable<T>;
   pending?: boolean;
 };
 
-export const createInitItem = <T>(): TRequestProcess<T> => ({
+export const createInitItem = <T>(): TItemStore<T> => ({
   item: null,
   pending: false,
 });
@@ -36,7 +36,7 @@ export const createInitItemsWithPagination = <T>(): TListResponce<T> => ({
   pending: false,
 });
 
-export const nullableResult = <D>(_: TRequestProcess<D>, { result }: { result: D }) => ({
+export const nullableResult = <D>(_: TItemStore<D>, { result }: { result: D }) => ({
   item: result ?? null,
   pending: false,
 });

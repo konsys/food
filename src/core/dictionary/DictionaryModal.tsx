@@ -4,16 +4,15 @@ import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryFields } from './DictionaryFields';
 
-interface Props<CreateEntity> {
+type Props<CreateEntity> = {
   model: TCrudStore<CreateEntity>;
-  id?: number;
-}
+};
 
-export function DictionaryModal<CreateEntity>({ model, id }: Props<CreateEntity>) {
+export function DictionaryModal<CreateEntity>({ model }: Props<CreateEntity>) {
   const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne, getItem } = model;
   const { formInstance, ModalForm } = useValidatedForm<CreateEntity>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const { item, pending } = useStore($itemStore);
+  const item = useStore($itemStore);
 
   return (
     <ModalForm
@@ -21,12 +20,15 @@ export function DictionaryModal<CreateEntity>({ model, id }: Props<CreateEntity>
       onUpdate={updateItemFx}
       width={600}
       getList={getAllDefault}
-      pending={pending}
+      pending={item.pending}
       afterClose={resetOne}
-      getItem={getItem}
-      id={id}
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
+      itemProps={{
+        getItem,
+        id: 425,
+        item: item,
+      }}
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>

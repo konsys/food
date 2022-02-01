@@ -82,10 +82,10 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         createImage,
         pending,
         afterClose,
-        getItem,
-        id,
+        itemProps,
       } = props;
 
+      const { getItem, id, item } = itemProps;
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
 
       const imageBlob = useStore($imageBlob);
