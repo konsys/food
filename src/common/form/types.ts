@@ -32,13 +32,9 @@ export type TModalWithFormProps<T> = ModalProps & {
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
   pending?: boolean;
   buttonText?: string;
-  itemProps: TGetItem<T>;
-};
-
-export type TGetItem<T> = {
-  id?: TId;
-  getItem?: Event<number>;
   item?: TItemStore<T>;
+  getItem?: Event<number>;
+  id?: TId;
 };
 
 export type TReturnedForm = AbstractFormProps;

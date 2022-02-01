@@ -82,10 +82,11 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         createImage,
         pending,
         afterClose,
-        itemProps,
+        item,
+        getItem,
+        id,
       } = props;
 
-      const { getItem, id, item } = itemProps;
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
 
       const imageBlob = useStore($imageBlob);
@@ -115,6 +116,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
       const onOpen = () => {
         onClose();
         getItem && id && getItem(id);
+        item?.item && returnedFormInstance.setFieldsValue(item?.item);
         setModalVisible(true);
       };
 

@@ -1,21 +1,17 @@
 import { useStore } from 'effector-react';
 import React, { useState } from 'react';
-import { TGetItem } from '../../common/form/types';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
+import { TId } from '../../common/types';
 import { DictionaryFields } from './DictionaryFields';
 
 type Props<CreateEntity> = {
   model: TCrudStore<CreateEntity>;
-  itemProps: TGetItem<CreateEntity>;
+  id?: TId;
   buttonText?: string;
 };
 
-export function DictionaryModal<CreateEntity>({
-  model,
-  itemProps,
-  buttonText,
-}: Props<CreateEntity>) {
+export function DictionaryModal<CreateEntity>({ model, buttonText, id }: Props<CreateEntity>) {
   const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne } = model;
   const { formInstance, ModalForm } = useValidatedForm<CreateEntity>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -31,8 +27,8 @@ export function DictionaryModal<CreateEntity>({
       afterClose={resetOne}
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
-      itemProps={itemProps}
       buttonText={buttonText}
+      id={id}
     >
       <DictionaryFields formInstance={formInstance} item={item} />
     </ModalForm>
