@@ -1,5 +1,5 @@
 import { Button, Col, Form, Row } from 'antd';
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { FieldData, NamePath } from 'rc-field-form/es/interface';
 import { TModalWithFormProps, TReturnedForm, TSetFieldsValue } from './types';
 import { MainModal } from '../modal/Modal';
@@ -9,6 +9,7 @@ import { $imageBlob, resetImageBlob } from '../../pages/Image/model/store';
 import { useStore } from 'effector-react';
 import { isNumber, uuid } from '../utils/utils';
 import { DeleteButton } from '../components/buttons/DeleteButton/DeleteButton';
+import { TItemWithId } from '../types';
 
 export function useValidatedForm<T>(initialValues?: Partial<T>) {
   const [form] = Form.useForm();
@@ -69,7 +70,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
     [form]
   );
 
-  const useFormOnModal: FC<TModalWithFormProps<T>> = useCallback(
+  const useFormOnModal: FC<TModalWithFormProps<TItemWithId<T>>> = useCallback(
     (props) => {
       const {
         modalVisible,
@@ -82,14 +83,22 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         createImage,
         pending,
         afterClose,
-        item,
-        getItem,
-        id,
+        itemState,
       } = props;
 
+      const id = itemState?.item?.id;
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
 
       const imageBlob = useStore($imageBlob);
+
+      useEffect(() => {
+        if (itemState?.item) {
+          returnedFormInstance.setFieldsValue(itemState?.item);
+        } else {
+          resetImageBlob();
+          returnedFormInstance.resetFields();
+        }
+      }, [itemState]);
 
       const modalOnOk = () => {
         setIsFormPending(true);
@@ -115,8 +124,6 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
       const onOpen = () => {
         onClose();
-        getItem && id && getItem(id);
-        item?.item && returnedFormInstance.setFieldsValue(item?.item);
         setModalVisible(true);
       };
 
@@ -140,13 +147,13 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         <>
           <Row gutter={[8, 8]}>
             <Col span={onDelete ? 14 : 24} style={{ textAlign: 'left' }}>
-              <Button type={id ? 'link' : 'primary'} onClick={onOpen}>
-                {buttonText ? buttonText : id ? 'Редактировать' : 'Создать'}
+              <Button type={itemState?.item ? 'link' : 'primary'} onClick={onOpen}>
+                {buttonText ? buttonText : itemState?.item ? 'Редактировать' : 'Создать'}
               </Button>
             </Col>
             {onDelete && (
               <Col span={10} style={{ textAlign: 'right' }}>
-                {id && isNumber(id) ? <DeleteButton id={id} onDelete={deleteItem} /> : ''}
+                {isNumber(id) ? <DeleteButton id={id} onDelete={deleteItem} /> : ''}
               </Col>
             )}
           </Row>

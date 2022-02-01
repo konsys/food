@@ -4,6 +4,7 @@ import { imageFactory } from '../../Image/model/imageFactory';
 import { MenuDto } from './types';
 
 export const menuFactory = factory.Sync.makeFactory<MenuDto>({
+  id: factory.each((n) => n),
   timeId: factory.each((n) => n),
   typeId: factory.each((n) => n),
   description: factory.each(() => faker.commerce.productDescription()),

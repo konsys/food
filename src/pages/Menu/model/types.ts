@@ -2,7 +2,7 @@ import { NullableNumber } from '../../../core/types';
 import { ImageDto } from '../../Image/model/types';
 
 export type MenuDto = {
-  id?: number;
+  id: number;
   name: string;
   description: string;
   createdAt?: Date;

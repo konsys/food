@@ -22,9 +22,9 @@ import {
 import { notification } from 'antd';
 import { NullableNumber } from '../../../core/types';
 import { isNumber } from '../../utils/utils';
-import { TItemWithId } from '../../types';
+import { TId, TItemWithId } from '../../types';
 
-export type TCreateItemFx<CreateEntity, FullEntity> = Effect<
+export type TCreateItemFx<CreateEntity, FullEntity = CreateEntity> = Effect<
   Partial<CreateEntity>,
   FullEntity,
   Error
@@ -37,7 +37,7 @@ export type TGetAllFx<FullEntity> = Effect<
   Error
 >;
 
-export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
+export type TCrudStore<CreateEntity extends { id: TId }, FullEntity = CreateEntity> = {
   resetList: Event<void>;
   resetOne: Event<void>;
   setFilter: Event<any>;
@@ -57,7 +57,7 @@ export type TCrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> = {
   getAll: Event<TListRequest<FullEntity>>;
 };
 
-export class CrudStore<CreateEntity, FullEntity = TItemWithId<CreateEntity>> {
+export class CrudStore<CreateEntity extends { id: TId }, FullEntity = TItemWithId<CreateEntity>> {
   private url: string;
 
   constructor(url: string) {

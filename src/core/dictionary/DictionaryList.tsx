@@ -1,7 +1,7 @@
 import { Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement } from 'react';
-import { ColumnsType } from '../../common/types';
+import { ColumnsType, TItemWithId } from '../../common/types';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
 import { TCrudStore, TDeleteItemFx } from '../../common/models/abstractModel/abstractCrudModel';
@@ -18,7 +18,7 @@ function getColumns<T extends DictionaryDto>(
     {
       title: 'Название',
       dataIndex: name('name'),
-      render: (v, row) => <DictionaryModal model={model} id={row.id} buttonText={v} />,
+      render: (v) => <DictionaryModal model={model} buttonText={v} />,
     },
     {
       title: 'Описание',
@@ -34,7 +34,7 @@ function getColumns<T extends DictionaryDto>(
 }
 
 interface Props<T> {
-  model: TCrudStore<T>;
+  model: TCrudStore<TItemWithId<T>>;
 }
 
 export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): ReactElement {

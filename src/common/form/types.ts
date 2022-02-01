@@ -25,16 +25,14 @@ export type TResetFields = (fields?: any[]) => void;
 export type TModalWithFormProps<T> = ModalProps & {
   setModalVisible: TVoidFn<boolean>;
   modalVisible: boolean;
-  onCreate: TCreateItemFx<Partial<T>, TItemWithId<T>>;
+  onCreate: TCreateItemFx<T>;
   onUpdate: TUpdateItemFx<TItemWithId<T>>;
   onDelete?: TDeleteItemFx;
   getList: Event<void>;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
   pending?: boolean;
   buttonText?: string;
-  item?: TItemStore<T>;
-  getItem?: Event<number>;
-  id?: TId;
+  itemState?: TItemStore<T>;
 };
 
 export type TReturnedForm = AbstractFormProps;

@@ -3,7 +3,7 @@ import { Select } from 'antd';
 import { TId, TVoidFn } from '../types';
 
 const { Option } = Select;
-export const createOptionsList = <D extends { id?: TId; name: string }>(
+export const createOptionsList = <D extends { id: TId; name: string }>(
   items: D[],
   cb: TVoidFn<JSX.Element[]>
 ) => {

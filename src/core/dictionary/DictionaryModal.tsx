@@ -5,14 +5,16 @@ import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel'
 import { TId } from '../../common/types';
 import { DictionaryFields } from './DictionaryFields';
 
-type Props<CreateEntity> = {
+type Props<CreateEntity extends { id: TId }> = {
   model: TCrudStore<CreateEntity>;
-  id?: TId;
   buttonText?: string;
 };
 
-export function DictionaryModal<CreateEntity>({ model, buttonText, id }: Props<CreateEntity>) {
-  const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne, getItem } = model;
+export function DictionaryModal<CreateEntity extends { id: TId }>({
+  model,
+  buttonText,
+}: Props<CreateEntity>) {
+  const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne } = model;
   const { ModalForm } = useValidatedForm<CreateEntity>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const item = useStore($itemStore);
@@ -28,9 +30,6 @@ export function DictionaryModal<CreateEntity>({ model, buttonText, id }: Props<C
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
       buttonText={buttonText}
-      id={id}
-      getItem={getItem}
-      item={item}
     >
       <DictionaryFields />
     </ModalForm>
