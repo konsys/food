@@ -8,7 +8,7 @@ import {
   TDeleteItemFx,
   TUpdateItemFx,
 } from '../models/abstractModel/abstractCrudModel';
-import { TItemWithId, TPromiseFn, TVoidFn } from '../types';
+import { TId, TItemWithId, TPromiseFn, TVoidFn } from '../types';
 import { AbstractFormProps } from './AbstractForm';
 
 export type TSetFieldsValue<T> = (item: Partial<T> | null) => void;
@@ -24,16 +24,11 @@ export type TModalWithFormProps<T> = ModalProps & {
   onCreate: TCreateItemFx<Partial<T>, TItemWithId<T>>;
   onUpdate: TUpdateItemFx<TItemWithId<T>>;
   onDelete?: TDeleteItemFx;
-  buttonType: ButtonType;
   getList: Event<void>;
-  createButtonText?: string;
-  modalTitle: string;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
-  item?: Partial<TItemWithId<T>>;
   pending?: boolean;
-  afterClose?: Event<void>;
   getItem?: Event<number>;
-  id?: number;
+  id?: TId;
 };
 
 export type TReturnedForm = AbstractFormProps;

@@ -40,7 +40,7 @@ export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
                   <MenuItemTitle text={foodMenuItem.name} />
                 </Col>
                 <Col span={24}>
-                  <MenuModal modalTitle='Редактировать меню' />
+                  <MenuModal id={foodMenuItem.id} />
                 </Col>
               </Row>
             </>

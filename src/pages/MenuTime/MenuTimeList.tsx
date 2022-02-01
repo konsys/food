@@ -5,5 +5,5 @@ import { MenuTimeModel } from '../../store';
 const model = MenuTimeModel;
 
 export const MenuTimeListPage = () => {
-  return <DictionaryList model={model} modalTitle='Время меню' />;
+  return <DictionaryList model={model} />;
 };

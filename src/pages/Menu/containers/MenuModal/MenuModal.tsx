@@ -1,17 +1,18 @@
 import React, { FC } from 'react';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
+import { TId } from '../../../../common/types';
 import { ImageModel, MenuModel } from '../../../../store';
 import { MenuDto } from '../../model/types';
 import { MenuFormFields } from '../MenuFormFields';
 
 interface Props {
-  modalTitle: string;
+  id?: TId;
 }
 
 const { createItemFx, getAllDefault, updateItemFx, deleteItemFx } = MenuModel;
 const { createItemFx: createImage } = ImageModel;
 
-export const MenuModal: FC<Props> = ({ modalTitle }: Props) => {
+export const MenuModal: FC<Props> = ({ id }: Props) => {
   const { formInstance, ModalForm } = useValidatedForm<MenuDto>();
 
   return (
@@ -22,8 +23,7 @@ export const MenuModal: FC<Props> = ({ modalTitle }: Props) => {
       getList={getAllDefault}
       createImage={createImage}
       onDelete={deleteItemFx}
-      modalTitle={modalTitle}
-      buttonType='primary'
+      id={id}
     >
       <MenuFormFields formInstance={formInstance} />
     </ModalForm>

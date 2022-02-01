@@ -12,7 +12,6 @@ import { Event } from 'effector';
 
 function getColumns<CreateEntity>(
   model: TCrudStore<CreateEntity>,
-  modalTitle: string,
   getItem: Event<number>,
   onDelete: TDeleteItemFx
 ): ColumnsType<DictionaryDto> {
@@ -23,10 +22,7 @@ function getColumns<CreateEntity>(
       dataIndex: name('name'),
       render: (v, row) => (
         <DictionaryModal
-          buttonType='link'
           model={model}
-          createButtonText={v}
-          modalTitle={modalTitle}
           getItem={getItem}
           id={isNumber(row.id) ? row.id : undefined}
         />
@@ -47,15 +43,9 @@ function getColumns<CreateEntity>(
 
 interface Props<CreateEntity> {
   model: TCrudStore<CreateEntity>;
-  modalTitle: string;
-  createButtonText?: string;
 }
 
-export function DictionaryList<CreateEntity>({
-  model,
-  modalTitle,
-  createButtonText,
-}: Props<CreateEntity>): ReactElement {
+export function DictionaryList<CreateEntity>({ model }: Props<CreateEntity>): ReactElement {
   const { $listStore, ListGate, deleteItemFx, getItem } = model;
 
   const list = useStore($listStore);
@@ -68,19 +58,14 @@ export function DictionaryList<CreateEntity>({
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Space>
-                <DictionaryModal
-                  buttonType='primary'
-                  model={model}
-                  modalTitle={modalTitle}
-                  createButtonText={createButtonText}
-                />
+                <DictionaryModal model={model} />
               </Space>
             </Col>
 
             <Col span={24}>
               <Table
                 rowKey={'id'}
-                columns={getColumns<CreateEntity>(model, modalTitle, getItem, deleteItemFx)}
+                columns={getColumns<CreateEntity>(model, getItem, deleteItemFx)}
                 dataSource={list.items}
               ></Table>
             </Col>

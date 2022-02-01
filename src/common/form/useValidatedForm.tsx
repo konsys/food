@@ -77,11 +77,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         onUpdate,
         onDelete,
         createImage,
-        modalTitle,
-        item,
-        buttonType,
         pending,
-        createButtonText,
         afterClose,
         getItem,
         id,
@@ -140,21 +136,13 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         <>
           <Row gutter={[8, 8]}>
             <Col span={onDelete ? 14 : 24}>
-              <Button type={buttonType} onClick={onOpen}>
-                {!createButtonText
-                  ? isNumber(item?.id)
-                    ? 'Редактировать'
-                    : 'Создать'
-                  : createButtonText}
+              <Button type={id ? 'link' : 'primary'} onClick={onOpen}>
+                {id ? 'Редактировать' : 'Создать'}
               </Button>
             </Col>
             {onDelete && (
               <Col span={10}>
-                {item && isNumber(item?.id) ? (
-                  <DeleteButton id={item.id} onDelete={deleteItem} />
-                ) : (
-                  ''
-                )}
+                {id && isNumber(id) ? <DeleteButton id={id} onDelete={deleteItem} /> : ''}
               </Col>
             )}
           </Row>
@@ -166,7 +154,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             onCancel={onClose}
             visible={modalVisible}
             onOk={modalOnOk}
-            title={modalTitle}
+            title={id ? 'Редкатировать' : 'Создать'}
           >
             <ReturnedForm
               initialValues={initialValues}
