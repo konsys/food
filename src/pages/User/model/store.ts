@@ -79,9 +79,7 @@ export const registerFx = UserDomain.effect<IUserRegistration, IRegistrationResp
 
 export const $$register = UserDomain.store<IRegistrationResponce | null>(null).on(
   registerFx.done,
-  (_, { result }) => {
-    return result;
-  }
+  (_, { result }) => result
 );
 
 export const $$user = UserDomain.store<IUser | null>(null)

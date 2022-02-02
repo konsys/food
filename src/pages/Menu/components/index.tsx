@@ -19,10 +19,9 @@ interface Props {
   onDelete: TDeleteItemFx;
 }
 
-export const MenuList = ({ menu, setPage, setPageSize, isEdit, onDelete }: Props): ReactElement => {
+export function MenuList({ menu, setPage, setPageSize, isEdit, onDelete }: Props): ReactElement {
   return (
-    <>
-      <Row gutter={[16, 16]}>
+    <Row gutter={[16, 16]}>
         {!menu.pending ? (
           <>
             {!menu.items.length && (
@@ -50,6 +49,5 @@ export const MenuList = ({ menu, setPage, setPageSize, isEdit, onDelete }: Props
           />
         </Col>
       </Row>
-    </>
   );
-};
+}

@@ -13,7 +13,7 @@ export enum EFoodType {
 }
 const { $listStore, setPage, setPageSize, ListGate, setFilter, deleteItemFx } = MenuModel;
 
-export const MenuListPage = (): ReactElement => {
+export function MenuListPage(): ReactElement {
   const [isEdit, setIsEdit] = useState<boolean>(false);
 
   const menu = useStore($listStore);
@@ -22,14 +22,13 @@ export const MenuListPage = (): ReactElement => {
   const [activeFilter, setActiveFilter] = useState<EFoodType>(EFoodType.ALL);
 
   return (
-    <>
-      <div className='menu-box'>
+    <div className='menu-box'>
         <div className='container'>
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Space>
                 <MenuModal id={null} />
-                <Button onClick={() => setIsEdit(isEdit ? false : true)}>
+                <Button onClick={() => setIsEdit(!isEdit)}>
                   {!isEdit ? 'Редактировать' : 'Завершить'}
                 </Button>
               </Space>
@@ -54,6 +53,5 @@ export const MenuListPage = (): ReactElement => {
           </Row>
         </div>
       </div>
-    </>
   );
-};
+}

@@ -28,9 +28,7 @@ function getColumns<T extends DictionaryDto>(
     },
     {
       title: 'Удалить',
-      render: (_, row) => {
-        return isNumber(row.id) && <DeleteButton id={row.id} onDelete={onDelete} />;
-      },
+      render: (_, row) => isNumber(row.id) && <DeleteButton id={row.id} onDelete={onDelete} />,
     },
   ];
 }
@@ -46,8 +44,7 @@ export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): Re
   useGate(ListGate);
 
   return (
-    <>
-      <div className='menu-box'>
+    <div className='menu-box'>
         <div className='container'>
           <Row gutter={[16, 16]}>
             <Col span={24}>
@@ -58,14 +55,13 @@ export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): Re
 
             <Col span={24}>
               <Table
-                rowKey={'id'}
+                rowKey="id"
                 columns={getColumns<T>(model, deleteItemFx)}
                 dataSource={list.items}
-              ></Table>
+               />
             </Col>
           </Row>
         </div>
       </div>
-    </>
   );
 }

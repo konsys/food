@@ -4,6 +4,6 @@ import { MenuTimeModel } from '../../store';
 
 const model = MenuTimeModel;
 
-export const MenuTimeListPage = () => {
+export function MenuTimeListPage() {
   return <DictionaryList model={model} />;
-};
+}

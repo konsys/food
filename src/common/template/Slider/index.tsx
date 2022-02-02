@@ -2,10 +2,9 @@ import React from 'react';
 import { StandardButton } from '../../components/buttons/StandardButton';
 import './styles.less';
 
-export const Slider = () => {
+export function Slider() {
   return (
-    <>
-      <div className='cover-slides'>
+    <div className='cover-slides'>
         <div className='overlay-background' />
         <img src='images/slider-01.jpg' alt='' />
 
@@ -28,6 +27,5 @@ export const Slider = () => {
           </div>
         </div>
       </div>
-    </>
   );
-};
+}

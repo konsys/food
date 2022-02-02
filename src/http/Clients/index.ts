@@ -14,9 +14,7 @@ axiosClient.interceptors.request.use((config) => {
 }, onError);
 
 axiosClient.interceptors.response.use(
-  (response: AxiosResponse) => {
-    return response;
-  },
+  (response: AxiosResponse) => response,
   async (error: AxiosError) => {
     if (error.response && error.response.status === 401) {
       const originalRequest = error.config;

@@ -1,5 +1,5 @@
-import { menuTimeFactory } from '../menuTimeModel/menuTimeFactory';
 import faker from 'faker';
+import { menuTimeFactory } from '../menuTimeModel/menuTimeFactory';
 import { MenuTimeDto } from '../menuTimeModel/types';
 import { CrudStore } from '../../../common/models/abstractModel/abstractCrudModel';
 

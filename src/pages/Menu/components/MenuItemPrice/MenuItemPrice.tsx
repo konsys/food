@@ -5,4 +5,6 @@ interface IProps {
   text: number;
 }
 
-export const MenuItemPrice = ({ text }: IProps) => <div className='menu-item-price'>{text} р.</div>;
+export function MenuItemPrice({ text }: IProps) {
+  return <div className='menu-item-price'>{text} р.</div>
+}

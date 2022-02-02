@@ -1,10 +1,9 @@
 import React from 'react';
 import './styles.less';
 
-export const Gallery = () => {
+export function Gallery() {
   return (
-    <>
-      <div className='gallery-box'>
+    <div className='gallery-box'>
         <div className='container-fluid'>
           <div className='row'>
             <div className='col-lg-12'>
@@ -50,6 +49,5 @@ export const Gallery = () => {
           </div>
         </div>
       </div>
-    </>
   );
-};
+}

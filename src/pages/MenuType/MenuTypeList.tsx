@@ -4,6 +4,6 @@ import { MenuTypeModel } from '../../store';
 
 const model = MenuTypeModel;
 
-export const MenuTimeListPage = () => {
+export function MenuTimeListPage() {
   return <DictionaryList model={model} />;
-};
+}

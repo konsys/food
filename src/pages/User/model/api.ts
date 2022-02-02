@@ -12,9 +12,7 @@ export const initUsersFetch = async ({
 }): Promise<IPlayer[]> =>
   (await axiosClient.get<IPlayer[]>(initUsersUrl, { params: { ids, gameId } })).data;
 
-export const usersFetch = async (ids: number[]): Promise<IPlayer[]> => {
-  return (await axiosClient.get<IPlayer[]>(usersUrl, { params: { ids } })).data;
-};
+export const usersFetch = async (ids: number[]): Promise<IPlayer[]> => (await axiosClient.get<IPlayer[]>(usersUrl, { params: { ids } })).data;
 
 const profileUrl = `/users/profile`;
 

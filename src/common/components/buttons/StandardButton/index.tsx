@@ -9,21 +9,19 @@ interface Props {
   isWhiteText?: boolean;
 }
 
-export const StandardButton = ({
+export function StandardButton({
   text,
   isUppercase = false,
   isBigPadding = false,
   isWhiteText = false,
-}: Props) => {
+}: Props) {
   return (
-    <>
-      <Button
+    <Button
         className={`btn btn-lg btn-circle ${isUppercase && 'btn-uppercase'} ${
           isBigPadding && 'btn-big-padding'
         }  ${isWhiteText && 'btn-white'}`}
       >
         {text}
       </Button>
-    </>
   );
-};
+}

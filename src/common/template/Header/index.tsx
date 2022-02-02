@@ -1,13 +1,13 @@
 import { useStore } from 'effector-react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import ShoppingCartOutlined from '@ant-design/icons/ShoppingCartOutlined';
 import { pathNames } from '../../../routes/paths';
 import { $route } from '../model/store';
-import ShoppingCartOutlined from '@ant-design/icons/ShoppingCartOutlined';
 import './styles.less';
 import { Button } from 'antd';
 
-export const Header = () => {
+export function Header() {
   const store = useStore($route);
   return (
     <header className='top-navbar'>
@@ -60,6 +60,6 @@ export const Header = () => {
       </nav>
     </header>
   );
-};
+}
 
 const { HOME, ABOUT, CONTACTS, MENU } = pathNames;

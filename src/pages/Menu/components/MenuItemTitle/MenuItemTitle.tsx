@@ -5,4 +5,6 @@ interface IProps {
   text: string;
 }
 
-export const MenuItemTitle = ({ text }: IProps) => <div className='menu-item-title'>{text}</div>;
+export function MenuItemTitle({ text }: IProps) {
+  return <div className='menu-item-title'>{text}</div>
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { StandardButton } from '../../common/components/buttons/StandardButton';
 import './styles.less';
 
-export const About = () => {
+export function About() {
   return (
     <div className='about-section-box'>
       <div className='container'>
@@ -33,4 +33,4 @@ export const About = () => {
       </div>
     </div>
   );
-};
+}

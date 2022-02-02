@@ -12,9 +12,7 @@ export const isValidateErrorEntity = (e: any): e is ValidateErrorEntity => {
   }
 };
 
-export const isNullOrUndefined = <T>(item: T | null | undefined): item is null | undefined => {
-  return item === undefined || item === null;
-};
+export const isNullOrUndefined = <T>(item: T | null | undefined): item is null | undefined => item === undefined || item === null;
 
 export const downloadBlob = (blob: Blob, fileNameWithExtension: string): void => {
   const url = window.URL.createObjectURL(blob);
@@ -54,13 +52,9 @@ export const removeEntryFromRecord = (record: Record<string, any>, deleteKey: st
     return !deleteKey.includes(key);
   });
 
-export const isObject = <T>(value: T) => {
-  return typeof value === 'object' && value !== null;
-};
+export const isObject = <T>(value: T) => typeof value === 'object' && value !== null;
 
-export const getFileExtension = (filename: string) => {
-  return filename.split('.').pop();
-};
+export const getFileExtension = (filename: string) => filename.split('.').pop();
 
 export const uuid = () => uuidv4();
 

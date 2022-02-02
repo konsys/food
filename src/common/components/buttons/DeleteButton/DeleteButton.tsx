@@ -12,7 +12,7 @@ export function DeleteButton({ id, onDelete }: Props) {
   const [confirmDeleteVisible, setConfirmDeleteVisible] = useState(false);
   return (
     <Popconfirm
-      title={`Удалить?`}
+      title="Удалить?"
       visible={confirmDeleteVisible}
       onConfirm={() => {
         onDelete(id);
@@ -22,7 +22,7 @@ export function DeleteButton({ id, onDelete }: Props) {
     >
       {/* TODO add color */}
       <Button
-        type={'link'}
+        type="link"
         danger
         onClick={() => setConfirmDeleteVisible(true)}
         icon={<DeleteOutlined />}

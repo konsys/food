@@ -1,10 +1,9 @@
 import React from 'react';
 import './styles.less';
 
-export const CustomerReview = () => {
+export function CustomerReview() {
   return (
-    <>
-      <div className='customer-reviews-box'>
+    <div className='customer-reviews-box'>
         <div className='container'>
           <div className='row'>
             <div className='col-lg-12'>
@@ -99,6 +98,5 @@ export const CustomerReview = () => {
           </div>
         </div>
       </div>
-    </>
   );
-};
+}

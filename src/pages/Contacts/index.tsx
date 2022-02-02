@@ -1,10 +1,9 @@
 import React from 'react';
 import './styles.less';
 
-export const Contacts = () => {
+export function Contacts() {
   return (
-    <>
-      <div className='contact-imfo-box'>
+    <div className='contact-imfo-box'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-4'>
@@ -31,6 +30,5 @@ export const Contacts = () => {
           </div>
         </div>
       </div>
-    </>
   );
-};
+}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Input, InputNumber, Select } from 'antd';
-import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import TextArea from 'antd/lib/input/TextArea';
-import { MenuDto } from '../../model/types';
 import { useGate, useStore } from 'effector-react';
+import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
+import { MenuDto } from '../../model/types';
 import { MenuTimeModel, MenuTypeModel } from '../../../../store';
 import { createOptionsList } from '../../../../common/utils/selectUtils';
 import { ImageCrop } from '../../../../common/components/ImageCrop';
@@ -19,7 +19,7 @@ interface Props {
   formInstance: any;
 }
 
-export const MenuFormFields = ({ formInstance }: Props) => {
+export function MenuFormFields({ formInstance }: Props) {
   const menuTimeList = useStore($menuTimeList);
   const menuTypeList = useStore($menuTypeList);
 
@@ -89,4 +89,4 @@ export const MenuFormFields = ({ formInstance }: Props) => {
       </Form.Item>
     </>
   );
-};
+}

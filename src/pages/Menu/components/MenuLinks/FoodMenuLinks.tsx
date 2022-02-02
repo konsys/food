@@ -8,10 +8,9 @@ interface Props {
   activeFilter: EFoodType;
 }
 
-export const MenuLinks = ({ activeFilter, setActiveFilter }: Props) => {
+export function MenuLinks({ activeFilter, setActiveFilter }: Props) {
   return (
-    <>
-      <Row>
+    <Row>
         <Col span={24}>
           <div className='special-menu text-center'>
             <div className='button-group filter-button-group'>
@@ -43,6 +42,5 @@ export const MenuLinks = ({ activeFilter, setActiveFilter }: Props) => {
           </div>
         </Col>
       </Row>
-    </>
   );
-};
+}

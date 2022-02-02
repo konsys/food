@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.less';
 
-export const Qt = () => {
+export function Qt() {
   return (
     <div className='qt-box qt-background'>
       <div className='container'>
@@ -16,4 +16,4 @@ export const Qt = () => {
       </div>
     </div>
   );
-};
+}

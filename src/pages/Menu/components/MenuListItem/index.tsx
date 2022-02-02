@@ -1,5 +1,6 @@
 import { Card, Col, Image, Row } from 'antd';
 import React from 'react';
+import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 import { Params } from '../../../../config/params';
 import { MenuDto } from '../../model/types';
 import { MenuItemAddToCard } from '../MenuItemAddToCard/MenuItemAddToCard';
@@ -7,21 +8,20 @@ import { MenuItemDescription } from '../MenuItemDescription/MenuItemDescription'
 import { MenuItemPrice } from '../MenuItemPrice/MenuItemPrice';
 import { MenuItemTitle } from '../MenuItemTitle/MenuItemTitle';
 import { MenuItemWeigth } from '../MenuItemWeigth/MenuItemWeigth';
-import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 import './style.less';
 import { MenuModal } from '../../containers/MenuModal/MenuModal';
 import { DeleteButton } from '../../../../common/components/buttons/DeleteButton/DeleteButton';
 import { TDeleteItemFx } from '../../../../common/models/abstractModel/abstractCrudModel';
+
 interface Props {
   foodMenuItem: MenuDto;
   isEdit: boolean;
   onDelete: TDeleteItemFx;
 }
 
-export const MenuListItem = ({ foodMenuItem, isEdit, onDelete }: Props) => {
+export function MenuListItem({ foodMenuItem, isEdit, onDelete }: Props) {
   return (
-    <>
-      <Card
+    <Card
         className='menu-item-card'
         title={
           <Row align='middle' justify='space-between'>
@@ -74,6 +74,5 @@ export const MenuListItem = ({ foodMenuItem, isEdit, onDelete }: Props) => {
           </Col>
         </Row>
       </Card>
-    </>
   );
-};
+}

@@ -1,6 +1,7 @@
 import { Button, Upload } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactCrop, { Crop } from 'react-image-crop';
+import { RcFile } from 'antd/lib/upload';
 import { TVoidFn } from '../../types';
 import './style.less';
 import { UploadOutlined } from '@ant-design/icons';
@@ -8,7 +9,6 @@ import { IDragDropProps } from '../drag/DragDrop';
 import { noop } from 'lodash';
 import { apiUrls } from '../../api/urls';
 import { Params } from '../../../config/params';
-import { RcFile } from 'antd/lib/upload';
 import { Nullable } from '../../../core/types';
 
 export type TFile = (Blob & RcFile) | undefined;
@@ -24,7 +24,7 @@ interface Props {
   inImgSrc?: string;
 }
 
-export const ImageCrop = ({ setImageBlob, inImgSrc }: Props) => {
+export function ImageCrop({ setImageBlob, inImgSrc }: Props) {
   const [state, setState] = useState<IState>({
     src: null,
     croppedImageUrl: null,
@@ -142,4 +142,4 @@ export const ImageCrop = ({ setImageBlob, inImgSrc }: Props) => {
       )}
     </>
   );
-};
+}

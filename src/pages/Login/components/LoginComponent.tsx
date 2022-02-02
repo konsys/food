@@ -10,7 +10,7 @@ interface Props {
   user: Nullable<IUser>;
 }
 
-export const LoginComponent = ({ user }: Props) => {
+export function LoginComponent({ user }: Props) {
   const comp = (
     <>
       {!user ? (
@@ -24,4 +24,4 @@ export const LoginComponent = ({ user }: Props) => {
   );
 
   return <>{comp}</>;
-};
+}

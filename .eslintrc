@@ -7,16 +7,16 @@
     "serviceworker": true
   },
   "plugins": [
-    "effector"
+    "effector",
+    "react",
+    "prettier"
   ],
   "extends": [
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:jest/all",
-    "plugin:testing-library/react",
+    "airbnb",
     "prettier",
-    "plugin:prettier/recommended",
     "plugin:effector/recommended",
     "plugin:effector/scope"
   ],
@@ -26,6 +26,16 @@
   },
   "root": true,
   "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ],
     "camelcase": 0,
     "no-console": 0,
     "jest/require-hook": 0,
@@ -34,5 +44,12 @@
     "@typescript-eslint/no-explicit-any": 0,
     "jest/no-hooks": 0,
     "jest/prefer-expect-assertions": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx", ".native.js"]
+      }
+    }
   }
 }

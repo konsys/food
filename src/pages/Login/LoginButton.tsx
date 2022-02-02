@@ -29,11 +29,9 @@ export default function LoginButton() {
   useGate(LoginGate, { code });
 
   const comp = (
-    <>
-      <Button type='primary' onClick={handleRedirect}>
+    <Button type='primary' onClick={handleRedirect}>
         Войти через ВКонтакте
       </Button>
-    </>
   );
 
   return <>{comp}</>;

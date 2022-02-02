@@ -12,7 +12,7 @@ interface Props {
   children: ReactElement;
 }
 
-export const Template = ({ children }: Props) => {
+export function Template({ children }: Props) {
   const { pathname } = useLocation();
   const path = getRouteByPath(pathname);
   useEffect(() => {
@@ -29,4 +29,4 @@ export const Template = ({ children }: Props) => {
       <ScrollButton />
     </>
   );
-};
+}

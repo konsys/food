@@ -1,12 +1,12 @@
 import { Button, Col, Form, Row } from 'antd';
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { FieldData, NamePath } from 'rc-field-form/es/interface';
+import { useStore } from 'effector-react';
 import { TModalWithFormProps, TReturnedForm, TSetFieldsValue } from './types';
 import { MainModal } from '../modal/Modal';
 import { AbstractForm } from './AbstractForm';
 import { enterKeyPressed } from './utils';
 import { $imageBlob, resetImageBlob } from '../../pages/Image/model/store';
-import { useStore } from 'effector-react';
 import { TItemWithId } from '../types';
 import { uuid } from '../utils/utils';
 
@@ -53,19 +53,15 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
   );
 
   const ReturnedForm = useCallback(
-    (props: TReturnedForm) => {
-      return (
-        <>
-          <AbstractForm
+    (props: TReturnedForm) => (
+        <AbstractForm
             {...props}
             form={form}
             onValuesChange={(changedValues, values) => {
               props?.onValuesChange?.(changedValues, values);
             }}
           />
-        </>
-      );
-    },
+      ),
     [form]
   );
 
@@ -138,7 +134,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
           <Row gutter={8}>
             <Col span={24} style={{ textAlign: 'left' }}>
               <Button type={buttonType} onClick={onOpen}>
-                {buttonText ? buttonText : itemState?.item ? 'Редактировать' : 'Создать'}
+                {buttonText || (itemState?.item ? 'Редактировать' : 'Создать')}
               </Button>
             </Col>
           </Row>

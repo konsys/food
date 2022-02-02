@@ -5,8 +5,8 @@ interface IProps {
   component: React.ReactNode;
 }
 
-export const MenuItemAddToCard = ({ component }: IProps) => (
-  <div className='menu-item-add-to-card'>
+export function MenuItemAddToCard({ component }: IProps) {
+  return <div className='menu-item-add-to-card'>
     <span>{component}</span>
   </div>
-);
+}

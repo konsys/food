@@ -1,10 +1,9 @@
 import React from 'react';
 import { Row, Col, Space } from 'antd';
 
-export const MenuHeader = () => {
+export function MenuHeader() {
   return (
-    <>
-      <Row>
+    <Row>
         <Col span={24}>
           <Space
             direction='vertical'
@@ -16,6 +15,5 @@ export const MenuHeader = () => {
           </Space>
         </Col>
       </Row>
-    </>
   );
-};
+}

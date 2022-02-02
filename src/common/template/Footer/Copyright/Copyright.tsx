@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Copyright = () => {
+export function Copyright() {
   return (
     <div className='copyright'>
       <div className='container'>
@@ -16,4 +16,4 @@ export const Copyright = () => {
       </div>
     </div>
   );
-};
+}

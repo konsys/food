@@ -3,13 +3,11 @@ import { ModalProps, Modal } from 'antd';
 
 type Props = PropsWithChildren<ModalProps>;
 
-export const MainModal = (props: Props) => {
+export function MainModal(props: Props) {
   return (
-    <>
-      <Modal {...props} />
-    </>
+    <Modal {...props} />
   );
-};
+}
 
 MainModal.confirm = Modal.confirm;
 MainModal.info = Modal.info;

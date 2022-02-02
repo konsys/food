@@ -34,14 +34,8 @@ export function removeItem<T>(onRemove: TActionOnRemove<T>, values: T, stopEditi
     .then(stopEditing);
 }
 
-export const enterKeyPressed = (e: KeyboardEvent<HTMLFormElement | HTMLInputElement>) => {
-  return wasEnterEvent(e) && eventOnInput(e);
-};
+export const enterKeyPressed = (e: KeyboardEvent<HTMLFormElement | HTMLInputElement>) => wasEnterEvent(e) && eventOnInput(e);
 
-export const wasEnterEvent = (e: KeyboardEvent<HTMLFormElement | HTMLInputElement>) => {
-  return e.key === 'Enter';
-};
+export const wasEnterEvent = (e: KeyboardEvent<HTMLFormElement | HTMLInputElement>) => e.key === 'Enter';
 
-export const eventOnInput = (e: KeyboardEvent<HTMLFormElement | HTMLInputElement>) => {
-  return instanceOf<Element>(e.target, (obj) => !!obj.tagName) && e.target.tagName === 'INPUT';
-};
+export const eventOnInput = (e: KeyboardEvent<HTMLFormElement | HTMLInputElement>) => instanceOf<Element>(e.target, (obj) => !!obj.tagName) && e.target.tagName === 'INPUT';

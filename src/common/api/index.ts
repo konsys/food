@@ -8,6 +8,7 @@ export class CrudService<CreateEntity, FullEntity> {
   constructor(url: string) {
     this.url = url;
   }
+
   async create(params: Partial<CreateEntity>): Promise<FullEntity> {
     return (await axiosClient.post<FullEntity>(this.url, params)).data;
   }

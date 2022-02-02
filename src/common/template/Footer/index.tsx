@@ -2,7 +2,7 @@ import React from 'react';
 import { Copyright } from './Copyright/Copyright';
 import './styles.less';
 
-export const Footer = () => {
+export function Footer() {
   return (
     <footer className='footer-area bg-f'>
       <div className='container'>
@@ -91,4 +91,4 @@ export const Footer = () => {
       <Copyright />
     </footer>
   );
-};
+}

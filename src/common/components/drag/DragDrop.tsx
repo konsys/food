@@ -1,8 +1,8 @@
 import React, { DragEvent } from 'react';
 import { InboxOutlined } from '@ant-design/icons';
 import Dragger from 'antd/lib/upload/Dragger';
-import { TVoidFn } from '../../types';
 import { RcFile, UploadChangeParam } from 'antd/lib/upload';
+import { TVoidFn } from '../../types';
 
 export type BeforeUploadValueType = void | boolean | string | Blob | File;
 
@@ -43,10 +43,9 @@ export interface IDragDropProps {
 //   setUploadImagePath(`${Params.BASE_URL}/${smallImg}`);
 // };
 
-export const DragDrop = (props: IDragDropProps) => {
+export function DragDrop(props: IDragDropProps) {
   return (
-    <>
-      <Dragger {...props}>
+    <Dragger {...props}>
         <p className='ant-upload-drag-icon'>
           <InboxOutlined />
         </p>
@@ -56,6 +55,5 @@ export const DragDrop = (props: IDragDropProps) => {
           other band files
         </p>
       </Dragger>
-    </>
   );
-};
+}
