@@ -1,12 +1,9 @@
-import { useStore } from 'effector-react';
 import React, { ReactElement, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getRouteByPath } from '../../routes/paths';
-import { Footer } from './Footer';
 import { Header } from './Header';
-import { $route, setCurrentPath } from './model/store';
-import { ScrollButton } from './ScrollButton';
-import { SpecialHeader } from './SpecialHeader';
+import { setCurrentPath } from './model/store';
+import './common.less';
 
 interface Props {
   children: ReactElement;
@@ -18,15 +15,13 @@ export function Template({ children }: Props) {
   useEffect(() => {
     path && setCurrentPath(path);
   }, [path]);
-
-  const store = useStore($route);
+  children;
   return (
     <>
       <Header />
-      <SpecialHeader specialHeaderTitle={store.name} />
-      {children}
+      {/* {children}
       <Footer />
-      <ScrollButton />
+      <ScrollButton /> */}
     </>
   );
 }

@@ -69,5 +69,8 @@
     "editor.autoIndent": "full",
     "[dockercompose]": {
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[less]": {
+        "editor.defaultFormatter": "MikeBovenlander.formate"
     }
 }

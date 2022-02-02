@@ -1,75 +1,52 @@
-@import "../../../config/theme/vars.less";
+// @import "../../../config/theme/vars.less";
 /*------------------------------------------------------------------
     HEADER
 -------------------------------------------------------------------*/
-.top-navbar {
-  position: relative;
-  z-index: 10;
+
+.header .header_sticky {
+  background-color: yellow;
+  left            : 0;
+  position        : fixed;
+  padding         : 8px 0;
+  top             : 0;
+  width           : 100%;
+  z-index         : 350;
 
 
-.navbar {
-  padding: 15px 0px;
-  position: fixed;
-  width: 100%;
-  transition: height 0.3s ease-out, background 0.3s ease-out,
-    box-shadow 0.3s ease-out;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  z-index: 100;
+  .header-content {
+    position: relative;
+  }
+
+  .header-container {
+    position: relative;
+
+    .container {
+      width: @desktopWidth;
+
+      padding-right: 15px;
+      padding-left : 15px;
+      margin-right : auto;
+      margin-left  : auto;
+    }
+  }
+
+
 }
 
-.navbar-light .navbar-nav .nav-link {
-  color: @colorDark;
-  font-size: @fontSizePBig;
-  padding: 0px 20px;
-  border-radius: @borderRadius;
-}
 
-.navbar-light .navbar-nav .nav-item .nav-link:hover {
-  background: @colorThemeMain;
-  color: @colorWhite;
-}
- .navbar-light .navbar-nav .nav-item.active .nav-link {
-  background: @colorThemeMain;
-  color: @colorWhite;
-  border-radius: @borderRadius;
-}
 
-.navbar-expand-lg .navbar-nav .dropdown-menu {
-  border: none;
-  box-shadow: @boxShadow;
-}
-
-.navbar-expand-lg .navbar-nav .dropdown-menu a.dropdown-item:hover {
-  background: @colorThemeMain;
-  color: @colorWhite;
-}
-.navbar-light .navbar-toggler:hover {
-  background: @colorThemeMain;
-}
-}
 @media (max-width: @tabletBreakPoint) {
-  .navbar-light .navbar-brand {
-    margin-left: 15px;
-  }
-  .navbar-light .navbar-toggler {
-    margin-right: 15px;
-    border-radius: 0px;
-  }
-  .navbar-expand-lg .navbar-nav .dropdown-menu {
-    box-shadow: none;
+  .navbar-wrapper {
+    .top-navbar {
+      background-color: red;
+    }
   }
 }
 
 @media (min-width: @tabletBreakPoint) and (max-width: @desktopBreakPoint) {
-  .navbar-light .navbar-brand {
-    margin-left: 15px;
-  }
-  .navbar-light .navbar-toggler {
-    margin-right: 15px;
-    border-radius: 0px;
-  }
-  .navbar-expand-lg .navbar-nav .dropdown-menu {
-    box-shadow: none;
+  .navbar-wrapper {
+    .top-navbar {
+      background-color: green;
+    }
   }
 }

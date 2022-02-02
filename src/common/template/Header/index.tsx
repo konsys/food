@@ -1,65 +1,100 @@
-import { useStore } from 'effector-react';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Button } from 'antd';
-import ShoppingCartOutlined from '@ant-design/icons/ShoppingCartOutlined';
-import { pathNames } from '../../../routes/paths';
-import { $route } from '../model/store';
 import './styles.less';
 
 export function Header() {
-  const store = useStore($route);
   return (
-    <header className='top-navbar'>
-      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-        <div className='container'>
-          <a className='navbar-brand' href='index.html'>
-            <img src='images/logo.png' alt='' />
-          </a>
-          <button
-            className='navbar-toggler'
-            type='button'
-            data-toggle='collapse'
-            data-target='#navbars-rs-food'
-            aria-controls='navbars-rs-food'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-          >
-            <span className='navbar-toggler-icon' />
-          </button>
-          <div className='collapse navbar-collapse' id='navbars-rs-food'>
-            <ul className='navbar-nav ml-auto'>
-              <li className={`nav-item ${store.path === HOME.path && 'active'}`}>
-                <NavLink to={HOME.path} className='nav-link'>
-                  {pathNames.HOME.name}
-                </NavLink>
-              </li>
-              <li className={`nav-item ${store.path === CONTACTS.path && 'active'}`}>
-                <NavLink to={CONTACTS.path} className='nav-link'>
-                  {pathNames.CONTACTS.name}
-                </NavLink>
-              </li>
-              <li className={`nav-item ${store.path === ABOUT.path && 'active'}`}>
-                <NavLink to={ABOUT.path} className='nav-link'>
-                  {pathNames.ABOUT.name}
-                </NavLink>
-              </li>
-              <li className={`nav-item ${store.path === MENU.path && 'active'}`}>
-                <NavLink to={MENU.path} className='nav-link'>
-                  {MENU.name}
-                </NavLink>
-              </li>
-            </ul>
-            <div>
-              <Button type='default'>
-                <ShoppingCartOutlined />
-              </Button>
+    <div className='page-wrapper'>
+      <header className='header header_sticky'>
+        <div className='header-content'>
+          <div className='header-nav-toggle'>
+            <button type='button' className='nav-toggle btn-clear'>
+              {/* <span></span>
+              <span></span>
+              <span></span> */}
+            </button>
+          </div>
+          <div className='header-container container'>
+            <div className='header-logo'>
+              <a href='https://broniboy.ru' title='Главная'>
+                <img src='/img/content/logo/main-logo.svg' alt='Broniboy' className='hidden-xs' />
+                <img
+                  src='/img/content/logo/main-logo-mobile.svg'
+                  alt='Broniboy'
+                  className='visible-xs'
+                />
+              </a>
             </div>
+            <div className='header-city'>
+              <a
+                href='/'
+                data-toggle='modal'
+                data-target='#select-city-modal'
+                id='desktop-select-city'
+                data-city-name='Нижний Новгород'
+                data-city-id='1c55ec16-d7bd-4d61-a0d6-2ac75121ee05'
+              >
+                <svg
+                  width='24'
+                  height='26'
+                  viewBox='0 0 24 26'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    d='M17.2764 7.02209V7.02209C20.1906 9.9363 20.1906 14.6612 17.2764 17.5754L13.2432 21.6086C12.5565 22.2953 11.443 22.2953 10.7563 21.6086L6.72311 17.5754C3.80889 14.6612 3.80889 9.9363 6.72311 7.02209V7.02209C9.63732 4.10788 14.3622 4.10788 17.2764 7.02209Z'
+                    stroke='black'
+                  />
+                  <path
+                    d='M17.2764 7.02209V7.02209C20.1906 9.9363 20.1906 14.6612 17.2764 17.5754L13.2432 21.6086C12.5565 22.2953 11.443 22.2953 10.7563 21.6086L6.72311 17.5754C3.80889 14.6612 3.80889 9.9363 6.72311 7.02209V7.02209C9.63732 4.10788 14.3622 4.10788 17.2764 7.02209Z'
+                    stroke='black'
+                  />
+                  <path
+                    d='M12 14.8593C13.4141 14.8593 14.5604 13.713 14.5604 12.2989C14.5604 10.8848 13.4141 9.73848 12 9.73848C10.5859 9.73848 9.43958 10.8848 9.43958 12.2989C9.43958 13.713 10.5859 14.8593 12 14.8593Z'
+                    stroke='black'
+                  />
+                </svg>
+                <span className='header-city__name'>Нижний Новгород</span>
+              </a>
+            </div>
+            <nav className='header-nav header-buttons'>
+              <ul className='list-clear clearfix'>
+                <li className='hidden-xs hidden-sm'>
+                  <a
+                    id='header-basket-button'
+                    href='https://broniboy.ru/checkout/'
+                    title='Корзина'
+                    rel='nofollow'
+                    className='header-nav-item-link-basket header-nav-item-link-basket_active'
+                    style={{ display: 'none' }}
+                  >
+                    <b>Busket</b>
+                  </a>
+                  <a
+                    id='header-basket-button-stub'
+                    href='/'
+                    title='Корзина пуста'
+                    rel='nofollow'
+                    className='header-nav-item-link-basket-stub'
+                  >
+                    Link1
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href='/'
+                    data-toggle='modal'
+                    data-target='#login-modal'
+                    className='header-nav-item-link'
+                    title='Войти'
+                  >
+                    <span>Войти</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
-      </nav>
-    </header>
+      </header>
+    </div>
   );
 }
-
-const { HOME, ABOUT, CONTACTS, MENU } = pathNames;
