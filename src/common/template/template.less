@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,700&display=swap&subset=cyrillic,cyrillic-ext);
+
 .ps {
     overflow          : hidden !important;
     overflow-anchor   : none;
@@ -146,24 +148,24 @@
 @-webkit-keyframes colorChange {
     0% {
         background-color: #fff;
-        background-image: url(../img/icons/basket-icon.svg)
+        background-image: url(https://broniboy.ru/img/icons/basket-icon.svg)
     }
 
     100% {
         background-color: #f37021;
-        background-image: url(../img/icons/basket-icon-white.svg)
+        background-image: url(https://broniboy.ru/img/icons/basket-icon-white.svg)
     }
 }
 
 @keyframes colorChange {
     0% {
         background-color: #fff;
-        background-image: url(../img/icons/basket-icon.svg)
+        background-image: url(https://broniboy.ru/img/icons/basket-icon.svg)
     }
 
     100% {
         background-color: #f37021;
-        background-image: url(../img/icons/basket-icon-white.svg)
+        background-image: url(https://broniboy.ru/img/icons/basket-icon-white.svg)
     }
 }
 
@@ -378,7 +380,161 @@
     }
 }
 
+body {
+    color             : #000;
+    font-size         : 15px;
+    font-weight       : 400;
+    font-family       : Roboto, sans-serif;
+    font-style        : normal;
+    line-height       : 1.5em;
+    overflow-x        : hidden;
+    -ms-overflow-style: scrollbar
+}
 
+h1 {
+    color      : #000;
+    font-size  : 42px;
+    font-weight: 300;
+    line-height: 1.286
+}
+
+h2 {
+    color      : #000;
+    font-size  : 36px;
+    font-weight: 500;
+    line-height: 1.278
+}
+
+h3 {
+    color      : #000;
+    font-size  : 24px;
+    line-height: 1.333
+}
+
+h4 {
+    color         : #000;
+    font-size     : 28px;
+    font-weight   : 700;
+    text-transform: uppercase;
+    line-height   : 1.357
+}
+
+a {
+    text-decoration: none;
+    color          : #f37021
+}
+
+a:hover {
+    text-decoration: none;
+    color          : rgba(243, 112, 33, .82)
+}
+
+a:active {
+    text-decoration: none;
+    color          : rgba(243, 112, 33, .82)
+}
+
+a:focus {
+    outline        : 0;
+    text-decoration: none;
+    color          : rgba(243, 112, 33, .82)
+}
+
+a,
+button,
+input,
+select,
+textarea {
+    outline: 0
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    color : inherit;
+    font  : inherit;
+    margin: 0
+}
+
+button {
+    padding: 0
+}
+
+button:focus {
+    outline: 0
+}
+
+*,
+:after,
+:before {
+    -webkit-box-sizing: border-box;
+    box-sizing        : border-box
+}
+
+.hide {
+    display: none
+}
+
+.show {
+    display: block
+}
+
+::-moz-selection {
+    background-color: rgba(240, 131, 97, .5);
+    text-shadow     : none
+}
+
+::selection {
+    background-color: rgba(240, 131, 97, .5);
+    text-shadow     : none
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear  : both
+}
+
+.btn-clear {
+    border          : none;
+    background-color: transparent;
+    cursor          : pointer
+}
+
+.list-clear {
+    list-style  : none;
+    margin      : 0;
+    padding-left: 0
+}
+
+.overlay {
+    background        : rgba(0, 0, 0, .6);
+    display           : none;
+    height            : 100%;
+    left              : 0;
+    overflow          : auto;
+    position          : fixed;
+    top               : 0;
+    width             : 100%;
+    z-index           : 90;
+    opacity           : 0;
+    -webkit-transform : translateY(-4000px);
+    transform         : translateY(-4000px);
+    -webkit-transition: opacity .1s, -webkit-transform .1s;
+    transition        : opacity .1s, transform .1s, -webkit-transform .1s
+}
+
+.overlay.overlay__show {
+    opacity          : 1;
+    -webkit-transform: translateY(0);
+    transform        : translateY(0)
+}
 
 .page-title h2,
 .page-title>div {
@@ -486,11 +642,11 @@
 }
 
 .app-btn.app-btn_google-play {
-    background-image: url(../img/backgrounds/buttons/google-play-btn.svg)
+    background-image: url(https://broniboy.ru/img/backgrounds/buttons/google-play-btn.svg)
 }
 
 .app-btn.app-btn_app-store {
-    background-image: url(../img/backgrounds/buttons/app-store-btn.svg)
+    background-image: url(https://broniboy.ru/img/backgrounds/buttons/app-store-btn.svg)
 }
 
 .show-more-elem {
@@ -645,7 +801,7 @@
 }
 
 .header.header_transparent .header-nav a.header-nav-item-link-login {
-    background-image: url(../img/icons/login-icon-white.svg)
+    background-image: url(https://broniboy.ru/img/icons/login-icon-white.svg)
 }
 
 .header.header_transparent .header-nav a.header-nav-item-link span {
@@ -654,7 +810,7 @@
 
 .header-nav-item-link-basket-stub,
 .header.header_transparent .header-nav a.header-nav-item-link-basket {
-    background-image: url(../img/icons/basket-icon-white.svg)
+    background-image: url(https://broniboy.ru/img/icons/basket-icon-white.svg)
 }
 
 .header.header_transparent .app-round a {
@@ -669,19 +825,19 @@
 }
 
 .header.header_transparent .app-round a.app-round-item-link-google_play {
-    background-image: url(../img/icons/google-play-icon-white.svg)
+    background-image: url(https://broniboy.ru/img/icons/google-play-icon-white.svg)
 }
 
 .header.header_transparent .app-round a.app-round-item-link-app_store {
-    background-image: url(../img/icons/app-store-icon-white.svg)
+    background-image: url(https://broniboy.ru/img/icons/app-store-icon-white.svg)
 }
 
 .header.header_transparent .app-round a:hover.app-round-item-link-google_play {
-    background-image: url(../img/icons/google-play-icon-white.svg)
+    background-image: url(https://broniboy.ru/img/icons/google-play-icon-white.svg)
 }
 
 .header.header_transparent .app-round a:hover.app-round-item-link-app_store {
-    background-image: url(../img/icons/app-store-icon-white.svg)
+    background-image: url(https://broniboy.ru/img/icons/app-store-icon-white.svg)
 }
 
 .header .header-content {
@@ -815,11 +971,11 @@
 }
 
 .app-round a:hover.app-round-item-link-google_play {
-    background-image: url(../img/icons/google-play-icon-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/google-play-icon-hover.svg)
 }
 
 .app-round a:hover.app-round-item-link-app_store {
-    background-image: url(../img/icons/app-store-icon-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/app-store-icon-hover.svg)
 }
 
 .app-round .app-round-item-link-app_store,
@@ -828,13 +984,13 @@
 }
 
 .app-round .app-round-item-link-google_play {
-    background-image   : url(../img/icons/google-play-icon.svg);
+    background-image   : url(https://broniboy.ru/img/icons/google-play-icon.svg);
     background-position: 56% 50%;
     margin-right       : 10px
 }
 
 .app-round .app-round-item-link-app_store {
-    background-image   : url(../img/icons/app-store-icon.svg);
+    background-image   : url(https://broniboy.ru/img/icons/app-store-icon.svg);
     background-position: 50% 42%
 }
 
@@ -872,7 +1028,7 @@
 }
 
 .header-nav a.header-nav-item-link--address {
-    background     : url(../img/icons/map-marker.svg) no-repeat 0 center;
+    background     : url(https://broniboy.ru/img/icons/map-marker.svg) no-repeat 0 center;
     background-size: 16px;
     border         : none !important;
     padding        : 8px 15px 0 25px
@@ -883,12 +1039,12 @@
 }
 
 .header.header_transparent .header-nav a.header-nav-item-link--address {
-    background     : url(../img/icons/map-marker-white.svg) no-repeat 0 center;
+    background     : url(https://broniboy.ru/img/icons/map-marker-white.svg) no-repeat 0 center;
     background-size: 16px
 }
 
 .header-nav a.header-nav-item-link-login {
-    background   : url(../img/icons/login-icon.svg) center center no-repeat;
+    background   : url(https://broniboy.ru/img/icons/login-icon.svg) center center no-repeat;
     border-radius: 50%;
     position     : relative;
     padding      : 0;
@@ -907,7 +1063,7 @@
 
 .header-nav a.header-nav-item-link-basket,
 .header-nav-item-link-basket-stub {
-    background   : url(../img/icons/basket-icon.svg) no-repeat center center;
+    background   : url(https://broniboy.ru/img/icons/basket-icon.svg) no-repeat center center;
     border-radius: 20px;
     padding      : 19px
 }
@@ -949,7 +1105,7 @@
     -webkit-animation    : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
     animation            : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
     background-color     : #f37021;
-    background-image     : url(../img/icons/basket-icon-white.svg);
+    background-image     : url(https://broniboy.ru/img/icons/basket-icon-white.svg);
     background-position-x: 17px;
     border-color         : #f37021;
     position             : relative;
@@ -996,19 +1152,19 @@
 }
 
 .site-sections .site-sections-item.site-sections-item_pizza {
-    background-image: url(../img/icons/pizza.svg)
+    background-image: url(https://broniboy.ru/img/icons/pizza.svg)
 }
 
 .site-sections .site-sections-item.site-sections-item_sushi {
-    background-image: url(../img/icons/sushi.svg)
+    background-image: url(https://broniboy.ru/img/icons/sushi.svg)
 }
 
 .site-sections .site-sections-item.site-sections-item_burger {
-    background-image: url(../img/icons/burger.svg)
+    background-image: url(https://broniboy.ru/img/icons/burger.svg)
 }
 
 .site-sections .site-sections-item.site-sections-item_all {
-    background-image   : url(../img/icons/sections-icon.svg);
+    background-image   : url(https://broniboy.ru/img/icons/sections-icon.svg);
     background-position: 11% 50%;
     padding-left       : 70px
 }
@@ -1065,20 +1221,20 @@
 }
 
 .site-sections .site-sections-item:hover.site-sections-item_pizza {
-    background-image: url(../img/icons/pizza-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/pizza-hover.svg)
 }
 
 .site-sections .site-sections-item:hover.site-sections-item_sushi {
-    background-image: url(../img/icons/sushi-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/sushi-hover.svg)
 }
 
 .site-sections .site-sections-item:hover.site-sections-item_burger {
-    background-image: url(../img/icons/burger-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/burger-hover.svg)
 }
 
 .site-sections .site-sections-item.site-sections-item_all.active,
 .site-sections .site-sections-item:hover.site-sections-item_all {
-    background-image: url(../img/icons/sections-icon-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/sections-icon-hover.svg)
 }
 
 .restaurants.networks {
@@ -1109,7 +1265,7 @@
     border             : none;
     border-radius      : 2px;
     background-color   : #f2f2f2;
-    background-image   : url(../img/icons/search-icon.svg);
+    background-image   : url(https://broniboy.ru/img/icons/search-icon.svg);
     background-repeat  : no-repeat;
     background-position: center center;
     height             : 100%;
@@ -1150,7 +1306,7 @@
     z-index                : 2;
     border-top-right-radius: 5px;
     border-top-left-radius : 5px;
-    background-image       : url(../img/content/restaurant/cover.svg);
+    background-image       : url(https://broniboy.ru/img/content/restaurant/cover.svg);
     background-size        : cover
 }
 
@@ -1310,8 +1466,8 @@
     width           : 18px;
     height          : 18px;
     background-color: #fff;
-    -webkit-mask    : url(../img/icons/restaurant/clock.svg) no-repeat left 50%;
-    mask            : url(../img/icons/restaurant/clock.svg) no-repeat left 50%
+    -webkit-mask    : url(https://broniboy.ru/img/icons/restaurant/clock.svg) no-repeat left 50%;
+    mask            : url(https://broniboy.ru/img/icons/restaurant/clock.svg) no-repeat left 50%
 }
 
 .restaurant-box-second__title {
@@ -1359,7 +1515,7 @@
 
 .show-more a span:before {
     content            : '';
-    background-image   : url(../img/icons/spin.svg);
+    background-image   : url(https://broniboy.ru/img/icons/spin.svg);
     background-position: center center;
     background-repeat  : no-repeat;
     height             : 16px;
@@ -1448,7 +1604,7 @@
 }
 
 .restaurant .add-to-favorites-btn {
-    background-image   : url(../img/icons/restaurant/heart.svg);
+    background-image   : url(https://broniboy.ru/img/icons/restaurant/heart.svg);
     background-position: center center;
     background-repeat  : no-repeat;
     height             : 27px;
@@ -1459,7 +1615,7 @@
 }
 
 .restaurant .add-to-favorites-btn:hover {
-    background-image: url(../img/icons/restaurant/heart-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/restaurant/heart-hover.svg)
 }
 
 .restaurant .restaurant-descr {
@@ -1611,7 +1767,7 @@
 }
 
 .restaurant-info .restaurant-info-delivery:before {
-    background-image   : url(../img/icons/restaurant-info/restaurant-info-delivery.svg);
+    background-image   : url(https://broniboy.ru/img/icons/restaurant-info/restaurant-info-delivery.svg);
     background-position: center center;
     background-repeat  : no-repeat;
     content            : '';
@@ -1680,15 +1836,15 @@
 }
 
 .restaurant-info .restaurant-info-data p span.restaurant-info-data-check {
-    background-image: url(../img/icons/restaurant-info/check.svg)
+    background-image: url(https://broniboy.ru/img/icons/restaurant-info/check.svg)
 }
 
 .restaurant-info .restaurant-info-data p span.restaurant-info-data-clock {
-    background-image: url(../img/icons/restaurant-info/clock.svg)
+    background-image: url(https://broniboy.ru/img/icons/restaurant-info/clock.svg)
 }
 
 .restaurant-info .restaurant-info-data p span.restaurant-info-data-chefs-cap {
-    background-image: url(../img/icons/restaurant-info/chefs-cap.svg)
+    background-image: url(https://broniboy.ru/img/icons/restaurant-info/chefs-cap.svg)
 }
 
 .restaurant-info .restaurant-info-data .restaurant-info-data-popover-toggle {
@@ -2175,15 +2331,15 @@
 }
 
 .order-options-tabs li.active a.delivery {
-    background-image: url(../img/icons/order-options/car-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/order-options/car-hover.svg)
 }
 
 .order-options-tabs li.active a.taken {
-    background-image: url(../img/icons/order-options/bag-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/order-options/bag-hover.svg)
 }
 
 .order-options-tabs li.active a.place {
-    background-image: url(../img/icons/order-options/cutlery-hover.svg)
+    background-image: url(https://broniboy.ru/img/icons/order-options/cutlery-hover.svg)
 }
 
 .order-options-tabs a {
@@ -2215,15 +2371,15 @@
 }
 
 .order-options-tabs a.delivery {
-    background-image: url(../img/icons/order-options/car.svg)
+    background-image: url(https://broniboy.ru/img/icons/order-options/car.svg)
 }
 
 .order-options-tabs a.taken {
-    background-image: url(../img/icons/order-options/bag.svg)
+    background-image: url(https://broniboy.ru/img/icons/order-options/bag.svg)
 }
 
 .order-options-tabs a.place {
-    background-image: url(../img/icons/order-options/cutlery.svg)
+    background-image: url(https://broniboy.ru/img/icons/order-options/cutlery.svg)
 }
 
 .order-options-address {
@@ -2345,7 +2501,7 @@
     position           : absolute;
     top                : 1px;
     width              : 18px;
-    background-image   : url(../img/icons/restaurant-info/card.svg)
+    background-image   : url(https://broniboy.ru/img/icons/restaurant-info/card.svg)
 }
 
 .order-options-cards-dropdown-select:after {
@@ -2409,7 +2565,7 @@
 }
 
 .order-options-promo-code a:before {
-    background-image   : url(../img/icons/restaurant-info/promocode.svg);
+    background-image   : url(https://broniboy.ru/img/icons/restaurant-info/promocode.svg);
     background-position: center center;
     background-repeat  : no-repeat;
     background-size    : contain;
@@ -2670,19 +2826,19 @@
 }
 
 .social a.social-odnoklasniki {
-    background-image: url(../img/icons/social/odnoklass.svg)
+    background-image: url(https://broniboy.ru/img/icons/social/odnoklass.svg)
 }
 
 .social a.social-facebook {
-    background-image: url(../img/icons/social/facebook.svg)
+    background-image: url(https://broniboy.ru/img/icons/social/facebook.svg)
 }
 
 .social a.social-instagram {
-    background-image: url(../img/icons/social/inst.svg)
+    background-image: url(https://broniboy.ru/img/icons/social/inst.svg)
 }
 
 .social a.social-vkontakte {
-    background-image: url(../img/icons/social/vk.svg)
+    background-image: url(https://broniboy.ru/img/icons/social/vk.svg)
 }
 
 .product>img {
@@ -3063,7 +3219,7 @@
 }
 
 .checkbox-label span:after {
-    background-image   : url(../img/icons/checkmark.svg);
+    background-image   : url(https://broniboy.ru/img/icons/checkmark.svg);
     background-position: center center;
     background-repeat  : no-repeat;
     background-size    : contain;
@@ -3837,7 +3993,7 @@ footer {
 
 .loading-orders span::before {
     content          : '';
-    background       : url(../img/icons/spin.svg) no-repeat center center;
+    background       : url(https://broniboy.ru/img/icons/spin.svg) no-repeat center center;
     height           : 20px;
     left             : 0;
     position         : absolute;
@@ -4054,7 +4210,7 @@ button.peach-btn[disabled] {
 }
 
 .order-complete--thanks {
-    background : url(../img/icons/order-complete.png) no-repeat center top;
+    background : url(https://broniboy.ru/img/icons/order-complete.png) no-repeat center top;
     margin-top : 50px;
     padding-top: 120px;
     font-size  : 42px;
@@ -4394,7 +4550,7 @@ ul.modal-list-restaurant li:last-child a div {
 
 .loading-restaurants span:before {
     content   : '';
-    background: url(../img/icons/spin.svg) no-repeat center center;
+    background: url(https://broniboy.ru/img/icons/spin.svg) no-repeat center center;
     height    : 16px;
     left      : 0;
     position  : absolute;
@@ -5095,7 +5251,7 @@ ul.modal-list-restaurant li:last-child a div {
 }
 
 .welcome {
-    background     : #f37021 url(../img/backgrounds/welcome/home-page.svg) no-repeat center center;
+    background     : #f37021 url(https://broniboy.ru/img/backgrounds/welcome/home-page.svg) no-repeat center center;
     height         : 650px;
     position       : relative;
     display        : flex;
@@ -5141,7 +5297,7 @@ ul.modal-list-restaurant li:last-child a div {
 }
 
 .welcome-search-form label {
-    background-image   : url(../img/icons/cursor.svg);
+    background-image   : url(https://broniboy.ru/img/icons/cursor.svg);
     background-repeat  : no-repeat;
     background-position: center center;
     background-size    : 20px 20px;
@@ -5244,7 +5400,7 @@ ul.modal-list-restaurant li:last-child a div {
     top       : 0;
     width     : 37px;
     height    : 37px;
-    background: url(../img/icons/promo-marker.svg) no-repeat
+    background: url(https://broniboy.ru/img/icons/promo-marker.svg) no-repeat
 }
 
 .promo-item hr {
@@ -5320,7 +5476,7 @@ ul.modal-list-restaurant li:last-child a div {
     width          : 122px;
     height         : 122px;
     text-align     : center;
-    background     : url(../img/backgrounds/welcome/category.svg) no-repeat;
+    background     : url(https://broniboy.ru/img/backgrounds/welcome/category.svg) no-repeat;
     background-size: 122px 122px;
     display        : flex;
     flex-direction : column;
@@ -5840,7 +5996,7 @@ ul.modal-list-restaurant li:last-child a div {
 .order-options-time-dropdown-select::after {
     display         : block;
     content         : ' ';
-    background-image: url(../img/icons/dropdown-icon.svg);
+    background-image: url(https://broniboy.ru/img/icons/dropdown-icon.svg);
     width           : 8px;
     height          : 4px;
     position        : absolute;
@@ -6217,7 +6373,7 @@ span.nowrap {
     content         : ' ';
     width           : 22px;
     height          : 16px;
-    background-image: url(../img/icons/check-phone-ok.svg);
+    background-image: url(https://broniboy.ru/img/icons/check-phone-ok.svg);
     position        : absolute;
     top             : 40px;
     right           : -32px
@@ -6376,7 +6532,7 @@ span.nowrap {
 }
 
 .ordering-form .btn-payment-card--active {
-    background: #f2f2f2 url(../img/icons/payment-active.svg) no-repeat 10px center
+    background: #f2f2f2 url(https://broniboy.ru/img/icons/payment-active.svg) no-repeat 10px center
 }
 
 .btn-payment-card img {
@@ -6608,7 +6764,7 @@ span.nowrap {
     top            : 50%;
     left           : 50%;
     margin         : -53px 0 0 -18px;
-    background     : url(../img/icons/marker-google.svg);
+    background     : url(https://broniboy.ru/img/icons/marker-google.svg);
     background-size: 37px 53px;
     pointer-events : none
 }
@@ -6992,7 +7148,7 @@ span.nowrap {
 }
 
 .faq__nav strong.--active,
-.faq__nav strong: hover {
+.faq__nav strong:hover {
     color: #f37021
 }
 

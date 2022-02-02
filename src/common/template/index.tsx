@@ -4,6 +4,7 @@ import { getRouteByPath } from '../../routes/paths';
 import { Header } from './Header';
 import { setCurrentPath } from './model/store';
 import './common.less';
+import './template.less';
 
 interface Props {
   children: ReactElement;
