@@ -2,14 +2,14 @@ import { Button, Upload } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactCrop, { Crop } from 'react-image-crop';
 import { RcFile } from 'antd/lib/upload';
-import { TVoidFn } from '../../types';
-import './style.less';
 import { UploadOutlined } from '@ant-design/icons';
-import { IDragDropProps } from '../drag/DragDrop';
 import { noop } from 'lodash';
+import { TVoidFn } from '../../types';
+import { IDragDropProps } from '../drag/DragDrop';
 import { apiUrls } from '../../api/urls';
 import { Params } from '../../../config/params';
 import { Nullable } from '../../../core/types';
+import './style.less';
 
 export type TFile = (Blob & RcFile) | undefined;
 

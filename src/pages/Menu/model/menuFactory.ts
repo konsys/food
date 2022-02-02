@@ -15,15 +15,3 @@ export const menuFactory = factory.Sync.makeFactory<MenuDto>({
   imgId: factory.each((n) => n),
   image: factory.each(() => imageFactory.build()),
 });
-
-const images = [
-  '/images/img-01.jpg',
-  '/images/img-02.jpg',
-  '/images/img-03.jpg',
-  '/images/img-04.jpg',
-  '/images/img-05.jpg',
-  '/images/img-06.jpg',
-  '/images/img-07.jpg',
-  '/images/img-08.jpg',
-  '/images/img-09.jpg',
-];

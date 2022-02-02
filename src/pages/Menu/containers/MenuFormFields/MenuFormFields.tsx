@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { Form, Input, InputNumber, Select } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { useGate, useStore } from 'effector-react';
@@ -23,8 +23,8 @@ export function MenuFormFields({ formInstance }: Props) {
   const menuTimeList = useStore($menuTimeList);
   const menuTypeList = useStore($menuTypeList);
 
-  const [menuTimeItems, setMenuTimeItems] = useState<JSX.Element[]>();
-  const [menuTypeItems, setMenuTypeItems] = useState<JSX.Element[]>();
+  const [menuTimeItems, setMenuTimeItems] = useState<ReactNode[]>();
+  const [menuTypeItems, setMenuTypeItems] = useState<ReactNode[]>();
 
   useEffect(() => {
     createOptionsList(menuTimeList.items, setMenuTimeItems);

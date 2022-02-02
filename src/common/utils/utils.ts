@@ -12,7 +12,8 @@ export const isValidateErrorEntity = (e: any): e is ValidateErrorEntity => {
   }
 };
 
-export const isNullOrUndefined = <T>(item: T | null | undefined): item is null | undefined => item === undefined || item === null;
+export const isNullOrUndefined = <T>(item: T | null | undefined): item is null | undefined =>
+  item === undefined || item === null;
 
 export const downloadBlob = (blob: Blob, fileNameWithExtension: string): void => {
   const url = window.URL.createObjectURL(blob);
@@ -58,4 +59,4 @@ export const getFileExtension = (filename: string) => filename.split('.').pop();
 
 export const uuid = () => uuidv4();
 
-export const isNumber = (item: any): item is number => !isNaN(Number(item));
+export const isNumber = (item: any): item is number => !Number.isNaN(Number(item));

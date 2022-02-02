@@ -12,7 +12,7 @@ interface Props {
 
 export function LoginComponent({ user }: Props) {
   const comp = (
-    <>
+    <span>
       {!user ? (
         <Title level={4}>Вход</Title>
       ) : (
@@ -20,8 +20,8 @@ export function LoginComponent({ user }: Props) {
           Начать игру
         </Link>
       )}
-    </>
+    </span>
   );
 
-  return <>{comp}</>;
+  return <span>{comp}</span>;
 }

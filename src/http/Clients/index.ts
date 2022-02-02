@@ -8,9 +8,10 @@ export const axiosClient: AxiosInstance = axios.create({
 
 axiosClient.interceptors.request.use((config) => {
   const token = `Bearer ${getToken()}`;
-  config.headers && (config.headers.Authorization = token);
+  const res = { ...config };
+  res.headers && (res.headers.Authorization = token);
 
-  return config;
+  return res;
 }, onError);
 
 axiosClient.interceptors.response.use(
@@ -31,7 +32,6 @@ axiosClient.interceptors.response.use(
           axiosClient.defaults.headers.common.Authorization = `Bearer ${token}`;
           return axiosClient.request(error.config);
         }
-        return;
       }
     }
 

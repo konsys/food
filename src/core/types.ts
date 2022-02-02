@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 export type TChildren = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export type Nullable<T> = T | null;

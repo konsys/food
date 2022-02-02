@@ -30,9 +30,9 @@ export default function LoginButton() {
 
   const comp = (
     <Button type='primary' onClick={handleRedirect}>
-        Войти через ВКонтакте
-      </Button>
+      Войти через ВКонтакте
+    </Button>
   );
 
-  return <>{comp}</>;
+  return <span>{comp}</span>;
 }

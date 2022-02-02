@@ -54,14 +54,14 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
 
   const ReturnedForm = useCallback(
     (props: TReturnedForm) => (
-        <AbstractForm
-            {...props}
-            form={form}
-            onValuesChange={(changedValues, values) => {
-              props?.onValuesChange?.(changedValues, values);
-            }}
-          />
-      ),
+      <AbstractForm
+        {...props}
+        form={form}
+        onValuesChange={(changedValues, values) => {
+          props?.onValuesChange?.(changedValues, values);
+        }}
+      />
+    ),
     [form]
   );
 
@@ -100,15 +100,16 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         form
           .validateFields()
           .then(async (validatedFormItem) => {
+            let returnValue = { ...validatedFormItem };
             if (imageBlob && createImage) {
               const fd = new FormData();
               fd.append('file', imageBlob, `${uuid()}.jpg`);
 
               const res = await createImage(fd);
               const imgId = res.id;
-              validatedFormItem = { ...validatedFormItem, imgId };
+              returnValue = { ...validatedFormItem, imgId };
             }
-            return validatedFormItem;
+            return returnValue;
           })
           .then((v) => (v?.id ? onUpdate(v) : onCreate(v)))
           .then(() => setModalVisible(false))

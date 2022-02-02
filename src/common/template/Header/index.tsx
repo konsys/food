@@ -1,11 +1,11 @@
 import { useStore } from 'effector-react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Button } from 'antd';
 import ShoppingCartOutlined from '@ant-design/icons/ShoppingCartOutlined';
 import { pathNames } from '../../../routes/paths';
 import { $route } from '../model/store';
 import './styles.less';
-import { Button } from 'antd';
 
 export function Header() {
   const store = useStore($route);

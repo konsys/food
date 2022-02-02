@@ -31,15 +31,6 @@ export interface LoginRequest {
   password: string;
   saveCredentials: boolean;
 }
-
-export interface IUserRegistration {
-  userId?: number;
-  isTestUser?: boolean;
-  vip: boolean;
-  name: string;
-  email?: string;
-  password?: string;
-}
 export interface IPlayer extends UserGameStatus {
   moveOrder: 0 | 1 | 2 | 3 | 4;
 }

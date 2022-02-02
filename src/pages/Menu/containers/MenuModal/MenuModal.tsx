@@ -8,9 +8,9 @@ import { MenuDto } from '../../model/types';
 import { MenuFormFields } from '../MenuFormFields/MenuFormFields';
 
 interface Props {
+  id: TId;
   buttonText?: string;
   buttonType?: ButtonType;
-  id: TId;
 }
 
 const { createItemFx, getAllDefault, updateItemFx, $itemStore, ItemGate } = MenuModel;

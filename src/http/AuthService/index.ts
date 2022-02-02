@@ -50,7 +50,7 @@ export class Auth {
   }
 
   public static async loadUser(): Promise<IUser> {
-    return await axiosClient.get(Paths.user);
+    return axiosClient.get(Paths.user);
   }
 
   public static async refreshAccessToken(): Promise<string> {

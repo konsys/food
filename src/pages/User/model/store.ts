@@ -19,6 +19,8 @@ import { IRegistrationResponce, IUser, IUserRegistration } from './types';
 
 const UserDomain = createDomain('UserDomain');
 
+export const logout = UserDomain.event();
+
 export const ProfileGate = createGate();
 export const getProfileFx = UserDomain.effect<number, IUser, Error>({
   handler: fetchUserProfile,
@@ -58,8 +60,6 @@ refreshTokenFx.done.watch(({ result }) => {
 
 export const getMyProfile = UserDomain.event();
 
-export const logout = UserDomain.event();
-
 // TODO test in getMyProfile call getUserFx
 sample({
   clock: [ProfileGate.open, getMyProfile],
@@ -82,7 +82,7 @@ export const $$register = UserDomain.store<IRegistrationResponce | null>(null).o
   (_, { result }) => result
 );
 
-export const $$user = UserDomain.store<IUser | null>(null)
+export const $user = UserDomain.store<IUser | null>(null)
   .on(setUser, (_, data) => data)
   .on(getUserFx.done, (_, { result }) => result)
   .reset(logout);
@@ -95,7 +95,7 @@ sample({
   clock: logout,
   source: {
     gate: ProfileGate.state,
-    user: $$user.map((v) => v),
+    user: $user.map((v) => v),
   },
   fn: () => {
     const token = getRefreshToken();

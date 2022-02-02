@@ -9,7 +9,8 @@
   "plugins": [
     "effector",
     "react",
-    "prettier"
+    "prettier",
+    "import-order-autofix"
   ],
   "extends": [
     "plugin:@typescript-eslint/eslint-recommended",
@@ -26,16 +27,8 @@
   },
   "root": true,
   "rules": {
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-   ],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "import/prefer-default-export":0,
     "camelcase": 0,
     "no-console": 0,
     "jest/require-hook": 0,
@@ -43,7 +36,25 @@
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "jest/no-hooks": 0,
-    "jest/prefer-expect-assertions": 0
+    "jest/prefer-expect-assertions": 0,
+    "import/no-unresolved": 0,
+    "import/extensions":0,
+    "no-shadow": 0,
+    "no-unused-vars": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-use-before-define": 0,
+    "no-unused-expressions": 0,
+    "no-plusplus": 0,
+    "no-await-in-loop": 0,
+    "effector/no-getState": 0,
+    "react/require-default-props": 0,
+    "react/jsx-props-no-spreading": 0,
+    "no-underscore-dangle": 0,
+    "no-return-assign": 0,
+    "react/function-component-definition": 0,
+    "react/no-array-index-key": 0,
+    "no-restricted-syntax": 0,
+    "guard-for-in": 0
   },
   "settings": {
     "import/resolver": {

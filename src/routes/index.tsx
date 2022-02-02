@@ -5,8 +5,9 @@ import { EPathName } from './types';
 
 export const getRoutes = (): ReactElement<EPathName, string>[] => {
   const routes: ReactElement<EPathName, string>[] = [];
+
   for (const k in paths) {
-    const { element, path } = paths[k as EPathName];
+    const { element, path } = paths[k as unknown as EPathName];
     routes.push(<Route key={k} path={path} element={createComponent(element)} />);
   }
   return routes;
