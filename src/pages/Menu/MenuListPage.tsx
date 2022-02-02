@@ -11,7 +11,7 @@ export enum EFoodType {
   SALADS = 'Salads',
   HOT = 'Hot',
 }
-const { $listStore, setPage, setPageSize, ListGate, setFilter, deleteItemFx } = MenuModel;
+const { $listStore, setPage, setPageSize, ListGate, deleteItemFx } = MenuModel;
 
 export function MenuListPage(): ReactElement {
   const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -19,39 +19,30 @@ export function MenuListPage(): ReactElement {
   const menu = useStore($listStore);
   useGate(ListGate, { limit: menu.limit, page: menu.page, filter: menu.filter });
 
-  const [activeFilter, setActiveFilter] = useState<EFoodType>(EFoodType.ALL);
-
   return (
     <div className='menu-box'>
-        <div className='container'>
-          <Row gutter={[16, 16]}>
-            <Col span={24}>
-              <Space>
-                <MenuModal id={null} />
-                <Button onClick={() => setIsEdit(!isEdit)}>
-                  {!isEdit ? 'Редактировать' : 'Завершить'}
-                </Button>
-              </Space>
-            </Col>
+      <div className='container'>
+        <Row gutter={[16, 16]}>
+          <Col span={24}>
+            <Space>
+              <MenuModal id={null} />
+              <Button onClick={() => setIsEdit(!isEdit)}>
+                {!isEdit ? 'Редактировать' : 'Завершить'}
+              </Button>
+            </Space>
+          </Col>
 
-            <Col span={24}>
-              <MenuList
-                isEdit={isEdit}
-                menu={menu}
-                setPage={setPage}
-                setPageSize={setPageSize}
-                activeFilter={activeFilter}
-                setActiveFilter={(v) => {
-                  setActiveFilter(v);
-                  v !== EFoodType.ALL
-                    ? setFilter({ menuType: { name: v.toLowerCase() } })
-                    : setFilter(null);
-                }}
-                onDelete={deleteItemFx}
-              />
-            </Col>
-          </Row>
-        </div>
+          <Col span={24}>
+            <MenuList
+              isEdit={isEdit}
+              menu={menu}
+              setPage={setPage}
+              setPageSize={setPageSize}
+              onDelete={deleteItemFx}
+            />
+          </Col>
+        </Row>
       </div>
+    </div>
   );
 }
