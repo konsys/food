@@ -5,9 +5,9 @@
 .top-navbar {
   position: relative;
   z-index: 10;
-}
 
-.top-navbar .navbar {
+
+.navbar {
   padding: 15px 0px;
   position: fixed;
   width: 100%;
@@ -18,18 +18,18 @@
   z-index: 100;
 }
 
-.top-navbar .navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link {
   color: @colorDark;
   font-size: @fontSizePBig;
   padding: 0px 20px;
   border-radius: @borderRadius;
 }
 
-.top-navbar .navbar-light .navbar-nav .nav-item .nav-link:hover {
+.navbar-light .navbar-nav .nav-item .nav-link:hover {
   background: @colorThemeMain;
   color: @colorWhite;
 }
-.top-navbar .navbar-light .navbar-nav .nav-item.active .nav-link {
+ .navbar-light .navbar-nav .nav-item.active .nav-link {
   background: @colorThemeMain;
   color: @colorWhite;
   border-radius: @borderRadius;
@@ -47,7 +47,7 @@
 .navbar-light .navbar-toggler:hover {
   background: @colorThemeMain;
 }
-
+}
 @media (max-width: @tabletBreakPoint) {
   .navbar-light .navbar-brand {
     margin-left: 15px;
