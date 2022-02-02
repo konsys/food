@@ -132,7 +132,9 @@ export class CrudStore<CreateEntity extends { id: TId }, FullEntity = TItemWithI
       .on(createItemFx.fail, () => notification.error({ message: 'Ошибка создания' }))
       .on(getItemFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
       .on(updateItemFx.fail, () => notification.error({ message: 'Ошибка обновления' }))
-      .on(deleteItemFx.fail, () => notification.error({ message: `Ошибка удаления` }))
+      .on(deleteItemFx.fail, () =>
+        notification.error({ message: `Ошибка удаления`, duration: 150454 })
+      )
       .reset(resetOne);
 
     sample({

@@ -1,3 +1,4 @@
+import { ButtonType } from 'antd/lib/button';
 import { useGate, useStore } from 'effector-react';
 import React, { useState } from 'react';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
@@ -8,12 +9,14 @@ import { DictionaryFields } from './DictionaryFields';
 type Props<CreateEntity extends { id: TId }> = {
   model: TCrudStore<CreateEntity>;
   buttonText?: string;
+  buttonType?: ButtonType;
   id: TId;
 };
 
 export function DictionaryModal<CreateEntity extends { id: TId }>({
   model,
   buttonText,
+  buttonType,
   id,
 }: Props<CreateEntity>) {
   const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne, ItemGate } = model;
@@ -35,6 +38,7 @@ export function DictionaryModal<CreateEntity extends { id: TId }>({
       setModalVisible={setModalVisible}
       buttonText={buttonText}
       itemState={item}
+      buttonType={buttonType}
     >
       <DictionaryFields />
     </ModalForm>

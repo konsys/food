@@ -7,9 +7,8 @@ import { AbstractForm } from './AbstractForm';
 import { enterKeyPressed } from './utils';
 import { $imageBlob, resetImageBlob } from '../../pages/Image/model/store';
 import { useStore } from 'effector-react';
-import { isNumber, uuid } from '../utils/utils';
-import { DeleteButton } from '../components/buttons/DeleteButton/DeleteButton';
 import { TItemWithId } from '../types';
+import { uuid } from '../utils/utils';
 
 export function useValidatedForm<T>(initialValues?: Partial<T>) {
   const [form] = Form.useForm();
@@ -79,11 +78,11 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         buttonText,
         onCreate,
         onUpdate,
-        onDelete,
         createImage,
         pending,
         afterClose,
         itemState,
+        buttonType = 'primary',
       } = props;
 
       const id = itemState?.item?.id;
@@ -134,28 +133,14 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         afterClose && afterClose();
       };
 
-      const deleteItem = (dId: number) => {
-        setIsFormPending(true);
-        try {
-          onDelete && onDelete(dId);
-        } finally {
-          setIsFormPending(false);
-        }
-      };
-
       return (
         <>
-          <Row gutter={[8, 8]}>
-            <Col span={onDelete ? 14 : 24} style={{ textAlign: 'left' }}>
-              <Button type={'link'} onClick={onOpen}>
+          <Row gutter={8}>
+            <Col span={24} style={{ textAlign: 'left' }}>
+              <Button type={buttonType} onClick={onOpen}>
                 {buttonText ? buttonText : itemState?.item ? 'Редактировать' : 'Создать'}
               </Button>
             </Col>
-            {onDelete && (
-              <Col span={10} style={{ textAlign: 'right' }}>
-                {isNumber(id) ? <DeleteButton id={id} onDelete={deleteItem} /> : ''}
-              </Col>
-            )}
           </Row>
           <MainModal
             okButtonProps={{

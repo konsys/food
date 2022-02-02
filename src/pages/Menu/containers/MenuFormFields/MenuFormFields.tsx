@@ -40,25 +40,45 @@ export const MenuFormFields = ({ formInstance }: Props) => {
   const inImgSrc = formInstance.getFieldValue('image')?.largeImg;
   return (
     <>
-      <Form.Item label='Название' name={names('name')} rules={[{ required: true }]}>
+      <Form.Item
+        label='Название'
+        name={names('name')}
+        rules={[{ required: true, message: 'Не заполнено название' }]}
+      >
         <Input />
       </Form.Item>
       <Form.Item label='Описание' name={names('description')}>
         <TextArea />
       </Form.Item>
-      <Form.Item label='Цена' name={names('price')} rules={[{ required: true }]}>
+      <Form.Item
+        label='Цена'
+        name={names('price')}
+        rules={[{ required: true, message: 'Не заполнена цена' }]}
+      >
         <InputNumber />
       </Form.Item>
-      <Form.Item label='Тип кухни' name={names('typeId')} rules={[{ required: true }]}>
+      <Form.Item
+        label='Тип кухни'
+        name={names('typeId')}
+        rules={[{ required: true, message: 'Не заполнено название' }]}
+      >
         <Select loading={menuTypeList.pending}>{menuTypeItems}</Select>
       </Form.Item>
-      <Form.Item label='Время приема пищи' name={names('timeId')} rules={[{ required: true }]}>
+      <Form.Item
+        label='Время приема пищи'
+        name={names('timeId')}
+        rules={[{ required: true, message: 'Не заполнено поле' }]}
+      >
         <Select loading={menuTimeList.pending}>{menuTimeItems}</Select>
       </Form.Item>
-      <Form.Item label='Вес' name={names('weight')} rules={[{ required: true }]}>
+      <Form.Item
+        label='Вес'
+        name={names('weight')}
+        rules={[{ required: true, message: 'Не заполнено поле' }]}
+      >
         <InputNumber />
       </Form.Item>
-      <Form.Item label='Фото' rules={[{ required: true }]}>
+      <Form.Item label='Фото'>
         <ImageCrop setImageBlob={setImageBlob} inImgSrc={inImgSrc} />
       </Form.Item>
       <Form.Item name={names('imgId')} hidden>

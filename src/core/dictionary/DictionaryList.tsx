@@ -18,7 +18,9 @@ function getColumns<T extends DictionaryDto>(
     {
       title: 'Название',
       dataIndex: name('name'),
-      render: (v, row) => <DictionaryModal model={model} buttonText={v} id={row.id} />,
+      render: (v, row) => (
+        <DictionaryModal model={model} buttonText={v} id={row.id} buttonType='link' />
+      ),
     },
     {
       title: 'Описание',

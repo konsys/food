@@ -10,38 +10,46 @@ import { MenuItemWeigth } from '../MenuItemWeigth/MenuItemWeigth';
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 import './style.less';
 import { MenuModal } from '../../containers/MenuModal/MenuModal';
+import { DeleteButton } from '../../../../common/components/buttons/DeleteButton/DeleteButton';
+import { TDeleteItemFx } from '../../../../common/models/abstractModel/abstractCrudModel';
 
 interface Props {
   foodMenuItem: MenuDto;
   isEdit: boolean;
+  onDelete: TDeleteItemFx;
 }
 
-export const MenuListItem = ({ foodMenuItem, isEdit }: Props) => {
+export const MenuListItem = ({ foodMenuItem, isEdit, onDelete }: Props) => {
   return (
     <>
       <Card
         className='menu-item-card'
         title={
-          !isEdit ? (
-            <>
-              <Row align='middle' justify='space-between'>
+          <Row align='middle' justify='space-between'>
+            {!isEdit ? (
+              <>
                 <Col span={20}>
                   <MenuItemTitle text={foodMenuItem.name} />
                 </Col>
                 <Col span={4}>
                   <MenuItemAddToCard component={<PlusCircleOutlined />} />
                 </Col>
-              </Row>
-            </>
-          ) : (
-            <>
-              <Row gutter={[8, 8]}>
-                <Col span={24}>
-                  <MenuModal buttonText={foodMenuItem.name} id={foodMenuItem.id} />
+              </>
+            ) : (
+              <>
+                <Col span={18} className='edit-menu'>
+                  <MenuModal
+                    buttonText={foodMenuItem.name}
+                    id={foodMenuItem.id}
+                    buttonType='link'
+                  />
                 </Col>
-              </Row>
-            </>
-          )
+                <Col span={6} className='delete-menu'>
+                  <DeleteButton id={foodMenuItem.id} onDelete={onDelete} />
+                </Col>
+              </>
+            )}
+          </Row>
         }
       >
         <Row justify='center' gutter={[0, 16]}>

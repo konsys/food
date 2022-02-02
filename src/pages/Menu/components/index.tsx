@@ -7,6 +7,7 @@ import { MenuListItem } from './MenuListItem';
 import './styles.less';
 import { EFoodType } from '../MenuListPage';
 import Text from 'antd/lib/typography/Text';
+import { TDeleteItemFx } from '../../../common/models/abstractModel/abstractCrudModel';
 
 interface Props {
   menu: TListResponce<MenuDto>;
@@ -15,9 +16,10 @@ interface Props {
   activeFilter: EFoodType;
   setActiveFilter: TVoidFn<EFoodType>;
   isEdit: boolean;
+  onDelete: TDeleteItemFx;
 }
 
-export const MenuList = ({ menu, setPage, setPageSize, isEdit }: Props): ReactElement => {
+export const MenuList = ({ menu, setPage, setPageSize, isEdit, onDelete }: Props): ReactElement => {
   return (
     <>
       <Row gutter={[16, 16]}>
@@ -31,7 +33,7 @@ export const MenuList = ({ menu, setPage, setPageSize, isEdit }: Props): ReactEl
 
             {menu.items.map((v, k) => (
               <Col xs={24} md={12} xl={6} key={k}>
-                <MenuListItem foodMenuItem={v} isEdit={isEdit} />
+                <MenuListItem foodMenuItem={v} isEdit={isEdit} onDelete={onDelete} />
               </Col>
             ))}
           </>

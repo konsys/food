@@ -11,7 +11,7 @@ export enum EFoodType {
   SALADS = 'Salads',
   HOT = 'Hot',
 }
-const { $listStore, setPage, setPageSize, ListGate, setFilter } = MenuModel;
+const { $listStore, setPage, setPageSize, ListGate, setFilter, deleteItemFx } = MenuModel;
 
 export const MenuListPage = (): ReactElement => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -48,6 +48,7 @@ export const MenuListPage = (): ReactElement => {
                     ? setFilter({ menuType: { name: v.toLowerCase() } })
                     : setFilter(null);
                 }}
+                onDelete={deleteItemFx}
               />
             </Col>
           </Row>

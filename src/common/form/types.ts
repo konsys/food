@@ -27,11 +27,11 @@ export type TModalWithFormProps<T> = ModalProps & {
   modalVisible: boolean;
   onCreate: TCreateItemFx<T>;
   onUpdate: TUpdateItemFx<TItemWithId<T>>;
-  onDelete?: TDeleteItemFx;
   getList: Event<void>;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
   pending?: boolean;
   buttonText?: string;
+  buttonType?: ButtonType;
   itemState?: TItemStore<T>;
 };
 
