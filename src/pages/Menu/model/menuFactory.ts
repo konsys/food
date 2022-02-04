@@ -1,6 +1,6 @@
 import * as factory from 'factory.ts';
 import faker from 'faker';
-import { imageFactory } from '../../Image/model/imageFactory';
+import { imageFactory } from '../../../modules/Image/model/imageFactory';
 import { MenuDto } from './types';
 
 export const menuFactory = factory.Sync.makeFactory<MenuDto>({

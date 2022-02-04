@@ -1,5 +1,5 @@
 import { NullableNumber } from '../../../core/types';
-import { ImageDto } from '../../Image/model/types';
+import { ImageDto } from '../../../modules/Image/model/types';
 
 export type MenuDto = {
   id: number;

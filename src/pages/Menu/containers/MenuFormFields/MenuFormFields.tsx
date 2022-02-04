@@ -7,7 +7,7 @@ import { MenuDto } from '../../model/types';
 import { MenuTimeModel, MenuTypeModel } from '../../../../store';
 import { createOptionsList } from '../../../../common/utils/selectUtils';
 import { ImageCrop } from '../../../../common/components/ImageCrop';
-import { setImageBlob } from '../../../Image/model/store';
+import { setImageBlob } from '../../../../modules/Image/model/store';
 
 const { $listStore: $menuTimeList, ListGate: TimeGate } = MenuTimeModel;
 const { $listStore: $menuTypeList, ListGate: TypeGate } = MenuTypeModel;

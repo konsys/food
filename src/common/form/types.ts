@@ -2,7 +2,7 @@ import { ModalProps } from 'antd';
 import { ButtonType } from 'antd/lib/button';
 import { Event } from 'effector';
 import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
-import { ImageDto } from '../../pages/Image/model/types';
+import { ImageDto } from '../../modules/Image/model/types';
 import { TItemStore } from '../api/types';
 import { TCreateItemFx, TUpdateItemFx } from '../models/abstractModel/abstractCrudModel';
 import { TItemWithId, TPromiseFn, TVoidFn } from '../types';
