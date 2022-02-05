@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Geoposition } from '../../../../img/svg/geoposition.svg';
+import { ReactComponent as Geoposition } from '../../svg/geoposition.svg';
 
 export const HeaderCity = () => (
   <div className='header-city'>
