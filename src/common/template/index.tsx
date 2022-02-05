@@ -3,6 +3,7 @@ import { Content } from './Content/Content';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
 import './style.less';
+import './common.less';
 
 interface Props {
   children: ReactElement;
