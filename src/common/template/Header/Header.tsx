@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import './header.less';
-import { ReactComponent as Geoposition } from '../img/svg/';
+import { ReactComponent as Geoposition } from '../img/svg/geoposition.svg';
 
 export const Header: FC = () => (
   <>
