@@ -1,0 +1,218 @@
+.shop-search {
+    width         : 100%;
+    margin-top    : 15px;
+    margin-bottom : 30px;
+    padding-bottom: 15px;
+    position      : relative;
+    border-bottom : 1px solid rgba(0, 0, 0, .1)
+}
+
+.shop-search__button {
+    border    : none;
+    background: 0 0;
+    width     : 30px;
+    position  : absolute;
+    opacity   : .15;
+    top       : 2px
+}
+
+.shop-search__button:hover {
+    color  : #f37021;
+    opacity: .65
+}
+
+.shop-search__button:hover path {
+    stroke: #f37021
+}
+
+.shop-search__button--cancel {
+    position       : absolute;
+    right          : 0;
+    width          : 160px;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-around
+}
+
+.shop-search__input {
+    width      : calc(100% - 40px);
+    margin-left: 40px;
+    border     : none;
+    background : 0 0;
+    font-size  : 16px
+}
+
+.shop-checkout input,
+.shop-checkout label,
+.shop-checkout textarea {
+    display: block;
+    width  : 100%
+}
+
+.shop-checkout textarea {
+    resize : none;
+    height : 80px;
+    padding: 10px
+}
+
+.shop-checkout textarea {
+    border       : 1px solid rgba(0, 0, 0, .1);
+    border-radius: 3px
+}
+
+.shop-services__wrapper {
+    padding        : 12px;
+    display        : flex;
+    flex-direction : column;
+    justify-content: space-between
+}
+
+@media (min-width:1800px) {
+
+    .shop-search-result .service-list__item,
+    .shop-services .service-list__item {
+        flex: 0 0 260px !important
+    }
+}
+
+.shop-search-result {
+    display: none
+}
+
+.shop-menu {
+    display: flex
+}
+
+.shop-menu__navigation {
+    display: flex;
+    flex   : 0 0 312px
+}
+
+.shop-categories {
+    font-size    : 14px;
+    height       : calc(100vh - 150px);
+    max-width    : 312px;
+    width        : 312px;
+    background   : #f5f5f5;
+    border-radius: 3px;
+    padding      : 20px 0;
+    list-style   : none;
+    overflow     : hidden
+}
+
+.shop-categories__item {
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+    padding      : 10px 0;
+    margin-right : 20px;
+    margin-left  : 20px;
+    position     : relative
+}
+
+.shop-categories__item span {
+    display: block;
+    padding: 5px 0;
+    cursor : pointer
+}
+
+.shop-categories__item:first-child {
+    padding-top: 0
+}
+
+.shop-categories__item:last-of-type {
+    border-bottom : none;
+    padding-bottom: 0
+}
+
+.shop-categories__item.shop-categories__item--active {
+    font-weight: 700
+}
+
+.shop-categories__item.shop-categories__item--selected:before {
+    content  : "·";
+    position : absolute;
+    top      : 16px;
+    left     : -12px;
+    font-size: 30px
+}
+
+.shop-categories__item:first-child:before {
+    top: 6px
+}
+
+.shop-subcategories {
+    display     : none;
+    font-weight : 400;
+    list-style  : none;
+    padding-left: 10px
+}
+
+.shop-subcategories__item {
+    position: relative
+}
+
+.shop-subcategories__item.shop-subcategories__item--active {
+    color: #f37021
+}
+
+.shop-subcategories__item.shop-subcategories__item--active:before {
+    content  : "·";
+    position : absolute;
+    top      : 6px;
+    left     : -12px;
+    font-size: 30px
+}
+
+.shop-search-result,
+.shop-services {
+    width      : 100%;
+    margin-left: 20px;
+    min-height : 100vh
+}
+
+.shop-search-result .shop-services__wrapper,
+.shop-services .shop-services__wrapper {
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-between
+}
+
+.shop-search-result .service-list__item,
+.shop-services .service-list__item {
+    overflow: hidden;
+    width   : 260px;
+    flex    : 0 0 240px
+}
+
+.shop-search-result .category__title,
+.shop-services .category__title {
+    font-weight  : 700;
+    font-size    : 20px;
+    line-height  : 22px;
+    margin-bottom: 10px
+}
+
+.shop-search-result .shop-services__wrapper {
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: normal
+}
+
+.shop-search-result .service-list__item {
+    margin-right: 30px
+}
+
+.shop-checkout {
+    max-width: 520px
+}
+
+.shop-checkout .alert-danger {
+    color           : #d71616;
+    background-color: #fbd8d8;
+    border-color    : #fbd8d8
+}
+
+.shop-checkout .shop-checkout__description {
+    font-size  : 14px;
+    line-height: 18px;
+    color      : rgba(0, 0, 0, .5)
+}
