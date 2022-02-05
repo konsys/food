@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
-import { Content } from './Content/Content';
-import { Footer } from './Footer/Footer';
-import { Header } from './Header/Header';
-import './styles/common.less';
-import './styles/buttons.less';
-import './styles/style.less';
+import { Content } from './containers/Content/Content';
+import './containers/styles/common.less';
+import './containers/styles/buttons.less';
+import './containers/styles/style.less';
+import { Header } from './containers/Header/Header';
+import { Footer } from './containers/Footer/Footer';
 
 interface Props {
   children: ReactElement;
