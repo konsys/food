@@ -1,4 +1,5 @@
 import React from 'react';
+import './restaraunts.less';
 
 export const Restaurants = () => (
   <section className='restaurants'>
