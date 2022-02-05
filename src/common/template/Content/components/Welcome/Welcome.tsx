@@ -11,19 +11,18 @@ export const Welcome: FC = () => (
       <div className='welcome-search'>
         <form className='welcome-search-form' method='post' action='https://broniboy.ru/nn/'>
           <div className='welcome-search-form-content clearfix'>
-            <label htmlFor='search-address-form-input'>
-              <input
-                id='search-address-form-input'
-                className='search-address-form-input'
-                type='text'
-                name='user-address'
-                autoComplete='off'
-                placeholder='Укажите адрес доставки'
-                required
-                defaultValue='Варварская улица'
-                data-actor='welcome-search-input'
-              />
-            </label>
+            <label htmlFor='search-address-form-input' />
+            <input
+              id='search-address-form-input'
+              className='search-address-form-input'
+              type='text'
+              name='user-address'
+              autoComplete='off'
+              placeholder='Укажите адрес доставки'
+              required
+              defaultValue='Варварская улица'
+              data-actor='welcome-search-input'
+            />
             <input
               type='hidden'
               name='_csrf'
