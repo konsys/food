@@ -247,18 +247,19 @@ export const Header: FC = () => (
             <div className='welcome-search'>
               <form className='welcome-search-form' method='post' action='https://broniboy.ru/nn/'>
                 <div className='welcome-search-form-content clearfix'>
-                  <label htmlFor='search-address-form-input' />
-                  <input
-                    id='search-address-form-input'
-                    className='search-address-form-input'
-                    type='text'
-                    name='user-address'
-                    autoComplete='off'
-                    placeholder='Укажите адрес доставки'
-                    required
-                    defaultValue='Варварская улица'
-                    data-actor='welcome-search-input'
-                  />
+                  <label htmlFor='search-address-form-input'>
+                    <input
+                      id='search-address-form-input'
+                      className='search-address-form-input'
+                      type='text'
+                      name='user-address'
+                      autoComplete='off'
+                      placeholder='Укажите адрес доставки'
+                      required
+                      defaultValue='Варварская улица'
+                      data-actor='welcome-search-input'
+                    />
+                  </label>
                   <input
                     type='hidden'
                     name='_csrf'
@@ -383,11 +384,7 @@ export const Header: FC = () => (
                           }}
                           src='https://images.broniboy.ru/-WAvLAfhsBKJaff_063zxBUp0gw=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/8d783828-84b1-4fc0-8d3e-022654859f98/ed97ddba3139ea9e714c59b69e5a26a0.jpg'
                         />
-                        <noscript>
-                          &lt;img
-                          src="https://images.broniboy.ru/-WAvLAfhsBKJaff_063zxBUp0gw=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/8d783828-84b1-4fc0-8d3e-022654859f98/ed97ddba3139ea9e714c59b69e5a26a0.jpg"
-                          alt="Три апельсина" &gt;
-                        </noscript>
+
                         <div className='restaurant-box-top-about clearfix'>
                           <img
                             data-src='https://images.broniboy.ru/Ob2GqgHyq-S8WpGmah55LIizUBU=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/f3f67be4-d116-4dd9-ba3d-015631921c40/f3532da7b7e0a9dc20aa7e574426ce46.jpg'
@@ -395,11 +392,6 @@ export const Header: FC = () => (
                             className=' lazyloaded'
                             src='https://images.broniboy.ru/Ob2GqgHyq-S8WpGmah55LIizUBU=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/f3f67be4-d116-4dd9-ba3d-015631921c40/f3532da7b7e0a9dc20aa7e574426ce46.jpg'
                           />
-                          <noscript>
-                            &lt;img
-                            src="https://images.broniboy.ru/Ob2GqgHyq-S8WpGmah55LIizUBU=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/f3f67be4-d116-4dd9-ba3d-015631921c40/f3532da7b7e0a9dc20aa7e574426ce46.jpg"
-                            alt="Три апельсина" &gt;
-                          </noscript>
                         </div>
                       </a>
                     </div>
@@ -472,11 +464,7 @@ export const Header: FC = () => (
                           }}
                           src='https://images.broniboy.ru/f3AUvGYSqL6R3EyxZF2FrdUxjNk=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/15561811-2d7c-4842-80af-daf6f2f208b5/531e7c7d5d32ee14f51cce3acedd0e31.jpg'
                         />
-                        <noscript>
-                          &lt;img
-                          src="https://images.broniboy.ru/f3AUvGYSqL6R3EyxZF2FrdUxjNk=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/15561811-2d7c-4842-80af-daf6f2f208b5/531e7c7d5d32ee14f51cce3acedd0e31.jpg"
-                          alt="Coffee Cake" &gt;
-                        </noscript>
+
                         <div className='restaurant-box-top-about clearfix'>
                           <img
                             data-src='https://images.broniboy.ru/obpElyUNr3IHaRZSn3NPnRFA6hc=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/023be32f-8d3b-490b-9e75-68858b71af85/6cbac6aa3e6fae78a6d98f149a5b5e4f.png'
@@ -484,11 +472,6 @@ export const Header: FC = () => (
                             className=' lazyloaded'
                             src='https://images.broniboy.ru/obpElyUNr3IHaRZSn3NPnRFA6hc=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/023be32f-8d3b-490b-9e75-68858b71af85/6cbac6aa3e6fae78a6d98f149a5b5e4f.png'
                           />
-                          <noscript>
-                            &lt;img
-                            src="https://images.broniboy.ru/obpElyUNr3IHaRZSn3NPnRFA6hc=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/023be32f-8d3b-490b-9e75-68858b71af85/6cbac6aa3e6fae78a6d98f149a5b5e4f.png"
-                            alt="Coffee Cake" &gt;
-                          </noscript>
                         </div>
                       </a>
                     </div>
@@ -541,11 +524,7 @@ export const Header: FC = () => (
                           }}
                           src='https://images.broniboy.ru/sFaUjr6vmXWBTfdAbjpZTLwvygE=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/24aa9880-0d66-43ac-a9ea-f743520af272/c3a2e996eaf9d5b540a8e9e2a1d68833.jpg'
                         />
-                        <noscript>
-                          &lt;img
-                          src="https://images.broniboy.ru/sFaUjr6vmXWBTfdAbjpZTLwvygE=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/24aa9880-0d66-43ac-a9ea-f743520af272/c3a2e996eaf9d5b540a8e9e2a1d68833.jpg"
-                          alt="Горячо" &gt;
-                        </noscript>
+
                         <div className='restaurant-box-top-about clearfix'>
                           <img
                             data-src='https://images.broniboy.ru/4md7Y8OtXjkog1F-XD7Py9cPZWc=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/52036516-238e-42d3-98af-e6bd16799605/bec1b00362b1055ecccfc3fec8015e1a.jpg'
@@ -553,11 +532,6 @@ export const Header: FC = () => (
                             className=' lazyloaded'
                             src='https://images.broniboy.ru/4md7Y8OtXjkog1F-XD7Py9cPZWc=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/52036516-238e-42d3-98af-e6bd16799605/bec1b00362b1055ecccfc3fec8015e1a.jpg'
                           />
-                          <noscript>
-                            &lt;img
-                            src="https://images.broniboy.ru/4md7Y8OtXjkog1F-XD7Py9cPZWc=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/52036516-238e-42d3-98af-e6bd16799605/bec1b00362b1055ecccfc3fec8015e1a.jpg"
-                            alt="Горячо" &gt;
-                          </noscript>
                         </div>
                       </a>
                     </div>
@@ -610,11 +584,7 @@ export const Header: FC = () => (
                           }}
                           src='https://images.broniboy.ru/5hvcxSz9BSJhPQsKdjPnkc2VRzs=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/69cdd48e-d27c-46aa-a641-e4795d5be687/d34b859c8ec2a2aaaa313566de87c2c2.jpg'
                         />
-                        <noscript>
-                          &lt;img
-                          src="https://images.broniboy.ru/5hvcxSz9BSJhPQsKdjPnkc2VRzs=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/69cdd48e-d27c-46aa-a641-e4795d5be687/d34b859c8ec2a2aaaa313566de87c2c2.jpg"
-                          alt="Маджонг" &gt;
-                        </noscript>
+
                         <div className='restaurant-box-top-about clearfix'>
                           <img
                             data-src='https://images.broniboy.ru/vRXx6SIbQj7BoMD1iOQDOcrI6Z4=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/6c5c9c30-116e-4230-a299-ade51078d3e1/6c4d15d9f6d5bf581f60f017507b979f.jpg'
@@ -622,11 +592,6 @@ export const Header: FC = () => (
                             className=' lazyloaded'
                             src='https://images.broniboy.ru/vRXx6SIbQj7BoMD1iOQDOcrI6Z4=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/6c5c9c30-116e-4230-a299-ade51078d3e1/6c4d15d9f6d5bf581f60f017507b979f.jpg'
                           />
-                          <noscript>
-                            &lt;img
-                            src="https://images.broniboy.ru/vRXx6SIbQj7BoMD1iOQDOcrI6Z4=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/6c5c9c30-116e-4230-a299-ade51078d3e1/6c4d15d9f6d5bf581f60f017507b979f.jpg"
-                            alt="Маджонг" &gt;
-                          </noscript>
                         </div>
                       </a>
                     </div>
@@ -682,11 +647,7 @@ export const Header: FC = () => (
                           }}
                           src='https://images.broniboy.ru/hOpWXDMLFgOYkNlAmsWcKTY5jXc=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/f64318f0-dc33-4954-a71f-25615a434666/b9e85c817f880f1df00caa59f0b72e78.jpg'
                         />
-                        <noscript>
-                          &lt;img
-                          src="https://images.broniboy.ru/hOpWXDMLFgOYkNlAmsWcKTY5jXc=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/f64318f0-dc33-4954-a71f-25615a434666/b9e85c817f880f1df00caa59f0b72e78.jpg"
-                          alt="Юла Пицца" &gt;
-                        </noscript>
+
                         <div className='restaurant-box-top-about clearfix'>
                           <img
                             data-src='https://images.broniboy.ru/qRpnR25hwoa5c4rMu-UjjIfodXU=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/9c39e6fa-3b0a-447c-a7a1-1e3854fbb559/62c0eab3d4f60318e57cf79f632e1ecd.jpg'
@@ -694,11 +655,6 @@ export const Header: FC = () => (
                             className=' lazyloaded'
                             src='https://images.broniboy.ru/qRpnR25hwoa5c4rMu-UjjIfodXU=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/9c39e6fa-3b0a-447c-a7a1-1e3854fbb559/62c0eab3d4f60318e57cf79f632e1ecd.jpg'
                           />
-                          <noscript>
-                            &lt;img
-                            src="https://images.broniboy.ru/qRpnR25hwoa5c4rMu-UjjIfodXU=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/9c39e6fa-3b0a-447c-a7a1-1e3854fbb559/62c0eab3d4f60318e57cf79f632e1ecd.jpg"
-                            alt="Юла Пицца" &gt;
-                          </noscript>
                         </div>
                       </a>
                     </div>
@@ -751,11 +707,7 @@ export const Header: FC = () => (
                           }}
                           src='https://images.broniboy.ru/aQhFrWTFeTCiCBmzCB3V2YFrmes=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/3587d803-0e5b-482c-a1d4-a83dae4c1a42/96b53352605564791ad28d444b197590.jpg'
                         />
-                        <noscript>
-                          &lt;img
-                          src="https://images.broniboy.ru/aQhFrWTFeTCiCBmzCB3V2YFrmes=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/3587d803-0e5b-482c-a1d4-a83dae4c1a42/96b53352605564791ad28d444b197590.jpg"
-                          alt="AMO" &gt;
-                        </noscript>
+
                         <div className='restaurant-box-top-about clearfix'>
                           <img
                             data-src='https://images.broniboy.ru/7U16BGBxJi56m5CCKKJKLSELTPE=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/09a4ad94-8dbe-421b-9e2d-07e2f8bcf7a1/2834de8094ec8f807a077b862998a05f.jpg'
@@ -763,11 +715,6 @@ export const Header: FC = () => (
                             className=' lazyloaded'
                             src='https://images.broniboy.ru/7U16BGBxJi56m5CCKKJKLSELTPE=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/09a4ad94-8dbe-421b-9e2d-07e2f8bcf7a1/2834de8094ec8f807a077b862998a05f.jpg'
                           />
-                          <noscript>
-                            &lt;img
-                            src="https://images.broniboy.ru/7U16BGBxJi56m5CCKKJKLSELTPE=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/09a4ad94-8dbe-421b-9e2d-07e2f8bcf7a1/2834de8094ec8f807a077b862998a05f.jpg"
-                            alt="AMO" &gt;
-                          </noscript>
                         </div>
                       </a>
                     </div>
@@ -823,11 +770,7 @@ export const Header: FC = () => (
                           }}
                           src='https://images.broniboy.ru/1H9ugaG_bi_VhpqpR221Q2Y5CLo=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/63e7fe05-088b-4a9c-a74b-05beae6dbc50/821a14c76509b3c393e593628deb9a42.jpg'
                         />
-                        <noscript>
-                          &lt;img
-                          src="https://images.broniboy.ru/1H9ugaG_bi_VhpqpR221Q2Y5CLo=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/63e7fe05-088b-4a9c-a74b-05beae6dbc50/821a14c76509b3c393e593628deb9a42.jpg"
-                          alt="Хачапури Тетушки Марико" &gt;
-                        </noscript>
+
                         <div className='restaurant-box-top-about clearfix'>
                           <img
                             data-src='https://images.broniboy.ru/7nPTqgrBJWu4GekQnSbD-BOVjmk=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/dae7399f-7753-45e8-a068-a639c54db827/6cf1fa322329ce470e711b8dd3c2020b.png'
@@ -835,11 +778,6 @@ export const Header: FC = () => (
                             className=' lazyloaded'
                             src='https://images.broniboy.ru/7nPTqgrBJWu4GekQnSbD-BOVjmk=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/dae7399f-7753-45e8-a068-a639c54db827/6cf1fa322329ce470e711b8dd3c2020b.png'
                           />
-                          <noscript>
-                            &lt;img
-                            src="https://images.broniboy.ru/7nPTqgrBJWu4GekQnSbD-BOVjmk=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/dae7399f-7753-45e8-a068-a639c54db827/6cf1fa322329ce470e711b8dd3c2020b.png"
-                            alt="Хачапури Тетушки Марико" &gt;
-                          </noscript>
                         </div>
                       </a>
                     </div>
@@ -895,11 +833,7 @@ export const Header: FC = () => (
                           }}
                           src='https://images.broniboy.ru/2eTCTbo6zAsGpxRRzIKb46DYecI=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/59fc7807-391b-4e84-b7b0-6074b4fb5999/dea9124116a662ab9ced974391fe9751.jpg'
                         />
-                        <noscript>
-                          &lt;img
-                          src="https://images.broniboy.ru/2eTCTbo6zAsGpxRRzIKb46DYecI=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/59fc7807-391b-4e84-b7b0-6074b4fb5999/dea9124116a662ab9ced974391fe9751.jpg"
-                          alt="Та самая шаурма на Средном" &gt;
-                        </noscript>
+
                         <div className='restaurant-box-top-about clearfix'>
                           <img
                             data-src='https://images.broniboy.ru/gZJxfccuKUhOAEEkzlMHJiy5ub4=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/1c275d85-7208-4291-8bc8-57c39be062d6/6849bbc2f40a1d1c60e5e93da6173a7b.jpg'
@@ -907,11 +841,6 @@ export const Header: FC = () => (
                             className=' lazyloaded'
                             src='https://images.broniboy.ru/gZJxfccuKUhOAEEkzlMHJiy5ub4=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/1c275d85-7208-4291-8bc8-57c39be062d6/6849bbc2f40a1d1c60e5e93da6173a7b.jpg'
                           />
-                          <noscript>
-                            &lt;img
-                            src="https://images.broniboy.ru/gZJxfccuKUhOAEEkzlMHJiy5ub4=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/1c275d85-7208-4291-8bc8-57c39be062d6/6849bbc2f40a1d1c60e5e93da6173a7b.jpg"
-                            alt="Та самая шаурма на Средном" &gt;
-                          </noscript>
                         </div>
                       </a>
                     </div>
@@ -966,11 +895,7 @@ export const Header: FC = () => (
                           }}
                           src='https://images.broniboy.ru/LpX3Wbvzd_C5A52HjOeg1zqWTIE=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/b32aa480-958b-42cc-8185-c2ddfd51bc77/ea60386fe90efd8634255fa002060645.jpg'
                         />
-                        <noscript>
-                          &lt;img
-                          src="https://images.broniboy.ru/LpX3Wbvzd_C5A52HjOeg1zqWTIE=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/b32aa480-958b-42cc-8185-c2ddfd51bc77/ea60386fe90efd8634255fa002060645.jpg"
-                          alt="Franky bar" &gt;
-                        </noscript>
+
                         <div className='restaurant-box-top-about clearfix'>
                           <img
                             data-src='https://images.broniboy.ru/RwIyR0-Cw8b_Gs-dRW72qr4xfrg=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/e2aa1256-cbe7-47e1-8c3d-1365fd191b1e/d1b820b12a42687f7cbf0880424cc533.jpg'
@@ -978,11 +903,6 @@ export const Header: FC = () => (
                             className=' lazyloaded'
                             src='https://images.broniboy.ru/RwIyR0-Cw8b_Gs-dRW72qr4xfrg=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/e2aa1256-cbe7-47e1-8c3d-1365fd191b1e/d1b820b12a42687f7cbf0880424cc533.jpg'
                           />
-                          <noscript>
-                            &lt;img
-                            src="https://images.broniboy.ru/RwIyR0-Cw8b_Gs-dRW72qr4xfrg=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/e2aa1256-cbe7-47e1-8c3d-1365fd191b1e/d1b820b12a42687f7cbf0880424cc533.jpg"
-                            alt="Franky bar" &gt;
-                          </noscript>
                         </div>
                       </a>
                     </div>
@@ -1058,13 +978,11 @@ export const Header: FC = () => (
                     <a
                       href='https://app.adjust.com/e0ifxiw?deep_link=broniboy%3A%2F%2Fapp&is_organic=1&fallback=https://play.google.com/store/apps/details?id=com.broniboy.client&redirect_macos=https://play.google.com/store/apps/details?id=com.broniboy.client'
                       title='Broniboy'
-                      target='_blank'
                       className='app-btn app-btn_google-play'
                     />
                     <a
                       href='https://app.adjust.com/e0ifxiw?deep_link=broniboy%3A%2F%2Fapp&is_organic=1&fallback=https://itunes.apple.com/app/id1262921130&redirect_macos=https://itunes.apple.com/app/id1262921130'
                       title='Broniboy'
-                      target='_blank'
                       className='app-btn app-btn_app-store'
                     />
                   </div>
@@ -1385,7 +1303,6 @@ export const Header: FC = () => (
               <div className='footer-app'>
                 <a
                   href='https://app.adjust.com/e0ifxiw?deep_link=broniboy%3A%2F%2Fapp&is_organic=1&fallback=https://play.google.com/store/apps/details?id=com.broniboy.client&redirect_macos=https://play.google.com/store/apps/details?id=com.broniboy.client'
-                  target='_blank'
                   className='app-btn app-btn_google-play'
                   title='Broniboy'
                   data-analytic='InstallApplication_Google_GoTo'
@@ -1393,7 +1310,6 @@ export const Header: FC = () => (
                 />
                 <a
                   href='https://app.adjust.com/e0ifxiw?deep_link=broniboy%3A%2F%2Fapp&is_organic=1&fallback=https://itunes.apple.com/app/id1262921130&redirect_macos=https://itunes.apple.com/app/id1262921130'
-                  target='_blank'
                   className='app-btn app-btn_app-store'
                   title='Broniboy'
                   data-analytic='InstallApplication_Apple_GoTo'
@@ -1592,7 +1508,6 @@ export const Header: FC = () => (
                       href='https://jobs.broniboy.ru/'
                       title='Хочу работать в BRONIBOY'
                       rel='nofollow'
-                      target='_blank'
                     >
                       Хочу работать в BRONIBOY
                     </a>
@@ -1685,7 +1600,7 @@ export const Header: FC = () => (
               </div>
             </div>
             <div className='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-              <a href='https://sk.ru' target='_blank' rel='nofollow'>
+              <a href='https://sk.ru' rel='nofollow'>
                 <img src='/images/sk_resident2ru.jpg' alt='' />
               </a>
             </div>
