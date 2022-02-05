@@ -1,5 +1,3 @@
-// @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,500,700&display=swap&subset=cyrillic,cyrillic-ext);
-.page-title h2,
 .page-title>div {
     color      : #000;
     font-size  : 42px;
@@ -21,10 +19,6 @@
 
 .section-title:first-child {
     border: none
-}
-
-.page-content {
-    transition: .2s ease-out
 }
 
 .other-place .btn {
@@ -284,7 +278,6 @@
     background-image: url(https://broniboy.ru/img/icons/sections-icon-hover.svg)
 }
 
-
 .show-more {
     margin    : 40px 0;
     text-align: center
@@ -406,490 +399,18 @@
     display: flex
 }
 
-
-.ordering-items {
-    border       : 1px solid #e1e1e1;
-    border-radius: 1px;
-    margin-bottom: 40px;
-    margin-top   : 50px;
-    padding      : 18px 18px 18px 18px
-}
-
-.ordering-item {
-    border-bottom  : 1px solid #e1e1e1;
-    display        : flex;
-    justify-content: space-between;
-    margin-bottom  : 20px;
-    padding-bottom : 20px;
-    position       : relative
-}
-
-.ordering-item:last-child {
-    border        : none;
-    margin-bottom : 0;
-    padding-bottom: 0
-}
-
-.ordering-item .ordering-item-left .ordering-item-image {
-    border-radius: 5px;
-    float        : left;
-    height       : 90px;
-    overflow     : hidden;
-    position     : relative;
-    margin-right : 18px;
-    width        : 90px
-}
-
-.ordering-item .ordering-item-left .ordering-item-image:after {
-    content   : '+';
-    color     : #fff;
-    font-size : 30px;
-    left      : 50%;
-    opacity   : 0;
-    position  : absolute;
-    top       : 50%;
-    transform : translate(-50%, -50%);
-    transition: opacity .3s;
-    z-index   : 3
-}
-
-.ordering-item .ordering-item-left .ordering-item-image:before {
-    background-color: rgba(240, 131, 97, .7);
-    border-radius   : 5px;
-    bottom          : 0;
-    content         : '';
-    height          : 100%;
-    left            : 0;
-    opacity         : 0;
-    position        : absolute;
-    right           : 0;
-    top             : 0;
-    transition      : opacity .3s;
-    width           : 100%;
-    z-index         : 2
-}
-
-.ordering-item .ordering-item-left .ordering-item-image:hover:after,
-.ordering-item .ordering-item-left .ordering-item-image:hover:before {
-    opacity: 1
-}
-
-.ordering-item .ordering-item-left .ordering-item-image img {
-    border-radius: 5px;
-    display      : block;
-    min-height   : 100%;
-    min-width    : 100%;
-    max-height   : 130px;
-    height       : auto;
-    left         : 50%;
-    position     : relative;
-    top          : 50%;
-    transform    : translate(-50%, -50%);
-    width        : auto
-}
-
-.ordering-item .ordering-item-left .ordering-item-info {
-    float        : left;
-    margin       : 0 0 0 auto;
-    min-height   : 90px;
-    position     : relative;
-    padding-right: 18px;
-    width        : calc(100% - 108px)
-}
-
-.ordering-item .ordering-item-left .ordering-item-info h3 {
-    font-size  : 15px;
-    font-weight: 400;
-    line-height: 1.2;
-    margin     : 0 0 3px;
-    min-height : 23px;
-    max-width  : 260px
-}
-
-.ordering-item .ordering-item-left .ordering-item-info h3 a {
-    color: #000
-}
-
-.ordering-item .ordering-item-left .ordering-item-info p,
-.ordering-item .ordering-item-left .ordering-item-info section {
-    color        : rgba(0, 0, 0, .6);
-    font-size    : 13px;
-    max-width    : 260px;
-    overflow     : hidden;
-    text-overflow: ellipsis;
-    white-space  : nowrap
-}
-
-.ordering-item .ordering-item-left .ordering-item-info section {
-    font-size    : 12px;
-    line-height  : 14px;
-    margin-bottom: 30px;
-    margin-top   : -5px
-}
-
-.ordering-item .ordering-item-left .ordering-item-info span {
-    bottom        : 0;
-    color         : #f37021;
-    display       : block;
-    font-size     : 16px;
-    font-weight   : 700;
-    left          : 0;
-    position      : absolute;
-    text-transform: uppercase
-}
-
-.ordering-item .ordering-item-right {
-    -ms-flex-align: center;
-    align-items   : center
-}
-
-.ordering-item .ordering-item-right a {
-    height  : 36px;
-    position: relative;
-    width   : 40px
-}
-
-.ordering-item .ordering-item-right a:before {
-    bottom     : 0;
-    color      : rgba(0, 0, 0, .2);
-    content    : "\274c";
-    font-size  : 16px;
-    line-height: 36px;
-    left       : 0;
-    position   : absolute;
-    right      : 0;
-    text-align : center;
-    transition : color .3s;
-    top        : 0
-}
-
-.ordering-item .ordering-item-right a:hover:before {
-    color: #f37021
-}
-
-.ordering-item .ordering-item-right button:last-of-type {
-    margin-right: 20px
-}
-
-.ordering-result {
-    text-align: right
-}
-
-.ordering-result .ordering-result-price {
-    margin-bottom: 20px
-}
-
-.ordering-result .ordering-result-price span {
-    color      : #000;
-    font-size  : 20px;
-    font-weight: 300
-}
-
-.ordering-result .ordering-result-price span:first-child {
-    font-size: 17px
-}
-
-.ordering-result .ordering-result-total-price {
-    margin-bottom: 45px
-}
-
-.ordering-result .ordering-result-total-price span {
-    color      : #000;
-    font-size  : 28px;
-    font-weight: 700
-}
-
-.ordering-result .ordering-result-total-price span:first-child {
-    font-size  : 20px;
-    font-weight: 400
-}
-
-.ordering-result button {
-    height: 60px;
-    margin: 0 0 0 auto;
-    width : 250px
-}
-
-.order-options {
-    position: relative
-}
-
-.order-options h3 {
-    color      : #a3a3a3;
-    font-size  : 20px;
-    font-weight: 400;
-    line-height: 25px;
-    margin     : 0 0 20px
-}
-
-.order-options h3:first-child {
-    margin-bottom: 25px
-}
-
-.order-options .order-options-guests-numbers h3 {
-    margin-bottom: 0
-}
-
-.order-options textarea {
-    border          : none;
-    border-bottom   : solid 1px #e1e1e1;
-    background-color: transparent;
-    font-weight     : 400;
-    font-size       : 15px;
-    height          : 42px;
-    line-height     : 1.7;
-    max-width       : 100%;
-    margin-bottom   : 35px;
-    overflow        : hidden;
-    padding         : 0;
-    width           : 100%
-}
-
-.order-options textarea::placeholder {
-    color      : #a3a3a3;
-    font-size  : 20px;
-    font-weight: 400
-}
-
-.order-options-tabs {
-    display      : flex;
-    margin-bottom: 35px
-}
-
-.order-options-tabs li {
-    margin-right: 10px
-}
-
-.order-options-tabs li:last-child {
-    margin-right: 0
-}
-
-.order-options-tabs li.active a {
-    background-color: #f37021;
-    color           : #fff
-}
-
-.order-options-tabs li.active a.delivery {
-    background-image: url(https://broniboy.ru/img/icons/order-options/car-hover.svg)
-}
-
-.order-options-tabs li.active a.taken {
-    background-image: url(https://broniboy.ru/img/icons/order-options/bag-hover.svg)
-}
-
-.order-options-tabs li.active a.place {
-    background-image: url(https://broniboy.ru/img/icons/order-options/cutlery-hover.svg)
-}
-
-.order-options-tabs a {
-    align-items        : center;
-    border-radius      : 3px;
-    background-color   : #f2f2f2;
-    background-position: 50% 30%;
-    background-repeat  : no-repeat;
-    background-size    : auto;
-    color              : #999;
-    display            : flex;
-    font-size          : 11px;
-    -ms-flex-direction : column;
-    flex-direction     : column;
-    height             : 80px;
-    justify-content    : flex-end;
-    letter-spacing     : 1px;
-    padding            : 10px;
-    text-transform     : uppercase;
-    width              : 113px
-}
-
-.order-options-tabs a.delivery {
-    background-image: url(https://broniboy.ru/img/icons/order-options/car.svg)
-}
-
-.order-options-tabs a.taken {
-    background-image: url(https://broniboy.ru/img/icons/order-options/bag.svg)
-}
-
-.order-options-tabs a.place {
-    background-image: url(https://broniboy.ru/img/icons/order-options/cutlery.svg)
-}
-
-.order-options-address {
-    margin-bottom: 35px
-}
-
-.order-options-address li {
-    margin-bottom: 10px
-}
-
-.order-options-address li:last-child {
-    margin-bottom: 0
-}
-
-.order-options-address li.order-options-address-item-double {
-    display: flex
-}
-
-.order-options-address li.order-options-address-item-double input {
-    width: calc(50% - 5px)
-}
-
-.order-options-address li.order-options-address-item-double input:first-child {
-    margin-right: 10px
-}
-
-.cash-payment input,
-.order-options-address input {
-    background-color: #f2f2f2;
-    border          : 1px solid #f2f2f2;
-    border-radius   : 3px;
-    height          : 50px;
-    padding         : 10px 20px;
-    transition      : all .3s;
-    width           : 100%
-}
-
-.cash-payment input:focus,
-.order-options-address input:focus {
+.cash-payment input:focus {
     background-color: #fff;
     border-color    : #f37021;
     color           : #000
 }
 
-.cash-payment input::placeholder,
-.order-options-address input::placeholder {
+.cash-payment input::placeholder {
     color         : #999;
     font-size     : 11px;
     font-family   : Roboto, Arial, sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase
-}
-
-.order-options-bank-card {
-    margin-bottom: 35px;
-    position     : relative
-}
-
-.order-options-bank-card p {
-    border-bottom : 1px solid #e1e1e1;
-    color         : #000;
-    font-size     : 15px;
-    font-weight   : 700;
-    padding-bottom: 5px
-}
-
-.order-options-bank-card a.add-card-window {
-    color         : #f37021;
-    font-size     : 10px;
-    font-weight   : 500;
-    letter-spacing: 1px;
-    position      : absolute;
-    right         : 0;
-    top           : 0;
-    text-transform: uppercase
-}
-
-.order-options-time {
-    position: relative
-}
-
-.order-options-cards-dropdown-select {
-    color         : #f37021;
-    display       : block;
-    font-size     : 15px;
-    padding-bottom: 10px;
-    padding-left  : 30px;
-    position      : relative
-}
-
-.order-options-cards-dropdown-select:before {
-    background-position: center center;
-    background-repeat  : no-repeat;
-    background-size    : contain;
-    content            : '';
-    height             : 18px;
-    left               : 0;
-    position           : absolute;
-    top                : 1px;
-    width              : 18px;
-    background-image   : url(https://broniboy.ru/img/icons/restaurant-info/card.svg)
-}
-
-.order-options-cards-dropdown-select:after {
-    background-color: #e1e1e1;
-    content         : '';
-    height          : 1px;
-    left            : 0;
-    position        : absolute;
-    top             : calc(100% - 1px);
-    width           : 100%
-}
-
-.order-options-cards-dropdown,
-.order-options-time .order-options-time-dropdown {
-    display         : none;
-    background-color: #fff;
-    box-shadow      : 0 10px 10px 0 rgba(0, 0, 0, .05);
-    border          : 1px solid rgba(0, 0, 0, .1);
-    border-radius   : 3px;
-    position        : absolute;
-    left            : 0;
-    top             : 40px;
-    width           : 100%;
-    z-index         : 5
-}
-
-.order-options-cards-dropdown-items-scroll,
-.order-options-time .order-options-time-dropdown .order-options-time-dropdown-items-scroll {
-    height : 190px;
-    padding: 10px 0
-}
-
-.order-options-cards-dropdown a,
-.order-options-time .order-options-time-dropdown a {
-    color     : #000;
-    display   : block;
-    font-size : 16px;
-    padding   : 6px 15px;
-    transition: background-color .3s
-}
-
-.order-options-cards-dropdown a:hover,
-.order-options-time .order-options-time-dropdown a:hover {
-    background-color: #f1f1f1
-}
-
-.order-options-promo-code {
-    margin-bottom: 40px
-}
-
-.order-options-promo-code a {
-    border-bottom : 1px solid #e1e1e1;
-    color         : #f37021;
-    display       : block;
-    font-size     : 15px;
-    padding-bottom: 10px;
-    padding-left  : 30px;
-    position      : relative
-}
-
-.order-options-promo-code a:before {
-    background-image   : url(https://broniboy.ru/img/icons/restaurant-info/promocode.svg);
-    background-position: center center;
-    background-repeat  : no-repeat;
-    background-size    : contain;
-    content            : '';
-    height             : 18px;
-    left               : 0;
-    position           : absolute;
-    top                : 1px;
-    width              : 18px
-}
-
-.order-options-guests-numbers {
-    align-items    : center;
-    display        : flex;
-    justify-content: space-between;
-    margin-bottom  : 40px
 }
 
 .add-card {
@@ -1451,7 +972,6 @@
     display: block
 }
 
-
 .mobile-nav-active .page-content {
     transform : scale(.92);
     transition: transform .2s .41s ease-out
@@ -1938,7 +1458,6 @@ button.close span:nth-child(2) {
     margin-right: -20px
 }
 
-
 .modal-body:not(.modal-body--service) {
     padding: 40px
 }
@@ -2068,7 +1587,6 @@ button.close span:nth-child(2) {
     font-size  : 14px
 }
 
-.confirm-order.disabled,
 .product .product-form-nav.product-form-nav--disabled span.product-form-info-price,
 .product-form-nav--disabled .peach-btn,
 .product-form-nav--disabled .peach-btn:active,
@@ -2077,10 +1595,6 @@ button.peach-btn[disabled] {
     cursor          : default;
     background-color: #ccc;
     border-color    : #ccc
-}
-
-.confirm-order.peach-btn {
-    border-radius: 3px
 }
 
 .promocode-alert {
@@ -2118,10 +1632,6 @@ button.peach-btn[disabled] {
     left       : 50%;
     margin-top : -50px;
     margin-left: -50px
-}
-
-.order-options-address li:first-child {
-    position: relative
 }
 
 .error-input-code,
@@ -2211,33 +1721,6 @@ button.peach-btn[disabled] {
 .modal-open {
     padding-right: 0 !important;
     overflow-y   : scroll
-}
-
-.order-complete--number {
-    color         : #7f7f7f;
-    font-size     : 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px
-}
-
-.order-complete--thanks {
-    background : url(https://broniboy.ru/img/icons/order-complete.png) no-repeat center top;
-    margin-top : 50px;
-    padding-top: 120px;
-    font-size  : 42px;
-    font-weight: 100
-}
-
-.order-complete--move {
-    font-size    : 24px;
-    font-weight  : 100;
-    margin-top   : 30px;
-    margin-bottom: 50px
-}
-
-.order-complete--info {
-    color    : #b8b8b8;
-    font-size: 13px
 }
 
 .profile {
@@ -2338,18 +1821,6 @@ button.peach-btn[disabled] {
     padding-top: 10px
 }
 
-.history-order {
-    display       : flex;
-    border-bottom : 1px solid #ebebeb;
-    margin-bottom : 20px;
-    padding-bottom: 20px
-}
-
-.history-order__title {
-    width        : 400px;
-    padding-right: 30px
-}
-
 .modal-content {
     border-radius: 9px 9px 3px 3px
 }
@@ -2415,7 +1886,6 @@ button.peach-btn[disabled] {
     background-color: #a9a9a9
 }
 
-
 .modal-close-link {
     color        : #f37021;
     border-bottom: dotted 1px #f37021
@@ -2460,7 +1930,6 @@ button.peach-btn[disabled] {
     transition: .3s
 }
 
-
 .modal-content--place-hidden {
     background-color: #f37021;
     color           : #fff
@@ -2499,7 +1968,7 @@ button.peach-btn[disabled] {
     padding      : 5px 10px
 }
 
-.order-options-address .suggestions-suggestions {
+.suggestions-suggestions {
     width: 360px !important
 }
 
@@ -2553,117 +2022,6 @@ button.peach-btn[disabled] {
     padding: 20px 30px !important
 }
 
-.order-info__rest-title {
-    font-size   : 16px;
-    color       : #000;
-    padding-left: 10px
-}
-
-.order-info__rest-image {
-    width        : 48px;
-    height       : 48px;
-    border-radius: 48px
-}
-
-.order-info__details {
-    display: flex;
-    margin : 0 -15px
-}
-
-.order-info__description-block {
-    background-color: #f6f4f7;
-    border-radius   : 5px;
-    margin          : 15px;
-    width           : 50%;
-    padding         : 5px 20px
-}
-
-.order-info__status {
-    display        : flex;
-    justify-content: space-between;
-    padding        : 10px 0
-}
-
-.order-info__status div:first-child {
-    color: #999
-}
-
-.order-info__phone {
-    color        : #f37021;
-    border-bottom: 1px dotted transparent
-}
-
-.order-info__phone:hover {
-    color        : #f37021;
-    border-bottom: 1px dotted #f37021
-}
-
-.order-list__title {
-    font-size     : 11px;
-    color         : #999;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom : 10px
-}
-
-.order-list__items {
-    list-style  : none;
-    padding-left: 0
-}
-
-.order-list__item {
-    display        : flex;
-    justify-content: space-between;
-    width          : 100%;
-    border-bottom  : 1px solid #e1e1e1;
-    padding-bottom : 20px
-}
-
-.order-list__item-title {
-    width: 530px
-}
-
-.order-list__item-title div {
-    font-size     : 15px;
-    padding-bottom: 5px
-}
-
-.order-list__item-title span {
-    font-size: 13px;
-    color    : #999
-}
-
-.order-list__item-image {
-    width      : 60px;
-    padding-top: 5px
-}
-
-.order-list__item-image>img {
-    width        : 40px;
-    height       : 40px;
-    border-radius: 2px
-}
-
-.order-list__item-price {
-    text-align: right;
-    color     : #f37021
-}
-
-.order-info__total {
-    display        : flex;
-    justify-content: space-between;
-    color          : #f37021;
-    margin-bottom  : 10px
-}
-
-.order-info__total div:first-child {
-    color: #999
-}
-
-.order-info__total-price {
-    font-size: 20px
-}
-
 .custom-pages__link {
     color: #f37021
 }
@@ -2672,7 +2030,6 @@ button.peach-btn[disabled] {
     color  : #f37021;
     opacity: .7
 }
-
 
 .fixed-card-bottom {
     display         : flex;
@@ -2749,7 +2106,6 @@ button.peach-btn[disabled] {
     margin-top : -25px;
     margin-left: -25px
 }
-
 
 .modal__avatar {
     position: absolute;
@@ -2851,7 +2207,6 @@ button.peach-btn[disabled] {
     padding-top: 5px
 }
 
-
 @media screen and (max-width:990px) {
     #chatra.chatra--side-bottom {
         bottom: 80px !important
@@ -2869,12 +2224,10 @@ button.peach-btn[disabled] {
     margin-bottom: 10px
 }
 
-
 .grayscale {
     filter    : grayscale(100%);
     transition: all .2s ease
 }
-
 
 .modal__title {
     font-size  : 24px;
@@ -2903,7 +2256,6 @@ button.peach-btn[disabled] {
         right: 15px;
         top  : 15px
     }
-
 }
 
 .modal__image {
@@ -2982,8 +2334,8 @@ button.peach-btn[disabled] {
         align-items   : flex-start
     }
 
-    .social-links li:first-child,
-    .logo__description {
+    .logo__description,
+    .social-links li:first-child {
         margin-left: 0
     }
 }
@@ -3015,7 +2367,6 @@ button.peach-btn[disabled] {
     font-size  : 20px;
     line-height: 22px
 }
-
 
 .tooltip__line {
     display: flex;
@@ -3263,8 +2614,6 @@ button.peach-btn[disabled] {
     margin: 0 10px
 }
 
-
-
 .promo-partner {
     margin: 40px 0 100px
 }
@@ -3471,8 +2820,6 @@ button.peach-btn[disabled] {
     text-align: center
 }
 
-
-
 .modal-sm {
     width : 400px;
     margin: auto
@@ -3514,42 +2861,10 @@ button.peach-btn[disabled] {
     color: #f37021
 }
 
-.ordering .container {
-    position: relative
-}
-
-.ordering .cart {
-    position: absolute;
-    top     : 0;
-    right   : 0
-}
-
-.ordering .cart-section {
-    height: 500px
-}
-
-.ordering .cart-service__list {
-    height: 376px
-}
-
-.ordering-form {
-    margin-top: 15px
-}
-
-.ordering-form__address,
-.ordering-form__phone,
-.ordering-form__time {
-    max-width: 520px
-}
-
 .modal-address-button,
 .modal-address-button--delete,
 .modal-content--map input,
-.modal-content--map textarea,
-.order-options-time-dropdown-select,
-.ordering-form button,
-.ordering-form input,
-.ordering-form select {
+.modal-content--map textarea {
     border-radius   : 3px;
     height          : 42px;
     font-size       : 16px;
@@ -3560,13 +2875,8 @@ button.peach-btn[disabled] {
 }
 
 .modal-address-button--delete:disabled,
-.modal-address-button:disabled,
-.ordering-form button:disabled {
+.modal-address-button:disabled {
     opacity: .4
-}
-
-.ordering-form input:disabled {
-    background-color: rgba(0, 0, 0, .1)
 }
 
 .modal-address-button--delete {
@@ -3580,53 +2890,6 @@ button.peach-btn[disabled] {
     position: relative;
     top     : 5px;
     margin  : 0 5px
-}
-
-.ordering-form__phone {
-    display        : flex;
-    justify-content: flex-start
-}
-
-.ordering-form__phone>div {
-    position     : relative;
-    margin-right : 10px;
-    margin-bottom: 15px
-}
-
-.ordering-form__phone>div:last-of-type {
-    margin-right: 0
-}
-
-.ordering-form__phone button {
-    border          : none;
-    background-color: #f37021;
-    color           : #fff
-}
-
-.ordering-form__phone .input-mask-phone {
-    max-width: 170px
-}
-
-.ordering-form label {
-    display    : block;
-    font-size  : 14px;
-    line-height: 22px;
-    color      : rgba(0, 0, 0, .4);
-    font-weight: 400
-}
-
-.ordering-form__address {
-    margin-top: 40px
-}
-
-.ordering-form__address button {
-    border       : none;
-    background   : 0 0;
-    color        : #f37021;
-    font-size    : 14px;
-    line-height  : 22px;
-    height       : auto;
-    padding-right: 0
 }
 
 .custom-buttons {
@@ -3713,49 +2976,6 @@ button.peach-btn[disabled] {
     fill: #f37021
 }
 
-.ordering-form__time {
-    margin         : 40px 0;
-    display        : flex;
-    justify-content: space-between
-}
-
-.order-options-time-dropdown-select {
-    display     : flex;
-    align-items : center;
-    color       : #000;
-    width       : 200px;
-    padding-left: 15px;
-    position    : relative
-}
-
-.order-options-time-dropdown-select:active,
-.order-options-time-dropdown-select:focus,
-.order-options-time-dropdown-select:hover {
-    color: #000
-}
-
-.order-options-time-dropdown-select--disabled,
-.order-options-time-dropdown-select--disabled:active,
-.order-options-time-dropdown-select--disabled:focus,
-.order-options-time-dropdown-select--disabled:hover {
-    color: rgba(0, 0, 0, .4)
-}
-
-.order-options-time-dropdown-select::after {
-    display         : block;
-    content         : ' ';
-    background-image: url(https://broniboy.ru/img/icons/dropdown-icon.svg);
-    width           : 8px;
-    height          : 4px;
-    position        : absolute;
-    right           : 15px;
-    top             : 18px
-}
-
-.order-options-time-dropdown-select--disabled::after {
-    opacity: .4
-}
-
 .form-checkout-promocode {
     position: relative
 }
@@ -3763,35 +2983,6 @@ button.peach-btn[disabled] {
 .form-checkout-promocode__input {
     margin-right: -6px;
     width       : 180px
-}
-
-.ordering-form .form-checkout-promocode__input--complete {
-    color: #07ae04
-}
-
-.ordering-form .form-checkout-promocode__input--error {
-    border-color: #e70f0f
-}
-
-.ordering-form .form-checkout-promocode__button {
-    color        : #f37021;
-    border-color : #f37021;
-    border-radius: 0 3px 3px 0
-}
-
-.ordering-form .form-checkout-promocode__button-wrapper {
-    display   : inline-block;
-    background: #fff
-}
-
-.ordering-form .form-checkout-promocode__button--complete {
-    color       : rgba(0, 0, 0, .4);
-    border-color: rgba(0, 0, 0, .1)
-}
-
-.order-form-send-code,
-.order-form-sms-code {
-    width: 160px
 }
 
 .page-title--checkout {
@@ -3995,90 +3186,8 @@ span.nowrap {
     cursor: default
 }
 
-.ordering-form__finish {
-    margin-top: 40px;
-    border-top: 1px solid rgba(0, 0, 0, .2);
-    padding   : 25px 0
-}
-
-.ordering-form__finish .container {
-    padding-left: 0
-}
-
-.order-finish__wrapper {
-    display        : flex;
-    flex-direction : column;
-    justify-content: space-around
-}
-
-.ordering-form__finish.sticky {
-    position        : fixed;
-    bottom          : -141px;
-    left            : 0;
-    width           : 100%;
-    background-color: #fff;
-    margin-left     : 0;
-    margin-right    : 0;
-    box-shadow      : 0 -10px 30px rgba(0, 0, 0, .1);
-    z-index         : 200
-}
-
-.ordering-form__finish.sticky .container {
-    padding-left: 15px
-}
-
-.order-finish {
-    display      : flex;
-    margin-bottom: 50px
-}
-
-.order-finish__item {
-    margin-right: 40px
-}
-
-.order-finish__item--total {
-    min-width: 100px
-}
-
-.order-finish__title {
-    font-size    : 16px;
-    color        : #b2b2b2;
-    margin-bottom: 5px
-}
-
-.order-finish__value {
-    font-size: 24px;
-    color    : #000
-}
-
-.ordering-form__finish .peach-btn {
-    display    : block;
-    width      : 520px;
-    height     : 42px;
-    text-align : center;
-    padding-top: 9px
-}
-
-.order-options-guests-numbers-nav {
-    display        : flex;
-    align-items    : center;
-    justify-content: left
-}
-
-.order-options-guests-numbers-nav span {
-    display    : flex;
-    align-items: center;
-    cursor     : pointer;
-    height     : 18px
-}
-
-.order-options-guests-numbers-nav div {
-    margin: 0 15px
-}
-
 .input-code-error,
-.input-promocode-error,
-.ordering-form__phone-info {
+.input-promocode-error {
     font-size: 14px;
     display  : none;
     position : absolute;
@@ -4090,14 +3199,6 @@ span.nowrap {
 .input-promocode-error {
     bottom: auto;
     top   : 69px
-}
-
-.ordering-form__phone-info span {
-    color: #f37021
-}
-
-.ordering-form .order-form-sms-code--error {
-    border-color: #e70f0f
 }
 
 .input-code-error,
@@ -4249,33 +3350,6 @@ span.nowrap {
     display         : none
 }
 
-.ordering-form__payment-description {
-    position : relative;
-    font-size: 16px;
-    padding  : 15px 0
-}
-
-.ordering-form__payment-description--payment-cash::before {
-    position : absolute;
-    top      : 26px;
-    left     : 133px;
-    content  : "₽";
-    font-size: 16px
-}
-
-.ordering-form__payment-description--payment-cash input {
-    width      : 85px;
-    margin-left: 10px
-}
-
-.ordering-form .btn-payment-card {
-    padding: 10px 30px
-}
-
-.ordering-form .btn-payment-card--active {
-    background: #f2f2f2 url(https://broniboy.ru/img/icons/payment-active.svg) no-repeat 10px center
-}
-
 .btn-payment-card img {
     width: 25px
 }
@@ -4284,21 +3358,6 @@ span.nowrap {
 .btn:active:focus,
 .btn:focus {
     outline: 0
-}
-
-.ordering-form__item--disabled {
-    position: relative
-}
-
-.ordering-form__item--disabled::before {
-    content         : ' ';
-    display         : block;
-    background-color: rgba(255, 255, 255, .6);
-    min-height      : 100%;
-    width           : 100%;
-    max-width       : 520px;
-    position        : absolute;
-    z-index         : 150
 }
 
 .checkout-success__buttons {
@@ -4358,15 +3417,6 @@ span.nowrap {
 }
 
 @media screen and (max-width:767px) {
-    .ordering-form {
-        display: none
-    }
-
-    .ordering .cart-service__list {
-        height: auto;
-        width : auto
-    }
-
     .cart-bottom {
         position: relative
     }
@@ -4376,47 +3426,6 @@ span.nowrap {
         background-color: #f37021;
         color           : #fff;
         font-weight     : 700
-    }
-
-    .ordering-form__address,
-    .ordering-form__phone,
-    .ordering-form__time {
-        width    : 100%;
-        flex-wrap: wrap
-    }
-
-    .ordering-form__finish .peach-btn {
-        width: 100%
-    }
-
-    .order-finish {
-        margin-bottom  : 10px;
-        justify-content: space-between
-    }
-
-    .order-finish__title {
-        font-size: 12px
-    }
-
-    .order-finish__value {
-        font-size: 16px
-    }
-
-    .order-finish__item {
-        margin-right: 10px
-    }
-
-    .order-finish__item--total {
-        min-width: auto
-    }
-
-    .ordering,
-    .page-content {
-        margin-bottom: 0
-    }
-
-    .ordering .cart {
-        position: relative
     }
 
     .cart-section {
@@ -4454,11 +3463,6 @@ span.nowrap {
         width      : auto;
         font-size  : 12px;
         line-height: 14px
-    }
-
-    .ordering .cart-section {
-        height: auto;
-        width : auto
     }
 
     .modal-content--map .modal-address-button {
@@ -4545,11 +3549,6 @@ span.nowrap {
     }
 }
 
-.order-options-time-dropdown-items-scroll {
-    position: relative;
-    overflow: hidden
-}
-
 .items--title,
 .vcard .org {
     font-weight  : 700;
@@ -4628,8 +3627,6 @@ span.nowrap {
     justify-content: space-between
 }
 
-
-
 .service-addon .service-addon__title {
     font-weight  : 500;
     font-size    : 14px;
@@ -4674,8 +3671,6 @@ span.nowrap {
     background: url('https://broniboy.ru/img/icons/delivery/high.svg')
 }
 
-
-
 .legal-info {
     font-style   : normal;
     font-weight  : 400;
@@ -4709,8 +3704,6 @@ span.nowrap {
     z-index         : 100
 }
 
-
-
 .mobile-nav .mobile-nav-close {
     left: 15px
 }
@@ -4722,7 +3715,6 @@ span.nowrap {
 .mobile-nav ul {
     width: 600px
 }
-
 
 .ordering .ordering-item-right button:last-of-type {
     margin-right: 0
@@ -4824,13 +3816,10 @@ span.nowrap {
         width: 1500px
     }
 
-
     .shop-search-result .service-list__item,
     .shop-services .service-list__item {
         flex: 0 0 260px !important
     }
-
-
 
     .service-list {
         margin: 0 -27px 0 -15px !important
@@ -4859,7 +3848,6 @@ body.modal-open {
     position: relative;
     cursor  : pointer
 }
-
 
 .shop-menu {
     display: flex
@@ -5140,7 +4128,6 @@ body.modal-open {
     overflow: hidden
 }
 
-
 .delivery_type_cart {
     border-radius: 3px;
     padding      : 0 3px
@@ -5149,8 +4136,6 @@ body.modal-open {
 .delivery_type_cart img {
     height: 10px
 }
-
-
 
 #ya-map {
     width : 50%;
