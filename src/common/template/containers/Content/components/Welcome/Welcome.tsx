@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import './welcome.less';
 
 export const Welcome: FC = () => (
   <section className='welcome'>

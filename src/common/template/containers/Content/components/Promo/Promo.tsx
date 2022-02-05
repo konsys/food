@@ -1,4 +1,5 @@
 import React from 'react';
+import './promo.less';
 
 export const Promo = () => (
   <section className='promo-block'>
