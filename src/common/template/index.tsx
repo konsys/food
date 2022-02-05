@@ -4,6 +4,7 @@ import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
 import './style.less';
 import './common.less';
+import './buttons.less';
 
 interface Props {
   children: ReactElement;

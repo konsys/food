@@ -1,0 +1,403 @@
+.fake-header.fake-header_active {
+    height: 163px
+}
+
+.fake-header.fake-header_active-mobile {
+    height: 123px
+}
+
+.header {
+    background-color  : #fff;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .1);
+    box-shadow        : 0 10px 30px 0 rgba(0, 0, 0, .1);
+    padding           : 36px 0;
+    -webkit-transform : none;
+    transform         : none
+}
+
+.header-container {
+    position: relative
+}
+
+.header.header_sticky {
+    left    : 0;
+    position: fixed;
+    padding : 8px 0;
+    top     : 0;
+    width   : 100%;
+    z-index : 350
+}
+
+.header.header_sticky .header-logo a img {
+    max-width: 128px;
+    width    : 128px
+}
+
+.header.header_transparent {
+    background-color  : transparent;
+    -webkit-box-shadow: none;
+    box-shadow        : none;
+    left              : 0;
+    position          : absolute;
+    right             : 0;
+    top               : 0;
+    width             : 100%;
+    z-index           : 10
+}
+
+.header.header_transparent .header-logo a {
+    top: 0
+}
+
+.header.header_transparent .header-logo a img {
+    max-width: 148px;
+    width    : 148px
+}
+
+.header.header_transparent .nav-toggle span {
+    background-color: #fff
+}
+
+.header.header_transparent .header-nav a {
+    border            : 1px solid rgba(255, 255, 255, .2);
+    background-repeat : no-repeat;
+    color             : rgba(255, 255, 255, .8);
+    -webkit-transition: background-color .3s, border .3s;
+    transition        : background-color .3s, border .3s
+}
+
+.header.header_transparent .header-nav a:hover {
+    background-color: rgba(255, 255, 255, .2);
+    border          : 1px solid rgba(255, 255, 255, .2)
+}
+
+.header.header_transparent .header-nav a.header-nav-item-link-login {
+    background-image: url(https://broniboy.ru/img/icons/login-icon-white.svg)
+}
+
+.header.header_transparent .header-nav a.header-nav-item-link span {
+    color: #fff
+}
+
+.header-nav-item-link-basket-stub,
+.header.header_transparent .header-nav a.header-nav-item-link-basket {
+    background-image: url(https://broniboy.ru/img/icons/basket-icon-white.svg)
+}
+
+.header.header_transparent .app-round a {
+    border            : 1px solid rgba(255, 255, 255, .2);
+    -webkit-transition: background-color .3s, border .3s;
+    transition        : background-color .3s, border .3s
+}
+
+.header.header_transparent .app-round a:hover {
+    background-color: rgba(255, 255, 255, .2);
+    border          : 1px solid rgba(255, 255, 255, .2)
+}
+
+.header.header_transparent .app-round a.app-round-item-link-google_play {
+    background-image: url(https://broniboy.ru/img/icons/google-play-icon-white.svg)
+}
+
+.header.header_transparent .app-round a.app-round-item-link-app_store {
+    background-image: url(https://broniboy.ru/img/icons/app-store-icon-white.svg)
+}
+
+.header.header_transparent .app-round a:hover.app-round-item-link-google_play {
+    background-image: url(https://broniboy.ru/img/icons/google-play-icon-white.svg)
+}
+
+.header.header_transparent .app-round a:hover.app-round-item-link-app_store {
+    background-image: url(https://broniboy.ru/img/icons/app-store-icon-white.svg)
+}
+
+.header .header-content {
+    position: relative
+}
+
+.header .header-buttons {
+    display              : -webkit-box;
+    display              : -ms-flexbox;
+    display              : flex;
+    -webkit-box-orient   : vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction   : column;
+    flex-direction       : column;
+    -webkit-box-pack     : center;
+    -ms-flex-pack        : center;
+    justify-content      : center;
+    height               : 48px;
+    position             : absolute;
+    right                : 15px;
+    top                  : 50%;
+    -webkit-transform    : translateY(-50%);
+    transform            : translateY(-50%)
+}
+
+.header .header-nav-toggle {
+    display              : -webkit-box;
+    display              : -ms-flexbox;
+    display              : flex;
+    -webkit-box-orient   : vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction   : column;
+    flex-direction       : column;
+    -webkit-box-pack     : center;
+    -ms-flex-pack        : center;
+    justify-content      : center;
+    height               : 48px;
+    left                 : 60px;
+    position             : absolute;
+    top                  : 50%;
+    -webkit-transform    : translateY(-50%);
+    transform            : translateY(-50%);
+    -webkit-transition   : opacity .8s;
+    transition           : opacity .8s;
+    z-index              : 100
+}
+
+.header .header-nav {
+    display              : -webkit-box;
+    display              : -ms-flexbox;
+    display              : flex;
+    -webkit-box-orient   : vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction   : column;
+    flex-direction       : column;
+    float                : right;
+    -webkit-box-pack     : center;
+    -ms-flex-pack        : center;
+    justify-content      : center;
+    height               : 48px
+}
+
+.header-logo {
+    display              : -webkit-box;
+    display              : -ms-flexbox;
+    display              : flex;
+    -webkit-box-orient   : vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction   : column;
+    flex-direction       : column;
+    float                : left;
+    -webkit-box-pack     : center;
+    -ms-flex-pack        : center;
+    justify-content      : center;
+    height               : 48px
+}
+
+.header-logo a {
+    display              : -webkit-box;
+    display              : -ms-flexbox;
+    display              : flex;
+    -webkit-box-orient   : vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction   : column;
+    flex-direction       : column;
+    -webkit-box-pack     : center;
+    -ms-flex-pack        : center;
+    justify-content      : center;
+    height               : 100%;
+    position             : relative;
+    top                  : 2px
+}
+
+.header-logo a img {
+    display  : block;
+    height   : auto;
+    max-width: 171px;
+    width    : 100%
+}
+
+
+.header-nav .list-clear {
+    display: flex
+}
+
+.header-nav .list-clear li {
+    margin-right: 10px
+}
+
+.header-nav .list-clear li:last-child {
+    margin-right: 0
+}
+
+.header-nav a {
+    border            : 1px solid #ccc;
+    background-repeat : no-repeat;
+    color             : #666;
+    display           : block;
+    font-size         : 14px;
+    height            : 40px;
+    -webkit-transition: border-color .3s;
+    transition        : border-color .3s
+}
+
+.header-nav a:hover {
+    border-color: #f37021
+}
+
+.header-nav a.header-nav-item-link {
+    border-radius: 20px;
+    padding      : 8px 19px;
+    text-align   : center
+}
+
+.header-nav a.header-nav-item-link--address {
+    background     : url(https://broniboy.ru/img/icons/map-marker.svg) no-repeat 0 center;
+    background-size: 16px;
+    border         : none !important;
+    padding        : 8px 15px 0 25px
+}
+
+.header-nav a.header-nav-item-link--address:hover {
+    background-color: transparent !important
+}
+
+.header.header_transparent .header-nav a.header-nav-item-link--address {
+    background     : url(https://broniboy.ru/img/icons/map-marker-white.svg) no-repeat 0 center;
+    background-size: 16px
+}
+
+.header-nav a.header-nav-item-link-login {
+    background   : url(https://broniboy.ru/img/icons/login-icon.svg) center center no-repeat;
+    border-radius: 50%;
+    position     : relative;
+    padding      : 0;
+    width        : 40px
+}
+
+.header-nav a.header-nav-item-login span {
+    color            : #000;
+    left             : -65px;
+    position         : absolute;
+    padding          : 9px 20px 9px 0;
+    top              : 50%;
+    -webkit-transform: translateY(-50%);
+    transform        : translateY(-50%)
+}
+
+.header-nav a.header-nav-item-link-basket,
+.header-nav-item-link-basket-stub {
+    background   : url(https://broniboy.ru/img/icons/basket-icon.svg) no-repeat center center;
+    border-radius: 20px;
+    padding      : 19px
+}
+
+.header-nav-item-link-basket-stub {
+    opacity: .4
+}
+
+.header-nav a.header-nav-item-link-basket b {
+    font-size: 16px;
+    color    : #fff
+}
+
+.header-nav a.header-nav-item-link-basket.header-nav-item-link-basket_active b {
+    padding-right: 9px
+}
+
+.header-nav a.header-nav-item-link-basket span {
+    display: none
+}
+
+.header-nav a.header-nav-item-link-basket.header-nav-item-link-basket_active-animate:before {
+    -webkit-animation: addToCart 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    animation        : addToCart 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    background       : #f37021;
+    background       : radial-gradient(transparent, rgba(238, 129, 97, .6));
+    border-radius    : 20px;
+    content          : "";
+    height           : 150%;
+    left             : 50%;
+    position         : absolute;
+    top              : 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform        : translate(-50%, -50%);
+    width            : 110%
+}
+
+.header-nav a.header-nav-item-link-basket.header-nav-item-link-basket_active {
+    -webkit-animation    : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    animation            : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    background-color     : #f37021;
+    background-image     : url(https://broniboy.ru/img/icons/basket-icon-white.svg);
+    background-position-x: 17px;
+    border-color         : #f37021;
+    position             : relative;
+    padding-left         : 42px;
+    padding-top          : 9px
+}
+
+
+.header-city {
+    float      : left;
+    display    : flex;
+    align-items: center;
+    height     : 48px;
+    margin-left: 30px;
+    position   : relative
+}
+
+.header-city a {
+    display    : flex;
+    align-items: center;
+    color      : #000
+}
+
+.header-city a:hover {
+    color: #f37021
+}
+
+.header-city a:hover svg path {
+    stroke: #f37021
+}
+
+.header-city__confirm {
+    background-color: #fff;
+    box-shadow      : 0 8px 24px rgba(0, 0, 0, .2);
+    border-radius   : 2px;
+    position        : absolute;
+    left            : 0;
+    top             : 70px;
+    width           : 335px;
+    padding         : 24px;
+    font-weight     : 500;
+    font-size       : 18px
+}
+
+.header-city__confirm-buttons {
+    display        : flex;
+    justify-content: space-between;
+    margin-top     : 17px
+}
+
+.header-city__confirm-buttons .confirm-button {
+    font-style      : normal;
+    font-weight     : 400;
+    font-size       : 14px;
+    line-height     : 16px;
+    padding         : 11px 16px;
+    border-radius   : 4px;
+    border          : 1px #f37021 solid;
+    background-color: #f37021;
+    color           : #fff
+}
+
+.header-city__confirm-buttons .confirm-button-select {
+    background-color: #fff;
+    color           : #f37021
+}
+
+.header-city__name {
+    margin-left: 5px
+}
+
+
+.header .header-nav-toggle {
+    left: 15px
+}
+
+.header .header-buttons {
+    right: 15px
+}

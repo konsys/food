@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './styles.less';
+import './header.less';
 
 export const Header: FC = () => (
   <>
