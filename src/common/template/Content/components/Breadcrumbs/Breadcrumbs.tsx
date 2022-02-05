@@ -1,8 +1,9 @@
 import React from 'react';
+import './breadcrumbs.less';
 
 export function Breadcrumbs() {
   return (
-    <div className='breadcrumbs-home-wrapper'>
+    <div className=' breadcrumbs-home-wrapper'>
       <div className='breadcrumbs'>
         <div className='container'>
           <ul className='list-clear'>
