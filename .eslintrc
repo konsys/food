@@ -57,7 +57,9 @@
     "guard-for-in": 0,
     "jsx-a11y/control-has-associated-label": 0,
     "jsx-a11y/anchor-has-content": 0,
-    "jsx-a11y/label-has-associated-control": 0
+    "jsx-a11y/label-has-associated-control": 0,
+    "@typescript-eslint/no-empty-interface": 0,
+    "no-empty-pattern": 0
   },
   "settings": {
     "import/resolver": {
