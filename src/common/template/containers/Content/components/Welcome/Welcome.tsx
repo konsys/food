@@ -14,7 +14,6 @@ export const Welcome: FC = () => (
           <div className='welcome-search-form-content clearfix'>
             <label htmlFor='search-address-form-input' />
             <input
-              id='search-address-form-input'
               className='search-address-form-input'
               type='text'
               name='user-address'
@@ -29,7 +28,7 @@ export const Welcome: FC = () => (
               name='_csrf'
               defaultValue='HYLxojmEQJZ_FoOF41Dv36mTrkpaK0d_5wSglgOj18kw1aDrc8d40yx9wv2mCbi0--ncKAl0FhWLfo33N8e68Q=='
             />
-            <input type='hidden' name='user-point' className='input-geo-point' />{' '}
+            <input type='hidden' name='user-point' className='input-geo-point' />
             <button type='submit' className='peach-btn' data-actor='welcome-search-btn'>
               <svg
                 width={20}
