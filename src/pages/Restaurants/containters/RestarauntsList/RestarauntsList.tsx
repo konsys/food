@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { uuid } from '../../../../../../../utils/utils';
+import { uuid } from '../../../../common/utils/utils';
 import RestarauntItem, { EDeliveryType, EFoodType } from '../RestarauntItem/RestarauntItem';
 
 interface Props {}

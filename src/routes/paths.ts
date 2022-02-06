@@ -1,6 +1,6 @@
 import { RouteProps } from 'react-router-dom';
-import { MenuListPage } from '../pages/Menu/MenuListPage';
 import { NotFound } from '../pages/NotFound';
+import Restaraunts from '../pages/Restaurants/Restaraunts';
 import { EPathName, TPath } from './types';
 
 export const pathNames: Record<EPathName, TPath> = {
@@ -13,7 +13,7 @@ const { HOME } = pathNames;
 export const paths: Record<EPathName, RouteProps> = {
   HOME: {
     path: HOME.path,
-    element: MenuListPage,
+    element: Restaraunts,
   },
 
   NOT_FOUND: {
