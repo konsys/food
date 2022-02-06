@@ -9,7 +9,7 @@ function RestarauntsList(props: Props) {
   return (
     <section className='restaurants'>
       <div className='container'>
-        <header id='restaurants'>
+        <header>
           <div className='restaurants-header-title restaurants-header-title--home-page'>
             <div className='page-title'>
               <h2>Самые популярные места</h2>
