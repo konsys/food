@@ -4,6 +4,19 @@ import { ReactComponent as LongDistance } from '../../svg/long_distance.svg';
 import { ReactComponent as DeliveryStandard } from '../../svg/delivery-standard.svg';
 import { ReactComponent as HightDemand } from '../../svg/high-demand.svg';
 
+export type RestarauntDto = {
+  name: string;
+  uuid: string;
+  deliveryType: EDeliveryType;
+  deliveryFullTime: string;
+  price: number;
+  img: string;
+  logoUrl: string;
+  rating: string;
+  ratingColor: string;
+  priceRate: 1 | 2 | 3 | 4 | 5;
+  foodType: EFoodType;
+};
 export enum EFoodType {
   EUROPIAN = 'Европейская кухня',
   GEORGIAN = 'Европейская кухня',
@@ -17,19 +30,7 @@ export enum EDeliveryType {
   STANDARD,
   HIGH_DEMAND,
 }
-interface Props {
-  name: string;
-  uuid: string;
-  deliveryType: EDeliveryType;
-  deliveryFullTime: string;
-  price: number;
-  img: string;
-  logoUrl: string;
-  rating: string;
-  ratingColor: string;
-  priceRate: 1 | 2 | 3 | 4 | 5;
-  foodType: EFoodType;
-}
+type Props = RestarauntDto;
 
 function RestarauntItem(props: Props) {
   const {
