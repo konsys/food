@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 import { ReactComponent as Rating } from '../../svg/rating.svg';
 import { ReactComponent as LongDistance } from '../../svg/long_distance.svg';
+import { ReactComponent as DeliveryStandard } from '../../svg/delivery-standard.svg';
+import { ReactComponent as HightDemand } from '../../svg/high-demand.svg';
 
 interface Props {}
 
@@ -57,6 +59,8 @@ function RestarauntItem(props: Props) {
             <div className='restaurant-box-second__delivery'>
               <div>
                 <LongDistance className='restaurant-box-second__delivery-icon delivery_type--long_distance' />
+                <DeliveryStandard className='restaurant-box-second__delivery-icon delivery_type--default' />
+                <HightDemand className='restaurant-box-second__delivery-icon delivery_type--high_demand' />
 
                 <span className='restaurant-box-second__info'>190 ₽</span>
               </div>
