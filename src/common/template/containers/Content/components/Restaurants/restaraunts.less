@@ -229,8 +229,15 @@
 
 .restaurant-box-second__rating {
     font-size    : 16px;
-    padding-right: 5px
+    padding-right: 5px;
+
+    &--star {
+        width : 12px;
+        height: 12px;
+        color : #76C032;
+    }
 }
+
 
 .restaurant-box-second__info {
     color    : silver;
@@ -768,6 +775,35 @@ ul.modal-list-restaurant li:last-child a div {
     width     : 16px
 }
 
+
+.delivery_type__title {
+    padding-left: 5px;
+    font-weight : 500
+}
+
+.delivery_type--default {
+    background-color: #f37021 !important;
+
+}
+
+.delivery_type--high_demand {
+    background-color: #d90000 !important
+}
+
+.delivery_type--long_distance {
+    background-color: #36f !important;
+    width           : 18px;
+    height          : 12px;
+
+    path {
+        fill: white
+    }
+}
+
+.delivery_type--not_available {
+    background-color: #9b9b9b !important
+}
+
 .restaurant-box-second__delivery {
     border-top     : 1px solid #e1e1e1;
     padding-top    : 10px;
@@ -775,7 +811,9 @@ ul.modal-list-restaurant li:last-child a div {
     bottom         : 10px;
     width          : calc(100% - 30px);
     display        : flex;
-    justify-content: space-between
+    justify-content: space-between;
+
+
 }
 
 .restaurant-box-second__delivery>div {

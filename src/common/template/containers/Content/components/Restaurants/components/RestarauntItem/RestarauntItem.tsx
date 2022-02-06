@@ -1,4 +1,6 @@
 import React, { memo } from 'react';
+import { ReactComponent as Rating } from '../../svg/rating.svg';
+import { ReactComponent as LongDistance } from '../../svg/long_distance.svg';
 
 interface Props {}
 
@@ -48,26 +50,14 @@ function RestarauntItem(props: Props) {
           <div className='restaurant-box-second__description'>
             <span className='restaurant-box-second__rating' style={{ color: '#76C032' }}>
               <span>5.0</span>
-              <svg width={12} height={12}>
-                <path
-                  id='Path_11'
-                  data-name='Path 11'
-                  fill='#76C032'
-                  d='M5.877.27a.438.438,0,0,1,.4-.27A.526.526,0,0,1,6.72.27L8.271,3.44a.522.522,0,0,0,.371.27l3.474.506a.581.581,0,0,1,.4.337.485.485,0,0,1-.135.506L9.857,7.521a.5.5,0,0,0-.135.438l.607,3.474a.488.488,0,0,1-.708.506l-3.1-1.653a.5.5,0,0,0-.438,0l-3.1,1.653a.458.458,0,0,1-.506-.034.518.518,0,0,1-.2-.472l.607-3.474a.531.531,0,0,0-.135-.438L.211,5.059a.564.564,0,0,1-.135-.506.522.522,0,0,1,.4-.337L3.955,3.71a.522.522,0,0,0,.371-.27Zm0,0'
-                  transform='translate(-0.064)'
-                />
-              </svg>
+              <Rating className='restaurant-box-second__rating--star' />
             </span>
             <span className='restaurant-box-second__info'>Европейская кухня, </span>
             <span className='restaurant-box-second__info'>₽₽₽</span>
             <div className='restaurant-box-second__delivery'>
               <div>
-                <img
-                  src='https://broniboy.ru/img/icons/delivery/long_distance.svg'
-                  className='restaurant-box-second__delivery-icon delivery_type--long_distance'
-                  alt='Дальняя доставка'
-                  title='Дальняя доставка'
-                />
+                <LongDistance className='restaurant-box-second__delivery-icon delivery_type--long_distance' />
+
                 <span className='restaurant-box-second__info'>190 ₽</span>
               </div>
               <div>
@@ -76,7 +66,7 @@ function RestarauntItem(props: Props) {
             </div>
           </div>
         </div>
-      </div>{' '}
+      </div>
     </div>
   );
 }
