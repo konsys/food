@@ -21,3 +21,6 @@ export type TOnlyView = { onlyView: boolean };
 export type TId = number | null | undefined;
 export type TWithId = { id: TId };
 export type TItemWithId<T> = T & { id: TId };
+export type TObjectMap = Record<string, any>;
+
+export type TKeyValue = { key: string; value: any };

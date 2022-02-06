@@ -1,10 +1,9 @@
 import React from 'react';
+import MetaSchema from './components/MetaSchema/MetaSchema';
 
 export const MetaContent = () => (
   <>
-    <div itemScope itemType='https://schema.org/WebPage' className='hidden'>
-      <a itemProp='url' href='https://broniboy.ru/nn/' />
-    </div>
+    <MetaSchema />
     <div itemScope itemType='https://schema.org/BreadcrumbList' className='hidden'>
       <div itemProp='itemListElement' itemScope itemType='https://schema.org/ListItem'>
         <meta itemProp='name' content='Broniboy' />
