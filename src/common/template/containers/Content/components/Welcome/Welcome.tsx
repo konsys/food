@@ -21,7 +21,6 @@ export const Welcome: FC = () => (
               placeholder='Укажите адрес доставки'
               required
               defaultValue='Варварская улица'
-              data-actor='welcome-search-input'
             />
             <input
               type='hidden'
@@ -29,7 +28,7 @@ export const Welcome: FC = () => (
               defaultValue='HYLxojmEQJZ_FoOF41Dv36mTrkpaK0d_5wSglgOj18kw1aDrc8d40yx9wv2mCbi0--ncKAl0FhWLfo33N8e68Q=='
             />
             <input type='hidden' name='user-point' className='input-geo-point' />
-            <button type='submit' className='peach-btn' data-actor='welcome-search-btn'>
+            <button type='submit' className='peach-btn'>
               <svg
                 width={20}
                 height={20}

@@ -23,13 +23,7 @@ export const HeaderButtons = () => (
         />
       </li>
       <li>
-        <a
-          href='/'
-          data-toggle='modal'
-          data-target='#login-modal'
-          className='header-nav-item-link'
-          title='Войти'
-        >
+        <a href='/' className='header-nav-item-link' title='Войти'>
           <span>Войти</span>
         </a>
       </li>

@@ -41,7 +41,6 @@ function RestarauntsList(props: Props) {
         <a
           href='https://broniboy.ru/nn/restaurants/'
           title='Посмотреть все рестораны'
-          data-actor='watch-all-restaurants-btn'
           className='peach-btn peach-btn--category'
         >
           Посмотреть все рестораны

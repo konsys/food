@@ -50,15 +50,7 @@ function RestarauntItem(props: Props) {
 
   return (
     <div className='col-lg-4 col-md-6 col-sm-6 col-xs-12'>
-      <div
-        className='restaurant-box '
-        data-place-data={JSON.stringify({
-          uuid,
-          name,
-          deliveryType,
-          deliveryTime,
-        })}
-      >
+      <div className='restaurant-box '>
         <div className='restaurant-box-top'>
           <a href={`localhost:3000/restaurants/${uuid}`} title={name}>
             <img

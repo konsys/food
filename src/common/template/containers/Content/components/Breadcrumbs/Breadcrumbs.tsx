@@ -7,12 +7,12 @@ export function Breadcrumbs() {
       <div className='breadcrumbs'>
         <div className='container'>
           <ul className='list-clear'>
-            <li data-actor='breadcrumbs-element' data-level={0}>
+            <li>
               <a href='https://broniboy.ru' title='Главная'>
                 <span>Главная</span>
               </a>
             </li>
-            <li data-actor='breadcrumbs-element-active' data-level={1}>
+            <li>
               <a href='/' title='Нижний Новгород' className='disabled'>
                 <span>Нижний Новгород</span>
               </a>

@@ -10,22 +10,22 @@ export const FooterSocials = () => (
       <div className='logo__description'>Принимаем заказы с 09:00 до 23:30</div>
     </a>
     <ul className='social-links'>
-      <li data-actor-socialnetwork='Facebook'>
+      <li>
         <a href='https://www.facebook.com/broniboy.world/' rel='nofollow' title='Facebook'>
           <BoyIcon className='social-links__facebook-logo' />
         </a>
       </li>
-      <li data-actor-socialnetwork='Вконтакте'>
+      <li>
         <a href='https://vk.com/broniboy' rel='nofollow' title='Вконтакте'>
           <VkIcon className='social-links__vk-logo' />
         </a>
       </li>
-      <li data-actor-socialnetwork='Одноклассники'>
+      <li>
         <a href='https://ok.ru/group/54843064713450' rel='nofollow' title='Одноклассники'>
           <OkIcon className='social-links__ok-logo' />
         </a>
       </li>
-      <li data-actor-socialnetwork='Instagram'>
+      <li>
         <a href='https://instagram.com/broniboy/' rel='nofollow' title='Instagram'>
           <InstaIcon className='social-links__insta-logo' />
         </a>
