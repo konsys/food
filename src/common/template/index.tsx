@@ -11,12 +11,11 @@ interface Props {
 }
 
 export function Template({ children }: Props) {
-  children;
   return (
     <>
       <div className='page-wrapper'>
         <Header />
-        <Content />
+        <Content children={children} />
       </div>
       <Footer />
     </>

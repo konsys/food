@@ -1,17 +1,18 @@
-import React, { FC } from 'react';
-import { Welcome } from './components/Welcome/Welcome';
-import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
-import Restaraunts from './components/Restaurants/Restaraunts';
-import { Promo } from './components/Promo/Promo';
-import { PromoPartners } from './components/PromoPartners/PromoPartners';
+import React, { FC, ReactNode } from 'react';
+import { PromoPartners } from './PromoPartners/PromoPartners';
 import { MetaContent } from './components/MetaContent/MetaContent';
+import { Welcome } from './Welcome/Welcome';
+import { Promo } from './Promo/Promo';
 
-export const Content: FC = () => (
+type Props = {
+  children: ReactNode;
+};
+
+export const Content: FC<Props> = ({ children }: Props) => (
   <main className='page-content'>
     <MetaContent />
     <Welcome />
-    <Breadcrumbs />
-    <Restaraunts />
+    {children}
     <Promo />
     <PromoPartners />
     <section className='container custom-page' />
