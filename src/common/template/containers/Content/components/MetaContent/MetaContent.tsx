@@ -1,5 +1,5 @@
 import React from 'react';
-import MetaSchema from './components/MetaSchema/MetaSchema';
+import MetaSchema from './components/MetaItems/MetaSchemaWebPage/MetaSchemaWebPage';
 
 export const MetaContent = () => (
   <>

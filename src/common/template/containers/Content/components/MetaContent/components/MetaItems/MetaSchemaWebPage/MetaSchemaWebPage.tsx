@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 interface Props {}
 
-function MetaSchema(props: Props) {
+function MetaSchemaWebPage(props: Props) {
   const {} = props;
 
   return (
@@ -12,4 +12,4 @@ function MetaSchema(props: Props) {
   );
 }
 
-export default memo(MetaSchema);
+export default memo(MetaSchemaWebPage);
