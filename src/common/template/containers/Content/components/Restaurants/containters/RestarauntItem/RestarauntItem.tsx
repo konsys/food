@@ -21,7 +21,6 @@ interface Props {
   name: string;
   uuid: string;
   deliveryType: EDeliveryType;
-  deliveryTime: number;
   deliveryFullTime: string;
   price: number;
   img: string;
@@ -36,8 +35,6 @@ function RestarauntItem(props: Props) {
   const {
     name,
     uuid,
-    deliveryType,
-    deliveryTime,
     img,
     logoUrl,
     rating,
@@ -46,6 +43,7 @@ function RestarauntItem(props: Props) {
     foodType,
     price,
     deliveryFullTime,
+    deliveryType,
   } = props;
 
   return (
@@ -57,12 +55,6 @@ function RestarauntItem(props: Props) {
               title={name}
               alt={name}
               className='restaurant-cover-image transition lazyloaded'
-              // style={{
-              //   width: 'auto',
-              //   height: '255.938px',
-              //   marginLeft: '-0.337982px',
-              //   marginTop: 0,
-              // }}
               src={img}
             />
 
@@ -92,9 +84,21 @@ function RestarauntItem(props: Props) {
             </span>
             <div className='restaurant-box-second__delivery'>
               <div>
-                <LongDistance className='restaurant-box-second__delivery-icon delivery_type--long_distance' />
-                <DeliveryStandard className='restaurant-box-second__delivery-icon delivery_type--default' />
-                <HightDemand className='restaurant-box-second__delivery-icon delivery_type--high_demand' />
+                {deliveryType === EDeliveryType.LONG_DISTANCE ? (
+                  <LongDistance className='restaurant-box-second__delivery-icon delivery_type--long_distance' />
+                ) : (
+                  ''
+                )}
+                {deliveryType === EDeliveryType.STANDARD ? (
+                  <DeliveryStandard className='restaurant-box-second__delivery-icon delivery_type--default' />
+                ) : (
+                  ''
+                )}
+                {deliveryType === EDeliveryType.HIGH_DEMAND ? (
+                  <HightDemand className='restaurant-box-second__delivery-icon delivery_type--high_demand' />
+                ) : (
+                  ''
+                )}
 
                 <span className='restaurant-box-second__info'>{price} ₽</span>
               </div>

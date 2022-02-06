@@ -21,8 +21,7 @@ function RestarauntsList(props: Props) {
           <div className='row'>
             {new Array(9).fill(3).map(() => (
               <RestarauntItem
-                deliveryTime={30}
-                deliveryType={EDeliveryType.LONG_DISTANCE}
+                deliveryType={EDeliveryType.STANDARD}
                 name='Тарантино бар'
                 uuid={uuid()}
                 img='https://images.broniboy.ru/-WAvLAfhsBKJaff_063zxBUp0gw=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/8d783828-84b1-4fc0-8d3e-022654859f98/ed97ddba3139ea9e714c59b69e5a26a0.jpg'
