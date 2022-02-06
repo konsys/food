@@ -1,19 +1,26 @@
 import { RouteProps } from 'react-router-dom';
 import { NotFound } from '../pages/NotFound';
+import RestarauntMenu from '../pages/RestarauntMenu/RestarauntMenu';
 import Restaraunts from '../pages/Restaurants/Restaraunts';
 import { EPathName, TPath } from './types';
 
 export const pathNames: Record<EPathName, TPath> = {
   HOME: { path: '/', name: 'Главная' },
+  MENU: { path: '/menu', name: 'Меню' },
   NOT_FOUND: { path: '/', name: 'Страница не найдена' },
 };
 
-const { HOME } = pathNames;
+const { HOME, MENU } = pathNames;
 
 export const paths: Record<EPathName, RouteProps> = {
   HOME: {
     path: HOME.path,
     element: Restaraunts,
+  },
+
+  MENU: {
+    path: MENU.path,
+    element: RestarauntMenu,
   },
 
   NOT_FOUND: {
