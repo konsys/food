@@ -6,6 +6,7 @@ import DeliveryRange, {
   EDeliveryRange,
 } from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 import { TCloseTime } from '../../../../common/types/time';
+import { ReactComponent as LongDistance } from '../../../../svg/';
 
 interface Props {
   restaruantImgSrc: string;
@@ -13,10 +14,12 @@ interface Props {
   rating: RatingDto;
   priceRating: RatingDto;
   closeTime: TCloseTime;
+  deliveryBlockHidden: boolean;
 }
 
 function RestarauntMenuHeader(props: Props) {
-  const { restarauntName, restaruantImgSrc, rating, priceRating, closeTime } = props;
+  const { restarauntName, restaruantImgSrc, rating, priceRating, closeTime, deliveryBlockHidden } =
+    props;
   return (
     <section className='restaurant restaurant--shop'>
       <div className='restaurant-content'>
@@ -33,8 +36,12 @@ function RestarauntMenuHeader(props: Props) {
           </span>
           <div className='restaurant-info restaurant-info--shop'>
             <div className='restaurant-info__delivery'>
-              <div className='restaurant-info__delivery-icon hidden delivery_type--long_distance'>
-                <img src='/img/icons/delivery/long_distance.svg' alt='Дальняя доставка' />
+              <div
+                className={`${
+                  deliveryBlockHidden ? 'hidden' : ''
+                }  restaurant-info__delivery-icon  delivery_type--long_distance`}
+              >
+                <LongDistance />
               </div>
               <div className='restaurant-info__delivery-info hidden'>
                 <DeliveryRange
