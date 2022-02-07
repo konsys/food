@@ -21,7 +21,7 @@ function RestarauntMenuHeader(props: Props) {
             <span className='--title'>{restarauntName}</span>
           </h1>
           <i className='restaurant-descr__bull'>&nbsp;•&nbsp;</i>
-          <span className='restaurant-box-second__rating' style={{ color: '#76C032' }}>
+          <span className='restaurant-box-second__rating'>
             <RatingComponent rating={rating} />
           </span>
           <div className='restaurant-info restaurant-info--shop'>
