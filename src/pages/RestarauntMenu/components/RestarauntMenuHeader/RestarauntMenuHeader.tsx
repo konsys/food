@@ -6,7 +6,7 @@ import DeliveryRange, {
   EDeliveryRange,
 } from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 import { TCloseTime } from '../../../../common/types/time';
-import { ReactComponent as LongDistance } from '../../../../svg/';
+import { ReactComponent as LongDistance } from '../../../../svg/long-distance.svg';
 
 interface Props {
   restaruantImgSrc: string;
