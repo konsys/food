@@ -59,7 +59,11 @@ function RestarauntMenuTopNavigation(props: Props) {
           </a>
         </li>
       </ul>
-      <button className='restaurant-info-menu__item_more' style={{ display: 'inline-block' }}>
+      <button
+        type='button'
+        className='restaurant-info-menu__item_more'
+        style={{ display: 'inline-block' }}
+      >
         <div className='restaurant-info-menu__item_more_text'>
           Еще
           <svg
