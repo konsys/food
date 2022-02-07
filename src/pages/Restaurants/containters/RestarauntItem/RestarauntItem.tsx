@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import { ReactComponent as Rating } from '../../svg/rating.svg';
-import { ReactComponent as LongDistance } from '../../svg/long_distance.svg';
-import { ReactComponent as DeliveryStandard } from '../../svg/delivery-standard.svg';
-import { ReactComponent as HightDemand } from '../../svg/high-demand.svg';
+import { ReactComponent as Rating } from '../../../../rating.svg';
+import { ReactComponent as LongDistance } from '../../../../svg/long_distance.svg';
+import { ReactComponent as DeliveryStandard } from '../../../../svg/delivery-standard.svg';
+import { ReactComponent as HightDemand } from '../../../../high-demand.svg';
 import { RatingDto } from '../../../../common/types/dto';
 
 export type RestarauntDto = {

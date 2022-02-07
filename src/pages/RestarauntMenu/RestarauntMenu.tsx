@@ -15,6 +15,7 @@ function RestarauntMenu(props: Props) {
       <div className='page-restaurant'>
         <div className='restaurant-section'>
           <RestarauntMenuHeader
+            deliveryBlockHidden
             closeTime='21:00'
             priceRating={3}
             rating={5}
