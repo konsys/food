@@ -1,17 +1,19 @@
 import React from 'react';
 import { RatingDto } from '../../../../common/types/dto';
 import RatingComponent from '../../../../common/template/components/RatingComponent/RatingComponent';
+import PriceRatingComponent from '../../../../common/template/components/PriceRatingComponent/PriceRatingComponent';
 
 interface Props {
   restaruantImgSrc: string;
   restarauntName: string;
   rating: RatingDto;
+  priceRating: RatingDto;
 }
 
 function RestarauntMenuHeader(props: Props) {
-  const { restarauntName, restaruantImgSrc, rating } = props;
+  const { restarauntName, restaruantImgSrc, rating, priceRating } = props;
   return (
-    <section className='restaurant restaurant--shop' style={{ marginBottom: 0 }}>
+    <section className='restaurant restaurant--shop'>
       <div className='restaurant-content'>
         <div className='restaurant__background'>
           <img src={restaruantImgSrc} className='restaurant-bg-image' alt={restarauntName} />
@@ -57,7 +59,7 @@ function RestarauntMenuHeader(props: Props) {
             <div className='restaurant-info__open-hours'>
               <span>Прием заказов до 21:00</span>
               <span>•</span>
-              <span>₽₽₽</span>
+              <PriceRatingComponent rating={priceRating} />
             </div>
           </div>
         </div>

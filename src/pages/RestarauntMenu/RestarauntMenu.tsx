@@ -15,6 +15,7 @@ function RestarauntMenu(props: Props) {
       <div className='page-restaurant'>
         <div className='restaurant-section'>
           <RestarauntMenuHeader
+            priceRating={3}
             rating={5}
             restarauntName='Тарантино бар'
             restaruantImgSrc='https://images.broniboy.ru/RBMkcsNpDbBAn3YAtSXoVdyzxEw=/1200x0/smart/filters:smart_sharpen():allow_webp(false)/own/d83eb13e-0245-40db-8e18-aa88db999859/fe4691e44863606f086421346c4b48fc.jpg'
