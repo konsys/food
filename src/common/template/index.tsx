@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
-import { Content } from './containers/Content/Content';
+import Content from './containers/Content/Content';
 import './containers/styles/common.less';
 import './containers/styles/buttons.less';
 import './containers/styles/style.less';
-import { Header } from './containers/Header/Header';
-import { Footer } from './containers/Footer/Footer';
+import Header from './containers/Header/Header';
+import Footer from './containers/Footer/Footer';
 
 interface Props {
   children: ReactElement;
@@ -15,7 +15,7 @@ export function Template({ children }: Props) {
     <>
       <div className='page-wrapper'>
         <Header />
-        <Content children={children} />
+        <Content>{children}</Content>
       </div>
       <Footer />
     </>

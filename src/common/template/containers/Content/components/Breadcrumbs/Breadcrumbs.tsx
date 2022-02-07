@@ -1,7 +1,10 @@
-import React from 'react';
-import './breadcrumbs.less';
+import React, { memo } from 'react';
 
-export function Breadcrumbs() {
+interface Props {}
+
+function Breadcrumbs(props: Props) {
+  const {} = props;
+
   return (
     <div className=' breadcrumbs-home-wrapper'>
       <div className='breadcrumbs'>
@@ -23,3 +26,5 @@ export function Breadcrumbs() {
     </div>
   );
 }
+
+export default memo(Breadcrumbs);
