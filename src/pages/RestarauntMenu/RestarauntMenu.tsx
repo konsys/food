@@ -3,6 +3,7 @@ import RestarauntMenuListBlock from './components/RestarauntMenuListBlock/Restar
 import RestarauntMenuBottomLinks from './RestarauntMenuBottomLinks/RestarauntMenuBottomLinks';
 import RestarauntMenuTopNavigation from './components/RestarauntMenuTopNavigation/RestarauntMenuTopNavigation';
 import Cart from '../Cart/Cart';
+import RestarauntMenuHeader from './components/RestarauntMenuHeader/RestarauntMenuHeader';
 
 interface Props {}
 
@@ -13,7 +14,7 @@ function RestarauntMenu(props: Props) {
     <div className='container'>
       <div className='page-restaurant'>
         <div className='restaurant-section'>
-          <RestarauntMenuTopNavigation />
+          <RestarauntMenuHeader />
           <RestarauntMenuTopNavigation />
           <section className='restaurant-menu'>
             <RestarauntMenuListBlock />

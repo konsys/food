@@ -2,7 +2,7 @@ import React from 'react';
 
 interface Props {}
 
-function RestarauntMenuTopNavigation(props: Props) {
+function RestarauntMenuHeader(props: Props) {
   const {} = props;
 
   return (
@@ -83,4 +83,4 @@ function RestarauntMenuTopNavigation(props: Props) {
   );
 }
 
-export default RestarauntMenuTopNavigation;
+export default RestarauntMenuHeader;
