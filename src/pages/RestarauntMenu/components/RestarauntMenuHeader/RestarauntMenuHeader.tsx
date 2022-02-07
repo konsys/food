@@ -1,10 +1,8 @@
 import React from 'react';
-import { RatingDto } from '../../../../common/types/dto';
+import { DeliveryRangeDto, RatingDto } from '../../../../common/types/dto';
 import RatingComponent from '../../../../common/template/components/RatingComponent/RatingComponent';
 import PriceRatingComponent from '../../../../common/template/components/PriceRatingComponent/PriceRatingComponent';
-import DeliveryRange, {
-  EDeliveryRange,
-} from '../../../../common/template/components/DeliveryRange/DeliveryRange';
+import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 import { TCloseTime } from '../../../../common/types/time';
 import { ReactComponent as LongDistance } from '../../../../svg/long-distance.svg';
 
@@ -43,9 +41,11 @@ function RestarauntMenuHeader(props: Props) {
               >
                 <LongDistance />
               </div>
-              <div className='restaurant-info__delivery-info hidden'>
+              <div
+                className={`restaurant-info__delivery-info ${deliveryBlockHidden ? 'hidden' : ''}`}
+              >
                 <DeliveryRange
-                  range={EDeliveryRange.LONG}
+                  range={DeliveryRangeDto.LONG}
                   deliveryPrice={190}
                   maxDeliveryTime={80}
                   minDeliveryTime={70}

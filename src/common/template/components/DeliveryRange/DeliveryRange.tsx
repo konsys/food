@@ -1,22 +1,33 @@
+import { Tooltip } from 'antd';
 import React, { memo } from 'react';
+import { DeliveryRangeDto } from '../../../types/dto';
 
-export enum EDeliveryRange {
-  'LONG',
-  'STANDARD',
-}
+const longRangeText = (
+  minutes: number
+) => ` Ваш заказ будет доставлен курьерами. Ресторан находится далеко от вашего адреса, поэтому
+доставка может занять более ${minutes} минут.`;
+const standardRangeText = (minutes: number) =>
+  `Ваш заказ будет доставлен курьерами в течение ${minutes} минут.`;
 
 interface Props {
   deliveryPrice: number;
   minDeliveryTime: number;
   maxDeliveryTime: number;
-  range: EDeliveryRange;
+  range: DeliveryRangeDto;
 }
 
 function DeliveryRange(props: Props) {
   const { deliveryPrice, minDeliveryTime, maxDeliveryTime, range } = props;
 
+  let rangeText = range === DeliveryRangeDto.LONG && 'Дальняя доставка';
+  rangeText = range === DeliveryRangeDto.HIGHT_DEMAND && 'Экспресс доставка';
+  rangeText = range === DeliveryRangeDto.STANDARD && 'Стандартная доставка';
+
   return (
-    <>
+    <Tooltip
+      placement='topLeft'
+      title={`${range === DeliveryRangeDto.LONG ? longRangeText : standardRangeText}`}
+    >
       <span>
         {minDeliveryTime}-{maxDeliveryTime} мин&nbsp;•&nbsp;{deliveryPrice} ₽&nbsp;
       </span>
@@ -34,14 +45,10 @@ function DeliveryRange(props: Props) {
           />
           <circle cx='8.5' cy='8.5' r='7.75' stroke='white' strokeWidth='1.5' />
         </svg>
-        <div className='tooltip-information__box'>
-          Ваш заказ будет доставлен курьерами. Ресторан находится далеко от вашего адреса, поэтому
-          доставка может занять более {minDeliveryTime} минут.
-        </div>
       </span>
       <br />
-      <span>{range === EDeliveryRange.LONG ? 'Дальняя доставка' : 'Стандартная доставка'}</span>
-    </>
+      <span>{rangeText}</span>
+    </Tooltip>
   );
 }
 

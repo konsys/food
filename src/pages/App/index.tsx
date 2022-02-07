@@ -3,7 +3,7 @@ import { BrowserRouter, Routes } from 'react-router-dom';
 import { Template } from '../../common/template';
 import { getRoutes } from '../../routes';
 // import './style/app.style.less';
-// import '../../config/theme/antd-theme.less';
+import '../../config/theme/antd-theme.less';
 
 function App() {
   return (
