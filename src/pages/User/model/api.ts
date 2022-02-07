@@ -1,5 +1,5 @@
 import { axiosClient } from '../../../http/Clients';
-import { IPlayer, IRegistrationResponce, IUser, IUserRegistration } from './types';
+import { IRegistrationResponce, IUser, IUserRegistration } from './types';
 
 const usersUrl = `/users`;
 const initUsersUrl = `/users/init`;
@@ -9,10 +9,11 @@ export const initUsersFetch = async ({
 }: {
   ids: number[];
   gameId: string;
-}): Promise<IPlayer[]> =>
-  (await axiosClient.get<IPlayer[]>(initUsersUrl, { params: { ids, gameId } })).data;
+}): Promise<IUser[]> =>
+  (await axiosClient.get<IUser[]>(initUsersUrl, { params: { ids, gameId } })).data;
 
-export const usersFetch = async (ids: number[]): Promise<IPlayer[]> => (await axiosClient.get<IPlayer[]>(usersUrl, { params: { ids } })).data;
+export const usersFetch = async (ids: number[]): Promise<IUser[]> =>
+  (await axiosClient.get<IUser[]>(usersUrl, { params: { ids } })).data;
 
 const profileUrl = `/users/profile`;
 

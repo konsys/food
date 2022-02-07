@@ -14,7 +14,6 @@ export interface IUser {
   updatedAt?: Date;
   isActive: boolean;
   isBlocked: boolean;
-  team?: string;
 }
 
 export interface IUserRegistration {
@@ -30,25 +29,4 @@ export interface LoginRequest {
   username: string;
   password: string;
   saveCredentials: boolean;
-}
-export interface IPlayer extends UserGameStatus {
-  moveOrder: 0 | 1 | 2 | 3 | 4;
-}
-interface UserGameStatus extends IUser {
-  gameId: string;
-  isActing: boolean;
-  doublesRolledAsCombo: number;
-  jailed: number;
-  unjailAttempts: number;
-  meanPosition: number;
-  money: number;
-  creditPayRound: boolean;
-  creditNextTakeRound: number;
-  score: number;
-  frags: string;
-  additionalTime: number;
-  timeReduceLevel: number;
-  creditToPay: number;
-  canUseCredit: boolean;
-  userId: number;
 }

@@ -1,3 +1,5 @@
+@import '../../config/theme/vars.less';
+
 .restaurants.networks {
     margin-top: 30px
 }
@@ -181,7 +183,7 @@
 
 .restaurant-box .restaurant-box-second li a span:last-child {
     background-color: #fff;
-    color           : #f37021;
+    color           : @mainColor;
     float           : right;
     font-weight     : 700;
     font-size       : 14px;
@@ -224,7 +226,7 @@
 }
 
 .restaurant-box-second__link:hover {
-    color: #f37021
+    color: @mainColor
 }
 
 .restaurant-box-second__rating {
@@ -381,7 +383,7 @@
 }
 
 .restaurant__delivery-time {
-    color: #f37021 !important
+    color: @mainColor  !important
 }
 
 .restaurant-info-menu--delivery {
@@ -429,7 +431,7 @@
 }
 
 .restaurant-info .restaurant-info-delivery .restaurant-info-delivery-free {
-    color      : #f37021;
+    color      : @mainColor;
     font-weight: 700
 }
 
@@ -480,7 +482,7 @@
 }
 
 .restaurant-info .restaurant-info-data .restaurant-info-data-popover-toggle {
-    border       : 2px solid #f37021;
+    border       : 2px solid @mainColor;
     border-radius: 50%;
     color        : #e17d1c;
     font-size    : 14px;
@@ -591,18 +593,13 @@
 }
 
 .restaurant-menu-item .restaurant-menu-item-info h3 {
-    font-size    : 15px;
-    font-weight  : 400;
-    line-height  : 1.2;
-    margin       : 0 0 1px;
-    min-height   : 23px;
-    overflow     : hidden;
-    height       : 36px;
-    text-overflow: ellipsis
-}
-
-.restaurant-menu-item .restaurant-menu-item-info h3 {
-    color: #000
+    font-size  : 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin     : 0 0 1px;
+    min-height : 23px;
+    overflow   : hidden;
+    color      : #000
 }
 
 .restaurant-menu-item .restaurant-menu-item-info p {
@@ -620,7 +617,7 @@
 }
 
 .restaurant-menu-item__price {
-    color      : #f37021;
+    color      : @mainColor;
     font-size  : 16px;
     font-weight: 700;
     line-height: 26px;
@@ -692,7 +689,7 @@
 }
 
 .restaurant-menu-dropdown a:hover {
-    color: #f37021
+    color: @mainColor
 }
 
 
@@ -782,16 +779,16 @@ ul.modal-list-restaurant li:last-child a div {
 }
 
 .delivery_type--default {
-    background-color: #f37021 !important;
+    background-color: @mainColor  !important;
 
 }
 
 .delivery_type--high_demand {
-    background-color: #d90000 !important
+    background-color: @dangerColor  !important
 }
 
 .delivery_type--long_distance {
-    background-color: #36f !important;
+    background-color: @infoColor  !important;
     width           : 18px;
     height          : 12px;
 
@@ -857,7 +854,7 @@ ul.modal-list-restaurant li:last-child a div {
 }
 
 .restaurant-box-second__delivery-time {
-    color      : #f37021;
+    color      : @mainColor;
     font-weight: 700
 }
 
@@ -924,8 +921,8 @@ ul.modal-list-restaurant li:last-child a div {
 
 
 .restaurant-info-menu__list .anchor_link.anchor_link--active {
-    color         : #f37021;
-    border-bottom : 2px solid #f37021;
+    color         : @mainColor;
+    border-bottom : 2px solid @mainColor;
     padding-bottom: 12px
 }
 

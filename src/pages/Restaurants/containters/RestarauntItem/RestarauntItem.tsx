@@ -3,6 +3,7 @@ import { ReactComponent as Rating } from '../../svg/rating.svg';
 import { ReactComponent as LongDistance } from '../../svg/long_distance.svg';
 import { ReactComponent as DeliveryStandard } from '../../svg/delivery-standard.svg';
 import { ReactComponent as HightDemand } from '../../svg/high-demand.svg';
+import { RatingDto } from '../../../../common/types/dto';
 
 export type RestarauntDto = {
   name: string;
@@ -14,7 +15,7 @@ export type RestarauntDto = {
   logoUrl: string;
   rating: string;
   ratingColor: string;
-  priceRate: 1 | 2 | 3 | 4 | 5;
+  priceRate: RatingDto;
   foodType: EFoodType;
 };
 export enum EFoodType {

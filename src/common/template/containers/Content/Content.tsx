@@ -1,6 +1,5 @@
 import React, { memo, ReactNode } from 'react';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
-import MetaContent from './components/MetaContent/MetaContent';
 
 interface Props {
   children: ReactNode;

@@ -1,18 +1,24 @@
 import React from 'react';
+import { RatingDto } from '../../../../common/types/dto';
 
-interface Props {}
+interface Props {
+  restaruantImgSrc: string;
+  restarauntName: string;
+  rating: RatingDto;
+}
 
 function RestarauntMenuHeader(props: Props) {
-  const {} = props;
-
+  const { restarauntName, restaruantImgSrc, rating } = props;
+  rating;
+  restaruantImgSrc;
   return (
     <section className='restaurant restaurant--shop' style={{ marginBottom: 0 }}>
       <div className='restaurant-content'>
         <div className='restaurant__background'>
           <img
-            src='https://images.broniboy.ru/RBMkcsNpDbBAn3YAtSXoVdyzxEw=/1200x0/smart/filters:smart_sharpen():allow_webp(false)/own/d83eb13e-0245-40db-8e18-aa88db999859/fe4691e44863606f086421346c4b48fc.jpg'
+            src=''
             className='restaurant-bg-image'
-            alt='Тарантино бар'
+            alt={restarauntName}
             style={{
               height: 'auto',
               width: 840,
@@ -23,11 +29,11 @@ function RestarauntMenuHeader(props: Props) {
         </div>
         <div className='restaurant-descr'>
           <h1>
-            <span className='--title'>Тарантино бар</span>
+            <span className='--title'>{restarauntName}</span>
           </h1>
           <i className='restaurant-descr__bull'>&nbsp;•&nbsp;</i>
           <span className='restaurant-box-second__rating' style={{ color: '#76C032' }}>
-            <strong>5.0&nbsp;</strong>
+            <strong>{rating}&nbsp;</strong>
             <svg
               width={38}
               height={37}
