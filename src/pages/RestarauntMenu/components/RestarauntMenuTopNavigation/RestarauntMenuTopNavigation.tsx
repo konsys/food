@@ -1,10 +1,14 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
+import TopNavigationSubMenu from './components/TopNavigationSubMenu';
 
 interface Props {}
 
 function RestarauntMenuTopNavigation(props: Props) {
   const {} = props;
 
+  const toggleSubMenu = () => setIsVisible(!isVisible);
+
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   return (
     <div className='restaurant-info-menu' style={{ width: 'auto' }}>
       <ul className='restaurant-info-menu__list list-clear'>
@@ -63,9 +67,10 @@ function RestarauntMenuTopNavigation(props: Props) {
         type='button'
         className='restaurant-info-menu__item_more'
         style={{ display: 'inline-block' }}
+        onClick={toggleSubMenu}
       >
         <div className='restaurant-info-menu__item_more_text'>
-          Еще
+          Еще{' '}
           <svg
             width={12}
             height={7}
@@ -77,38 +82,7 @@ function RestarauntMenuTopNavigation(props: Props) {
           </svg>
         </div>
       </button>
-      <ul className='restaurant-info-menu__submenu' style={{ display: 'none' }}>
-        <li>
-          <a className='anchor_link' href='#myaso' title='Мясо'>
-            Мясо
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#rebra' title='Ребра'>
-            Ребра
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#burgery' title='Бургеры'>
-            Бургеры
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#garniry' title='Гарниры'>
-            Гарниры
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#sousy' title='Соусы'>
-            Соусы
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#deserty' title='Десерты'>
-            Десерты
-          </a>
-        </li>
-      </ul>
+      {isVisible && <TopNavigationSubMenu />}
     </div>
   );
 }
