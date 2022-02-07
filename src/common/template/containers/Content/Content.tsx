@@ -12,7 +12,7 @@ function Content(props: Props) {
   return (
     <main className='page-content'>
       <Breadcrumbs />
-      <MetaContent />
+      {/* <MetaContent /> */}
 
       {/* TODO add for main page */}
       {/* <Welcome /> */}

@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import './breadcrumbs.less';
 
 interface Props {}
 
@@ -6,7 +7,6 @@ function Breadcrumbs(props: Props) {
   const {} = props;
 
   return (
-    // TODO add for main page
     // <div className=' breadcrumbs-home-wrapper'>
     <div className='breadcrumbs'>
       <div className='container'>
