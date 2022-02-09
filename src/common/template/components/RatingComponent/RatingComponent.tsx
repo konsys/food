@@ -10,7 +10,7 @@ function RatingComponent(props: Props) {
   const color = rating >= 4 ? '#76C032' : 'yellow';
   return (
     <>
-      <strong style={{ color }}>{rating}&nbsp;</strong>
+      <strong style={{ color }}>{rating}.0&nbsp;</strong>
       <svg
         width={38}
         height={37}

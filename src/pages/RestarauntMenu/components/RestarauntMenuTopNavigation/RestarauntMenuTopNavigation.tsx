@@ -1,10 +1,13 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
+import { TLinkWithText } from '../../../../common/types/utilTypes';
 import TopNavigationSubMenu from './components/TopNavigationSubMenu';
 
-interface Props {}
+interface Props {
+  menuItems: TLinkWithText[];
+}
 
 function RestarauntMenuTopNavigation(props: Props) {
-  const {} = props;
+  const { menuItems } = props;
   const ref = useRef<any>();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const toggleSubMenu = () => setIsVisible(!isVisible);
@@ -26,56 +29,13 @@ function RestarauntMenuTopNavigation(props: Props) {
   return (
     <div className='restaurant-info-menu' style={{ width: 'auto' }} ref={ref}>
       <ul className='restaurant-info-menu__list list-clear'>
-        <li>
-          <a className='anchor_link' href='#sushi' title='Суши'>
-            Суши
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#rolly' title='Роллы'>
-            Роллы
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#gunkany' title='Гунканы'>
-            Гунканы
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#big-sayz' title='Биг сайз'>
-            Биг сайз
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#poke' title='Поке'>
-            Поке
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#startery' title='Стартеры'>
-            Стартеры
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#salaty' title='Салаты'>
-            Салаты
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#supy' title='Супы'>
-            Супы
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#pasta' title='Паста'>
-            Паста
-          </a>
-        </li>
-        <li>
-          <a className='anchor_link' href='#ryba-i-ptica' title='Рыба и птица'>
-            Рыба и птица
-          </a>
-        </li>
+        {menuItems.map(({ text, link }) => (
+          <li>
+            <a className='anchor_link' href={text} title={link}>
+              {text}
+            </a>
+          </li>
+        ))}
       </ul>
       <button
         type='button'
