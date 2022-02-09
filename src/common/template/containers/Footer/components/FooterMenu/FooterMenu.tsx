@@ -18,8 +18,8 @@ function FooterMenu(props: Props) {
       <div className='footer-bottom__title'>{title}</div>
       <div className='footer-nav'>
         <ul className='list-clear'>
-          {links.map(({ link, text }) => (
-            <li>
+          {links.map(({ link, text }, index) => (
+            <li key={index}>
               <a href={link} title={text}>
                 {text}
               </a>

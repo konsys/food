@@ -1,16 +1,30 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import TopNavigationSubMenu from './components/TopNavigationSubMenu';
 
 interface Props {}
 
 function RestarauntMenuTopNavigation(props: Props) {
   const {} = props;
-
+  const ref = useRef<any>();
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const toggleSubMenu = () => setIsVisible(!isVisible);
 
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  useEffect(() => {
+    const checkIfClickedOutside = (e: any) => {
+      if (isVisible && ref.current && !ref.current.contains(e.target)) {
+        setIsVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', checkIfClickedOutside);
+    };
+  }, [isVisible]);
+
   return (
-    <div className='restaurant-info-menu' style={{ width: 'auto' }}>
+    <div className='restaurant-info-menu' style={{ width: 'auto' }} ref={ref}>
       <ul className='restaurant-info-menu__list list-clear'>
         <li>
           <a className='anchor_link' href='#sushi' title='Суши'>
@@ -82,7 +96,24 @@ function RestarauntMenuTopNavigation(props: Props) {
           </svg>
         </div>
       </button>
-      {isVisible && <TopNavigationSubMenu />}
+      {!isVisible && (
+        <TopNavigationSubMenu
+          elements={[
+            {
+              link: 'meet',
+              text: 'Мясо',
+            },
+            {
+              link: 'meet',
+              text: 'Мясо',
+            },
+            {
+              link: 'meet',
+              text: 'Мясо',
+            },
+          ]}
+        />
+      )}
     </div>
   );
 }

@@ -1,41 +1,21 @@
 import React, { memo } from 'react';
+import { TLinkWithText } from '../../../../../common/types/utilTypes';
 
-interface Props {}
+interface Props {
+  elements: TLinkWithText[];
+}
 
 function TopNavigationSubMenu(props: Props) {
-  const {} = props;
+  const { elements } = props;
   return (
-    <ul className='restaurant-info-menu__submenu' style={{ display: 'block' }}>
-      <li>
-        <a className='anchor_link' href='#myaso' title='Мясо'>
-          Мясо
-        </a>
-      </li>
-      <li>
-        <a className='anchor_link' href='#rebra' title='Ребра'>
-          Ребра
-        </a>
-      </li>
-      <li>
-        <a className='anchor_link' href='#burgery' title='Бургеры'>
-          Бургеры
-        </a>
-      </li>
-      <li>
-        <a className='anchor_link' href='#garniry' title='Гарниры'>
-          Гарниры
-        </a>
-      </li>
-      <li>
-        <a className='anchor_link' href='#sousy' title='Соусы'>
-          Соусы
-        </a>
-      </li>
-      <li>
-        <a className='anchor_link' href='#deserty' title='Десерты'>
-          Десерты
-        </a>
-      </li>
+    <ul className='restaurant-info-menu__submenu'>
+      {elements.map(({ link, text }, index) => (
+        <li key={index}>
+          <a className='anchor_link' href={link} title={text}>
+            {text}
+          </a>
+        </li>
+      ))}
     </ul>
   );
 }
