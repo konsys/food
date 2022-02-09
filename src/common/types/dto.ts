@@ -5,3 +5,12 @@ export enum DeliveryRangeDto {
   'STANDARD',
   'HIGHT_DEMAND',
 }
+
+export type MenuListDto = {
+  name: string;
+  imgSrc: string;
+  description: string;
+  price: number;
+  amount?: number;
+  weight?: number;
+};
