@@ -28,7 +28,7 @@ export enum EFoodType {
 }
 
 export enum EDeliveryType {
-  LONG_DISTANCE,
-  STANDARD,
-  HIGH_DEMAND,
+  LONG_DISTANCE = 'LONG_DISTANCE',
+  STANDARD = 'STANDARD',
+  HIGH_DEMAND = 'HIGH_DEMAND',
 }
