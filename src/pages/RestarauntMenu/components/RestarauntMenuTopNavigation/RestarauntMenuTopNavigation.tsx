@@ -56,7 +56,8 @@ function RestarauntMenuTopNavigation(props: Props) {
           </svg>
         </div>
       </button>
-      {!isVisible && (
+
+      {isVisible && (
         <TopNavigationSubMenu
           elements={[
             {
