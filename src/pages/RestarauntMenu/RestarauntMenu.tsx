@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import RestarauntMenuListBlock from './components/RestarauntMenuListBlock/RestarauntMenuListBlock';
 import RestarauntMenuBottomLinks from './RestarauntMenuBottomLinks/RestarauntMenuBottomLinks';
 import RestarauntMenuTopNavigation from './components/RestarauntMenuTopNavigation/RestarauntMenuTopNavigation';
+import RestarauntMenuBottomPartnerInfo from './components/RestarauntMenuBottomPartnerInfo/RestarauntMenuBottomPartnerInfo';
 import Cart from '../Cart/Cart';
 import RestarauntMenuHeader from './components/RestarauntMenuHeader/RestarauntMenuHeader';
 import { TLinkWithText } from '../../common/types/utilTypes';
@@ -69,6 +70,11 @@ function RestarauntMenu(props: Props) {
           <RestarauntMenuTopNavigation menuItems={menuItems} />
           <section className='restaurant-menu'>
             <RestarauntMenuListBlock />
+            <RestarauntMenuBottomPartnerInfo
+              partnerAddress='ул. Ошарская, д. 95'
+              partnerINN='526097844066'
+              partnerName='Индивидуальный предприниматель Ладыгина Марина Игоревна'
+            />
             <RestarauntMenuBottomLinks />
           </section>
         </div>

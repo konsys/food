@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { uuid } from '../../../../common/utils/utils';
 import RestarauntItem, { EDeliveryType, EFoodType } from '../RestarauntItem/RestarauntItem';
 
@@ -37,13 +38,9 @@ function RestarauntsList(props: Props) {
           </div>
           <noscript />
         </div>
-        <a
-          href='https://broniboy.ru/nn/restaurants/'
-          title='Посмотреть все рестораны'
-          className='peach-btn peach-btn--category'
-        >
+        <Link to='/menu' title='Посмотреть все рестораны' className='peach-btn peach-btn--category'>
           Посмотреть все рестораны
-        </a>
+        </Link>
       </div>
     </section>
   );
