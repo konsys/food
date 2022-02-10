@@ -13,7 +13,7 @@ export class Restaraunt extends AbstractDictionary {
     @Column()
     price: number;
     
-    @Column({ type: "int", nullable: true })
+    @Column({ type: "int", nullable: true, default: null })
     imgId: number;
   
     @ManyToOne(() => Images, {eager: true})
