@@ -1,4 +1,4 @@
 import { PartialType } from "@nestjs/swagger";
-import { Restaraunts } from "src/entities/restaraunts.entity";
+import { Restaraunt } from "src/entities/restaraunt.entity";
 
-export class CreateRestarauntDto extends PartialType(Restaraunts) {}
+export class CreateRestarauntDto extends PartialType(Restaraunt) {}

@@ -6,10 +6,10 @@ import './restaraunts.less';
 
 const { $listStore, ListGate } = RestarauntModel;
 
-function Restaraunts() {
+function Restaraunt() {
   const { items } = useStore($listStore);
   useGate(ListGate);
   return <RestarauntsList items={items} />;
 }
 
-export default memo(Restaraunts);
+export default memo(Restaraunt);

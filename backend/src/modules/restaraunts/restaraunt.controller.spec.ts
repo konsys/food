@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { RestarauntsController } from './restaraunts.controller';
-import { RestarauntsService } from './restaraunts.service';
+import { RestarauntsController } from './restaraunt.controller';
+import { RestarauntsService } from './restaraunt.service';
 
 describe('RestarauntsController', () => {
   let controller: RestarauntsController;
