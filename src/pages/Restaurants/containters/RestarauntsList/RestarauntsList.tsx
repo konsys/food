@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { RestarauntDto } from '../../../../modules/RestaruantMenu/types';
+import { RestarauntDto } from '../../../../modules/Restaruants/types';
 import RestarauntItem from '../RestarauntItem/RestarauntItem';
 
 interface Props {

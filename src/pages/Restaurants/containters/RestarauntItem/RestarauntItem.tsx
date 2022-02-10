@@ -3,7 +3,7 @@ import { ReactComponent as Rating } from '../../../../svg/rating.svg';
 import { ReactComponent as LongDistance } from '../../../../svg/long-distance.svg';
 import { ReactComponent as DeliveryStandard } from '../../../../svg/delivery-standard.svg';
 import { ReactComponent as HightDemand } from '../../../../svg/high-demand.svg';
-import { EDeliveryType, RestarauntDto } from '../../../../modules/RestaruantMenu/types';
+import { EDeliveryType, RestarauntDto } from '../../../../modules/Restaruants/types';
 
 type Props = RestarauntDto;
 
