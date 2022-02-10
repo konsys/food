@@ -1,6 +1,5 @@
 import { UpdateImageDto } from './dto/update-image.dto';
 import { CreateImageDto } from './dto/create-image.dto';
-import { ImageDto } from './../../../../src/modules/Image/model/types';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { uiid } from 'src/common/random';
@@ -12,11 +11,11 @@ import { Images } from 'src/entities/images.entity';
 import { AbstractService } from 'src/abstract/crud/abstractService';
 
 @Injectable()
-export class ImageService extends AbstractService<ImageDto, CreateImageDto, UpdateImageDto> {
-private imageRepository:Repository<ImageDto>;
+export class ImageService extends AbstractService<Images, CreateImageDto, UpdateImageDto> {
+private imageRepository:Repository<Images>;
 
   constructor(@InjectRepository(Images)
-  repository: Repository<ImageDto>
+  repository: Repository<Images>
   ) {
     super(repository);
     this.imageRepository = repository;
