@@ -8,13 +8,13 @@ export type RestarauntDto = {
   name: string;
   uuid: string;
   deliveryType: EDeliveryType;
-  deliveryFullTime: string;
+  deliveryFullTime?: string;
   price: number;
   img?: ImageDto;
   imgId?: number;
   logoUrl: string;
   rating: 1 | 2 | 3 | 4 | 5;
-  ratingColor: string;
+  ratingColor: ERatingColor;
   priceRate: RatingDto;
   foodType: EFoodType;
 } & DictionaryDto;
@@ -31,4 +31,9 @@ export enum EDeliveryType {
   LONG_DISTANCE = 'LONG_DISTANCE',
   STANDARD = 'STANDARD',
   HIGH_DEMAND = 'HIGH_DEMAND',
+}
+
+export enum ERatingColor {
+  WARNING_COLOR = 'WARNING_COLOR',
+  SUCCESS_COLOR = 'SUCCESS_COLOR',
 }

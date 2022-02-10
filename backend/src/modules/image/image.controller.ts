@@ -1,3 +1,6 @@
+import { UpdateImageDto } from './dto/update-image.dto';
+import { CreateImageDto } from './dto/create-image.dto';
+import { ImageDto } from './../../../../src/modules/Image/model/types';
 import { Controller, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { ImageService } from './image.service';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -5,10 +8,15 @@ import { diskStorage } from 'multer';
 import * as path from 'path';
 import { FULL_UPLOAD_PATH } from 'src/config';
 import { uiid } from 'src/common/random';
+import { AbstractController } from 'src/abstract/crud/abstractController';
 
 @Controller('img')
-export class ImageController {
-  constructor(private readonly service: ImageService) { }
+export class ImageController extends AbstractController<ImageDto, CreateImageDto, UpdateImageDto> {
+  private imageService:ImageService;
+  constructor(service: ImageService) {
+    super(service);
+    this.imageService = service;
+  }
 
   @Post()
   @UseInterceptors(
@@ -22,7 +30,7 @@ export class ImageController {
     }), 
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return this.service.saveFileData(file);
+    return this.imageService.saveFileData(file);
   }
 
   @Post('/start')

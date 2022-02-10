@@ -1,4 +1,4 @@
-import { EDeliveryType } from '../types/index';
+import { EDeliveryType, ERatingColor } from '../types/index';
 import * as factory from 'factory.ts';
 import faker from 'faker';
 import { imageFactory } from '../../Image/model/imageFactory';
@@ -11,7 +11,7 @@ export const restarauntMenuFactory = factory.Sync.makeFactory<RestarauntDto>({
   uuid: factory.each(() => faker.commerce.productName()),
   img: factory.each(() => imageFactory.build()),
   logoUrl: factory.each(() => faker.commerce.productName()),
-  ratingColor: factory.each(() => faker.commerce.productName()),
+  ratingColor: factory.each(() => ERatingColor.SUCCESS_COLOR),
   rating: factory.each(() => 5),
   priceRate: factory.each(() => 1),
   deliveryFullTime: factory.each(() => faker.commerce.productName()),

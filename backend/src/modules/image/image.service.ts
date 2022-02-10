@@ -1,3 +1,6 @@
+import { UpdateImageDto } from './dto/update-image.dto';
+import { CreateImageDto } from './dto/create-image.dto';
+import { ImageDto } from './../../../../src/modules/Image/model/types';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { uiid } from 'src/common/random';
@@ -6,14 +9,18 @@ import * as path from 'path';
 const gm = require('gm').subClass({ imageMagick: true });
 import { AverageImageSize, FULL_UPLOAD_PATH, LargeImageSize, smallImageSize } from 'src/config';
 import { Images } from 'src/entities/images.entity';
+import { AbstractService } from 'src/abstract/crud/abstractService';
 
 @Injectable()
-export class ImageService {
+export class ImageService extends AbstractService<ImageDto, CreateImageDto, UpdateImageDto> {
+private imageRepository:Repository<ImageDto>;
 
-  constructor(
-    @InjectRepository(Images)
-    private readonly repository: Repository<Images>
-  ) { }
+  constructor(@InjectRepository(Images)
+  repository: Repository<ImageDto>
+  ) {
+    super(repository);
+    this.imageRepository = repository;
+  }
 
   async saveFileData(file: Express.Multer.File) {
     const save: Partial<Images> = {
@@ -29,7 +36,7 @@ export class ImageService {
     ])
 
 
-    return this.repository.save({ ...save, averageImg, smallImg, largeImg });
+    return this.imageRepository.save({ ...save, averageImg, smallImg, largeImg });
   }
 
   convert(inFileName: string, width: number): Promise<string> {

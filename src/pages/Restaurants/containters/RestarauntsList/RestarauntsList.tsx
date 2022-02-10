@@ -24,7 +24,6 @@ function RestarauntsList(props: Props) {
           <div className='row'>
             {items.map(
               ({
-                deliveryFullTime,
                 deliveryType,
                 foodType,
                 id,
@@ -47,7 +46,6 @@ function RestarauntsList(props: Props) {
                   ratingColor={ratingColor}
                   rating={rating}
                   priceRate={priceRate}
-                  deliveryFullTime={deliveryFullTime}
                   foodType={foodType}
                   price={price}
                   id={id}
