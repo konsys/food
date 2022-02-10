@@ -21,7 +21,7 @@ const generateNewItem = () => {
 
   newItem = {
     ...newItem,
-    img: imageFactory.build(),
+    imgId: 1,
   };
 
   return newItem;
@@ -31,7 +31,7 @@ describe('menu tests', () => {
   let newItem: RestarauntDto;
 
   beforeAll(async () => {
-    // await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
+    await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
   });
 
   beforeEach(() => {

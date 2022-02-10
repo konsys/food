@@ -12,13 +12,13 @@ import { Images } from 'src/entities/images.entity';
 
 @Controller('img')
 export class ImageController extends AbstractController<Images, CreateImageDto, UpdateImageDto> {
-  private imageService:ImageService;
+  private imageService: ImageService;
   constructor(service: ImageService) {
     super(service);
     this.imageService = service;
   }
 
-  @Post()
+  @Post('/upload')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -27,7 +27,7 @@ export class ImageController extends AbstractController<Images, CreateImageDto, 
           cb(null, `${uiid()}${path.extname(file.originalname)}`)
         }
       }),
-    }), 
+    }),
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
     return this.imageService.saveFileData(file);
@@ -35,6 +35,6 @@ export class ImageController extends AbstractController<Images, CreateImageDto, 
 
   @Post('/start')
   uploadStart() {
-    return {success: true};
+    return { success: true };
   }
 }
