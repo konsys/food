@@ -1,4 +1,4 @@
-import { RestarauntDto } from './modules/Restaruants/types/index';
+import { RestarauntDto } from './modules/Restaruants/types';
 import { apiUrls } from './common/api/urls';
 import { CrudStore } from './common/models/abstractModel/abstractCrudModel';
 import { TItemWithId } from './common/types';

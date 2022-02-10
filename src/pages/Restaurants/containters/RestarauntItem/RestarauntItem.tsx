@@ -11,7 +11,7 @@ function RestarauntItem(props: Props) {
   const {
     name,
     uuid,
-    img,
+    image,
     logoUrl,
     rating,
     ratingColor,
@@ -31,11 +31,11 @@ function RestarauntItem(props: Props) {
               title={name}
               alt={name}
               className='restaurant-cover-image transition lazyloaded'
-              src={img?.averageImg ?? ''}
+              src={image?.averageImg ?? ''}
             />
 
             <div className='restaurant-box-top-about clearfix'>
-              <img alt={name} className=' lazyloaded' src={logoUrl} />
+              {!image?.averageImg && <img alt={name} className=' lazyloaded' src={logoUrl} />}
             </div>
           </a>
         </div>

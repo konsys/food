@@ -1,7 +1,7 @@
-import { TId } from '../../../common/types';
-import { RatingDto } from '../../../common/types/dto';
-import { DictionaryDto } from '../../../core/dictionary/types';
-import { ImageDto } from '../../Image/model/types';
+import { TId } from '../../common/types';
+import { RatingDto } from '../../common/types/dto';
+import { DictionaryDto } from '../../core/dictionary/types';
+import { ImageDto } from '../Image/model/types';
 
 export type RestarauntDto = {
   id: TId;
@@ -10,7 +10,7 @@ export type RestarauntDto = {
   deliveryType: EDeliveryType;
   deliveryFullTime?: string;
   price: number;
-  img?: ImageDto;
+  image?: ImageDto;
   imgId?: number;
   logoUrl: string;
   rating: 1 | 2 | 3 | 4 | 5;

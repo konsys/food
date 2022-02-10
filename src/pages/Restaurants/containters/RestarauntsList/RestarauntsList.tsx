@@ -27,7 +27,7 @@ function RestarauntsList(props: Props) {
                 deliveryType,
                 foodType,
                 id,
-                img,
+                image,
                 logoUrl,
                 name,
                 price,
@@ -41,7 +41,7 @@ function RestarauntsList(props: Props) {
                   deliveryType={deliveryType}
                   name={name}
                   uuid={uuid}
-                  img={img}
+                  image={image}
                   logoUrl={logoUrl}
                   ratingColor={ratingColor}
                   rating={rating}

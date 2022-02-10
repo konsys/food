@@ -1,7 +1,6 @@
-import { imageFactory } from './../../Image/model/imageFactory';
 import faker from 'faker';
 import { RestarauntModel } from '../../../store';
-import { restarauntMenuFactory } from '../factory/restarauntMenuFactory';
+import { restarauntMenuFactory } from '../restarauntMenuFactory';
 import { RestarauntDto } from '../types';
 
 const {
