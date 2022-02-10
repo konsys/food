@@ -17,4 +17,5 @@ export const restarauntMenuFactory = factory.Sync.makeFactory<RestarauntDto>({
   deliveryFullTime: factory.each(() => faker.commerce.productName()),
   foodType: factory.each(() => EFoodType.EUROPIAN),
   price: factory.each(() => faker.datatype.number(500)),
+  description: factory.each(() => faker.commerce.productDescription()),
 });

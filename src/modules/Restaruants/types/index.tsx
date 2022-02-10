@@ -1,5 +1,6 @@
 import { TId } from '../../../common/types';
 import { RatingDto } from '../../../common/types/dto';
+import { DictionaryDto } from '../../../core/dictionary/types';
 import { ImageDto } from '../../Image/model/types';
 
 export type RestarauntDto = {
@@ -15,7 +16,7 @@ export type RestarauntDto = {
   ratingColor: string;
   priceRate: RatingDto;
   foodType: EFoodType;
-};
+} & DictionaryDto;
 
 export enum EFoodType {
   EUROPIAN = 'Европейская кухня',

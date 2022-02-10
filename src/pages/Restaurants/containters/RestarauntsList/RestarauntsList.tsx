@@ -36,6 +36,7 @@ function RestarauntsList(props: Props) {
                 rating,
                 ratingColor,
                 uuid,
+                description,
               }) => (
                 <RestarauntItem
                   deliveryType={deliveryType}
@@ -50,6 +51,7 @@ function RestarauntsList(props: Props) {
                   foodType={foodType}
                   price={price}
                   id={id}
+                  description={description}
                 />
               )
             )}
