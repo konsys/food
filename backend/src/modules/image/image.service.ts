@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { uiid } from 'src/common/random';
-import { ImageEntity } from 'src/entities/image.entity';
 import { Repository } from 'typeorm';
 import * as path from 'path';
 const gm = require('gm').subClass({ imageMagick: true });
 import { AverageImageSize, FULL_UPLOAD_PATH, LargeImageSize, smallImageSize } from 'src/config';
+import { Images } from 'src/entities/images.entity';
 
 @Injectable()
 export class ImageService {
 
   constructor(
-    @InjectRepository(ImageEntity)
-    private readonly repository: Repository<ImageEntity>
+    @InjectRepository(Images)
+    private readonly repository: Repository<Images>
   ) { }
 
   async saveFileData(file: Express.Multer.File) {
-    const save: Partial<ImageEntity> = {
+    const save: Partial<Images> = {
       ...file,
       name: uiid(),
       original: file.destination

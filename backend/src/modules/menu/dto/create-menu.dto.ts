@@ -1,4 +1,4 @@
 import { PartialType } from "@nestjs/mapped-types";
-import { MenuEntity } from "src/entities/menu.entity";
+import { Menu } from "src/entities/menu.entity";
 
-export class CreateMenuDto extends PartialType(MenuEntity) { }
+export class CreateMenuDto extends PartialType(Menu) { }

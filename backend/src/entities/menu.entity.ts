@@ -1,11 +1,11 @@
-import { Exclude } from 'class-transformer';
+
 import { AbstractDictionary } from 'src/abstract/crud/abstractDictionary';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Images } from './images.entity';
 import { MenuTimeDict } from './menu-time.dict';
 import { MenuTypeDict } from './menu-type.dict';
-import { ImageEntity } from './image.entity';
 @Entity()
-export class MenuEntity extends AbstractDictionary {
+export class Menu extends AbstractDictionary {
 
   @Column()
   description: string;
@@ -33,7 +33,7 @@ export class MenuEntity extends AbstractDictionary {
   @Column({ type: "int", nullable: true })
   imgId: number;
 
-  @ManyToOne(() => ImageEntity, {eager: true})
+  @ManyToOne(() => Images, {eager: true})
   @JoinColumn({ name: "imgId" })
   image: MenuTypeDict;
 }
