@@ -114,7 +114,7 @@ export class CrudStore<CreateEntity extends { id: TId }, FullEntity = TItemWithI
       .on(setPage, (prev, page) => ({ ...prev, page }))
       .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
       .on(setFilter, (prev, filter) => ({ ...prev, filter }))
-      .on(getAllFx.fail, () => notification.error({ message: 'Ошибка получения списка меню' }))
+      .on(getAllFx.fail, () => notification.error({ message: 'Ошибка получения данных' }))
       .reset(resetList);
 
     $itemStore
