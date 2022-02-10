@@ -52,6 +52,7 @@ function RestarauntsList(props: Props) {
                   price={price}
                   id={id}
                   description={description}
+                  key={uuid}
                 />
               )
             )}
