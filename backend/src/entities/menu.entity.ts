@@ -8,9 +8,6 @@ import { MenuTypeDict } from './menu-type.dict';
 export class Menu extends AbstractDictionary {
 
   @Column()
-  description: string;
-
-  @Column()
   price: number;
 
   @Column()

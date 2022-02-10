@@ -10,7 +10,7 @@ import { ImageModule } from './modules/image/image.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { FULL_UPLOAD_PATH } from './config';
-import { RestarauntsModule } from './modules/restaraunts/restaraunt.module';
+import { RestarauntModule } from './modules/restaraunt/restaraunt.module';
 
 @Module({
   imports: [
@@ -23,7 +23,7 @@ import { RestarauntsModule } from './modules/restaraunts/restaraunt.module';
     MenuModule,
     ImageModule,
     MulterModule,
-    RestarauntsModule,
+    RestarauntModule,
     ServeStaticModule.forRoot({
       rootPath: `${FULL_UPLOAD_PATH}`,
     }),

@@ -6,4 +6,4 @@ import { RestarauntController } from './restaraunt.controller';
   controllers: [RestarauntController],
   providers: [RestarauntService]
 })
-export class RestarauntsModule {}
+export class RestarauntModule {}
