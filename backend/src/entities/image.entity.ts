@@ -1,4 +1,4 @@
-import { AbstractDictionary } from "src/modules/abstract/abstractDictionary";
+import { AbstractDictionary } from "src/abstract/crud/abstractDictionary";
 import { Column, Entity } from "typeorm";
 @Entity()
 export class ImageEntity extends AbstractDictionary {

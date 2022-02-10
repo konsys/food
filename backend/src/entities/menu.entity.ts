@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { AbstractDictionary } from 'src/modules/abstract/abstractDictionary';
+import { AbstractDictionary } from 'src/abstract/crud/abstractDictionary';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { MenuTimeDict } from './menu-time.dict';
 import { MenuTypeDict } from './menu-type.dict';
