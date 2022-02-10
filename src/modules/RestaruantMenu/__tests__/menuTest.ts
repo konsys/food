@@ -1,10 +1,10 @@
 import faker from 'faker';
-import { CrudStore } from '../../../../common/models/abstractModel/abstractCrudModel';
-import { menuFactory } from '../menuFactory';
+import { CrudStore } from '../../../common/models/abstractModel/abstractCrudModel';
+import { menuFactory } from '../factory/restarauntMenuFactory';
 import { getAllMenuTimeFx } from '../menuTimeModel/store';
 import { getAllMenuTypeFx } from '../menuTypeModel/store';
 
-import { MenuDto } from '../types';
+import { MenuDto } from '../model/types';
 
 const model = new CrudStore<MenuDto>('/menu');
 

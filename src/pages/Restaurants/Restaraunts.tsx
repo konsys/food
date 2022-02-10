@@ -1,13 +1,15 @@
+import { useStore } from 'effector-react';
 import React, { memo } from 'react';
+import { RestarauntModel } from '../../store';
 import RestarauntsList from './containters/RestarauntsList/RestarauntsList';
 import './restaraunts.less';
 
-interface Props {}
+const { $listStore } = RestarauntModel;
 
-function Restaraunts(props: Props) {
-  const {} = props;
+function Restaraunts() {
+  const { items } = useStore($listStore);
 
-  return <RestarauntsList />;
+  return <RestarauntsList items={items} />;
 }
 
 export default memo(Restaraunts);

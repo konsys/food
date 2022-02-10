@@ -12,4 +12,7 @@ export const apiUrls = {
   menuType: {
     main: `/menu-type`,
   },
+  restaraunts: {
+    main: `/restaraunts`,
+  },
 };

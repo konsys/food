@@ -3,34 +3,8 @@ import { ReactComponent as Rating } from '../../../../svg/rating.svg';
 import { ReactComponent as LongDistance } from '../../../../svg/long-distance.svg';
 import { ReactComponent as DeliveryStandard } from '../../../../svg/delivery-standard.svg';
 import { ReactComponent as HightDemand } from '../../../../svg/high-demand.svg';
-import { RatingDto } from '../../../../common/types/dto';
+import { EDeliveryType, RestarauntDto } from '../../../../modules/RestaruantMenu/types';
 
-export type RestarauntDto = {
-  name: string;
-  uuid: string;
-  deliveryType: EDeliveryType;
-  deliveryFullTime: string;
-  price: number;
-  img: string;
-  logoUrl: string;
-  rating: string;
-  ratingColor: string;
-  priceRate: RatingDto;
-  foodType: EFoodType;
-};
-export enum EFoodType {
-  EUROPIAN = 'Европейская кухня',
-  GEORGIAN = 'Европейская кухня',
-  CHINEESE = 'Китайская кухня',
-  JAPAN = 'Японская кухня',
-  INDIAN = 'Индийская кухня',
-}
-
-export enum EDeliveryType {
-  LONG_DISTANCE,
-  STANDARD,
-  HIGH_DEMAND,
-}
 type Props = RestarauntDto;
 
 function RestarauntItem(props: Props) {
@@ -57,7 +31,7 @@ function RestarauntItem(props: Props) {
               title={name}
               alt={name}
               className='restaurant-cover-image transition lazyloaded'
-              src={img}
+              src={img.averageImg ?? ''}
             />
 
             <div className='restaurant-box-top-about clearfix'>

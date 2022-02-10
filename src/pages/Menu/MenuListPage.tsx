@@ -5,12 +5,6 @@ import { MenuModel } from '../../store';
 import { MenuList } from './components';
 import { MenuModal } from './containers/MenuModal/MenuModal';
 
-export enum EFoodType {
-  ALL = 'All',
-  DRINKS = 'Drinks',
-  SALADS = 'Salads',
-  HOT = 'Hot',
-}
 const { $listStore, setPage, setPageSize, ListGate, deleteItemFx } = MenuModel;
 
 export function MenuListPage(): ReactElement {
