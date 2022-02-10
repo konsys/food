@@ -32,5 +32,5 @@ export class Menu extends AbstractDictionary {
 
   @ManyToOne(() => Images, {eager: true})
   @JoinColumn({ name: "imgId" })
-  image: MenuTypeDict;
+  image: Images;
 }

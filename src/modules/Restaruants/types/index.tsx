@@ -11,7 +11,7 @@ export type RestarauntDto = {
   price: number;
   img: ImageDto;
   logoUrl: string;
-  rating: string;
+  rating: number;
   ratingColor: string;
   priceRate: RatingDto;
   foodType: EFoodType;
