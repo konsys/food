@@ -31,7 +31,7 @@ function RestarauntItem(props: Props) {
               title={name}
               alt={name}
               className='restaurant-cover-image transition lazyloaded'
-              src={img.averageImg ?? ''}
+              src={img?.averageImg ?? ''}
             />
 
             <div className='restaurant-box-top-about clearfix'>

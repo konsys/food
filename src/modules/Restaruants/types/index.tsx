@@ -10,9 +10,9 @@ export type RestarauntDto = {
   deliveryType: EDeliveryType;
   deliveryFullTime: string;
   price: number;
-  img: ImageDto;
+  img?: ImageDto;
   logoUrl: string;
-  rating: number;
+  rating: 1 | 2 | 3 | 4 | 5;
   ratingColor: string;
   priceRate: RatingDto;
   foodType: EFoodType;
