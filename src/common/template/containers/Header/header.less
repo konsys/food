@@ -35,15 +35,14 @@
 }
 
 .header.header_transparent {
-    background-color  : transparent;
-    -webkit-box-shadow: none;
-    box-shadow        : none;
-    left              : 0;
-    position          : absolute;
-    right             : 0;
-    top               : 0;
-    width             : 100%;
-    z-index           : 10
+    background-color: transparent;
+    box-shadow      : none;
+    left            : 0;
+    position        : absolute;
+    right           : 0;
+    top             : 0;
+    width           : 100%;
+    z-index         : 10
 }
 
 .header.header_transparent .header-logo a {
@@ -60,11 +59,10 @@
 }
 
 .header.header_transparent .header-nav a {
-    border            : 1px solid rgba(255, 255, 255, .2);
-    background-repeat : no-repeat;
-    color             : rgba(255, 255, 255, .8);
-    -webkit-transition: background-color .3s, border .3s;
-    transition        : background-color .3s, border .3s
+    border           : 1px solid rgba(255, 255, 255, .2);
+    background-repeat: no-repeat;
+    color            : rgba(255, 255, 255, .8);
+    transition       : background-color .3s, border .3s
 }
 
 .header.header_transparent .header-nav a:hover {
@@ -86,9 +84,8 @@
 }
 
 .header.header_transparent .app-round a {
-    border            : 1px solid rgba(255, 255, 255, .2);
-    -webkit-transition: background-color .3s, border .3s;
-    transition        : background-color .3s, border .3s
+    border    : 1px solid rgba(255, 255, 255, .2);
+    transition: background-color .3s, border .3s
 }
 
 .header.header_transparent .app-round a:hover {
@@ -117,8 +114,6 @@
 }
 
 .header .header-buttons {
-    display              : -webkit-box;
-    display              : -ms-flexbox;
     display              : flex;
     -webkit-box-orient   : vertical;
     -webkit-box-direction: normal;
@@ -131,13 +126,10 @@
     position             : absolute;
     right                : 15px;
     top                  : 50%;
-    -webkit-transform    : translateY(-50%);
     transform            : translateY(-50%)
 }
 
 .header .header-nav-toggle {
-    display              : -webkit-box;
-    display              : -ms-flexbox;
     display              : flex;
     -webkit-box-orient   : vertical;
     -webkit-box-direction: normal;
@@ -150,16 +142,12 @@
     left                 : 60px;
     position             : absolute;
     top                  : 50%;
-    -webkit-transform    : translateY(-50%);
     transform            : translateY(-50%);
-    -webkit-transition   : opacity .8s;
     transition           : opacity .8s;
     z-index              : 100
 }
 
 .header .header-nav {
-    display              : -webkit-box;
-    display              : -ms-flexbox;
     display              : flex;
     -webkit-box-orient   : vertical;
     -webkit-box-direction: normal;
@@ -173,8 +161,6 @@
 }
 
 .header-logo {
-    display              : -webkit-box;
-    display              : -ms-flexbox;
     display              : flex;
     -webkit-box-orient   : vertical;
     -webkit-box-direction: normal;
@@ -188,8 +174,6 @@
 }
 
 .header-logo a {
-    display              : -webkit-box;
-    display              : -ms-flexbox;
     display              : flex;
     -webkit-box-orient   : vertical;
     -webkit-box-direction: normal;
@@ -303,7 +287,6 @@
 }
 
 .header-nav a.header-nav-item-link-basket.header-nav-item-link-basket_active-animate:before {
-    -webkit-animation: addToCart 1s cubic-bezier(.42, 0, 1, 1) forwards;
     animation        : addToCart 1s cubic-bezier(.42, 0, 1, 1) forwards;
     background       : #f37021;
     background       : radial-gradient(transparent, rgba(238, 129, 97, .6));

@@ -7,7 +7,7 @@ function Cart(props: Props) {
   const {} = props;
 
   return (
-    <div className='cart-section-wrapper hidden-xs hidden-sm'>
+    <div className='cart-section-wrapper d-none d-sm-block'>
       <div className='cart-section' style={{ position: 'relative', top: 'auto', bottom: 'auto' }}>
         <div className='cart-section__title'>Корзина</div>
         <section>
