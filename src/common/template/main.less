@@ -1,0 +1,3353 @@
+// Color variables (appears count calculates by raw css)
+@color0 : #f37021; // Appears 74 times
+@color1 : #ffffff; // Appears 43 times
+@color2 : #000000; // Appears 30 times
+@color3 : #b2b2b2; // Appears 9 times
+@color4 : #e70f0f; // Appears 6 times
+@color5 : #f5f5f5; // Appears 5 times
+@color6 : #3f3f3f; // Appears 3 times
+@color7 : #e1e1e1; // Appears 3 times
+@color8 : #f2f2f2; // Appears 3 times
+@color9 : #616161; // Appears 2 times
+@color10: #d90000; // Appears 2 times
+@color11: #fbd8d8; // Appears 2 times
+
+// Width variables (appears count calculates by raw css)
+@width5 : 650px; // Appears 2 times
+@width6 : 520px; // Appears 7 times
+@width10: 100px; // Appears 2 times
+@width13: 320px; // Appears 3 times
+@width15: 260px; // Appears 2 times
+@width18: 300px; // Appears 3 times
+@width19: 450px; // Appears 2 times
+@width21: 312px; // Appears 2 times
+@width24: 600px; // Appears 2 times
+@width25: 160px; // Appears 3 times
+@width27: 900px; // Appears 2 times
+@width28: 170px; // Appears 3 times
+@width29: 250px; // Appears 2 times
+@width32: 100%; // Appears 31 times
+@width33: 10px; // Appears 7 times
+@width40: 37px; // Appears 2 times
+@width41: 42px; // Appears 2 times
+@width42: 20px; // Appears 4 times
+@width43: 50px; // Appears 2 times
+@width48: 50%; // Appears 4 times
+
+// Height variables (appears count calculates by raw css)
+@height2 : 438px; // Appears 2 times
+@height3 : 160px; // Appears 3 times
+@height6 : 600px; // Appears 3 times
+@height8 : 138px; // Appears 4 times
+@height14: 100vh; // Appears 5 times
+@height16: 44px; // Appears 2 times
+@height20: 80px; // Appears 2 times
+@height21: 100%; // Appears 8 times
+@height23: 60px; // Appears 2 times
+@height25: 40px; // Appears 2 times
+@height26: 64px; // Appears 2 times
+@height30: 10px; // Appears 7 times
+@height31: 33px; // Appears 2 times
+@height33: 42px; // Appears 9 times
+@height35: 50px; // Appears 3 times
+@height36: 20px; // Appears 4 times
+
+.fixed-card-bottom>div {
+    &:last-child {
+        .cart-place {
+            align-self    : center;
+            font-size     : 11px;
+            letter-spacing: normal;
+            line-height   : 18px;
+            overflow      : hidden;
+            text-overflow : ellipsis;
+            white-space   : nowrap;
+        }
+    }
+}
+
+.fixed-card-bottom__overlay {
+    background-color: rgba(255, 255, 255, .5);
+    display         : none;
+    height          : @height21;
+    left            : 0;
+    position        : absolute;
+    top             : 0;
+    width           : @width32;
+
+    img {
+        height     : @height35;
+        left       : 50%;
+        margin-left: -25px;
+        margin-top : -25px;
+        position   : absolute;
+        top        : 50%;
+        width      : @width43;
+    }
+}
+
+.restaurant-info-content {
+    div {
+        margin-bottom: 3px;
+    }
+}
+
+.restaurant-info__delivery {
+    .restaurant-info__delivery-free {
+        margin-bottom: 0;
+    }
+}
+
+.modal__avatar {
+    left    : 0;
+    margin  : 0 auto;
+    overflow: hidden;
+    position: absolute;
+    top     : 0;
+    width   : @width32;
+    z-index : 10;
+
+    label {
+        background-color: rgba(0, 0, 0, .4);
+        color           : @color1;
+        display         : none;
+        height          : @height21;
+        left            : 0;
+        padding-top     : 25%;
+        position        : absolute;
+        text-align      : center;
+        top             : 0;
+    }
+
+    img {
+        border-radius: 50%;
+        position     : relative;
+    }
+
+    &:hover {
+        label {
+            border-radius: 50%;
+            cursor       : pointer;
+            display      : block;
+            z-index      : 50;
+        }
+    }
+
+    input {
+        display: none;
+    }
+}
+
+.modal__upload-wrap {
+    height  : 200px;
+    left    : 0;
+    opacity : 0;
+    position: absolute;
+    top     : 0;
+    width   : @width29;
+    z-index : 5;
+}
+
+.modal__avatar-wrap {
+    height: 230px;
+}
+
+.delivery_type {
+    margin-top: 10px;
+}
+
+.delivery_type__title {
+    font-weight : 500;
+    padding-left: 5px;
+}
+
+.delivery_type--default {
+    background-color: @color0  !important;
+}
+
+.delivery_type--high_demand {
+    background-color: @color10  !important;
+}
+
+.delivery_type--long_distance {
+    background-color: #3366ff !important;
+}
+
+.delivery_type--not_available {
+    background-color: #9b9b9b !important;
+}
+
+.cart-section__info {
+    color     : #555555;
+    margin-top: -5px;
+
+    a {
+        color          : @color0;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.delivery_type__description {
+    font-size  : 14px;
+    line-height: normal;
+    padding-top: 5px;
+}
+
+.restaurant-box-second__delivery-icon {
+    border-radius: 3px;
+    height       : 14px;
+    left         : 0;
+    margin-right : 5px;
+    padding      : 2px;
+    position     : relative;
+    top          : -1px;
+}
+
+.restaurant-box-second__delivery-time {
+    color      : @color0;
+    font-weight: 700;
+}
+
+@media {
+    screen {
+        and {
+            (max-width {
+                    &:990px) {
+                    #chatra.chatra--side-bottom {
+                        bottom: 80px !important;
+                    }
+
+                    &:768px) {
+                        .container--doc {
+                            padding-top: 50px;
+
+                            .modal--info_block button.close {
+                                right: 15px;
+                                top  : 15px;
+                            }
+
+                            &:700px) {
+                                .modal__image {
+                                    margin: -20px -30px 0;
+                                }
+
+                                &:767px) {
+                                    .apple-pay-button-with-text {
+                                        width: @width32;
+
+                                        .ordering-form {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+
+                            (min-width {
+                                    &:1800px) {
+                                    .container {
+                                        width: 1500px;
+                                    }
+                                }
+                            }
+
+                            .other-place {
+                                margin-top: 20px;
+                            }
+
+                            .other-place__title {
+                                color        : @color2;
+                                font-size    : 20px;
+                                font-weight  : 500;
+                                margin-bottom: 10px;
+                            }
+
+                            .footer__header {
+                                align-items    : center;
+                                display        : flex;
+                                justify-content: space-between;
+
+                                .social-links {
+                                    display   : flex;
+                                    list-style: none;
+                                    margin    : 20px 0 30px;
+                                    padding   : 0;
+
+                                    li {
+                                        margin-left: 25px;
+
+                                        &:first-child {
+                                            margin-left: 0;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .grayscale {
+                                -moz-filter       : grayscale(100%);
+                                -moz-transition   : all .2s ease;
+                                -o-filter         : grayscale(100%);
+                                -o-transition     : all .2s ease;
+                                -webkit-filter    : grayscale(100%);
+                                -webkit-transition: all .2s ease;
+                                filter            : grayscale(100%);
+                                transition        : all .2s ease;
+                            }
+
+                            .footer-app {
+                                .grayscale {
+                                    &:hover {
+                                        -moz-filter   : grayscale(0);
+                                        -o-filter     : grayscale(0);
+                                        -webkit-filter: grayscale(0);
+                                        filter        : grayscale(0);
+                                    }
+                                }
+                            }
+
+                            .modal__title {
+                                font-size  : 24px;
+                                font-weight: 700;
+                                margin     : 15px 0;
+                            }
+
+                            .modal__apps {
+                                display        : flex;
+                                flex-wrap      : wrap;
+                                justify-content: center;
+
+                                .app-btn {
+                                    height: @height35;
+                                    margin: 15px 10px;
+                                    width : @width28;
+                                }
+
+                                .app-btn.app-btn_app-store {
+                                    margin-left: 0;
+                                }
+                            }
+
+                            .restaurant-box-second__delivery {
+                                padding-top: 5px;
+                            }
+
+                            .modal__image {
+                                margin: -40px -40px 0;
+
+                                img {
+                                    border-radius: 10px 10px 0 0;
+                                }
+                            }
+
+                            .container--doc {
+                                max-width  : @width27;
+                                padding-top: 100px;
+                                text-align : justify;
+
+                                p {
+                                    margin     : 0;
+                                    padding    : 0;
+                                    text-indent: 15px;
+                                }
+
+                                b {
+                                    font-weight: 700;
+                                }
+
+                                .title {
+                                    font-size  : 32px;
+                                    font-weight: 700;
+                                    line-height: normal;
+                                    text-align : left;
+                                }
+                            }
+
+                            .logo {
+                                align-items    : center;
+                                align-items    : flex-start;
+                                display        : flex;
+                                flex-direction : column;
+                                justify-content: center;
+                            }
+
+                            .logo__description {
+                                color      : @color2;
+                                font-size  : 16px;
+                                font-style : italic;
+                                margin-left: 0;
+                                margin-left: 8px;
+                                margin-top : 5px;
+                                opacity    : .6;
+                            }
+
+                            .place-not-found {
+                                .title-error {
+                                    padding: 20px 0;
+                                }
+                            }
+
+                            .place__description {
+                                margin-top: 40px;
+
+                                h2 {
+                                    color      : @color2;
+                                    font-size  : 21px;
+                                    font-weight: 700;
+                                }
+                            }
+
+                            .breadcrumbs--category {
+                                margin-top: 0;
+                            }
+
+                            .cart-bottom--shadow {
+                                box-shadow: 0 -10px 30px 0 rgba(0, 0, 0, .1);
+                            }
+
+                            .cart-section__title--shadow {
+                                box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .1);
+                            }
+
+                            .cart-service__title--delivery {
+                                position: relative;
+                            }
+
+                            .cart-service__price--delivery {
+                                position: absolute;
+                                right   : 0;
+                                top     : -2px;
+                            }
+
+                            .page-title--checkout {
+                                margin-bottom: 10px;
+                                margin-top   : 15px;
+
+                                h2 {
+                                    font-size  : 20px;
+                                    font-weight: 700;
+                                    line-height: 22px;
+                                }
+                            }
+
+                            .restaurants--other-top {
+                                display: none;
+                            }
+
+                            .tooltip__line {
+                                display: flex;
+                                margin : 12px 0;
+                            }
+
+                            .tooltip__icon {
+                                align-items    : center;
+                                border         : 2px solid @color8;
+                                border-radius  : 8px;
+                                display        : flex;
+                                flex           : 0 0 40px;
+                                height         : @height25;
+                                justify-content: center;
+                                margin-right   : 10px;
+                                width          : 40px;
+                            }
+
+                            .shop-search {
+                                border-bottom : 1px solid rgba(0, 0, 0, .1);
+                                margin-bottom : 30px;
+                                margin-top    : 15px;
+                                padding-bottom: 15px;
+                                position      : relative;
+                                width         : @width32;
+                            }
+
+                            .shop-search__button {
+                                background: 0 0;
+                                border    : none;
+                                opacity   : .15;
+                                position  : absolute;
+                                top       : 2px;
+                                width     : 30px;
+
+                                &:hover {
+                                    color  : @color0;
+                                    opacity: .65;
+
+                                    path {
+                                        stroke: @color0;
+                                    }
+                                }
+                            }
+
+                            .shop-search__button--cancel {
+                                align-items    : center;
+                                display        : flex;
+                                justify-content: space-around;
+                                position       : absolute;
+                                right          : 0;
+                                width          : @width25;
+                            }
+
+                            .shop-search__input {
+                                background : 0 0;
+                                border     : none;
+                                font-size  : 16px;
+                                margin-left: 40px;
+                                width      : calc(@width32 - 40px);
+                            }
+
+                            .modal-body__places {
+                                display: none;
+                            }
+
+                            .places-error-message {
+                                display: none;
+                            }
+
+                            .mCustomScrollBox {
+                                -ms-touch-action: pan-x;
+                                touch-action    : pan-x;
+                            }
+
+                            .mCustomScrollBox.mCSB_vertical_horizontal {
+                                -ms-touch-action: auto;
+                                touch-action    : auto;
+                            }
+
+                            .mCustomScrollBox.mCSB_horizontal {
+                                -ms-touch-action: pan-y;
+                                touch-action    : pan-y;
+                            }
+
+                            .form-wrapper-form-select {
+                                .choices__item--choice {
+                                    padding-right: 10px !important;
+                                }
+                            }
+
+                            .welcome {
+                                align-items    : center;
+                                background     : @color0 url(../img/backgrounds/welcome/home-page.svg) no-repeat center center;
+                                display        : flex;
+                                height         : 6@height35;
+                                justify-content: center;
+                                position       : relative;
+
+                                .welcome__description {
+                                    color         : @color1;
+                                    font-size     : 24px;
+                                    font-style    : normal;
+                                    font-weight   : 400;
+                                    line-height   : 140%;
+                                    margin        : 0 auto;
+                                    max-width     : @width24;
+                                    padding-bottom: 40px;
+                                    text-align    : center;
+                                }
+
+                                h1 {
+                                    color      : @color1;
+                                    font-size  : 36px;
+                                    font-style : normal;
+                                    font-weight: 700;
+                                    margin     : 0 0 36px 0;
+                                    text-align : center;
+
+                                    span {
+                                        display    : block;
+                                        font-size  : 48px;
+                                        font-weight: 700;
+                                    }
+                                }
+
+                                .welcome-search {
+                                    margin   : 0 auto 52px auto;
+                                    max-width: 460px;
+                                    width    : @width32;
+                                }
+                            }
+
+                            .welcome-search-form {
+                                .welcome-search-form-content {
+                                    position: relative;
+                                }
+
+                                label {
+                                    background-image   : url(../img/icons/cursor.svg);
+                                    background-position: center center;
+                                    background-repeat  : no-repeat;
+                                    background-size    : 20px 20px;
+                                    height             : @height26;
+                                    left               : 0;
+                                    margin             : 0;
+                                    position           : absolute;
+                                    width              : 64px;
+                                }
+
+                                input {
+                                    background-color: @color1;
+                                    border          : none;
+                                    border-radius   : 32px;
+                                    font-size       : 24px;
+                                    font-style      : normal;
+                                    font-weight     : 400;
+                                    height          : @height26;
+                                    padding-left    : 60px;
+                                    padding-right   : 64px;
+                                    width           : @width32;
+
+                                    &: {
+                                        -webkit-input-placeholder {
+                                            color: silver;
+                                        }
+
+                                        placeholder {
+                                            color: silver;
+                                        }
+                                    }
+
+                                    &:-ms-input-placeholder {
+                                        color: silver;
+                                    }
+                                }
+
+                                button[type=submit] {
+                                    border-radius: 50%;
+                                    height       : 56px;
+                                    padding      : 2px 0 0;
+                                    position     : absolute;
+                                    right        : 4px;
+                                    text-align   : center;
+                                    top          : 4px;
+                                    width        : 56px;
+                                }
+                            }
+
+                            .welcome-app {
+                                align-items    : center;
+                                display        : flex;
+                                justify-content: space-around;
+                                margin         : 0 auto;
+                            }
+
+                            .promo-block {
+                                background-color: @color8;
+                                margin          : 40px 0;
+                                padding-top     : 30px;
+
+                                .container {
+                                    display: flex;
+                                }
+
+                                .promo-block__info {
+                                    display        : flex;
+                                    flex           : 1 0 50%;
+                                    justify-content: center;
+                                }
+                            }
+
+                            .promo-item {
+                                align-items    : center;
+                                display        : flex;
+                                justify-content: center;
+
+                                .promo-item__title {
+                                    color         : @color6;
+                                    font-size     : 36px;
+                                    font-weight   : 700;
+                                    padding-bottom: 20px;
+                                }
+
+                                .promo-item__list {
+                                    list-style: none;
+
+                                    li {
+                                        color      : @color9;
+                                        font-size  : 21px;
+                                        font-weight: 400;
+                                        margin-top : 25px;
+                                        padding    : 8px 20px;
+                                        position   : relative;
+
+                                        &: {
+                                            before {
+                                                background: url(../img/icons/promo-marker.svg) no-repeat;
+                                                content   : "";
+                                                height    : 37px;
+                                                left      : -36px;
+                                                position  : absolute;
+                                                top       : 0;
+                                                width     : @width40;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                hr {
+                                    border-bottom: 1px solid #dedede;
+                                    margin       : 40px 0;
+                                }
+                            }
+
+                            .promo-item__apps {
+                                display    : flex;
+                                margin-left: -10px;
+
+                                .app-btn {
+                                    height: @height35;
+                                    margin: 0 10px;
+                                    width : 168px;
+                                }
+                            }
+
+                            .restaurants-header-title--home-page {
+                                h2 {
+                                    color      : @color6;
+                                    font-size  : 36px;
+                                    font-weight: 700;
+                                    line-height: 22px;
+                                    margin-top : 100px;
+                                }
+                            }
+
+                            .promo-partner {
+                                margin: 40px 0 100px;
+
+                                .promo-partner__icon {
+                                    height: @height23;
+
+                                    svg {
+                                        height: @height23;
+                                    }
+                                }
+
+                                .promo-partner__title {
+                                    color      : @color6;
+                                    font-size  : 24px;
+                                    font-weight: 400;
+                                    margin     : 25px 0 15px;
+                                }
+
+                                .promo-partner__description {
+                                    color        : silver;
+                                    font-size    : 14px;
+                                    font-weight  : 400;
+                                    line-height  : 140%;
+                                    margin-bottom: 20px;
+                                    opacity      : .8;
+                                }
+
+                                .promo-partner__link {
+                                    color      : @color0;
+                                    font-size  : 16px;
+                                    font-weight: 500;
+                                    line-height: 140%;
+                                    opacity    : .8;
+
+                                    &:hover {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+
+                            .welcome__categories {
+                                display        : flex;
+                                justify-content: space-around;
+
+                                .welcome__category {
+                                    align-items    : center;
+                                    background     : url(../img/backgrounds/welcome/category.svg) no-repeat;
+                                    background-size: 122px 122px;
+                                    display        : flex;
+                                    flex-direction : column;
+                                    height         : 122px;
+                                    justify-content: space-around;
+                                    padding        : 20px;
+                                    text-align     : center;
+                                    width          : 122px;
+
+                                    img {
+                                        height: @height25;
+                                        width : auto;
+                                    }
+                                }
+
+                                .welcome__category-title {
+                                    color      : @color2;
+                                    font-size  : 13px;
+                                    font-weight: 500;
+                                    line-height: normal;
+                                }
+                            }
+
+                            .category-title {
+                                margin-bottom: 40px;
+                            }
+
+                            .categories {
+                                display      : flex;
+                                margin-bottom: 40px;
+
+                                .categories__item {
+                                    background   : @color1;
+                                    border       : .5px solid @color7;
+                                    border-radius: 5px;
+                                    box-sizing   : border-box;
+                                    color        : #828282;
+                                    font-size    : 16px;
+                                    font-style   : normal;
+                                    font-weight  : 300;
+                                    margin-right : 16px;
+                                    padding      : 13px 23px;
+
+                                    &:not(.categories__item--active) {
+                                        hover {
+                                            background-color: @color5;
+                                        }
+                                    }
+                                }
+
+                                .categories__item--active {
+                                    background-color: @color0;
+                                    border-color    : @color0;
+                                    color           : @color1;
+                                }
+                            }
+
+                            .category-tags {
+                                display : flex;
+                                margin  : 0 auto 40px;
+                                opacity : 0;
+                                position: relative;
+                            }
+
+                            .category-tag {
+                                align-items    : center;
+                                border         : .5px solid @color7;
+                                border-radius  : 5px;
+                                box-sizing     : border-box;
+                                display        : flex;
+                                font-size      : 16px;
+                                font-weight    : 400;
+                                height         : 58px;
+                                justify-content: center;
+                                margin-right   : 15px;
+                                padding        : 12px;
+
+                                .category-tag--image {
+                                    height      : @height31;
+                                    margin-right: 7px;
+                                    width       : auto;
+                                }
+
+                                svg {
+                                    height      : @height31;
+                                    margin-right: 7px;
+                                    width       : auto;
+                                }
+
+                                .category-tag--icon {
+                                    svg {
+                                        margin-top: 5px;
+                                    }
+                                }
+
+                                .category-tag--name {
+                                    color      : @color9;
+                                    font-size  : 16px;
+                                    line-height: normal;
+                                }
+
+                                &:not(.category-tag--active) {
+                                    hover {
+                                        background-color: @color5;
+                                    }
+                                }
+
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+
+                            .category-tag--active {
+                                background-color: @color0;
+                                border-color    : @color0;
+
+                                .category-tag--image {
+                                    filter: grayscale(1) contrast(10);
+                                }
+
+                                .category-tag--name {
+                                    color: @color1;
+                                }
+
+                                .category-tag--icon {
+                                    svg {
+                                        path {
+                                            fill: @color1;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .category-tag--more {
+                                cursor      : pointer;
+                                margin-right: 0;
+                                position    : relative;
+                            }
+
+                            .category-tag--space {
+                                flex-grow: 10;
+                            }
+
+                            .category-tag__submenu {
+                                background   : @color1;
+                                border       : .5px solid @color7;
+                                border-radius: 5px;
+                                box-sizing   : border-box;
+                                display      : none;
+                                min-width    : @width18;
+                                overflow     : hidden;
+                                padding-left : 0;
+                                position     : absolute;
+                                right        : 0;
+                                top          : 70px;
+                                z-index      : 200;
+
+                                .category-tag {
+                                    border         : none;
+                                    border-radius  : 0;
+                                    justify-content: flex-start;
+                                    width          : @width32;
+                                }
+
+                                .category-tag--icon {
+                                    margin-right: 10px;
+                                    text-align  : center;
+                                    width       : @width43;
+                                }
+                            }
+
+                            .peach-btn--category {
+                                display   : block;
+                                text-align: center;
+                            }
+
+                            .footer-bottom {
+                                .container {
+                                    display        : flex;
+                                    justify-content: space-between;
+                                }
+                            }
+
+                            .footer-bottom__item--about-company {
+                                margin-right: 15px;
+                            }
+
+                            .header-city {
+                                align-items: center;
+                                display    : flex;
+                                float      : left;
+                                height     : 48px;
+                                margin-left: 30px;
+                                position   : relative;
+
+                                a {
+                                    align-items: center;
+                                    color      : @color2;
+                                    display    : flex;
+
+                                    &:hover {
+                                        color: @color0;
+
+                                        svg {
+                                            path {
+                                                stroke: @color0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .header-city__confirm {
+                                background-color: @color1;
+                                border-radius   : 2px;
+                                box-shadow      : 0 8px 24px rgba(0, 0, 0, .2);
+                                font-size       : 18px;
+                                font-weight     : 500;
+                                left            : 0;
+                                padding         : 24px;
+                                position        : absolute;
+                                top             : 70px;
+                                width           : 335px;
+                            }
+
+                            .header-city__confirm-buttons {
+                                display        : flex;
+                                justify-content: space-between;
+                                margin-top     : 17px;
+
+                                .confirm-button {
+                                    background-color: @color0;
+                                    border          : 1px @color0 solid;
+                                    border-radius   : 4px;
+                                    color           : @color1;
+                                    font-size       : 14px;
+                                    font-style      : normal;
+                                    font-weight     : 400;
+                                    line-height     : 16px;
+                                    padding         : 11px 16px;
+                                }
+
+                                .confirm-button-select {
+                                    background-color: @color1;
+                                    color           : @color0;
+                                }
+                            }
+
+                            .header-city__name {
+                                margin-left: 5px;
+                            }
+
+                            .modal-sm {
+                                margin: auto;
+                                width : 400px;
+
+                                .modal-dialog {
+                                    width: auto;
+                                }
+
+                                .modal-title {
+                                    color        : @color2;
+                                    font-size    : 20px;
+                                    font-weight  : 700;
+                                    line-height  : 23px;
+                                    margin-bottom: 30px;
+                                }
+                            }
+
+                            .modal-select-city {
+                                button.close {
+                                    right: 7px;
+                                    top  : 10px;
+
+                                    span {
+                                        background-color: @color2;
+                                    }
+                                }
+
+                                ul.list-clear {
+                                    li {
+                                        line-height: 19px;
+                                        margin     : 15px 0;
+
+                                        a {
+                                            color      : rgba(0, 0, 0, .4);
+                                            font-size  : 16px;
+                                            font-weight: 400;
+
+                                            &:hover {
+                                                color: @color0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                                {
+                                &: {
+                                    -webkit-input-placeholder {
+                                        color: rgba(0, 0, 0, .2);
+                                    }
+
+                                    -moz-placeholder {
+                                        color: rgba(0, 0, 0, .2);
+                                    }
+                                }
+
+                                &:-moz-placeholder {
+                                    color: rgba(0, 0, 0, .2);
+                                }
+
+                                &:-ms-input-placeholder {
+                                    color: rgba(0, 0, 0, .2);
+                                }
+                            }
+
+                            .ordering {
+                                margin-bottom: 0;
+
+                                .container {
+                                    position: relative;
+                                }
+
+                                .cart {
+                                    position: absolute;
+                                    position: relative;
+                                    right   : 0;
+                                    top     : 0;
+                                }
+
+                                .cart-section {
+                                    height: 500px;
+                                    height: auto;
+                                    width : auto;
+                                }
+
+                                .cart-service__list {
+                                    height: 376px;
+                                    height: auto;
+                                    width : auto;
+                                }
+
+                                .ordering-item-right {
+                                    button {
+                                        &:last-of-type {
+                                            margin-right: 0;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .ordering-form {
+                                margin-top: 15px;
+
+                                select {
+                                    -webkit-appearance: none;
+                                }
+
+                                button {
+                                    &:disabled {
+                                        opacity: .4;
+                                    }
+                                }
+
+                                input {
+                                    &:disabled {
+                                        background-color: rgba(0, 0, 0, .1);
+                                    }
+                                }
+
+                                label {
+                                    color      : rgba(0, 0, 0, .4);
+                                    display    : block;
+                                    font-size  : 14px;
+                                    font-weight: 400;
+                                    line-height: 22px;
+                                }
+
+                                .form-checkout-promocode__input--complete {
+                                    color: #07ae04;
+                                }
+
+                                .form-checkout-promocode__input--error {
+                                    border-color: @color4;
+                                }
+
+                                .form-checkout-promocode__button {
+                                    border-color : @color0;
+                                    border-radius: 0 3px 3px 0;
+                                    color        : @color0;
+                                }
+
+                                .form-checkout-promocode__button-wrapper {
+                                    background: @color1;
+                                    display   : inline-block;
+                                }
+
+                                .form-checkout-promocode__button--complete {
+                                    border-color: rgba(0, 0, 0, .1);
+                                    color       : rgba(0, 0, 0, .4);
+                                }
+
+                                .order-form-sms-code--error {
+                                    border-color: @color4;
+                                }
+
+                                .btn-payment-card {
+                                    padding: 10px 30px;
+                                }
+
+                                .btn-payment-card--active {
+                                    background: @color8 url(../img/icons/payment-active.svg) no-repeat 10px center;
+                                }
+                            }
+
+                            .ordering-form__address {
+                                flex-wrap : wrap;
+                                margin-top: 40px;
+                                max-width : @width6;
+                                width     : @width32;
+
+                                button {
+                                    background   : 0 0;
+                                    border       : none;
+                                    color        : @color0;
+                                    font-size    : 14px;
+                                    height       : auto;
+                                    line-height  : 22px;
+                                    padding-right: 0;
+                                }
+                            }
+
+                            .ordering-form__phone {
+                                display        : flex;
+                                flex-wrap      : wrap;
+                                justify-content: flex-start;
+                                max-width      : @width6;
+                                width          : @width32;
+
+                                button {
+                                    background-color: @color0;
+                                    border          : none;
+                                    color           : @color1;
+                                }
+
+                                .input-mask-phone {
+                                    max-width: @width28;
+                                }
+                            }
+
+                            .ordering-form__time {
+                                display        : flex;
+                                flex-wrap      : wrap;
+                                justify-content: space-between;
+                                margin         : 40px 0;
+                                max-width      : @width6;
+                                width          : @width32;
+                            }
+
+                            .modal-address-button,
+                            .modal-address-button--delete,
+                            .modal-content--map input,
+                            .modal-content--map textarea,
+                            .order-options-time-dropdown-select,
+                            .ordering-form button,
+                            .ordering-form input,
+                            .ordering-form select {
+                                background-color: @color1;
+                                border          : 1px solid rgba(0, 0, 0, .1);
+                                border-radius   : 3px;
+                                font-size       : 16px;
+                                height          : @height33;
+                                line-height     : normal;
+                                padding         : 0 10px;
+                            }
+
+                            .modal-address-button--delete {
+                                border     : none;
+                                color      : @color4;
+                                display    : none;
+                                display    : block;
+                                line-height: 35px;
+                                width      : @width32;
+
+                                &:disabled {
+                                    opacity: .4;
+                                }
+
+                                svg {
+                                    margin  : 0 5px;
+                                    position: relative;
+                                    top     : 5px;
+                                }
+                            }
+
+                            .modal-address-button {
+                                &:disabled {
+                                    opacity: .4;
+                                }
+                            }
+
+                            .ordering-form__phone>div {
+                                margin-bottom: 15px;
+                                margin-right : 10px;
+                                position     : relative;
+
+                                &:last-of-type {
+                                    margin-right: 0;
+                                }
+                            }
+
+                            .custom-buttons {
+                                bottom    : 20px;
+                                display   : none;
+                                height    : 84px;
+                                left      : 0;
+                                position  : fixed;
+                                text-align: center;
+                                width     : @width32;
+
+                                button {
+                                    background   : 0 0;
+                                    border       : none;
+                                    border-radius: 3px;
+                                    font-size    : 16px;
+                                    height       : auto;
+                                    line-height  : 22px;
+                                    padding      : 10px 50px;
+                                }
+
+                                .custom-buttons__add {
+                                    background-color: @color0;
+                                    color           : @color1;
+                                }
+
+                                .custom-buttons__cancel {
+                                    color: @color0;
+                                }
+                            }
+
+                            .modal-map__address-title {
+                                background-color: @color1;
+                                box-shadow      : 0 10px 30px 0 rgba(0, 0, 0, .1);
+                                display         : none;
+                                font-size       : 16px;
+                                left            : 0;
+                                padding         : 10px 0;
+                                position        : absolute;
+                                text-align      : center;
+                                top             : 0;
+                                width           : @width32;
+                            }
+
+                            .address__item--hidden {
+                                display: none;
+                            }
+
+                            .show-hidden-addresses {
+                                color      : @color0;
+                                font-size  : 16px;
+                                line-height: 22px;
+
+                                &:hover {
+                                    color : @color0;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .address__title {
+                                border-bottom  : 1px solid rgba(0, 0, 0, .1);
+                                color          : rgba(0, 0, 0, .4);
+                                display        : flex;
+                                font-size      : 14px;
+                                font-weight    : 400;
+                                justify-content: space-between;
+                                line-height    : 22px;
+                                margin-bottom  : 15px;
+                                padding-bottom : 5px;
+                            }
+
+                            .address__list {
+                                li {
+                                    position: relative;
+                                }
+                            }
+
+                            .address__icon-edit {
+                                cursor  : pointer;
+                                position: absolute;
+                                right   : 0;
+                                top     : 0;
+
+                                &:hover {
+                                    path {
+                                        fill: @color0;
+                                    }
+                                }
+                            }
+
+                            .order-options-time-dropdown-select {
+                                align-items : center;
+                                color       : @color2;
+                                display     : flex;
+                                padding-left: 15px;
+                                position    : relative;
+                                width       : 200px;
+
+                                &:active {
+                                    color: @color2;
+                                }
+
+                                &:focus {
+                                    color: @color2;
+                                }
+
+                                &:hover {
+                                    color: @color2;
+                                }
+
+                                &: {
+                                    after {
+                                        background-image: url(../img/icons/dropdown-icon.svg);
+                                        content         : ' ';
+                                        display         : block;
+                                        height          : 4px;
+                                        position        : absolute;
+                                        right           : 15px;
+                                        top             : 18px;
+                                        width           : 8px;
+                                    }
+                                }
+                            }
+
+                            .order-options-time-dropdown-select--disabled {
+                                color: rgba(0, 0, 0, .4);
+
+                                &:active {
+                                    color: rgba(0, 0, 0, .4);
+                                }
+
+                                &:focus {
+                                    color: rgba(0, 0, 0, .4);
+                                }
+
+                                &:hover {
+                                    color: rgba(0, 0, 0, .4);
+                                }
+
+                                &: {
+                                    after {
+                                        opacity: .4;
+                                    }
+                                }
+                            }
+
+                            .form-checkout-promocode {
+                                position: relative;
+                            }
+
+                            .form-checkout-promocode__input {
+                                margin-right: -6px;
+                                width       : 180px;
+                                width       : @width28;
+                            }
+
+                            .order-form-send-code {
+                                width: @width25;
+                            }
+
+                            .order-form-sms-code {
+                                width: @width25;
+                            }
+
+                            span.nowrap {
+                                white-space: nowrap;
+                            }
+
+                            .custom-input-buttons {
+                                list-style  : none;
+                                margin      : 0;
+                                padding-left: 0;
+
+                                li {
+                                    padding: 2px 0;
+                                }
+                            }
+
+                            .custom-input-buttons[type=checkbox] {
+                                &:checked {
+                                    left    : -9999px;
+                                    position: absolute;
+
+                                    label {
+                                        color        : @color2;
+                                        cursor       : pointer;
+                                        display      : inline-block;
+                                        font-size    : 16px;
+                                        line-height  : 22px;
+                                        padding-left : 28px;
+                                        padding-right: 25px;
+                                        position     : relative;
+
+                                        &:hover {
+                                            color: @color0;
+
+                                            span {
+                                                color  : @color0;
+                                                opacity: .4;
+                                            }
+                                        }
+
+                                        span {
+                                            color: @color3;
+                                        }
+
+                                        &:before {
+                                            background   : @color1;
+                                            border       : 1px solid @color0;
+                                            border-radius: 0;
+                                            border-radius: 100%;
+                                            content      : '';
+                                            height       : @height36;
+                                            left         : 0;
+                                            position     : absolute;
+                                            top          : 0;
+                                            width        : @width42;
+                                        }
+
+                                        &:after {
+                                            -webkit-transform : scale(1);
+                                            -webkit-transform : scale(1);
+                                            -webkit-transition: all .2s ease;
+                                            -webkit-transition: all .2s ease;
+                                            background        : 0 0;
+                                            background        : @color0;
+                                            border-radius     : 0;
+                                            border-radius     : 100%;
+                                            color             : @color0;
+                                            content           : '';
+                                            content           : '✓';
+                                            height            : @height30;
+                                            height            : @height30;
+                                            left              : 5px;
+                                            left              : 5px;
+                                            opacity           : 1;
+                                            opacity           : 1;
+                                            position          : absolute;
+                                            position          : absolute;
+                                            top               : 0;
+                                            top               : 5px;
+                                            transform         : scale(1);
+                                            transform         : scale(1);
+                                            transition        : all .2s ease;
+                                            transition        : all .2s ease;
+                                            width             : @width33;
+                                            width             : @width33;
+                                        }
+                                    }
+                                }
+
+                                &:not( {
+                                        checked) {
+                                        left    : -9999px;
+                                        position: absolute;
+
+                                        label {
+                                            color        : @color2;
+                                            cursor       : pointer;
+                                            display      : inline-block;
+                                            font-size    : 16px;
+                                            line-height  : 22px;
+                                            padding-left : 28px;
+                                            padding-right: 25px;
+                                            position     : relative;
+
+                                            &:hover {
+                                                color: @color0;
+
+                                                span {
+                                                    color  : @color0;
+                                                    opacity: .4;
+                                                }
+                                            }
+
+                                            span {
+                                                color: @color3;
+                                            }
+
+                                            &:before {
+                                                background   : @color1;
+                                                border       : 1px solid @color0;
+                                                border-radius: 0;
+                                                border-radius: 100%;
+                                                content      : '';
+                                                height       : @height36;
+                                                left         : 0;
+                                                position     : absolute;
+                                                top          : 0;
+                                                width        : @width42;
+                                            }
+
+                                            &:after {
+                                                -webkit-transform : scale(0);
+                                                -webkit-transform : scale(1);
+                                                -webkit-transform : scale(0);
+                                                -webkit-transition: all .2s ease;
+                                                -webkit-transition: all .2s ease;
+                                                background        : 0 0;
+                                                background        : @color0;
+                                                border-radius     : 0;
+                                                border-radius     : 100%;
+                                                color             : @color0;
+                                                content           : '';
+                                                content           : '✓';
+                                                height            : @height30;
+                                                height            : @height30;
+                                                left              : 5px;
+                                                left              : 5px;
+                                                opacity           : 0;
+                                                opacity           : 1;
+                                                position          : absolute;
+                                                position          : absolute;
+                                                top               : 0;
+                                                top               : 5px;
+                                                transform         : scale(0);
+                                                transform         : scale(0);
+                                                transform         : scale(1);
+                                                transition        : all .2s ease;
+                                                transition        : all .2s ease;
+                                                width             : @width33;
+                                                width             : @width33;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &:disabled {
+                                    not( {
+                                            checked) {
+                                            label {
+                                                color  : @color2;
+                                                cursor : default;
+                                                opacity: .4;
+
+                                                span {
+                                                    color  : @color3;
+                                                    opacity: .4;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .custom-input-buttons[type=radio] {
+                                &:checked {
+                                    left    : -9999px;
+                                    position: absolute;
+
+                                    label {
+                                        color        : @color2;
+                                        cursor       : pointer;
+                                        display      : inline-block;
+                                        font-size    : 16px;
+                                        line-height  : 22px;
+                                        padding-left : 28px;
+                                        padding-right: 25px;
+                                        position     : relative;
+
+                                        &:hover {
+                                            color: @color0;
+
+                                            span {
+                                                color  : @color0;
+                                                opacity: .4;
+                                            }
+                                        }
+
+                                        span {
+                                            color: @color3;
+                                        }
+
+                                        &:before {
+                                            background   : @color1;
+                                            border       : 1px solid @color0;
+                                            border-radius: 100%;
+                                            content      : '';
+                                            height       : @height36;
+                                            left         : 0;
+                                            position     : absolute;
+                                            top          : 0;
+                                            width        : @width42;
+                                        }
+
+                                        &:after {
+                                            -webkit-transform : scale(1);
+                                            -webkit-transition: all .2s ease;
+                                            background        : @color0;
+                                            border-radius     : 100%;
+                                            content           : '';
+                                            height            : @height30;
+                                            left              : 5px;
+                                            opacity           : 1;
+                                            position          : absolute;
+                                            top               : 5px;
+                                            transform         : scale(1);
+                                            transition        : all .2s ease;
+                                            width             : @width33;
+                                        }
+                                    }
+                                }
+
+                                &:not( {
+                                        checked) {
+                                        left    : -9999px;
+                                        position: absolute;
+
+                                        label {
+                                            color        : @color2;
+                                            cursor       : pointer;
+                                            display      : inline-block;
+                                            font-size    : 16px;
+                                            line-height  : 22px;
+                                            padding-left : 28px;
+                                            padding-right: 25px;
+                                            position     : relative;
+
+                                            &:hover {
+                                                color: @color0;
+
+                                                span {
+                                                    color  : @color0;
+                                                    opacity: .4;
+                                                }
+                                            }
+
+                                            span {
+                                                color: @color3;
+                                            }
+
+                                            &:before {
+                                                background   : @color1;
+                                                border       : 1px solid @color0;
+                                                border-radius: 100%;
+                                                content      : '';
+                                                height       : @height36;
+                                                left         : 0;
+                                                position     : absolute;
+                                                top          : 0;
+                                                width        : @width42;
+                                            }
+
+                                            &:after {
+                                                -webkit-transform : scale(0);
+                                                -webkit-transition: all .2s ease;
+                                                background        : @color0;
+                                                border-radius     : 100%;
+                                                content           : '';
+                                                height            : @height30;
+                                                left              : 5px;
+                                                opacity           : 0;
+                                                position          : absolute;
+                                                top               : 5px;
+                                                transform         : scale(0);
+                                                transition        : all .2s ease;
+                                                width             : @width33;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &:disabled {
+                                    not( {
+                                            checked) {
+                                            label {
+                                                color  : @color2;
+                                                cursor : default;
+                                                opacity: .4;
+
+                                                span {
+                                                    color  : @color3;
+                                                    opacity: .4;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .custom-radio-buttons--disabled {
+                                opacity: .4;
+                            }
+
+                            .custom-radio-buttons--disabled[type=radio] {
+                                &:checked {
+                                    label {
+                                        cursor: default;
+
+                                        &:hover {
+                                            color: @color2;
+
+                                            span {
+                                                color  : @color3;
+                                                opacity: 1;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &:not( {
+                                        checked) {
+                                        label {
+                                            cursor: default;
+
+                                            &:hover {
+                                                color: @color2;
+
+                                                span {
+                                                    color  : @color3;
+                                                    opacity: 1;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .ordering-form__finish {
+                                border-top: 1px solid rgba(0, 0, 0, .2);
+                                margin-top: 40px;
+                                padding   : 25px 0;
+
+                                .container {
+                                    padding-left: 0;
+                                }
+
+                                .peach-btn {
+                                    display    : block;
+                                    height     : @height33;
+                                    padding-top: 9px;
+                                    text-align : center;
+                                    width      : @width6;
+                                    width      : @width32;
+                                }
+                            }
+
+                            .order-finish__wrapper {
+                                display        : flex;
+                                flex-direction : column;
+                                justify-content: space-around;
+                            }
+
+                            .ordering-form__finish.sticky {
+                                background-color: @color1;
+                                bottom          : -141px;
+                                box-shadow      : 0 -10px 30px rgba(0, 0, 0, .1);
+                                left            : 0;
+                                margin-left     : 0;
+                                margin-right    : 0;
+                                position        : fixed;
+                                width           : @width32;
+                                z-index         : 200;
+
+                                .container {
+                                    padding-left: 15px;
+                                }
+                            }
+
+                            .order-finish {
+                                display        : flex;
+                                justify-content: space-between;
+                                margin-bottom  : 10px;
+                                margin-bottom  : 50px;
+                            }
+
+                            .order-finish__item {
+                                margin-right: 10px;
+                                margin-right: 40px;
+                            }
+
+                            .order-finish__item--total {
+                                min-width: @width10;
+                                min-width: auto;
+                            }
+
+                            .order-finish__title {
+                                color        : @color3;
+                                font-size    : 16px;
+                                font-size    : 12px;
+                                margin-bottom: 5px;
+                            }
+
+                            .order-finish__value {
+                                color    : @color2;
+                                font-size: 16px;
+                                font-size: 24px;
+                            }
+
+                            .order-options-guests-numbers-nav {
+                                align-items    : center;
+                                display        : flex;
+                                justify-content: left;
+
+                                span {
+                                    align-items: center;
+                                    cursor     : pointer;
+                                    display    : flex;
+                                    height     : 18px;
+                                }
+
+                                div {
+                                    margin: 0 15px;
+                                }
+                            }
+
+                            .input-code-error {
+                                bottom   : -23px;
+                                color    : @color4;
+                                display  : none;
+                                font-size: 14px;
+                                left     : 0;
+                                position : absolute;
+                                width    : @width13;
+                            }
+
+                            .input-promocode-error {
+                                bottom   : -23px;
+                                bottom   : auto;
+                                color    : @color4;
+                                display  : none;
+                                font-size: 14px;
+                                left     : 0;
+                                position : absolute;
+                                top      : 69px;
+                                width    : @width13;
+                            }
+
+                            .ordering-form__phone-info {
+                                bottom   : -23px;
+                                display  : none;
+                                font-size: 14px;
+                                left     : 0;
+                                position : absolute;
+                                width    : @width13;
+
+                                span {
+                                    color: @color0;
+                                }
+                            }
+
+                            .input-phone-wrapper {
+                                position: relative;
+                            }
+
+                            .input-phone-wrapper--ok {
+                                background-image: url(../img/icons/check-phone-ok.svg);
+                                content         : ' ';
+                                display         : none;
+                                height          : 16px;
+                                position        : absolute;
+                                right           : -32px;
+                                top             : 40px;
+                                width           : 22px;
+                            }
+
+                            .cart-bottom--checkout {
+                                .cart-bottom__total {
+                                    display        : flex;
+                                    justify-content: space-between;
+                                    padding        : 20px;
+
+                                    div {
+                                        color    : @color2;
+                                        font-size: 16px;
+                                    }
+
+                                    span {
+                                        color    : @color2;
+                                        font-size: 24px;
+                                    }
+                                }
+                            }
+
+                            .cart-section--checkout {
+                                margin-left: 0;
+                            }
+
+                            .cart-service__bottom--promocode {
+                                color: @color0;
+                            }
+
+                            .modal-dialog--map {
+                                width: 1000px;
+                                width: auto;
+                            }
+
+                            .modal-content--map {
+                                border-radius: 0;
+                                position     : relative;
+
+                                .modal-address-button {
+                                    background-color: @color0;
+                                    border-color    : @color0;
+                                    color           : @color1;
+                                    font-size       : 16px;
+                                    font-weight     : 700;
+                                    padding-left    : 25px;
+                                    padding-right   : 25px;
+                                    width           : @width32;
+                                }
+
+                                .modal-map__form-address--error {
+                                    border-color: @color4;
+                                }
+                            }
+
+                            .modal-map {
+                                display   : flex;
+                                height    : @height14;
+                                overflow-y: scroll;
+                            }
+
+                            .modal-map__form {
+                                padding: 15px;
+                                padding: 50px;
+                                width  : @width32;
+                                width  : @width48;
+
+                                .row {
+                                    margin-bottom: 20px;
+                                }
+
+                                textarea {
+                                    height : @height20;
+                                    padding: 10px;
+                                    resize : none;
+                                }
+
+                                label {
+                                    color      : rgba(0, 0, 0, .4);
+                                    font-size  : 14px;
+                                    font-weight: 400;
+                                }
+
+                                .orange-text {
+                                    color : @color0;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .modal-map__map {
+                                display   : none;
+                                height    : @height14;
+                                min-height: @height21;
+                                width     : @width32;
+                                width     : @width48;
+                            }
+
+                            .modal-map__title {
+                                font-size    : 20px;
+                                font-weight  : 700;
+                                margin-bottom: 23px;
+                            }
+
+                            .modal-map__form input,
+                            .modal-map__form label,
+                            .modal-map__form textarea,
+                            .shop-checkout input,
+                            .shop-checkout label,
+                            .shop-checkout textarea {
+                                display: block;
+                                width  : @width32;
+                            }
+
+                            .shop-checkout {
+                                max-width: @width6;
+
+                                textarea {
+                                    border       : 1px solid rgba(0, 0, 0, .1);
+                                    border-radius: 3px;
+                                    height       : @height20;
+                                    padding      : 10px;
+                                    resize       : none;
+                                }
+
+                                .alert-danger {
+                                    background-color: @color11;
+                                    border-color    : @color11;
+                                    color           : #d71616;
+                                }
+
+                                .shop-checkout__description {
+                                    color      : rgba(0, 0, 0, .5);
+                                    font-size  : 14px;
+                                    line-height: 18px;
+                                }
+                            }
+
+                            .modal-map__form-description {
+                                color    : @color2;
+                                font-size: 14px;
+                            }
+
+                            .pac-container {
+                                z-index: 2000;
+                            }
+
+                            .error-coordinates {
+                                background-color: #e75151;
+                                color           : @color1;
+                                display         : none;
+                                font-size       : 12px;
+                                left            : 0;
+                                left            : calc(75% - 150px);
+                                line-height     : 14px;
+                                margin          : 0 auto;
+                                padding         : 10px 20px;
+                                position        : absolute;
+                                top             : 0;
+                                top             : 0;
+                                width           : @width18;
+                                width           : auto;
+                                z-index         : 2010;
+                            }
+
+                            .ordering-form__payment-description {
+                                font-size: 16px;
+                                padding  : 15px 0;
+                                position : relative;
+                            }
+
+                            .ordering-form__payment-description--payment-cash {
+                                &: {
+                                    before {
+                                        content  : "₽";
+                                        font-size: 16px;
+                                        left     : 133px;
+                                        position : absolute;
+                                        top      : 26px;
+                                    }
+                                }
+
+                                input {
+                                    margin-left: 10px;
+                                    width      : 85px;
+                                }
+                            }
+
+                            .btn-payment-card {
+                                img {
+                                    width: 25px;
+                                }
+                            }
+
+                            .btn {
+                                &:active {
+                                    outline: 0;
+
+                                    focus {
+                                        outline: 0;
+                                    }
+                                }
+
+                                &:focus {
+                                    outline: 0;
+                                }
+                            }
+
+                            .ordering-form__item--disabled {
+                                position: relative;
+
+                                &: {
+                                    before {
+                                        background-color: rgba(255, 255, 255, .6);
+                                        content         : ' ';
+                                        display         : block;
+                                        max-width       : @width6;
+                                        min-height      : @height21;
+                                        position        : absolute;
+                                        width           : @width32;
+                                        z-index         : 150;
+                                    }
+                                }
+                            }
+
+                            .checkout-success__buttons {
+                                display   : flex;
+                                flex-wrap : wrap;
+                                margin-top: 15px;
+                            }
+
+                            .checkout-success__button {
+                                background-color: @color1;
+                                border          : none;
+                                border-radius   : 3px;
+                                color           : @color0;
+                                font-size       : 16px;
+                                height          : @height33;
+                                line-height     : normal;
+                                margin-top      : 15px;
+                                padding         : 10px 30px;
+
+                                &:hover {
+                                    color  : @color0;
+                                    opacity: .8;
+                                }
+                            }
+
+                            .checkout-success__button--orange {
+                                background-color: @color0;
+                                color           : @color1;
+
+                                &:hover {
+                                    color: @color1;
+                                }
+                            }
+
+                            .cart-bottom__checkout-mobile {
+                                background-color: @color0;
+                                background-color: @color1;
+                                border          : 1px solid @color0;
+                                border-radius   : 3px;
+                                color           : @color0;
+                                color           : @color1;
+                                display         : block;
+                                display         : none;
+                                font-size       : 16px;
+                                font-weight     : 700;
+                                height          : @height33;
+                                text-align      : center;
+                                width           : @width32;
+                            }
+
+                            .modal-cancel-button {
+                                background-color: @color1;
+                                border          : 1px solid @color0;
+                                border-radius   : 3px;
+                                color           : @color0;
+                                display         : none;
+                                display         : block;
+                                font-size       : 16px;
+                                height          : @height33;
+                                text-align      : center;
+                                width           : @width32;
+                            }
+
+                            .show-mobile-map {
+                                color  : @color0;
+                                display: block;
+                                display: none;
+                            }
+
+                            .modal-map__buttons {
+                                display        : flex;
+                                flex-direction : column;
+                                justify-content: space-between;
+                                padding        : 0 10px;
+                                padding        : 0 15px;
+                            }
+
+                            .cart-bottom {
+                                position: relative;
+
+                                .cart-bottom__additional-information {
+                                    background-color: @color1;
+                                    font-size       : 14px;
+                                    font-style      : normal;
+                                    font-weight     : 400;
+                                    line-height     : 18px;
+                                    padding-top     : 10px;
+                                }
+                            }
+
+                            .page-content {
+                                margin-bottom: 0;
+                            }
+
+                            .cart-section {
+                                background: 0 0;
+                                padding   : 0;
+                            }
+
+                            .modal-map__buttons>div {
+                                margin-bottom: 20px;
+                            }
+
+                            .modal--update-address {
+                                .modal-dialog {
+                                    margin: 0;
+                                }
+                            }
+
+                            #google-map {
+                                position: relative;
+
+                                &:after {
+                                    background     : url(../img/icons/marker-google.svg);
+                                    background-size: 37px 53px;
+                                    content        : ' ';
+                                    display        : block;
+                                    height         : 53px;
+                                    left           : 50%;
+                                    margin         : -53px 0 0 -18px;
+                                    pointer-events : none;
+                                    position       : absolute;
+                                    top            : 50%;
+                                    width          : @width40;
+                                }
+                            }
+
+                            .apple-pay-button-with-text {
+                                display: none;
+                            }
+
+                            @supports {
+                                (-webkit-appearance {
+                                        &:-apple-pay-button) {
+                                        -apple-pay-button-type: check-out;
+
+                                        .apple-pay-button-with-text {
+                                            -webkit-appearance: -apple-pay-button;
+                                            cursor            : pointer;
+                                            height            : @height33;
+                                            width             : @width6;
+                                        }
+                                    }
+                                }
+
+                                .apple-pay-button-with-text>* {
+                                    display: none;
+                                }
+
+                                .apple-pay-button-black-with-text {
+                                    -apple-pay-button-style: @color2;
+                                }
+
+                                .apple-pay-button-white-with-text {
+                                    -apple-pay-button-style: @color1;
+                                }
+
+                                .apple-pay-button-white-with-line-with-text {
+                                    -apple-pay-button-style: white-outline;
+                                }
+
+                                .order-options-time-dropdown-items-scroll {
+                                    overflow: hidden;
+                                    position: relative;
+                                }
+
+                                .items--title {
+                                    font-size    : 20px;
+                                    font-weight  : 700;
+                                    line-height  : 22px;
+                                    margin-bottom: 20px;
+                                }
+
+                                .vcard {
+                                    .org {
+                                        font-size    : 20px;
+                                        font-weight  : 700;
+                                        line-height  : 22px;
+                                        margin-bottom: 20px;
+                                    }
+                                }
+
+                                .contact-box__details {
+                                    flex-flow: wrap;
+                                }
+
+                                .contact-box__line {
+                                    display: flex;
+
+                                    .contact-box__wrapper {
+                                        margin-bottom: 20px;
+                                        margin-right : 20px;
+
+                                        &:last-child {
+                                            margin-right: 0;
+                                        }
+                                    }
+                                }
+
+                                .contact-box__description {
+                                    font-size: 14px;
+                                    opacity  : .4;
+                                }
+
+                                .contact-box__item {
+                                    font-size: 16px;
+
+                                    a {
+                                        color: @color0;
+                                    }
+                                }
+
+                                .contact-box--title {
+                                    font-size  : 16px;
+                                    font-weight: 700;
+                                    line-height: 120%;
+                                }
+
+                                .contacts--title {
+                                    margin-bottom: 30px;
+                                }
+
+                                .contacts--items {
+                                    display        : flex;
+                                    justify-content: space-between;
+
+                                    .items--main {
+                                        background-color: @color5;
+                                        padding         : 40px;
+                                        width           : @width19;
+                                    }
+
+                                    .items--couriers {
+                                        .contact-box {
+                                            margin: 20px 0;
+                                        }
+
+                                        .contact-box--title {
+                                            margin-bottom: 10px;
+                                        }
+
+                                        .contact-box__line {
+                                            .contact-box__wrapper {
+                                                margin-bottom: 5px;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .shop-services__wrapper {
+                                    .restaurant-menu-item {
+                                        .restaurant-menu-item-info {
+                                            display        : flex;
+                                            flex-direction : column;
+                                            justify-content: space-between;
+                                            padding        : 12px;
+                                        }
+                                    }
+                                }
+
+                                .restaurant-menu-item__price--discounted {
+                                    color          : #999999;
+                                    font-size      : 14px;
+                                    font-weight    : 400;
+                                    text-decoration: line-through;
+                                }
+
+                                .service-addon {
+                                    overflow: hidden;
+
+                                    .service-addon__title {
+                                        border-bottom: 1px solid rgba(0, 0, 0, .1);
+                                        font-size    : 14px;
+                                        font-weight  : 500;
+                                        line-height  : 120%;
+                                        margin       : 5px -70px 15px 0;
+                                        padding      : 8px 70px 8px 0;
+                                    }
+
+                                    li {
+                                        display        : flex;
+                                        justify-content: space-between;
+                                        margin-right   : 70px;
+                                    }
+
+                                    li>span {
+                                        color: @color0;
+                                    }
+                                }
+
+                                .restaurant-menu-item__image {
+                                    background-color: @color1;
+                                    border-radius   : 3px 3px 0 0;
+                                    max-height      : @height3;
+                                    overflow        : hidden;
+                                    text-align      : center;
+
+                                    img {
+                                        height: @height21;
+                                        width : auto;
+                                    }
+                                }
+
+                                .restaurant-menu-item__image--full {
+                                    height: @height3;
+                                }
+
+                                .restaurant-menu-item__image--fill {
+                                    img {
+                                        height    : @height3;
+                                        object-fit: cover;
+                                        width     : @width32;
+                                    }
+                                }
+
+                                .modal__service-photo {
+                                    height    : @height6;
+                                    overflow  : hidden;
+                                    text-align: center;
+                                    width     : @width5;
+
+                                    img {
+                                        height: @height21;
+                                        width : auto;
+                                    }
+                                }
+
+                                .restaurant-box-second__bull {
+                                    padding: 0 4px;
+                                }
+
+                                .delivery_type__price--high_demand {
+                                    color   : @color10;
+                                    position: relative;
+
+                                    &:after {
+                                        background: url(/img/icons/delivery/high.svg);
+                                        content   : " ";
+                                        display   : block;
+                                        height    : 15px;
+                                        left      : -14px;
+                                        position  : absolute;
+                                        top       : 2px;
+                                        width     : @width33;
+                                    }
+                                }
+
+                                .restaurant-info-menu__list {
+                                    display : flex;
+                                    overflow: hidden;
+                                    position: relative;
+
+                                    .anchor_link.anchor_link--active {
+                                        border-bottom : 2px solid @color0;
+                                        color         : @color0;
+                                        padding-bottom: 12px;
+                                    }
+
+                                    li {
+                                        margin : 15px 0;
+                                        padding: 0 10px;
+
+                                        &:first-child {
+                                            padding-left: 0;
+                                        }
+
+                                        &:last-child {
+                                            padding-right: 0;
+                                        }
+                                    }
+
+                                    a {
+                                        color      : @color2;
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                .legal-info {
+                                    color        : @color2;
+                                    font-size    : 14px;
+                                    font-style   : normal;
+                                    font-weight  : 400;
+                                    line-height  : 18px;
+                                    margin-bottom: 20px;
+                                    opacity      : .2;
+
+                                    .legal-info__part {
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                .service-list__item-count {
+                                    color: @color0;
+                                }
+
+                                .service-list__item-alert {
+                                    background-color: @color0;
+                                    color           : @color1;
+                                    font-size       : 14px;
+                                    font-weight     : 500;
+                                    height          : 38px;
+                                    left            : 0;
+                                    padding-top     : 6px;
+                                    position        : absolute;
+                                    text-align      : center;
+                                    top             : 0;
+                                    width           : @width32;
+                                    z-index         : 100;
+                                }
+
+                                .shop-services {
+                                    margin-left: 20px;
+                                    min-height : @height14;
+                                    width      : @width32;
+
+                                    .restaurant-menu-item {
+                                        margin: 0 0 30px;
+
+                                        .restaurant-menu-item-info {
+                                            padding: 12px;
+
+                                            p {
+                                                overflow     : hidden;
+                                                text-overflow: ellipsis;
+                                                white-space  : nowrap;
+                                            }
+                                        }
+                                    }
+
+                                    .service-list__item {
+                                        flex    : 0 0 240px;
+                                        flex    : 0 0 260px !important;
+                                        overflow: hidden;
+                                        width   : @width15;
+                                    }
+
+                                    .shop-services__wrapper {
+                                        display        : flex;
+                                        flex-wrap      : wrap;
+                                        justify-content: space-between;
+                                    }
+
+                                    .restaurant-menu-item__image {
+                                        max-height: @height8;
+                                    }
+
+                                    .restaurant-menu-item__image--full {
+                                        height: @height8;
+                                    }
+
+                                    .category__title {
+                                        font-size    : 20px;
+                                        font-weight  : 700;
+                                        line-height  : 22px;
+                                        margin-bottom: 10px;
+                                    }
+                                }
+
+                                .page-restaurant--text {
+                                    .restaurant-content {
+                                        margin-bottom: 25px;
+                                    }
+
+                                    .cart {
+                                        display: none;
+                                    }
+                                }
+
+                                .header {
+                                    .header-nav-toggle {
+                                        left: 15px;
+                                    }
+
+                                    .header-buttons {
+                                        right: 15px;
+                                    }
+                                }
+
+                                .mobile-nav {
+                                    .mobile-nav-close {
+                                        left: 15px;
+                                    }
+
+                                    ul {
+                                        width: @width24;
+                                    }
+                                }
+
+                                .mobile-nav-active {
+                                    .mobile-nav {
+                                        .mobile-nav-close {
+                                            position: absolute;
+                                        }
+                                    }
+                                }
+
+                                .footer-top {
+                                    .footer-phone {
+                                        font-size: 26px;
+                                    }
+                                }
+
+                                .footer-social {
+                                    margin   : 0;
+                                    max-width: none;
+                                }
+
+                                .footer-bottom__title--contacts {
+                                    text-align: right;
+                                }
+
+                                .footer-nav--contacts {
+                                    text-align: right;
+                                }
+
+                                .footer-bottom__item {
+                                    margin: 0 10px;
+
+                                    &:first-child {
+                                        margin-left: -5px;
+                                    }
+
+                                    &:last-child {
+                                        margin-right: -5px;
+                                    }
+                                }
+
+                                .restaurant-info {
+                                    border-top     : 1px solid rgba(255, 255, 255, .4);
+                                    display        : flex;
+                                    justify-content: space-between;
+                                    margin-top     : 15px;
+                                    padding-top    : 22px;
+
+                                    .restaurant-info-content {
+                                        padding: 30px 20px;
+                                    }
+
+                                    .restaurant-info-delivery {
+                                        padding-left: 50px;
+                                        width       : 25%;
+
+                                        p {
+                                            font-size    : 14px;
+                                            margin-bottom: 0;
+                                        }
+                                    }
+
+                                    .restaurant-info-data {
+                                        width: 48%;
+
+                                        li {
+                                            margin-right: 30px;
+                                        }
+                                    }
+                                }
+
+                                .site-sections {
+                                    margin-bottom: 60px;
+
+                                    .site-sections-item {
+                                        background-size: 15%;
+                                    }
+
+                                    .site-sections-item.site-sections-item_all {
+                                        background-position: 7% 50%;
+                                        background-size    : 13%;
+                                    }
+                                }
+
+                                .container--faq {
+                                    h1 {
+                                        font-size  : 36px;
+                                        font-weight: 700;
+                                        margin     : 0 0 40px;
+                                    }
+
+                                    h3 {
+                                        font-size  : 20px;
+                                        font-weight: 700;
+                                        margin     : 20px 0;
+                                    }
+                                }
+
+                                .faq {
+                                    font-size  : 16px;
+                                    line-height: 22px;
+                                    position   : relative;
+                                }
+
+                                .faq__list {
+                                    list-style  : none;
+                                    max-width   : 5@width43;
+                                    padding-left: 0;
+
+                                    li {
+                                        position: relative;
+
+                                        &:last-child {
+                                            margin-bottom: 35px;
+                                        }
+                                    }
+                                }
+
+                                .faq__nav {
+                                    background   : @color5;
+                                    border-radius: 3px;
+                                    padding      : 35px;
+                                    position     : absolute;
+                                    right        : 15px;
+                                    top          : 10px;
+                                    width        : @width19;
+
+                                    strong {
+                                        cursor   : pointer;
+                                        font-size: 20px;
+
+                                        &:hover {
+                                            color: @color0;
+                                        }
+                                    }
+
+                                    strong.--active {
+                                        color: @color0;
+                                    }
+                                }
+
+                                .faq__nav>div {
+                                    margin: 8px 0;
+                                }
+
+                                .faq__nav-list {
+                                    display   : none;
+                                    list-style: none;
+                                    margin    : 0;
+                                    padding   : 0;
+
+                                    a {
+                                        color      : @color2;
+                                        line-height: 22px;
+                                    }
+                                }
+
+                                .faq__anchor {
+                                    left    : 0;
+                                    position: absolute;
+                                    top     : -80px;
+                                }
+
+                                .modal-dialog {
+                                    width: @width27;
+                                }
+
+                                .restaurant-section {
+                                    max-width: 1@width28;
+                                }
+
+                                .shop-search-result {
+                                    display    : none;
+                                    margin-left: 20px;
+                                    min-height : @height14;
+                                    width      : @width32;
+
+                                    .service-list__item {
+                                        flex        : 0 0 240px;
+                                        flex        : 0 0 260px !important;
+                                        margin-right: 30px;
+                                        overflow    : hidden;
+                                        width       : @width15;
+                                    }
+
+                                    .shop-services__wrapper {
+                                        display        : flex;
+                                        display        : flex;
+                                        flex-wrap      : wrap;
+                                        flex-wrap      : wrap;
+                                        justify-content: normal;
+                                        justify-content: space-between;
+                                    }
+
+                                    .restaurant-menu-item {
+                                        margin: 0 0 30px;
+
+                                        .restaurant-menu-item-info {
+                                            padding: 12px;
+                                        }
+                                    }
+
+                                    .restaurant-menu-item__image {
+                                        max-height: @height8;
+                                    }
+
+                                    .restaurant-menu-item__image--full {
+                                        height: @height8;
+                                    }
+
+                                    .category__title {
+                                        font-size    : 20px;
+                                        font-weight  : 700;
+                                        line-height  : 22px;
+                                        margin-bottom: 10px;
+                                    }
+                                }
+
+                                .restaurant {
+                                    .restaurant-content {
+                                        height: @height2  !important;
+                                    }
+                                }
+
+                                .restaurant__background {
+                                    border-radius: 3px;
+                                    height       : 315px;
+                                    height       : @height2  !important;
+                                    overflow     : hidden;
+                                    position     : absolute;
+                                    width        : @width32;
+                                }
+
+                                .service-list {
+                                    margin: 0 -24px 0 -15px;
+                                    margin: 0 -27px 0 -15px !important;
+                                }
+
+                                .custom-pages {
+                                    margin-top: 100px;
+                                }
+
+                                .modal-dialog.modal-sm {
+                                    width: 500px !important;
+                                }
+
+                                body.modal-open {
+                                    height       : @height14;
+                                    overflow-y   : hidden;
+                                    padding-right: 15px;
+                                }
+
+                                .restaurant--shop {
+                                    .restaurant-descr {
+                                        background   : linear-gradient(180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .6) 100%);
+                                        border-radius: 3px;
+                                        bottom       : 0;
+                                        left         : 0;
+                                        padding      : 30px;
+                                        position     : absolute;
+                                        width        : @width32;
+                                        z-index      : 2;
+
+                                        h1 {
+                                            color         : @color1;
+                                            display       : inline;
+                                            font-size     : 48px;
+                                            font-weight   : 700;
+                                            letter-spacing: 1px;
+                                            line-height   : 48px;
+                                            margin        : 10px 0;
+                                        }
+
+                                        .restaurant-box-second__rating {
+                                            font-size  : 48px !important;
+                                            white-space: nowrap;
+                                        }
+
+                                        .restaurant-descr__bull {
+                                            color    : @color1;
+                                            font-size: 48px;
+                                        }
+                                    }
+
+                                    .restaurant-content {
+                                        overflow: visible;
+                                    }
+
+                                    .restaurant-info__open-hours {
+                                        display        : flex;
+                                        flex-wrap      : wrap;
+                                        justify-content: flex-end;
+                                        max-width      : @width29;
+
+                                        span {
+                                            margin: 0 2px;
+                                        }
+                                    }
+
+                                    .restaurant-info__delivery-info {
+                                        font-size: 16px;
+
+                                        span {
+                                            &:first-child {
+                                                color      : @color1;
+                                                font-weight: 500;
+                                            }
+                                        }
+
+                                        .tooltip-information {
+                                            left    : 3px;
+                                            position: relative;
+                                            top     : 1px;
+                                        }
+                                    }
+
+                                    .restaurant-info__delivery-info>div {
+                                        font-weight: 400;
+                                        opacity    : .7;
+                                    }
+
+                                    .tooltip-information__box {
+                                        background   : @color1;
+                                        border-radius: 3px;
+                                        box-shadow   : 0 12px 20px rgba(0, 0, 0, .08);
+                                        color        : rgba(0, 0, 0, .4);
+                                        display      : none;
+                                        left         : 35px;
+                                        padding      : 16px 20px;
+                                        position     : absolute;
+                                        top          : -20px;
+                                        width        : 390px;
+
+                                        svg {
+                                            margin: 0;
+                                        }
+
+                                        &:after {
+                                            border            : solid transparent;
+                                            border-color      : rgba(255, 255, 255, 0);
+                                            border-right-color: @color1;
+                                            border-width      : 10px;
+                                            content           : " ";
+                                            height            : 0;
+                                            margin-top        : -10px;
+                                            pointer-events    : none;
+                                            position          : absolute;
+                                            right             : 100%;
+                                            top               : 27px;
+                                            width             : 0;
+                                        }
+                                    }
+                                }
+
+                                .restaurant-info--shop {
+                                    margin-bottom: 0;
+                                    top          : 0;
+                                }
+
+                                .restaurant-info__delivery-icon {
+                                    align-items    : center;
+                                    border-radius  : 4px;
+                                    display        : flex;
+                                    height         : @height16;
+                                    justify-content: center;
+                                    margin-right   : 10px;
+                                    width          : 68px;
+
+                                    img {
+                                        width: 60%;
+                                    }
+                                }
+
+                                .tooltip-information {
+                                    cursor  : pointer;
+                                    position: relative;
+                                }
+
+                                .shop-menu {
+                                    display: flex;
+                                }
+
+                                .shop-menu__navigation {
+                                    display: flex;
+                                    flex   : 0 0 312px;
+                                }
+
+                                .shop-categories {
+                                    background   : @color5;
+                                    border-radius: 3px;
+                                    font-size    : 14px;
+                                    height       : calc(@height14 - 150px);
+                                    list-style   : none;
+                                    max-width    : @width21;
+                                    overflow     : hidden;
+                                    padding      : 20px 0;
+                                    width        : @width21;
+                                }
+
+                                .shop-categories__item {
+                                    border-bottom: 1px solid rgba(0, 0, 0, .05);
+                                    margin-left  : 20px;
+                                    margin-right : 20px;
+                                    padding      : 10px 0;
+                                    position     : relative;
+
+                                    span {
+                                        cursor : pointer;
+                                        display: block;
+                                        padding: 5px 0;
+                                    }
+
+                                    &:first-child {
+                                        padding-top: 0;
+
+                                        before {
+                                            top: 6px;
+                                        }
+                                    }
+
+                                    &:last-of-type {
+                                        border-bottom : none;
+                                        padding-bottom: 0;
+                                    }
+                                }
+
+                                .shop-categories__item.shop-categories__item--active {
+                                    font-weight: 700;
+                                }
+
+                                .shop-categories__item.shop-categories__item--selected {
+                                    &:before {
+                                        content  : "·";
+                                        font-size: 30px;
+                                        left     : -12px;
+                                        position : absolute;
+                                        top      : 16px;
+                                    }
+                                }
+
+                                .shop-subcategories {
+                                    display     : none;
+                                    font-weight : 400;
+                                    list-style  : none;
+                                    padding-left: 10px;
+                                }
+
+                                .shop-subcategories__item {
+                                    position: relative;
+                                }
+
+                                .shop-subcategories__item.shop-subcategories__item--active {
+                                    color: @color0;
+
+                                    &:before {
+                                        content  : "·";
+                                        font-size: 30px;
+                                        left     : -12px;
+                                        position : absolute;
+                                        top      : 6px;
+                                    }
+                                }
+
+                                .modal__service {
+                                    display        : flex;
+                                    justify-content: space-between;
+                                    max-height     : @height6;
+                                }
+
+                                .modal__service-info {
+                                    display        : flex;
+                                    flex-direction : column;
+                                    justify-content: space-between;
+                                    width          : @width5;
+
+                                    .service-info__top {
+                                        height      : 525px;
+                                        overflow    : hidden;
+                                        padding-left: 70px;
+                                        position    : relative;
+                                    }
+
+                                    .service-info__description {
+                                        color        : rgba(0, 0, 0, .4);
+                                        padding-right: 70px;
+                                    }
+
+                                    .service-info__bottom {
+                                        display        : flex;
+                                        flex-wrap      : wrap;
+                                        justify-content: space-between;
+                                        padding        : 40px 70px;
+
+                                        .service-info__add-button {
+                                            border   : 1px solid @color0;
+                                            font-size: 16px;
+                                            height   : @height33;
+                                            min-width: 270px;
+                                            padding  : 0 20px;
+                                            position : relative;
+
+                                            &:disabled {
+                                                border-color: #cccccc;
+                                            }
+                                        }
+
+                                        .service-info__add-button-info {
+                                            color      : @color0;
+                                            display    : none;
+                                            flex       : 1 0 auto;
+                                            font-size  : 14px;
+                                            font-style : normal;
+                                            font-weight: 400;
+                                            line-height: normal;
+                                            margin-top : 10px;
+                                        }
+                                    }
+
+                                    .service-info__bottom.service-info__bottom--shadow {
+                                        box-shadow: 0 -10px 30px rgba(0, 0, 0, .1);
+                                    }
+
+                                    .service-info__title {
+                                        font-size    : 20px;
+                                        font-weight  : 700;
+                                        line-height  : 22px;
+                                        margin-bottom: 10px;
+                                        margin-top   : 40px;
+                                        padding-right: 70px;
+
+                                        .service-info__amount {
+                                            font-size: 16px;
+                                            opacity  : .4;
+                                        }
+                                    }
+
+                                    textarea {
+                                        background-color: transparent;
+                                        border          : none;
+                                        color           : @color2;
+                                        font-size       : 14px;
+                                        font-weight     : 400;
+                                        line-height     : 120%;
+                                        max-width       : @width32;
+                                        overflow        : hidden;
+                                        padding         : 10px 0;
+                                        resize          : none;
+                                        width           : calc(@width32 - 70px);
+
+                                        &: {
+                                            -webkit-input-placeholder {
+                                                color    : rgba(0, 0, 0, .2);
+                                                font-size: 14px;
+                                            }
+
+                                            placeholder {
+                                                color    : rgba(0, 0, 0, .2);
+                                                font-size: 14px;
+                                            }
+                                        }
+
+                                        &:-ms-input-placeholder {
+                                            color    : rgba(0, 0, 0, .2);
+                                            font-size: 14px;
+                                        }
+                                    }
+
+                                    .service-info__count {
+                                        border       : 1px solid @color0;
+                                        border-radius: 3px;
+                                        display      : -ms-flexbox;
+                                        display      : -webkit-box;
+                                        display      : flex;
+                                        height       : @height16;
+                                        width        : 126px;
+
+                                        button {
+                                            background-color: @color1;
+                                            color           : @color0;
+                                            font-size       : 30px;
+                                            font-weight     : 100;
+                                            height          : @height33;
+                                            padding         : 0;
+                                            width           : @width41;
+
+                                            &:first-child {
+                                                border-bottom-left-radius: 3px;
+                                                border-top-left-radius   : 3px;
+                                            }
+
+                                            &:last-child {
+                                                border-bottom-right-radius: 3px;
+                                                border-top-right-radius   : 3px;
+                                            }
+                                        }
+
+                                        div {
+                                            align-items     : center;
+                                            background-color: @color1;
+                                            border-left     : 1px solid @color0;
+                                            border-right    : 1px solid @color0;
+                                            color           : @color0;
+                                            color           : @color2;
+                                            display         : flex;
+                                            font-size       : 16px;
+                                            font-size       : 30px;
+                                            font-weight     : 100;
+                                            font-weight     : 700;
+                                            height          : @height33;
+                                            justify-content : center;
+                                            line-height     : 22px;
+                                            padding         : 0;
+                                            text-align      : center;
+                                            width           : @width41;
+
+                                            &:first-child {
+                                                border-bottom-left-radius: 3px;
+                                                border-top-left-radius   : 3px;
+                                            }
+
+                                            &:last-child {
+                                                border-bottom-right-radius: 3px;
+                                                border-top-right-radius   : 3px;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .modal__service-photo--fill {
+                                    img {
+                                        height    : @height6;
+                                        object-fit: cover;
+                                        width     : @width32;
+                                    }
+                                }
+
+                                .restaurant-info-menu {
+                                    background-color: @color1;
+                                    border-bottom   : 1px solid rgba(0, 0, 0, .1);
+                                    position        : relative;
+                                    z-index         : 250;
+                                }
+
+                                .restaurant-info-menu--scroll {
+                                    position: fixed;
+                                    top     : 64px;
+                                }
+
+                                .restaurant-info-menu__item_more {
+                                    background: 0 0;
+                                    border    : none;
+                                    display   : none;
+                                    position  : absolute;
+                                    right     : 0;
+                                    top       : 15px;
+                                    width     : @width10;
+
+                                    &:hover {
+                                        cursor: pointer;
+                                    }
+                                }
+
+                                .restaurant-info-menu__item_more_text {
+                                    text-align: right;
+                                }
+
+                                .restaurant-info-menu__submenu {
+                                    background-color: @color1;
+                                    box-shadow      : 0 10px 30px rgba(0, 0, 0, .2);
+                                    display         : none;
+                                    list-style      : none;
+                                    padding         : 15px 20px;
+                                    position        : absolute;
+                                    right           : 0;
+                                    top             : 53px;
+                                    width           : @width18;
+                                    z-index         : 400;
+
+                                    li {
+                                        font-size    : 16px;
+                                        margin-bottom: 10px;
+
+                                        &:last-child {
+                                            margin-bottom: 0;
+                                        }
+
+                                        a {
+                                            color: @color2;
+                                        }
+                                    }
+                                }
+
+                                .delivery_type_cart {
+                                    border-radius: 3px;
+                                    padding      : 0 3px;
+
+                                    img {
+                                        height: @height30;
+                                    }
+                                }
+
+                                .restaurant-menu__empty {
+                                    padding: 40px 0;
+                                }
+
+                                #ya-map {
+                                    height: @height21;
+                                    width : @width48;
+                                }
+
+                                #ya-map.modal-map__map {
+                                    height: @height21;
+                                    width : @width48;
+                                }
+
+                                .modal-body>section>#ya-map {
+                                    height: 386px !important;
+                                    width : @width32  !important;
+                                }
+
+                                .category-wrapper {
+                                    margin-top: 100px;
+                                }
