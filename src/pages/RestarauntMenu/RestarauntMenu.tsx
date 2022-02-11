@@ -50,6 +50,14 @@ const menuItems: TLinkWithText[] = [
     link: '/',
     text: 'Рыба и птица',
   },
+  {
+    link: '/',
+    text: 'Мясо',
+  },
+  {
+    link: '/',
+    text: 'Печень',
+  },
 ];
 
 function RestarauntMenu(props: Props) {

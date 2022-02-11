@@ -40,7 +40,7 @@ function RestarauntMenuListBlock(props: Props) {
       <div className='section-title'>
         <h2>Суши</h2>
       </div>
-      <div className='service-list'>
+      <div className='service-list row'>
         {menuListItem.map(({ description, imgSrc, name, price, amount, weight }, index) => (
           <RestarauntMenuListItem
             description={description}
