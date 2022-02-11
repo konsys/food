@@ -13,7 +13,7 @@ function Header(props: Props) {
   return (
     <>
       <header className='header header_sticky'>
-        <div className='header-content'>
+        <div className='header-content d-flex'>
           <HeaderNavigationToggle />
           <div className='header-container container'>
             <HeaderLogo />

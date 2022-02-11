@@ -11,15 +11,9 @@
     }
 
     .header-buttons {
-        display        : flex;
-        flex-direction : column;
-        height         : @height43;
-        justify-content: center;
-        position       : absolute;
-        right          : 15px;
-        right          : 15px;
-        top            : 50%;
-        transform      : translateY(-50%);
+        height  : @height43;
+        position: absolute;
+        right   : 15px;
     }
 
     .header-nav-toggle {
@@ -153,6 +147,46 @@
 
         a.app-round-item-link-app_store {
             background-image: url(https://broniboy.ru/img/icons/app-store-icon-white.svg);
+        }
+    }
+}
+
+.fake-header.fake-header_active {
+    height: 163px;
+}
+
+.fake-header.fake-header_active-mobile {
+    height: 123px;
+}
+
+
+.header-nav-item-link-basket-stub {
+    background   : url(https://broniboy.ru/img/icons/basket-icon.svg) no-repeat center center;
+    border-radius: 20px;
+    opacity      : .4;
+    padding      : 19px;
+}
+
+.header-logo {
+    display        : flex;
+    flex-direction : column;
+    float          : left;
+    height         : @height43;
+    justify-content: center;
+
+    a {
+        display        : flex;
+        flex-direction : column;
+        height         : @height38;
+        justify-content: center;
+        position       : relative;
+        top            : 2px;
+
+        img {
+            display  : block;
+            height   : auto;
+            max-width: 171px;
+            width    : @width75;
         }
     }
 }
