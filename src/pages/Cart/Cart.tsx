@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import './cart.less';
 
 interface Props {}
 

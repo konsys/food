@@ -5,8 +5,6 @@ import FooterMenu from './components/FooterMenu/FooterMenu';
 import FooterCities from './components/FooterCities/FooterCities';
 import FooterCopyright from './components/FooterCopyright/FooterCopyright';
 
-import './footer.less';
-
 interface Props {}
 
 function Footer(props: Props) {

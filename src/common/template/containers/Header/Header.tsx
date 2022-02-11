@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import './header.less';
 import { HeaderButtons } from './components/HeaderButtons/HeaderButtons';
 import { HeaderNavigationToggle } from './components/HeaderNavigationToggle/HeaderNavigationToggle';
 import { HeaderLogo } from './components/HeaderLogo/HeaderLogo';

@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import './promo.less';
 
 interface Props {}
 
