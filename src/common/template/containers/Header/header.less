@@ -1,0 +1,158 @@
+@import '../../../../common/template/config/theme/vars.less';
+
+.header {
+    background-color: @color1;
+    box-shadow      : 0 10px 30px 0 rgba(0, 0, 0, .1);
+    padding         : 36px 0;
+    transform       : none;
+
+    .header-content {
+        position: relative;
+    }
+
+    .header-buttons {
+        display        : flex;
+        flex-direction : column;
+        height         : @height43;
+        justify-content: center;
+        position       : absolute;
+        right          : 15px;
+        right          : 15px;
+        top            : 50%;
+        transform      : translateY(-50%);
+    }
+
+    .header-nav-toggle {
+        display        : flex;
+        flex-direction : column;
+        height         : @height43;
+        justify-content: center;
+        left           : 60px;
+        left           : 15px;
+        position       : absolute;
+        top            : 50%;
+        transform      : translateY(-50%);
+        transition     : opacity .8s;
+        z-index        : 100;
+    }
+
+    .header-nav {
+        display        : flex;
+        flex-direction : column;
+        float          : right;
+        height         : @height43;
+        justify-content: center;
+    }
+}
+
+.header-container {
+    position: relative;
+}
+
+
+.header.header_sticky {
+    left    : 0;
+    padding : 8px 0;
+    position: fixed;
+    top     : 0;
+    width   : @width75;
+    z-index : 350;
+
+    .header-logo {
+        a {
+            img {
+                max-width: @width38;
+                width    : @width38;
+            }
+        }
+    }
+}
+
+.header.header_transparent {
+    background-color: transparent;
+    box-shadow      : none;
+    left            : 0;
+    position        : absolute;
+    right           : 0;
+    top             : 0;
+    width           : @width75;
+    z-index         : 10;
+
+    .header-logo {
+        a {
+            top: 0;
+
+            img {
+                max-width: @width43;
+                width    : @width43;
+            }
+        }
+    }
+
+    .nav-toggle {
+        span {
+            background-color: @color1;
+        }
+    }
+
+    .header-nav {
+        a {
+            background-repeat: no-repeat;
+            border           : 1px solid rgba(255, 255, 255, .2);
+            color            : rgba(255, 255, 255, .8);
+            transition       : background-color .3s, border .3s;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, .2);
+                border          : 1px solid rgba(255, 255, 255, .2);
+            }
+        }
+
+        a.header-nav-item-link-login {
+            background-image: url(https://broniboy.ru/img/icons/login-icon-white.svg);
+        }
+
+        a.header-nav-item-link {
+            span {
+                color: @color1;
+            }
+        }
+
+        a.header-nav-item-link-basket {
+            background-image: url(https://broniboy.ru/img/icons/basket-icon-white.svg);
+        }
+
+        a.header-nav-item-link--address {
+            background     : url(https://broniboy.ru/img/icons/map-marker-white.svg) no-repeat 0 center;
+            background-size: 16px;
+        }
+    }
+
+    .app-round {
+        a {
+            border    : 1px solid rgba(255, 255, 255, .2);
+            transition: background-color .3s, border .3s;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, .2);
+                border          : 1px solid rgba(255, 255, 255, .2);
+            }
+
+            &:hover.app-round-item-link-google_play {
+                background-image: url(https://broniboy.ru/img/icons/google-play-icon-white.svg);
+            }
+
+            &:hover.app-round-item-link-app_store {
+                background-image: url(https://broniboy.ru/img/icons/app-store-icon-white.svg);
+            }
+        }
+
+        a.app-round-item-link-google_play {
+            background-image: url(https://broniboy.ru/img/icons/google-play-icon-white.svg);
+        }
+
+        a.app-round-item-link-app_store {
+            background-image: url(https://broniboy.ru/img/icons/app-store-icon-white.svg);
+        }
+    }
+}

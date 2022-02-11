@@ -3,6 +3,7 @@ import { HeaderButtons } from './components/HeaderButtons/HeaderButtons';
 import { HeaderNavigationToggle } from './components/HeaderNavigationToggle/HeaderNavigationToggle';
 import { HeaderLogo } from './components/HeaderLogo/HeaderLogo';
 import { HeaderCity } from './components/HeaderCity/HeaderCity';
+import './header.less';
 
 interface Props {}
 
