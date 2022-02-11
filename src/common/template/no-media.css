@@ -101,11 +101,6 @@ button:focus {
 }
 
 
-::selection {
-    background-color: rgba(240, 131, 97, .5);
-    text-shadow     : none
-}
-
 svg:not(:root) {
     overflow: hidden
 }
@@ -835,9 +830,6 @@ svg:not(:root) {
 }
 
 
-.restaurants-search-form input::placeholder {
-    color: rgba(25, 24, 19, .54)
-}
 
 .restaurant-box {
     margin-bottom: 30px;
@@ -1799,12 +1791,6 @@ svg:not(:root) {
 
 
 
-.order-options textarea::placeholder {
-    color      : #a3a3a3;
-    font-size  : 20px;
-    font-weight: 400
-}
-
 .order-options-tabs {
     display      : flex;
     margin-bottom: 35px
@@ -1908,16 +1894,6 @@ svg:not(:root) {
     color           : #000
 }
 
-
-
-.cash-payment input::placeholder,
-.order-options-address input::placeholder {
-    color         : #999;
-    font-size     : 11px;
-    font-family   : Roboto, Arial, sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase
-}
 
 .order-options-bank-card {
     margin-bottom: 35px;
@@ -2093,14 +2069,6 @@ svg:not(:root) {
 }
 
 
-.add-card input::placeholder {
-    color         : #999;
-    font-size     : 20px;
-    font-family   : Roboto, Arial, sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase
-}
-
 .add-card .add-card-item-double {
     display         : flex;
     justify-content : space-between
@@ -2180,13 +2148,7 @@ svg:not(:root) {
 }
 
 
-.login input::placeholder {
-    color         : #999;
-    font-size     : 20px;
-    font-family   : Roboto, Arial, sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase
-}
+
 
 .login button {
     margin-bottom: 40px;
@@ -2334,11 +2296,6 @@ svg:not(:root) {
 }
 
 
-.product .product-form-section textarea::placeholder {
-    color    : #a3a3a3;
-    font-size: 15px
-}
-
 .product .product-form-nav {
     border-radius: 3px;
     display      : flex;
@@ -2475,12 +2432,6 @@ svg:not(:root) {
     overflow        : hidden;
     padding         : 0;
     width           : 100%
-}
-
-
-.options .options-form-section textarea::placeholder {
-    color    : #a3a3a3;
-    font-size: 15px
 }
 
 .options .options-form-nav {
@@ -4588,9 +4539,6 @@ ul.modal-list-restaurant li:last-child a div {
 }
 
 
-.welcome-search-form input::placeholder {
-    color: silver
-}
 
 .welcome-search-form button[type=submit] {
     border-radius: 50%;
@@ -6641,10 +6589,6 @@ body.modal-open {
 
 
 
-.modal__service-info textarea::placeholder {
-    color    : rgba(0, 0, 0, .2);
-    font-size: 14px
-}
 
 .modal__service-info .service-info__count {
     border-radius: 3px;

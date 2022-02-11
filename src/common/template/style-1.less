@@ -1,0 +1,200 @@
+*,
+:after,
+:before {
+    box-sizing: border-box
+}
+
+
+.restaurant-box .restaurant-box-time::before {
+    content         : '';
+    position        : absolute;
+    display         : block;
+    left            : -23px;
+    top             : 2px;
+    width           : 18px;
+    height          : 18px;
+    background-color: #fff;
+    mask            : url(https://broniboy.ru/img/icons/restaurant/clock.svg) no-repeat left 50%
+}
+
+.custom-input-buttons [type=checkbox]:checked,
+.custom-input-buttons [type=radio]:checked {
+    position: absolute;
+    left    : -9999px
+}
+
+.custom-input-buttons [type=checkbox]:checked+label,
+.custom-input-buttons [type=radio]:checked+label {
+    position     : relative;
+    padding-right: 25px;
+    padding-left : 28px;
+    cursor       : pointer;
+    font-size    : 16px;
+    line-height  : 22px;
+    display      : inline-block;
+    color        : #000
+}
+
+.custom-input-buttons [type=checkbox]:checked+label:hover,
+.custom-input-buttons [type=radio]:checked+label:hover {
+    color: #f37021
+}
+
+.custom-input-buttons [type=checkbox]:checked+label:hover span,
+.custom-input-buttons [type=radio]:checked+label:hover span {
+    color  : #f37021;
+    opacity: .4
+}
+
+.custom-input-buttons [type=checkbox]:checked+label span,
+.custom-input-buttons [type=radio]:checked+label span {
+    color: #b2b2b2
+}
+
+.custom-input-buttons [type=checkbox]:checked+label:before,
+.custom-input-buttons [type=radio]:checked+label:before {
+    content      : '';
+    position     : absolute;
+    left         : 0;
+    top          : 0;
+    width        : 20px;
+    height       : 20px;
+    border       : 1px solid #f37021;
+    border-radius: 100%;
+    background   : #fff
+}
+
+.custom-input-buttons [type=checkbox]:checked+label:after,
+.custom-input-buttons [type=radio]:checked+label:after {
+    content      : '';
+    width        : 10px;
+    height       : 10px;
+    background   : #f37021;
+    position     : absolute;
+    top          : 5px;
+    left         : 5px;
+    border-radius: 100%;
+    transition   : all .2s ease;
+    opacity      : 1;
+    transform    : scale(1)
+}
+
+.custom-input-buttons [type=checkbox]:not(:checked),
+.custom-input-buttons [type=radio]:not(:checked) {
+    position: absolute;
+    left    : -9999px
+}
+
+.custom-input-buttons [type=checkbox]:not(:checked)+label,
+.custom-input-buttons [type=radio]:not(:checked)+label {
+    position     : relative;
+    padding-right: 25px;
+    padding-left : 28px;
+    cursor       : pointer;
+    font-size    : 16px;
+    line-height  : 22px;
+    display      : inline-block;
+    color        : #000
+}
+
+.custom-input-buttons [type=checkbox]:not(:checked)+label:hover,
+.custom-input-buttons [type=radio]:not(:checked)+label:hover {
+    color: #f37021
+}
+
+.custom-input-buttons [type=checkbox]:not(:checked)+label:hover span,
+.custom-input-buttons [type=radio]:not(:checked)+label:hover span {
+    color  : #f37021;
+    opacity: .4
+}
+
+.custom-input-buttons [type=checkbox]:not(:checked)+label span,
+.custom-input-buttons [type=radio]:not(:checked)+label span {
+    color: #b2b2b2
+}
+
+.custom-input-buttons [type=checkbox]:not(:checked)+label:before,
+.custom-input-buttons [type=radio]:not(:checked)+label:before {
+    content      : '';
+    position     : absolute;
+    left         : 0;
+    top          : 0;
+    width        : 20px;
+    height       : 20px;
+    border       : 1px solid #f37021;
+    border-radius: 100%;
+    background   : #fff
+}
+
+.custom-input-buttons [type=checkbox]:not(:checked)+label:after,
+.custom-input-buttons [type=radio]:not(:checked)+label:after {
+    content      : '';
+    width        : 10px;
+    height       : 10px;
+    background   : #f37021;
+    position     : absolute;
+    top          : 5px;
+    left         : 5px;
+    border-radius: 100%;
+    transition   : all .2s ease;
+    opacity      : 0;
+    transform    : scale(0)
+}
+
+.custom-input-buttons [type=checkbox]:disabled:not(:checked)+label,
+.custom-input-buttons [type=radio]:disabled:not(:checked)+label {
+    color  : #000;
+    opacity: .4;
+    cursor : default
+}
+
+.custom-input-buttons [type=checkbox]:disabled:not(:checked)+label span,
+.custom-input-buttons [type=radio]:disabled:not(:checked)+label span {
+    color  : #b2b2b2;
+    opacity: .4
+}
+
+.custom-input-buttons [type=checkbox]:checked+label:before,
+.custom-input-buttons [type=checkbox]:not(:checked)+label:before {
+    border-radius: 0
+}
+
+.custom-input-buttons [type=checkbox]:checked+label:after,
+.custom-input-buttons [type=checkbox]:not(:checked)+label:after {
+    content      : '✓';
+    color        : #f37021;
+    width        : 10px;
+    height       : 10px;
+    background   : 0 0;
+    position     : absolute;
+    top          : 0;
+    left         : 5px;
+    border-radius: 0;
+    transition   : all .2s ease;
+    opacity      : 1;
+    transform    : scale(1)
+}
+
+.custom-input-buttons [type=checkbox]:not(:checked)+label:after {
+    transform: scale(0)
+}
+
+.custom-radio-buttons--disabled {
+    opacity: .4
+}
+
+.custom-radio-buttons--disabled [type=radio]:checked+label:hover span,
+.custom-radio-buttons--disabled [type=radio]:not(:checked)+label:hover span {
+    color  : #b2b2b2;
+    opacity: 1
+}
+
+.custom-radio-buttons--disabled [type=radio]:checked+label:hover,
+.custom-radio-buttons--disabled [type=radio]:not(:checked)+label:hover {
+    color: #000
+}
+
+.custom-radio-buttons--disabled [type=radio]:checked+label,
+.custom-radio-buttons--disabled [type=radio]:not(:checked)+label {
+    cursor: default
+}
