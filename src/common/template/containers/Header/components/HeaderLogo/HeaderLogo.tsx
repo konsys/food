@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const HeaderLogo = () => (
-  <div className='header-logo'>
+  <div className='header-logo float-start'>
     <a href='https://broniboy.ru' title='Главная'>
       <img
         className='d-none d-md-block'

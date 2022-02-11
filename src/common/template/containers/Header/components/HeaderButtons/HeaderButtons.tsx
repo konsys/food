@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const HeaderButtons = () => (
-  <nav className='header-nav header-buttons'>
+  <nav className='header-nav header-buttons d-flex float-end'>
     <ul className='list-clear clearfix'>
       <li className='hidden-xs hidden-sm'>
         <a
