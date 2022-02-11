@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
+import DownOutlined from '@ant-design/icons/DownOutlined';
 import { TLinkWithText } from '../../../../common/types/utilTypes';
 import TopNavigationSubMenu from './components/TopNavigationSubMenu';
 
@@ -44,10 +45,7 @@ function RestarauntMenuTopNavigation(props: Props) {
         onClick={toggleSubMenu}
       >
         <div className='restaurant-info-menu__item_more_text'>
-          Еще{' '}
-          <svg viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path d='M1 1L6 6L11 1' stroke='black' />
-          </svg>
+          Еще <DownOutlined />
         </div>
       </button>
 

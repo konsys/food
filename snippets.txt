@@ -24,3 +24,9 @@ tscntr→	react redux container skeleton
 imt	create a import
 
 rfmc⇥
+
+git branch temp
+git checkout temp
+git branch -f master temp
+git checkout master
+git branch -d temp
