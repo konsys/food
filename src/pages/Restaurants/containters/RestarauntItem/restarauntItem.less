@@ -1,0 +1,188 @@
+@import '../../../../common/template/config/theme/vars.less';
+
+.restaurant-box {
+    margin-bottom: 30px;
+    position     : relative;
+
+    .restaurant-box-top {
+        background-image       : url(https://broniboy.ru/img/content/restaurant/cover.svg);
+        background-size        : cover;
+        border-top-left-radius : 5px;
+        border-top-right-radius: 5px;
+        overflow               : hidden;
+        position               : relative;
+        z-index                : 2;
+
+        &:before {
+            content   : "";
+            display   : block;
+            margin-top: 56.25%;
+        }
+
+        a {
+            bottom  : 0;
+            display : block;
+            left    : 0;
+            position: absolute;
+            right   : 0;
+            top     : 0;
+
+            &:before {
+                background             : linear-gradient(to bottom, rgba(0, 0, 0, .3) 0, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, .3) 100%);
+                border-top-left-radius : 3px;
+                border-top-right-radius: 3px;
+                bottom                 : 0;
+                content                : '';
+                min-height             : @height38;
+                position               : absolute;
+                width                  : @width75;
+                z-index                : 2;
+            }
+
+            &:hover {
+                before {
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, .45) 0, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, .45) 100%);
+                }
+            }
+        }
+
+        .restaurant-box-top-about {
+            bottom  : 0;
+            left    : 0;
+            padding : 12px 14px 12px 79px;
+            position: absolute;
+            width   : @width75;
+            z-index : 5;
+
+            img {
+                border-radius: 50%;
+                bottom       : 14px;
+                height       : @height48;
+                left         : 14px;
+                position     : absolute;
+                width        : @width55;
+            }
+        }
+
+        .restaurant-box-top-about-descr {
+            float      : left;
+            padding-top: 3px;
+            width      : @width75;
+
+            h3 {
+                color      : @color1;
+                font-size  : 20px;
+                font-weight: 400;
+                line-height: @height44;
+                margin     : 0;
+            }
+
+            span {
+                color    : rgba(255, 255, 255, .6);
+                font-size: 12px;
+            }
+        }
+    }
+
+    .restaurant-box-second {
+        background-color          : @color1;
+        border                    : 1px solid @color3;
+        border-bottom-left-radius : 3px;
+        border-bottom-right-radius: 3px;
+        box-shadow                : 0 2px 0 0 rgba(0, 0, 0, .04);
+        min-height                : 1@height42;
+        padding                   : 0 15px;
+        position                  : relative;
+        top                       : -4px;
+
+        li {
+            margin-bottom: 10px;
+
+            a {
+                color    : #4b4b4b;
+                display  : block;
+                font-size: 15px;
+                overflow : hidden;
+                position : relative;
+
+                &:before {
+                    color      : #636363;
+                    content    : ".......................................................................................................................................................................................................................................................................................................................................................";
+                    font-weight: 300;
+                    position   : absolute;
+                    white-space: nowrap;
+                }
+
+                span {
+                    &:first-child {
+                        background-color: @color1;
+                        float           : left;
+                        max-height      : @height44;
+                        max-width       : @width39;
+                        padding         : 0 4px 0 0;
+                        position        : relative;
+                        z-index         : 2;
+                    }
+
+                    &:last-child {
+                        background-color: @color1;
+                        color           : @color0;
+                        float           : right;
+                        font-size       : 14px;
+                        font-weight     : 700;
+                        padding         : 0 0 0 4px;
+                        position        : relative;
+                        z-index         : 2;
+                    }
+                }
+            }
+        }
+    }
+
+    .restaurant-box-time {
+        color      : @color1;
+        font-size  : 14px;
+        font-weight: 700;
+        position   : absolute;
+        right      : 10px;
+        top        : 10px;
+        z-index    : 100;
+    }
+}
+
+.restaurant-box-second {
+    hr {
+        border-color: @color3;
+        margin      : 10px 0;
+    }
+
+    &__delivery {
+        border-top     : 1px solid @color3;
+        bottom         : 10px;
+        display        : flex;
+        justify-content: space-between;
+        padding-top    : 10px;
+        position       : absolute;
+        width          : calc(100% - @width57);
+
+        span {
+            font-size: 13px;
+        }
+
+        svg {
+            left        : 0;
+            margin-right: 8px;
+            position    : relative;
+            top         : 2px;
+        }
+
+        >div {
+            flex       : 1 0 auto;
+            line-height: 14px;
+
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+}

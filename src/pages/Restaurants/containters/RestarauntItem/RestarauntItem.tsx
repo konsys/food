@@ -4,6 +4,7 @@ import { ReactComponent as LongDistance } from '../../../../svg/long-distance.sv
 import { ReactComponent as DeliveryStandard } from '../../../../svg/delivery-standard.svg';
 import { ReactComponent as HightDemand } from '../../../../svg/high-demand.svg';
 import { EDeliveryType, RestarauntDto } from '../../../../modules/Restaruants/types';
+import './restarauntItem.less';
 
 type Props = RestarauntDto;
 
@@ -24,7 +25,7 @@ function RestarauntItem(props: Props) {
 
   return (
     <div className='col-lg-4 col-md-6 col-sm-6 col-xs-12'>
-      <div className='restaurant-box '>
+      <div className='restaurant-box'>
         <div className='restaurant-box-top'>
           <a href={`localhost:3000/restaurants/${uuid}`} title={name}>
             <img

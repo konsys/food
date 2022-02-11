@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { RestarauntDto } from '../../../../modules/Restaruants/types';
 import RestarauntItem from '../RestarauntItem/RestarauntItem';
+import './restarauntList.less';
 
 interface Props {
   items: RestarauntDto[];
