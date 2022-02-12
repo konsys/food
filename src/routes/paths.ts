@@ -6,7 +6,7 @@ import { EPathName, TPath } from './types';
 
 export const pathNames: Record<EPathName, TPath> = {
   HOME: { path: '/', name: 'Главная' },
-  MENU: { path: '/menu', name: 'Меню' },
+  MENU: { path: '/restaraunts/:uuid', name: 'Меню' },
   NOT_FOUND: { path: '/', name: 'Страница не найдена' },
 };
 

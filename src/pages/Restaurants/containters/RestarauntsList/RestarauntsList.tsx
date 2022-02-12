@@ -58,7 +58,11 @@ function RestarauntsList(props: Props) {
           </div>
           <noscript />
         </div>
-        <Link to='/menu' title='Посмотреть все рестораны' className='peach-btn peach-btn--category'>
+        <Link
+          to='/restaraunts/123456789'
+          title='Посмотреть все рестораны'
+          className='peach-btn peach-btn--category'
+        >
           Посмотреть все рестораны
         </Link>
       </div>
