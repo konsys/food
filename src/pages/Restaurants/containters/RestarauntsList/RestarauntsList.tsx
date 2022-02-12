@@ -1,14 +1,14 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { RestarauntDto } from '../../../../modules/Restaruants/types';
-import RestarauntItem from '../RestarauntItem/RestarauntItem';
-import './restarauntList.less';
+import { RestaurantDto } from '../../../../modules/Restaruants/types';
+import RestaurantItem from '../RestaurantItem/RestaurantItem';
+import './restaurantList.less';
 
 interface Props {
-  items: RestarauntDto[];
+  items: RestaurantDto[];
 }
 
-function RestarauntsList(props: Props) {
+function RestaurantsList(props: Props) {
   const { items } = props;
 
   return (
@@ -38,7 +38,7 @@ function RestarauntsList(props: Props) {
                 uuid,
                 description,
               }) => (
-                <RestarauntItem
+                <RestaurantItem
                   deliveryType={deliveryType}
                   name={name}
                   uuid={uuid}
@@ -59,7 +59,7 @@ function RestarauntsList(props: Props) {
           <noscript />
         </div>
         <Link
-          to='/restaraunts/123456789'
+          to='/restaurants/123456789'
           title='Посмотреть все рестораны'
           className='peach-btn peach-btn--category'
         >
@@ -70,4 +70,4 @@ function RestarauntsList(props: Props) {
   );
 }
 
-export default memo(RestarauntsList);
+export default memo(RestaurantsList);

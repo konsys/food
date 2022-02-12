@@ -1,9 +1,9 @@
 import { EDeliveryType, ERatingColor } from './types';
 import * as factory from 'factory.ts';
 import faker from 'faker';
-import { RestarauntDto, EFoodType } from './types';
+import { RestaurantDto, EFoodType } from './types';
 
-export const restarauntMenuFactory = factory.Sync.makeFactory<RestarauntDto>({
+export const restaurantMenuFactory = factory.Sync.makeFactory<RestaurantDto>({
   id: factory.each((n) => n),
   deliveryType: factory.each(() => EDeliveryType.LONG_DISTANCE),
   name: factory.each(() => faker.commerce.productName()),

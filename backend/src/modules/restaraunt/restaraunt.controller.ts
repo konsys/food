@@ -1,15 +1,15 @@
-import { UpdateRestarauntDto } from './dto/update-restaraunt.dto';
-import { CreateRestarauntDto } from './dto/create-restaraunt.dto';
+import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
+import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 
-import { Restaraunt } from '../../entities/restaraunt.entity';
+import { Restaurant } from '../../entities/restaurant.entity';
 import { Controller } from '@nestjs/common';
 import { AbstractController } from 'src/abstract/crud/abstractController';
-import { RestarauntService } from './restaraunt.service';
+import { RestaurantService } from './restaurant.service';
 
 
-@Controller('restaraunts')
-export class RestarauntController extends AbstractController<Restaraunt, CreateRestarauntDto, UpdateRestarauntDto> {
-  constructor(service: RestarauntService) {
+@Controller('restaurants')
+export class RestaurantController extends AbstractController<Restaurant, CreateRestaurantDto, UpdateRestaurantDto> {
+  constructor(service: RestaurantService) {
     super(service)
   }
 }

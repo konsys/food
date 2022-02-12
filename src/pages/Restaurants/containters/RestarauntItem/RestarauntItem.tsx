@@ -4,12 +4,12 @@ import { ReactComponent as RatingIcon } from '../../../../svg/rating.svg';
 import { ReactComponent as LongDistance } from '../../../../svg/long-distance.svg';
 import { ReactComponent as DeliveryStandard } from '../../../../svg/delivery-standard.svg';
 import { ReactComponent as HightDemand } from '../../../../svg/high-demand.svg';
-import { EDeliveryType, RestarauntDto } from '../../../../modules/Restaruants/types';
-import './restarauntItem.less';
+import { EDeliveryType, RestaurantDto } from '../../../../modules/Restaruants/types';
+import './restaurantItem.less';
 
-type Props = RestarauntDto;
+type Props = RestaurantDto;
 
-function RestarauntItem(props: Props) {
+function RestaurantItem(props: Props) {
   const {
     name,
     uuid,
@@ -42,7 +42,7 @@ function RestarauntItem(props: Props) {
           </Link>
         </div>
         <div className='restaurant-box-second'>
-          <Link to={`/restaraunts/${uuid}`} className='restaurant-box-second__link' title={name}>
+          <Link to={`/restaurants/${uuid}`} className='restaurant-box-second__link' title={name}>
             <div className='restaurant-box-second__title'>{name}</div>
           </Link>
           <div className='restaurant-box-second__description'>
@@ -94,4 +94,4 @@ function RestarauntItem(props: Props) {
   );
 }
 
-export default memo(RestarauntItem);
+export default memo(RestaurantItem);

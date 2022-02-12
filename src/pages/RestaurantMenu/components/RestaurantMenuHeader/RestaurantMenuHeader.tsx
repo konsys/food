@@ -8,25 +8,25 @@ import { ReactComponent as LongDistance } from '../../../../svg/long-distance.sv
 
 interface Props {
   restaruantImgSrc: string;
-  restarauntName: string;
+  restaurantName: string;
   rating: RatingDto;
   priceRating: RatingDto;
   closeTime: TCloseTime;
   deliveryBlockHidden: boolean;
 }
 
-function RestarauntMenuHeader(props: Props) {
-  const { restarauntName, restaruantImgSrc, rating, priceRating, closeTime, deliveryBlockHidden } =
+function RestaurantMenuHeader(props: Props) {
+  const { restaurantName, restaruantImgSrc, rating, priceRating, closeTime, deliveryBlockHidden } =
     props;
   return (
     <section className='restaurant restaurant--shop'>
       <div className='restaurant-content'>
         <div className='restaurant__background'>
-          <img src={restaruantImgSrc} className='restaurant-bg-image' alt={restarauntName} />
+          <img src={restaruantImgSrc} className='restaurant-bg-image' alt={restaurantName} />
         </div>
         <div className='restaurant-descr'>
           <h1>
-            <span className='--title'>{restarauntName}</span>
+            <span className='--title'>{restaurantName}</span>
           </h1>
           <i className='restaurant-descr__bull'>&nbsp;•&nbsp;</i>
           <span className='restaurant-box-second__rating'>
@@ -64,4 +64,4 @@ function RestarauntMenuHeader(props: Props) {
   );
 }
 
-export default RestarauntMenuHeader;
+export default RestaurantMenuHeader;

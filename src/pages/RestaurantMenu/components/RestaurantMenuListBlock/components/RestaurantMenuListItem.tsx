@@ -3,7 +3,7 @@ import { MenuListDto } from '../../../../../common/types/dto';
 
 type Props = MenuListDto;
 
-function RestarauntMenuListItem(props: Props) {
+function RestaurantMenuListItem(props: Props) {
   const { name, imgSrc, description, price, amount, weight } = props;
 
   return (
@@ -31,4 +31,4 @@ function RestarauntMenuListItem(props: Props) {
   );
 }
 
-export default memo(RestarauntMenuListItem);
+export default memo(RestaurantMenuListItem);

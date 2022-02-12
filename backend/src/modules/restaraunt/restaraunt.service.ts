@@ -1,18 +1,18 @@
 
 import { Injectable } from '@nestjs/common';
 import { AbstractService } from 'src/abstract/crud/abstractService';
-import { UpdateRestarauntDto } from './dto/update-restaraunt.dto';
-import { Restaraunt } from 'src/entities/restaraunt.entity';
+import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
+import { Restaurant } from 'src/entities/restaurant.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateRestarauntDto } from './dto/create-restaraunt.dto';
+import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 
 
   @Injectable()
-  export class RestarauntService extends AbstractService<Restaraunt, CreateRestarauntDto, UpdateRestarauntDto> {
+  export class RestaurantService extends AbstractService<Restaurant, CreateRestaurantDto, UpdateRestaurantDto> {
   
-    constructor(@InjectRepository(Restaraunt)
-    repository: Repository<Restaraunt>
+    constructor(@InjectRepository(Restaurant)
+    repository: Repository<Restaurant>
     ) {
       super(repository);
     }

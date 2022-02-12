@@ -1,15 +1,15 @@
 import { useGate, useStore } from 'effector-react';
 import React, { memo } from 'react';
-import { RestarauntModel } from '../../store';
-import RestarauntsList from './containters/RestarauntsList/RestarauntsList';
-import './restaraunts.less';
+import { RestaurantModel } from '../../store';
+import RestaurantsList from './containters/RestaurantsList/RestaurantsList';
+import './restaurants.less';
 
-const { $listStore, ListGate } = RestarauntModel;
+const { $listStore, ListGate } = RestaurantModel;
 
-function Restaraunt() {
+function Restaurant() {
   const { items } = useStore($listStore);
   useGate(ListGate);
-  return <RestarauntsList items={items} />;
+  return <RestaurantsList items={items} />;
 }
 
-export default memo(Restaraunt);
+export default memo(Restaurant);

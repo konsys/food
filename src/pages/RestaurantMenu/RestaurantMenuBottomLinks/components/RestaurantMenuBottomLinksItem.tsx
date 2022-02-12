@@ -5,7 +5,7 @@ interface Props {
   items: TLinkWithText[];
 }
 
-function RestarauntMenuBottomLinksItem(props: Props) {
+function RestaurantMenuBottomLinksItem(props: Props) {
   const { items } = props;
 
   return (
@@ -19,4 +19,4 @@ function RestarauntMenuBottomLinksItem(props: Props) {
   );
 }
 
-export default memo(RestarauntMenuBottomLinksItem);
+export default memo(RestaurantMenuBottomLinksItem);

@@ -3,7 +3,7 @@ import { Column, Entity, JoinColumn, ManyToOne} from 'typeorm';
 import { Images } from './images.entity';
 
 @Entity()
-export class Restaraunt extends AbstractDictionary {
+export class Restaurant extends AbstractDictionary {
     @Column()
     deliveryType: EDeliveryType;
 

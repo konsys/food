@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 interface Props {}
 
-function RestarauntMenuItem(props: Props) {
+function RestaurantMenuItem(props: Props) {
   const {} = props;
 
   return (
@@ -22,4 +22,4 @@ function RestarauntMenuItem(props: Props) {
   );
 }
 
-export default memo(RestarauntMenuItem);
+export default memo(RestaurantMenuItem);

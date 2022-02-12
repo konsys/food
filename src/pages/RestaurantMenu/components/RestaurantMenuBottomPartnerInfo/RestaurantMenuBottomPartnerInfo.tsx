@@ -8,7 +8,7 @@ interface Props {
   partnerOGRN?: string;
 }
 
-function RestarauntMenuBottomPartnerInfo(props: Props) {
+function RestaurantMenuBottomPartnerInfo(props: Props) {
   const { partnerName, partnerAddress, partnerINN, partnerKPP, partnerOGRN } = props;
 
   return (
@@ -21,4 +21,4 @@ function RestarauntMenuBottomPartnerInfo(props: Props) {
   );
 }
 
-export default memo(RestarauntMenuBottomPartnerInfo);
+export default memo(RestaurantMenuBottomPartnerInfo);

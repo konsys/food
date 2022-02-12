@@ -7,7 +7,7 @@ interface Props {
   menuItems: TLinkWithText[];
 }
 
-function RestarauntMenuTopNavigation(props: Props) {
+function RestaurantMenuTopNavigation(props: Props) {
   const { menuItems } = props;
   const ref = useRef<any>();
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -71,4 +71,4 @@ function RestarauntMenuTopNavigation(props: Props) {
   );
 }
 
-export default memo(RestarauntMenuTopNavigation);
+export default memo(RestaurantMenuTopNavigation);

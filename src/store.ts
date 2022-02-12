@@ -1,11 +1,11 @@
-import { RestarauntDto } from './modules/Restaruants/types';
+import { RestaurantDto } from './modules/Restaruants/types';
 import { apiUrls } from './common/api/urls';
 import { CrudStore } from './common/models/abstractModel/abstractCrudModel';
 import { TItemWithId } from './common/types';
 import { ImageDto } from './modules/Image/model/types';
 
-export const RestarauntModel = new CrudStore<RestarauntDto>(
-  apiUrls.restaraunts.main
+export const RestaurantModel = new CrudStore<RestaurantDto>(
+  apiUrls.restaurants.main
 ).createCrudStore();
 export const ImageModel = new CrudStore<TItemWithId<FormData>, ImageDto>(
   apiUrls.img.main

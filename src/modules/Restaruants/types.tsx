@@ -2,7 +2,7 @@ import { RatingDto } from '../../common/types/dto';
 import { DictionaryDto } from '../../core/dictionary/types';
 import { ImageDto } from '../Image/model/types';
 
-export type RestarauntDto = {
+export type RestaurantDto = {
   deliveryType: EDeliveryType;
   deliveryFullTime?: string;
   price: number;

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { MenuListDto } from '../../../../common/types/dto';
-import RestarauntMenuListItem from './components/RestarauntMenuListItem';
+import RestaurantMenuListItem from './components/RestaurantMenuListItem';
 
 const menuListItem: MenuListDto[] = [
   {
@@ -32,7 +32,7 @@ const menuListItem: MenuListDto[] = [
 ];
 interface Props {}
 
-function RestarauntMenuListBlock(props: Props) {
+function RestaurantMenuListBlock(props: Props) {
   const {} = props;
 
   return (
@@ -42,7 +42,7 @@ function RestarauntMenuListBlock(props: Props) {
       </div>
       <div className='service-list row'>
         {menuListItem.map(({ description, imgSrc, name, price, amount, weight }, index) => (
-          <RestarauntMenuListItem
+          <RestaurantMenuListItem
             description={description}
             imgSrc={imgSrc}
             name={name}
@@ -58,4 +58,4 @@ function RestarauntMenuListBlock(props: Props) {
   );
 }
 
-export default memo(RestarauntMenuListBlock);
+export default memo(RestaurantMenuListBlock);

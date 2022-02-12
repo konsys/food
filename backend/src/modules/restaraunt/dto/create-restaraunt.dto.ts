@@ -1,4 +1,4 @@
 import { PartialType } from "@nestjs/swagger";
-import { Restaraunt } from "src/entities/restaraunt.entity";
+import { Restaurant } from "src/entities/restaurant.entity";
 
-export class CreateRestarauntDto extends PartialType(Restaraunt) {}
+export class CreateRestaurantDto extends PartialType(Restaurant) {}

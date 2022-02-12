@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { TLinkWithText } from '../../../common/types/utilTypes';
-import RestarauntMenuBottomLinksItem from './components/RestarauntMenuBottomLinksItem';
+import RestaurantMenuBottomLinksItem from './components/RestaurantMenuBottomLinksItem';
 
 interface Props {}
 
@@ -51,14 +51,14 @@ const items: TLinkWithText[] = [
   },
 ];
 
-function RestarauntMenuBottomLinks(props: Props) {
+function RestaurantMenuBottomLinks(props: Props) {
   const {} = props;
 
   return (
     <div>
-      <RestarauntMenuBottomLinksItem items={items} />
+      <RestaurantMenuBottomLinksItem items={items} />
     </div>
   );
 }
 
-export default memo(RestarauntMenuBottomLinks);
+export default memo(RestaurantMenuBottomLinks);

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { ReactComponent as MotoIcon } from './svg/moto.svg';
-import { ReactComponent as RestarauntIcon } from './svg/restaurant.svg';
+import { ReactComponent as RestaurantIcon } from './svg/restaurant.svg';
 import { ReactComponent as RightArrowIcon } from './svg/right-arrow.svg';
 import { ReactComponent as ForPartnersIcon } from './svg/for-partners.svg';
 
@@ -28,7 +28,7 @@ function PromoPartners(props: Props) {
         </div>
         <div className='col-lg-4 promo-partner'>
           <div className='promo-partner__icon'>
-            <RestarauntIcon />
+            <RestaurantIcon />
           </div>
           <div className='promo-partner__title'>Ресторанам</div>
           <div className='promo-partner__description'>
