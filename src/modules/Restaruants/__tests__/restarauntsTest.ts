@@ -44,7 +44,8 @@ describe('menu tests', () => {
     $listStore.off(resetList);
   });
 
-  it('should create menu', () => {
+  it('should create menu', async () => {
+    await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
     expect(1).toBe(1);
   });
 

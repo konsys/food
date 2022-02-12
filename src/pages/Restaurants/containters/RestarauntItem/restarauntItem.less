@@ -1,22 +1,21 @@
 @import '../../../../common/template/config/theme/vars.less';
 
 .restaurant-box {
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
     position     : relative;
 
     .restaurant-box-top {
-        background-image       : url(https://broniboy.ru/img/content/restaurant/cover.svg);
-        background-size        : cover;
-        border-top-left-radius : 5px;
-        border-top-right-radius: 5px;
-        overflow               : hidden;
-        position               : relative;
-        z-index                : 2;
+        background-image: url(https://broniboy.ru/img/content/restaurant/cover.svg);
+        background-size : cover;
+        border-radius   : 3px;
+        overflow        : hidden;
+        position        : relative;
+        z-index         : 2;
 
         &:before {
             content   : "";
             display   : block;
-            margin-top: 56.25%;
+            margin-top: 12rem;
         }
 
         a {
@@ -28,202 +27,119 @@
             top     : 0;
 
             &:before {
-                background             : linear-gradient(to bottom, rgba(0, 0, 0, .3) 0, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, .3) 100%);
-                border-top-left-radius : 3px;
-                border-top-right-radius: 3px;
-                bottom                 : 0;
-                content                : '';
-                min-height             : @height38;
-                position               : absolute;
-                width                  : @width75;
-                z-index                : 2;
-            }
+                background: linear-gradient(to bottom, rgba(0, 0, 0, .3) 0, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, .3) 100%);
 
-            &:hover {
-                before {
-                    background: linear-gradient(to bottom, rgba(0, 0, 0, .45) 0, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, .45) 100%);
-                }
+                bottom    : 0;
+                content   : '';
+                min-height: @height38;
+                position  : absolute;
+                width     : @width75;
+                z-index   : 2;
             }
         }
 
-        .restaurant-box-top-about {
+        .restaurant-box-top-logo {
             bottom  : 0;
             left    : 0;
-            padding : 12px 14px 12px 79px;
+            padding : 1rem;
             position: absolute;
             width   : @width75;
             z-index : 5;
 
             img {
                 border-radius: 50%;
-                bottom       : 14px;
+                bottom       : 1rem;
                 height       : @height48;
-                left         : 14px;
+                left         : 1rem;
                 position     : absolute;
                 width        : @width55;
             }
         }
 
-        .restaurant-box-top-about-descr {
-            float      : left;
-            padding-top: 3px;
-            width      : @width75;
-
-            h3 {
-                color      : @color1;
-                font-size  : 20px;
-                font-weight: 400;
-                line-height: @height44;
-                margin     : 0;
-            }
-
-            span {
-                color    : rgba(255, 255, 255, .6);
-                font-size: 12px;
-            }
-        }
     }
 
     .restaurant-box-second {
-        background-color          : @color1;
-        border                    : 1px solid @color3;
-        border-bottom-left-radius : 3px;
-        border-bottom-right-radius: 3px;
-        box-shadow                : 0 2px 0 0 rgba(0, 0, 0, .04);
-        min-height                : 1@height42;
-        padding                   : 0 15px;
-        position                  : relative;
-        top                       : -4px;
+        background-color: @color1;
+        border          : 1px solid @color3;
+        border-radius   : 3px;
+        box-shadow      : 0 2px 0 0 rgba(0, 0, 0, .04);
+        min-height      : 164px;
+        padding         : 0 1rem;
+        position        : relative;
 
-        li {
-            margin-bottom: 10px;
+        &__link {
+            &:hover {
+                color: @color0;
+            }
+        }
 
-            a {
-                color    : #4b4b4b;
-                display  : block;
-                font-size: 15px;
-                overflow : hidden;
-                position : relative;
+        &__title {
+            color    : @color2;
+            font-size: 1.25rem;
+            margin   : 1rem 0 0.75rem;
+        }
 
-                &:before {
-                    color      : #636363;
-                    content    : ".......................................................................................................................................................................................................................................................................................................................................................";
-                    font-weight: 300;
-                    position   : absolute;
-                    white-space: nowrap;
-                }
 
-                span {
-                    &:first-child {
-                        background-color: @color1;
-                        float           : left;
-                        max-height      : @height44;
-                        max-width       : @width39;
-                        padding         : 0 4px 0 0;
-                        position        : relative;
-                        z-index         : 2;
-                    }
+        &__rating {
+            &--number {
+                color: @colorSuccess;
 
-                    &:last-child {
-                        background-color: @color1;
-                        color           : @color0;
-                        float           : right;
-                        font-size       : 14px;
-                        font-weight     : 700;
-                        padding         : 0 0 0 4px;
-                        position        : relative;
-                        z-index         : 2;
-                    }
+            }
+
+            &--star {
+                padding-right: .5rem;
+
+                svg {
+                    width        : 0.75rem;
+                    height       : 0.75rem;
+                    fill         : @colorSuccess;
+                    margin-bottom: 0.25rem;
                 }
             }
         }
-    }
 
-    .restaurant-box-time {
-        color      : @color1;
-        font-size  : 14px;
-        font-weight: 700;
-        position   : absolute;
-        right      : 10px;
-        top        : 10px;
-        z-index    : 100;
-    }
-}
-
-.restaurant-box-second {
-    hr {
-        border-color: @color3;
-        margin      : 10px 0;
-    }
-
-    &__delivery {
-        border-top     : 1px solid @color3;
-        bottom         : 10px;
-        display        : flex;
-        justify-content: space-between;
-        padding-top    : 10px;
-        position       : absolute;
-        width          : calc(100% - @width57);
-
-        span {
-            font-size: 13px;
+        &__info {
+            color        : silver;
+            font-size    : 1rem;
+            padding-right: 0.25rem;
         }
 
-        svg {
-            left        : 0;
-            margin-right: 8px;
-            position    : relative;
-            top         : 2px;
-        }
 
-        >div {
-            flex       : 1 0 auto;
-            line-height: 14px;
+        &__delivery {
+            border-top : 1px solid @color3;
+            bottom     : 0.75rem;
+            padding-top: 0.75rem;
+            position   : absolute;
+            width      : calc(100% - @width57);
 
-            &:last-child {
-                text-align: right;
+            span {
+                font-size: 13px;
+            }
+
+            svg {
+                left        : 0;
+                margin-right: 8px;
+                position    : relative;
+                top         : 2px;
             }
         }
+
+        &__delivery-icon {
+            border-radius: 3px;
+            height       : 14px;
+            left         : 0;
+            margin-right : 5px;
+            padding      : 2px;
+            position     : relative;
+            top          : -1px;
+        }
+
+        &__delivery-time {
+            color      : @color0;
+            font-weight: 700;
+            position   : absolute;
+            right      : 0
+        }
     }
-}
 
-.restaurant-box-second__delivery-icon {
-    border-radius: 3px;
-    height       : 14px;
-    left         : 0;
-    margin-right : 5px;
-    padding      : 2px;
-    position     : relative;
-    top          : -1px;
-}
-
-.restaurant-box-second__delivery-time {
-    color      : @color0;
-    font-weight: 700;
-}
-
-.restaurant-box-second__title {
-    color    : @color2;
-    font-size: 20px;
-    margin   : 15px 0 10px;
-}
-
-.restaurant-box-second__link {
-    &:hover {
-        color: @color0;
-    }
-}
-
-.restaurant-box-second__rating {
-    font-size    : 16px;
-    padding-right: 5px;
-}
-
-.restaurant-box-second__info {
-    color    : silver;
-    font-size: 15px;
-}
-
-.restaurant-box-second__bull {
-    padding: 0 4px;
 }

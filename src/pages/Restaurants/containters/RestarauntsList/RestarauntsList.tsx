@@ -43,7 +43,7 @@ function RestarauntsList(props: Props) {
                   name={name}
                   uuid={uuid}
                   image={image}
-                  logoUrl={logoUrl}
+                  logoUrl='https://images.broniboy.ru/oqImvIfl3bVYngw-tF7D5_uOBHI=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/16d30944-4433-4ac6-bc3a-e543ff2ea12a/1ce5e674124599cd6b922c19e8a2ef68.jpg'
                   ratingColor={ratingColor}
                   rating={rating}
                   priceRate={priceRate}
