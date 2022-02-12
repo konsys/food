@@ -2,7 +2,7 @@ import { UpdateImageDto } from './dto/update-image.dto';
 import { CreateImageDto } from './dto/create-image.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { uiid } from 'src/common/random';
+import { uuid } from 'src/common/random';
 import { Repository } from 'typeorm';
 import * as path from 'path';
 const gm = require('gm').subClass({ imageMagick: true });
@@ -24,7 +24,7 @@ private imageRepository:Repository<Images>;
   async saveFileData(file: Express.Multer.File) {
     const save: Partial<Images> = {
       ...file,
-      name: uiid(),
+      name: uuid(),
       original: file.destination
     }
 
@@ -41,7 +41,7 @@ private imageRepository:Repository<Images>;
   convert(inFileName: string, width: number): Promise<string> {
 
     return new Promise((resolve, reject) => {
-      const outFileName = `${uiid()}${path.extname(inFileName).toLowerCase()}`;
+      const outFileName = `${uuid()}${path.extname(inFileName).toLowerCase()}`;
 
       const inPath = `${FULL_UPLOAD_PATH}/${inFileName}`;
       const outPath = `${FULL_UPLOAD_PATH}/${outFileName}`;

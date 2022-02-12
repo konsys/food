@@ -42,7 +42,7 @@ function RestarauntItem(props: Props) {
           </Link>
         </div>
         <div className='restaurant-box-second'>
-          <Link to={`restaraunt/${uuid}`} className='restaurant-box-second__link' title={name}>
+          <Link to={`/restaraunts/${uuid}`} className='restaurant-box-second__link' title={name}>
             <div className='restaurant-box-second__title'>{name}</div>
           </Link>
           <div className='restaurant-box-second__description'>

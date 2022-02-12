@@ -5,9 +5,6 @@ import { Images } from './images.entity';
 @Entity()
 export class Restaraunt extends AbstractDictionary {
     @Column()
-    uuid: string;
-
-    @Column()
     deliveryType: EDeliveryType;
 
     @Column()

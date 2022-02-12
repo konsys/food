@@ -1,20 +1,17 @@
+import { DictionaryDto } from './../../../core/dictionary/types';
 export type ImageDto = {
   averageImg: string | null;
   largeImg: string | null;
-  createdAt: Date;
   description: string | null;
   destination: string;
   encoding: string;
   fieldname: string;
   filename: string;
-  id: number;
   mimetype: string;
-  name: string;
   original: string;
   originalname: string;
   path: string;
   size: number;
   smallImg: string | null;
-  updatedAt: Date;
   visible: boolean;
-};
+} & DictionaryDto;

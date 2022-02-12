@@ -11,6 +11,9 @@ export class AbstractDictionary {
   id: number;
 
   @Column()
+  uuid: string;
+
+  @Column()
   name: string;
 
   @Column({default: null})

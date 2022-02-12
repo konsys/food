@@ -25,6 +25,7 @@ export const imageFactory = factory.Sync.makeFactory<ImageDto>({
   path: factory.each(() => faker.datatype.uuid()),
   size: factory.each(() => faker.datatype.number(100000)),
   createdAt: factory.each(() => faker.datatype.datetime()),
+  uuid: factory.each(() => faker.datatype.uuid()),
   id: factory.each((id) => id),
   mimetype: factory.each(() => faker.datatype.uuid()),
   original: factory.each(
