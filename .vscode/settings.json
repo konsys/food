@@ -71,6 +71,6 @@
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
     },
     "[less]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "MikeBovenlander.formate"
     }
 }

@@ -1,0 +1,57 @@
+@import '../../../../../common/template/config/theme/vars.less';
+
+.promo-block {
+    background-color: @color24;
+    margin          : 3rem 0;
+    padding-top     : 2rem;
+
+
+
+    .promo-item {
+        .promo-item__title {
+            color         : @color5;
+            font-size     : 2rem;
+            font-weight   : 700;
+            padding-bottom: 1.5rem;
+        }
+
+        .promo-item__list {
+            list-style: none;
+
+            li {
+                color      : @color9;
+                font-size  : 1rem;
+                font-weight: 400;
+                margin-top : 1.5rem;
+                padding    : 0.5rem 1.5rem;
+                position   : relative;
+
+                &:before {
+                    background: url(https://broniboy.ru/img/icons/promo-marker.svg) no-repeat;
+                    content   : "";
+                    height    : 2.5rem;
+                    left      : -2rem;
+                    position  : absolute;
+                    top       : 0;
+                    width     : @width52;
+
+                }
+            }
+        }
+
+        hr {
+            border-bottom: 1px solid @color26;
+            margin       : 2.5rem 0;
+        }
+    }
+
+    .promo-item__apps {
+        margin-left: -0.75rem;
+
+        .app-btn {
+            height: @height48;
+            margin: 0 0.75rem;
+            width : 11rem;
+        }
+    }
+}

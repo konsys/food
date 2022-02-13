@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
 import './welcome.less';
-import { Link } from 'react-router-dom';
 
 interface Props {}
 
