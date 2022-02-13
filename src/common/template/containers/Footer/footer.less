@@ -1,0 +1,116 @@
+@import '../../../../common/template/config/theme/vars.less';
+
+
+.footer {
+    background-color: @color6;
+    color           : @color2;
+}
+
+.footer-top {
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+    padding      : 40px 0;
+
+    .footer-app {
+        .footer-app-google_play {
+            margin-bottom: 20px;
+        }
+    }
+
+    .footer-phone {
+        color      : @colorWhite;
+        font-size  : 28px;
+        font-size  : 26px;
+        font-weight: 300;
+    }
+}
+
+.footer-app {
+    display        : flex;
+    justify-content: flex-end;
+    margin-top     : 40px;
+
+    .grayscale {
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+}
+
+.footer-bottom {
+    padding: 25px 0;
+
+    .footer-copyright {
+        margin-top: 40px;
+
+        p {
+            color         : rgba(163, 163, 158, .341);
+            font-size     : 14px;
+            letter-spacing: 1px;
+            margin-bottom : 0;
+            text-align    : center;
+            text-transform: uppercase;
+        }
+    }
+
+    .container {
+        display        : flex;
+        justify-content: space-between;
+    }
+}
+
+.footer-bottom__title {
+    font-size    : 20px;
+    font-weight  : 500;
+    line-height  : @height44;
+    margin-bottom: 20px;
+    margin-top   : 5px;
+}
+
+.footer-nav {
+    margin-top: -4px;
+
+    li {
+        margin-bottom: 15px;
+    }
+
+    a {
+        color      : @color2;
+        cursor     : pointer;
+        font-size  : 14px;
+        font-weight: 300;
+        line-height: 1;
+        transition : color .3s;
+
+        &:hover {
+            color: rgba(0, 0, 0, .6);
+        }
+    }
+}
+
+.footer-nav--contacts {
+    text-align: right;
+
+    a {
+        font-size  : 28px;
+        font-weight: 300;
+        line-height: @height44;
+    }
+}
+
+.footer-social {
+    margin   : 0;
+    margin   : 0 0 0 auto;
+    max-width: 2@width57;
+    max-width: none;
+
+    .footer-social-title {
+        display      : block;
+        font-size    : 18px;
+        font-weight  : 700;
+        margin-bottom: 20px;
+    }
+
+    .footer-social-content {
+        margin-bottom: 50px;
+    }
+}

@@ -1,6 +1,7 @@
 import React, { memo, ReactNode } from 'react';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
 import Promo from './Promo/Promo';
+import PromoPartners from './PromoPartners/PromoPartners';
 
 interface Props {
   children: ReactNode;
@@ -20,7 +21,7 @@ function Content(props: Props) {
       {/* TODO add for main page */}
       <Promo />
       {/* TODO add for main page */}
-      {/* <PromoPartners />  */}
+      <PromoPartners />
       <section className='container custom-page' />
     </main>
   );

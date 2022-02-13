@@ -1,0 +1,49 @@
+@import '../../../../../common/template/config/theme/vars.less';
+
+.promo-partners {
+    .promo-partner {
+        margin: 2rem 0 5rem;
+
+        position: relative;
+
+        .promo-partner__icon {
+            svg {
+                height: 5rem;
+                width : 5rem;
+            }
+        }
+
+        .promo-partner__title {
+            color      : @color5;
+            font-size  : 1.5rem;
+            font-weight: 400;
+            margin     : 1.5rem 0 1rem;
+        }
+
+        .promo-partner__description {
+            color        : silver;
+            font-size    : 1rem;
+            font-weight  : 400;
+            line-height  : 140%;
+            margin-bottom: 1.5rem;
+            opacity      : .8;
+        }
+
+        .promo-partner__link {
+            color      : @colorMain;
+            font-size  : 1rem;
+            font-weight: 500;
+            line-height: 140%;
+            opacity    : .8;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .promo-partners__arrow-icon {
+        width      : 3rem;
+        margin-left: 0.25rem;
+    }
+}

@@ -1,8 +1,10 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as MotoIcon } from './svg/moto.svg';
 import { ReactComponent as RestaurantIcon } from './svg/restaurant.svg';
 import { ReactComponent as RightArrowIcon } from './svg/right-arrow.svg';
 import { ReactComponent as ForPartnersIcon } from './svg/for-partners.svg';
+import './promoPartners.less';
 
 interface Props {}
 
@@ -13,7 +15,7 @@ function PromoPartners(props: Props) {
     <section className='container promo-partners'>
       <div className='row'>
         <div className='col-lg-4 promo-partner'>
-          <div className='promo-partner__icon'>
+          <div className='promo-partner__icon d-flex justify-content-start'>
             <MotoIcon />
           </div>
           <div className='promo-partner__title'>Курьерам</div>
@@ -21,10 +23,10 @@ function PromoPartners(props: Props) {
             Тебе достаточно пары ног и велосипеда, чтобы зарабатывать 20-30 тысяч в месяц и
             развиваться в крутейшей команде спецов
           </div>
-          <a href='https://broniboy.ru/riders/' className='promo-partner__link' title='Подробнее'>
+          <Link to='/about' className='promo-partner__link' title='Подробнее'>
             Подробнее
             <RightArrowIcon className='promo-partners__arrow-icon' />
-          </a>
+          </Link>
         </div>
         <div className='col-lg-4 promo-partner'>
           <div className='promo-partner__icon'>
@@ -35,10 +37,10 @@ function PromoPartners(props: Props) {
             Запустим быструю доставку из вашего ресторана за неделю. Потребуется только заключить
             договор и выслать меню.
           </div>
-          <a href='/broniboy_for_partners.pdf' title='Подробнее' className='promo-partner__link'>
+          <Link to='/about' title='Подробнее' className='promo-partner__link'>
             Подробнее
             <RightArrowIcon className='promo-partners__arrow-icon' />
-          </a>
+          </Link>
         </div>
         <div className='col-lg-4 promo-partner'>
           <div className='promo-partner__icon'>
@@ -49,10 +51,10 @@ function PromoPartners(props: Props) {
             Организуем доставку по городу день-в-день документов или заказов для ваших клиентов.
             Работаем без предоплаты.
           </div>
-          <a href='https://b2b.broniboy.ru/' title='Подробнее' className='promo-partner__link'>
+          <Link to='/about' title='Подробнее' className='promo-partner__link'>
             Подробнее
             <RightArrowIcon className='promo-partners__arrow-icon' />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
