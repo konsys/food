@@ -14,14 +14,14 @@ function MetaBreadcrumsItems(props: Props) {
 
   return (
     <div itemScope itemType='https://schema.org/BreadcrumbList' className='hidden'>
-      {metaElements.map(({ name, breadcrumbUrlPart }) => {
+      {metaElements.map(({ name, breadcrumbUrlPart }) => (
         <div itemProp='itemListElement' itemScope itemType='https://schema.org/ListItem'>
           <meta itemProp='name' content={name} />
           <meta itemProp='position' />
           <a itemProp='url' href={breadcrumbUrlPart} />
           <meta itemProp='item' content={breadcrumbUrlPart} />
-        </div>;
-      })}
+        </div>
+      ))}
     </div>
   );
 }

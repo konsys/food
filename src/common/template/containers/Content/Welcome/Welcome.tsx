@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import './welcome.less';
 
 interface Props {}
 
@@ -8,7 +9,7 @@ function Welcome(props: Props) {
   return (
     <section className='welcome'>
       <div className='welcome-content container'>
-        <h1>Доставка за 1 час в Нижнем Новгороде</h1>
+        <h1 className='welcome-content__title'>Доставка за 1 час в Нижнем Новгороде</h1>
         <div className='welcome__description'>
           Кафе, рестораны, супермаркеты, аптеки, подарки, цветы, спортивное питание и просто услуги
           курьера.

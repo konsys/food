@@ -1,5 +1,6 @@
 import React, { memo, ReactNode } from 'react';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
+import Welcome from './Welcome/Welcome';
 
 interface Props {
   children: ReactNode;
@@ -14,7 +15,7 @@ function Content(props: Props) {
       {/* <MetaContent /> */}
 
       {/* TODO add for main page */}
-      {/* <Welcome /> */}
+      <Welcome />
       {children}
       {/* TODO add for main page */}
       {/* <Promo />
