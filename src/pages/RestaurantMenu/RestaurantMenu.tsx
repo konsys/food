@@ -6,6 +6,7 @@ import RestaurantMenuBottomPartnerInfo from './components/RestaurantMenuBottomPa
 import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
 import { TLinkWithText } from '../../common/types/utilTypes';
+import './restarauntMenu.less';
 
 interface Props {}
 
@@ -65,7 +66,7 @@ function RestaurantMenu(props: Props) {
 
   return (
     <div className='container'>
-      <div className='page-restaurant'>
+      <div className='page-restaurant d-flex'>
         <div className='restaurant-section'>
           <RestaurantMenuHeader
             deliveryBlockHidden

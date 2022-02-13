@@ -13,18 +13,16 @@ function FooterContacts(props: Props) {
     <div className='col-sm'>
       <div className='footer-bottom__title footer-bottom__title--contacts'>Контакты</div>
       <div className='footer-nav footer-nav--contacts'>
-        <ul>
-          <li>
-            <a href='tel:' title='8 800 555-57-08'>
-              8 800 555-57-08
-            </a>
-          </li>
-          <li>
-            <a href='mailto:' title=''>
-              support@google.com
-            </a>
-          </li>
-        </ul>
+        <div>
+          <Link to='tel:' title='8 800 555-57-08'>
+            8 800 555-57-08
+          </Link>
+        </div>
+        <div>
+          <Link to='mailto:' title=''>
+            support@google.com
+          </Link>
+        </div>
       </div>
       <div className='footer-app d-flex align-items-center justify-content-end'>
         <div className='footer-app__link  '>

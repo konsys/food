@@ -21,7 +21,7 @@ function Content(props: Props) {
       {/* TODO add for main page */}
       <Promo />
       {/* TODO add for main page */}
-      <PromoPartners />
+      {/* <PromoPartners /> */}
       <section className='container custom-page' />
     </main>
   );
