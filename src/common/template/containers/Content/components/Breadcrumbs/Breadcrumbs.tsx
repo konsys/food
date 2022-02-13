@@ -7,7 +7,6 @@ function Breadcrumbs(props: Props) {
   const {} = props;
 
   return (
-    // <div className=' breadcrumbs-home-wrapper'>
     <div className='breadcrumbs'>
       <div className='container'>
         <ul className='list-clear'>
@@ -18,13 +17,12 @@ function Breadcrumbs(props: Props) {
           </li>
           <li>
             <a href='/' title='Нижний Новгород' className='disabled'>
-              <span>Нижний Новгород</span>
+              <span>Москва</span>
             </a>
           </li>
         </ul>
       </div>
     </div>
-    // </div>
   );
 }
 
