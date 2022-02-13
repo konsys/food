@@ -4,80 +4,122 @@
 
 .welcome {
     align-items    : center;
-    background     : @color0 url(https://broniboy.ru/img/backgrounds/welcome/home-page.svg) no-repeat center center;
+    background     : @colorMain url(https://broniboy.ru/img/backgrounds/welcome/home-page.svg) no-repeat center center;
     display        : flex;
-    height         : 650px;
+    height         : 35rem;
     justify-content: center;
     position       : relative;
 
+
+
+    .welcome__description {
+        color         : @colorWhite;
+        font-size     : 1.5rem;
+        font-style    : normal;
+        font-weight   : 400;
+        line-height   : 140%;
+        margin        : 0 auto;
+        max-width     : @width36;
+        padding-bottom: 2rem;
+        text-align    : center;
+    }
 
     .welcome-content__title {
         color      : @colorWhite;
         font-size  : 2rem;
         font-style : normal;
         font-weight: 700;
-        margin     : 0 0 36px 0;
+        margin     : 0 0 2rem 0;
         text-align : center;
 
-        span {
-            display    : block;
-            font-size  : 48px;
-            font-weight: 700;
-        }
     }
 
     .welcome-search {
-        margin   : 0 auto 52px auto;
-        max-width: 4@width79;
-        width    : @width75;
-    }
-}
-
-.welcome-search-form {
-    .welcome-search-form-content {
-        position: relative;
+        margin   : 0 auto 3rem auto;
+        max-width: 35rem;
+        width    : @width100percent;
     }
 
-    label {
-        background-image   : url(https://broniboy.ru/img/icons/cursor.svg);
-        background-position: center center;
-        background-repeat  : no-repeat;
-        background-size    : 20px 20px;
-        height             : @height42;
-        left               : 0;
-        margin             : 0;
-        position           : absolute;
-        width              : @width67;
+    .welcome-search-form {
+        .welcome-search-form-content {
+            position: relative;
+        }
+
+        label {
+            background-image   : url(https://broniboy.ru/img/icons/cursor.svg);
+            background-position: center center;
+            background-repeat  : no-repeat;
+            background-size    : 1.5rem 1.5rem;
+            height             : @height42;
+            left               : 0;
+            margin             : 0;
+            position           : absolute;
+            width              : @width67;
+        }
+
+        input {
+            background-color: @colorWhite;
+            border          : none;
+            border-radius   : 2rem;
+            font-size       : 1.5rem;
+            font-style      : normal;
+            font-weight     : 400;
+            height          : @height42;
+            padding-left    : 4rem;
+            padding-right   : 4rem;
+            width           : @width100percent;
+        }
+
+        .welcome-search__submit-button {
+            border-radius: 50%;
+            height       : 3.5rem;
+            padding      : 0;
+            position     : absolute;
+            text-align   : center;
+            top          : 0.25rem;
+            right        : 0.25rem;
+            width        : 3.5rem;
+
+            svg {
+                width : 1.75rem;
+                height: 1.75rem;
+
+                path {
+                    fill: @colorWhite;
+
+                }
+            }
+        }
+
     }
 
-    input {
-        background-color: @colorWhite;
-        border          : none;
-        border-radius   : 32px;
-        font-size       : 24px;
-        font-style      : normal;
-        font-weight     : 400;
-        height          : @height42;
-        padding-left    : 60px;
-        padding-right   : 64px;
-        width           : @width75;
-    }
 
-    button[type=submit] {
-        border-radius: 50%;
-        height       : 56px;
-        padding      : 2px 0 0;
-        position     : absolute;
-        right        : 4px;
-        text-align   : center;
-        top          : 4px;
-        width        : 56px;
-    }
-}
 
-.welcome-app {
-    align-items    : center;
-    display        : flex;
-    justify-content: space-around;
-    margin         : 0 auto;
+    .welcome__categories {
+
+        .welcome__category {
+            align-items    : center;
+            background     : url(https://broniboy.ru/img/backgrounds/welcome/category.svg) no-repeat;
+            background-size: 122px 122px;
+            display        : flex;
+            flex-direction : column;
+            height         : 1@height44;
+            justify-content: space-around;
+            padding        : 20px;
+            text-align     : center;
+            width          : 122px;
+
+            img {
+                height: @height55;
+                width : auto;
+            }
+        }
+
+        .welcome__category-title {
+            color      : @color2;
+            font-size  : 13px;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
 }
