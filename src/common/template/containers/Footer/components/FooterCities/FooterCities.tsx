@@ -1,5 +1,7 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { MenuLink } from '../FooterMenu/FooterMenu';
+import './footerCities.less';
 
 interface Props {
   title: string;
@@ -12,16 +14,14 @@ function FooterCities(props: Props) {
   return (
     <>
       <div className='footer-bottom__title'>{title}</div>
-      <div className='footer-nav'>
-        <ul className='list-clear'>
-          {links.map(({ link, text }, index) => (
-            <li style={{ display: 'inline', paddingRight: '20px' }} key={index}>
-              <a href={link} title={text}>
-                {text}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div className='footer-nav__cities d-flex justify-content-start'>
+        {links.map(({ link, text }, index) => (
+          <div key={index} className='footer-nav__cities--item'>
+            <Link to={link} title={text}>
+              {text}
+            </Link>
+          </div>
+        ))}
       </div>
     </>
   );

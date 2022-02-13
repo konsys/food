@@ -15,15 +15,15 @@ function Footer(props: Props) {
     <footer className='footer'>
       <div className='footer-top'>
         <div className='container'>
-          <div className='footer__header d-flex justify-content-between align-items-center'>
+          <div className='footer__header d-flex'>
             <FooterSocials />
             <FooterContacts />
           </div>
         </div>
       </div>
       <div className='footer-bottom'>
-        <div className='container d-flex justify-content-between'>
-          <div className='row'>
+        <div className='container'>
+          <div className='row d-flex footer__cities'>
             <div className='col-lg-3 col-md-3 col-sm-3 col-xs-12'>
               <FooterMenu
                 title='Категории'
