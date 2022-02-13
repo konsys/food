@@ -1,35 +1,41 @@
 import React from 'react';
-import { ReactComponent as BoyIcon } from '../../svg/facebook.svg';
-import { ReactComponent as VkIcon } from '../../svg/vk.svg';
-import { ReactComponent as OkIcon } from '../../svg/ok.svg';
-import { ReactComponent as InstaIcon } from '../../svg/insta.svg';
+import { Link } from 'react-router-dom';
+import { ReactComponent as BoyIcon } from '../../../../../../svg/boy.svg';
+import { ReactComponent as VkIcon } from '../../../../../../svg/vk.svg';
+import { ReactComponent as OkIcon } from '../../../../../../svg/ok.svg';
+import { ReactComponent as FacebookIcon } from '../../../../../../svg/facebook.svg';
+import { ReactComponent as InstaIcon } from '../../../../../../svg/insta.svg';
+import './footerSocials.less';
 
 export const FooterSocials = () => (
-  <div className='col-sm'>
-    <a href='https://broniboy.ru' title='Главная' className='logo'>
-      <div className='logo__description'>Принимаем заказы с 09:00 до 23:30</div>
-    </a>
-    <ul className='social-links'>
-      <li>
-        <a href='https://www.facebook.com/broniboy.world/' rel='nofollow' title='Facebook'>
-          <BoyIcon className='social-links__facebook-logo' />
-        </a>
-      </li>
-      <li>
-        <a href='https://vk.com/broniboy' rel='nofollow' title='Вконтакте'>
+  <div className='col-sm social-links'>
+    <div className='social-links__logo d-flex'>
+      <Link to='https://broniboy.ru' title='Главная' className='logo'>
+        <BoyIcon className='' />
+        <div className='logo__description'>Принимаем заказы с 09:00 до 23:30</div>
+      </Link>
+    </div>
+    <div className='social-links__items d-flex'>
+      <div className='social-links__item'>
+        <Link to='https://www.facebook.com/broniboy.world/' rel='nofollow' title='Facebook'>
+          <FacebookIcon className='social-links__facebook-logo' />
+        </Link>
+      </div>
+      <div className='social-links__item'>
+        <Link to='https://vk.com/broniboy' rel='nofollow' title='Вконтакте'>
           <VkIcon className='social-links__vk-logo' />
-        </a>
-      </li>
-      <li>
-        <a href='https://ok.ru/group/54843064713450' rel='nofollow' title='Одноклассники'>
+        </Link>
+      </div>
+      <div className='social-links__item'>
+        <Link to='https://ok.ru/group/54843064713450' rel='nofollow' title='Одноклассники'>
           <OkIcon className='social-links__ok-logo' />
-        </a>
-      </li>
-      <li>
-        <a href='https://instagram.com/broniboy/' rel='nofollow' title='Instagram'>
+        </Link>
+      </div>
+      <div className='social-links__item'>
+        <Link to='https://instagram.com/broniboy/' rel='nofollow' title='Instagram'>
           <InstaIcon className='social-links__insta-logo' />
-        </a>
-      </li>
-    </ul>
+        </Link>
+      </div>
+    </div>
   </div>
 );

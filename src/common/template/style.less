@@ -226,22 +226,7 @@ button {
     }
 }
 
-.app-btn {
-    background     : no-repeat center center;
-    background-size: contain;
-    display        : block;
-    height         : @height55;
-    width          : 13@width88;
-}
 
-.app-btn.app-btn_app-store {
-    background-image: url(https://broniboy.ru/img/backgrounds/buttons/app-store-btn.svg);
-    margin-left     : 20px;
-}
-
-.app-btn.app-btn_google-play {
-    background-image: url(https://broniboy.ru/img/backgrounds/buttons/google-play-btn.svg);
-}
 
 .show-more-elem {
     animation-duration: .3s;
@@ -3923,22 +3908,7 @@ ul.modal-list-restaurant {
     margin-bottom: 10px;
 }
 
-.footer__header {
-    align-items    : center;
-    display        : flex;
-    justify-content: space-between;
 
-    .social-links {
-        display   : flex;
-        list-style: none;
-        margin    : 20px 0 30px;
-        padding   : 0;
-
-        li {
-            margin-left: 25px;
-        }
-    }
-}
 
 .grayscale {
     filter    : grayscale(100%);
@@ -4163,6 +4133,45 @@ ul.modal-list-restaurant {
     }
 }
 
+.promo-partner {
+    margin: 40px 0 100px;
+
+    .promo-partner__icon {
+        height: @height49;
+
+        svg {
+            height: @height49;
+        }
+    }
+
+    .promo-partner__title {
+        color      : @color5;
+        font-size  : 24px;
+        font-weight: 400;
+        margin     : 25px 0 15px;
+    }
+
+    .promo-partner__description {
+        color        : silver;
+        font-size    : 14px;
+        font-weight  : 400;
+        line-height  : 140%;
+        margin-bottom: 20px;
+        opacity      : .8;
+    }
+
+    .promo-partner__link {
+        color      : @color0;
+        font-size  : 16px;
+        font-weight: 500;
+        line-height: 140%;
+        opacity    : .8;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
 
 
 .category-title {
@@ -5509,21 +5518,6 @@ span.nowrap {
     }
 }
 
-.footer-bottom__title--contacts {
-    text-align: right;
-}
-
-.footer-bottom__item {
-    margin: 0 10px;
-
-    &:first-child {
-        margin-left: -5px;
-    }
-
-    &:last-child {
-        margin-right: -5px;
-    }
-}
 
 .container--faq {
     h1 {
