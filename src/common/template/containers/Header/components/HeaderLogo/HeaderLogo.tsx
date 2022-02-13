@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './headerLogo.less';
 
 export const HeaderLogo = () => (
   <div className='header-logo float-start'>
-    <a href='https://broniboy.ru' title='Главная'>
+    <Link to='/' title='Главная'>
       <img
         className='d-none d-md-block'
         src='https://broniboy.ru/img/content/logo/main-logo.svg'
@@ -14,6 +16,6 @@ export const HeaderLogo = () => (
         className='d-block d-md-none'
         style={{ height: '50px' }}
       />
-    </a>
+    </Link>
   </div>
 );

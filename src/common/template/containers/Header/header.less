@@ -2,42 +2,35 @@
 
 .header {
     background-color: @color1;
-    box-shadow      : 0 10px 30px 0 rgba(0, 0, 0, .1);
-    padding         : 36px 0;
-    transform       : none;
+    box-shadow      : 0 0.75rem 2rem 0 rgba(0, 0, 0, .1);
 
     .header-content {
         position: relative;
     }
 
     .header-buttons {
-        height  : @height43;
         position: absolute;
-        right   : 15px;
+        right   : 1rem;
     }
 
     .header-nav-toggle {
-        height    : @height43;
-        left      : 60px;
-        left      : 15px;
+        height    : 100%;
+        left      : 4rem;
+        left      : 1rem;
         position  : absolute;
         transition: opacity .8s;
         z-index   : 100;
     }
 
-    .header-nav {
-        height: @height43;
+    .header-container {
+        position: relative;
     }
-}
-
-.header-container {
-    position: relative;
 }
 
 
 .header.header_sticky {
     left    : 0;
-    padding : 8px 0;
+    padding : 0.5rem 0;
     position: fixed;
     top     : 0;
     width   : @width75;
@@ -53,124 +46,10 @@
     }
 }
 
-.header.header_transparent {
-    background-color: transparent;
-    box-shadow      : none;
-    left            : 0;
-    position        : absolute;
-    right           : 0;
-    top             : 0;
-    width           : @width75;
-    z-index         : 10;
-
-    .header-logo {
-        a {
-            top: 0;
-
-            img {
-                max-width: @width43;
-                width    : @width43;
-            }
-        }
-    }
-
-    .nav-toggle {
-        span {
-            background-color: @color1;
-        }
-    }
-
-    .header-nav {
-        a {
-            background-repeat: no-repeat;
-            border           : 1px solid rgba(255, 255, 255, .2);
-            color            : rgba(255, 255, 255, .8);
-            transition       : background-color .3s, border .3s;
-
-            &:hover {
-                background-color: rgba(255, 255, 255, .2);
-                border          : 1px solid rgba(255, 255, 255, .2);
-            }
-        }
-
-        a.header-nav-item-link-login {
-            background-image: url(https://broniboy.ru/img/icons/login-icon-white.svg);
-        }
-
-        a.header-nav-item-link {
-            span {
-                color: @color1;
-            }
-        }
-
-        a.header-nav-item-link-basket {
-            background-image: url(https://broniboy.ru/img/icons/basket-icon-white.svg);
-        }
-
-        a.header-nav-item-link--address {
-            background     : url(https://broniboy.ru/img/icons/map-marker-white.svg) no-repeat 0 center;
-            background-size: 16px;
-        }
-    }
-
-    .app-round {
-        a {
-            border    : 1px solid rgba(255, 255, 255, .2);
-            transition: background-color .3s, border .3s;
-
-            &:hover {
-                background-color: rgba(255, 255, 255, .2);
-                border          : 1px solid rgba(255, 255, 255, .2);
-            }
-
-            &:hover.app-round-item-link-google_play {
-                background-image: url(https://broniboy.ru/img/icons/google-play-icon-white.svg);
-            }
-
-            &:hover.app-round-item-link-app_store {
-                background-image: url(https://broniboy.ru/img/icons/app-store-icon-white.svg);
-            }
-        }
-
-        a.app-round-item-link-google_play {
-            background-image: url(https://broniboy.ru/img/icons/google-play-icon-white.svg);
-        }
-
-        a.app-round-item-link-app_store {
-            background-image: url(https://broniboy.ru/img/icons/app-store-icon-white.svg);
-        }
-    }
-}
-
 .fake-header.fake-header_active {
     height: 163px;
 }
 
 .fake-header.fake-header_active-mobile {
     height: 123px;
-}
-
-
-.header-nav-item-link-basket-stub {
-    background   : url(https://broniboy.ru/img/icons/basket-icon.svg) no-repeat center center;
-    border-radius: 20px;
-    opacity      : .4;
-    padding      : 19px;
-}
-
-.header-logo {
-    height: @height43;
-
-    a {
-        height  : @height38;
-        position: relative;
-        top     : 2px;
-
-        img {
-            display  : block;
-            height   : auto;
-            max-width: 171px;
-            width    : @width75;
-        }
-    }
 }
