@@ -35,7 +35,7 @@ function Welcome(props: Props) {
                 defaultValue='HYLxojmEQJZ_FoOF41Dv36mTrkpaK0d_5wSglgOj18kw1aDrc8d40yx9wv2mCbi0--ncKAl0FhWLfo33N8e68Q=='
               />
               <input type='hidden' name='user-point' className='input-geo-point' />
-              <button type='submit' className='peach-btn welcome-search__submit-button'>
+              <button type='submit' className='welcome-search__submit-button'>
                 <SearchOutlined />
               </button>
 
@@ -45,7 +45,7 @@ function Welcome(props: Props) {
             </div>
           </form>
         </div>
-        <div className='welcome__categories d-flex justify-content-between'>
+        <div className='welcome__categories d-flex justify-content-around'>
           <Link to='/restaurants/' className='welcome__category' title='Рестораны и кафе'>
             <div>
               <img
