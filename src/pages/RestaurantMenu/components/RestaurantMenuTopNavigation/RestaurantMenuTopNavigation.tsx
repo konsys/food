@@ -2,6 +2,7 @@ import React, { memo, useEffect, useRef, useState } from 'react';
 import DownOutlined from '@ant-design/icons/DownOutlined';
 import { TLinkWithText } from '../../../../common/types/utilTypes';
 import TopNavigationSubMenu from './components/TopNavigationSubMenu';
+import './restaurantMenuTopNavigation.less';
 
 interface Props {
   menuItems: TLinkWithText[];
@@ -11,6 +12,8 @@ function RestaurantMenuTopNavigation(props: Props) {
   const { menuItems } = props;
   const ref = useRef<any>();
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [subMenuItems, setSubMenuItems] = useState<TLinkWithText[]>([]);
+  const [mainMenuItems, setMainMenuItems] = useState<TLinkWithText[]>([]);
   const toggleSubMenu = () => setIsVisible(!isVisible);
 
   useEffect(() => {
@@ -27,46 +30,39 @@ function RestaurantMenuTopNavigation(props: Props) {
     };
   }, [isVisible]);
 
+  useEffect(() => {
+    const itemsNum = Math.ceil(document.body.clientWidth / 160);
+    console.log(itemsNum);
+    setMainMenuItems(menuItems.slice(0, itemsNum));
+    setSubMenuItems(menuItems.slice(itemsNum, menuItems.length));
+  }, []);
+
   return (
     <div className='restaurant-info-menu' style={{ width: 'auto' }} ref={ref}>
       <ul className='restaurant-info-menu__list list-clear'>
-        {menuItems.map(({ text, link }) => (
-          <li>
+        {mainMenuItems.map(({ text, link }, index) => (
+          <li key={index}>
             <a className='anchor_link' href={text} title={link}>
               {text}
             </a>
           </li>
         ))}
       </ul>
-      <button
-        type='button'
-        className='restaurant-info-menu__item_more'
-        style={{ display: 'inline-block' }}
-        onClick={toggleSubMenu}
-      >
-        <div className='restaurant-info-menu__item_more_text'>
-          Еще <DownOutlined />
-        </div>
-      </button>
-
-      {isVisible && (
-        <TopNavigationSubMenu
-          elements={[
-            {
-              link: 'meet',
-              text: 'Мясо',
-            },
-            {
-              link: 'meet',
-              text: 'Мясо',
-            },
-            {
-              link: 'meet',
-              text: 'Мясо',
-            },
-          ]}
-        />
+      {subMenuItems.length ? (
+        <button
+          type='button'
+          className='restaurant-info-menu__item_more'
+          style={{ display: 'inline-block' }}
+          onClick={toggleSubMenu}
+        >
+          <div className='restaurant-info-menu__item_more_text'>
+            Еще <DownOutlined />
+          </div>
+        </button>
+      ) : (
+        ''
       )}
+      {isVisible && <TopNavigationSubMenu elements={subMenuItems} />}
     </div>
   );
 }

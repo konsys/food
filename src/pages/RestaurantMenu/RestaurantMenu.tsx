@@ -53,11 +53,23 @@ const menuItems: TLinkWithText[] = [
   },
   {
     link: '/',
-    text: 'Мясо',
+    text: 'Мясо0',
   },
   {
     link: '/',
-    text: 'Печень',
+    text: 'Мясо1',
+  },
+  {
+    link: 'meet',
+    text: 'Мясо2',
+  },
+  {
+    link: 'meet',
+    text: 'Мясо3',
+  },
+  {
+    link: 'meet',
+    text: 'Мясо4',
   },
 ];
 
