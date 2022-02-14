@@ -5,6 +5,7 @@ import PriceRatingComponent from '../../../../common/template/components/PriceRa
 import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 import { TCloseTime } from '../../../../common/types/time';
 import { ReactComponent as LongDistance } from '../../../../svg/long-distance.svg';
+import './restaurantMenuHeader.less';
 
 interface Props {
   restaruantImgSrc: string;

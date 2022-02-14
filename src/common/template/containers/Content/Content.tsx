@@ -19,7 +19,7 @@ function Content(props: Props) {
       {/* <Welcome /> */}
       {children}
       {/* TODO add for main page */}
-      <Promo />
+      {/* <Promo /> */}
       {/* TODO add for main page */}
       {/* <PromoPartners /> */}
       <section className='container custom-page' />
