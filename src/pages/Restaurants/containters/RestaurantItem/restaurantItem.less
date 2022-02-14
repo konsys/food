@@ -100,8 +100,8 @@
 
         &__info {
             color        : silver;
-            font-size    : 1rem;
             padding-right: 0.25rem;
+            font-size    : 0.75rem;
         }
 
 
@@ -112,15 +112,19 @@
             position   : absolute;
             width      : calc(100% - @width57);
 
-            span {
-                font-size: 13px;
-            }
+        }
+
+        &__delivery-icon {
+            position: relative;
 
             svg {
-                left        : 0;
-                margin-right: 8px;
-                position    : relative;
-                top         : 2px;
+                width   : 22px;
+                height  : 15px;
+                position: absolute;
+                left    : -4px;
+                top     : -6px;
+                position: relative;
+
             }
         }
 
@@ -145,6 +149,18 @@
             color      : @colorMain;
             font-weight: 700;
         }
+
+        .restaurant-box-second__delivery-icon {
+            color      : @colorMain;
+            font-weight: 700;
+        }
+
+
     }
 
+}
+
+.restaurant-box-second__delivery-icon {
+    width : 18px;
+    height: 15px;
 }

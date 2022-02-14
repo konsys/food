@@ -46,7 +46,7 @@ function RestaurantItem(props: Props) {
             <div className='restaurant-box-second__title'>{name}</div>
           </Link>
           <div className='restaurant-box-second__description'>
-            <div className='restaurant-box-second__rating d-flex align-items-end'>
+            <div className='restaurant-box-second__rating d-flex align-items-center'>
               <div className='restaurant-box-second__rating--number' style={{ color: ratingColor }}>
                 {rating}.0
               </div>
@@ -60,8 +60,8 @@ function RestaurantItem(props: Props) {
                   .map(() => '₽')}
               </div>
             </div>
-            <div className='restaurant-box-second__delivery d-flex'>
-              <div>
+            <div className='restaurant-box-second__delivery d-flex align-items-center'>
+              <div className='restaurant-box-second__delivery-icon'>
                 {deliveryType === EDeliveryType.LONG_DISTANCE ? (
                   <LongDistance className='restaurant-box-second__delivery-icon delivery_type--long_distance' />
                 ) : (
@@ -77,14 +77,14 @@ function RestaurantItem(props: Props) {
                 ) : (
                   ''
                 )}
-                {/* TODO add delivery price */}
-                <span className='restaurant-box-second__info'>{price} ₽, бесплатно от 1499 ₽</span>
               </div>
-              <div>
+              <div className='restaurant-box-second__info'>
                 {/* TODO add fll time */}
-                <span className='restaurant-box-second__delivery-time'>
-                  {deliveryFullTime} 40-50 мин
-                </span>
+                {price} ₽, бесплатно от 1499 ₽
+              </div>
+              <div className='restaurant-box-second__delivery-time'>
+                {/* TODO add fll time */}
+                {deliveryFullTime} 40-50 мин
               </div>
             </div>
           </div>
