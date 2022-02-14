@@ -1,8 +1,80 @@
 @import '../../../../common/template/config/theme/vars.less';
 
-.page-restaurant--shop {
-    .cart-service__list {
-        height      : calc(@height26 - 372px);
-        margin-right: -20px;
+.restaurant-content {
+
+    background-color: rgba(255, 229, 222, .36);
+    border-radius   : 3px;
+    overflow        : hidden;
+    position        : relative;
+    height          : 20rem;
+
+}
+
+.restaurant__background {
+
+    position     : absolute;
+    overflow     : hidden;
+    height       : 20rem;
+    width        : 100%;
+    border-radius: 3px
+}
+
+.restaurant-bg-image {
+    width: 100%
+}
+
+
+.restaurant .restaurant-descr {
+    width   : 100%;
+    height  : 8rem;
+    bottom  : 0;
+    left    : 0;
+    position: absolute;
+    z-index : 2;
+    padding : 1rem;
+}
+
+.restaurant-descr__header {
+    position: relative;
+
+    .restaurant-descr__header--title {
+        color         : #fff;
+        font-size     : 1.75rem;
+        font-weight   : 700;
+        letter-spacing: 1px;
     }
+
+    .restaurant-descr__header--bull {
+        font-size: 2rem;
+        color    : #fff
+    }
+
+    .restaurant-descr__header--rating {
+        font-size    : 1.25rem;
+        padding-right: 0.5rem;
+        right        : 0;
+        position     : absolute;
+        right        : 0;
+
+        strong {
+            font-size: 2rem;
+        }
+
+        svg {
+            width : 20px;
+            height: 20px;
+        }
+
+
+    }
+}
+
+.restaurant-info--shop {
+    color: white;
+
+
+}
+
+.restaurant-info__open-hours {
+    color: silver
 }

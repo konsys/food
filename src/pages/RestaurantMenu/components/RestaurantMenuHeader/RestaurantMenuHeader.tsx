@@ -4,7 +4,7 @@ import RatingComponent from '../../../../common/template/components/RatingCompon
 import PriceRatingComponent from '../../../../common/template/components/PriceRatingComponent/PriceRatingComponent';
 import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 import { TCloseTime } from '../../../../common/types/time';
-import { ReactComponent as LongDistance } from '../../../../svg/long-distance.svg';
+
 import './restaurantMenuHeader.less';
 
 interface Props {
@@ -25,37 +25,28 @@ function RestaurantMenuHeader(props: Props) {
         <div className='restaurant__background'>
           <img src={restaruantImgSrc} className='restaurant-bg-image' alt={restaurantName} />
         </div>
+
         <div className='restaurant-descr'>
-          <h1>
-            <span className='--title'>{restaurantName}</span>
-          </h1>
-          <i className='restaurant-descr__bull'>&nbsp;•&nbsp;</i>
-          <span className='restaurant-box-second__rating'>
-            <RatingComponent rating={rating} />
-          </span>
-          <div className='restaurant-info restaurant-info--shop'>
+          <div className='restaurant-descr__header d-flex'>
+            <div className='restaurant-descr__header--title'>{restaurantName}</div>
+            <div className='restaurant-descr__header--bull'>&nbsp;•&nbsp;</div>
+            <div className='restaurant-descr__header--rating d-flex align-items-center'>
+              <RatingComponent rating={rating} />
+            </div>
+          </div>
+
+          <div className='restaurant-info--shop d-flex justify-content-between'>
             <div className='restaurant-info__delivery'>
-              <div
-                className={`${
-                  deliveryBlockHidden ? 'hidden' : ''
-                }  restaurant-info__delivery-icon  delivery_type--long_distance`}
-              >
-                <LongDistance />
-              </div>
-              <div
-                className={`restaurant-info__delivery-info ${deliveryBlockHidden ? 'hidden' : ''}`}
-              >
-                <DeliveryRange
-                  range={DeliveryRangeDto.LONG}
-                  deliveryPrice={190}
-                  maxDeliveryTime={80}
-                  minDeliveryTime={70}
-                />
-              </div>
+              <DeliveryRange
+                range={DeliveryRangeDto.LONG}
+                deliveryPrice={190}
+                maxDeliveryTime={80}
+                minDeliveryTime={70}
+              />
             </div>
             <div className='restaurant-info__open-hours'>
               <span>Прием заказов до {closeTime}</span>
-              <span>•</span>
+              <span> • </span>
               <PriceRatingComponent rating={priceRating} />
             </div>
           </div>
