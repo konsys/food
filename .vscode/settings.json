@@ -61,7 +61,7 @@
         "vscode-kubernetes.minikube-path.linux": "/home/ksysuev/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
     },
     "[css]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+        "editor.defaultFormatter": "MikeBovenlander.formate"
     },
     "window.menuBarVisibility": "compact",
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
