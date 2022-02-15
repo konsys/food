@@ -1,0 +1,81 @@
+@import '../../common/template/config/theme/vars.less';
+
+
+.cart-section-wrapper {
+    overflow: hidden;
+    width   : 20rem;
+
+    height     : calc(100vh - 150px);
+    margin-left: 1rem;
+}
+
+.cart-section__body {
+    position        : relative;
+    background-color: @color6;
+    border-radius   : 3px;
+    width           : 100%;
+    height          : 100%;
+}
+
+.cart-section {
+    overflow: hidden;
+    width   : 100%;
+    padding : 1rem;
+}
+
+.cart-section__title {
+    color      : @color2;
+    font-size  : 1.5rem;
+    font-weight: 700;
+    margin     : 0 -20px;
+    padding    : 20px;
+}
+
+
+.cart-service__overlay {
+    background   : rgba(150, 150, 150, .2);
+    border-radius: 3px;
+    display      : none;
+    height       : calc(@height26 - 150px);
+    left         : 0;
+    position     : absolute;
+    top          : 0;
+    width        : @width100percent;
+    z-index      : 500;
+}
+
+
+.cart-service {
+    border-bottom: 1px solid @color6;
+    font-size    : 1rem;
+}
+
+
+.cart-section__info {
+    color: @color2;
+
+    a {
+        color          : @color1;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+.cart-bottom {
+    bottom  : 0;
+    color   : silver;
+    position: absolute;
+    width   : 100%;
+
+    .cart-bottom__checkout-button {
+        background-color: @color1;
+        color           : @colorWhite;
+        font-weight     : 700;
+        height          : 40px;
+        width           : 100%;
+    }
+}

@@ -9,7 +9,7 @@ import { IDragDropProps } from '../drag/DragDrop';
 import { apiUrls } from '../../api/urls';
 import { Params } from '../../../config/params';
 import { Nullable } from '../../../core/types';
-import './style.less';
+import './imageCrop.less';
 
 export type TFile = (Blob & RcFile) | undefined;
 
