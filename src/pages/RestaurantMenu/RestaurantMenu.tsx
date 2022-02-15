@@ -81,7 +81,6 @@ function RestaurantMenu(props: Props) {
       <div className='page-restaurant d-flex'>
         <div className='restaurant-section'>
           <RestaurantMenuHeader
-            deliveryBlockHidden
             closeTime='21:00'
             priceRating={3}
             rating={5}

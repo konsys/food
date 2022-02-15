@@ -1,7 +1,5 @@
 import React, { memo, ReactNode } from 'react';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
-import Promo from './Promo/Promo';
-import PromoPartners from './PromoPartners/PromoPartners';
 
 interface Props {
   children: ReactNode;

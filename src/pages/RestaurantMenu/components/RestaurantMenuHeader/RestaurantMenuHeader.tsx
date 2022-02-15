@@ -13,12 +13,10 @@ interface Props {
   rating: RatingDto;
   priceRating: RatingDto;
   closeTime: TCloseTime;
-  deliveryBlockHidden: boolean;
 }
 
 function RestaurantMenuHeader(props: Props) {
-  const { restaurantName, restaruantImgSrc, rating, priceRating, closeTime, deliveryBlockHidden } =
-    props;
+  const { restaurantName, restaruantImgSrc, rating, priceRating, closeTime } = props;
   return (
     <section className='restaurant restaurant--shop'>
       <div className='restaurant-content'>
