@@ -1,1 +1,62 @@
 @import '../../../../common/template/config/theme/vars.less';
+
+
+.restaurant-info-menu {
+    background-color: @colorWhite;
+    border-bottom   : 1px solid rgba(0, 0, 0, .1);
+    position        : relative;
+    z-index         : 250;
+}
+
+.restaurant-info-menu--scroll {
+    position: fixed;
+    top     : 4rem;
+}
+
+.restaurant-info-menu__item_more {
+    background: 0 0;
+    border    : none;
+    display   : none;
+    position  : absolute;
+    right     : 0;
+    top       : 1rem;
+    width     : @width49;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.restaurant-info-menu__item_more_text {
+    text-align: right;
+}
+
+.restaurant-info-menu__list {
+    display : flex;
+    overflow: hidden;
+    position: relative;
+
+    .anchor_link.anchor_link--active {
+        border-bottom : 2px solid @color1;
+        color         : @color1;
+        padding-bottom: 0.75rem;
+    }
+
+    li {
+        margin : 1rem 0;
+        padding: 0 10px;
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    a {
+        color      : @color2;
+        white-space: nowrap;
+    }
+}

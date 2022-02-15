@@ -38,11 +38,11 @@ function RestaurantMenuTopNavigation(props: Props) {
   }, []);
 
   return (
-    <div className='restaurant-info-menu' style={{ width: 'auto' }} ref={ref}>
+    <div className='restaurant-info-menu' ref={ref}>
       <ul className='restaurant-info-menu__list list-clear'>
         {mainMenuItems.map(({ text, link }, index) => (
           <li key={index}>
-            <a className='anchor_link' href={text} title={link}>
+            <a href={text} title={link}>
               {text}
             </a>
           </li>

@@ -1,0 +1,51 @@
+@import '../../../../../common/template/config/theme/vars.less';
+
+.restaurant-menu-item {
+    border       : 1px solid @color3;
+    border-radius: 3px;
+    cursor       : pointer;
+    overflow     : hidden;
+    position     : relative;
+
+    &:hover {
+        box-shadow: 0 0 1.5rem @color26;
+    }
+
+    .restaurant-menu-item-info {
+        padding : 1.5rem;
+        position: relative;
+
+        h3 {
+            color        : @color2;
+            font-size    : 1rem;
+            font-weight  : 400;
+            height       : @height41;
+            line-height  : 1.2;
+            margin       : 0 0 1px;
+            min-height   : @height61;
+            overflow     : hidden;
+            text-overflow: ellipsis;
+        }
+
+        p {
+            color      : rgba(0, 0, 0, .6);
+            font-size  : 0.75rem;
+            line-height: @height59;
+            margin     : 0.5rem 0 0.75rem;
+        }
+    }
+
+    .restaurant-menu-item-info__title {
+        font-size    : 1.25rem;
+        font-weight  : 700;
+        line-height  : @height59;
+        margin-bottom: 0.75rem;
+    }
+
+    .restaurant-menu-item-info__amount {
+        font-size  : 14px;
+        font-weight: 400;
+        opacity    : .4;
+        white-space: nowrap;
+    }
+}

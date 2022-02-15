@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { MenuListDto } from '../../../../../common/types/dto';
+import './restaurantMenuListItem.less';
 
 type Props = MenuListDto;
 
@@ -22,7 +23,7 @@ function RestaurantMenuListItem(props: Props) {
             )}
           </div>
           <p>{description}</p>
-          <div className='restaurant-menu-item__prices'>
+          <div>
             <span className='restaurant-menu-item__price'>{price} ₽</span>
           </div>
         </div>
