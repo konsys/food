@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react';
 import Content from './containers/Content/Content';
-import './style.less';
+// import './style.less';
 import Header from './containers/Header/Header';
 import Footer from './containers/Footer/Footer';
+import './index.less';
 
 interface Props {
   children: ReactElement;
