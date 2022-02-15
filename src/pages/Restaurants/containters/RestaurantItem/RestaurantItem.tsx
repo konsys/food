@@ -63,17 +63,17 @@ function RestaurantItem(props: Props) {
             <div className='restaurant-box-second__delivery d-flex align-items-center'>
               <div className='restaurant-box-second__delivery-icon'>
                 {deliveryType === EDeliveryType.LONG_DISTANCE ? (
-                  <LongDistance className='restaurant-box-second__delivery-icon delivery_type--long_distance' />
+                  <LongDistance className='restaurant-box-second__delivery-icon ' />
                 ) : (
                   ''
                 )}
                 {deliveryType === EDeliveryType.STANDARD ? (
-                  <DeliveryStandard className='restaurant-box-second__delivery-icon delivery_type--default' />
+                  <DeliveryStandard className='restaurant-box-second__delivery-icon ' />
                 ) : (
                   ''
                 )}
                 {deliveryType === EDeliveryType.HIGH_DEMAND ? (
-                  <HightDemand className='restaurant-box-second__delivery-icon delivery_type--high_demand' />
+                  <HightDemand className='restaurant-box-second__delivery-icon ' />
                 ) : (
                   ''
                 )}

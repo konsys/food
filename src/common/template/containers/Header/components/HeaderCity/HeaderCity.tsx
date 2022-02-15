@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactComponent as Geoposition } from '../../svg/geoposition.svg';
+import './headerCity.less';
 
 export const HeaderCity = () => (
   <div className='header-city'>

@@ -1,6 +1,6 @@
 .breadcrumbs {
     margin-bottom: 1.5rem;
-    margin-top   : 4rem;
+    margin-top   : 6rem;
 
     a {
         color: #666
@@ -41,6 +41,34 @@
         margin-top: 0
     }
 
+    li:last-child {
+        padding-right: 0
+    }
 
+    a {
+        color: #666
+    }
 
+    li:after {
+        background-color: #666;
+        content         : '';
+        height          : 10px;
+        position        : absolute;
+        right           : 6px;
+        top             : 50%;
+        transform       : translateY(-50%) rotate(15deg);
+        width           : 1px
+    }
+
+    li {
+        color        : #666;
+        display      : inline-block;
+        font-size    : 13px;
+        padding-right: 17px;
+        position     : relative
+    }
+
+    ul {
+        overflow: hidden
+    }
 }
