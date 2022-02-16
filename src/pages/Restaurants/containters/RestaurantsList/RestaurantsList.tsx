@@ -58,13 +58,15 @@ function RestaurantsList(props: Props) {
           </div>
           <noscript />
         </div>
-        <Link
-          to='/restaurants/123456789'
-          title='Показать еще рестораны'
-          className='restaraunts-list__upload-button main-btn'
-        >
-          Показать еще рестораны
-        </Link>
+        <div className='restaraunts-list__show-more'>
+          <Link
+            to='/'
+            title='Показать еще рестораны'
+            className='restaraunts-list__upload-button main-btn'
+          >
+            <span>Показать еще рестораны</span>
+          </Link>
+        </div>
       </div>
     </section>
   );

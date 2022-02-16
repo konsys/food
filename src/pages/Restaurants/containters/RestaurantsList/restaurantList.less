@@ -30,10 +30,40 @@
 
 }
 
+.restaraunts-list__show-more {
+    text-align : center;
+    font-weight: 700;
+
+}
+
 .restaraunts-list__upload-button {
-    border-radius: 5px;
-    display      : block;
-    height       : 4rem;
-    line-height  : 1.5;
-    text-align   : center;
+    border-radius   : 5px;
+    height          : 4rem;
+    display         : block;
+    background-color: @colorMain;
+    color           : white;
+    position        : relative;
+}
+
+.restaraunts-list__upload-button span {
+    position    : relative;
+    padding-left: 30px;
+}
+
+.restaraunts-list__upload-button span::before {
+    content            : '';
+    background-image   : url(https://broniboy.ru/img/icons/spin.svg);
+    background-position: center center;
+    background-repeat  : no-repeat;
+    height             : 1.25rem;
+    left               : 0;
+    position           : absolute;
+    top                : 2px;
+    width              : 1rem;
+    height             : 1rem;
+}
+
+.restaraunts-list__upload-button span:hover {
+    animation-duration: 1s;
+    animation-name    : moveFromLeft;
 }
