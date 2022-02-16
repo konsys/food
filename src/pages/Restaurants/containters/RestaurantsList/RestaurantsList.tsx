@@ -13,9 +13,9 @@ function RestaurantsList(props: Props) {
 
   return (
     <section className='restaurants'>
-      <div className='container'>
+      <div className='container restaraunts-list'>
         <header>
-          <div className='restaurants-header-title restaurants-header-title--home-page'>
+          <div className='restaurants-header-title'>
             <div className='page-title'>
               <h2>Самые популярные места</h2>
             </div>
@@ -60,10 +60,10 @@ function RestaurantsList(props: Props) {
         </div>
         <Link
           to='/restaurants/123456789'
-          title='Посмотреть все рестораны'
-          className='peach-btn peach-btn--category'
+          title='Показать еще рестораны'
+          className='restaraunts-list__upload-button main-btn'
         >
-          Посмотреть все рестораны
+          Показать еще рестораны
         </Link>
       </div>
     </section>

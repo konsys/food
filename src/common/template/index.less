@@ -1,3 +1,5 @@
+@import '../../common/template/config/theme/vars.less';
+
 *,
 :after,
 :before {
@@ -103,4 +105,30 @@ button:focus {
     list-style  : none;
     margin      : 0;
     padding-left: 0
+}
+
+.main-btn {
+    background-color: @colorMain;
+    border          : none;
+    color           : @colorWhite;
+    font-size       : 1.25rem;
+    font-weight     : 700;
+    padding         : 1rem 2rem;
+    transition      : background-color .3s;
+    border-radius   : 3px;
+
+    &:hover {
+        background-color: @colorMain;
+        color           : @colorWhite;
+    }
+
+    &:focus {
+        background-color: @colorMain;
+        color           : @colorWhite;
+    }
+
+    &:active {
+        background-color: @colorMain;
+        color           : @colorWhite;
+    }
 }
