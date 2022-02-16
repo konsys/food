@@ -10,9 +10,15 @@ import './footerSocials.less';
 export const FooterSocials = () => (
   <div className='col-sm social-links'>
     <div className='d-flex'>
-      <Link to='https://broniboy.ru' title='Главная' className='social-links__logo-link'>
-        <BoyIcon className='social-links__logo ' />
-        <div className='social-links__description'>Принимаем заказы с 09:00 до 23:30</div>
+      <Link
+        to='https://broniboy.ru'
+        title='Главная'
+        className='social-links__logo-link d-flex flex-column flex-md-row align-items-center'
+      >
+        <div>
+          <BoyIcon className='social-links__logo' />
+        </div>
+        <div className='logo__description '>Принимаем заказы с 09:00 до 23:30</div>
       </Link>
     </div>
     <div className='social-links__items d-flex'>
