@@ -1,7 +1,7 @@
 import faker from 'faker';
 import { RestaurantModel } from '../../../store';
 import { restaurantMenuFactory } from '../restaurantMenuFactory';
-import { RestaurantDto } from '../types';
+import { RestarauntMenuDto } from '../types';
 
 const {
   createItemFx,
@@ -27,7 +27,7 @@ const generateNewItem = () => {
 };
 
 describe('menu tests', () => {
-  let newItem: RestaurantDto;
+  let newItem: RestarauntMenuDto;
 
   beforeAll(async () => {
     for (let i = 0; i < 20; i++) {

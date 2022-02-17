@@ -3,7 +3,7 @@ import * as factory from 'factory.ts';
 import faker from 'faker';
 import { RestaurantDto, EFoodType } from './types';
 
-export const restaurantMenuFactory = factory.Sync.makeFactory<RestaurantDto>({
+export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   id: factory.each((n) => n),
   deliveryType: factory.each(() => EDeliveryType.LONG_DISTANCE),
   name: factory.each(() => faker.commerce.productName()),

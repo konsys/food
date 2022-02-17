@@ -15,4 +15,7 @@ export const apiUrls = {
   restaurants: {
     main: `/restaurants`,
   },
+  restaurantsMenu: {
+    main: `/restaurants-menu`,
+  },
 };

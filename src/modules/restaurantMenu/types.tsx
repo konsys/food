@@ -1,12 +1,13 @@
 import { TLinkWithText } from '../../common/types/utilTypes';
+import { DictionaryDto } from '../../core/dictionary/types';
+import { ImageDto } from '../image/model/types';
 
-export type RestarauntDto = {
+export type RestarauntMenuDto = {
   openTime: Date;
   closeTime: Date;
   priceRating: RatingDto;
   rating: RatingDto;
-  restaurantName: string;
-  restaurantImgSrc: string;
+  restaurantImg: ImageDto;
   deliveryPrice: number;
   deliveryRange: DeliveryRangeDto;
   maxDeliveryMinutes: number;
@@ -17,7 +18,7 @@ export type RestarauntDto = {
   restaurantPartnerInn: string;
   restaurantPartnerKPP?: string;
   restaurantPartnerOGRN?: string;
-};
+} & DictionaryDto;
 
 export enum DeliveryRangeDto {
   'LONG',

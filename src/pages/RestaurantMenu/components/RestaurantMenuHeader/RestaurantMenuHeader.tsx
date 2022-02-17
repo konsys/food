@@ -5,9 +5,10 @@ import DeliveryRange from '../../../../common/template/components/DeliveryRange/
 
 import './restaurantMenuHeader.less';
 import { DeliveryRangeDto, RatingDto } from '../../../../modules/restaurantMenu/types';
+import { ImageDto } from '../../../../modules/image/model/types';
 
 interface Props {
-  restaurantImgSrc: string;
+  restaurantImg: ImageDto;
   restaurantName: string;
   rating: RatingDto;
   priceRating: RatingDto;
@@ -22,7 +23,7 @@ interface Props {
 function RestaurantMenuHeader(props: Props) {
   const {
     restaurantName,
-    restaurantImgSrc,
+    restaurantImg,
     rating,
     priceRating,
     closeTime,
@@ -36,7 +37,11 @@ function RestaurantMenuHeader(props: Props) {
     <section className='restaurant restaurant--shop'>
       <div className='restaurant-content'>
         <div className='restaurant__background'>
-          <img src={restaurantImgSrc} className='restaurant-bg-image' alt={restaurantName} />
+          <img
+            src={restaurantImg.averageImg ?? ''}
+            className='restaurant-bg-image'
+            alt={restaurantName}
+          />
         </div>
 
         <div className='restaurant-descr'>

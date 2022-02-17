@@ -1,6 +1,6 @@
 import faker from 'faker';
 import { RestaurantModel } from '../../../store';
-import { restaurantMenuFactory } from '../restaurantMenuFactory';
+import { restaurantFactory } from '../restaurantFactory';
 import { RestaurantDto } from '../types';
 
 const {
@@ -16,7 +16,7 @@ const {
 } = RestaurantModel;
 
 const generateNewItem = () => {
-  let newItem = restaurantMenuFactory.build();
+  let newItem = restaurantFactory.build();
 
   newItem = {
     ...newItem,

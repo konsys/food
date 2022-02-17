@@ -7,7 +7,7 @@ import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
 import { TLinkWithText } from '../../common/types/utilTypes';
 import './restaurantMenu.less';
-import { RestarauntDto } from '../../modules/restaurantMenu/types';
+import { RestarauntMenuDto } from '../../modules/restaurantMenu/types';
 
 const menuItems1: TLinkWithText[] = [
   {
@@ -72,16 +72,17 @@ const menuItems1: TLinkWithText[] = [
   },
 ];
 
-type Props = RestarauntDto;
+type Props = RestarauntMenuDto;
 
 function RestaurantMenu(props: Props) {
+  console.log(11111111111, props);
   const {
     closeTime,
     openTime,
     priceRating,
     rating,
-    restaurantName,
-    restaurantImgSrc,
+    name,
+    restaurantImg,
     deliveryPrice,
     deliveryRange,
     maxDeliveryMinutes,
@@ -103,8 +104,8 @@ function RestaurantMenu(props: Props) {
             openTime={openTime}
             priceRating={priceRating}
             rating={rating}
-            restaurantName={restaurantName}
-            restaurantImgSrc={restaurantImgSrc}
+            restaurantName={name}
+            restaurantImg={restaurantImg}
             deliveryPrice={deliveryPrice}
             deliveryRange={deliveryRange}
             maxDeliveryMinutes={maxDeliveryMinutes}
