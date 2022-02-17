@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { RatingDto } from '../../../types/dto';
+import { RatingDto } from '../../../../modules/restaurantMenu/types';
 
 interface Props {
   rating: RatingDto;

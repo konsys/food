@@ -7,9 +7,9 @@ import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
 import { TLinkWithText } from '../../common/types/utilTypes';
 import './restaurantMenu.less';
-import { DeliveryRangeDto, RatingDto } from '../../common/types/dto';
+import { RestarauntDto } from '../../modules/restaurantMenu/types';
 
-const menuItems: TLinkWithText[] = [
+const menuItems1: TLinkWithText[] = [
   {
     link: '/',
     text: 'Суши',
@@ -72,18 +72,7 @@ const menuItems: TLinkWithText[] = [
   },
 ];
 
-interface Props {
-  openTime: Date;
-  closeTime: Date;
-  priceRating: RatingDto;
-  rating: RatingDto;
-  restaurantName: string;
-  restaurantImgSrc: string;
-  deliveryPrice: number;
-  deliveryRange: DeliveryRangeDto;
-  maxDeliveryMinutes: number;
-  minDeliveryMinutes: number;
-}
+type Props = RestarauntDto;
 
 function RestaurantMenu(props: Props) {
   const {
@@ -97,6 +86,12 @@ function RestaurantMenu(props: Props) {
     deliveryRange,
     maxDeliveryMinutes,
     minDeliveryMinutes,
+    menuItems,
+    restaurantPartnerAddress,
+    restaurantPartnerLegal,
+    restaurantPartnerInn,
+    restaurantPartnerKPP,
+    restaurantPartnerOGRN,
   } = props;
 
   return (
@@ -120,9 +115,11 @@ function RestaurantMenu(props: Props) {
           <section className='restaurant-menu'>
             <RestaurantMenuListBlock />
             <RestaurantMenuBottomPartnerInfo
-              partnerAddress='ул. Ошарская, д. 95'
-              partnerINN='526097844066'
-              partnerName='Индивидуальный предприниматель Ладыгина Марина Игоревна'
+              partnerAddress={restaurantPartnerAddress}
+              partnerINN={restaurantPartnerInn}
+              partnerName={restaurantPartnerLegal}
+              partnerKPP={restaurantPartnerKPP}
+              partnerOGRN={restaurantPartnerOGRN}
             />
             <RestaurantMenuBottomLinks />
           </section>

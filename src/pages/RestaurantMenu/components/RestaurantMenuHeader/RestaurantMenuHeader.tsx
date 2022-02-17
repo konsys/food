@@ -1,10 +1,10 @@
 import React from 'react';
-import { DeliveryRangeDto, RatingDto } from '../../../../common/types/dto';
 import RatingComponent from '../../../../common/template/components/RatingComponent/RatingComponent';
 import PriceRatingComponent from '../../../../common/template/components/PriceRatingComponent/PriceRatingComponent';
 import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 
 import './restaurantMenuHeader.less';
+import { DeliveryRangeDto, RatingDto } from '../../../../modules/restaurantMenu/types';
 
 interface Props {
   restaurantImgSrc: string;
