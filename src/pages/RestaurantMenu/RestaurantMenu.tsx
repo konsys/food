@@ -8,7 +8,6 @@ import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMe
 import { TLinkWithText } from '../../common/types/utilTypes';
 import './restaurantMenu.less';
 import { DeliveryRangeDto, RatingDto } from '../../common/types/dto';
-import { TCloseTime } from '../../common/types/time';
 
 const menuItems: TLinkWithText[] = [
   {
@@ -74,28 +73,30 @@ const menuItems: TLinkWithText[] = [
 ];
 
 interface Props {
-  closeTime: TCloseTime;
+  openTime: Date;
+  closeTime: Date;
   priceRating: RatingDto;
   rating: RatingDto;
   restaurantName: string;
   restaurantImgSrc: string;
   deliveryPrice: number;
   deliveryRange: DeliveryRangeDto;
-  maxDeliveryTime: number;
-  minDeliveryTime: number;
+  maxDeliveryMinutes: number;
+  minDeliveryMinutes: number;
 }
 
 function RestaurantMenu(props: Props) {
   const {
     closeTime,
+    openTime,
     priceRating,
     rating,
     restaurantName,
     restaurantImgSrc,
     deliveryPrice,
     deliveryRange,
-    maxDeliveryTime,
-    minDeliveryTime,
+    maxDeliveryMinutes,
+    minDeliveryMinutes,
   } = props;
 
   return (
@@ -104,14 +105,15 @@ function RestaurantMenu(props: Props) {
         <div className='restaurant-section'>
           <RestaurantMenuHeader
             closeTime={closeTime}
+            openTime={openTime}
             priceRating={priceRating}
             rating={rating}
             restaurantName={restaurantName}
             restaurantImgSrc={restaurantImgSrc}
             deliveryPrice={deliveryPrice}
             deliveryRange={deliveryRange}
-            maxDeliveryTime={maxDeliveryTime}
-            minDeliveryTime={minDeliveryTime}
+            maxDeliveryMinutes={maxDeliveryMinutes}
+            minDeliveryMinutes={minDeliveryMinutes}
           />
           <RestaurantMenuTopNavigation menuItems={menuItems} />
 

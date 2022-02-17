@@ -11,13 +11,13 @@ const standardRangeText = (minutes: number) =>
 
 interface Props {
   deliveryPrice: number;
-  minDeliveryTime: number;
-  maxDeliveryTime: number;
+  minDeliveryMinutes: number;
+  maxDeliveryMinutes: number;
   range: DeliveryRangeDto;
 }
 
 function DeliveryRange(props: Props) {
-  const { deliveryPrice, minDeliveryTime, maxDeliveryTime, range } = props;
+  const { deliveryPrice, minDeliveryMinutes, maxDeliveryMinutes, range } = props;
 
   let rangeText = range === DeliveryRangeDto.LONG && 'Дальняя доставка';
   rangeText = range === DeliveryRangeDto.HIGHT_DEMAND && 'Экспресс доставка';
@@ -29,7 +29,7 @@ function DeliveryRange(props: Props) {
       title={`${range === DeliveryRangeDto.LONG ? longRangeText : standardRangeText}`}
     >
       <span>
-        {minDeliveryTime}-{maxDeliveryTime} мин&nbsp;•&nbsp;{deliveryPrice} ₽&nbsp;
+        {minDeliveryMinutes}-{maxDeliveryMinutes} мин&nbsp;•&nbsp;{deliveryPrice} ₽&nbsp;
       </span>
       <span className='tooltip-information'>
         <svg

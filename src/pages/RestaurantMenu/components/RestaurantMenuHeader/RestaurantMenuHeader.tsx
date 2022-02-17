@@ -3,7 +3,6 @@ import { DeliveryRangeDto, RatingDto } from '../../../../common/types/dto';
 import RatingComponent from '../../../../common/template/components/RatingComponent/RatingComponent';
 import PriceRatingComponent from '../../../../common/template/components/PriceRatingComponent/PriceRatingComponent';
 import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
-import { TCloseTime } from '../../../../common/types/time';
 
 import './restaurantMenuHeader.less';
 
@@ -12,10 +11,11 @@ interface Props {
   restaurantName: string;
   rating: RatingDto;
   priceRating: RatingDto;
-  closeTime: TCloseTime;
+  closeTime: Date;
+  openTime: Date;
   deliveryPrice: number;
-  maxDeliveryTime: number;
-  minDeliveryTime: number;
+  maxDeliveryMinutes: number;
+  minDeliveryMinutes: number;
   deliveryRange: DeliveryRangeDto;
 }
 
@@ -27,9 +27,10 @@ function RestaurantMenuHeader(props: Props) {
     priceRating,
     closeTime,
     deliveryPrice,
-    maxDeliveryTime,
-    minDeliveryTime,
+    maxDeliveryMinutes,
+    minDeliveryMinutes,
     deliveryRange,
+    openTime,
   } = props;
   return (
     <section className='restaurant restaurant--shop'>
@@ -52,12 +53,14 @@ function RestaurantMenuHeader(props: Props) {
               <DeliveryRange
                 range={deliveryRange}
                 deliveryPrice={deliveryPrice}
-                maxDeliveryTime={maxDeliveryTime}
-                minDeliveryTime={minDeliveryTime}
+                maxDeliveryMinutes={maxDeliveryMinutes}
+                minDeliveryMinutes={minDeliveryMinutes}
               />
             </div>
             <div className='restaurant-info__open-hours'>
-              <span>Прием заказов до {closeTime}</span>
+              <span>
+                Прием заказов c {openTime} до {closeTime}
+              </span>
               <span> • </span>
               <PriceRatingComponent rating={priceRating} />
             </div>
