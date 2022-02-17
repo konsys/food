@@ -8,6 +8,9 @@ interface Props {
   menuItems: TLinkWithText[];
 }
 
+const MAX_ITEMS = 9;
+const PXS_PER_ITEM = 160;
+
 function RestaurantMenuTopNavigation(props: Props) {
   const { menuItems } = props;
   const ref = useRef<any>();
@@ -31,8 +34,8 @@ function RestaurantMenuTopNavigation(props: Props) {
   }, [isVisible]);
 
   useEffect(() => {
-    const itemsNum = Math.ceil(document.body.clientWidth / 160);
-    console.log(itemsNum);
+    let itemsNum = Math.ceil(document.body.clientWidth / PXS_PER_ITEM);
+    itemsNum = itemsNum > MAX_ITEMS ? MAX_ITEMS : itemsNum;
     setMainMenuItems(menuItems.slice(0, itemsNum));
     setSubMenuItems(menuItems.slice(itemsNum, menuItems.length));
   }, []);
