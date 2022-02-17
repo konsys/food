@@ -3,28 +3,28 @@ import { useGate, useStore } from 'effector-react';
 import React, { useState } from 'react';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { TCrudStore } from '../../common/models/abstractModel/abstractCrudModel';
-import { TId } from '../../common/types';
+import { TUuid } from '../../common/types';
 import { DictionaryFields } from './DictionaryFields';
 
-type Props<CreateEntity extends { id: TId }> = {
+type Props<CreateEntity extends { uuid: TUuid }> = {
   model: TCrudStore<CreateEntity>;
   buttonText?: string;
   buttonType?: ButtonType;
-  id: TId;
+  uuid: TUuid;
 };
 
-export function DictionaryModal<CreateEntity extends { id: TId }>({
+export function DictionaryModal<CreateEntity extends { uuid: TUuid }>({
   model,
   buttonText,
   buttonType,
-  id,
+  uuid,
 }: Props<CreateEntity>) {
   const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne, ItemGate } = model;
   const { ModalForm } = useValidatedForm<CreateEntity>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const item = useStore($itemStore);
 
-  useGate(ItemGate, modalVisible ? id : null);
+  useGate(ItemGate, modalVisible ? uuid : null);
 
   return (
     <ModalForm

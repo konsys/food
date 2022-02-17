@@ -19,8 +19,8 @@ export type TVoidFn<T = void> = (arg: T) => void;
 export type TPromiseFn<T = void, R = void> = (arg: T) => Promise<R>;
 export type TOnlyView = { onlyView: boolean };
 export type TId = number | null | undefined;
-export type TWithId = { id: TId };
-export type TItemWithId<T> = T & { id: TId };
+export type TItemWithUuid<T> = T & { uuid: TUuid };
 export type TObjectMap = Record<string, any>;
 
 export type TKeyValue = { key: string; value: any };
+export type TUuid = string | null;

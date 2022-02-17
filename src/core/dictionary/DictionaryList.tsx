@@ -1,7 +1,7 @@
 import { Col, Row, Space, Table } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { ReactElement } from 'react';
-import { ColumnsType, TItemWithId } from '../../common/types';
+import { ColumnsType, TItemWithUuid } from '../../common/types';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
 import { TCrudStore, TDeleteItemFx } from '../../common/models/abstractModel/abstractCrudModel';
@@ -19,7 +19,7 @@ function getColumns<T extends DictionaryDto>(
       title: 'Название',
       dataIndex: name('name'),
       render: (v, row) => (
-        <DictionaryModal model={model} buttonText={v} id={row.id} buttonType='link' />
+        <DictionaryModal model={model} buttonText={v} uuid={row.uuid} buttonType='link' />
       ),
     },
     {
@@ -34,7 +34,7 @@ function getColumns<T extends DictionaryDto>(
 }
 
 interface Props<T> {
-  model: TCrudStore<TItemWithId<T>>;
+  model: TCrudStore<TItemWithUuid<T>>;
 }
 
 export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): ReactElement {
@@ -45,23 +45,23 @@ export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): Re
 
   return (
     <div className='menu-box'>
-        <div className='container'>
-          <Row gutter={[16, 16]}>
-            <Col span={24}>
-              <Space>
-                <DictionaryModal model={model} id={null} />
-              </Space>
-            </Col>
+      <div className='container'>
+        <Row gutter={[16, 16]}>
+          <Col span={24}>
+            <Space>
+              <DictionaryModal model={model} uuid={null} />
+            </Space>
+          </Col>
 
-            <Col span={24}>
-              <Table
-                rowKey="id"
-                columns={getColumns<T>(model, deleteItemFx)}
-                dataSource={list.items}
-               />
-            </Col>
-          </Row>
-        </div>
+          <Col span={24}>
+            <Table
+              rowKey='id'
+              columns={getColumns<T>(model, deleteItemFx)}
+              dataSource={list.items}
+            />
+          </Col>
+        </Row>
       </div>
+    </div>
   );
 }

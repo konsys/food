@@ -8,6 +8,8 @@ import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMe
 import { TLinkWithText } from '../../common/types/utilTypes';
 import './restaurantMenu.less';
 import { RestarauntMenuDto } from '../../modules/restaurantMenu/types';
+import { RestaurantMenuModel } from '../../store';
+import { useGate, useStore } from 'effector-react';
 
 const menuItems1: TLinkWithText[] = [
   {
@@ -74,8 +76,13 @@ const menuItems1: TLinkWithText[] = [
 
 type Props = RestarauntMenuDto;
 
+const { $itemStore, ItemGate } = RestaurantMenuModel;
+
 function RestaurantMenu(props: Props) {
-  console.log(11111111111, props);
+  const { item } = useStore($itemStore);
+  useGate(ItemGate, 'wefwfwerhwsfwefwef');
+
+  console.log(11111111111, item);
   const {
     closeTime,
     openTime,

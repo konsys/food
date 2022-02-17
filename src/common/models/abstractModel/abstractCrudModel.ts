@@ -21,7 +21,7 @@ import {
   TypeOrmDeleteResult,
 } from '../../api/types';
 import { isNumber } from '../../utils/utils';
-import { TId, TItemWithId } from '../../types';
+import { TUuid, TItemWithUuid } from '../../types/index';
 
 export type TCreateItemFx<CreateEntity, FullEntity = CreateEntity> = Effect<
   Partial<CreateEntity>,
@@ -36,7 +36,7 @@ export type TGetAllFx<FullEntity> = Effect<
   Error
 >;
 
-export type TCrudStore<CreateEntity extends { id: TId }, FullEntity = CreateEntity> = {
+export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = CreateEntity> = {
   resetList: Event<void>;
   resetOne: Event<void>;
   setFilter: Event<any>;
@@ -46,7 +46,7 @@ export type TCrudStore<CreateEntity extends { id: TId }, FullEntity = CreateEnti
   $itemStore: Store<TItemStore<FullEntity>>;
   $itemPending: Store<boolean>;
   ListGate: Gate<TListRequest<FullEntity>>;
-  ItemGate: Gate<TId>;
+  ItemGate: Gate<TUuid>;
   setItem: Event<FullEntity>;
   getAllDefault: Event<void>;
   getItem: Event<number>;
@@ -56,7 +56,10 @@ export type TCrudStore<CreateEntity extends { id: TId }, FullEntity = CreateEnti
   getAll: Event<TListRequest<FullEntity>>;
 };
 
-export class CrudStore<CreateEntity extends { id: TId }, FullEntity = TItemWithId<CreateEntity>> {
+export class CrudStore<
+  CreateEntity extends { uuid: TUuid },
+  FullEntity = TItemWithUuid<CreateEntity>
+> {
   private url: string;
 
   constructor(url: string) {
@@ -65,7 +68,7 @@ export class CrudStore<CreateEntity extends { id: TId }, FullEntity = TItemWithI
 
   public createCrudStore(): TCrudStore<CreateEntity, FullEntity> {
     const ListGate = createGate<TListRequest<FullEntity>>();
-    const ItemGate = createGate<TId>();
+    const ItemGate = createGate<TUuid>();
     const service = new CrudService<CreateEntity, FullEntity>(this.url);
 
     const createItemFx = createEffect<Partial<CreateEntity>, FullEntity, Error>({

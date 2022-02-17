@@ -57,6 +57,6 @@ export const isObject = <T>(value: T) => typeof value === 'object' && value !== 
 
 export const getFileExtension = (filename: string) => filename.split('.').pop();
 
-export const uuid = () => uuidv4();
+export const generateUuid = () => uuidv4();
 
 export const isNumber = (item: any): item is number => !Number.isNaN(Number(item));

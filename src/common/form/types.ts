@@ -5,7 +5,7 @@ import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
 import { ImageDto } from '../../modules/image/model/types';
 import { TItemStore } from '../api/types';
 import { TCreateItemFx, TUpdateItemFx } from '../models/abstractModel/abstractCrudModel';
-import { TItemWithId, TPromiseFn, TVoidFn } from '../types';
+import { TItemWithUuid, TPromiseFn, TVoidFn } from '../types';
 import { AbstractFormProps } from './AbstractForm';
 
 export type TSetFieldsValue<T> = (item: Partial<T> | null) => void;
@@ -21,7 +21,7 @@ export type TModalWithFormProps<T> = ModalProps & {
   setModalVisible: TVoidFn<boolean>;
   modalVisible: boolean;
   onCreate: TCreateItemFx<T>;
-  onUpdate: TUpdateItemFx<TItemWithId<T>>;
+  onUpdate: TUpdateItemFx<TItemWithUuid<T>>;
   getList: Event<void>;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
   pending?: boolean;

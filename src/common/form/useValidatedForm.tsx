@@ -7,8 +7,8 @@ import { MainModal } from '../modal/Modal';
 import { AbstractForm } from './AbstractForm';
 import { enterKeyPressed } from './utils';
 import { $imageBlob, resetImageBlob } from '../../modules/image/model/store';
-import { TItemWithId } from '../types';
-import { uuid } from '../utils/utils';
+import { generateUuid } from '../utils/utils';
+import { TItemWithUuid } from '../types';
 
 export function useValidatedForm<T>(initialValues?: Partial<T>) {
   const [form] = Form.useForm();
@@ -65,7 +65,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
     [form]
   );
 
-  const useFormOnModal: FC<TModalWithFormProps<TItemWithId<T>>> = useCallback(
+  const useFormOnModal: FC<TModalWithFormProps<TItemWithUuid<T>>> = useCallback(
     (props) => {
       const {
         modalVisible,
@@ -81,7 +81,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         buttonType = 'primary',
       } = props;
 
-      const id = itemState?.item?.id;
+      const uuid = itemState?.item?.uuid;
       const [isFormPending, setIsFormPending] = useState<boolean>(false);
 
       const imageBlob = useStore($imageBlob);
@@ -103,7 +103,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             let returnValue = { ...validatedFormItem };
             if (imageBlob && createImage) {
               const fd = new FormData();
-              fd.append('file', imageBlob, `${uuid()}.jpg`);
+              fd.append('file', imageBlob, `${generateUuid()}.jpg`);
 
               const res = await createImage(fd);
               const imgId = res.id;
@@ -147,7 +147,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             onCancel={onClose}
             visible={modalVisible}
             onOk={modalOnOk}
-            title={id ? 'Редактировать' : 'Создать'}
+            title={uuid ? 'Редактировать' : 'Создать'}
           >
             <ReturnedForm
               initialValues={initialValues}
