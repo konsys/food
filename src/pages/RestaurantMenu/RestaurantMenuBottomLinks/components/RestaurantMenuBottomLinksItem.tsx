@@ -1,5 +1,7 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { TLinkWithText } from '../../../../common/types/utilTypes';
+import './restaurantMenuBottomLinksItem.less';
 
 interface Props {
   items: TLinkWithText[];
@@ -10,10 +12,10 @@ function RestaurantMenuBottomLinksItem(props: Props) {
 
   return (
     <>
-      {items.map(({ link, text }) => (
-        <a style={{ paddingRight: 20 }} title={text} href={link}>
+      {items.map(({ link, text }, index) => (
+        <Link title={text} to={link} key={index} className='restaraunt-menu-bottom-link'>
           {text}
-        </a>
+        </Link>
       ))}
     </>
   );
