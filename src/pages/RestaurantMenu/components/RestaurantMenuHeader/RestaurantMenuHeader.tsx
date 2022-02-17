@@ -13,10 +13,24 @@ interface Props {
   rating: RatingDto;
   priceRating: RatingDto;
   closeTime: TCloseTime;
+  deliveryPrice: number;
+  maxDeliveryTime: number;
+  minDeliveryTime: number;
+  deliveryRange: DeliveryRangeDto;
 }
 
 function RestaurantMenuHeader(props: Props) {
-  const { restaurantName, restaurantImgSrc, rating, priceRating, closeTime } = props;
+  const {
+    restaurantName,
+    restaurantImgSrc,
+    rating,
+    priceRating,
+    closeTime,
+    deliveryPrice,
+    maxDeliveryTime,
+    minDeliveryTime,
+    deliveryRange,
+  } = props;
   return (
     <section className='restaurant restaurant--shop'>
       <div className='restaurant-content'>
@@ -36,10 +50,10 @@ function RestaurantMenuHeader(props: Props) {
           <div className='restaurant-info--shop d-flex justify-content-between'>
             <div className='restaurant-info__delivery'>
               <DeliveryRange
-                range={DeliveryRangeDto.LONG}
-                deliveryPrice={190}
-                maxDeliveryTime={80}
-                minDeliveryTime={70}
+                range={deliveryRange}
+                deliveryPrice={deliveryPrice}
+                maxDeliveryTime={maxDeliveryTime}
+                minDeliveryTime={minDeliveryTime}
               />
             </div>
             <div className='restaurant-info__open-hours'>
