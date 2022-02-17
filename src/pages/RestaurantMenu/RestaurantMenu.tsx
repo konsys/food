@@ -6,9 +6,9 @@ import RestaurantMenuBottomPartnerInfo from './components/RestaurantMenuBottomPa
 import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
 import { TLinkWithText } from '../../common/types/utilTypes';
-import './restarauntMenu.less';
-
-interface Props {}
+import './restaurantMenu.less';
+import { RatingDto } from '../../common/types/dto';
+import { TCloseTime } from '../../common/types/time';
 
 const menuItems: TLinkWithText[] = [
   {
@@ -73,19 +73,27 @@ const menuItems: TLinkWithText[] = [
   },
 ];
 
+interface Props {
+  closeTime: TCloseTime;
+  priceRating: RatingDto;
+  rating: RatingDto;
+  restaurantName: string;
+  restaurantImgSrc: string;
+}
+
 function RestaurantMenu(props: Props) {
-  const {} = props;
+  const { closeTime, priceRating, rating, restaurantName, restaurantImgSrc } = props;
 
   return (
     <div className='container'>
       <div className='page-restaurant d-flex'>
         <div className='restaurant-section'>
           <RestaurantMenuHeader
-            closeTime='21:00'
-            priceRating={3}
-            rating={5}
-            restaurantName='Тарантино бар'
-            restaruantImgSrc='https://images.broniboy.ru/RBMkcsNpDbBAn3YAtSXoVdyzxEw=/1200x0/smart/filters:smart_sharpen():allow_webp(false)/own/d83eb13e-0245-40db-8e18-aa88db999859/fe4691e44863606f086421346c4b48fc.jpg'
+            closeTime={closeTime}
+            priceRating={priceRating}
+            rating={rating}
+            restaurantName={restaurantName}
+            restaurantImgSrc={restaurantImgSrc}
           />
           <RestaurantMenuTopNavigation menuItems={menuItems} />
 

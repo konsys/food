@@ -1,4 +1,4 @@
-import { ImageModel } from './../../../../store';
+import { ImageModel } from '../../../../store';
 import { imageFactory } from '../imageFactory';
 
 const { createItemFx } = ImageModel;

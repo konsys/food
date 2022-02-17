@@ -1,6 +1,6 @@
 import faker from 'faker';
 import { RestaurantModel } from '../../../store';
-import { restaurantMenuFactory } from '../restarauntMenuFactory';
+import { restaurantMenuFactory } from '../restaurantMenuFactory';
 import { RestaurantDto } from '../types';
 
 const {

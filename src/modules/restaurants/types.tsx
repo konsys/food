@@ -1,6 +1,6 @@
 import { RatingDto } from '../../common/types/dto';
 import { DictionaryDto } from '../../core/dictionary/types';
-import { ImageDto } from '../Image/model/types';
+import { ImageDto } from '../image/model/types';
 
 export type RestaurantDto = {
   deliveryType: EDeliveryType;

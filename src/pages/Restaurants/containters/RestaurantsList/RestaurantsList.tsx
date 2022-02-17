@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { RestaurantDto } from '../../../../modules/Restaruants/types';
+import { RestaurantDto } from '../../../../modules/restaurants/types';
 import RestaurantItem from '../RestaurantItem/RestaurantItem';
 import './restaurantList.less';
 
@@ -13,7 +13,7 @@ function RestaurantsList(props: Props) {
 
   return (
     <section className='restaurants'>
-      <div className='container restaraunts-list'>
+      <div className='container restaurants-list'>
         <header>
           <div className='restaurants-header-title'>
             <div className='page-title'>
@@ -58,11 +58,11 @@ function RestaurantsList(props: Props) {
           </div>
           <noscript />
         </div>
-        <div className='restaraunts-list__show-more'>
+        <div className='restaurants-list__show-more'>
           <Link
             to='/'
             title='Показать еще рестораны'
-            className='restaraunts-list__upload-button main-btn'
+            className='restaurants-list__upload-button main-btn'
           >
             <span>Показать еще рестораны</span>
           </Link>

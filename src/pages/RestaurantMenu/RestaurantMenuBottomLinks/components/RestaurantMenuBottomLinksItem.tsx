@@ -13,7 +13,7 @@ function RestaurantMenuBottomLinksItem(props: Props) {
   return (
     <>
       {items.map(({ link, text }, index) => (
-        <Link title={text} to={link} key={index} className='restaraunt-menu-bottom-link'>
+        <Link title={text} to={link} key={index} className='restaurant-menu-bottom-link'>
           {text}
         </Link>
       ))}

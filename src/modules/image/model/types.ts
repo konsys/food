@@ -1,4 +1,4 @@
-import { DictionaryDto } from './../../../core/dictionary/types';
+import { DictionaryDto } from '../../../core/dictionary/types';
 export type ImageDto = {
   averageImg: string | null;
   largeImg: string | null;

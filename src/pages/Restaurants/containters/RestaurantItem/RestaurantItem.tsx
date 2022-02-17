@@ -4,8 +4,8 @@ import { ReactComponent as RatingIcon } from '../../../../svg/rating.svg';
 import { ReactComponent as LongDistance } from '../../../../svg/long-distance.svg';
 import { ReactComponent as DeliveryStandard } from '../../../../svg/delivery-standard.svg';
 import { ReactComponent as HightDemand } from '../../../../svg/high-demand.svg';
-import { EDeliveryType, RestaurantDto } from '../../../../modules/Restaruants/types';
 import './restaurantItem.less';
+import { EDeliveryType, RestaurantDto } from '../../../../modules/restaurants/types';
 
 type Props = RestaurantDto;
 

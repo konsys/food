@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { TLinkWithText } from '../../../../../common/types/utilTypes';
-import './restarauntMenuSubMenu.less';
+import './restaurantMenuSubMenu.less';
 
 interface Props {
   elements: TLinkWithText[];

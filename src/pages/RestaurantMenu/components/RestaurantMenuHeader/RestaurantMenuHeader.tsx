@@ -8,7 +8,7 @@ import { TCloseTime } from '../../../../common/types/time';
 import './restaurantMenuHeader.less';
 
 interface Props {
-  restaruantImgSrc: string;
+  restaurantImgSrc: string;
   restaurantName: string;
   rating: RatingDto;
   priceRating: RatingDto;
@@ -16,12 +16,12 @@ interface Props {
 }
 
 function RestaurantMenuHeader(props: Props) {
-  const { restaurantName, restaruantImgSrc, rating, priceRating, closeTime } = props;
+  const { restaurantName, restaurantImgSrc, rating, priceRating, closeTime } = props;
   return (
     <section className='restaurant restaurant--shop'>
       <div className='restaurant-content'>
         <div className='restaurant__background'>
-          <img src={restaruantImgSrc} className='restaurant-bg-image' alt={restaurantName} />
+          <img src={restaurantImgSrc} className='restaurant-bg-image' alt={restaurantName} />
         </div>
 
         <div className='restaurant-descr'>

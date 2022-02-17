@@ -6,7 +6,7 @@ import { TModalWithFormProps, TReturnedForm, TSetFieldsValue } from './types';
 import { MainModal } from '../modal/Modal';
 import { AbstractForm } from './AbstractForm';
 import { enterKeyPressed } from './utils';
-import { $imageBlob, resetImageBlob } from '../../modules/Image/model/store';
+import { $imageBlob, resetImageBlob } from '../../modules/image/model/store';
 import { TItemWithId } from '../types';
 import { uuid } from '../utils/utils';
 

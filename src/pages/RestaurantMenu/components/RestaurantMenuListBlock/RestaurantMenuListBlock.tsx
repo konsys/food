@@ -38,10 +38,10 @@ function RestaurantMenuListBlock(props: Props) {
 
   return (
     <>
-      <div className='restaraunt-menu__section-title'>
+      <div className='restaurant-menu__section-title'>
         <h2>Суши</h2>
       </div>
-      <div className='restaraunt-menu__service-list row'>
+      <div className='restaurant-menu__service-list row'>
         {menuListItem.map(({ description, imgSrc, name, price, amount, weight }, index) => (
           <RestaurantMenuListItem
             description={description}
