@@ -1,7 +1,7 @@
-import { LegalDto } from './../../restaurants/types';
 import { LegalModel } from './../../../store';
 import faker from 'faker';
 import { legalFactory } from '../legalFactory';
+import { LegalDto } from '../types';
 
 const {
   createItemFx,

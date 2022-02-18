@@ -70,7 +70,7 @@ describe('menu tests', () => {
   it.skip('should get one menu', async () => {
     await createItemFx(newItem);
     const { item } = $itemStore.getState();
-    item?.id && getItem(item.id);
+    item?.id && getItem(item.uuid);
     // eslint-disable-next-line effector/no-getState
     const two = $itemStore.getState();
     expect(item).toStrictEqual(expect.objectContaining(two.item));
