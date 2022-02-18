@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { TPromiseFn } from 'src/common/types';
+import { TPromiseFn, TUuid } from 'src/common/types';
 import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
 import { DeleteResult, FindManyOptions, Repository } from 'typeorm';
 
@@ -41,8 +41,8 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
         }
     }
 
-    findOne(id: number) {
-        return this.repository.findOne(id);
+    findOne(uuid: TUuid) {
+        return this.repository.findOne(uuid);
     }
 
     update(updateDto: U) {
@@ -57,7 +57,7 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
 export interface IAbstractService<R, C, U> {
     create: TPromiseFn<C, R>;
     findAll: TPromiseFn<TListRequest<R>, TListResponce<R>>
-    findOne: TPromiseFn<number, R>
+    findOne: TPromiseFn<TUuid, R>
     update: TPromiseFn<U, R>
     remove: TPromiseFn<number, DeleteResult>
 }

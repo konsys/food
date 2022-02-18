@@ -29,7 +29,7 @@ export type RestaurantDto = {
   minDeliveryMinutes: number;
   menuItems: TLinkWithText[];
   legal: LegalDto;
-  foodType: EFoodType[];
+  foodType: EFoodType;
 } & DictionaryDto;
 
 export enum EFoodType {

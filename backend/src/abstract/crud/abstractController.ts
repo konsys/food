@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors } from '@nestjs/common';
+import { TUuid } from 'src/common/types';
 
 import { TListRequest } from 'src/common/types/paginationTypes';
 import { IAbstractService } from './abstractService';
@@ -23,9 +24,9 @@ export class AbstractController<E, C, U> {
     return (this.service.findAll(params));
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.service.findOne(+id);
+  @Get(':uuid')
+  findOne(@Param('uuid') uuid: TUuid) {
+    return this.service.findOne(uuid);
   }
 
   @Put()
