@@ -2,28 +2,17 @@ import React from 'react';
 import RatingComponent from '../../../../common/template/components/RatingComponent/RatingComponent';
 import PriceRatingComponent from '../../../../common/template/components/PriceRatingComponent/PriceRatingComponent';
 import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
+import { RestaurantDto } from '../../../../modules/restaurants/types';
 
 import './restaurantMenuHeader.less';
-import { DeliveryRangeDto, RatingDto } from '../../../../modules/restaurantMenu/types';
-import { ImageDto } from '../../../../modules/image/model/types';
-
 interface Props {
-  restaurantImg: ImageDto;
-  restaurantName: string;
-  rating: RatingDto;
-  priceRating: RatingDto;
-  closeTime: Date;
-  openTime: Date;
-  deliveryPrice: number;
-  maxDeliveryMinutes: number;
-  minDeliveryMinutes: number;
-  deliveryRange: DeliveryRangeDto;
+  restaurant: RestaurantDto;
 }
 
-function RestaurantMenuHeader(props: Props) {
+function RestaurantMenuHeader({ restaurant }: Props) {
   const {
-    restaurantName,
-    restaurantImg,
+    name,
+    image,
     rating,
     priceRating,
     closeTime,
@@ -32,21 +21,17 @@ function RestaurantMenuHeader(props: Props) {
     minDeliveryMinutes,
     deliveryRange,
     openTime,
-  } = props;
+  } = restaurant;
   return (
     <section className='restaurant restaurant--shop'>
       <div className='restaurant-content'>
         <div className='restaurant__background'>
-          <img
-            src={restaurantImg.averageImg ?? ''}
-            className='restaurant-bg-image'
-            alt={restaurantName}
-          />
+          <img src={image?.averageImg ?? ''} className='restaurant-bg-image' alt={name} />
         </div>
 
         <div className='restaurant-descr'>
           <div className='restaurant-descr__header d-flex'>
-            <div className='restaurant-descr__header--title'>{restaurantName}</div>
+            <div className='restaurant-descr__header--title'>{name}</div>
             <div className='restaurant-descr__header--bull'>&nbsp;•&nbsp;</div>
             <div className='restaurant-descr__header--rating d-flex align-items-center'>
               <RatingComponent rating={rating} />

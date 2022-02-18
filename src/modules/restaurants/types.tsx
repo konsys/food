@@ -28,7 +28,7 @@ export type RestaurantDto = {
   maxDeliveryMinutes: number;
   minDeliveryMinutes: number;
   menuItems: TLinkWithText[];
-  partner: LegalDto;
+  legal: LegalDto;
   foodType: EFoodType[];
 } & DictionaryDto;
 

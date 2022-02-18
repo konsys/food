@@ -22,7 +22,7 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   menuItems: factory.each(() => []),
   openTime: factory.each(() => faker.datatype.datetime()),
   minDeliveryMinutes: factory.each(() => faker.datatype.number(60)),
-  partner: factory.each(() => legalFactory.build()),
+  legal: factory.each(() => legalFactory.build()),
   createdAt: factory.each(() => faker.datatype.datetime()),
   updatedAt: factory.each(() => faker.datatype.datetime()),
 });

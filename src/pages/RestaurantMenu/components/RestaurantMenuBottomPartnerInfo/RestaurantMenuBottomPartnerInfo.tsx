@@ -1,25 +1,20 @@
 import React, { memo } from 'react';
+import { LegalDto } from '../../../../modules/restaurants/types';
 import './restaurantMenuBottomPartnerInfo.less';
 
-interface Props {
-  partnerName: string;
-  partnerAddress: string;
-  partnerINN: string;
-  partnerKPP?: string;
-  partnerOGRN?: string;
-}
+type Props = LegalDto;
 
 function RestaurantMenuBottomPartnerInfo(props: Props) {
-  const { partnerName, partnerAddress, partnerINN, partnerKPP, partnerOGRN } = props;
+  const { adress, name, ogrn, inn, kpp } = props;
 
   return (
     <div className='legal-info'>
       <span className='legal-info__part'>
-        Исполнитель: {partnerName}, Адрес: {partnerAddress},
+        Исполнитель: {name}, Адрес: {adress},
       </span>
-      <span className='legal-info__part'>ИНН {partnerINN}</span>
-      {partnerKPP && <span className='legal-info__part'>КПП {partnerKPP}</span>}
-      {partnerOGRN && <span className='legal-info__part'>ОГРН {partnerOGRN}</span>}
+      <span className='legal-info__part'>ИНН {inn}</span>
+      {kpp && <span className='legal-info__part'>КПП {kpp}</span>}
+      {ogrn && <span className='legal-info__part'>ОГРН {ogrn}</span>}
     </div>
   );
 }

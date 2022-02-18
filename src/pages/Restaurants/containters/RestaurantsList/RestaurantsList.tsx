@@ -24,8 +24,9 @@ function RestaurantsList(props: Props) {
         <div className='restaurants-body'>
           <div className='row'>
             {/* TODO add delivery */}
-            {items.map((restarauntItem) => (
+            {items.map((restarauntItem, index) => (
               <RestaurantItem
+                key={index}
                 restaurant={restarauntItem}
                 delivery={{
                   fullTime: '40-50 мин',

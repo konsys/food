@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { useGate, useStore } from 'effector-react';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
 import RestaurantMenuBottomLinks from './RestaurantMenuBottomLinks/RestaurantMenuBottomLinks';
 import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigation/RestaurantMenuTopNavigation';
@@ -7,11 +8,9 @@ import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
 import { TLinkWithText } from '../../common/types/utilTypes';
 import './restaurantMenu.less';
-import { RestarauntMenuDto } from '../../modules/restaurantMenu/types';
-import { RestaurantMenuModel } from '../../store';
-import { useGate, useStore } from 'effector-react';
+import { RestaurantModel } from '../../store';
 
-const menuItems1: TLinkWithText[] = [
+const menuItems: TLinkWithText[] = [
   {
     link: '/',
     text: 'Суши',
@@ -74,66 +73,33 @@ const menuItems1: TLinkWithText[] = [
   },
 ];
 
-type Props = RestarauntMenuDto;
+const { $itemStore, ItemGate } = RestaurantModel;
 
-const { $itemStore, ItemGate } = RestaurantMenuModel;
-
-function RestaurantMenu(props: Props) {
+function RestaurantMenu() {
   const { item } = useStore($itemStore);
   useGate(ItemGate, 'wefwfwerhwsfwefwef');
 
-  console.log(11111111111, item);
-  const {
-    closeTime,
-    openTime,
-    priceRating,
-    rating,
-    name,
-    restaurantImg,
-    deliveryPrice,
-    deliveryRange,
-    maxDeliveryMinutes,
-    minDeliveryMinutes,
-    menuItems,
-    restaurantPartnerAddress,
-    restaurantPartnerLegal,
-    restaurantPartnerInn,
-    restaurantPartnerKPP,
-    restaurantPartnerOGRN,
-  } = props;
-
   return (
-    <div className='container'>
-      <div className='page-restaurant d-flex'>
-        <div className='restaurant-section'>
-          <RestaurantMenuHeader
-            closeTime={closeTime}
-            openTime={openTime}
-            priceRating={priceRating}
-            rating={rating}
-            restaurantName={name}
-            restaurantImg={restaurantImg}
-            deliveryPrice={deliveryPrice}
-            deliveryRange={deliveryRange}
-            maxDeliveryMinutes={maxDeliveryMinutes}
-            minDeliveryMinutes={minDeliveryMinutes}
-          />
-          <RestaurantMenuTopNavigation menuItems={menuItems} />
+    <div>
+      {item ? (
+        <div className='container'>
+          <div className='page-restaurant d-flex'>
+            <div className='restaurant-section'>
+              <RestaurantMenuHeader restaurant={item} />
+              <RestaurantMenuTopNavigation menuItems={menuItems} />
 
-          <section className='restaurant-menu'>
-            <RestaurantMenuListBlock />
-            <RestaurantMenuBottomPartnerInfo
-              partnerAddress={restaurantPartnerAddress}
-              partnerINN={restaurantPartnerInn}
-              partnerName={restaurantPartnerLegal}
-              partnerKPP={restaurantPartnerKPP}
-              partnerOGRN={restaurantPartnerOGRN}
-            />
-            <RestaurantMenuBottomLinks />
-          </section>
+              <section className='restaurant-menu'>
+                <RestaurantMenuListBlock />
+                <RestaurantMenuBottomPartnerInfo {...item.legal} />
+                <RestaurantMenuBottomLinks />
+              </section>
+            </div>
+            <Cart />
+          </div>
         </div>
-        <Cart />
-      </div>
+      ) : (
+        <span />
+      )}
     </div>
   );
 }
