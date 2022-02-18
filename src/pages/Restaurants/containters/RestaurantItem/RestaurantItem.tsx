@@ -5,25 +5,18 @@ import { ReactComponent as LongDistance } from '../../../../svg/long-distance.sv
 import { ReactComponent as DeliveryStandard } from '../../../../svg/delivery-standard.svg';
 import { ReactComponent as HightDemand } from '../../../../svg/high-demand.svg';
 import './restaurantItem.less';
-import { EDeliveryType, RestaurantDto } from '../../../../modules/restaurants/types';
+import { DeliveryDto, EDeliveryType, RestaurantDto } from '../../../../modules/restaurants/types';
+import { getRatingColor } from '../../../../common/utils/ratingUtils';
 
-type Props = RestaurantDto;
+interface Props {
+  restaurant: RestaurantDto;
+  delivery: DeliveryDto;
+}
 
-function RestaurantItem(props: Props) {
-  const {
-    name,
-    uuid,
-    image,
-    logoUrl,
-    rating,
-    ratingColor,
-    priceRate,
-    foodType,
-    price,
-    deliveryFullTime,
-    deliveryType,
-  } = props;
+function RestaurantItem({ restaurant, delivery }: Props) {
+  const { name, uuid, image, logo, rating, foodType, priceRating } = restaurant;
 
+  const { type, price, fullTime } = delivery;
   return (
     <div className='col-lg-4 col-md-6 col-12'>
       <div className='restaurant-box'>
@@ -37,7 +30,7 @@ function RestaurantItem(props: Props) {
             />
 
             <div className='restaurant-box-top-logo clearfix'>
-              {logoUrl && <img alt={name} className=' lazyloaded' src={logoUrl} />}
+              {logo ? <img alt={name} className=' lazyloaded' src={logo.averageImg || ''} /> : ''}
             </div>
           </Link>
         </div>
@@ -47,7 +40,10 @@ function RestaurantItem(props: Props) {
           </Link>
           <div className='restaurant-box-second__description'>
             <div className='restaurant-box-second__rating d-flex align-items-center'>
-              <div className='restaurant-box-second__rating--number' style={{ color: ratingColor }}>
+              <div
+                className='restaurant-box-second__rating--number'
+                style={{ color: getRatingColor(rating) }}
+              >
                 {rating}.0
               </div>
               <div className='restaurant-box-second__rating--star'>
@@ -55,24 +51,24 @@ function RestaurantItem(props: Props) {
               </div>
               <div className='restaurant-box-second__info'>{foodType}, </div>
               <div className='restaurant-box-second__info'>
-                {Array(priceRate)
+                {Array(priceRating)
                   .fill(0)
                   .map(() => '₽')}
               </div>
             </div>
             <div className='restaurant-box-second__delivery d-flex align-items-center'>
               <div className='restaurant-box-second__delivery-icon'>
-                {deliveryType === EDeliveryType.LONG_DISTANCE ? (
+                {type === EDeliveryType.LONG_DISTANCE ? (
                   <LongDistance className='restaurant-box-second__delivery-icon ' />
                 ) : (
                   ''
                 )}
-                {deliveryType === EDeliveryType.STANDARD ? (
+                {type === EDeliveryType.STANDARD ? (
                   <DeliveryStandard className='restaurant-box-second__delivery-icon ' />
                 ) : (
                   ''
                 )}
-                {deliveryType === EDeliveryType.HIGH_DEMAND ? (
+                {type === EDeliveryType.HIGH_DEMAND ? (
                   <HightDemand className='restaurant-box-second__delivery-icon ' />
                 ) : (
                   ''
@@ -84,7 +80,7 @@ function RestaurantItem(props: Props) {
               </div>
               <div className='restaurant-box-second__delivery-time'>
                 {/* TODO add fll time */}
-                {deliveryFullTime} 40-50 мин
+                {fullTime}
               </div>
             </div>
           </div>

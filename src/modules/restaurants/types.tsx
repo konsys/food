@@ -1,18 +1,35 @@
+import { TLinkWithText } from '../../common/types/utilTypes';
 import { DictionaryDto } from '../../core/dictionary/types';
 import { ImageDto } from '../image/model/types';
-import { RatingDto } from '../restaurantMenu/types';
+import { DeliveryRangeDto, RatingDto } from '../restaurantMenu/types';
+
+export type DeliveryDto = {
+  type: EDeliveryType;
+  price: number;
+  fullTime: string;
+};
+
+export type LegalDto = {
+  adress: string;
+  inn: string;
+  kpp?: string;
+  ogrn?: string;
+} & DictionaryDto;
 
 export type RestaurantDto = {
-  deliveryType: EDeliveryType;
-  deliveryFullTime?: string;
-  price: number;
-  image?: ImageDto;
-  imgId?: number;
-  logoUrl: string;
-  rating: 1 | 2 | 3 | 4 | 5;
-  ratingColor: ERatingColor;
-  priceRate: RatingDto;
-  foodType: EFoodType;
+  image: ImageDto;
+  logo: ImageDto;
+  openTime: Date;
+  closeTime: Date;
+  priceRating: RatingDto;
+  rating: RatingDto;
+  deliveryPrice: number;
+  deliveryRange: DeliveryRangeDto;
+  maxDeliveryMinutes: number;
+  minDeliveryMinutes: number;
+  menuItems: TLinkWithText[];
+  partner: LegalDto;
+  foodType: EFoodType[];
 } & DictionaryDto;
 
 export enum EFoodType {

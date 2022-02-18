@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { RestaurantDto } from '../../../../modules/restaurants/types';
+import { EDeliveryType, RestaurantDto } from '../../../../modules/restaurants/types';
 import RestaurantItem from '../RestaurantItem/RestaurantItem';
 import './restaurantList.less';
 
@@ -23,38 +23,17 @@ function RestaurantsList(props: Props) {
         </header>
         <div className='restaurants-body'>
           <div className='row'>
-            {items.map(
-              ({
-                deliveryType,
-                foodType,
-                id,
-                image,
-                logoUrl,
-                name,
-                price,
-                priceRate,
-                rating,
-                ratingColor,
-                uuid,
-                description,
-              }) => (
-                <RestaurantItem
-                  deliveryType={deliveryType}
-                  name={name}
-                  uuid={uuid}
-                  image={image}
-                  logoUrl={logoUrl}
-                  ratingColor={ratingColor}
-                  rating={rating}
-                  priceRate={priceRate}
-                  foodType={foodType}
-                  price={price}
-                  id={id}
-                  description={description}
-                  key={uuid}
-                />
-              )
-            )}
+            {/* TODO add delivery */}
+            {items.map((restarauntItem) => (
+              <RestaurantItem
+                restaurant={restarauntItem}
+                delivery={{
+                  fullTime: '40-50 мин',
+                  price: 190,
+                  type: EDeliveryType.LONG_DISTANCE,
+                }}
+              />
+            ))}
           </div>
           <noscript />
         </div>
