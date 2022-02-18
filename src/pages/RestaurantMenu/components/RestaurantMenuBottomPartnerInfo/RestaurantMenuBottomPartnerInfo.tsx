@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { LegalDto } from '../../../../modules/restaurants/types';
+import { LegalDto } from '../../../../modules/legal/types';
 import './restaurantMenuBottomPartnerInfo.less';
 
 type Props = LegalDto;

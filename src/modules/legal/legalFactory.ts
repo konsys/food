@@ -1,6 +1,6 @@
 import * as factory from 'factory.ts';
 import faker from 'faker';
-import { LegalDto } from '../restaurants/types';
+import { LegalDto } from './types';
 
 export const legalFactory = factory.Sync.makeFactory<LegalDto>({
   id: factory.each((n) => n),

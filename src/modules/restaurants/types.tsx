@@ -1,6 +1,7 @@
 import { TLinkWithText } from '../../common/types/utilTypes';
 import { DictionaryDto } from '../../core/dictionary/types';
 import { ImageDto } from '../image/model/types';
+import { LegalDto } from '../legal/types';
 import { DeliveryRangeDto, RatingDto } from '../restaurantMenu/types';
 
 export type DeliveryDto = {
@@ -8,13 +9,6 @@ export type DeliveryDto = {
   price: number;
   fullTime: string;
 };
-
-export type LegalDto = {
-  adress: string;
-  inn: string;
-  kpp?: string;
-  ogrn?: string;
-} & DictionaryDto;
 
 export type RestaurantDto = {
   image: ImageDto;
