@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { useGate, useStore } from 'effector-react';
+import { useParams } from 'react-router-dom';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
 import RestaurantMenuBottomLinks from './RestaurantMenuBottomLinks/RestaurantMenuBottomLinks';
 import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigation/RestaurantMenuTopNavigation';
@@ -76,8 +77,10 @@ const menuItems: TLinkWithText[] = [
 const { $itemStore, ItemGate } = RestaurantModel;
 
 function RestaurantMenu() {
+  const { uuid } = useParams<{ uuid: string }>();
   const { item } = useStore($itemStore);
-  useGate(ItemGate, 'wefwfwerhwsfwefwef');
+
+  useGate(ItemGate, uuid);
 
   return (
     <div>

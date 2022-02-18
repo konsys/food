@@ -20,7 +20,6 @@ import {
   TItemStore,
   TypeOrmDeleteResult,
 } from '../../api/types';
-import { isNumber } from '../../utils/utils';
 import { TUuid, TItemWithUuid } from '../../types/index';
 
 export type TCreateItemFx<CreateEntity, FullEntity = CreateEntity> = Effect<
@@ -49,7 +48,7 @@ export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = Create
   ItemGate: Gate<TUuid>;
   setItem: Event<FullEntity>;
   getAllDefault: Event<void>;
-  getItem: Event<number>;
+  getItem: Event<TUuid>;
   createItemFx: TCreateItemFx<Partial<CreateEntity>, FullEntity>;
   updateItemFx: TUpdateItemFx<FullEntity>;
   deleteItemFx: TDeleteItemFx;
@@ -79,8 +78,8 @@ export class CrudStore<
       handler: (req) => service.getAll(req),
     });
 
-    const getItemFx = createEffect<number, FullEntity, Error>({
-      handler: (id) => service.getOne(id),
+    const getItemFx = createEffect<TUuid, FullEntity, Error>({
+      handler: (uuid) => service.getOne(uuid),
     });
 
     const updateItemFx = createEffect<FullEntity, FullEntity, Error>({
@@ -91,7 +90,7 @@ export class CrudStore<
       handler: (id) => service.deleteOne(id),
     });
 
-    const getItem = createEvent<number>();
+    const getItem = createEvent<TUuid>();
     const getAllDefault = createEvent();
     const getAll = createEvent<TListRequest<FullEntity>>();
     const resetOne = createEvent();
@@ -150,7 +149,7 @@ export class CrudStore<
 
     guard({
       clock: ItemGate.state,
-      source: ItemGate.state.map((state) => (isNumber(state) ? state : 0)),
+      source: ItemGate.state.map((state) => state),
       filter: ItemGate.state.map((state) => !!state),
       target: getItemFx,
     });

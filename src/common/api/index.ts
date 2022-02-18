@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { axiosClient } from '../../http/Clients';
+import { TUuid } from '../types';
 import { TListRequest, TListResponce, TypeOrmDeleteResult } from './types';
 
 export class CrudService<CreateEntity, FullEntity> {
@@ -21,8 +22,8 @@ export class CrudService<CreateEntity, FullEntity> {
     return data;
   }
 
-  async getOne(id: number): Promise<FullEntity> {
-    return (await axiosClient.get<FullEntity>(`${this.url}/${id}`)).data;
+  async getOne(uuid: TUuid): Promise<FullEntity> {
+    return (await axiosClient.get<FullEntity>(`${this.url}/${uuid}`)).data;
   }
 
   async updateOne(entity: FullEntity): Promise<FullEntity> {
