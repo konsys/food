@@ -1,4 +1,3 @@
-import { EDeliveryType } from './../../../backend/src/entities/restaurant.entity';
 import { imageFactory } from './../image/model/imageFactory';
 import * as factory from 'factory.ts';
 import faker from 'faker';
