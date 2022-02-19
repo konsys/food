@@ -21,4 +21,7 @@ export const apiUrls = {
   legal: {
     main: `/legal`,
   },
+  delivery: {
+    main: `/delivery`,
+  },
 };

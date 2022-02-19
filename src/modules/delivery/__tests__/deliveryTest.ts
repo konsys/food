@@ -1,7 +1,7 @@
-import { LegalModel } from './../../../store';
+import { deliveryFactory } from './../deliveryFactory';
+import { DeliveryDto } from './../types';
 import faker from 'faker';
-import { legalFactory } from '../deliveryFactory';
-import { LegalDto } from '../types';
+import { DeliveryModel } from '../../../store';
 
 const {
   createItemFx,
@@ -13,16 +13,12 @@ const {
   updateItemFx,
   getItem,
   deleteItemFx,
-} = LegalModel;
+} = DeliveryModel;
 
-const generateNewItem = () => {
-  let newItem = legalFactory.build();
+const generateNewItem = () => deliveryFactory.build();
 
-  return newItem;
-};
-
-describe('menu tests', () => {
-  let newItem: LegalDto;
+describe('delivery tests', () => {
+  let newItem: DeliveryDto;
 
   beforeAll(async () => {
     for (let i = 0; i < 20; i++) {
@@ -41,18 +37,18 @@ describe('menu tests', () => {
     $listStore.off(resetList);
   });
 
-  it('should create menu', async () => {
+  it('should create delivery', async () => {
     await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
     expect(1).toBe(1);
   });
 
-  it.skip('should create menu', async () => {
+  it.skip('should create delivery', async () => {
     await createItemFx(newItem);
     // eslint-disable-next-line effector/no-getState
     expect($itemStore.getState()).toStrictEqual(expect.objectContaining(newItem));
   });
 
-  it.skip('should get all menu', async () => {
+  it.skip('should get all delivery', async () => {
     const limit = 2;
     getAll({ limit, page: 1 });
     // eslint-disable-next-line effector/no-getState
@@ -62,7 +58,7 @@ describe('menu tests', () => {
     expect(items).toHaveLength(limit);
   });
 
-  it.skip('should get one menu', async () => {
+  it.skip('should get one delivery', async () => {
     await createItemFx(newItem);
     const { item } = $itemStore.getState();
     item?.id && getItem(item.uuid);
@@ -71,7 +67,7 @@ describe('menu tests', () => {
     expect(item).toStrictEqual(expect.objectContaining(two.item));
   });
 
-  it.skip('should update menu', async () => {
+  it.skip('should update delivery', async () => {
     await createItemFx(newItem);
     let { item } = $itemStore.getState();
 
@@ -83,7 +79,7 @@ describe('menu tests', () => {
     expect(one.item?.description).toStrictEqual(description);
   });
 
-  it.skip('should delete menu', async () => {
+  it.skip('should delete delivery', async () => {
     await createItemFx(newItem);
     const { item } = $itemStore.getState();
     item?.id && (await deleteItemFx(item.id));
