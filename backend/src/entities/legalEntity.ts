@@ -3,7 +3,7 @@ import { Column, Entity } from "typeorm";
 @Entity()
 export class Legal extends AbstractDictionary {
     @Column()
-    adress: string;
+    address: string;
 
     @Column()
     inn: string;

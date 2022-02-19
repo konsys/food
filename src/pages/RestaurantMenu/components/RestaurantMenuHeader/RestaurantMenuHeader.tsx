@@ -3,25 +3,14 @@ import RatingComponent from '../../../../common/template/components/RatingCompon
 import PriceRatingComponent from '../../../../common/template/components/PriceRatingComponent/PriceRatingComponent';
 import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 import { RestaurantDto } from '../../../../modules/restaurants/types';
-
+import { DeliveryRangeDto } from '../../../../modules/restaurantMenu/types';
 import './restaurantMenuHeader.less';
 interface Props {
   restaurant: RestaurantDto;
 }
 
 function RestaurantMenuHeader({ restaurant }: Props) {
-  const {
-    name,
-    image,
-    rating,
-    priceRating,
-    closeTime,
-    deliveryPrice,
-    maxDeliveryMinutes,
-    minDeliveryMinutes,
-    deliveryRange,
-    openTime,
-  } = restaurant;
+  const { name, image, rating, priceRating, closeTime, openTime } = restaurant;
   return (
     <section className='restaurant restaurant--shop'>
       <div className='restaurant-content'>
@@ -41,10 +30,10 @@ function RestaurantMenuHeader({ restaurant }: Props) {
           <div className='restaurant-info--shop d-flex justify-content-between'>
             <div className='restaurant-info__delivery'>
               <DeliveryRange
-                range={deliveryRange}
-                deliveryPrice={deliveryPrice}
-                maxDeliveryMinutes={maxDeliveryMinutes}
-                minDeliveryMinutes={minDeliveryMinutes}
+                range={DeliveryRangeDto.STANDARD}
+                deliveryPrice={199}
+                maxDeliveryMinutes={50}
+                minDeliveryMinutes={40}
               />
             </div>
             <div className='restaurant-info__open-hours'>

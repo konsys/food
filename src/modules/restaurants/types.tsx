@@ -2,22 +2,19 @@ import { TLinkWithText } from '../../common/types/utilTypes';
 import { DictionaryDto } from '../../core/dictionary/types';
 import { ImageDto } from '../image/model/types';
 import { LegalDto } from '../legal/types';
-import { DeliveryRangeDto, RatingDto } from '../restaurantMenu/types';
+import { RatingDto } from '../restaurantMenu/types';
 
 export type RestaurantDto = {
-  image: ImageDto;
+  image?: ImageDto;
   imageId: number;
-  logo: ImageDto;
+  logo?: ImageDto;
+  logoId: number;
   openTime: Date;
   closeTime: Date;
   priceRating: RatingDto;
   rating: RatingDto;
-  deliveryPrice: number;
-  deliveryRange: DeliveryRangeDto;
-  maxDeliveryMinutes: number;
-  minDeliveryMinutes: number;
   menuItems: TLinkWithText[];
-  legal: LegalDto;
+  legal?: LegalDto;
   legalId: number;
   foodType: EFoodType;
 } & DictionaryDto;

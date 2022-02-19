@@ -23,7 +23,7 @@ function MetaContent(props: Props) {
         ]}
       />
 
-      <MetaOrganisationItems />
+      <MetaOrganisationItems address='' name='' />
       <MetaItemList />
     </>
   );

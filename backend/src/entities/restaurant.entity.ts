@@ -5,12 +5,8 @@ import { Legal } from "./legalEntity";
 
 @Entity()
 export class Restaurant extends AbstractDictionary {
-    @Column()
-    deliveryType: EDeliveryType;
 
-    @Column()
-    price: number;
-    
+
     @Column({ type: "int", nullable: true, default: null })
     logoId: number;
 
@@ -19,10 +15,10 @@ export class Restaurant extends AbstractDictionary {
     logo: Images;
 
     @Column({ type: "int", nullable: true, default: null })
-    imgId: number;
+    imageId: number;
 
     @ManyToOne(() => Images, {eager: true})
-    @JoinColumn({ name: "imgId" })
+    @JoinColumn({ name: "imageId" })
     image: Images;
 
     @Column()
@@ -52,16 +48,8 @@ export class Restaurant extends AbstractDictionary {
     @ManyToOne(() => Legal, {eager: true})
     @JoinColumn({ name: "legalId" })
     legal: Legal;
-
 }
 
-
-//   deliveryPrice: number;
-//   deliveryRange: DeliveryRangeDto;
-//   maxDeliveryMinutes: number;
-//   minDeliveryMinutes: number;
-//   menuItems: TLinkWithText[];
-// } & DictionaryDto;
 
  type RatingDto = 1 | 2 | 3 | 4 | 5;
 
@@ -73,13 +61,7 @@ export class Restaurant extends AbstractDictionary {
     JAPAN = 'Японская кухня',
     INDIAN = 'Индийская кухня',
   }
-  
-   enum EDeliveryType {
-    LONG_DISTANCE='LONG_DISTANCE',
-    STANDARD='STANDARD',
-    HIGH_DEMAND='HIGH_DEMAND',
-  }
-  
+ 
 
    enum ERatingColor {
     WARNING_COLOR ='WARNING_COLOR',

@@ -2,7 +2,6 @@ import { useGate, useStore } from 'effector-react';
 import React, { memo } from 'react';
 import { RestaurantModel } from '../../store';
 import RestaurantsList from './containters/RestaurantsList/RestaurantsList';
-import './restaurants.less';
 
 const { $listStore, ListGate } = RestaurantModel;
 

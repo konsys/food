@@ -2,11 +2,11 @@ import React, { memo } from 'react';
 import MetaRatingItem from '../MetaRatingItem/MetaRatingItem';
 
 interface Props {
-  name?: string;
+  name: string;
   logo?: string;
   telephone?: string;
   email?: string;
-  address?: string;
+  address: string;
   imagesPaths?: string[];
 }
 
