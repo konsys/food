@@ -1,6 +1,9 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { EDeliveryType, RestaurantDto } from '../../../../modules/restaurants/types';
+import faker from 'faker';
+import { generateUuid } from '../../../../common/utils/utils';
+import { EDeliveryType } from '../../../../modules/delivery/types';
+import { RestaurantDto } from '../../../../modules/restaurants/types';
 import RestaurantItem from '../RestaurantItem/RestaurantItem';
 import './restaurantList.less';
 
@@ -32,6 +35,8 @@ function RestaurantsList(props: Props) {
                   fullTime: '40-50 мин',
                   price: 190,
                   type: EDeliveryType.LONG_DISTANCE,
+                  uuid: generateUuid(),
+                  id: faker.datatype.number(1000),
                 }}
               />
             ))}

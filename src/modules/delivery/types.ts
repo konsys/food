@@ -1,6 +1,7 @@
-import { TUuid } from '../../common/types';
+import { TId, TUuid } from '../../common/types';
 
 export type DeliveryDto = {
+  id: TId;
   uuid: TUuid;
   type: EDeliveryType;
   price: number;

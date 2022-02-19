@@ -5,8 +5,9 @@ import { ReactComponent as LongDistance } from '../../../../svg/long-distance.sv
 import { ReactComponent as DeliveryStandard } from '../../../../svg/delivery-standard.svg';
 import { ReactComponent as HightDemand } from '../../../../svg/high-demand.svg';
 import './restaurantItem.less';
-import { DeliveryDto, EDeliveryType, RestaurantDto } from '../../../../modules/restaurants/types';
+import { RestaurantDto } from '../../../../modules/restaurants/types';
 import { getRatingColor } from '../../../../common/utils/ratingUtils';
+import { DeliveryDto, EDeliveryType } from '../../../../modules/delivery/types';
 
 interface Props {
   restaurant: RestaurantDto;
