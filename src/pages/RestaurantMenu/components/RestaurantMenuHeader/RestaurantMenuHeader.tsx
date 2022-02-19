@@ -5,6 +5,7 @@ import DeliveryRange from '../../../../common/template/components/DeliveryRange/
 import { RestaurantDto } from '../../../../modules/restaurants/types';
 import { DeliveryRangeDto } from '../../../../modules/restaurantMenu/types';
 import './restaurantMenuHeader.less';
+
 interface Props {
   restaurant: RestaurantDto;
 }

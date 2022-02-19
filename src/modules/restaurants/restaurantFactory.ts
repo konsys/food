@@ -1,3 +1,4 @@
+import { legalFactory } from './../legal/legalFactory';
 import { imageFactory } from './../image/model/imageFactory';
 import * as factory from 'factory.ts';
 import faker from 'faker';
@@ -20,5 +21,6 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   updatedAt: factory.each(() => faker.datatype.datetime()),
   imageId: factory.each(() => 1),
   legalId: factory.each(() => 1),
+  legal: factory.each(() => legalFactory.build()),
   logoId: factory.each(() => 1),
 });
