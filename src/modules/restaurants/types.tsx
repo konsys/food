@@ -6,6 +6,7 @@ import { DeliveryRangeDto, RatingDto } from '../restaurantMenu/types';
 
 export type RestaurantDto = {
   image: ImageDto;
+  imageId: number;
   logo: ImageDto;
   openTime: Date;
   closeTime: Date;
@@ -17,6 +18,7 @@ export type RestaurantDto = {
   minDeliveryMinutes: number;
   menuItems: TLinkWithText[];
   legal: LegalDto;
+  legalId: number;
   foodType: EFoodType;
 } & DictionaryDto;
 
