@@ -6,7 +6,7 @@ import { DeliveryRangeDto } from '../restaurantMenu/types';
 import { legalFactory } from '../legal/legalFactory';
 
 export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
-  id: factory.each((n) => n),
+  id: factory.each(() => null),
   name: factory.each(() => faker.commerce.productName()),
   uuid: factory.each(() => faker.datatype.uuid()),
   rating: factory.each(() => 5),

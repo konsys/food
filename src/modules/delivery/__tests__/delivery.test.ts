@@ -1,5 +1,5 @@
-import { deliveryFactory } from './../deliveryFactory';
-import { DeliveryDto } from './../types';
+import { deliveryFactory } from '../deliveryFactory';
+import { DeliveryDto } from '../types';
 import faker from 'faker';
 import { DeliveryModel } from '../../../store';
 

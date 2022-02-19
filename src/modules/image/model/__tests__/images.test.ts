@@ -8,7 +8,13 @@ describe('image tests', () => {
     await Promise.all(new Array(20).fill(await createItemFx(imageFactory.build())));
   });
 
-  it('should image', () => {
+  it('should image', async () => {
+    const image = imageFactory.build();
+    await Promise.all(new Array(20).fill(await createItemFx(image)));
+    expect(1).toBe(1);
+  });
+
+  it('should image', async () => {
     expect(1).toBe(1);
   });
 });

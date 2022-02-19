@@ -3,7 +3,7 @@ import faker from 'faker';
 import { DeliveryDto, EDeliveryType } from './types';
 
 export const deliveryFactory = factory.Sync.makeFactory<DeliveryDto>({
-  id: factory.each((n) => n),
+  id: factory.each((n) => null),
   uuid: factory.each(() => faker.datatype.uuid()),
   fullTime: factory.each(() => faker.company.catchPhrase()),
   price: factory.each(() => faker.datatype.number(1000)),

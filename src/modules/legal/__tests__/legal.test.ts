@@ -1,4 +1,4 @@
-import { LegalModel } from './../../../store';
+import { LegalModel } from '../../../store';
 import faker from 'faker';
 import { legalFactory } from '../legalFactory';
 import { LegalDto } from '../types';

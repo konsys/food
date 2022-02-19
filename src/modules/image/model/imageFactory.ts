@@ -3,6 +3,7 @@ import faker from 'faker';
 import { ImageDto } from './types';
 
 export const imageFactory = factory.Sync.makeFactory<ImageDto>({
+  id: factory.each(() => null),
   description: factory.each(() => faker.commerce.productDescription()),
   name: factory.each(() => faker.commerce.productName()),
   visible: factory.each(() => Math.random() > 0.5),

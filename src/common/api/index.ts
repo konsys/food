@@ -10,8 +10,9 @@ export class CrudService<CreateEntity, FullEntity> {
     this.url = url;
   }
 
-  async create(params: Partial<CreateEntity>): Promise<FullEntity> {
-    return (await axiosClient.post<FullEntity>(this.url, params)).data;
+  async create(item: Partial<CreateEntity>): Promise<FullEntity> {
+    console.log(4444444444444, item);
+    return (await axiosClient.post<FullEntity>(this.url, item)).data;
   }
 
   async getAll(params: TListRequest<FullEntity>): Promise<TListResponce<FullEntity>> {
