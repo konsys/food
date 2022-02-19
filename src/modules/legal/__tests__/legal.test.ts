@@ -25,9 +25,7 @@ describe('menu tests', () => {
   let newItem: LegalDto;
 
   beforeAll(async () => {
-    for (let i = 0; i < 20; i++) {
-      await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
-    }
+    await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
   });
 
   beforeEach(() => {
