@@ -16,7 +16,6 @@ export class AbstractController<E, C, U> {
 
   @Post()
   create(@Body() item: C) {
-    console.log(1111111111111, item)
     return this.service.create(item);
   }
 

@@ -15,18 +15,10 @@ const {
   deleteItemFx,
 } = RestaurantModel;
 
-const generateNewItem = () => {
-  let newItem = restaurantFactory.build();
-
-  newItem = {
-    ...newItem,
-  };
-
-  return newItem;
-};
+const generateNewItem = () => restaurantFactory.build();
 
 describe('menu tests', () => {
-  let newItem: RestaurantDto;
+  let newItem: RestaurantDto = restaurantFactory.build();
 
   beforeAll(async () => {
     // await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
@@ -45,7 +37,7 @@ describe('menu tests', () => {
 
   it('should create menu', async () => {
     const item = generateNewItem();
-    // expect(item).toBe(1);
+    expect(item).toBe(1);
     await Promise.all(new Array(1).fill(await createItemFx(item)));
     expect(1).toBe(1);
   });

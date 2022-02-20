@@ -93,7 +93,7 @@ function RestaurantMenu() {
 
               <section className='restaurant-menu'>
                 <RestaurantMenuListBlock />
-                <RestaurantMenuBottomPartnerInfo {...item.legal} />
+                <RestaurantMenuBottomPartnerInfo legal={item.legal} />
                 <RestaurantMenuBottomLinks />
               </section>
             </div>

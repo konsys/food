@@ -11,7 +11,6 @@ export class CrudService<CreateEntity, FullEntity> {
   }
 
   async create(item: Partial<CreateEntity>): Promise<FullEntity> {
-    console.log(4444444444444, item);
     return (await axiosClient.post<FullEntity>(this.url, item)).data;
   }
 

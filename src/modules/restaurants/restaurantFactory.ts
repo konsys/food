@@ -1,4 +1,3 @@
-import { legalFactory } from './../legal/legalFactory';
 import { imageFactory } from './../image/model/imageFactory';
 import * as factory from 'factory.ts';
 import faker from 'faker';
@@ -12,15 +11,14 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   priceRating: factory.each(() => 1),
   foodType: factory.each(() => EFoodType.EUROPIAN),
   description: factory.each(() => faker.commerce.productDescription()),
-  closeTime: factory.each(() => faker.datatype.datetime()),
-  image: factory.each(() => imageFactory.build()),
-  logo: factory.each(() => imageFactory.build()),
+  closeTime: factory.each(() => new Date()),
+  // image: factory.each(() => imageFactory.build()),
+  // logo: factory.each(() => imageFactory.build()),
   menuItems: factory.each(() => []),
-  openTime: factory.each(() => faker.datatype.datetime()),
-  createdAt: factory.each(() => faker.datatype.datetime()),
-  updatedAt: factory.each(() => faker.datatype.datetime()),
+  openTime: factory.each(() => new Date()),
+  createdAt: factory.each(() => new Date()),
+  updatedAt: factory.each(() => new Date()),
   imageId: factory.each(() => 1),
   legalId: factory.each(() => 1),
-  legal: factory.each(() => legalFactory.build()),
   logoId: factory.each(() => 1),
 });

@@ -12,7 +12,7 @@ export class Restaurant extends AbstractDictionary {
 
     @ManyToOne(() => Images, {eager: true})
     @JoinColumn({ name: "logoId" })
-    logo: Images;
+    logo?: Images;
 
     @Column({ type: "int", nullable: true, default: null })
     imageId: number;
@@ -21,11 +21,6 @@ export class Restaurant extends AbstractDictionary {
     @JoinColumn({ name: "imageId" })
     image: Images;
 
-    @Column()
-    logoUrl: string;
-
-    @Column()
-    ratingColor: ERatingColor;
 
     @Column()
     foodType: EFoodType;
@@ -67,3 +62,19 @@ export class Restaurant extends AbstractDictionary {
     WARNING_COLOR ='WARNING_COLOR',
     SUCCESS_COLOR='SUCCESS_COLOR',
   }
+
+
+
+  // priceRating: factory.each(() => 1),
+  // foodType: factory.each(() => EFoodType.EUROPIAN),
+  // description: factory.each(() => faker.commerce.productDescription()),
+  // closeTime: factory.each(() => faker.datatype.datetime()),
+  // image: factory.each(() => imageFactory.build()),
+  // logo: factory.each(() => imageFactory.build()),
+  // menuItems: factory.each(() => []),
+  // openTime: factory.each(() => faker.datatype.datetime()),
+  // createdAt: factory.each(() => faker.datatype.datetime()),
+  // updatedAt: factory.each(() => faker.datatype.datetime()),
+  // imageId: factory.each(() => 1),
+  // legalId: factory.each(() => 1),
+  // logoId: factory.each(() => 1),
