@@ -42,7 +42,7 @@ export class AbstractService<E> implements IAbstractService<E>{
     }
 
     findOne(uuid: TUuid) {
-        return this.repository.findOne(uuid);
+        return this.repository.findOne({where:{uuid}});
     }
 
     update(entity: DeepPartial<E>) {
