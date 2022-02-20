@@ -1,5 +1,3 @@
-import { UpdateImageDto } from './dto/update-image.dto';
-import { CreateImageDto } from './dto/create-image.dto';
 import { Controller, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { ImageService } from './image.service';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -11,7 +9,7 @@ import { AbstractController } from 'src/abstract/crud/abstractController';
 import { Images } from 'src/entities/images.entity';
 
 @Controller('img')
-export class ImageController extends AbstractController<Images, CreateImageDto, UpdateImageDto> {
+export class ImageController extends AbstractController<Images> {
   private imageService: ImageService;
   constructor(service: ImageService) {
     super(service);

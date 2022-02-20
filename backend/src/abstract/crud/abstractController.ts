@@ -1,3 +1,4 @@
+import { DeepPartial } from 'typeorm';
 import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors } from '@nestjs/common';
 import { TUuid } from 'src/common/types';
 
@@ -7,15 +8,15 @@ import { ExtractInterceptor } from './ExtractInterceptor';
 
 @UseInterceptors(ExtractInterceptor)
 @Controller('menu-time')
-export class AbstractController<E, C, U> {
-  private service: IAbstractService<E, C, U>;
+export class AbstractController<E> {
+  private service: IAbstractService<E>;
 
-  constructor(service: IAbstractService<E, C, U>) { 
+  constructor(service: IAbstractService<E>) { 
       this.service = service;
   }
 
   @Post()
-  create(@Body() item: C) {
+  create(@Body() item: DeepPartial<E>) {
     return this.service.create(item);
   }
 
@@ -30,7 +31,7 @@ export class AbstractController<E, C, U> {
   }
 
   @Put()
-  update(@Body() updateMenuTimeDto: U) {
+  update(@Body() updateMenuTimeDto: DeepPartial<E>) {
     return this.service.update(updateMenuTimeDto);
   }
 

@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { TPromiseFn, TUuid } from 'src/common/types';
 import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
-import { DeleteResult, FindManyOptions, Repository } from 'typeorm';
+import { DeepPartial, DeleteResult, FindManyOptions, Repository } from 'typeorm';
 
 @Injectable()
-export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
+export class AbstractService<E> implements IAbstractService<E>{
     private repository: Repository<E> = null;
 
     constructor(repository: Repository<E>) {
         this.repository = repository;
     }
  
-    create(createDto: C) {
-        return this.repository.save(createDto);
+    create(entity: DeepPartial<E>) {
+        return this.repository.save(entity);
     }
 
     async findAll({ limit, page, filter }: TListRequest<E>): Promise<TListResponce<E>> {
@@ -45,8 +45,8 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
         return this.repository.findOne(uuid);
     }
 
-    update(updateDto: U) {
-        return this.repository.save(updateDto);
+    update(entity: DeepPartial<E>) {
+        return this.repository.save(entity);
     }
 
     remove(id: number) {
@@ -54,10 +54,10 @@ export class AbstractService<E, C, U> implements IAbstractService<E, C, U>{
     }
 }
 
-export interface IAbstractService<R, C, U> {
-    create: TPromiseFn<C, R>;
-    findAll: TPromiseFn<TListRequest<R>, TListResponce<R>>
-    findOne: TPromiseFn<TUuid, R>
-    update: TPromiseFn<U, R>
+export interface IAbstractService<E> {
+    create: TPromiseFn<DeepPartial<E>, E>;
+    findAll: TPromiseFn<TListRequest<E>, TListResponce<E>>
+    findOne: TPromiseFn<TUuid, E>
+    update: TPromiseFn<DeepPartial<E>, E>
     remove: TPromiseFn<number, DeleteResult>
 }
