@@ -1,4 +1,4 @@
-import { PartialType } from "@nestjs/mapped-types";
-import { Legal } from "src/entities/legalEntity";
+import { PartialType } from '@nestjs/swagger';
+import { Legal } from "src/entities/legal.entity";
 
 export class CreateLegalDto extends PartialType(Legal) {}

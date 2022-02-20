@@ -1,7 +1,7 @@
 import { AbstractDictionary } from "src/abstract/crud/abstractDictionary";
 import { Column, Entity, JoinColumn, ManyToOne} from 'typeorm';
 import { Images } from './images.entity';
-import { Legal } from "./legalEntity";
+import { Legal } from "./legal.entity";
 
 @Entity()
 export class Restaurant extends AbstractDictionary {

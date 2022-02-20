@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AbstractService } from 'src/abstract/crud/abstractService';
-import { Legal } from 'src/entities/legalEntity';
+import { Legal } from 'src/entities/legal.entity';
 import { Repository } from 'typeorm';
 import { CreateLegalDto } from './dto/create-legal.dto';
 import { UpdateLegalDto } from './dto/update-legal.dto';
