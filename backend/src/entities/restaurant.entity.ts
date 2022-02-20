@@ -63,18 +63,3 @@ export class Restaurant extends AbstractDictionary {
     SUCCESS_COLOR='SUCCESS_COLOR',
   }
 
-
-
-  // priceRating: factory.each(() => 1),
-  // foodType: factory.each(() => EFoodType.EUROPIAN),
-  // description: factory.each(() => faker.commerce.productDescription()),
-  // closeTime: factory.each(() => faker.datatype.datetime()),
-  // image: factory.each(() => imageFactory.build()),
-  // logo: factory.each(() => imageFactory.build()),
-  // menuItems: factory.each(() => []),
-  // openTime: factory.each(() => faker.datatype.datetime()),
-  // createdAt: factory.each(() => faker.datatype.datetime()),
-  // updatedAt: factory.each(() => faker.datatype.datetime()),
-  // imageId: factory.each(() => 1),
-  // legalId: factory.each(() => 1),
-  // logoId: factory.each(() => 1),
