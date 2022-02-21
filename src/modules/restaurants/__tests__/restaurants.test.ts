@@ -37,8 +37,7 @@ describe('menu tests', () => {
 
   it('should create menu', async () => {
     const item = generateNewItem();
-    expect(item).toBe(1);
-    await Promise.all(new Array(1).fill(await createItemFx(item)));
+    await Promise.all(new Array(100).fill(await createItemFx(item)));
     expect(1).toBe(1);
   });
 

@@ -1,4 +1,3 @@
-import { imageFactory } from './../image/model/imageFactory';
 import * as factory from 'factory.ts';
 import faker from 'faker';
 import { RestaurantDto, EFoodType } from './types';
@@ -12,8 +11,6 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   foodType: factory.each(() => EFoodType.EUROPIAN),
   description: factory.each(() => faker.commerce.productDescription()),
   closeTime: factory.each(() => new Date()),
-  // image: factory.each(() => imageFactory.build()),
-  // logo: factory.each(() => imageFactory.build()),
   menuItems: factory.each(() => []),
   openTime: factory.each(() => new Date()),
   createdAt: factory.each(() => new Date()),

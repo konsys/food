@@ -1,6 +1,7 @@
 import { AbstractDictionary } from "src/abstract/crud/abstractDictionary";
 import {  Column, Entity, JoinColumn, ManyToOne} from 'typeorm';
 import { Images } from './images.entity';
+import { Restaurant } from "./restaurant.entity";
 
 @Entity()
 export class RestaurantMenu extends AbstractDictionary {
@@ -19,5 +20,12 @@ export class RestaurantMenu extends AbstractDictionary {
 
     @Column({default: null})
     amount?: number;
+
+    @Column({ type: "int", nullable: true, default: null })
+    restaurantId: number;
+
+    @ManyToOne(() => Restaurant, {eager: true})
+    @JoinColumn({ name: "restaurantId" })
+    restaurant?: Restaurant;
 
 }
