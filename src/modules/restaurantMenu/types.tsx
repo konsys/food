@@ -8,6 +8,6 @@ export type RestarauntMenuDto = {
   price: number;
   weight: number;
   amount?: number;
-  restaurant: RestaurantDto;
+  restaurant?: RestaurantDto;
   restaurantId: number;
 } & DictionaryDto;

@@ -1,34 +1,24 @@
 import faker from 'faker';
 import { RestaurantMenuModel } from '../../../store';
 import { restaurantMenuFactory } from '../restaurantMenuFactory';
-import { RestarauntMenuDto } from '../types';
-
-const {
-  createItemFx,
-  resetList,
-  resetOne,
-  $listStore,
-  $itemStore,
-  getAll,
-  updateItemFx,
-  getItem,
-  deleteItemFx,
-} = RestaurantMenuModel;
-
-const generateNewItem = () => restaurantMenuFactory.build();
 
 describe('menu tests', () => {
-  let newItem: RestarauntMenuDto;
+  const {
+    createItemFx,
+    resetList,
+    resetOne,
+    $listStore,
+    $itemStore,
+    getAll,
+    updateItemFx,
+    getItem,
+    deleteItemFx,
+  } = RestaurantMenuModel;
 
-  beforeAll(async () => {
-    await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
-  });
+  const generateNewItem = () => restaurantMenuFactory.build();
+  beforeAll(async () => {});
 
-  beforeEach(() => {
-    resetList();
-    resetOne();
-    newItem = generateNewItem();
-  });
+  beforeEach(() => {});
 
   afterAll(() => {
     $itemStore.off(resetOne);
@@ -36,14 +26,19 @@ describe('menu tests', () => {
   });
 
   it('should create menu', async () => {
-    await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
+    const item = generateNewItem();
+    // expect(item).toBe(1);
+    for (let i = 0; i < 100; i++) {
+      await Promise.all(new Array(20).fill(await createItemFx(item)));
+    }
+
     expect(1).toBe(1);
   });
 
   it.skip('should create menu', async () => {
-    await createItemFx(newItem);
+    await createItemFx(generateNewItem());
     // eslint-disable-next-line effector/no-getState
-    expect($itemStore.getState()).toStrictEqual(expect.objectContaining(newItem));
+    expect($itemStore.getState()).toStrictEqual(expect.objectContaining(generateNewItem()));
   });
 
   it.skip('should get all menu', async () => {
@@ -57,7 +52,7 @@ describe('menu tests', () => {
   });
 
   it.skip('should get one menu', async () => {
-    await createItemFx(newItem);
+    await createItemFx(generateNewItem());
     const { item } = $itemStore.getState();
     item?.id && getItem(item.uuid);
     // eslint-disable-next-line effector/no-getState
@@ -66,7 +61,7 @@ describe('menu tests', () => {
   });
 
   it.skip('should update menu', async () => {
-    await createItemFx(newItem);
+    await createItemFx(generateNewItem());
     let { item } = $itemStore.getState();
 
     const description = faker.datatype.uuid();
@@ -78,7 +73,7 @@ describe('menu tests', () => {
   });
 
   it.skip('should delete menu', async () => {
-    await createItemFx(newItem);
+    await createItemFx(generateNewItem());
     const { item } = $itemStore.getState();
     item?.id && (await deleteItemFx(item.id));
 

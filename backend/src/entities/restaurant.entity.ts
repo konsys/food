@@ -1,5 +1,6 @@
+import { RestaurantMenu } from 'src/entities/restaraunt-menu.entity';
 import { AbstractDictionary } from "src/abstract/crud/abstractDictionary";
-import { Column, Entity, JoinColumn, ManyToOne} from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany} from 'typeorm';
 import { Images } from './images.entity';
 import { Legal } from "./legal.entity";
 
@@ -43,6 +44,10 @@ export class Restaurant extends AbstractDictionary {
     @ManyToOne(() => Legal, {eager: true})
     @JoinColumn({ name: "legalId" })
     legal: Legal;
+
+
+    @OneToMany(() => RestaurantMenu, restaurantMenu => restaurantMenu.restaurant)
+    restaurantMenu: RestaurantMenu[];
 }
 
 
