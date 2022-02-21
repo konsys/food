@@ -46,7 +46,7 @@ export class Restaurant extends AbstractDictionary {
     legal: Legal;
 
 
-    @OneToMany(() => RestaurantMenu, restaurantMenu => restaurantMenu.restaurant)
+    @OneToMany(() => RestaurantMenu, restaurantMenu => restaurantMenu.restaurant,{eager: true})
     restaurantMenu: RestaurantMenu[];
 }
 
