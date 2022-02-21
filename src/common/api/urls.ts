@@ -16,7 +16,7 @@ export const apiUrls = {
     main: `/restaurants`,
   },
   restaurantsMenu: {
-    main: `/restaurants-menu`,
+    main: `/restaurant-menu`,
   },
   legal: {
     main: `/legal`,

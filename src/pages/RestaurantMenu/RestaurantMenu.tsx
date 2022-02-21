@@ -75,13 +75,13 @@ const menuItems: TLinkWithText[] = [
 ];
 
 const { $itemStore, ItemGate } = RestaurantModel;
-const { $listStore: menuStore, ListGate: MenuGate, setFilter } = RestaurantMenuModel;
+const { $listStore: menuStore, ListGate: MenuGate } = RestaurantMenuModel;
 
 function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
   const { item } = useStore($itemStore);
-  setFilter({ uuid });
+  // setFilter({ uuid });
   useGate(MenuGate);
   const { items: menu } = useStore(menuStore);
   return (

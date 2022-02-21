@@ -9,6 +9,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { FULL_UPLOAD_PATH } from './config';
 import { RestaurantModule } from './modules/restaurant/restaurant.module';
 import { LegalModule } from './modules/legal/legal.module';
+import { RestarauntMenuModule } from './modules/restaurant-menu/restaurant-menu.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { LegalModule } from './modules/legal/legal.module';
     ImageModule,
     MulterModule,
     RestaurantModule,
+    RestarauntMenuModule,
     LegalModule,
     ServeStaticModule.forRoot({
       rootPath: `${FULL_UPLOAD_PATH}`,
