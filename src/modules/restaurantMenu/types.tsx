@@ -2,7 +2,7 @@ import { DictionaryDto } from '../../core/dictionary/types';
 import { ImageDto } from '../image/model/types';
 import { RestaurantDto } from '../restaurants/types';
 
-export type RestarauntMenuDto = {
+export type RestaurantMenuDto = {
   image?: ImageDto;
   imageId?: number;
   price: number;

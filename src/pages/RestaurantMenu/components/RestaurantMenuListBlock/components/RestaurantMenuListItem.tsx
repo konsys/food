@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
-import { RestarauntMenuDto } from '../../../../../modules/restaurantMenu/types';
+import { RestaurantMenuDto } from '../../../../../modules/restaurantMenu/types';
 import './restaurantMenuListItem.less';
 
 type Props = {
-  item: RestarauntMenuDto;
+  item: RestaurantMenuDto;
 };
 
 function RestaurantMenuListItem({ item }: Props) {

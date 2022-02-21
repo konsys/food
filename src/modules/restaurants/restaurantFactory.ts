@@ -1,3 +1,4 @@
+import { restaurantMenuFactory } from './../restaurantMenu/restaurantMenuFactory';
 import * as factory from 'factory.ts';
 import faker from 'faker';
 import { RestaurantDto, EFoodType } from './types';
@@ -18,4 +19,5 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   imageId: factory.each(() => 1),
   legalId: factory.each(() => 1),
   logoId: factory.each(() => 1),
+  restaurantMenu: restaurantMenuFactory.buildList(4),
 });

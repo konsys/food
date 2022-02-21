@@ -75,14 +75,11 @@ const menuItems: TLinkWithText[] = [
 ];
 
 const { $itemStore, ItemGate } = RestaurantModel;
-const { $listStore: menuStore, ListGate: MenuGate } = RestaurantMenuModel;
 
 function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
   const { item } = useStore($itemStore);
-  useGate(MenuGate);
-  const { items: menu } = useStore(menuStore);
   return (
     <div>
       {item ? (
@@ -93,7 +90,7 @@ function RestaurantMenu() {
               <RestaurantMenuTopNavigation menuItems={menuItems} />
 
               <section className='restaurant-menu'>
-                {menu ? <RestaurantMenuListBlock menu={menu} /> : ''}
+                <RestaurantMenuListBlock menu={item.restaurantMenu} />
                 <RestaurantMenuBottomPartnerInfo legal={item.legal} />
                 <RestaurantMenuBottomLinks />
               </section>

@@ -3,6 +3,7 @@ import { DictionaryDto } from '../../core/dictionary/types';
 import { ImageDto } from '../image/model/types';
 import { LegalDto } from '../legal/types';
 import { RatingDto } from '../rating/types';
+import { RestaurantMenuDto } from '../restaurantMenu/types';
 
 export type RestaurantDto = {
   image?: ImageDto;
@@ -17,6 +18,7 @@ export type RestaurantDto = {
   legal?: LegalDto;
   legalId: number;
   foodType: EFoodType;
+  restaurantMenu: RestaurantMenuDto[];
 } & DictionaryDto;
 
 export enum EFoodType {

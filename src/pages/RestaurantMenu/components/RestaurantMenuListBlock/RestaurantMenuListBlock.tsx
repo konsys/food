@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
-import { RestarauntMenuDto } from '../../../../modules/restaurantMenu/types';
+import { RestaurantMenuDto } from '../../../../modules/restaurantMenu/types';
 import RestaurantMenuListItem from './components/RestaurantMenuListItem';
 import './restaurantMenuListBlock.less';
 
 interface Props {
-  menu: RestarauntMenuDto[];
+  menu: RestaurantMenuDto[];
 }
 
 function RestaurantMenuListBlock(props: Props) {
