@@ -1,17 +1,23 @@
 import React, { memo } from 'react';
-import { MenuListDto } from '../../../../../common/types/dto';
+import { RestarauntMenuDto } from '../../../../../modules/restaurantMenu/types';
 import './restaurantMenuListItem.less';
 
-type Props = MenuListDto;
+type Props = {
+  item: RestarauntMenuDto;
+};
 
-function RestaurantMenuListItem(props: Props) {
-  const { name, imgSrc, description, price, amount, weight } = props;
+function RestaurantMenuListItem({ item }: Props) {
+  const { name, image, description, price, amount, weight } = item;
 
   return (
     <div className='service-list__item col-lg-4 col-md-6 col-sm-6 col-xs-12'>
       <div className='restaurant-menu-item clearfix'>
         <div className='restaurant-menu-item__image restaurant-menu-item__image--full restaurant-menu-item__image--fill'>
-          <img alt='Лосось' className=' lazyloaded' src={imgSrc} />
+          <img
+            alt='Лосось'
+            className=' lazyloaded'
+            src={image?.averageImg ? image.averageImg : ''}
+          />
         </div>
         <div className='restaurant-menu-item-info'>
           <div className='restaurant-menu-item-info__title'>

@@ -1,4 +1,4 @@
-import { RatingDto } from '../../modules/restaurantMenu/types';
+import { RatingDto } from '../../modules/rating/types';
 
 export const getRatingColor = (rating: RatingDto) => {
   if (rating === 1) {

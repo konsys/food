@@ -9,7 +9,7 @@ import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
 import { TLinkWithText } from '../../common/types/utilTypes';
 import './restaurantMenu.less';
-import { RestaurantModel } from '../../store';
+import { RestaurantMenuModel, RestaurantModel } from '../../store';
 
 const menuItems: TLinkWithText[] = [
   {
@@ -75,13 +75,15 @@ const menuItems: TLinkWithText[] = [
 ];
 
 const { $itemStore, ItemGate } = RestaurantModel;
+const { $listStore: menuStore, ListGate: MenuGate, setFilter } = RestaurantMenuModel;
 
 function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
-  const { item } = useStore($itemStore);
-
   useGate(ItemGate, uuid);
-
+  const { item } = useStore($itemStore);
+  setFilter({ uuid });
+  useGate(MenuGate);
+  const { items: menu } = useStore(menuStore);
   return (
     <div>
       {item ? (
@@ -92,7 +94,7 @@ function RestaurantMenu() {
               <RestaurantMenuTopNavigation menuItems={menuItems} />
 
               <section className='restaurant-menu'>
-                <RestaurantMenuListBlock />
+                {menu ? <RestaurantMenuListBlock menu={menu} /> : ''}
                 <RestaurantMenuBottomPartnerInfo legal={item.legal} />
                 <RestaurantMenuBottomLinks />
               </section>

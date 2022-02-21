@@ -13,3 +13,9 @@ export enum EDeliveryType {
   STANDARD = 'STANDARD',
   HIGH_DEMAND = 'HIGH_DEMAND',
 }
+
+export enum DeliveryRangeDto {
+  'LONG',
+  'STANDARD',
+  'HIGHT_DEMAND',
+}

@@ -1,6 +1,6 @@
 import { Tooltip } from 'antd';
 import React, { memo } from 'react';
-import { DeliveryRangeDto } from '../../../../modules/restaurantMenu/types';
+import { DeliveryRangeDto } from '../../../../modules/delivery/types';
 
 const longRangeText = (
   minutes: number

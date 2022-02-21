@@ -3,8 +3,8 @@ import RatingComponent from '../../../../common/template/components/RatingCompon
 import PriceRatingComponent from '../../../../common/template/components/PriceRatingComponent/PriceRatingComponent';
 import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 import { RestaurantDto } from '../../../../modules/restaurants/types';
-import { DeliveryRangeDto } from '../../../../modules/restaurantMenu/types';
 import './restaurantMenuHeader.less';
+import { DeliveryRangeDto, EDeliveryType } from '../../../../modules/delivery/types';
 
 interface Props {
   restaurant: RestaurantDto;

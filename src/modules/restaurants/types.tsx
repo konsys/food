@@ -2,7 +2,7 @@ import { TLinkWithText } from '../../common/types/utilTypes';
 import { DictionaryDto } from '../../core/dictionary/types';
 import { ImageDto } from '../image/model/types';
 import { LegalDto } from '../legal/types';
-import { RatingDto } from '../restaurantMenu/types';
+import { RatingDto } from '../rating/types';
 
 export type RestaurantDto = {
   image?: ImageDto;
