@@ -81,7 +81,6 @@ function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
   const { item } = useStore($itemStore);
-  // setFilter({ uuid });
   useGate(MenuGate);
   const { items: menu } = useStore(menuStore);
   return (

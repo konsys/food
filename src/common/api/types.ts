@@ -9,7 +9,7 @@ export type TPaginationRequestParams = {
 };
 
 export type TListRequest<T> = TPaginationRequestParams & {
-  filter?: Record<keyof T, any>;
+  filter?: Partial<Record<keyof T, any>>;
   pending?: boolean;
 };
 
