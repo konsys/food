@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { RestaurantModel } from '../../../store';
+import { RestaurantMenuModel } from '../../../store';
 import { restaurantMenuFactory } from '../restaurantMenuFactory';
 import { RestarauntMenuDto } from '../types';
 
@@ -13,26 +13,15 @@ const {
   updateItemFx,
   getItem,
   deleteItemFx,
-} = RestaurantModel;
+} = RestaurantMenuModel;
 
-const generateNewItem = () => {
-  let newItem = restaurantMenuFactory.build();
-
-  newItem = {
-    ...newItem,
-    imgId: 1,
-  };
-
-  return newItem;
-};
+const generateNewItem = () => restaurantMenuFactory.build();
 
 describe('menu tests', () => {
   let newItem: RestarauntMenuDto;
 
   beforeAll(async () => {
-    for (let i = 0; i < 20; i++) {
-      await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
-    }
+    await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
   });
 
   beforeEach(() => {
