@@ -24,4 +24,7 @@ export const apiUrls = {
   delivery: {
     main: `/delivery`,
   },
+  foodCategory: {
+    main: `/food-category`,
+  },
 };

@@ -6,6 +6,7 @@ import { CrudStore } from './common/models/abstractModel/abstractCrudModel';
 import { ImageDto } from './modules/image/model/types';
 import { LegalDto } from './modules/legal/types';
 import { DeliveryDto } from './modules/delivery/types';
+import { FoodCategoryDto } from './modules/foodCatefory/legal/types';
 
 export const RestaurantModel = new CrudStore<RestaurantDto>(
   apiUrls.restaurants.main
@@ -18,3 +19,6 @@ export const ImageModel = new CrudStore<TItemWithUuid<FormData>, ImageDto>(
 ).createCrudStore();
 export const LegalModel = new CrudStore<LegalDto>(apiUrls.legal.main).createCrudStore();
 export const DeliveryModel = new CrudStore<DeliveryDto>(apiUrls.delivery.main).createCrudStore();
+export const FoodCategoryModel = new CrudStore<FoodCategoryDto>(
+  apiUrls.foodCategory.main
+).createCrudStore();

@@ -10,6 +10,7 @@ import { FULL_UPLOAD_PATH } from './config';
 import { RestaurantModule } from './modules/restaurant/restaurant.module';
 import { LegalModule } from './modules/legal/legal.module';
 import { RestarauntMenuModule } from './modules/restaurant-menu/restaurant-menu.module';
+import { FoodCategoryModule } from './modules/food-category/food-category.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { RestarauntMenuModule } from './modules/restaurant-menu/restaurant-menu.
     RestaurantModule,
     RestarauntMenuModule,
     LegalModule,
+    FoodCategoryModule,
     ServeStaticModule.forRoot({
       rootPath: `${FULL_UPLOAD_PATH}`,
     }),
