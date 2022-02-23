@@ -45,11 +45,6 @@
 }
 
 
-.cart-service {
-    border-bottom: 1px solid @color6;
-    font-size    : 1rem;
-}
-
 
 .cart-section__info {
     color: @color2;
@@ -77,5 +72,221 @@
         font-weight     : 700;
         height          : 40px;
         width           : 100%;
+        background-color: #f37021;
     }
+}
+
+// ---------------------------
+
+.cart-service {
+    font-size     : 1rem;
+    margin        : 1rem 1rem 1rem 0;
+    padding-bottom: 15px;
+    font-size     : 1rem;
+    border-bottom : 1px solid #e6e6e6;
+}
+
+.cart-service__title {
+    position     : relative;
+    margin-bottom: 0.75rem;
+}
+
+.cart-service__title--delivery {
+    position: relative;
+}
+
+.cart-service__price--delivery {
+    position: absolute;
+    right   : 0;
+}
+
+.cart-service__name {
+    font-weight : 600;
+    font-size   : 1rem;
+    margin-right: 1rem;
+    line-height : 1.5rem;
+}
+
+.delivery_type--default {
+    background-color: #f37021 !important;
+}
+
+.delivery_type_cart {
+    border-radius: 3px;
+    padding      : 0 3px;
+    margin-left  : 0.5rem;
+
+    img {
+        height: 10px;
+    }
+}
+
+.cart-service__description {
+    color       : silver;
+    line-height : 1rem;
+    font-size   : 0.75rem;
+    margin-right: 1.25rem;
+}
+
+.cart-service__delete-button {
+    position  : absolute;
+    right     : 0;
+    top       : -1px;
+    height    : 20px;
+    width     : 12px;
+    background: 0 0;
+    border    : none;
+    opacity   : .2;
+    transition: all .3s;
+}
+
+.cart-service__addons {
+    color        : silver;
+    font-size    : 12px;
+    margin-top   : -10px;
+    line-height  : 1.4;
+    margin-bottom: 10px;
+}
+
+.cart-service__bottom {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+}
+
+.cart-service__actions input {
+    width     : 30px;
+    height    : 23px;
+    border    : none;
+    background: 0 0;
+    text-align: center;
+    color     : #000;
+    margin    : 0 5px;
+}
+
+.cart-service__count-button {
+    border    : 0;
+    background: 0 0;
+    position  : relative;
+
+    &:disabled {
+        opacity: .2;
+    }
+
+    svg {
+        margin-bottom: 4px
+    }
+}
+
+.cart-bottom {
+    position  : absolute;
+    left      : 15px;
+    bottom    : 0;
+    color     : silver;
+    width     : 100%;
+    margin    : 0 -15px;
+    transition: box-shadow .3s;
+    border-top: 1px solid rgba(0, 0, 0, .05);
+
+    div {
+        font-size  : 12px;
+        line-height: 22px;
+    }
+
+    span {
+        display    : block;
+        color      : #000;
+        font-size  : 16px;
+        line-height: 22px;
+    }
+}
+
+.cart-bottom__info {
+    display         : flex;
+    justify-content : space-between;
+    padding         : 10px 20px;
+    background-color: #f5f5f5;
+    z-index         : 900;
+}
+
+// -----------------------------------------
+// RAILS
+ps {
+    overflow          : hidden !important;
+    overflow-anchor   : none;
+    -ms-overflow-style: none;
+    touch-action      : auto;
+    -ms-touch-action  : auto
+}
+
+.ps__rail-x {
+    display           : none;
+    opacity           : 0;
+    transition        : background-color .2s linear, opacity .2s linear;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    height            : 12px;
+    bottom            : 0;
+    position          : absolute
+}
+
+.ps__rail-y {
+    display           : none;
+    opacity           : .6;
+    transition        : background-color .2s linear, opacity .2s linear;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    width             : 12px;
+    right             : 0;
+    position          : absolute
+}
+
+.ps--active-y>.ps__rail-y {
+    display         : block;
+    background-color: transparent
+}
+
+.ps--focus>.ps__rail-y,
+.ps--scrolling-y>.ps__rail-y,
+.ps:hover>.ps__rail-y {
+    opacity: .9
+}
+
+.ps .ps__rail-y.ps--clicking,
+.ps .ps__rail-y:focus,
+.ps .ps__rail-y:hover {
+    background-color: #eee;
+    opacity         : .9
+}
+
+.ps__thumb-x {
+    background-color  : #aaa;
+    border-radius     : 6px;
+    transition        : background-color .2s linear, height .2s ease-in-out;
+    -webkit-transition: background-color .2s linear, height .2s ease-in-out;
+    height            : 4px;
+    bottom            : 2px;
+    position          : absolute
+}
+
+.ps__thumb-y {
+    background-color  : #aaa;
+    border-radius     : 6px;
+    transition        : background-color .2s linear, width .2s ease-in-out;
+    -webkit-transition: background-color .2s linear, width .2s ease-in-out;
+    width             : 4px;
+    right             : 2px;
+    position          : absolute
+}
+
+.ps__rail-x.ps--clicking .ps__thumb-x,
+.ps__rail-x:focus>.ps__thumb-x,
+.ps__rail-x:hover>.ps__thumb-x {
+    background-color: #999;
+    height          : 8px
+}
+
+.ps__rail-y.ps--clicking .ps__thumb-y,
+.ps__rail-y:focus>.ps__thumb-y,
+.ps__rail-y:hover>.ps__thumb-y {
+    background-color: #999;
+    width           : 8px
 }
