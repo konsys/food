@@ -1,3 +1,4 @@
+import { FoodCategory } from 'src/entities/food-category.entity';
 import { AbstractDictionary } from "src/abstract/crud/abstractDictionary";
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { Images } from './images.entity';
@@ -12,6 +13,13 @@ export class RestaurantMenu extends AbstractDictionary {
     @JoinColumn({ name: "imageId" })
     image: Images;
 
+    @Column({ type: "int", nullable: true, default: null })
+    foodCategoryId: number;
+
+    @ManyToOne(() => FoodCategory, { eager: true })
+    @JoinColumn({ name: "foodCategoryId" })
+    foodCategory: FoodCategory;
+
     @Column()
     price: number;
 
@@ -21,6 +29,8 @@ export class RestaurantMenu extends AbstractDictionary {
     @Column({ default: null })
     amount?: number;
 
+    @Column({ type: "int", nullable: true, default: null })
+    restaurantId: number;
 
     @ManyToOne(() => Restaurant, restaurant => restaurant.restaurantMenu)
     @JoinColumn({ name: "restaurantId" })
