@@ -10,4 +10,6 @@ export type RestaurantMenuDto = {
   amount?: number;
   restaurant?: RestaurantDto;
   restaurantId: number;
+  foodCategory?: string;
+  foodCategoryId: number;
 } & DictionaryDto;

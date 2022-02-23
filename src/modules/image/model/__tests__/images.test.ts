@@ -5,7 +5,9 @@ const { createItemFx } = ImageModel;
 
 describe('image tests', () => {
   beforeAll(async () => {
-    await Promise.all(new Array(20).fill(await createItemFx(imageFactory.build())));
+    for (let i = 0; i < 100; i++) {
+      await Promise.all(new Array(20).fill(await createItemFx(imageFactory.build())));
+    }
   });
 
   it('should image', async () => {

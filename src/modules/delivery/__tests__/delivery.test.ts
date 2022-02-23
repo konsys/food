@@ -21,7 +21,7 @@ describe('delivery tests', () => {
   let newItem: DeliveryDto;
 
   beforeAll(async () => {
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 200; i++) {
       await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
     }
   });
