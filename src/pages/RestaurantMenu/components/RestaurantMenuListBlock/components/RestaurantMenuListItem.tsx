@@ -13,11 +13,7 @@ function RestaurantMenuListItem({ item }: Props) {
     <div className='service-list__item col-lg-4 col-md-6 col-sm-6 col-xs-12'>
       <div className='restaurant-menu-item clearfix'>
         <div className='restaurant-menu-item__image restaurant-menu-item__image--full restaurant-menu-item__image--fill'>
-          <img
-            alt='Лосось'
-            className=' lazyloaded'
-            src={image?.averageImg ? image.averageImg : ''}
-          />
+          <img alt={name} className=' lazyloaded' src={image?.averageImg ? image.averageImg : ''} />
         </div>
         <div className='restaurant-menu-item-info'>
           <div className='restaurant-menu-item-info__title'>
