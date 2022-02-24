@@ -27,4 +27,7 @@ export const apiUrls = {
   foodCategory: {
     main: `/food-category`,
   },
+  cartOrder: {
+    main: `/cart-order`,
+  },
 };

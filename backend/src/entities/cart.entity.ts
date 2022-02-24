@@ -1,3 +1,4 @@
+import { CartOrder } from "src/common/types/cart";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -7,19 +8,21 @@ export class Cart {
   
     @Column()
     uuid: string;
-  
-    @Column()
-    name: string;
-  
+
     @Column({default: null})
     description: string;
 
     @Column()
     clientUuid: string;
 
-//     @Column({
-//         type: 'jsonb'
-//       })
-//     public properties: CarProperties;
+    @Column({
+        type: 'jsonb'
+      })
+    order: CartOrder;
+
+    @Column({
+      type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
+    })
+    createdAt: Date;
 }
 
