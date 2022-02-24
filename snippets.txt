@@ -30,3 +30,6 @@ git checkout temp
 git branch -f master temp
 git checkout master
 git branch -d temp
+
+sudo nano /etc/hosts
+sudo service network-manager restart

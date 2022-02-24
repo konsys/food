@@ -36,11 +36,8 @@ function Cart(props: Props) {
               </div>
             </div>
           </div>
-          <div
-            className='cart-service__list
-           list-clear ps ps--active-y'
-          >
-            {new Array(10).fill('wef').map(() => (
+          <div className='cart-service__list'>
+            {new Array(20).fill('wef').map(() => (
               <CartItem />
             ))}
           </div>
