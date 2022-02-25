@@ -135,7 +135,7 @@ export class CrudStore<
       .on(getItemFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
       .on(updateItemFx.fail, () => notification.error({ message: 'Ошибка обновления' }))
       .on(deleteItemFx.fail, () =>
-        notification.error({ message: `Ошибка удаления`, duration: 150454 })
+        notification.error({ message: `Ошибка удаления`, duration: 1000 })
       )
       .reset(resetOne);
 

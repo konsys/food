@@ -1,7 +1,7 @@
 import { useGate, useStore } from 'effector-react';
 import React, { memo } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { getSessionUuid } from '../../modules/cart/service';
+import { Link } from 'react-router-dom';
+import { getClientUuid } from '../../modules/cart/service';
 import { CartModel } from '../../store';
 import './cart.less';
 import CartItem from './CartItem/CartItem';
@@ -9,13 +9,13 @@ import CartItem from './CartItem/CartItem';
 const { $itemStore, ItemGate } = CartModel;
 
 function Cart() {
-  const sessionUuid = getSessionUuid();
+  const clientuuid = getClientUuid();
 
-  useGate(ItemGate, sessionUuid);
+  useGate(ItemGate, clientuuid);
 
   const cart = useStore($itemStore);
+  console.log(44444444444, cart);
 
-  console.log(cart);
   return (
     <div className='cart-section-wrapper'>
       <div className='cart-section__body'>

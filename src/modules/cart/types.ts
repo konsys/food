@@ -1,19 +1,16 @@
-import { TId } from '../../common/types/index';
-import { TUuid } from '../../common/types';
+import { TId, TUuid } from '../../common/types';
 
 export type CartDto = {
   id: TId;
+  clientUuid: TUuid;
   uuid: TUuid;
   description: string;
-  clientUuid: TUuid;
   order: TOrder;
   createdAt?: Date;
   status: EOrderStatus;
 };
 
 export type TOrder = {
-  user: TUuid;
-  orderUuid: TUuid;
   restaurantMenuUuid: TUuid;
   quantity: number;
 };
