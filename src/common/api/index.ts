@@ -14,6 +14,10 @@ export class CrudService<CreateEntity, FullEntity> {
     return (await axiosClient.post<FullEntity>(this.url, item)).data;
   }
 
+  async save(item: Partial<CreateEntity>): Promise<FullEntity> {
+    return (await axiosClient.post<FullEntity>(`${this.url}/save`, item)).data;
+  }
+
   async getAll(params: TListRequest<FullEntity>): Promise<TListResponce<FullEntity>> {
     const { data } = await axiosClient.post<
       TListResponce<FullEntity>,

@@ -70,6 +70,10 @@ export class CrudStore<
     const ItemGate = createGate<TUuid>();
     const service = new CrudService<CreateEntity, FullEntity>(this.url);
 
+    const saveFx = createEffect<Partial<CreateEntity>, FullEntity, Error>({
+      handler: (mt) => service.save(mt),
+    });
+
     const createItemFx = createEffect<Partial<CreateEntity>, FullEntity, Error>({
       handler: (mt) => service.create(mt),
     });

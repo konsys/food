@@ -13,11 +13,11 @@ import './restaurantMenuListBlock.less';
 interface Props {
   menu: RestaurantMenuDto[];
 }
+const { createItemFx } = CartModel;
 
 function RestaurantMenuListBlock(props: Props) {
   const { menu } = props;
   const items = grouppedByCategory(menu, 'foodCategory.name');
-  const { createItemFx } = CartModel;
 
   const addToCart = (restaurantMenuUuid: TUuid) => {
     const cartOrder: CartDto = {
