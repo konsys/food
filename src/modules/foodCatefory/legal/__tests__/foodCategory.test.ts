@@ -10,7 +10,7 @@ const generateNewItem = () => {
 };
 
 describe('menu tests', () => {
-  it('should create menu', async () => {
+  it.skip('should create menu', async () => {
     for (let i = 0; i < 100; i++) {
       await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
     }
