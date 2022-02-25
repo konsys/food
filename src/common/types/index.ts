@@ -23,4 +23,4 @@ export type TItemWithUuid<T> = T & { uuid: TUuid };
 export type TObjectMap = Record<string, any>;
 
 export type TKeyValue = { key: string; value: any };
-export type TUuid = string | null;
+export type TUuid = string;

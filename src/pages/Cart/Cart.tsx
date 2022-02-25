@@ -1,13 +1,21 @@
+import { useGate, useStore } from 'effector-react';
 import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { getSessionUuid } from '../../modules/cart/service';
+import { CartModel } from '../../store';
 import './cart.less';
 import CartItem from './CartItem/CartItem';
 
-interface Props {}
+const { $itemStore, ItemGate } = CartModel;
 
-function Cart(props: Props) {
-  const {} = props;
+function Cart() {
+  const sessionUuid = getSessionUuid();
 
+  useGate(ItemGate, sessionUuid);
+
+  const cart = useStore($itemStore);
+
+  console.log(cart);
   return (
     <div className='cart-section-wrapper'>
       <div className='cart-section__body'>

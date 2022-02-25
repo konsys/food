@@ -49,7 +49,7 @@ export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): Re
         <Row gutter={[16, 16]}>
           <Col span={24}>
             <Space>
-              <DictionaryModal model={model} uuid={null} />
+              <DictionaryModal model={model} uuid={''} />
             </Space>
           </Col>
 

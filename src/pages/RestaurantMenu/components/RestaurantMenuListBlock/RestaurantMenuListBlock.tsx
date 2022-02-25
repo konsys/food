@@ -21,8 +21,8 @@ function RestaurantMenuListBlock(props: Props) {
             <h2>{v.title}</h2>
           </div>
           <div className='restaurant-menu__service-list row'>
-            {v.menu.map((item, index) => (
-              <RestaurantMenuListItem item={item} key={index} />
+            {v.menu.map((item) => (
+              <RestaurantMenuListItem item={item} key={item.uuid} />
             ))}
           </div>
           <div className='service-list' />

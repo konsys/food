@@ -60,3 +60,5 @@ export const getFileExtension = (filename: string) => filename.split('.').pop();
 export const generateUuid = () => uuidv4();
 
 export const isNumber = (item: any): item is number => !Number.isNaN(Number(item));
+
+export const uuid = () => uuidv4();

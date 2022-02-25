@@ -17,6 +17,7 @@ const { $itemStore, ItemGate } = RestaurantModel;
 function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
+
   const { item } = useStore($itemStore);
   const items: TLinkWithText[] = item
     ? grouppedByCategory(item?.restaurantMenu, 'foodCategory.name').map((v) => ({
@@ -31,7 +32,7 @@ function RestaurantMenu() {
           <div className='page-restaurant d-flex'>
             <div className='restaurant-section'>
               <RestaurantMenuHeader restaurant={item} />
-              {items ? <RestaurantMenuTopNavigation menuItems={items} /> : ''}
+              <RestaurantMenuTopNavigation menuItems={items} />
 
               <section className='restaurant-menu'>
                 <RestaurantMenuListBlock menu={item.restaurantMenu} />

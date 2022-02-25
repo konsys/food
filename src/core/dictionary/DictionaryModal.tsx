@@ -24,7 +24,7 @@ export function DictionaryModal<CreateEntity extends { uuid: TUuid }>({
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const item = useStore($itemStore);
 
-  useGate(ItemGate, modalVisible ? uuid : null);
+  useGate(ItemGate, modalVisible ? uuid : '');
 
   return (
     <ModalForm
