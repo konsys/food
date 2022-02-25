@@ -7,7 +7,7 @@ export class Cart {
     id: number;
   
     @Column()
-    orderUuid: string;
+    uuid: string;
 
     @Column({default: null})
     description: string;

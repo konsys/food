@@ -13,4 +13,14 @@ export class CartService extends AbstractService<Cart> {
   ) {
     super(repository);
   }
+
+
+  async addToCart(cartItem: Cart) {
+    let item = await this.repository.findOne({where:{uuid:cartItem.uuid}});
+    if(item){
+      item = {...item, order: {...item.order, restaurantMenuUuid: cartItem.order.restaurantMenuUuid, quantity: cartItem.order.quantity}}
+      return await this.repository.save(item);
+    }
+    return await this.repository.save(cartItem);
+}
 }

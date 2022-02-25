@@ -5,7 +5,7 @@ import { DeepPartial, DeleteResult, FindManyOptions, Repository } from 'typeorm'
 
 @Injectable()
 export class AbstractService<E> implements IAbstractService<E>{
-    private repository: Repository<E> = null;
+    protected repository: Repository<E> = null;
 
     constructor(repository: Repository<E>) {
         this.repository = repository;
