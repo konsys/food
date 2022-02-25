@@ -12,7 +12,6 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   foodType: factory.each(() => EFoodType.EUROPIAN),
   description: factory.each(() => faker.commerce.productDescription()),
   closeTime: factory.each(() => new Date()),
-  menuItems: factory.each(() => []),
   openTime: factory.each(() => new Date()),
   createdAt: factory.each(() => new Date()),
   updatedAt: factory.each(() => new Date()),

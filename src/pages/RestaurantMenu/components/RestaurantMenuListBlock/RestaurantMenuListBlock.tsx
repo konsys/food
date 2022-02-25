@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
-import { chain } from 'lodash';
 
 import { RestaurantMenuDto } from '../../../../modules/restaurantMenu/types';
+import { grouppedByCategory } from '../../../../modules/restaurantMenu/utils';
 import RestaurantMenuListItem from './components/RestaurantMenuListItem';
 import './restaurantMenuListBlock.less';
 
@@ -11,17 +11,12 @@ interface Props {
 
 function RestaurantMenuListBlock(props: Props) {
   const { menu } = props;
-
-  const grouppedByCategory = chain(menu)
-    .groupBy('foodCategory.name')
-    // .orderBy()
-    .map((value, key) => ({ title: key, menu: value }))
-    .value();
+  const items = grouppedByCategory(menu, 'foodCategory.name');
 
   return (
     <>
-      {grouppedByCategory.map((v) => (
-        <>
+      {items.map((v, index) => (
+        <div key={index}>
           <div className='restaurant-menu__section-title'>
             <h2>{v.title}</h2>
           </div>
@@ -31,7 +26,7 @@ function RestaurantMenuListBlock(props: Props) {
             ))}
           </div>
           <div className='service-list' />
-        </>
+        </div>
       ))}
     </>
   );

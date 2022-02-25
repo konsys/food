@@ -14,7 +14,6 @@ export type RestaurantDto = {
   closeTime: Date;
   priceRating: RatingDto;
   rating: RatingDto;
-  menuItems: TLinkWithText[];
   legal?: LegalDto;
   legalId: number;
   foodType: EFoodType;

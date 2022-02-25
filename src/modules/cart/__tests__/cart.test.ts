@@ -6,7 +6,6 @@ const { createItemFx } = CartModel;
 describe('cart tests', () => {
   it('should create cart', async () => {
     const item = cartFactory.build();
-    // expect(item).toBe(1);
     for (let i = 10; i < 10; i++) {
       await Promise.all(new Array(20).fill(await createItemFx(item)));
     }
