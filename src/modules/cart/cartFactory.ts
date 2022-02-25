@@ -1,8 +1,8 @@
 import * as factory from 'factory.ts';
 import faker from 'faker';
-import { CartOrderDto } from './types';
+import { CartDto, EOrderStatus } from './types';
 
-export const cartOrderFactory = factory.Sync.makeFactory<CartOrderDto>({
+export const cartFactory = factory.Sync.makeFactory<CartDto>({
   id: factory.each((n) => null),
   uuid: factory.each(() => faker.datatype.uuid()),
   clientUuid: factory.each(() => faker.datatype.uuid()),
@@ -15,5 +15,5 @@ export const cartOrderFactory = factory.Sync.makeFactory<CartOrderDto>({
       quantity: faker.datatype.number(5) + 1,
     };
   }),
-  createdAt: factory.each(() => new Date()),
+  status: factory.each((i) => (i % 2 === 0 ? EOrderStatus.COMPLETED : EOrderStatus.IN_PROGRESS)),
 });

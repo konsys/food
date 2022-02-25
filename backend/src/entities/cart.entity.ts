@@ -24,5 +24,15 @@ export class Cart {
       type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
     })
     createdAt: Date;
+
+
+    @Column()
+    status: EOrderStatus;
 }
 
+
+export enum EOrderStatus {
+  IN_PROGRESS='IN_PROGRESS',
+  COMPLETED='COMPLETED',
+  PAID='PAID'
+}
