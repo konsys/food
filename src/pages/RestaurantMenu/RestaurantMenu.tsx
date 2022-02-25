@@ -8,6 +8,9 @@ import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
 import './restaurantMenu.less';
 import { RestaurantModel } from '../../store';
+import { grouppedByCategory } from '../../modules/restaurantMenu/utils';
+import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigation/RestaurantMenuTopNavigation';
+import { TLinkWithText } from '../../common/types/utilTypes';
 
 const { $itemStore, ItemGate } = RestaurantModel;
 
@@ -15,9 +18,12 @@ function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
   const { item } = useStore($itemStore);
-
-  // const menuLinks: TItemWithUuid<RestaurantDto> =   grouppedByCategory(menu, 'foodCategory.name');
-  // console.log(1111111111111, );
+  const items: TLinkWithText[] = item
+    ? grouppedByCategory(item?.restaurantMenu, 'foodCategory.name').map((v) => ({
+        link: v.title,
+        text: v.title,
+      }))
+    : [];
   return (
     <div>
       {item ? (
@@ -25,7 +31,7 @@ function RestaurantMenu() {
           <div className='page-restaurant d-flex'>
             <div className='restaurant-section'>
               <RestaurantMenuHeader restaurant={item} />
-              {/* {item?.menuItems ? <RestaurantMenuTopNavigation menuItems={item.menuItems} /> : ''} */}
+              {items ? <RestaurantMenuTopNavigation menuItems={items} /> : ''}
 
               <section className='restaurant-menu'>
                 <RestaurantMenuListBlock menu={item.restaurantMenu} />

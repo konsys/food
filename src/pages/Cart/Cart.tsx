@@ -37,8 +37,8 @@ function Cart(props: Props) {
             </div>
           </div>
           <div className='cart-service__list'>
-            {new Array(20).fill('wef').map(() => (
-              <CartItem />
+            {new Array(20).fill('wef').map((v, k) => (
+              <CartItem key={k} />
             ))}
           </div>
         </div>
