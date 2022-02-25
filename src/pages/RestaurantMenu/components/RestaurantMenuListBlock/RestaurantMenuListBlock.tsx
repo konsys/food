@@ -1,4 +1,5 @@
-import React, { memo } from 'react';
+import { useStore } from 'effector-react';
+import React, { memo, useState } from 'react';
 import { TUuid } from '../../../../common/types';
 import { uuid } from '../../../../common/utils/utils';
 import { getClientUuid } from '../../../../modules/cart/service';
@@ -13,26 +14,36 @@ import './restaurantMenuListBlock.less';
 interface Props {
   menu: RestaurantMenuDto[];
 }
-const { createItemFx } = CartModel;
+const { createItemFx, $itemStore } = CartModel;
 
 function RestaurantMenuListBlock(props: Props) {
+  const [order, setOrder] = useState<CartDto>();
+
   const { menu } = props;
   const items = grouppedByCategory(menu, 'foodCategory.name');
 
+  const cartOrder = useStore($itemStore);
+
   const addToCart = (restaurantMenuUuid: TUuid) => {
+    if (order) {
+      const cartOrder: CartDto = { ...order, order: { ...order.order } };
+    }
     const cartOrder: CartDto = {
       clientUuid: getClientUuid(),
       description: '',
       id: null,
       status: EOrderStatus.IN_PROGRESS,
       uuid: uuid(),
-      order: {
-        quantity: 1,
-        restaurantMenuUuid,
-      },
+      order: [
+        {
+          quantity: 1,
+          restaurantMenuUuid,
+        },
+      ],
     };
     createItemFx(cartOrder);
   };
+
   return (
     <>
       {items.map((v, index) => (

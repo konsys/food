@@ -5,7 +5,7 @@ export type CartDto = {
   clientUuid: TUuid;
   uuid: TUuid;
   description: string;
-  order: TOrder;
+  order: TOrder[];
   createdAt?: Date;
   status: EOrderStatus;
 };

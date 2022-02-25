@@ -18,7 +18,7 @@ export class Cart {
     @Column({
         type: 'jsonb'
       })
-    order: CartOrder;
+    order: CartOrder[];
 
     @Column({
       type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
