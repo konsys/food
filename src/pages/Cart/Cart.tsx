@@ -2,18 +2,17 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { CartDto } from '../../modules/cart/types';
 import CartItem from './CartItem/CartItem';
-import { TItemWithUuid } from '../../common/types';
+import { TItemWithUuid, TUuid } from '../../common/types';
 import { Nullable } from '../../core/types';
 import './cart.less';
 
 type Props = {
   cartOrder: Nullable<TItemWithUuid<CartDto>>;
+  changeQuantity: (uuid: TUuid, delta: number) => void;
 };
 
 function Cart(props: Props) {
-  const { cartOrder } = props;
-
-  console.log(11111111111111, cartOrder);
+  const { cartOrder, changeQuantity } = props;
 
   return (
     <div className='cart-section-wrapper'>
@@ -45,7 +44,12 @@ function Cart(props: Props) {
           </div>
           <div className='cart-service__list'>
             {cartOrder?.order?.map((v, k) => (
-              <CartItem key={k} item={v.restaurantMenu} quiantity={v.quantity} />
+              <CartItem
+                key={k}
+                item={v.restaurantMenu}
+                quiantity={v.quantity}
+                changeQuantity={changeQuantity}
+              />
             ))}
           </div>
         </div>

@@ -47,3 +47,31 @@ export const addToCart = (
     });
   }
 };
+
+export const changeOrderQuantity = (
+  cartOrder: Nullable<TItemWithUuid<CartDto>>,
+  uuid: TUuid,
+  delta: number
+) => {
+  if (cartOrder) {
+    const existedItem = cartOrder.order.find((v) => v.restaurantMenu.uuid === uuid);
+    const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== uuid);
+    let updatedOrder: TRestaurantMenuOrder[] = [];
+
+    if (existedItem) {
+      updatedOrder = [
+        ...filteredOrder,
+        {
+          quantity: existedItem.quantity + delta,
+          restaurantMenu: existedItem.restaurantMenu,
+        },
+      ];
+
+      const newOrder = {
+        ...cartOrder,
+        order: updatedOrder,
+      };
+      updateItemFx(newOrder);
+    }
+  }
+};

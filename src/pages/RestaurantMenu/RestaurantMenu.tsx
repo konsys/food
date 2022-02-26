@@ -12,6 +12,9 @@ import { grouppedByCategory } from '../../modules/restaurantMenu/utils';
 import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigation/RestaurantMenuTopNavigation';
 import { TLinkWithText } from '../../common/types/utilTypes';
 import { getClientUuid } from '../../modules/cart/service';
+import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
+import { addToCart, changeOrderQuantity } from '../../modules/cart/utils';
+import { TUuid } from '../../common/types';
 
 const { $itemStore, ItemGate } = RestaurantModel;
 const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
@@ -30,6 +33,11 @@ function RestaurantMenu() {
         text: v.title,
       }))
     : [];
+
+  const addMenuToCart = (menuItem: RestaurantMenuDto) => addToCart(cartOrder, menuItem);
+  const changeQuantity = (uuid: TUuid, delta: number) =>
+    changeOrderQuantity(cartOrder, uuid, delta);
+
   return (
     <div>
       {item ? (
@@ -40,12 +48,12 @@ function RestaurantMenu() {
               <RestaurantMenuTopNavigation menuItems={items} />
 
               <section className='restaurant-menu'>
-                <RestaurantMenuListBlock menu={item.restaurantMenu} />
+                <RestaurantMenuListBlock menu={item.restaurantMenu} addMenuToCart={addMenuToCart} />
                 <RestaurantMenuBottomPartnerInfo legal={item.legal} />
                 <RestaurantMenuBottomLinks />
               </section>
             </div>
-            <Cart cartOrder={cartOrder} />
+            <Cart cartOrder={cartOrder} changeQuantity={changeQuantity} />
           </div>
         </div>
       ) : (

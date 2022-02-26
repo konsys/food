@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { TUuid } from '../../../common/types';
 import { NullableNumber } from '../../../core/types';
 import { RestaurantMenuDto } from '../../../modules/restaurantMenu/types';
 
@@ -11,10 +12,11 @@ interface Props {
   modificators?: TModidificator[];
   item: RestaurantMenuDto;
   quiantity: number;
+  changeQuantity: (uuid: TUuid, delta: number) => void;
 }
 
 function CartItem(props: Props) {
-  const { modificators, item, quiantity } = props;
+  const { modificators, item, quiantity, changeQuantity } = props;
 
   return (
     <div className='cart-service'>
@@ -41,8 +43,9 @@ function CartItem(props: Props) {
         <div className='cart-service__actions'>
           <button
             className='cart-service__count-button cart-service__count-button--minus'
-            disabled
+            disabled={quiantity < 2}
             type='button'
+            onClick={() => changeQuantity(item.uuid, -1)}
           >
             <svg
               width='13'
@@ -55,8 +58,12 @@ function CartItem(props: Props) {
               <rect y='6' width='13' height='1' fill='#F37021' />
             </svg>
           </button>
-          <input type='text' defaultValue={1} disabled />
-          <button className='cart-service__count-button' type='button'>
+          <input type='text' value={quiantity} disabled />
+          <button
+            className='cart-service__count-button'
+            type='button'
+            onClick={() => changeQuantity(item.uuid, 1)}
+          >
             <svg
               width='13'
               height='13'

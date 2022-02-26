@@ -1,25 +1,19 @@
-import { useStore } from 'effector-react';
 import React, { memo } from 'react';
-import { addToCart } from '../../../../modules/cart/utils';
+import { TVoidFn } from '../../../../common/types';
 
 import { RestaurantMenuDto } from '../../../../modules/restaurantMenu/types';
 import { grouppedByCategory } from '../../../../modules/restaurantMenu/utils';
-import { CartModel } from '../../../../store';
 import RestaurantMenuListItem from './components/RestaurantMenuListItem';
 import './restaurantMenuListBlock.less';
 
 interface Props {
   menu: RestaurantMenuDto[];
+  addMenuToCart: TVoidFn<RestaurantMenuDto>;
 }
-const { $itemStore } = CartModel;
 
 function RestaurantMenuListBlock(props: Props) {
-  const { menu } = props;
+  const { menu, addMenuToCart } = props;
   const items = grouppedByCategory(menu, 'foodCategory.name');
-
-  const { item } = useStore($itemStore);
-
-  const addMenuToCart = (menuItem: RestaurantMenuDto) => addToCart(item, menuItem);
 
   return (
     <>
