@@ -1,27 +1,31 @@
 import { TItemWithUuid, TUuid } from '../../common/types';
 import { Nullable } from '../../core/types';
 import { CartModel } from '../../store';
+import { RestaurantMenuDto } from '../restaurantMenu/types';
 import { getClientUuid } from './service';
-import { CartDto, TOrder, EOrderStatus } from './types';
+import { CartDto, TRestaurantMenuOrder, EOrderStatus } from './types';
 
 const { createItemFx, updateItemFx } = CartModel;
 
-export const addToCart = (item: Nullable<TItemWithUuid<CartDto>>, restaurantMenuUuid: TUuid) => {
+export const addToCart = (
+  item: Nullable<TItemWithUuid<CartDto>>,
+  restaurantMenu: RestaurantMenuDto
+) => {
   let newOrder: CartDto;
-  let order: TOrder[];
+  let order: TRestaurantMenuOrder[];
   if (item) {
-    const existedItem = item.order.find((v) => v.restaurantMenuUuid === restaurantMenuUuid);
-    const filteredOrder = item.order.filter((v) => v.restaurantMenuUuid !== restaurantMenuUuid);
+    const existedItem = item.order.find((v) => v.restaurantMenu.uuid === restaurantMenu.uuid);
+    const filteredOrder = item.order.filter((v) => v.restaurantMenu.uuid !== restaurantMenu.uuid);
     if (existedItem) {
       order = [
         ...filteredOrder,
         {
           quantity: existedItem.quantity + 1,
-          restaurantMenuUuid,
+          restaurantMenu,
         },
       ];
     } else {
-      order = [...filteredOrder, { quantity: 1, restaurantMenuUuid }];
+      order = [...filteredOrder, { quantity: 1, restaurantMenu }];
     }
     newOrder = {
       ...item,
@@ -34,7 +38,7 @@ export const addToCart = (item: Nullable<TItemWithUuid<CartDto>>, restaurantMenu
       id: null,
       order: [
         {
-          restaurantMenuUuid,
+          restaurantMenu,
           quantity: 1,
         },
       ],

@@ -1,19 +1,19 @@
 import React, { memo } from 'react';
-import { TUuid, TVoidFn } from '../../../../../common/types';
+import { TVoidFn } from '../../../../../common/types';
 import { RestaurantMenuDto } from '../../../../../modules/restaurantMenu/types';
 import './restaurantMenuListItem.less';
 
 type Props = {
   item: RestaurantMenuDto;
-  addToCart: TVoidFn<TUuid>;
+  addToCart: TVoidFn<RestaurantMenuDto>;
 };
 
 function RestaurantMenuListItem({ item, addToCart }: Props) {
-  const { name, image, description, price, amount, weight, uuid } = item;
+  const { name, image, description, price, amount, weight } = item;
 
   return (
     <div className='service-list__item col-lg-4 col-md-6 col-sm-6 col-xs-12'>
-      <button type='button' onClick={() => addToCart(uuid)}>
+      <button type='button' onClick={() => addToCart(item)}>
         <div className='restaurant-menu-item clearfix'>
           <div className='restaurant-menu-item__image restaurant-menu-item__image--full restaurant-menu-item__image--fill'>
             <img

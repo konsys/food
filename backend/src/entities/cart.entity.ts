@@ -1,5 +1,6 @@
-import { CartOrder } from "src/common/types/cart";
+
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { TRestaurantMenuOrder } from "./order.enriry";
 
 @Entity()
 export class Cart {
@@ -16,7 +17,7 @@ export class Cart {
   @Column({
     type: 'jsonb'
   })
-  order: CartOrder[];
+  order: TRestaurantMenuOrder[];
 
   @Column({
     type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',

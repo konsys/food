@@ -1,16 +1,19 @@
-import { useGate, useStore } from 'effector-react';
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { getClientUuid } from '../../modules/cart/service';
-import { CartModel } from '../../store';
-import './cart.less';
+import { CartDto } from '../../modules/cart/types';
 import CartItem from './CartItem/CartItem';
+import { TItemWithUuid } from '../../common/types';
+import { Nullable } from '../../core/types';
+import './cart.less';
 
-const { $itemStore, ItemGate } = CartModel;
+type Props = {
+  cartOrder: Nullable<TItemWithUuid<CartDto>>;
+};
 
-function Cart() {
-  useGate(ItemGate, getClientUuid());
-  const { item: cartOrder } = useStore($itemStore);
+function Cart(props: Props) {
+  const { cartOrder } = props;
+
+  console.log(11111111111111, cartOrder);
 
   return (
     <div className='cart-section-wrapper'>
@@ -42,7 +45,7 @@ function Cart() {
           </div>
           <div className='cart-service__list'>
             {cartOrder?.order?.map((v, k) => (
-              <CartItem key={k} name={v.restaurantMenuUuid} subtotal={100} weight={120} />
+              <CartItem key={k} item={v.restaurantMenu} quiantity={v.quantity} />
             ))}
           </div>
         </div>

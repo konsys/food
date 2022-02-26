@@ -1,6 +1,5 @@
 import { useStore } from 'effector-react';
 import React, { memo } from 'react';
-import { TUuid } from '../../../../common/types';
 import { addToCart } from '../../../../modules/cart/utils';
 
 import { RestaurantMenuDto } from '../../../../modules/restaurantMenu/types';
@@ -20,7 +19,7 @@ function RestaurantMenuListBlock(props: Props) {
 
   const { item } = useStore($itemStore);
 
-  const addMenuToCart = (itemUuid: TUuid) => addToCart(item, itemUuid);
+  const addMenuToCart = (menuItem: RestaurantMenuDto) => addToCart(item, menuItem);
 
   return (
     <>
@@ -40,5 +39,6 @@ function RestaurantMenuListBlock(props: Props) {
     </>
   );
 }
+// 262
 
 export default memo(RestaurantMenuListBlock);

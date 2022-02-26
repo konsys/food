@@ -1,3 +1,4 @@
+import { restaurantMenuFactory } from './../restaurantMenu/restaurantMenuFactory';
 import * as factory from 'factory.ts';
 import faker from 'faker';
 import { CartDto, EOrderStatus } from './types';
@@ -9,9 +10,7 @@ export const cartFactory = factory.Sync.makeFactory<CartDto>({
   order: factory.each(() => {
     return [
       {
-        user: faker.datatype.uuid(),
-        orderUuid: faker.datatype.uuid(),
-        restaurantMenuUuid: faker.datatype.uuid(),
+        restaurantMenu: restaurantMenuFactory.build(),
         quantity: faker.datatype.number(5) + 1,
       },
     ];

@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { NullableNumber } from '../../../core/types';
+import { RestaurantMenuDto } from '../../../modules/restaurantMenu/types';
 
 export type TModidificator = {
   price: NullableNumber;
@@ -8,13 +9,12 @@ export type TModidificator = {
 };
 interface Props {
   modificators?: TModidificator[];
-  name: string;
-  subtotal: number;
-  weight: number;
+  item: RestaurantMenuDto;
+  quiantity: number;
 }
 
 function CartItem(props: Props) {
-  const { modificators, weight, subtotal, name } = props;
+  const { modificators, item, quiantity } = props;
 
   return (
     <div className='cart-service'>
@@ -27,8 +27,8 @@ function CartItem(props: Props) {
             />
           </svg>
         </button>
-        <div className='cart-service__name'>{name}</div>
-        <div className='cart-service__description'>{weight} г.</div>
+        <div className='cart-service__name'>{item.name}</div>
+        <div className='cart-service__description'>{item.weight} г.</div>
       </div>
       <div className='cart-service__addons'>
         {modificators?.map(({ key, value, price }) => {
@@ -70,7 +70,7 @@ function CartItem(props: Props) {
           </button>
         </div>
         <div className='cart-service__price'>
-          <span>{subtotal}</span> ₽
+          <span>{item.price * quiantity}</span> ₽
         </div>
       </div>
     </div>

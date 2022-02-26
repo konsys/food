@@ -7,18 +7,23 @@ import RestaurantMenuBottomPartnerInfo from './components/RestaurantMenuBottomPa
 import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
 import './restaurantMenu.less';
-import { RestaurantModel } from '../../store';
+import { CartModel, RestaurantModel } from '../../store';
 import { grouppedByCategory } from '../../modules/restaurantMenu/utils';
 import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigation/RestaurantMenuTopNavigation';
 import { TLinkWithText } from '../../common/types/utilTypes';
+import { getClientUuid } from '../../modules/cart/service';
 
 const { $itemStore, ItemGate } = RestaurantModel;
+const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
 
 function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
+  useGate(CartGate, getClientUuid());
 
+  const { item: cartOrder } = useStore(cartStore);
   const { item } = useStore($itemStore);
+
   const items: TLinkWithText[] = item
     ? grouppedByCategory(item?.restaurantMenu, 'foodCategory.name').map((v) => ({
         link: v.title,
@@ -40,7 +45,7 @@ function RestaurantMenu() {
                 <RestaurantMenuBottomLinks />
               </section>
             </div>
-            <Cart />
+            <Cart cartOrder={cartOrder} />
           </div>
         </div>
       ) : (
