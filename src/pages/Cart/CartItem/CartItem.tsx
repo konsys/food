@@ -1,9 +1,20 @@
 import React, { memo } from 'react';
+import { NullableNumber } from '../../../core/types';
 
-interface Props {}
+export type TModidificator = {
+  price: NullableNumber;
+  key: string;
+  value: string;
+};
+interface Props {
+  modificators?: TModidificator[];
+  name: string;
+  subtotal: number;
+  weight: number;
+}
 
 function CartItem(props: Props) {
-  const {} = props;
+  const { modificators, weight, subtotal, name } = props;
 
   return (
     <div className='cart-service'>
@@ -16,17 +27,14 @@ function CartItem(props: Props) {
             />
           </svg>
         </button>
-        <div className='cart-service__name'>Борано с соусом</div>
-        <div className='cart-service__description'>179 г.</div>
+        <div className='cart-service__name'>{name}</div>
+        <div className='cart-service__description'>{weight} г.</div>
       </div>
       <div className='cart-service__addons'>
-        МОДИФИКАТОРЫ ОБЩИЕ: В один!!!
-        <br />
-        МОДИФИКАТОРЫ ОБЩИЕ: Готовить позже!!!
-        <br />
-        МОДИФИКАТОРЫ ОБЩИЕ: Лед отдельно!!!
-        <br />
-        СОУСЫ: Соус Ткемали зеленый<strong> (+ 150₽)</strong>
+        {modificators?.map(({ key, value, price }) => {
+          const priceAdd = price ? ` <strong> (+ ${price}₽)</strong>` : '';
+          return `${key}: ${value} ${priceAdd}`;
+        })}
         <br />
       </div>
       <div className='cart-service__bottom'>
@@ -62,7 +70,7 @@ function CartItem(props: Props) {
           </button>
         </div>
         <div className='cart-service__price'>
-          <span>500</span> ₽
+          <span>{subtotal}</span> ₽
         </div>
       </div>
     </div>

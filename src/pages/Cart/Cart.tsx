@@ -9,12 +9,8 @@ import CartItem from './CartItem/CartItem';
 const { $itemStore, ItemGate } = CartModel;
 
 function Cart() {
-  const clientuuid = getClientUuid();
-
-  useGate(ItemGate, clientuuid);
-
-  const cart = useStore($itemStore);
-  console.log(44444444444, cart);
+  useGate(ItemGate, getClientUuid());
+  const { item: cartOrder } = useStore($itemStore);
 
   return (
     <div className='cart-section-wrapper'>
@@ -45,8 +41,8 @@ function Cart() {
             </div>
           </div>
           <div className='cart-service__list'>
-            {new Array(20).fill('wef').map((v, k) => (
-              <CartItem key={k} />
+            {cartOrder?.order?.map((v, k) => (
+              <CartItem key={k} name={v.restaurantMenuUuid} subtotal={100} weight={120} />
             ))}
           </div>
         </div>

@@ -1,9 +1,7 @@
 import { useStore } from 'effector-react';
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { TUuid } from '../../../../common/types';
-import { uuid } from '../../../../common/utils/utils';
-import { getClientUuid } from '../../../../modules/cart/service';
-import { CartDto, EOrderStatus } from '../../../../modules/cart/types';
+import { addToCart } from '../../../../modules/cart/utils';
 
 import { RestaurantMenuDto } from '../../../../modules/restaurantMenu/types';
 import { grouppedByCategory } from '../../../../modules/restaurantMenu/utils';
@@ -14,35 +12,15 @@ import './restaurantMenuListBlock.less';
 interface Props {
   menu: RestaurantMenuDto[];
 }
-const { createItemFx, $itemStore } = CartModel;
+const { $itemStore } = CartModel;
 
 function RestaurantMenuListBlock(props: Props) {
-  const [order, setOrder] = useState<CartDto>();
-
   const { menu } = props;
   const items = grouppedByCategory(menu, 'foodCategory.name');
 
-  const cartOrder = useStore($itemStore);
+  const { item } = useStore($itemStore);
 
-  const addToCart = (restaurantMenuUuid: TUuid) => {
-    if (order) {
-      const cartOrder: CartDto = { ...order, order: { ...order.order } };
-    }
-    const cartOrder: CartDto = {
-      clientUuid: getClientUuid(),
-      description: '',
-      id: null,
-      status: EOrderStatus.IN_PROGRESS,
-      uuid: uuid(),
-      order: [
-        {
-          quantity: 1,
-          restaurantMenuUuid,
-        },
-      ],
-    };
-    createItemFx(cartOrder);
-  };
+  const addMenuToCart = (itemUuid: TUuid) => addToCart(item, itemUuid);
 
   return (
     <>
@@ -53,7 +31,7 @@ function RestaurantMenuListBlock(props: Props) {
           </div>
           <div className='restaurant-menu__service-list row'>
             {v.menu.map((item) => (
-              <RestaurantMenuListItem item={item} key={item.uuid} addToCart={addToCart} />
+              <RestaurantMenuListItem item={item} key={item.uuid} addToCart={addMenuToCart} />
             ))}
           </div>
           <div className='service-list' />

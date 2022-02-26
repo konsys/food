@@ -2,7 +2,6 @@ import { TId, TUuid } from '../../common/types';
 
 export type CartDto = {
   id: TId;
-  clientUuid: TUuid;
   uuid: TUuid;
   description: string;
   order: TOrder[];
