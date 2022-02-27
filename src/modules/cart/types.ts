@@ -13,6 +13,7 @@ export type CartDto = {
 export type TRestaurantMenuOrder = {
   restaurantMenu: RestaurantMenuDto;
   quantity: number;
+  id: number;
 };
 
 export enum EOrderStatus {

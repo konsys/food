@@ -14,6 +14,7 @@ export const addToCart = (
   let newOrder: CartDto;
   let order: TRestaurantMenuOrder[];
   if (item) {
+    update(item, restaurantMenu.uuid, 0);
     const existedItem = item.order.find((v) => v.restaurantMenu.uuid === restaurantMenu.uuid);
     const filteredOrder = item.order.filter((v) => v.restaurantMenu.uuid !== restaurantMenu.uuid);
     if (existedItem) {
@@ -22,10 +23,12 @@ export const addToCart = (
         {
           quantity: existedItem.quantity + 1,
           restaurantMenu,
+          id: existedItem.id,
         },
-      ];
+      ].sort((a, b) => a.id - b.id);
     } else {
-      order = [...filteredOrder, { quantity: 1, restaurantMenu }];
+      const max = Math.max.apply(null, [...filteredOrder.map((v) => v.id)]);
+      order = [...filteredOrder, { quantity: 1, restaurantMenu, id: max + 1 }];
     }
     newOrder = {
       ...item,
@@ -40,6 +43,7 @@ export const addToCart = (
         {
           restaurantMenu,
           quantity: 1,
+          id: 0,
         },
       ],
       status: EOrderStatus.IN_PROGRESS,
@@ -54,24 +58,29 @@ export const changeOrderQuantity = (
   delta: number
 ) => {
   if (cartOrder) {
-    const existedItem = cartOrder.order.find((v) => v.restaurantMenu.uuid === uuid);
-    const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== uuid);
-    let updatedOrder: TRestaurantMenuOrder[] = [];
+    update(cartOrder, uuid, delta);
+  }
+};
 
-    if (existedItem) {
-      updatedOrder = [
-        ...filteredOrder,
-        {
-          quantity: existedItem.quantity + delta,
-          restaurantMenu: existedItem.restaurantMenu,
-        },
-      ];
+const update = (cartOrder: TItemWithUuid<CartDto>, uuid: TUuid, delta: number) => {
+  const existedItem = cartOrder.order.find((v) => v.restaurantMenu.uuid === uuid);
+  const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== uuid);
+  let updatedOrder: TRestaurantMenuOrder[] = [];
 
-      const newOrder = {
-        ...cartOrder,
-        order: updatedOrder,
-      };
-      updateItemFx(newOrder);
-    }
+  if (existedItem) {
+    updatedOrder = [
+      ...filteredOrder,
+      {
+        quantity: existedItem.quantity + delta,
+        restaurantMenu: existedItem.restaurantMenu,
+        id: existedItem.id,
+      },
+    ].sort((a, b) => a.id - b.id);
+
+    const newOrder = {
+      ...cartOrder,
+      order: updatedOrder,
+    };
+    updateItemFx(newOrder);
   }
 };

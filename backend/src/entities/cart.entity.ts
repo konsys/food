@@ -10,6 +10,8 @@ export class Cart {
   @Column()
   uuid: string;
 
+
+
   @Column({ default: null })
   description: string;
 
