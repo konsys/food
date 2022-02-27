@@ -84,3 +84,10 @@ const update = (cartOrder: TItemWithUuid<CartDto>, uuid: TUuid, delta: number) =
     updateItemFx(newOrder);
   }
 };
+
+export const deleteItemFromCart = (cartOrder: Nullable<TItemWithUuid<CartDto>>, uuid: TUuid) => {
+  if (cartOrder) {
+    const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== uuid);
+    updateItemFx({ ...cartOrder, order: filteredOrder });
+  }
+};

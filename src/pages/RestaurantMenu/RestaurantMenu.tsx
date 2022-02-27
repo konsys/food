@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { useParams } from 'react-router-dom';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
@@ -13,7 +13,7 @@ import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigatio
 import { TLinkWithText } from '../../common/types/utilTypes';
 import { getClientUuid } from '../../modules/cart/service';
 import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
-import { addToCart, changeOrderQuantity } from '../../modules/cart/utils';
+import { addToCart, changeOrderQuantity, deleteItemFromCart } from '../../modules/cart/utils';
 import { TUuid } from '../../common/types';
 
 const { $itemStore, ItemGate } = RestaurantModel;
@@ -23,7 +23,7 @@ function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
   useGate(CartGate, getClientUuid());
-
+  const [sum, setSum] = useState<number>(0);
   const { item: cartOrder } = useStore(cartStore);
   const { item } = useStore($itemStore);
 
@@ -37,6 +37,15 @@ function RestaurantMenu() {
   const addMenuToCart = (menuItem: RestaurantMenuDto) => addToCart(cartOrder, menuItem);
   const changeQuantity = (uuid: TUuid, delta: number) =>
     changeOrderQuantity(cartOrder, uuid, delta);
+  const deleteFromCart = (uuid: TUuid) => deleteItemFromCart(cartOrder, uuid);
+
+  useEffect(() => {
+    const sumAll = cartOrder?.order.reduce(
+      (acc, v) => acc + v.quantity * v.restaurantMenu.price,
+      0
+    );
+    sumAll && setSum(sumAll);
+  });
 
   return (
     <div>
@@ -53,7 +62,12 @@ function RestaurantMenu() {
                 <RestaurantMenuBottomLinks />
               </section>
             </div>
-            <Cart cartOrder={cartOrder} changeQuantity={changeQuantity} />
+            <Cart
+              cartOrder={cartOrder}
+              changeQuantity={changeQuantity}
+              deleteFromCart={deleteFromCart}
+              sum={sum}
+            />
           </div>
         </div>
       ) : (

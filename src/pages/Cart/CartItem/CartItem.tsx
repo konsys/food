@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { TUuid } from '../../../common/types';
+import { TUuid, TVoidFn } from '../../../common/types';
 import { NullableNumber } from '../../../core/types';
 import { RestaurantMenuDto } from '../../../modules/restaurantMenu/types';
 
@@ -13,15 +13,20 @@ interface Props {
   item: RestaurantMenuDto;
   quiantity: number;
   changeQuantity: (uuid: TUuid, delta: number) => void;
+  deleteFromCart: TVoidFn<TUuid>;
 }
 
 function CartItem(props: Props) {
-  const { modificators, item, quiantity, changeQuantity } = props;
+  const { modificators, item, quiantity, changeQuantity, deleteFromCart } = props;
 
   return (
     <div className='cart-service'>
       <div className='cart-service__title d-flex flex-wrap align-items-center'>
-        <button className='cart-service__delete-button' type='button'>
+        <button
+          className='cart-service__delete-button'
+          type='button'
+          onClick={() => deleteFromCart(item.uuid)}
+        >
           <svg xmlns='http://www.w3.org/2000/svg' width={12} height={12}>
             <path
               d='M1050.726,397.191a.264.264,0,0,1,0-.384l4.109-4.11a.53.53,0,0,0,0-.767l-.767-.767a.59.59,0,0,0-.383-.164.5.5,0,0,0-.384.164l-4.109,4.11a.265.265,0,0,1-.384,0l-4.109-4.11a.53.53,0,0,0-.767,0l-.767.767a.53.53,0,0,0,0,.767l4.11,4.11a.265.265,0,0,1,0,.384l-4.11,4.11a.53.53,0,0,0,0,.767l.767.767a.53.53,0,0,0,.767,0l4.109-4.109a.264.264,0,0,1,.384,0l2.848,2.848,1.262,1.262a.53.53,0,0,0,.767,0l.767-.767a.53.53,0,0,0,0-.767Z'

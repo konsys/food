@@ -1,18 +1,20 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CartDto } from '../../modules/cart/types';
 import CartItem from './CartItem/CartItem';
-import { TItemWithUuid, TUuid } from '../../common/types';
+import { TItemWithUuid, TUuid, TVoidFn } from '../../common/types';
 import { Nullable } from '../../core/types';
 import './cart.less';
 
 type Props = {
   cartOrder: Nullable<TItemWithUuid<CartDto>>;
   changeQuantity: (uuid: TUuid, delta: number) => void;
+  deleteFromCart: TVoidFn<TUuid>;
+  sum: number;
 };
 
 function Cart(props: Props) {
-  const { cartOrder, changeQuantity } = props;
+  const { cartOrder, changeQuantity, deleteFromCart, sum } = props;
 
   return (
     <div className='cart-section-wrapper'>
@@ -49,6 +51,7 @@ function Cart(props: Props) {
                 item={v.restaurantMenu}
                 quiantity={v.quantity}
                 changeQuantity={changeQuantity}
+                deleteFromCart={deleteFromCart}
               />
             ))}
           </div>
@@ -59,7 +62,7 @@ function Cart(props: Props) {
               Время доставки <span>55-65 мин</span>
             </div>
             <div className='cart-bottom__total'>
-              Итого <span>1 190 ₽</span>
+              Итого <span>{sum} ₽</span>
             </div>
           </div>
 
