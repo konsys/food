@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { useParams } from 'react-router-dom';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
@@ -35,17 +35,24 @@ function RestaurantMenu() {
     : [];
 
   const addMenuToCart = (menuItem: RestaurantMenuDto) => addToCart(cartOrder, menuItem);
-  const changeQuantity = (uuid: TUuid, delta: number) =>
-    changeOrderQuantity(cartOrder, uuid, delta);
-  const deleteFromCart = (uuid: TUuid) => deleteItemFromCart(cartOrder, uuid);
+  const changeQuantity = (uuidToChange: TUuid, delta: number) =>
+    changeOrderQuantity(cartOrder, uuidToChange, delta);
+  const deleteFromCart = (uuidToDelete: TUuid) => deleteItemFromCart(cartOrder, uuidToDelete);
 
   useEffect(() => {
     const sumAll = cartOrder?.order.reduce(
       (acc, v) => acc + v.quantity * v.restaurantMenu.price,
       0
     );
-    sumAll && setSum(sumAll);
+    setSum(sumAll ?? 0);
   });
+
+  const foundCartItem = useMemo(
+    () => cartOrder?.order.find((v) => v.restaurantMenu.uuid === item.uuid),
+    [cartOrder]
+  );
+
+  console.log(111111111, foundCartItem);
 
   return (
     <div>
@@ -57,7 +64,11 @@ function RestaurantMenu() {
               <RestaurantMenuTopNavigation menuItems={items} />
 
               <section className='restaurant-menu'>
-                <RestaurantMenuListBlock menu={item.restaurantMenu} addMenuToCart={addMenuToCart} />
+                <RestaurantMenuListBlock
+                  menu={item.restaurantMenu}
+                  addMenuToCart={addMenuToCart}
+                  cartOrder={cartOrder}
+                />
                 <RestaurantMenuBottomPartnerInfo legal={item.legal} />
                 <RestaurantMenuBottomLinks />
               </section>

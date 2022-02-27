@@ -10,6 +10,7 @@ type Props = {
 
 function RestaurantMenuListItem({ item, addToCart }: Props) {
   const { name, image, description, price, amount, weight } = item;
+
   return (
     <div className='service-list__item col-lg-4 col-md-6 col-sm-6 col-xs-12'>
       <button
@@ -27,7 +28,10 @@ function RestaurantMenuListItem({ item, addToCart }: Props) {
           </div>
           <div className='restaurant-menu-item-info'>
             <div className='restaurant-menu-item-info__title'>
-              {name}{' '}
+              <span className='service-list__item-count'>
+                <strong>1</strong>&nbsp;•&nbsp;
+              </span>
+              {name}
               {(amount || weight) && (
                 <span className='restaurant-menu-item-info__amount'>
                   {amount ? `${amount} шт.` : `${weight} гр.`}

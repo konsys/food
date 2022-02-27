@@ -1,5 +1,7 @@
 import React, { memo } from 'react';
-import { TVoidFn } from '../../../../common/types';
+import { TItemWithUuid, TVoidFn } from '../../../../common/types';
+import { Nullable } from '../../../../core/types';
+import { CartDto } from '../../../../modules/cart/types';
 
 import { RestaurantMenuDto } from '../../../../modules/restaurantMenu/types';
 import { grouppedByCategory } from '../../../../modules/restaurantMenu/utils';
@@ -9,10 +11,11 @@ import './restaurantMenuListBlock.less';
 interface Props {
   menu: RestaurantMenuDto[];
   addMenuToCart: TVoidFn<RestaurantMenuDto>;
+  cartOrder: Nullable<TItemWithUuid<CartDto>>;
 }
 
 function RestaurantMenuListBlock(props: Props) {
-  const { menu, addMenuToCart } = props;
+  const { menu, addMenuToCart, cartOrder } = props;
   const items = grouppedByCategory(menu, 'foodCategory.name');
 
   return (
