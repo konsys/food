@@ -12,13 +12,11 @@ type Props = {
 
 function RestaurantMenuListItem({ item, addToCart, cartOrder }: Props) {
   const { name, image, description, price, amount, weight } = item;
-  const [orderNumber, setOrderNumber] = useState<number>(0);
+  const [orderNumber, setOrderNumber] = useState<number | undefined>();
 
   useEffect(() => {
     const order = cartOrder?.find((v) => v.restaurantMenu.uuid === item.uuid);
-    if (order) {
-      setOrderNumber(order.quantity);
-    }
+    setOrderNumber(order?.quantity);
   }, [cartOrder]);
 
   return (
