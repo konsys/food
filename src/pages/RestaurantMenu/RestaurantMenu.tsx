@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { useParams } from 'react-router-dom';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
@@ -47,13 +47,6 @@ function RestaurantMenu() {
     setSum(sumAll ?? 0);
   });
 
-  const foundCartItem = useMemo(
-    () => cartOrder?.order.find((v) => v.restaurantMenu.uuid === item.uuid),
-    [cartOrder]
-  );
-
-  console.log(111111111, foundCartItem);
-
   return (
     <div>
       {item ? (
@@ -67,7 +60,7 @@ function RestaurantMenu() {
                 <RestaurantMenuListBlock
                   menu={item.restaurantMenu}
                   addMenuToCart={addMenuToCart}
-                  cartOrder={cartOrder}
+                  cartOrder={cartOrder?.order}
                 />
                 <RestaurantMenuBottomPartnerInfo legal={item.legal} />
                 <RestaurantMenuBottomLinks />

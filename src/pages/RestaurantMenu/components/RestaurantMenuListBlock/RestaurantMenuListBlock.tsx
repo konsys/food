@@ -1,8 +1,6 @@
 import React, { memo } from 'react';
-import { TItemWithUuid, TVoidFn } from '../../../../common/types';
-import { Nullable } from '../../../../core/types';
-import { CartDto } from '../../../../modules/cart/types';
-
+import { TVoidFn } from '../../../../common/types';
+import { TRestaurantMenuOrder } from '../../../../modules/cart/types';
 import { RestaurantMenuDto } from '../../../../modules/restaurantMenu/types';
 import { grouppedByCategory } from '../../../../modules/restaurantMenu/utils';
 import RestaurantMenuListItem from './components/RestaurantMenuListItem';
@@ -11,7 +9,7 @@ import './restaurantMenuListBlock.less';
 interface Props {
   menu: RestaurantMenuDto[];
   addMenuToCart: TVoidFn<RestaurantMenuDto>;
-  cartOrder: Nullable<TItemWithUuid<CartDto>>;
+  cartOrder?: TRestaurantMenuOrder[];
 }
 
 function RestaurantMenuListBlock(props: Props) {
@@ -27,7 +25,12 @@ function RestaurantMenuListBlock(props: Props) {
           </div>
           <div className='restaurant-menu__service-list row'>
             {v.menu.map((item) => (
-              <RestaurantMenuListItem item={item} key={item.uuid} addToCart={addMenuToCart} />
+              <RestaurantMenuListItem
+                item={item}
+                key={item.uuid}
+                addToCart={addMenuToCart}
+                cartOrder={cartOrder}
+              />
             ))}
           </div>
           <div className='service-list' />
