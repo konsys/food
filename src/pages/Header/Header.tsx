@@ -1,15 +1,15 @@
 import React, { memo } from 'react';
-import { HeaderButtons } from './components/HeaderButtons/HeaderButtons';
+import { useStore } from 'effector-react';
+import HeaderButtons from './components/HeaderButtons/HeaderButtons';
 import { HeaderNavigationToggle } from './components/HeaderNavigationToggle/HeaderNavigationToggle';
 import { HeaderLogo } from './components/HeaderLogo/HeaderLogo';
 import { HeaderCity } from './components/HeaderCity/HeaderCity';
 import './header.less';
+import { CartModel } from '../../store';
 
-interface Props {}
-
-function Header(props: Props) {
-  const {} = props;
-
+const { $itemStore: cartStore } = CartModel;
+function Header() {
+  const cart = useStore(cartStore);
   return (
     <>
       <header className='header header_sticky'>
@@ -18,7 +18,7 @@ function Header(props: Props) {
           <div className='header-container container'>
             <HeaderLogo />
             <HeaderCity />
-            <HeaderButtons />
+            <HeaderButtons cartPrice={cart.item?.orderSum} />
           </div>
         </div>
       </header>

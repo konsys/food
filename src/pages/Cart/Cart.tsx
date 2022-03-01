@@ -10,11 +10,10 @@ type Props = {
   cartOrder: Nullable<TItemWithUuid<CartDto>>;
   changeQuantity: (uuid: TUuid, delta: number) => void;
   deleteFromCart: TVoidFn<TUuid>;
-  sum: number;
 };
 
 function Cart(props: Props) {
-  const { cartOrder, changeQuantity, deleteFromCart, sum } = props;
+  const { cartOrder, changeQuantity, deleteFromCart } = props;
 
   return (
     <div className='cart-section-wrapper'>
@@ -62,7 +61,7 @@ function Cart(props: Props) {
               Время доставки <span>55-65 мин</span>
             </div>
             <div className='cart-bottom__total'>
-              Итого <span>{sum} ₽</span>
+              Итого <span>{cartOrder?.orderSum} ₽</span>
             </div>
           </div>
 

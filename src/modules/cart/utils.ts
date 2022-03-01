@@ -7,6 +7,9 @@ import { CartDto, TRestaurantMenuOrder, EOrderStatus } from './types';
 
 const { createItemFx, updateItemFx } = CartModel;
 
+const sumAll = (order: TRestaurantMenuOrder[]) =>
+  order.reduce((acc, v) => acc + v.quantity * v.restaurantMenu.price, 0);
+
 export const addToCart = (
   item: Nullable<TItemWithUuid<CartDto>>,
   restaurantMenu: RestaurantMenuDto,

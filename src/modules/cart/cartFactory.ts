@@ -18,4 +18,5 @@ export const cartFactory = factory.Sync.makeFactory<CartDto>({
     ];
   }),
   status: factory.each((i) => (i % 2 === 0 ? EOrderStatus.COMPLETED : EOrderStatus.IN_PROGRESS)),
+  orderSum: factory.each(() => faker.datatype.number(10000)),
 });

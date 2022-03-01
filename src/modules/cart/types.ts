@@ -9,6 +9,7 @@ export type CartDto = {
   order: TRestaurantMenuOrder[];
   createdAt?: Date;
   status: EOrderStatus;
+  orderSum: number;
 };
 
 export type TRestaurantMenuOrder = {

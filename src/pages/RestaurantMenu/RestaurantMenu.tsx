@@ -23,7 +23,6 @@ function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
   useGate(CartGate, getClientUuid());
-  const [sum, setSum] = useState<number>(0);
   const { item: cartOrder } = useStore(cartStore);
   const { item: restaurant } = useStore(restaurantStore);
 
@@ -39,14 +38,6 @@ function RestaurantMenu() {
   const changeQuantity = (uuidToChange: TUuid, delta: number) =>
     changeOrderQuantity(cartOrder, uuidToChange, delta);
   const deleteFromCart = (uuidToDelete: TUuid) => deleteItemFromCart(cartOrder, uuidToDelete);
-
-  useEffect(() => {
-    const sumAll = cartOrder?.order?.reduce(
-      (acc, v) => acc + v.quantity * v.restaurantMenu.price,
-      0
-    );
-    setSum(sumAll ?? 0);
-  });
 
   return (
     <div>
@@ -72,7 +63,6 @@ function RestaurantMenu() {
               cartOrder={cartOrder}
               changeQuantity={changeQuantity}
               deleteFromCart={deleteFromCart}
-              sum={sum}
             />
           </div>
         </div>
