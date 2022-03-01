@@ -1,0 +1,89 @@
+@import '../../../../common/template/config/theme/vars.less';
+
+.header-nav-item-link-basket-stub {
+    background   : url(https://broniboy.ru/img/icons/basket-icon.svg) no-repeat center center;
+    border-radius: 20px;
+    opacity      : .4;
+    padding      : 19px;
+}
+
+.header-nav a.header-nav-item-link {
+    border-radius: 20px;
+    padding      : 8px 19px;
+    text-align   : center
+}
+
+.header-nav a:hover {
+    border-color: #666
+}
+
+.header-nav a {
+    background-repeat: no-repeat;
+    border           : 1px solid #ccc;
+    color            : #666;
+    display          : block;
+    font-size        : 14px;
+    height           : 40px;
+    transition       : border-color .3s
+}
+
+
+.header-nav .list-clear {
+    display: flex
+}
+
+.header-nav .list-clear li {
+    margin-right: 10px
+}
+
+.header-nav .list-clear li:last-child {
+    margin-right: 0
+}
+
+
+
+// -------------------------
+
+
+
+
+.header-nav a.header-nav-item-link-basket.header-nav-item-link-basket_active {
+    -webkit-animation    : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    animation            : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    background-color     : #f37021;
+    background-image     : url(https://broniboy.ru/img/icons/basket-icon-white.svg);
+    background-position-x: 17px;
+    border-color         : #f37021;
+    position             : relative;
+    padding-left         : 42px;
+    padding-top          : 8px
+}
+
+.header-nav a.header-nav-item-link-basket.header-nav-item-link-basket_active-animate:before {
+    -webkit-animation: addToCart 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    animation        : addToCart 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    background       : #f37021;
+    background       : radial-gradient(transparent, rgba(238, 129, 97, .6));
+    border-radius    : 20px;
+    content          : "";
+    height           : 150%;
+    left             : 50%;
+    position         : absolute;
+    top              : 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform        : translate(-50%, -50%);
+    width            : 110%;
+}
+
+.header-nav a.header-nav-item-link-basket,
+.header-nav-item-link-basket-stub {
+    background   : url(https://broniboy.ru/img/icons/basket-icon.svg) no-repeat center center;
+    border-radius: 20px;
+    padding      : 19px 25px;
+}
+
+
+.header-nav a.header-nav-item-link-basket b {
+    font-size: 1rem;
+    color    : #fff;
+}

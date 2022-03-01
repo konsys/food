@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import Content from './containers/Content/Content';
-import Header from './containers/Header/Header';
+import Header from '../../pages/Header/Header';
 import Footer from './containers/Footer/Footer';
 import './index.less';
 import './animation.less';
