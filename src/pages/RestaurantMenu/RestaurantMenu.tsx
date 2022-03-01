@@ -16,7 +16,7 @@ import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
 import { addToCart, changeOrderQuantity, deleteItemFromCart } from '../../modules/cart/utils';
 import { TUuid } from '../../common/types';
 
-const { $itemStore, ItemGate } = RestaurantModel;
+const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
 
 function RestaurantMenu() {
@@ -25,22 +25,23 @@ function RestaurantMenu() {
   useGate(CartGate, getClientUuid());
   const [sum, setSum] = useState<number>(0);
   const { item: cartOrder } = useStore(cartStore);
-  const { item } = useStore($itemStore);
+  const { item: restaurant } = useStore(restaurantStore);
 
-  const items: TLinkWithText[] = item
-    ? grouppedByCategory(item?.restaurantMenu, 'foodCategory.name').map((v) => ({
+  const items: TLinkWithText[] = restaurant
+    ? grouppedByCategory(restaurant?.restaurantMenu, 'foodCategory.name').map((v) => ({
         link: v.title,
         text: v.title,
       }))
     : [];
 
-  const addMenuToCart = (menuItem: RestaurantMenuDto) => addToCart(cartOrder, menuItem);
+  const addMenuToCart = (menuItem: RestaurantMenuDto, restaurantUuid: TUuid) =>
+    addToCart(cartOrder, menuItem, restaurantUuid);
   const changeQuantity = (uuidToChange: TUuid, delta: number) =>
     changeOrderQuantity(cartOrder, uuidToChange, delta);
   const deleteFromCart = (uuidToDelete: TUuid) => deleteItemFromCart(cartOrder, uuidToDelete);
 
   useEffect(() => {
-    const sumAll = cartOrder?.order.reduce(
+    const sumAll = cartOrder?.order?.reduce(
       (acc, v) => acc + v.quantity * v.restaurantMenu.price,
       0
     );
@@ -49,20 +50,21 @@ function RestaurantMenu() {
 
   return (
     <div>
-      {item ? (
+      {restaurant ? (
         <div className='container'>
           <div className='page-restaurant d-flex'>
             <div className='restaurant-section'>
-              <RestaurantMenuHeader restaurant={item} />
+              <RestaurantMenuHeader restaurant={restaurant} />
               <RestaurantMenuTopNavigation menuItems={items} />
 
               <section className='restaurant-menu'>
                 <RestaurantMenuListBlock
-                  menu={item.restaurantMenu}
-                  addMenuToCart={addMenuToCart}
+                  menu={restaurant.restaurantMenu}
+                  addToCart={addMenuToCart}
                   cartOrder={cartOrder?.order}
+                  restaurantUuid={restaurant.uuid}
                 />
-                <RestaurantMenuBottomPartnerInfo legal={item.legal} />
+                <RestaurantMenuBottomPartnerInfo legal={restaurant.legal} />
                 <RestaurantMenuBottomLinks />
               </section>
             </div>

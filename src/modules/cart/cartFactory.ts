@@ -6,6 +6,7 @@ import { CartDto, EOrderStatus } from './types';
 export const cartFactory = factory.Sync.makeFactory<CartDto>({
   id: factory.each((n) => null),
   uuid: factory.each(() => faker.datatype.uuid()),
+  restaurantUuid: factory.each(() => faker.datatype.uuid()),
   description: factory.each(() => faker.lorem.words(5)),
   order: factory.each((e) => {
     return [

@@ -1,4 +1,5 @@
 
+import { TUuid } from "src/common/types";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { TRestaurantMenuOrder } from "./order.enriry";
 
@@ -8,9 +9,10 @@ export class Cart {
   id: number;
 
   @Column()
-  uuid: string;
+  uuid: TUuid;
 
-
+  @Column()
+  restaurantUuid: TUuid;
 
   @Column({ default: null })
   description: string;

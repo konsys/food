@@ -1,16 +1,17 @@
 import React, { memo, useEffect, useState } from 'react';
-import { TVoidFn } from '../../../../../common/types';
+import { TUuid } from '../../../../../common/types';
 import { TRestaurantMenuOrder } from '../../../../../modules/cart/types';
 import { RestaurantMenuDto } from '../../../../../modules/restaurantMenu/types';
 import './restaurantMenuListItem.less';
 
 type Props = {
   item: RestaurantMenuDto;
-  addToCart: TVoidFn<RestaurantMenuDto>;
+  addToCart: (item: RestaurantMenuDto, restaurantUuid: TUuid) => void;
+  restaurantUuid: TUuid;
   cartOrder?: TRestaurantMenuOrder[];
 };
 
-function RestaurantMenuListItem({ item, addToCart, cartOrder }: Props) {
+function RestaurantMenuListItem({ item, addToCart, cartOrder, restaurantUuid }: Props) {
   const { name, image, description, price, amount, weight } = item;
   const [orderNumber, setOrderNumber] = useState<number | undefined>();
 
@@ -23,7 +24,7 @@ function RestaurantMenuListItem({ item, addToCart, cartOrder }: Props) {
     <div className='service-list__item col-lg-4 col-md-6 col-sm-6 col-xs-12'>
       <button
         type='button'
-        onClick={() => addToCart(item)}
+        onClick={() => addToCart(item, restaurantUuid)}
         className='service-list__item-add-to-cart-button'
       >
         <div className='restaurant-menu-item clearfix'>

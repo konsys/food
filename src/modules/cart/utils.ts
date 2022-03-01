@@ -9,7 +9,8 @@ const { createItemFx, updateItemFx } = CartModel;
 
 export const addToCart = (
   item: Nullable<TItemWithUuid<CartDto>>,
-  restaurantMenu: RestaurantMenuDto
+  restaurantMenu: RestaurantMenuDto,
+  restaurantUuid: TUuid
 ) => {
   let newOrder: CartDto;
   let order: TRestaurantMenuOrder[];
@@ -37,6 +38,7 @@ export const addToCart = (
     updateItemFx(newOrder);
   } else {
     createItemFx({
+      restaurantUuid,
       description: '',
       id: null,
       order: [
