@@ -36,21 +36,25 @@ export const addToCart = (
     }
     newOrder = {
       ...item,
+      orderSum: sumAll(order),
       order,
     };
     updateItemFx(newOrder);
   } else {
+    const order = [
+      {
+        restaurantMenu,
+        quantity: 1,
+        id: 0,
+      },
+    ];
+
     createItemFx({
       restaurantUuid,
       description: '',
       id: null,
-      order: [
-        {
-          restaurantMenu,
-          quantity: 1,
-          id: 0,
-        },
-      ],
+      orderSum: sumAll(order),
+      order,
       status: EOrderStatus.IN_PROGRESS,
       uuid: getClientUuid(),
     });
@@ -84,6 +88,7 @@ const update = (cartOrder: TItemWithUuid<CartDto>, uuid: TUuid, delta: number) =
 
     const newOrder = {
       ...cartOrder,
+      orderSum: sumAll(updatedOrder),
       order: updatedOrder,
     };
     updateItemFx(newOrder);
@@ -93,6 +98,6 @@ const update = (cartOrder: TItemWithUuid<CartDto>, uuid: TUuid, delta: number) =
 export const deleteItemFromCart = (cartOrder: Nullable<TItemWithUuid<CartDto>>, uuid: TUuid) => {
   if (cartOrder) {
     const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== uuid);
-    updateItemFx({ ...cartOrder, order: filteredOrder });
+    updateItemFx({ ...cartOrder, orderSum: sumAll(filteredOrder), order: filteredOrder });
   }
 };
