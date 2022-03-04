@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { CartDto } from '../../modules/cart/types';
 import CartItem from './CartItem/CartItem';
@@ -16,7 +16,7 @@ function Cart(props: Props) {
   const { cartOrder, changeQuantity, deleteFromCart } = props;
 
   return (
-    <div className='cart-section-wrapper'>
+    <div className='d-none cart-section-wrapper'>
       <div className='cart-section__body'>
         <div className='cart-section d-flex flex-column'>
           <div className='cart-section__title'>Корзина</div>

@@ -37,14 +37,14 @@ function RestaurantMenuListItem({ item, addToCart, cartOrder, restaurantUuid }: 
           </div>
           <div className='restaurant-menu-item-info'>
             <div className='restaurant-menu-item-info__title'>
-              {orderNumber ? (
-                <span className='service-list__item-count'>
-                  <strong>{orderNumber}</strong>&nbsp;•&nbsp;
-                </span>
-              ) : (
-                ''
-              )}
-              {name}
+              <h3>
+                {orderNumber ? (
+                  <span className='service-list__item-count'>{orderNumber}&nbsp;•&nbsp;</span>
+                ) : (
+                  ''
+                )}
+                {name}
+              </h3>
               {(amount || weight) && (
                 <span className='restaurant-menu-item-info__amount'>
                   {amount ? `${amount} шт.` : `${weight} гр.`}

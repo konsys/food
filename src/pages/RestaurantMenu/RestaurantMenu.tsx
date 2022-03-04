@@ -40,36 +40,34 @@ function RestaurantMenu() {
   const deleteFromCart = (uuidToDelete: TUuid) => deleteItemFromCart(cartOrder, uuidToDelete);
 
   return (
-    <div>
+    <div className='container'>
       {restaurant ? (
-        <div className='container'>
-          <div className='page-restaurant d-flex'>
-            <div className='restaurant-section'>
-              <RestaurantMenuHeader restaurant={restaurant} />
-              <RestaurantMenuTopNavigation menuItems={items} />
+        <div className='page-restaurant d-flex'>
+          <div className='restaurant-section'>
+            <RestaurantMenuHeader restaurant={restaurant} />
+            <RestaurantMenuTopNavigation menuItems={items} />
 
-              <section className='restaurant-menu'>
-                <RestaurantMenuListBlock
-                  menu={restaurant.restaurantMenu}
-                  addToCart={addMenuToCart}
-                  cartOrder={cartOrder?.order}
-                  restaurantUuid={restaurant.uuid}
-                />
-                <RestaurantMenuBottomPartnerInfo legal={restaurant.legal} />
-                <RestaurantMenuBottomLinks />
-              </section>
-            </div>
-            <div className='d-none d-md-block'>
-              <Cart
-                cartOrder={cartOrder}
-                changeQuantity={changeQuantity}
-                deleteFromCart={deleteFromCart}
+            <section className='restaurant-menu'>
+              <RestaurantMenuListBlock
+                menu={restaurant.restaurantMenu}
+                addToCart={addMenuToCart}
+                cartOrder={cartOrder?.order}
+                restaurantUuid={restaurant.uuid}
               />
-            </div>
+              <RestaurantMenuBottomPartnerInfo legal={restaurant.legal} />
+              <RestaurantMenuBottomLinks />
+            </section>
+          </div>
+          <div className='d-none d-md-block'>
+            <Cart
+              cartOrder={cartOrder}
+              changeQuantity={changeQuantity}
+              deleteFromCart={deleteFromCart}
+            />
           </div>
         </div>
       ) : (
-        <span />
+        ''
       )}
     </div>
   );

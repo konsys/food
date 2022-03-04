@@ -2,7 +2,6 @@
 
 .service-list__item {
     margin-bottom: 1.5rem;
-
 }
 
 .restaurant-menu-item {
@@ -37,6 +36,39 @@
     object-fit: cover
 }
 
+.restaurant-menu-item-info {
+
+    .restaurant-menu-item-info__title {
+        h3 {
+            padding    : 0.25rem;
+            font-size  : 1.5rem;
+            font-weight: 500;
+
+            @media (min-width: @md) {
+                font-size  : 1rem;
+                font-weight: 400;
+            }
+        }
+
+        p {
+            font-size  : 1rem;
+            font-weight: 500;
+
+            @media (min-width: @md) {
+                font-size  : 0.75rem;
+                font-weight: 300;
+            }
+        }
+    }
+
+    .restaurant-menu-item-info__amount {
+        font-size  : 14px;
+        font-weight: 400;
+        opacity    : .4;
+        white-space: nowrap;
+    }
+}
+
 .restaurant-menu-item {
     border       : 1px solid @color3;
     border-radius: 3px;
@@ -48,43 +80,10 @@
         box-shadow: 0 0 1.5rem @color26;
     }
 
-    .restaurant-menu-item-info {
-        padding : 1.5rem;
-        position: relative;
 
-        h3 {
-            color        : @colorBlack;
-            font-size    : 1rem;
-            font-weight  : 400;
-            height       : @height41;
-            line-height  : 1.2;
-            margin       : 0 0 1px;
-            min-height   : @height61;
-            overflow     : hidden;
-            text-overflow: ellipsis;
-        }
 
-        p {
-            color      : rgba(0, 0, 0, .6);
-            font-size  : 0.75rem;
-            line-height: @height59;
-            margin     : 0.5rem 0 0.75rem;
-        }
-    }
 
-    .restaurant-menu-item-info__title {
-        font-size    : 1rem;
-        font-weight  : 800;
-        line-height  : 1.25rem;
-        margin-bottom: 0.75rem;
-    }
 
-    .restaurant-menu-item-info__amount {
-        font-size  : 14px;
-        font-weight: 400;
-        opacity    : .4;
-        white-space: nowrap;
-    }
 }
 
 .service-list__item-add-to-cart-button {
