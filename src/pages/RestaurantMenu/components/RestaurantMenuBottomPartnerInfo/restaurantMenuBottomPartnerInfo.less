@@ -2,17 +2,33 @@
 
 
 .legal-info {
-    color      : @color2;
+    width      : 100%;
+    font-size  : 2rem;
+    color      : @colorBlack;
     font-size  : 0.75rem;
     font-style : normal;
     font-weight: 400;
     line-height: @height59;
     margin     : 1.5rem 0;
-    opacity    : .2;
+    opacity    : .5;
 
 
     .legal-info__part {
-        white-space  : nowrap;
+        white-space  : normal;
         padding-right: 0.25rem;
+    }
+
+}
+
+@media (min-width: @md) {
+    .legal-info {
+        font-size: 0.75rem;
+        opacity  : .2;
+
+        .legal-info__part {
+
+            white-space  : nowrap;
+            padding-right: 0.25rem;
+        }
     }
 }
