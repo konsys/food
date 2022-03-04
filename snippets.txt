@@ -33,3 +33,6 @@ git branch -d temp
 
 sudo nano /etc/hosts
 sudo service network-manager restart
+
+
+d-none d-md-block

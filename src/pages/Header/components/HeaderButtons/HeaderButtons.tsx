@@ -8,7 +8,7 @@ type Props = {
 const HeaderButtons = ({ cartPrice }: Props) => (
   <nav className='header-nav header-buttons d-flex float-end'>
     <ul className='list-clear clearfix'>
-      <li className='hidden-xs hidden-sm'>
+      <li className='d-none d-md-flex '>
         {cartPrice ? (
           <Link
             to='/'
