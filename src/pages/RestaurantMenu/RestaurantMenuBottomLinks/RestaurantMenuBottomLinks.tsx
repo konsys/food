@@ -55,7 +55,7 @@ function RestaurantMenuBottomLinks(props: Props) {
   const {} = props;
 
   return (
-    <div>
+    <div className='d-flex flex-column flex-md-row'>
       <RestaurantMenuBottomLinksItem items={items} />
     </div>
   );

@@ -59,11 +59,13 @@ function RestaurantMenu() {
                 <RestaurantMenuBottomLinks />
               </section>
             </div>
-            <Cart
-              cartOrder={cartOrder}
-              changeQuantity={changeQuantity}
-              deleteFromCart={deleteFromCart}
-            />
+            <div className='d-none d-md-block'>
+              <Cart
+                cartOrder={cartOrder}
+                changeQuantity={changeQuantity}
+                deleteFromCart={deleteFromCart}
+              />
+            </div>
           </div>
         </div>
       ) : (
