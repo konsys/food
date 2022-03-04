@@ -8,7 +8,7 @@ import { ReactComponent as InstaIcon } from '../../../../../../svg/insta.svg';
 import './footerSocials.less';
 
 export const FooterSocials = () => (
-  <div className='col-sm social-links'>
+  <div className='social-links'>
     <div className='d-flex'>
       <Link
         to='https://broniboy.ru'

@@ -10,8 +10,8 @@ function FooterContacts(props: Props) {
   const {} = props;
 
   return (
-    <div className='col-sm'>
-      <div className='footer-bottom__title footer-bottom__title--contacts'>Контакты</div>
+    <>
+      <div className='footer-bottom__title'>Контакты</div>
       <div className='footer-nav footer-nav--contacts'>
         <div>
           <Link to='tel:' title='8 800 555-57-08'>
@@ -24,7 +24,7 @@ function FooterContacts(props: Props) {
           </Link>
         </div>
       </div>
-      <div className='footer-app d-flex align-items-center justify-content-end'>
+      <div className='footer-app d-flex'>
         <div className='footer-app__link  '>
           <Link
             to='https://app.adjust.com/e0ifxiw?deep_link=broniboy%3A%2F%2Fapp&is_organic=1&fallback=https://play.google.com/store/apps/details?id=com.broniboy.client&redirect_macos=https://play.google.com/store/apps/details?id=com.broniboy.client'
@@ -44,7 +44,7 @@ function FooterContacts(props: Props) {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

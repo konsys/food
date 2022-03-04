@@ -15,9 +15,13 @@ function Footer(props: Props) {
     <footer className='footer'>
       <div className='footer-top'>
         <div className='container'>
-          <div className='footer__header d-flex'>
-            <FooterSocials />
-            <FooterContacts />
+          <div className='row flex-md-row '>
+            <div className='col-sm'>
+              <FooterSocials />
+            </div>
+            <div className='col-sm'>
+              <FooterContacts />
+            </div>
           </div>
         </div>
       </div>
