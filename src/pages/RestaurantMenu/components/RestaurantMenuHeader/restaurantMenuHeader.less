@@ -1,12 +1,10 @@
 @import '../../../../common/template/config/theme/vars.less';
 
 .restaurant-content {
-
-    background-color: rgba(255, 229, 222, .36);
-    border-radius   : 3px;
-    overflow        : hidden;
-    position        : relative;
-    height          : 20rem;
+    border-radius: 3px;
+    overflow     : hidden;
+    position     : relative;
+    height       : 180px;
 
 }
 
@@ -14,7 +12,7 @@
 
     position     : absolute;
     overflow     : hidden;
-    height       : 20rem;
+    height       : 180px;
     width        : 100%;
     border-radius: 3px
 }
@@ -26,7 +24,7 @@
 
 .restaurant .restaurant-descr {
     width           : 100%;
-    height          : 8rem;
+    height          : 60px;
     bottom          : 0;
     left            : 0;
     position        : absolute;
@@ -72,10 +70,104 @@
 
 .restaurant-info--shop {
     color: white;
-
-
 }
 
 .restaurant-info__open-hours {
     color: silver
+}
+
+.restaurant-box-second__bull {
+    padding: 0 4px;
+}
+
+// MOBILE
+.restaurant-content--mobile {}
+
+.delivery_type__description--mobile {}
+
+.restaurant__background--mobile {
+    position: absolute;
+    width   : 100%;
+    height  : 180px;
+    overflow: hidden;
+
+    img {
+        height     : 'auto';
+        width      : '375px';
+        margin-left: '0px';
+        margin-top : '-36.25px'
+    }
+}
+
+.restaurant-descr--mobile {
+    padding        : 12px 20px;
+    background     : linear-gradient(180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .6) 100%);
+    position       : relative;
+    top            : 0;
+    left           : 0;
+    height         : 180px;
+    display        : flex;
+    flex-direction : column;
+    justify-content: space-between;
+}
+
+.restaurant-descr--mobile h1 {
+    font-size  : 24px;
+    line-height: normal;
+    color      : #fff;
+    font-weight: 700;
+}
+
+.restaurant-descr--mobile h1 span {
+    font-size  : 24px;
+    line-height: normal;
+}
+
+.restaurant__info--mobile {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding      : 12px 0;
+    color        : rgba(0, 0, 0, .4);
+
+    .restaurant-box-second__rating--mobile {
+        color: '#76C032'
+    }
+}
+
+
+.restaurant-descr__delivery_info--mobile {
+    display      : inline-block;
+    color        : #fff;
+    font-size    : 14px;
+    padding      : 1px 10px;
+    border-radius: 4px;
+}
+
+.delivery_type--long_distance--mobile {
+    background-color: #36f !important;
+}
+
+.restaurant-box-second__rating--mobile {
+    font-size    : 16px;
+    padding-right: 5px;
+}
+
+.restaurant__info--mobile {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding      : 12px 0;
+    color        : rgba(0, 0, 0, .4);
+}
+
+.delivery_type__title--mobile {
+    padding-left   : 0;
+    font-weight    : 400;
+    font-size      : 16px;
+    color          : #000;
+    display        : flex;
+    justify-content: space-between;
+}
+
+.delivery_type__description--mobile {
+    font-size  : 14px;
+    line-height: normal;
+    padding-top: 5px;
 }

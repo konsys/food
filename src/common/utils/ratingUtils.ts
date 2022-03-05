@@ -16,4 +16,5 @@ export const getRatingColor = (rating: RatingDto) => {
   if (rating === 5) {
     return '#76C032';
   }
+  return '#76C032';
 };

@@ -36,3 +36,8 @@ sudo service network-manager restart
 
 
 d-none d-md-block
+
+  @media (min-width: @md) {
+                font-size  : 0.75rem;
+                font-weight: 300;
+            }
