@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartDto } from '../../modules/cart/types';
 import CartItem from './CartItem/CartItem';
@@ -15,8 +15,25 @@ type Props = {
 function Cart(props: Props) {
   const { cartOrder, changeQuantity, deleteFromCart } = props;
 
+  const [stickyClass, setStickyClass] = useState<string>('');
+
+  useEffect(() => {
+    window.addEventListener('scroll', stickNavbar);
+
+    return () => {
+      window.removeEventListener('scroll', stickNavbar);
+    };
+  }, []);
+
+  const stickNavbar = () => {
+    if (window !== undefined) {
+      const windowHeight = window.scrollY;
+      windowHeight > 76 ? setStickyClass('fixed-cart') : setStickyClass('relative-cart');
+    }
+  };
+
   return (
-    <div className='cart-section-wrapper'>
+    <div className={`cart-section-wrapper ${stickyClass}`}>
       <div className='cart-section__body'>
         <div className='cart-section d-flex flex-column'>
           <div className='cart-section__title'>Корзина</div>
