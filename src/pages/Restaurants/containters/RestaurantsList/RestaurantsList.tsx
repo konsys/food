@@ -1,8 +1,5 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import faker from 'faker';
-import { generateUuid } from '../../../../common/utils/utils';
-import { EDeliveryType } from '../../../../modules/delivery/types';
 import { RestaurantDto } from '../../../../modules/restaurants/types';
 import RestaurantItem from '../RestaurantItem/RestaurantItem';
 import './restaurantList.less';

@@ -44,7 +44,7 @@ function RestaurantMenu() {
     <div className='container'>
       {restaurant ? (
         <div className='page-restaurant d-flex'>
-          <div className='restaurant-section'>
+          <div className='restaurant-section col-lg-9 col-md-12 col-sm-12'>
             <RestaurantMenuHeader restaurant={restaurant} delivery={deliveryFactory.build()} />
             <RestaurantMenuTopNavigation menuItems={items} />
 
@@ -59,7 +59,7 @@ function RestaurantMenu() {
               <RestaurantMenuBottomLinks />
             </section>
           </div>
-          <div className='d-none d-md-block'>
+          <div className='d-none d-lg-flex col-lg-3'>
             <Cart
               cartOrder={cartOrder}
               changeQuantity={changeQuantity}

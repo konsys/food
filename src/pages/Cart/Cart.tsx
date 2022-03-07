@@ -16,7 +16,7 @@ function Cart(props: Props) {
   const { cartOrder, changeQuantity, deleteFromCart } = props;
 
   return (
-    <div className='d-none cart-section-wrapper'>
+    <div className='cart-section-wrapper'>
       <div className='cart-section__body'>
         <div className='cart-section d-flex flex-column'>
           <div className='cart-section__title'>Корзина</div>
