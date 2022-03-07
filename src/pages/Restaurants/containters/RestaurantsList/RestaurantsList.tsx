@@ -6,6 +6,7 @@ import { EDeliveryType } from '../../../../modules/delivery/types';
 import { RestaurantDto } from '../../../../modules/restaurants/types';
 import RestaurantItem from '../RestaurantItem/RestaurantItem';
 import './restaurantList.less';
+import { deliveryFactory } from '../../../../modules/delivery/deliveryFactory';
 
 interface Props {
   items: RestaurantDto[];
@@ -31,13 +32,7 @@ function RestaurantsList(props: Props) {
               <RestaurantItem
                 key={index}
                 restaurant={restarauntItem}
-                delivery={{
-                  fullTime: '40-50 мин',
-                  price: 190,
-                  type: EDeliveryType.LONG_DISTANCE,
-                  uuid: generateUuid(),
-                  id: faker.datatype.number(1000),
-                }}
+                delivery={deliveryFactory.build()}
               />
             ))}
           </div>

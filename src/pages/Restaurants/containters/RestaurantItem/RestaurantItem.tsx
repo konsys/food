@@ -17,7 +17,7 @@ interface Props {
 function RestaurantItem({ restaurant, delivery }: Props) {
   const { name, uuid, image, logo, rating, foodType, priceRating } = restaurant;
 
-  const { type, price, fullTime } = delivery;
+  const { type, price, maxTimeMinutes, minTimeMinutes } = delivery;
   return (
     <div className='col-lg-4 col-md-6 col-12'>
       <div className='restaurant-box'>
@@ -80,8 +80,7 @@ function RestaurantItem({ restaurant, delivery }: Props) {
                 {price} ₽, бесплатно от 1499 ₽
               </div>
               <div className='restaurant-box-second__delivery-time'>
-                {/* TODO add fll time */}
-                {fullTime}
+                {`${minTimeMinutes}-${maxTimeMinutes} мин.`}
               </div>
             </div>
           </div>

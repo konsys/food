@@ -5,7 +5,8 @@ export type DeliveryDto = {
   uuid: TUuid;
   type: EDeliveryType;
   price: number;
-  fullTime: string;
+  minTimeMinutes: number;
+  maxTimeMinutes: number;
 };
 
 export enum EDeliveryType {

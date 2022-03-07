@@ -15,6 +15,7 @@ import { getClientUuid } from '../../modules/cart/service';
 import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
 import { addToCart, changeOrderQuantity, deleteItemFromCart } from '../../modules/cart/utils';
 import { TUuid } from '../../common/types';
+import { deliveryFactory } from '../../modules/delivery/deliveryFactory';
 
 const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
@@ -44,7 +45,7 @@ function RestaurantMenu() {
       {restaurant ? (
         <div className='page-restaurant d-flex'>
           <div className='restaurant-section'>
-            <RestaurantMenuHeader restaurant={restaurant} />
+            <RestaurantMenuHeader restaurant={restaurant} delivery={deliveryFactory.build()} />
             <RestaurantMenuTopNavigation menuItems={items} />
 
             <section className='restaurant-menu'>
