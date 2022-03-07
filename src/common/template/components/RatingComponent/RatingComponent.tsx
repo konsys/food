@@ -10,14 +10,14 @@ function RatingComponent(props: Props) {
   const { rating } = props;
   const color = rating >= 4 ? '#76C032' : 'yellow';
   return (
-    <>
+    <div className='d-flex'>
       <div>
         <strong style={{ color }}>{rating}.0&nbsp;</strong>
       </div>
       <div>
         <StarIcon style={{ fill: color }} />
       </div>
-    </>
+    </div>
   );
 }
 

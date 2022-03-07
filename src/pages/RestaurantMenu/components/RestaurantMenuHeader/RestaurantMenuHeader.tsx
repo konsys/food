@@ -24,27 +24,18 @@ function RestaurantMenuHeader({ restaurant }: Props) {
           <div className='restaurant-descr__header d-flex'>
             <div className='restaurant-descr__header--title'>{name}</div>
             <div className='restaurant-descr__header--bull'>&nbsp;•&nbsp;</div>
-            <div className='restaurant-descr__header--rating d-flex align-items-center'>
+            <div className='restaurant-descr__header--rating '>
               <RatingComponent rating={rating} />
             </div>
           </div>
 
           <div className='restaurant-info--shop d-flex justify-content-between'>
-            <div className='restaurant-info__delivery'>
-              <DeliveryRange
-                range={DeliveryRangeDto.STANDARD}
-                deliveryPrice={199}
-                maxDeliveryMinutes={50}
-                minDeliveryMinutes={40}
-              />
-            </div>
-            <div className='restaurant-info__open-hours'>
-              <span>
-                Прием заказов c {openTime} до {closeTime}
-              </span>
-              <span> • </span>
-              <PriceRatingComponent rating={priceRating} />
-            </div>
+            <DeliveryRange
+              range={DeliveryRangeDto.STANDARD}
+              deliveryPrice={199}
+              maxDeliveryMinutes={50}
+              minDeliveryMinutes={40}
+            />
           </div>
         </div>
       </div>
