@@ -28,9 +28,11 @@ export class Cart {
   })
   createdAt: Date;
 
-
   @Column()
   status: EOrderStatus;
+
+  @Column()
+  orderSum: number
 }
 
 
