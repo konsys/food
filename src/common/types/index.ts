@@ -24,3 +24,4 @@ export type TObjectMap = Record<string, any>;
 
 export type TKeyValue = { key: string; value: any };
 export type TUuid = string;
+export type TSelectOptions = Array<{ id: TUuid; value: string }>;

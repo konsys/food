@@ -83,7 +83,7 @@ function Cart(props: Props) {
           </div>
 
           <Link
-            to='/checkout'
+            to={`/checkout/${cartOrder?.uuid}`}
             className='cart-bottom__checkout-button d-flex align-items-center justify-content-center'
             title='Оформить заказ'
             rel='nofollow'
