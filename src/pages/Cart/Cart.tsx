@@ -81,15 +81,17 @@ function Cart(props: Props) {
               Итого <span>{cartOrder?.orderSum} ₽</span>
             </div>
           </div>
-
-          <Link
-            to={`/checkout/${cartOrder?.uuid}`}
-            className='cart-bottom__checkout-button d-flex align-items-center justify-content-center'
-            title='Оформить заказ'
-            rel='nofollow'
-          >
-            Оформить заказ
-          </Link>
+          <div className='cart-bottom__checkout-button'>
+            {cartOrder?.orderSum ? (
+              <div className=''>
+                <Link to={`/checkout/${cartOrder?.uuid}`} title='Оформить заказ' rel='nofollow'>
+                  Оформить заказ
+                </Link>
+              </div>
+            ) : (
+              <div className='cart-bottom__checkout-button--disabled'>Оформить заказ</div>
+            )}
+          </div>
         </div>
       </div>
     </div>
