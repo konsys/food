@@ -47,6 +47,8 @@ function CheckoutMobile({ item }: Props) {
           <div className='page-title page-title--checkout'>
             <h2>Оформление заказа {item?.orderSum}</h2>
           </div>
+
+          {/* PHONE --------------------------- */}
           <div className='ordering-form__phone'>
             <div className='input-phone-wrapper'>
               <label htmlFor='order-phone'>Телефон</label>
@@ -78,6 +80,8 @@ function CheckoutMobile({ item }: Props) {
               <div className='input-code-error'>Неверный код</div>
             </div>
           </div>
+
+          {/* ADDRESS --------------------------- */}
           <div className='ordering-form__address address ordering-form__item--disabled'>
             <div className='address__title'>
               <span>Мои адреса</span>
