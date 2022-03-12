@@ -4,19 +4,19 @@ import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
 import { DeepPartial, DeleteResult, FindManyOptions, Repository } from 'typeorm';
 
 @Injectable()
-export class AbstractService<E> implements IAbstractService<E>{
+export class AbstractService<E extends { uuid: TUuid }> implements IAbstractService<E>{
     private repository: Repository<E> = null;
 
     constructor(repository: Repository<E>) {
         this.repository = repository;
     }
- 
+
     create(entity: DeepPartial<E>) {
         return this.repository.save(entity);
     }
 
     async findAll({ limit, page, filter }: TListRequest<E>): Promise<TListResponce<E>> {
-     
+
         page = +(page >= 0 ? page : 0);
         const take = limit = +limit;
         const skip = take * (page - 1);
@@ -42,15 +42,16 @@ export class AbstractService<E> implements IAbstractService<E>{
     }
 
     findOne(uuid: TUuid) {
-        return this.repository.findOne({where:{uuid}});
+        return this.repository.findOne({ where: { uuid } });
     }
 
     update(entity: DeepPartial<E>) {
         return this.repository.save(entity);
     }
 
-    remove(id: number) {
-        return this.repository.delete(id);
+    async removeItem(uuid: TUuid) {
+        const phones = await this.repository.find({ where: { uuid } });
+        return this.repository.remove(phones);
     }
 }
 
@@ -59,5 +60,5 @@ export interface IAbstractService<E> {
     findAll: TPromiseFn<TListRequest<E>, TListResponce<E>>
     findOne: TPromiseFn<TUuid, E>
     update: TPromiseFn<DeepPartial<E>, E>
-    remove: TPromiseFn<number, DeleteResult>
+    removeItem: TPromiseFn<TUuid, E[]>
 }

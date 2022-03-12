@@ -35,8 +35,8 @@ export class AbstractController<E> {
     return this.service.update(updateMenuTimeDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.service.remove(+id);
+  @Delete(':uuid')
+  remove(@Param('uuid') uuid: TUuid) {
+    return this.service.removeItem(uuid);
   }
 }
