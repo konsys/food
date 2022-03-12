@@ -69,53 +69,40 @@
             width    : 100%;
             flex-wrap: wrap;
 
-            &>div {
+            .input-phone-wrapper {
                 position     : relative;
                 margin-right : 10px;
                 margin-bottom: 15px;
+
+                &>div {
+                    position     : relative;
+                    margin-right : 10px;
+                    margin-bottom: 15px;
+                }
+
+                .ordering-form__phone-info {
+                    font-size   : 14px;
+                    // display  : none;
+                    position    : absolute;
+                    left        : 0;
+                    bottom      : -23px;
+                    width       : 320px;
+
+                    span {
+                        color: #f37021;
+                    }
+
+                    .code_mins {
+                        margin-left: 5px;
+                    }
+                }
             }
 
-            .ordering-form__phone-info {
-                font-size: 14px;
-                display  : none;
-                position : absolute;
-                left     : 0;
-                bottom   : -23px;
-                width    : 320px;
-            }
+
+
         }
 
-        .input-phone-wrapper {
-            position     : relative;
-            margin-right : 10px;
-            margin-bottom: 15px;
 
-            input {
-                border-radius   : 3px;
-                height          : 42px;
-                font-size       : 16px;
-                line-height     : normal;
-                border          : 1px solid rgba(0, 0, 0, .1);
-                padding         : 0 10px;
-                background-color: #fff;
-            }
-        }
-
-        .ordering-form__phone-info {
-            font-size: 14px;
-            position : absolute;
-            left     : 0;
-            bottom   : -23px;
-            width    : 320px;
-
-            span {
-                color: #f37021;
-            }
-
-            .code_mins {
-                margin-left: 5px;
-            }
-        }
 
         .order-form-send-code {
             border          : none;
