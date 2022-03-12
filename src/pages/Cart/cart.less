@@ -67,10 +67,13 @@
 
 
 .cart-bottom {
-    bottom  : 0;
-    color   : silver;
     position: absolute;
     width   : 100%;
+
+    a {
+        color: #fff;
+
+    }
 
     .cart-bottom__checkout-button {
         background-color: @color1;
@@ -79,8 +82,23 @@
         height          : 40px;
         width           : 100%;
         background-color: #f37021;
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
     }
+
+    .cart-bottom__checkout-button--disabled {
+        width           : 100%;
+        height          : 100%;
+        background-color: silver;
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+    }
+
 }
+
+
 
 // ---------------------------
 
