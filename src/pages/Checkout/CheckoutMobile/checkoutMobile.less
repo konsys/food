@@ -21,10 +21,6 @@
         flex-wrap: wrap;
     }
 
-    .ordering-form__phone {
-        display        : flex;
-        justify-content: flex-start;
-    }
 
     .ordering-form {
 
@@ -66,8 +62,10 @@
         }
 
         .ordering-form__phone {
-            width    : 100%;
-            flex-wrap: wrap;
+            width          : 100%;
+            flex-wrap      : wrap;
+            display        : flex;
+            justify-content: flex-start;
 
             .input-phone-wrapper {
                 position     : relative;
@@ -81,12 +79,11 @@
                 }
 
                 .ordering-form__phone-info {
-                    font-size   : 14px;
-                    // display  : none;
-                    position    : absolute;
-                    left        : 0;
-                    bottom      : -23px;
-                    width       : 320px;
+                    font-size: 14px;
+                    position : absolute;
+                    left     : 0;
+                    bottom   : -23px;
+                    width    : 320px;
 
                     span {
                         color: #f37021;
@@ -97,17 +94,7 @@
                     }
                 }
             }
-
-
-
         }
 
-
-
-        .order-form-send-code {
-            border          : none;
-            background-color: #f37021;
-            color           : #fff;
-        }
     }
 }
