@@ -28,7 +28,7 @@ export type TCreateItemFx<CreateEntity, FullEntity = CreateEntity> = Effect<
   Error
 >;
 export type TUpdateItemFx<FullEntity> = Effect<FullEntity, FullEntity>;
-export type TDeleteItemFx = Effect<number, TypeOrmDeleteResult>;
+export type TDeleteItemFx = Effect<TUuid, TypeOrmDeleteResult>;
 export type TGetAllFx<FullEntity> = Effect<
   TListRequest<FullEntity>,
   TListResponce<FullEntity>,
@@ -86,8 +86,8 @@ export class CrudStore<
       handler: (mt) => service.updateOne(mt),
     });
 
-    const deleteItemFx = createEffect<number, TypeOrmDeleteResult, Error>({
-      handler: (id) => service.deleteOne(id),
+    const deleteItemFx = createEffect<TUuid, TypeOrmDeleteResult, Error>({
+      handler: (uuid) => service.deleteOne(uuid),
     });
 
     const getItem = createEvent<TUuid>();

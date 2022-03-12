@@ -1,28 +1,28 @@
 import { Button, Popconfirm } from 'antd';
 import React, { useState } from 'react';
 import { DeleteOutlined } from '@ant-design/icons';
-import { TVoidFn } from '../../../types';
+import { TUuid, TVoidFn } from '../../../types';
 
 interface Props {
-  id: number;
-  onDelete: TVoidFn<number>;
+  uuid: TUuid;
+  onDelete: TVoidFn<TUuid>;
 }
 
-export function DeleteButton({ id, onDelete }: Props) {
+export function DeleteButton({ uuid, onDelete }: Props) {
   const [confirmDeleteVisible, setConfirmDeleteVisible] = useState(false);
   return (
     <Popconfirm
-      title="Удалить?"
+      title='Удалить?'
       visible={confirmDeleteVisible}
       onConfirm={() => {
-        onDelete(id);
+        onDelete(uuid);
         setConfirmDeleteVisible(false);
       }}
       onCancel={() => setConfirmDeleteVisible(false)}
     >
       {/* TODO add color */}
       <Button
-        type="link"
+        type='link'
         danger
         onClick={() => setConfirmDeleteVisible(true)}
         icon={<DeleteOutlined />}

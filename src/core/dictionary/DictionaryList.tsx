@@ -28,7 +28,8 @@ function getColumns<T extends DictionaryDto>(
     },
     {
       title: 'Удалить',
-      render: (_, row) => isNumber(row.id) && <DeleteButton id={row.id} onDelete={onDelete} />,
+      render: (_, row) =>
+        isNumber(row.uuid) && <DeleteButton uuid={row.uuid} onDelete={onDelete} />,
     },
   ];
 }

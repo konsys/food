@@ -5,7 +5,7 @@ import { RestaurantMenuDto } from '../restaurantMenu/types';
 import { getClientUuid } from './service';
 import { CartDto, TRestaurantMenuOrder, EOrderStatus } from './types';
 
-const { createItemFx, updateItemFx } = CartModel;
+const { createItemFx, updateItemFx, deleteItemFx } = CartModel;
 
 const sumAll = (order: TRestaurantMenuOrder[]) =>
   order.reduce((acc, v) => acc + v.quantity * v.restaurantMenu.price, 0);
@@ -99,5 +99,8 @@ export const deleteItemFromCart = (cartOrder: Nullable<TItemWithUuid<CartDto>>, 
   if (cartOrder) {
     const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== uuid);
     updateItemFx({ ...cartOrder, orderSum: sumAll(filteredOrder), order: filteredOrder });
+    if (!filteredOrder.length) {
+      deleteItemFx(cartOrder.uuid);
+    }
   }
 };
