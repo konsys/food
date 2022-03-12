@@ -41,7 +41,7 @@ interface Props {
 
 function CheckoutMobile({ item }: Props) {
   return (
-    <section className='ordering'>
+    <section className='ordering__mobile'>
       <div className='container ordering-form__container'>
         <form className='ordering-form'>
           <div className='page-title page-title--checkout'>
