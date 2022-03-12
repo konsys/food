@@ -130,6 +130,6 @@ export enum smallImageSize {
   height = 300
 }
 
-const FILE_DESTINATION_PATH = '/home/ksysuev/projects/food/backend';
+const FILE_DESTINATION_PATH = '/home/ska/projects/food/backend';
 const FILE_UPLOAD_DIR = 'upload';
 export const FULL_UPLOAD_PATH = `${FILE_DESTINATION_PATH}/${FILE_UPLOAD_DIR}`
