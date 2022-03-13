@@ -1,17 +1,15 @@
 import React, { memo, useEffect, useState } from 'react';
-import { useGate, useStore } from 'effector-react';
+import { useStore } from 'effector-react';
 import { TUuid } from '../../common/types';
 import { changeOrderQuantity, deleteItemFromCart } from '../../modules/cart/utils';
-import { getClientUuid } from '../../modules/cart/service';
 import { CartModel } from '../../store';
 import CartComponent from './MobileCart/CartComponent/CartComponent';
 
 import './cart.less';
 
-const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
+const { $itemStore: cartStore } = CartModel;
 
 function Cart() {
-  useGate(CartGate, getClientUuid());
   const { item: cartOrder } = useStore(cartStore);
 
   const changeQuantity = (uuidToChange: TUuid, delta: number) =>

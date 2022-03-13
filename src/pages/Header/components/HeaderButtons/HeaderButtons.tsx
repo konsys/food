@@ -1,30 +1,28 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { TItemWithUuid } from '../../../../common/types';
+import { Nullable } from '../../../../core/types';
+import { CartDto } from '../../../../modules/cart/types';
 import './headerButtons.less';
 
 type Props = {
-  cartPrice?: number;
+  cart?: Nullable<TItemWithUuid<CartDto>>;
 };
-const HeaderButtons = ({ cartPrice }: Props) => (
+const HeaderButtons = ({ cart }: Props) => (
   <nav className='header-nav header-buttons d-flex float-end'>
     <ul className='list-clear clearfix'>
       <li className='d-none d-md-flex '>
-        {cartPrice ? (
+        {cart?.orderSum ? (
           <Link
-            to='/'
+            to={`/cart-order/${cart?.uuid}`}
             title='Корзина'
             rel='nofollow'
             className='header-nav-item-link-basket header-nav-item-link-basket_active header-nav-item-link-basket_active-animate'
           >
-            <b>{cartPrice} ₽</b>
+            <b>{cart?.orderSum} ₽</b>
           </Link>
         ) : (
-          <Link
-            to='/'
-            title='Корзина пуста'
-            rel='nofollow'
-            className='header-nav-item-link-basket-stub'
-          />
+          <span title='Корзина пуста' className='header-nav-item-link-basket-stub' />
         )}
       </li>
       <li>

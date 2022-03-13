@@ -1,15 +1,18 @@
 import React, { memo } from 'react';
-import { useStore } from 'effector-react';
+import { useGate, useStore } from 'effector-react';
 import HeaderButtons from './components/HeaderButtons/HeaderButtons';
 import { HeaderNavigationToggle } from './components/HeaderNavigationToggle/HeaderNavigationToggle';
 import { HeaderLogo } from './components/HeaderLogo/HeaderLogo';
 import { HeaderCity } from './components/HeaderCity/HeaderCity';
 import './header.less';
 import { CartModel } from '../../store';
+import { getClientUuid } from '../../modules/cart/service';
 
-const { $itemStore: cartStore } = CartModel;
+const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
+
 function Header() {
-  const cart = useStore(cartStore);
+  useGate(CartGate, getClientUuid());
+  const { item } = useStore(cartStore);
   return (
     <>
       <header className='header header_sticky'>
@@ -18,7 +21,7 @@ function Header() {
           <div className='header-container container'>
             <HeaderLogo />
             <HeaderCity />
-            <HeaderButtons cartPrice={cart.item?.orderSum} />
+            <HeaderButtons cart={item} />
           </div>
         </div>
       </header>
