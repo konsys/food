@@ -10,22 +10,16 @@ interface Props {
 }
 
 function MobileCart({ cartOrder }: Props) {
-  console.log(1111111111, cartOrder);
   return (
-    <span>
+    <div className='cart-button-shop-mobile'>
       {cartOrder ? (
-        <Link
-          to={`/checkout/${cartOrder.uuid}`}
-          className='cart-button-shop-mobile'
-          rel='nofollow'
-          title='Оформление заказа'
-        >
+        <Link to={`/checkout/${cartOrder.uuid}`} rel='nofollow' title='Оформление заказа'>
           Корзина: {cartOrder?.orderSum} ₽
         </Link>
       ) : (
         ''
       )}
-    </span>
+    </div>
   );
 }
 
