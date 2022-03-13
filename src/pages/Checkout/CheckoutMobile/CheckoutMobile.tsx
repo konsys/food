@@ -1,4 +1,4 @@
-import { Select } from 'antd';
+import { Radio, Select } from 'antd';
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { TItemWithUuid, TSelectOptions } from '../../../common/types';
@@ -134,28 +134,22 @@ function CheckoutMobile({ item }: Props) {
                   Применить
                 </button>
               </div>
-              <div className='input-promocode-error' />
+              <div className='input-promocode-error'>Неверный промокод</div>
             </div>
           </div>
-          <div className='ordering-form__payments ordering-form__item--disabled'>
+          <div className='ordering-form__payments'>
             <div className='page-title page-title--checkout'>
               <h2>Оплата</h2>
             </div>
-            <ul className='custom-input-buttons'>
-              <li>
-                <input type='radio' defaultValue='card-online' disabled name='payment' />
-                <label htmlFor='payment-card-online'>
-                  Картой онлайн.{' '}
-                  <span>Мы заблокируем средства и спишем после завершения заказа.</span>
-                </label>
-              </li>
-              <li>
-                <input type='radio' defaultValue='apple-pay' disabled name='payment' />
-                <label htmlFor='payment-apple-pay'>
-                  Apple Pay <span />
-                </label>
-              </li>
-            </ul>
+            <div className='custom-input-buttons'>
+              <Radio.Group onChange={() => null} value={1}>
+                <Radio value={1}>Картой онлайн</Radio>
+              </Radio.Group>
+
+              <span className='ordering-form__payments--info'>
+                Мы заблокируем средства и спишем после завершения заказа.
+              </span>
+            </div>
             <input type='hidden' name='binding_id' />
           </div>
           <div className='ordering-form__finish'>
@@ -173,11 +167,10 @@ function CheckoutMobile({ item }: Props) {
                     </div>
                   </div>
                   <div className='order-finish__item'>
-                    <div className='order-finish__title hidden-xs'>Количество приборов</div>
-                    <div className='order-finish__title hidden-lg hidden-md hidden-sm'>Приборы</div>
+                    <div className='order-finish__title'>Приборы</div>
                     <div className='order-finish__value'>
                       <div className='order-options-guests-numbers-nav quantity-nav'>
-                        <span data-change='minus'>
+                        <span>
                           <svg
                             width={18}
                             height={2}
@@ -189,7 +182,7 @@ function CheckoutMobile({ item }: Props) {
                           </svg>
                         </span>
                         <div>1</div>
-                        <span data-change='plus'>
+                        <span>
                           <svg
                             width={18}
                             height={18}
@@ -211,16 +204,14 @@ function CheckoutMobile({ item }: Props) {
                     </div>
                   </div>
                 </div>
-                <Link
-                  to='/order/123456789'
-                  className='peach-btn confirm-order disabled'
-                  title='Оформить заказ'
-                >
-                  Оформить заказ
-                </Link>
-                <div className='apple-pay-button-with-text apple-pay-button-black-with-text'>
-                  <span className='text'>Оплатить с Apple Pay</span>
-                  <span className='logo' />
+                <div className='confirm-order'>
+                  <Link
+                    to='/confirm-order/123456789'
+                    className=' confirm-order__disabled'
+                    title='Оформить заказ'
+                  >
+                    Оформить заказ
+                  </Link>
                 </div>
               </div>
             </div>
