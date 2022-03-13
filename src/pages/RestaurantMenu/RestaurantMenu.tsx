@@ -22,6 +22,7 @@ const { $itemStore: cartStore } = CartModel;
 
 function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
+
   useGate(ItemGate, uuid);
   const { item: cartOrder } = useStore(cartStore);
 
@@ -57,7 +58,7 @@ function RestaurantMenu() {
             </section>
           </div>
           <div className='d-none d-lg-flex col-lg-3'>
-            <Cart />
+            <Cart sideView />
           </div>
           <div className='d-flex d-lg-none col-lg-3'>
             <MobileCartButton cartOrder={cartOrder} />

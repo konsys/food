@@ -14,7 +14,7 @@ const HeaderButtons = ({ cart }: Props) => (
       <li className='d-none d-md-flex '>
         {cart?.orderSum ? (
           <Link
-            to={`/cart-order/${cart?.uuid}`}
+            to={`/cart/${cart?.uuid}`}
             title='Корзина'
             rel='nofollow'
             className='header-nav-item-link-basket header-nav-item-link-basket_active header-nav-item-link-basket_active-animate'

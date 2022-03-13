@@ -8,6 +8,7 @@ import {
   sample,
   Store,
 } from 'effector';
+import isEmpty from 'lodash/isEmpty';
 import { createGate, Gate } from 'effector-react';
 import { notification } from 'antd';
 import { CrudService } from '../../api';
@@ -150,7 +151,7 @@ export class CrudStore<
     guard({
       clock: ItemGate.state,
       source: ItemGate.state.map((state) => state),
-      filter: ItemGate.state.map((state) => !!state),
+      filter: ItemGate.state.map((state) => !isEmpty(state)),
       target: getItemFx,
     });
 

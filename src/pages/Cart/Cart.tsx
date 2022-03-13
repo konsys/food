@@ -9,7 +9,11 @@ import './cart.less';
 
 const { $itemStore: cartStore } = CartModel;
 
-function Cart() {
+type Props = {
+  sideView?: boolean;
+};
+
+function Cart({ sideView }: Props) {
   const { item: cartOrder } = useStore(cartStore);
 
   const changeQuantity = (uuidToChange: TUuid, delta: number) =>
@@ -34,12 +38,24 @@ function Cart() {
   };
 
   return (
-    <div className={`cart-section-wrapper ${stickyClass}`}>
-      <CartComponent
-        cartOrder={cartOrder}
-        changeQuantity={changeQuantity}
-        deleteFromCart={deleteFromCart}
-      />
+    <div>
+      {sideView ? (
+        <div className={`cart-section-wrapper ${stickyClass}`}>
+          <CartComponent
+            cartOrder={cartOrder}
+            changeQuantity={changeQuantity}
+            deleteFromCart={deleteFromCart}
+          />
+        </div>
+      ) : (
+        <div className='container'>
+          <CartComponent
+            cartOrder={cartOrder}
+            changeQuantity={changeQuantity}
+            deleteFromCart={deleteFromCart}
+          />
+        </div>
+      )}
     </div>
   );
 }
