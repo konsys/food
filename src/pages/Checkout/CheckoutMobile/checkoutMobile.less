@@ -1,6 +1,12 @@
 .ordering__mobile {
     position: relative;
 
+    .ordering-form__address,
+    .ordering-form__phone,
+    .ordering-form__time {
+        max-width: 520px;
+    }
+
     .page-title--checkout {
         margin-top   : 15px;
         margin-bottom: 10px;
@@ -36,7 +42,7 @@
 
         label {
             display    : block;
-            font-size  : 1rem;
+            font-size  : 0.75rem;
             line-height: 22px;
             color      : rgba(0, 0, 0, .4);
             font-weight: 400;
@@ -80,6 +86,12 @@
                 position     : relative;
                 margin-right : 10px;
                 margin-bottom: 15px;
+            }
+
+            element.style {}
+
+            .form-checkout-promocode {
+                position: relative;
             }
 
             .order-form-send-code,
@@ -149,6 +161,50 @@
                 margin      : 0;
             }
 
+        }
+
+
+        .ordering-form__time {
+            margin         : 40px 0;
+            display        : flex;
+            justify-content: space-between;
+
+            .ordering-form__time--input {
+                height: 70px;
+
+                .ant-select-selector {
+                    height: 42px;
+                }
+
+            }
+
+        }
+
+        .order-options-time {
+            width: 200px;
+        }
+
+        .form-checkout-promocode {
+            position: relative;
+        }
+
+        .form-checkout-promocode__button-wrapper {
+            display   : inline-block;
+            background: #fff;
+        }
+
+        .form-checkout-promocode__input {
+            width: 170px;
+        }
+
+        .form-checkout-promocode__input {
+            border-radius: 3px 0 0 3px;
+        }
+
+        .form-checkout-promocode__button {
+            color        : #f37021;
+            border-color : #f37021;
+            border-radius: 0 3px 3px 0;
         }
     }
 }

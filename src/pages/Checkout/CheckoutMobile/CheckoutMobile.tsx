@@ -107,21 +107,13 @@ function CheckoutMobile({ item }: Props) {
             </div>
             <ul className='custom-input-buttons address__list' data-validate-address />
           </div>
+
+          {/* TIME --------------------------- */}
           <div className='ordering-form__time ordering-form__item--disabled'>
-            <div>
+            <div className='ordering-form__time--input'>
               <label>Время доставки</label>
               <div className='order-options-time'>
-                <a
-                  href='/'
-                  className='order-options-time-dropdown-select'
-                  title='Сейчас'
-                  data-slot-key='asap'
-                >
-                  Сейчас{' '}
-                </a>
-                <div className='order-options-time-dropdown'>
-                  <Select style={{ width: '100%' }}>{createOptionsList(deliveryOptions)}</Select>
-                </div>
+                <Select style={{ width: '100%' }}>{createOptionsList(deliveryOptions)}</Select>
               </div>
             </div>
             <div className='form-checkout-promocode'>
