@@ -1,6 +1,10 @@
 .ordering__mobile {
     position: relative;
 
+    .page-title--checkout {
+        margin-top   : 15px;
+        margin-bottom: 10px;
+    }
 
     .ordering-form__container {
         padding-left : 15px;
@@ -48,6 +52,10 @@
             background-color: #fff;
         }
 
+        input:disabled {
+            background-color: rgba(0, 0, 0, .1);
+        }
+
         .page-title--checkout {
             h2 {
                 font-size  : 1.5rem;
@@ -61,10 +69,22 @@
             display        : flex;
             justify-content: flex-start;
 
+            button {
+                border          : none;
+                background-color: #f37021;
+                color           : #fff;
+
+            }
+
             &>div {
                 position     : relative;
                 margin-right : 10px;
                 margin-bottom: 15px;
+            }
+
+            .order-form-send-code,
+            .order-form-sms-code {
+                width: 160px;
             }
 
             .input-phone-wrapper {
