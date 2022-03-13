@@ -16,7 +16,7 @@ import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
 import { addToCart, changeOrderQuantity, deleteItemFromCart } from '../../modules/cart/utils';
 import { TUuid } from '../../common/types';
 import { deliveryFactory } from '../../modules/delivery/deliveryFactory';
-import MobileCart from '../Cart/MobileCart/MobileCart';
+import MobileCartButton from '../Cart/MobileCart/MobileCartButton/MobileCartButton';
 
 const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
@@ -68,7 +68,7 @@ function RestaurantMenu() {
             />
           </div>
           <div className='d-flex d-lg-none col-lg-3'>
-            <MobileCart cartOrder={cartOrder} />
+            <MobileCartButton cartOrder={cartOrder} />
           </div>
         </div>
       ) : (

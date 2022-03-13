@@ -4,15 +4,17 @@ import Order from '../pages/Checkout/Checkout';
 import RestaurantMenu from '../pages/RestaurantMenu/RestaurantMenu';
 import Restaurants from '../pages/Restaurants/Restaurants';
 import { EPathName, TPath } from './types';
+import Cart from '../pages/Cart/Cart';
 
 export const pathNames: Record<EPathName, TPath> = {
   HOME: { path: '/', name: 'Главная' },
   MENU: { path: '/restaurants/:uuid', name: 'Меню' },
   CHECKOUT: { path: '/checkout/:uuid', name: 'Заказ' },
+  CART: { path: '/cart/:uuid', name: 'Корзина' },
   NOT_FOUND: { path: '/', name: 'Страница не найдена' },
 };
 
-const { HOME, MENU, CHECKOUT } = pathNames;
+const { HOME, MENU, CHECKOUT, CART } = pathNames;
 
 export const paths: Record<EPathName, RouteProps> = {
   HOME: {
@@ -28,6 +30,11 @@ export const paths: Record<EPathName, RouteProps> = {
   CHECKOUT: {
     path: CHECKOUT.path,
     element: Order,
+  },
+
+  CART: {
+    path: CART.path,
+    element: Cart,
   },
 
   NOT_FOUND: {
