@@ -13,7 +13,7 @@ function MobileCart({ cartOrder }: Props) {
   return (
     <div className='cart-button-shop-mobile'>
       {cartOrder ? (
-        <Link to={`/mobile-cart/${cartOrder.uuid}`} rel='nofollow' title='Оформление заказа'>
+        <Link to={`/cart/${cartOrder.uuid}`} rel='nofollow' title='Оформление заказа'>
           Корзина: {cartOrder?.orderSum} ₽
         </Link>
       ) : (

@@ -4,17 +4,17 @@ import Order from '../pages/Checkout/Checkout';
 import RestaurantMenu from '../pages/RestaurantMenu/RestaurantMenu';
 import Restaurants from '../pages/Restaurants/Restaurants';
 import { EPathName, TPath } from './types';
-import MobileCartOrder from '../pages/Cart/MobileCart/MobileCartOrder/MobileCartOrder';
+import Cart from '../pages/Cart/Cart';
 
 export const pathNames: Record<EPathName, TPath> = {
   HOME: { path: '/', name: 'Главная' },
   MENU: { path: '/restaurants/:uuid', name: 'Меню' },
   CHECKOUT: { path: '/checkout/:uuid', name: 'Заказ' },
-  MOBILE_CART: { path: '/mobile-cart/:uuid', name: 'Корзина' },
+  CART: { path: '/cart/:uuid', name: 'Корзина' },
   NOT_FOUND: { path: '/', name: 'Страница не найдена' },
 };
 
-const { HOME, MENU, CHECKOUT, MOBILE_CART } = pathNames;
+const { HOME, MENU, CHECKOUT, CART } = pathNames;
 
 export const paths: Record<EPathName, RouteProps> = {
   HOME: {
@@ -32,9 +32,9 @@ export const paths: Record<EPathName, RouteProps> = {
     element: Order,
   },
 
-  MOBILE_CART: {
-    path: MOBILE_CART.path,
-    element: MobileCartOrder,
+  CART: {
+    path: CART.path,
+    element: Cart,
   },
 
   NOT_FOUND: {
