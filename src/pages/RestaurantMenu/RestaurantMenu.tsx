@@ -11,21 +11,20 @@ import { CartModel, RestaurantModel } from '../../store';
 import { grouppedByCategory } from '../../modules/restaurantMenu/utils';
 import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigation/RestaurantMenuTopNavigation';
 import { TLinkWithText } from '../../common/types/utilTypes';
-import { getClientUuid } from '../../modules/cart/service';
 import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
-import { addToCart, changeOrderQuantity, deleteItemFromCart } from '../../modules/cart/utils';
+import { addToCart } from '../../modules/cart/utils';
 import { TUuid } from '../../common/types';
 import { deliveryFactory } from '../../modules/delivery/deliveryFactory';
 import MobileCartButton from '../Cart/MobileCart/MobileCartButton/MobileCartButton';
 
 const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
-const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
+const { $itemStore: cartStore } = CartModel;
 
 function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
-  useGate(CartGate, getClientUuid());
   const { item: cartOrder } = useStore(cartStore);
+
   const { item: restaurant } = useStore(restaurantStore);
 
   const items: TLinkWithText[] = restaurant
@@ -37,9 +36,6 @@ function RestaurantMenu() {
 
   const addMenuToCart = (menuItem: RestaurantMenuDto, restaurantUuid: TUuid) =>
     addToCart(cartOrder, menuItem, restaurantUuid);
-  const changeQuantity = (uuidToChange: TUuid, delta: number) =>
-    changeOrderQuantity(cartOrder, uuidToChange, delta);
-  const deleteFromCart = (uuidToDelete: TUuid) => deleteItemFromCart(cartOrder, uuidToDelete);
 
   return (
     <div className='container'>
@@ -61,11 +57,7 @@ function RestaurantMenu() {
             </section>
           </div>
           <div className='d-none d-lg-flex col-lg-3'>
-            <Cart
-              cartOrder={cartOrder}
-              changeQuantity={changeQuantity}
-              deleteFromCart={deleteFromCart}
-            />
+            <Cart />
           </div>
           <div className='d-flex d-lg-none col-lg-3'>
             <MobileCartButton cartOrder={cartOrder} />

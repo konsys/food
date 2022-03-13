@@ -1,19 +1,22 @@
 import React, { memo, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CartDto } from '../../modules/cart/types';
-import CartItem from './CartItem/CartItem';
-import { TItemWithUuid, TUuid, TVoidFn } from '../../common/types';
-import { Nullable } from '../../core/types';
+import { useGate, useStore } from 'effector-react';
+import { TUuid } from '../../common/types';
+import { changeOrderQuantity, deleteItemFromCart } from '../../modules/cart/utils';
+import { getClientUuid } from '../../modules/cart/service';
+import { CartModel } from '../../store';
+import CartComponent from './MobileCart/CartComponent/CartComponent';
+
 import './cart.less';
 
-type Props = {
-  cartOrder: Nullable<TItemWithUuid<CartDto>>;
-  changeQuantity: (uuid: TUuid, delta: number) => void;
-  deleteFromCart: TVoidFn<TUuid>;
-};
+const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
 
-function Cart(props: Props) {
-  const { cartOrder, changeQuantity, deleteFromCart } = props;
+function Cart() {
+  useGate(CartGate, getClientUuid());
+  const { item: cartOrder } = useStore(cartStore);
+
+  const changeQuantity = (uuidToChange: TUuid, delta: number) =>
+    changeOrderQuantity(cartOrder, uuidToChange, delta);
+  const deleteFromCart = (uuidToDelete: TUuid) => deleteItemFromCart(cartOrder, uuidToDelete);
 
   const [stickyClass, setStickyClass] = useState<string>('');
 
@@ -34,66 +37,11 @@ function Cart(props: Props) {
 
   return (
     <div className={`cart-section-wrapper ${stickyClass}`}>
-      <div className='cart-section__body'>
-        <div className='cart-section d-flex flex-column'>
-          <div className='cart-section__title'>Корзина</div>
-          <div className='cart-service'>
-            <div className='cart-service__title cart-service__title--delivery'>
-              <div className='cart-service__price cart-service__price--delivery'>
-                <span>0</span> ₽
-              </div>
-              <div className='cart-service__name'>
-                Доставка от Broniboy
-                <i className='delivery_type_cart delivery_type--default'>
-                  <img
-                    src='https://broniboy.ru/img/icons/delivery/default.svg'
-                    alt='Доставка от Broniboy'
-                  />
-                </i>
-              </div>
-              <div className='cart-service__description cart-service__description--delivery'>
-                Закажите еще на 150₽ для бесплатной доставки.
-              </div>
-              <div className='cart-service__description'>
-                Ваш заказ будет быстро доставлен курьерами Broniboy. Мы гарантируем скорость и
-                качество доставки.
-              </div>
-            </div>
-          </div>
-          <div className='cart-service__list'>
-            {cartOrder?.order?.map((v, k) => (
-              <CartItem
-                key={k}
-                item={v.restaurantMenu}
-                quiantity={v.quantity}
-                changeQuantity={changeQuantity}
-                deleteFromCart={deleteFromCart}
-              />
-            ))}
-          </div>
-        </div>
-        <div className='cart-bottom'>
-          <div className='cart-bottom__info'>
-            <div>
-              Время доставки <span>55-65 мин</span>
-            </div>
-            <div className='cart-bottom__total'>
-              Итого <span>{cartOrder?.orderSum} ₽</span>
-            </div>
-          </div>
-          <div className='cart-bottom__checkout-button'>
-            {cartOrder?.orderSum ? (
-              <div className=''>
-                <Link to={`/checkout/${cartOrder?.uuid}`} title='Оформить заказ' rel='nofollow'>
-                  Оформить заказ
-                </Link>
-              </div>
-            ) : (
-              <div className='cart-bottom__checkout-button--disabled'>Оформить заказ</div>
-            )}
-          </div>
-        </div>
-      </div>
+      <CartComponent
+        cartOrder={cartOrder}
+        changeQuantity={changeQuantity}
+        deleteFromCart={deleteFromCart}
+      />
     </div>
   );
 }
