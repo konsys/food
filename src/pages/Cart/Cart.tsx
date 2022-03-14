@@ -5,8 +5,6 @@ import { changeOrderQuantity, deleteItemFromCart } from '../../modules/cart/util
 import { CartModel } from '../../store';
 import CartComponent from './MobileCart/CartComponent/CartComponent';
 
-import './cart.less';
-
 const { $itemStore: cartStore } = CartModel;
 
 type Props = {

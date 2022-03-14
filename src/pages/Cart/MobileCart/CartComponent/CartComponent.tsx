@@ -5,6 +5,8 @@ import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 import CartItem from '../../CartItem/CartItem';
 
+import './cartComponent.less';
+
 interface Props {
   cartOrder: Nullable<TItemWithUuid<CartDto>>;
   changeQuantity: (uuid: TUuid, delta: number) => void;
