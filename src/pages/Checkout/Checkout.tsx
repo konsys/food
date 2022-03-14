@@ -2,8 +2,6 @@ import { useGate, useStore } from 'effector-react';
 import React, { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { CartModel } from '../../store';
-
-import './checkout.less';
 import CheckoutMobile from './containers/CheckoutMobile/CheckoutMobile';
 
 const { $itemStore, ItemGate } = CartModel;

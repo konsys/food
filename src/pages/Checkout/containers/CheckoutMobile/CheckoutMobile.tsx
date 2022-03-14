@@ -50,22 +50,8 @@ function CheckoutMobile({ item }: Props) {
           </div>
 
           {/* PHONE --------------------------- */}
-          <div className='ordering-form__phone'>
-            <PhoneCheckForm />
-            <div className='check-oh-hidden'>
-              <label>&nbsp;</label>
-              <button className='order-form-send-code' disabled type='button'>
-                Получить код
-              </button>
-            </div>
-            <div className='check-oh-hidden'>
-              <label htmlFor='sms-code' className='label-sms-code'>
-                Код из СМС
-              </label>
-              <input type='tel' name='code' className='order-form-sms-code' disabled />
-              <div className='input-code-error'>Неверный код</div>
-            </div>
-          </div>
+
+          <PhoneCheckForm />
 
           {/* ADDRESS --------------------------- */}
           <div className='ordering-form__address address ordering-form__item--disabled'>
