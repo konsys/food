@@ -30,4 +30,7 @@ export const apiUrls = {
   cart: {
     main: `/cart`,
   },
+  checkCode: {
+    main: '/code-check',
+  },
 };
