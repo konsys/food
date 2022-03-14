@@ -2,10 +2,10 @@ import { Button, Form } from 'antd';
 import React, { memo } from 'react';
 import { useStore } from 'effector-react';
 import MaskedInput from 'antd-mask-input';
-import { useValidatedForm } from '../../../../common/components/form/useValidatedForm';
 import { CodeCheckModel } from '../../../../store';
 import './phoneCheckForm.less';
 import { uuid } from '../../../../common/utils/utils';
+import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 
 const { Item } = Form;
 
