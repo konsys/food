@@ -1,12 +1,13 @@
 import { Radio, Select } from 'antd';
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { TItemWithUuid, TSelectOptions } from '../../../common/types';
-import { Nullable } from '../../../core/types';
-import { CartDto } from '../../../modules/cart/types';
-import { createOptionsList } from '../../../common/utils/selectUtils';
+import { TItemWithUuid, TSelectOptions } from '../../../../common/types';
+import { Nullable } from '../../../../core/types';
+import { CartDto } from '../../../../modules/cart/types';
+import { createOptionsList } from '../../../../common/utils/selectUtils';
 
 import './checkoutMobile.less';
+import PhoneCheckForm from '../PhoneCheckForm/PhoneCheckForm';
 
 const deliveryOptions: TSelectOptions = [
   {
@@ -50,22 +51,7 @@ function CheckoutMobile({ item }: Props) {
 
           {/* PHONE --------------------------- */}
           <div className='ordering-form__phone'>
-            <div className='input-phone-wrapper'>
-              <label htmlFor='order-phone'>Телефон</label>
-              <input
-                type='tel'
-                name='phone'
-                className='input-mask-phone input-mask-phone--anon'
-                placeholder='+7 (999) 123-45-67'
-              />
-              <div className='ordering-form__phone-info'>
-                Вы сможете отправить код еще раз через
-                <span className='code_mins'>1</span>
-                <span>:</span>
-                <span className='code_secs'>00</span>
-              </div>
-              <div className='input-phone-wrapper--ok' />
-            </div>
+            <PhoneCheckForm />
             <div className='check-oh-hidden'>
               <label>&nbsp;</label>
               <button className='order-form-send-code' disabled type='button'>

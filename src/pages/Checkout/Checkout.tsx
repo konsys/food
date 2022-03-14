@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { CartModel } from '../../store';
 
 import './checkout.less';
-import CheckoutMobile from './CheckoutMobile/CheckoutMobile';
+import CheckoutMobile from './containers/CheckoutMobile/CheckoutMobile';
 
 const { $itemStore, ItemGate } = CartModel;
 function Checkout() {
