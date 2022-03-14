@@ -12,6 +12,7 @@ import { LegalModule } from './modules/legal/legal.module';
 import { RestarauntMenuModule } from './modules/restaurant-menu/restaurant-menu.module';
 import { FoodCategoryModule } from './modules/food-category/food-category.module';
 import { CartModule } from './modules/cart/cart.module';
+import { CodeCheckModule } from './modules/code-check/code-check.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { CartModule } from './modules/cart/cart.module';
     LegalModule,
     FoodCategoryModule,
     CartModule,
+    CodeCheckModule,
     ServeStaticModule.forRoot({
       rootPath: `${FULL_UPLOAD_PATH}`,
     }),
