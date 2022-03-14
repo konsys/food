@@ -8,6 +8,7 @@ import { LegalDto } from './modules/legal/types';
 import { DeliveryDto } from './modules/delivery/types';
 import { FoodCategoryDto } from './modules/foodCatefory/legal/types';
 import { CartDto } from './modules/cart/types';
+import { CodeCheckDto } from './modules/codeCheck/types';
 
 export const RestaurantModel = new CrudStore<RestaurantDto>(
   apiUrls.restaurants.main
@@ -24,3 +25,4 @@ export const FoodCategoryModel = new CrudStore<FoodCategoryDto>(
   apiUrls.foodCategory.main
 ).createCrudStore();
 export const CartModel = new CrudStore<CartDto>(apiUrls.cart.main).createCrudStore();
+export const CodeCheckModel = new CrudStore<CodeCheckDto>(apiUrls.cart.main).createCrudStore();
