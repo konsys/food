@@ -15,7 +15,7 @@ export class CodeCheck {
     @Column()
     code: string;
 
-    @Column()
+    @Column({default: null})
     description?: string;
 
 
