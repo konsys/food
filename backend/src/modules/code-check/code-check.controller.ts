@@ -10,7 +10,7 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
     super(service)
   }
 
-  @Post('/generate-code')
+  @Post()
   generateCode(@Body() item: DeepPartial<CodeCheck>) {
     const code = Math.floor(1000 + Math.random() * 9000);
     return super.create({...item, code});

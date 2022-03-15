@@ -44,7 +44,7 @@ function CheckoutMobile({ item }: Props) {
   return (
     <section className='ordering__mobile'>
       <div className='container ordering-form__container'>
-        <form className='ordering-form'>
+        <div className='ordering-form'>
           <div className='page-title page-title--checkout'>
             <h2>Оформление заказа {item?.orderSum}</h2>
           </div>
@@ -190,7 +190,7 @@ function CheckoutMobile({ item }: Props) {
           </div>
           <input type='hidden' name='user-point' />
           <input type='hidden' data-value-url className='data-url' />
-        </form>
+        </div>
       </div>
     </section>
   );

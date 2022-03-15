@@ -7,26 +7,57 @@ import './phoneCheckForm.less';
 import { uuid } from '../../../../common/utils/utils';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
+import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
+import { TVoidFn } from '../../../../common/types';
 
 const { Item } = Form;
 
 interface Props {}
 
 const { createItemFx, $itemPending, $itemStore } = CodeCheckModel;
+const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm(props: Props) {
-  const { Form: MForm } = useValidatedForm<CodeCheckDto>();
+  const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({ phoneNumber: undefined });
 
   const loading = useStore($itemPending);
   const { item } = useStore($itemStore);
+
+  const sendCode = () => {
+    formInstance
+      .validateFields()
+      .then(async (validatedFormItem) =>
+        createItemFx({ phoneNumber: validatedFormItem.phoneNumber, uuid: uuid() })
+      );
+  };
+
+  const turbineCountValidator = (rule: any, value: string, callback: TVoidFn<any>) => {
+    try {
+      const pattern = /^\+[\d]{1} [\d]{3} [\d]{3} [\d]{2} [\d]{2}$/;
+      if (!pattern.test(value)) {
+        throw new Error('Пожалуйста, введите номер телефона');
+      }
+    } catch (err: any) {
+      callback(err);
+    }
+  };
 
   return (
     <MForm>
       <div className='ordering-form__phone'>
         <div className='input-phone-wrapper'>
           <label htmlFor='order-phone'>Телефон</label>
-          <Item name='layout'>
-            <MaskedInput mask='+1 111 111 11 11' name='card' size='middle' />
+          <Item
+            name={dataName('phoneNumber')}
+            rules={[
+              {
+                required: true,
+                // message: 'Пожалуйста, введите номер Вашего телефона',
+                validator: turbineCountValidator,
+              },
+            ]}
+          >
+            <MaskedInput mask='+1 111 111 11 11' size='middle' />
           </Item>
           <div className='ordering-form__phone-info'>
             Вы сможете отправить код еще раз через
@@ -35,7 +66,7 @@ function PhoneCheckForm(props: Props) {
             <span className='code_secs'>00</span>
           </div>
           <div className='input-phone-wrapper--ok' />
-        </div>{' '}
+        </div>
         <div className='check-oh-hidden'>
           <label>&nbsp;</label>
           <Item>
@@ -43,13 +74,7 @@ function PhoneCheckForm(props: Props) {
               type='primary'
               className='order-form-send-code'
               loading={loading}
-              onClick={() =>
-                createItemFx({
-                  phoneNumber: 'wefwefwef',
-                  uuid: uuid(),
-                  id: null,
-                })
-              }
+              onClick={sendCode}
             >
               Получить код
             </Button>
