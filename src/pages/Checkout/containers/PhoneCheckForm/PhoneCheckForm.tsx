@@ -1,5 +1,5 @@
 import { Button, Form } from 'antd';
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { useStore } from 'effector-react';
 import MaskedInput from 'antd-mask-input';
 import { CodeCheckModel } from '../../../../store';
@@ -8,7 +8,6 @@ import { uuid } from '../../../../common/utils/utils';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
-import { TVoidFn } from '../../../../common/types';
 
 const { Item } = Form;
 
@@ -19,28 +18,26 @@ const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm(props: Props) {
   const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({ phoneNumber: undefined });
+  const [sendCodeDisabled, setSendCodeDisabled] = useState<boolean>(false);
 
   const loading = useStore($itemPending);
   const { item } = useStore($itemStore);
 
   const sendCode = () => {
-    formInstance
-      .validateFields()
-      .then(async (validatedFormItem) =>
-        createItemFx({ phoneNumber: validatedFormItem.phoneNumber, uuid: uuid() })
-      );
+    formInstance.validateFields().then(async (validatedFormItem) => {
+      createItemFx({ phoneNumber: validatedFormItem.phoneNumber, uuid: uuid() });
+    });
   };
 
-  const turbineCountValidator = (rule: any, value: string, callback: TVoidFn<any>) => {
-    try {
-      const pattern = /^\+[\d]{1} [\d]{3} [\d]{3} [\d]{2} [\d]{2}$/;
-      if (!pattern.test(value)) {
-        throw new Error('Пожалуйста, введите номер телефона');
-      }
-    } catch (err: any) {
-      callback(err);
+  function phoneValidator(rule: any, value: string) {
+    const pattern = /^\+[\d]{1} [\d]{3} [\d]{3} [\d]{2} [\d]{2}$/;
+    if (!pattern.test(value)) {
+      setSendCodeDisabled(false);
+      return Promise.reject(new Error('Пожалуйста, введите номер телефона'));
     }
-  };
+    // setSendCodeEnabled(true);
+    return Promise.resolve();
+  }
 
   return (
     <MForm>
@@ -50,10 +47,9 @@ function PhoneCheckForm(props: Props) {
           <Item
             name={dataName('phoneNumber')}
             rules={[
+              { required: true },
               {
-                required: true,
-                // message: 'Пожалуйста, введите номер Вашего телефона',
-                validator: turbineCountValidator,
+                validator: phoneValidator,
               },
             ]}
           >
@@ -75,6 +71,7 @@ function PhoneCheckForm(props: Props) {
               className='order-form-send-code'
               loading={loading}
               onClick={sendCode}
+              disabled={sendCodeDisabled}
             >
               Получить код
             </Button>
