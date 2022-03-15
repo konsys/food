@@ -6,6 +6,7 @@ import { CodeCheckModel } from '../../../../store';
 import './phoneCheckForm.less';
 import { uuid } from '../../../../common/utils/utils';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
+import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 
 const { Item } = Form;
 
@@ -14,7 +15,7 @@ interface Props {}
 const { createItemFx, $itemPending, $itemStore } = CodeCheckModel;
 
 function PhoneCheckForm(props: Props) {
-  const { Form: MForm } = useValidatedForm<any>();
+  const { Form: MForm } = useValidatedForm<CodeCheckDto>();
 
   const loading = useStore($itemPending);
   const { item } = useStore($itemStore);
@@ -44,10 +45,9 @@ function PhoneCheckForm(props: Props) {
               loading={loading}
               onClick={() =>
                 createItemFx({
-                  code: '234234',
                   phoneNumber: 'wefwefwef',
-                  id: null,
                   uuid: uuid(),
+                  id: null,
                 })
               }
             >

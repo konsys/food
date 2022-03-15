@@ -13,7 +13,7 @@ export class CodeCheck {
     phoneNumber: string;
 
     @Column()
-    code: string;
+    code: number;
 
     @Column({default: null})
     description?: string;
