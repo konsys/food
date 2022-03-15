@@ -1,4 +1,4 @@
-import { Exclude } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -8,7 +8,7 @@ export class AbstractDictionary {
   }
 
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number; 
 
   @Column()
   uuid: string;
@@ -18,9 +18,6 @@ export class AbstractDictionary {
 
   @Column({default: null})
   description: string;
-
-  @Column({ default: false })
-  visible: boolean;
 
   @Column({
     type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
