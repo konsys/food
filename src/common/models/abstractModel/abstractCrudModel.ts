@@ -51,6 +51,7 @@ export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = Create
   getAllDefault: Event<void>;
   getItem: Event<TUuid>;
   createItemFx: TCreateItemFx<Partial<CreateEntity>, FullEntity>;
+  onlyCreateItemFx: TCreateItemFx<Partial<CreateEntity>, FullEntity>;
   updateItemFx: TUpdateItemFx<FullEntity>;
   deleteItemFx: TDeleteItemFx;
   getAll: Event<TListRequest<FullEntity>>;
@@ -70,6 +71,10 @@ export class CrudStore<
     const ListGate = createGate<TListRequest<FullEntity>>();
     const ItemGate = createGate<TUuid>();
     const service = new CrudService<CreateEntity, FullEntity>(this.url);
+
+    const onlyCreateItemFx = createEffect<Partial<CreateEntity>, FullEntity, Error>({
+      handler: (mt) => service.create(mt),
+    });
 
     const createItemFx = createEffect<Partial<CreateEntity>, FullEntity, Error>({
       handler: (mt) => service.create(mt),
@@ -122,6 +127,7 @@ export class CrudStore<
 
     $itemStore
       .on(setItem, (prev, item) => ({ ...prev, item }))
+      .on(onlyCreateItemFx.done, nullableResult)
       .on(createItemFx.done, nullableResult)
       .on(getItemFx.done, nullableResult)
       .on(updateItemFx.done, nullableResult)
@@ -129,10 +135,12 @@ export class CrudStore<
         result.affected ? createInitItem<FullEntity>() : prev
       )
       .on(createItemFx.pending, (prev, pending) => ({ ...prev, pending }))
+      .on(onlyCreateItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(getItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(updateItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(deleteItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(createItemFx.fail, () => notification.error({ message: 'Ошибка создания' }))
+      .on(onlyCreateItemFx.fail, () => notification.error({ message: 'Ошибка создания' }))
       .on(getItemFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
       .on(updateItemFx.fail, () => notification.error({ message: 'Ошибка обновления' }))
       .on(deleteItemFx.fail, () =>
@@ -185,6 +193,7 @@ export class CrudStore<
       getAllDefault,
       getItem,
       createItemFx,
+      onlyCreateItemFx,
       deleteItemFx,
       updateItemFx,
       getAll,

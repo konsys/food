@@ -10,7 +10,7 @@ import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGener
 
 const { Item } = Form;
 
-const { createItemFx, $itemPending } = CodeCheckModel;
+const { onlyCreateItemFx, $itemPending } = CodeCheckModel;
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm() {
@@ -20,7 +20,7 @@ function PhoneCheckForm() {
 
   const sendCode = () => {
     formInstance.validateFields().then(async (validatedFormItem) => {
-      createItemFx({ phoneNumber: validatedFormItem.phoneNumber });
+      onlyCreateItemFx({ phoneNumber: validatedFormItem.phoneNumber });
     });
   };
 
