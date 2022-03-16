@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TPromiseFn, TUuid } from 'src/common/types';
 import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
-import { DeepPartial, DeleteResult, FindManyOptions, Repository } from 'typeorm';
+import { DeepPartial, FindManyOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class AbstractService<E extends { uuid: TUuid }> implements IAbstractService<E>{
@@ -11,8 +11,9 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
         this.repository = repository;
     }
 
-    create(entity: DeepPartial<E>) {
-        return this.repository.save(entity);
+    async create(entity: DeepPartial<E>) {
+        const res = await this.repository.save(entity);
+        return this.repository.findOne({where: {uuid: res.uuid}});
     }
 
     async findAll({ limit, page, filter }: TListRequest<E>): Promise<TListResponce<E>> {
@@ -46,8 +47,9 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
         return this.repository.findOne({ where: { uuid } });
     }
 
-    update(entity: DeepPartial<E>) {
-        return this.repository.save(entity);
+    async update(entity: DeepPartial<E>) {
+        const res = await this.repository.save(entity);
+        return this.repository.findOne({where: {uuid: res.uuid}});
     }
 
     async removeItem(uuid: TUuid) {
