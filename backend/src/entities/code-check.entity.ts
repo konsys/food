@@ -21,6 +21,9 @@ export class CodeCheck {
     @Column()
     clientUuid: string;
 
+    @Column({default: false})
+    isSms: boolean;
+
     @Exclude()
     @Column()
     code: number;

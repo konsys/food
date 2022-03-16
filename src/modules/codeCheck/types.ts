@@ -5,6 +5,7 @@ export type CodeCheckDto = {
   uuid: TUuid;
   clientUuid: TUuid;
   phoneNumber: string;
+  isSms: boolean;
   code?: string;
   description?: string;
   createdAt?: Date;

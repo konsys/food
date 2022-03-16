@@ -8,4 +8,5 @@ export const codeCheckFactory = factory.Sync.makeFactory<CodeCheckDto>({
   clientUuid: factory.each(() => faker.datatype.uuid()),
   code: factory.each(() => faker.datatype.uuid()),
   phoneNumber: factory.each(() => faker.phone.phoneNumber()),
+  isSms: factory.each(() => faker.datatype.boolean()),
 });
