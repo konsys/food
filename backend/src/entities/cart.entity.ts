@@ -1,17 +1,15 @@
 
 import { TUuid } from "src/common/types";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { TRestaurantMenuOrder } from "./order.enriry";
+import { TRestaurantMenuOrder } from "./order.enrity";
 
 @Entity()
 export class Cart {
   @PrimaryGeneratedColumn()
   id: number;
 
-
   @Column()
   uuid: TUuid;
-
 
   @Column()
   restaurantUuid: TUuid;
@@ -40,6 +38,6 @@ export class Cart {
 
 export enum EOrderStatus {
   IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED',
+  COMPLETED = 'COMPLETED', 
   PAID = 'PAID'
 }
