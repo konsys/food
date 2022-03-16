@@ -8,8 +8,10 @@ export class Cart {
   @PrimaryGeneratedColumn()
   id: number;
 
+
   @Column()
   uuid: TUuid;
+
 
   @Column()
   restaurantUuid: TUuid;
