@@ -1,6 +1,13 @@
 import { Exclude } from "class-transformer";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+
+enum ECodeStatus  {
+  CREATED='CREATED',
+  SMS_SENT='SMS_SENT',
+  SMS_IS_OLD='SMS_IS_OLD',
+  COMPLETED='COMPLETED'
+}
 @Entity()
 export class CodeCheck {
 
@@ -21,8 +28,8 @@ export class CodeCheck {
     @Column()
     clientUuid: string;
 
-    @Column({default: false})
-    isSms: boolean;
+    @Column({default: ECodeStatus.CREATED})
+    status: ECodeStatus;
 
     @Exclude()
     @Column()
@@ -38,3 +45,4 @@ export class CodeCheck {
   })
   createdAt?: Date;
 }
+

@@ -21,7 +21,12 @@ function PhoneCheckForm() {
 
   const sendCode = () => {
     formInstance.validateFields().then(async (validatedFormItem) => {
-      onlyCreateItemFx({ phoneNumber: validatedFormItem.phoneNumber, clientUuid: getClientUuid() });
+      onlyCreateItemFx({
+        phoneNumber: validatedFormItem.phoneNumber,
+        clientUuid: getClientUuid(),
+      }).then((v) => {
+        formInstance.setFieldsValue({ ...v });
+      });
     });
   };
 
@@ -35,12 +40,12 @@ function PhoneCheckForm() {
 
   return (
     <MForm>
-      <div style={{ display: 'none' }}>
+      <div style={{ display: '' }}>
         <Item name={dataName('uuid')}>
-          <Input type='hidden' />
+          <Input type='text' />
         </Item>
         <Item name={dataName('clientUuid')}>
-          <Input type='hidden' />
+          <Input type='text' />
         </Item>
       </div>
       <div className='ordering-form__phone'>

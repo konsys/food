@@ -1,6 +1,6 @@
 import * as factory from 'factory.ts';
 import faker from 'faker';
-import { CodeCheckDto } from './types';
+import { CodeCheckDto, ESmsCodeStatus } from './types';
 
 export const codeCheckFactory = factory.Sync.makeFactory<CodeCheckDto>({
   id: factory.each((n) => null),
@@ -8,5 +8,5 @@ export const codeCheckFactory = factory.Sync.makeFactory<CodeCheckDto>({
   clientUuid: factory.each(() => faker.datatype.uuid()),
   code: factory.each(() => faker.datatype.uuid()),
   phoneNumber: factory.each(() => faker.phone.phoneNumber()),
-  isSms: factory.each(() => faker.datatype.boolean()),
+  status: factory.each(() => ESmsCodeStatus.CREATED),
 });
