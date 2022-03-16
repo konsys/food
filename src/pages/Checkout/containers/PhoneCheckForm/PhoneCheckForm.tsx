@@ -7,6 +7,7 @@ import './phoneCheckForm.less';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
+import { getClientUuid } from '../../../../modules/cart/service';
 
 const { Item } = Form;
 
@@ -20,7 +21,7 @@ function PhoneCheckForm() {
 
   const sendCode = () => {
     formInstance.validateFields().then(async (validatedFormItem) => {
-      onlyCreateItemFx({ phoneNumber: validatedFormItem.phoneNumber });
+      onlyCreateItemFx({ phoneNumber: validatedFormItem.phoneNumber, clientUuid: getClientUuid() });
     });
   };
 

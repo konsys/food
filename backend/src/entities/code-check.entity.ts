@@ -14,8 +14,12 @@ export class CodeCheck {
     @Column()
     uuid: string;
 
+    @Exclude()
     @Column()
     phoneNumber: string;
+
+    @Column()
+    clientUuid: string;
 
     @Exclude()
     @Column()

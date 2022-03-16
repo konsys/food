@@ -9,4 +9,4 @@ export class CartController extends AbstractController<Cart> {
   constructor(service: CartService) {
     super(service);
   }
-}
+} 
