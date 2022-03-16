@@ -17,11 +17,12 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
 
     async findAll({ limit, page, filter }: TListRequest<E>): Promise<TListResponce<E>> {
 
-        page = +(page >= 0 ? page : 0);
+        page = +(page && page >= 0 ? page : 0);
         const take = limit = +limit;
-        const skip = take * (page - 1);
+        const skip = take * page;
         const whereFilter = filter ? { where: filter } : null;
         const totalRecords = await this.repository.count(whereFilter);
+
         let allFilters: FindManyOptions = {
             take: limit,
             skip,
