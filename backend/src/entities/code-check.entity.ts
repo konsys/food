@@ -5,7 +5,6 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class CodeCheck {
 
   constructor(partial: Partial<CodeCheck>) {
-    console.log(234234234, partial)
     Object.assign(this, partial);
   }
 

@@ -9,13 +9,16 @@ import { CodeCheckService } from './code-check.service';
 @UseInterceptors(ExtractInterceptor)
 @Controller('code-check')
 export class CodeCheckController extends AbstractController<CodeCheck> {
+
+  private checkService: CodeCheckService;
   constructor(service: CodeCheckService) {
-    super(service)
+    super(service);
+    this.checkService = service;
   }
 
-  // @Post()
-  // generateCode(@Body() item: DeepPartial<CodeCheck>) {
-  //   const code = Math.floor(1000 + Math.random() * 9000);
-  //   return super.create({...item, code, uuid: uuid()});
-  // }
+  @Post()
+  async generateCode(@Body() item: DeepPartial<CodeCheck>) {
+    const code = Math.floor(1000 + Math.random() * 9000);
+    return await this.checkService.create({...item, code, uuid: uuid()});
+  }
 }
