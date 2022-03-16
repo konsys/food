@@ -11,7 +11,7 @@ import { getClientUuid } from '../../../../modules/cart/service';
 
 const { Item } = Form;
 
-const { onlyCreateItemFx, $itemPending } = CodeCheckModel;
+const { createItemWithoutFetchingListFx, $itemPending } = CodeCheckModel;
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm() {
@@ -19,16 +19,16 @@ function PhoneCheckForm() {
 
   const loading = useStore($itemPending);
 
-  const sendCode = () => {
-    formInstance.validateFields().then(async (validatedFormItem) => {
-      onlyCreateItemFx({
-        phoneNumber: validatedFormItem.phoneNumber,
-        clientUuid: getClientUuid(),
-      }).then((v) => {
-        formInstance.setFieldsValue({ ...v });
-      });
+  const createCode = (code: CodeCheckDto) => {
+    createItemWithoutFetchingListFx({
+      phoneNumber: code.phoneNumber,
+      clientUuid: getClientUuid(),
+    }).then((v) => {
+      formInstance.setFieldsValue(v);
     });
   };
+
+  const sendCode = () => formInstance.validateFields().then(createCode);
 
   function phoneValidator(rule: any, value: string) {
     const pattern = /^\+[\d]{1} [\d]{3} [\d]{3} [\d]{2} [\d]{2}$/;
