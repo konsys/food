@@ -5,9 +5,9 @@ import { TItemWithUuid, TSelectOptions } from '../../../../common/types';
 import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 import { createOptionsList } from '../../../../common/utils/selectUtils';
-
-import './checkoutMobile.less';
 import PhoneCheckForm from '../PhoneCheckForm/PhoneCheckForm';
+
+import './checkoutForm.less';
 
 const deliveryOptions: TSelectOptions = [
   {
@@ -40,7 +40,7 @@ interface Props {
   item: Nullable<TItemWithUuid<CartDto>>;
 }
 
-function CheckoutMobile({ item }: Props) {
+function CheckoutForm({ item }: Props) {
   return (
     <section className='ordering__mobile'>
       <div className='container ordering-form__container'>
@@ -196,4 +196,4 @@ function CheckoutMobile({ item }: Props) {
   );
 }
 
-export default memo(CheckoutMobile);
+export default memo(CheckoutForm);
