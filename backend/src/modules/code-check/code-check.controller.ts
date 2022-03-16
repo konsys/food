@@ -18,7 +18,11 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
 
   @Post()
   async generateCode(@Body() item: DeepPartial<CodeCheck>) {
+    const res = await this.checkService.findOneByFilter({where: {clientUuid: item.clientUuid}});
+    if(res){
+      return res;
+    }
     const code = Math.floor(1000 + Math.random() * 9000);
-    return await this.checkService.create({...item, code, uuid: uuid()});
+    return this.checkService.create({...item, code, uuid: uuid()});
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TPromiseFn, TUuid } from 'src/common/types';
 import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
-import { DeepPartial, FindManyOptions, Repository } from 'typeorm';
+import { DeepPartial, FindManyOptions, FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class AbstractService<E extends { uuid: TUuid }> implements IAbstractService<E>{
@@ -18,9 +18,9 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
 
     async findAll({ limit, page, filter }: TListRequest<E>): Promise<TListResponce<E>> {
 
-        page = +(page && page >= 0 ? page : 0);
+        page = +(page && page >= 1 ? page : 1);
         const take = limit = +limit;
-        const skip = take * page;
+        const skip = take * (page - 1);
         const whereFilter = filter ? { where: filter } : null;
         const totalRecords = await this.repository.count(whereFilter);
 
@@ -45,6 +45,10 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
 
     findOne(uuid: TUuid) {
         return this.repository.findOne({ where: { uuid } });
+    }
+
+    findOneByFilter(filter: FindOneOptions) {
+        return this.repository.findOne(filter);
     }
 
     async update(entity: DeepPartial<E>) {
