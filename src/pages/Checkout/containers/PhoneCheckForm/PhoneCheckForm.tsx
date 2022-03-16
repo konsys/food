@@ -39,6 +39,9 @@ function PhoneCheckForm() {
         <Item name={dataName('uuid')}>
           <Input type='hidden' />
         </Item>
+        <Item name={dataName('clientUuid')}>
+          <Input type='hidden' />
+        </Item>
       </div>
       <div className='ordering-form__phone'>
         <div className='input-phone-wrapper'>
