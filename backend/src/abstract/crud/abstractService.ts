@@ -47,7 +47,7 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
         return this.repository.findOne({ where: { uuid } });
     }
 
-    async findOneByFilter(filter: FindOneOptions) {
+    async findOneByFilter(filter: DeepPartial<E>) {
         return this.repository.findOne({ where: filter });
     }
 
@@ -66,7 +66,7 @@ export interface IAbstractService<E> {
     create: TPromiseFn<DeepPartial<E>, E>;
     findAll: TPromiseFn<TListRequest<E>, TListResponce<E>>
     findOne: TPromiseFn<TUuid, E>
-    findOneByFilter: TPromiseFn<FindOneOptions, E>
+    findOneByFilter: TPromiseFn<DeepPartial<E>, E>
     update: TPromiseFn<DeepPartial<E>, E>
     removeItem: TPromiseFn<TUuid, E[]>
-}
+} 

@@ -22,6 +22,7 @@ interface AuthResponse {
 }
 
 export class Auth {
+
   public static initialize(): Promise<IUser> {
     if (!Auth.accessToken) {
       return Promise.reject(new Error());
@@ -130,7 +131,7 @@ export class Auth {
   }
 
   private static setAuthHeader(token = Auth.accessToken) {
-    if (token != null) {
+    if (token) {
       // TODO add type
       // client.defaults.headers[authTokenName] = `Bearer ${token}`;
     }

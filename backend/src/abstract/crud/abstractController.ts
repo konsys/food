@@ -8,12 +8,11 @@ import { ExtractInterceptor } from './ExtractInterceptor';
 import { instanceToInstance } from 'class-transformer';
 
 @UseInterceptors(ExtractInterceptor)
-@Controller('menu-time')
 export class AbstractController<E> {
   private service: IAbstractService<E>;
 
-  constructor(service: IAbstractService<E>) { 
-      this.service = service;
+  constructor(service: IAbstractService<E>) {
+    this.service = service;
   }
 
   @Post()
@@ -27,8 +26,8 @@ export class AbstractController<E> {
   }
 
   @Get('filter-one')
-  filterOne(@Query() filter: any) {
-    const instance = instanceToInstance<E>(filter)
+  filterOne(@Query() filter: DeepPartial<E>) {
+    const instance = instanceToInstance<DeepPartial<E>>(filter);
     return this.service.findOneByFilter(instance);
   }
 
