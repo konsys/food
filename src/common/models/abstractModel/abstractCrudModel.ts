@@ -23,6 +23,12 @@ import {
 } from '../../api/types';
 import { TUuid, TItemWithUuid } from '../../types/index';
 
+export type TGetOneByFilterFx<FullEntity> = Effect<
+  string,
+  FullEntity,
+  Error
+>;
+
 export type TCreateItemFx<CreateEntity, FullEntity = CreateEntity> = Effect<
   Partial<CreateEntity>,
   FullEntity,
@@ -50,6 +56,7 @@ export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = Create
   setItem: Event<FullEntity>;
   getAllDefault: Event<void>;
   getItem: Event<TUuid>;
+  getItemByFilterFx: TGetOneByFilterFx<FullEntity>;
   createItemFx: TCreateItemFx<Partial<CreateEntity>, FullEntity>;
   createItemWithoutFetchingListFx: TCreateItemFx<Partial<CreateEntity>, FullEntity>;
   updateItemFx: TUpdateItemFx<FullEntity>;
@@ -86,6 +93,10 @@ export class CrudStore<
 
     const getItemFx = createEffect<TUuid, FullEntity, Error>({
       handler: (uuid) => service.getOne(uuid),
+    });
+
+    const getItemByFilterFx = createEffect<TUuid, FullEntity, Error>({
+      handler: (uuid) => service.getOneByFilter(uuid),
     });
 
     const updateItemFx = createEffect<FullEntity, FullEntity, Error>({
@@ -130,6 +141,7 @@ export class CrudStore<
       .on(createItemWithoutFetchingListFx.done, nullableResult)
       .on(createItemFx.done, nullableResult)
       .on(getItemFx.done, nullableResult)
+      .on(getItemByFilterFx.done, nullableResult)
       .on(updateItemFx.done, nullableResult)
       .on(deleteItemFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
         result.affected ? createInitItem<FullEntity>() : prev
@@ -137,11 +149,13 @@ export class CrudStore<
       .on(createItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(createItemWithoutFetchingListFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(getItemFx.pending, (prev, pending) => ({ ...prev, pending }))
+      .on(getItemByFilterFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(updateItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(deleteItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(createItemFx.fail, () => notification.error({ message: 'Ошибка создания' }))
       .on(createItemWithoutFetchingListFx.fail, () => notification.error({ message: 'Ошибка создания' }))
       .on(getItemFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
+      .on(getItemByFilterFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
       .on(updateItemFx.fail, () => notification.error({ message: 'Ошибка обновления' }))
       .on(deleteItemFx.fail, () =>
         notification.error({ message: `Ошибка удаления`, duration: 1000 })
@@ -192,6 +206,7 @@ export class CrudStore<
       setItem,
       getAllDefault,
       getItem,
+      getItemByFilterFx,
       createItemFx,
       createItemWithoutFetchingListFx,
       deleteItemFx,

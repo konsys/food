@@ -62,3 +62,7 @@ export const generateUuid = () => uuidv4();
 export const isNumber = (item: any): item is number => !Number.isNaN(Number(item));
 
 export const uuid = () => uuidv4();
+
+export const queryParamsFromObject = (params: Record<string, any>) => encodeURI(`?${Object.keys(params)
+    .map(key => `${key}=${params[key]}`) 
+    .join('&')}`)

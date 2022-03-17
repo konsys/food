@@ -8,10 +8,11 @@ import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { getClientUuid } from '../../../../modules/cart/service';
+import { queryParamsFromObject } from '../../../../common/utils/utils';
 
 const { Item } = Form;
 
-const { createItemWithoutFetchingListFx, $itemPending } = CodeCheckModel;
+const { createItemWithoutFetchingListFx, $itemPending, getItemByFilterFx } = CodeCheckModel;
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm() {
@@ -28,6 +29,21 @@ function PhoneCheckForm() {
     });
   };
 
+  const codeHandler = () => {
+    const code = formInstance.getFieldValue(dataName('code'));
+    if (!Number.isNaN(+code)) {
+      getItemByFilterFx(
+        queryParamsFromObject({
+          code,
+          clientUuid: getClientUuid(),
+          uuid: formInstance.getFieldValue(dataName('uuid')),
+        })
+      ).then((v) => {
+        console.log(444444444, v);
+      });
+    }
+  };
+
   const sendCode = () => formInstance.validateFields().then(createCode);
 
   function phoneValidator(rule: any, value: string) {
@@ -40,7 +56,7 @@ function PhoneCheckForm() {
 
   return (
     <MForm>
-      <div style={{ display: '' }}>
+      <div style={{ display: 'none' }}>
         <Item name={dataName('uuid')}>
           <Input type='text' />
         </Item>
@@ -87,7 +103,7 @@ function PhoneCheckForm() {
             Код из СМС
           </label>
           <Item name={dataName('code')}>
-            <MaskedInput mask='1111' className='order-form-sms-code' />
+            <MaskedInput mask='1111' className='order-form-sms-code' onChange={codeHandler} />
           </Item>
         </div>
       </div>

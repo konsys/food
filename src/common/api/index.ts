@@ -22,6 +22,10 @@ export class CrudService<CreateEntity, FullEntity> {
     return data;
   }
 
+  async getOneByFilter(filter: string): Promise<FullEntity> {
+    return (await axiosClient.get<FullEntity>(`${this.url}/filter-one/${filter}`)).data;
+  }
+
   async getOne(uuid: TUuid): Promise<FullEntity> {
     return (await axiosClient.get<FullEntity>(`${this.url}/${uuid}`)).data;
   }
