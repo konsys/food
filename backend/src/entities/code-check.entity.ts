@@ -33,7 +33,7 @@ export class CodeCheck {
 
     @Exclude()
     @Column()
-    code: number;
+    code: string;
 
     @Exclude()
     @Column({default: null})
@@ -42,7 +42,7 @@ export class CodeCheck {
 
   @Column({
     type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
-  })
+  }) 
   createdAt?: Date;
 }
 

@@ -22,7 +22,7 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
     if(res){
       return res;
     }
-    const code = Math.floor(1000 + Math.random() * 9000);
+    const code = Math.floor(1000 + Math.random() * 9000).toString();
     return this.checkService.create({...item, code, uuid: uuid()});
   }
 }

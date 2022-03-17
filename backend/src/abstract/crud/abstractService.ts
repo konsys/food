@@ -13,7 +13,7 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
 
     async create(entity: DeepPartial<E>) {
         const res = await this.repository.save(entity);
-        return this.repository.findOne({where: {uuid: res.uuid}});
+        return this.repository.findOne({ where: { uuid: res.uuid } });
     }
 
     async findAll({ limit, page, filter }: TListRequest<E>): Promise<TListResponce<E>> {
@@ -47,13 +47,13 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
         return this.repository.findOne({ where: { uuid } });
     }
 
-    findOneByFilter(filter: FindOneOptions) {
-        return this.repository.findOne(filter);
+    async findOneByFilter(filter: FindOneOptions) {
+        return this.repository.findOne({ where: filter });
     }
 
     async update(entity: DeepPartial<E>) {
         const res = await this.repository.save(entity);
-        return this.repository.findOne({where: {uuid: res.uuid}});
+        return this.repository.findOne({ where: { uuid: res.uuid } });
     }
 
     async removeItem(uuid: TUuid) {
@@ -66,6 +66,7 @@ export interface IAbstractService<E> {
     create: TPromiseFn<DeepPartial<E>, E>;
     findAll: TPromiseFn<TListRequest<E>, TListResponce<E>>
     findOne: TPromiseFn<TUuid, E>
+    findOneByFilter: TPromiseFn<FindOneOptions, E>
     update: TPromiseFn<DeepPartial<E>, E>
     removeItem: TPromiseFn<TUuid, E[]>
 }

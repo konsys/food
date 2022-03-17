@@ -1,10 +1,11 @@
 import { DeepPartial } from 'typeorm';
-import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors, Query } from '@nestjs/common';
 import { TUuid } from 'src/common/types';
 
 import { TListRequest } from 'src/common/types/paginationTypes';
 import { IAbstractService } from './abstractService';
 import { ExtractInterceptor } from './ExtractInterceptor';
+import { instanceToInstance } from 'class-transformer';
 
 @UseInterceptors(ExtractInterceptor)
 @Controller('menu-time')
@@ -23,6 +24,12 @@ export class AbstractController<E> {
   @Post('filter')
   filter(@Body() params: TListRequest<E>) {
     return (this.service.findAll(params));
+  }
+
+  @Get('filter-one')
+  filterOne(@Query() filter: any) {
+    const instance = instanceToInstance<E>(filter)
+    return this.service.findOneByFilter(instance);
   }
 
   @Get(':uuid')
