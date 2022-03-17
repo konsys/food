@@ -31,6 +31,7 @@ export class UsersController {
   async login(
     @Request() req: IRequestWithUser,
   ): Promise<{ accessToken: string }> {
+
     return this.authService.login({
       name: req.user.name,
       userId: req.user.userId,
@@ -41,6 +42,7 @@ export class UsersController {
   logout(
     @Body() { refreshToken }: { refreshToken: string },
   ): Promise<boolean> {
+
     return this.service.logout(refreshToken);
   }
 
