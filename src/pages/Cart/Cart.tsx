@@ -47,11 +47,13 @@ function Cart({ sideView }: Props) {
         </div>
       ) : (
         <div className='container'>
-          <CartComponent
-            cartOrder={cartOrder}
-            changeQuantity={changeQuantity}
-            deleteFromCart={deleteFromCart}
-          />
+          <div className=' cart-section-wrapper '>
+            <CartComponent
+              cartOrder={cartOrder}
+              changeQuantity={changeQuantity}
+              deleteFromCart={deleteFromCart}
+            />
+          </div>
         </div>
       )}
     </div>
