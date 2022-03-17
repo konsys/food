@@ -1,5 +1,5 @@
 import { Button, Form, Input } from 'antd';
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { useStore } from 'effector-react';
 import MaskedInput from 'antd-mask-input';
 import { CodeCheckModel } from '../../../../store';
@@ -16,6 +16,8 @@ const { createItemWithoutFetchingListFx, $itemPending, getItemByFilterFx } = Cod
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm() {
+  const [codeAccess, setCodeAccess] = useState<boolean>(true);
+
   const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({ phoneNumber: undefined });
 
   const loading = useStore($itemPending);
@@ -39,7 +41,7 @@ function PhoneCheckForm() {
           uuid: formInstance.getFieldValue(dataName('uuid')),
         })
       ).then((v) => {
-        console.log(444444444, v);
+        setCodeAccess(!!v);
       });
     }
   };
@@ -105,6 +107,7 @@ function PhoneCheckForm() {
           <Item name={dataName('code')}>
             <MaskedInput mask='1111' className='order-form-sms-code' onChange={codeHandler} />
           </Item>
+          {!codeAccess ? <div className='input-code-error'>Неверный код</div> : ''}
         </div>
       </div>
     </MForm>
