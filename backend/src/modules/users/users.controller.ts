@@ -16,11 +16,10 @@ import { UsersService } from './users.service';
 import { LocalAuthGuard } from 'src/modules/auth/local-auth.guard';
 import { AuthService } from 'src/modules/auth/auth.service';
 import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
-import { EControllersNames } from 'src/params/controllers.names';
 import { IRequestWithUser, TTokens, TVkLoginRequest } from './types';
 import { IJwtPayload, jwtConstants } from 'src/config';
 
-@Controller(EControllersNames.USERS)
+@Controller('users')
 export class UsersController {
   constructor(
     private readonly service: UsersService,
@@ -32,19 +31,17 @@ export class UsersController {
   async login(
     @Request() req: IRequestWithUser,
   ): Promise<{ accessToken: string }> {
-    const login = await this.authService.login({
+    return this.authService.login({
       name: req.user.name,
       userId: req.user.userId,
     });
-
-    return login;
   }
 
   @Post('auth/logout')
-  async logout(
+  logout(
     @Body() { refreshToken }: { refreshToken: string },
   ): Promise<boolean> {
-    return await this.service.logout(refreshToken);
+    return this.service.logout(refreshToken);
   }
 
   @Post('auth/refresh')
@@ -130,7 +127,7 @@ export class UsersController {
     { code }: TVkLoginRequest,
   ): Promise<TTokens> {
     const user = new UsersEntity(await this.service.loginVK(code));
-    return await this.authService.login(user);
+    return this.authService.login(user);
   }
 
   @Delete('/:userId')
@@ -147,7 +144,7 @@ export class UsersController {
   async getUserByEmail(
     @Param() email: string,
   ): Promise<UsersEntity | undefined> {
-    return await this.service.getUserByEmail(email);
+    return this.service.getUserByEmail(email);
   }
 
   @Post()
