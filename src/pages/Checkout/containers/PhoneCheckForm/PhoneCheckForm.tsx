@@ -12,24 +12,18 @@ import { queryParamsFromObject } from '../../../../common/utils/utils';
 
 const { Item } = Form;
 
-const { createItemWithoutFetchingListFx, $itemPending, getItemByFilterFx } = CodeCheckModel;
+const { createItemWithoutFetchingListFx, $itemPending, getItemByFilterFx, $itemStore } =
+  CodeCheckModel;
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm() {
-  const [codeAccess, setCodeAccess] = useState<boolean>(true);
+  const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
+  const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
+  const { item } = useStore($itemStore);
 
   const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({ phoneNumber: undefined });
 
   const loading = useStore($itemPending);
-
-  const createCode = (code: CodeCheckDto) => {
-    createItemWithoutFetchingListFx({
-      phoneNumber: code.phoneNumber,
-      clientUuid: getClientUuid(),
-    }).then((v) => {
-      formInstance.setFieldsValue(v);
-    });
-  };
 
   const codeHandler = () => {
     const code = formInstance.getFieldValue(dataName('code'));
@@ -41,9 +35,19 @@ function PhoneCheckForm() {
           uuid: formInstance.getFieldValue(dataName('uuid')),
         })
       ).then((v) => {
-        setCodeAccess(!!v);
+        setIsWrongCode(!!v);
       });
     }
+  };
+
+  const createCode = (code: CodeCheckDto) => {
+    createItemWithoutFetchingListFx({
+      phoneNumber: code.phoneNumber,
+      clientUuid: getClientUuid(),
+    }).then((v) => {
+      formInstance.setFieldsValue(v);
+      setIsCodeSent(true);
+    });
   };
 
   const sendCode = () => formInstance.validateFields().then(createCode);
@@ -55,6 +59,8 @@ function PhoneCheckForm() {
     }
     return Promise.resolve();
   }
+
+  console.log(23423423423, item);
 
   return (
     <MForm>
@@ -105,9 +111,14 @@ function PhoneCheckForm() {
             Код из СМС
           </label>
           <Item name={dataName('code')}>
-            <MaskedInput mask='1111' className='order-form-sms-code' onChange={codeHandler} />
+            <MaskedInput
+              mask='1111'
+              disabled={!isCodeSent}
+              className='order-form-sms-code'
+              onChange={codeHandler}
+            />
           </Item>
-          {!codeAccess ? <div className='input-code-error'>Неверный код</div> : ''}
+          {!isWrongCode ? <div className='input-code-error'>Неверный код</div> : ''}
         </div>
       </div>
     </MForm>

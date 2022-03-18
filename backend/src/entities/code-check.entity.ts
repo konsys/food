@@ -2,11 +2,11 @@ import { Exclude } from "class-transformer";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 
-enum ECodeStatus  {
-  CREATED='CREATED',
-  SMS_SENT='SMS_SENT',
-  SMS_IS_OLD='SMS_IS_OLD',
-  COMPLETED='COMPLETED'
+export enum ECodeStatus {
+  CREATED = 'CREATED',
+  SMS_SENT = 'SMS_SENT',
+  SMS_IS_OLD = 'SMS_IS_OLD',
+  COMPLETED = 'COMPLETED'
 }
 @Entity()
 export class CodeCheck {
@@ -15,34 +15,34 @@ export class CodeCheck {
     Object.assign(this, partial);
   }
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    uuid: string;
+  @Column()
+  uuid: string;
 
-    @Exclude()
-    @Column()
-    phoneNumber: string;
+  @Exclude()
+  @Column()
+  phoneNumber: string;
 
-    @Column()
-    clientUuid: string;
+  @Column()
+  clientUuid: string;
 
-    @Column({default: ECodeStatus.CREATED})
-    status: ECodeStatus;
+  @Column({ default: ECodeStatus.CREATED })
+  status: ECodeStatus;
 
-    @Exclude()
-    @Column()
-    code: string;
+  @Exclude()
+  @Column()
+  code: string;
 
-    @Exclude()
-    @Column({default: null})
-    description?: string;
+  @Exclude()
+  @Column({ default: null })
+  description?: string;
 
 
   @Column({
     type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
-  }) 
+  })
   createdAt?: Date;
 }
 

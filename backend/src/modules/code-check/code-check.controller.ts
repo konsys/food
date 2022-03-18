@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, Query, UseInterceptors } from '@nestjs/com
 import { AbstractController } from 'src/abstract/crud/abstractController';
 import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
 import { uuid } from 'src/common/random';
-import { CodeCheck } from 'src/entities/code-check.entity';
+import { CodeCheck, ECodeStatus } from 'src/entities/code-check.entity';
 import { DeepPartial } from 'typeorm';
 import { CodeCheckService } from './code-check.service';
 
@@ -29,7 +29,14 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
   @Get('filter-one')
   async checkCode(@Query() filter: DeepPartial<CodeCheck>) {
     if (filter?.code && filter?.clientUuid && filter?.uuid) {
-      return this.checkService.findOneByFilter(filter);
+      const res = await this.checkService.findOneByFilter(filter);
+
+      if (res) {
+        const updated = await this.checkService.update({ ...res, status: ECodeStatus.SMS_SENT });
+        return updated;
+      }
+
+      return res;
     }
     return false;
   }

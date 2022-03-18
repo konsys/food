@@ -52,7 +52,9 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
     }
 
     async update(entity: DeepPartial<E>) {
-        const res = await this.repository.save(entity);
+        const entityForUpdate = await this.repository.findOne({ where: { uuid: entity.uuid } });
+        const newEntity = { ...entityForUpdate, ...entity }
+        const res = await this.repository.save(newEntity);
         return this.repository.findOne({ where: { uuid: res.uuid } });
     }
 
