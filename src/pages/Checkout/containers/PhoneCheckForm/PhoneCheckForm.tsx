@@ -24,8 +24,10 @@ function PhoneCheckForm() {
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
   const { item } = useStore($itemStore);
 
-  const { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
-    expiryTimestamp: item?.createdAt || new Date(),
+  console.log(234234234234, item);
+
+  const { seconds, minutes } = useTimer({
+    expiryTimestamp: item?.expiredAt || new Date(),
     onExpire: () => alert('onExpire called'),
   });
 
@@ -93,9 +95,9 @@ function PhoneCheckForm() {
           </Item>
           <div className='ordering-form__phone-info'>
             Вы сможете отправить код еще раз через
-            <span className='code_mins'>1</span>
+            <span className='code_mins'>{minutes}</span>
             <span>:</span>
-            <span className='code_secs'>00</span>
+            <span className='code_secs'>{seconds}</span>
           </div>
           <div className='input-phone-wrapper--ok' />
         </div>
