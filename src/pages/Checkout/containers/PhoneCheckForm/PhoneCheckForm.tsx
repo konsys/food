@@ -2,24 +2,32 @@ import { Button, Form, Input } from 'antd';
 import React, { memo, useState } from 'react';
 import { useStore } from 'effector-react';
 import MaskedInput from 'antd-mask-input';
+import { useTimer } from 'react-timer-hook';
 import { CodeCheckModel } from '../../../../store';
-import './phoneCheckForm.less';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { getClientUuid } from '../../../../modules/cart/service';
 import { queryParamsFromObject } from '../../../../common/utils/utils';
 
+import './phoneCheckForm.less';
+
 const { Item } = Form;
 
 const { createItemWithoutFetchingListFx, $itemPending, getItemByFilterFx, $itemStore } =
   CodeCheckModel;
+
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm() {
   const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
   const { item } = useStore($itemStore);
+
+  const { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
+    expiryTimestamp: item?.createdAt || new Date(),
+    onExpire: () => alert('onExpire called'),
+  });
 
   const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({ phoneNumber: undefined });
 
@@ -59,8 +67,6 @@ function PhoneCheckForm() {
     }
     return Promise.resolve();
   }
-
-  console.log(23423423423, item);
 
   return (
     <MForm>

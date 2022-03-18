@@ -9,4 +9,5 @@ export const codeCheckFactory = factory.Sync.makeFactory<CodeCheckDto>({
   code: factory.each(() => faker.datatype.uuid()),
   phoneNumber: factory.each(() => faker.phone.phoneNumber()),
   status: factory.each(() => ESmsCodeStatus.CREATED),
+  expiredAt: factory.each(() => faker.date.future()),
 });

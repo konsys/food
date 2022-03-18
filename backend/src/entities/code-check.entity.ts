@@ -44,5 +44,10 @@ export class CodeCheck {
     type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt?: Date;
+
+  @Column({
+    type: 'timestamp',
+  })
+  expiredAt?: Date;
 }
 
