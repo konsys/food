@@ -6,7 +6,7 @@ const { createItemFx } = CodeCheckModel;
 const generateNewItem = () => codeCheckFactory.build();
 
 describe('codeCheck tests', () => {
-  it.skip('should create codeCheck', async () => {
+  it('should create codeCheck', async () => {
     await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
     expect(1).toBe(1);
   });
