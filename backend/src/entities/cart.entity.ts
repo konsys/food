@@ -24,7 +24,7 @@ export class Cart {
   order: TRestaurantMenuOrder[];
 
   @Column({
-    type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
+    type: 'timestamp with time zone', default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
 
@@ -38,6 +38,6 @@ export class Cart {
 
 export enum EOrderStatus {
   IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED', 
+  COMPLETED = 'COMPLETED',
   PAID = 'PAID'
 }

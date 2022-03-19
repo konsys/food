@@ -11,7 +11,7 @@ import { getClientUuid } from '../../../../modules/cart/service';
 import { queryParamsFromObject } from '../../../../common/utils/utils';
 
 import './phoneCheckForm.less';
-import ChecloutTimer from '../../components/ChecloutTimer/ChecloutTimer';
+import ChecloutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 
 const { Item } = Form;
 
@@ -24,8 +24,6 @@ function PhoneCheckForm() {
   const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
   const { item } = useStore($itemStore);
-
-  console.log(234234234234, item);
 
   const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({ phoneNumber: undefined });
 
@@ -89,7 +87,7 @@ function PhoneCheckForm() {
           >
             <MaskedInput mask='+7 111 111 11 11' size='middle' />
           </Item>
-          <ChecloutTimer expiryTimestamp={new Date(new Date().getTime() + 15 * 1000)} />
+          <ChecloutTimer expiryTimestamp={item?.expiredAt || new Date()} />
           <div className='input-phone-wrapper--ok' />
         </div>
         <div className='check-oh-hidden'>

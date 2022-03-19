@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { memo } from 'react';
 import { useTimer } from 'react-timer-hook';
 
@@ -7,9 +8,13 @@ interface Props {
 
 function ChecloutTimer(props: Props) {
   const { expiryTimestamp } = props;
+  const testDateUtc = moment.utc(expiryTimestamp);
+  const localTime = moment(testDateUtc).local().toDate();
+
+  console.log(11111111111, localTime, expiryTimestamp);
 
   const { seconds, minutes, isRunning } = useTimer({
-    expiryTimestamp,
+    expiryTimestamp: localTime,
     onExpire: () => alert('onExpire called'),
   });
 

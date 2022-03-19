@@ -2,13 +2,13 @@ import { Body, Controller, Get, Post, Query, UseInterceptors } from '@nestjs/com
 import * as moment from 'moment';
 import { AbstractController } from 'src/abstract/crud/abstractController';
 import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
+import { DATE_FORMAT, EXPIRE_1_MINUTE } from 'src/common/constants/constants';
 import { uuid } from 'src/common/random';
 import { getDateWithoutTimeZone } from 'src/common/utils/dateTime';
 import { CodeCheck, ECodeStatus } from 'src/entities/code-check.entity';
 import { DeepPartial } from 'typeorm';
 import { CodeCheckService } from './code-check.service';
 
-const EXPIRE_1_MINUTE = 60 * 1000;
 @UseInterceptors(ExtractInterceptor)
 @Controller('code-check')
 export class CodeCheckController extends AbstractController<CodeCheck> {
@@ -25,9 +25,9 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
     if (res) {
       return res;
     }
-    const dateWithoutTimezone = getDateWithoutTimeZone();
-    // const expiredAt = new Date(dateWithoutTimezone.getTime() + EXPIRE_1_MINUTE);
-    const expiredAt = moment(dateWithoutTimezone.getTime() + EXPIRE_1_MINUTE).format('YYYY-MM-DD HH:mm')
+    // const dateWithoutTimezone = getDateWithoutTimeZone();
+    const dateWithoutTimezone = new Date();
+    const expiredAt = moment(dateWithoutTimezone.getTime() + EXPIRE_1_MINUTE).format(DATE_FORMAT)
     const code = Math.floor(1000 + Math.random() * 9000).toString();
     return this.checkService.create({ ...item, code, uuid: uuid(), expiredAt });
   }

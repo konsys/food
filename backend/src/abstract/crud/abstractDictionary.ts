@@ -8,7 +8,7 @@ export class AbstractDictionary {
   }
 
   @PrimaryGeneratedColumn()
-  id: number; 
+  id: number;
 
   @Column()
   uuid: string;
@@ -16,17 +16,17 @@ export class AbstractDictionary {
   @Column()
   name: string;
 
-  @Column({default: null})
+  @Column({ default: null })
   description: string;
 
   @Column({
-    type: 'timestamp', default: () => 'CURRENT_TIMESTAMP',
+    type: 'timestamp with time zone', default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt?: Date;
 
   @Exclude()
   @Column({
-    type: 'timestamp',
+    type: 'timestamp with time zone',
     default: () => 'CURRENT_TIMESTAMP',
     onUpdate: 'CURRENT_TIMESTAMP',
   })

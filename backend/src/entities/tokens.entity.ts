@@ -18,13 +18,13 @@ export class TokensEntity {
   expires: Date;
 
   @Column({
-    type: 'timestamp',
+    type: 'timestamp with time zone',
     default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt?: string;
 
   @Column({
-    type: 'timestamp',
+    type: 'timestamp with time zone',
     default: () => 'CURRENT_TIMESTAMP',
     onUpdate: 'CURRENT_TIMESTAMP',
   })
