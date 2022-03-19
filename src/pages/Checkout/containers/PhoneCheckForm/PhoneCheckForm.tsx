@@ -1,6 +1,7 @@
 import { Button, Form, Input } from 'antd';
 import React, { memo, useState } from 'react';
 import { useGate, useStore } from 'effector-react';
+import moment from 'moment';
 import MaskedInput from 'antd-mask-input';
 import { useParams } from 'react-router-dom';
 import { CodeCheckModel } from '../../../../store';
@@ -66,8 +67,6 @@ function PhoneCheckForm() {
     }
     return Promise.resolve();
   }
-
-  console.log(11111111111, item);
 
   return (
     <MForm>

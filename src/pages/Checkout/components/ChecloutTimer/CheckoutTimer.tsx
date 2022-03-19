@@ -1,6 +1,7 @@
 import moment from 'moment';
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
+import { DATE_FORMAT } from '../../../../common/constants/constants';
 
 interface Props {
   expiryTimestamp: Date;
@@ -8,13 +9,16 @@ interface Props {
 
 function ChecloutTimer(props: Props) {
   const { expiryTimestamp } = props;
-  const testDateUtc = moment.utc(expiryTimestamp);
-  const localTime = moment(testDateUtc).local().toDate();
 
-  const { seconds, minutes, isRunning } = useTimer({
-    expiryTimestamp: new Date(expiryTimestamp),
+  const { seconds, minutes, isRunning, restart } = useTimer({
+    expiryTimestamp: new Date(),
     onExpire: () => console.log('onExpire called'),
   });
+
+  useEffect(() => {
+    const localTime = moment(expiryTimestamp).local().toDate();
+    restart(localTime);
+  }, [expiryTimestamp]);
 
   return (
     <div className='ordering-form__phone-info'>
