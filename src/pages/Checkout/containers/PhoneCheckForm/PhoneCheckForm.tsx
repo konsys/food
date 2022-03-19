@@ -39,8 +39,7 @@ function PhoneCheckForm() {
       getItemByFilterFx(
         queryParamsFromObject({
           code,
-          clientUuid: getClientUuid(),
-          uuid: formInstance.getFieldValue(dataName('uuid')),
+          uuid: getClientUuid(),
         })
       ).then((v) => {
         setIsWrongCode(!!v);
@@ -70,11 +69,6 @@ function PhoneCheckForm() {
 
   return (
     <MForm>
-      <div style={{ display: 'none' }}>
-        <Item name={dataName('uuid')}>
-          <Input type='text' />
-        </Item>
-      </div>
       <div className='ordering-form__phone'>
         <div className='input-phone-wrapper'>
           <label htmlFor='order-phone'>Телефон</label>

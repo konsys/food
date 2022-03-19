@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { AbstractController } from 'src/abstract/crud/abstractController';
 import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
 import { EXPIRE_1_MINUTE } from 'src/common/constants/constants';
+import { addTime } from 'src/common/utils/dateTime';
 import { CodeCheck, ECodeStatus } from 'src/entities/code-check.entity';
 import { DeepPartial } from 'typeorm';
 import { CodeCheckService } from './code-check.service';
@@ -19,20 +20,27 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
 
   @Post()
   async generateCode(@Body() item: DeepPartial<CodeCheck>) {
-    let expiredAt = new Date(new Date().getTime() + EXPIRE_1_MINUTE);
-    const code = Math.floor(1000 + Math.random() * 9000).toString();
+    if (item.phoneNumber && item.uuid) {
+      let expiredAt = addTime(EXPIRE_1_MINUTE * 2);
+      const code = Math.floor(1000 + Math.random() * 9000).toString();
 
-    const res = await this.checkService.findOneByFilter({ uuid: item.uuid, phoneNumber: item.phoneNumber });
-    if (res) {
-      const isExpired = moment(res.expiredAt).isBefore(new Date());
-      if (!isExpired) {
-        return res;
-      } else {
-        expiredAt = new Date(new Date().getTime() + EXPIRE_1_MINUTE);
-        return this.checkService.update({ ...item, code, expiredAt });
+      const res = await this.checkService.findOne(item.uuid);
+
+      if (res) {
+        const isExpired = moment(res.expiredAt).isBefore(new Date());
+        if (!isExpired) {
+          return res;
+        } else {
+          await this.checkService.removeItem(item.uuid);
+          expiredAt = addTime(EXPIRE_1_MINUTE * 2);
+          await this.checkService.update({ ...res, code, expiredAt });
+          return this.checkService.findOne(item.uuid);
+        }
       }
+      await this.checkService.create({ ...item, code, expiredAt });
+      return this.checkService.findOne(item.uuid);
     }
-    return this.checkService.create({ ...item, code, expiredAt });
+    return false
   }
 
   @Get('filter-one')
