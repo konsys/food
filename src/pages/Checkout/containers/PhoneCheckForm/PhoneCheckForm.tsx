@@ -2,7 +2,7 @@ import { Button, Form, Input } from 'antd';
 import React, { memo, useState } from 'react';
 import { useStore } from 'effector-react';
 import MaskedInput from 'antd-mask-input';
-import { useTimer } from 'react-timer-hook';
+
 import { CodeCheckModel } from '../../../../store';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
@@ -11,6 +11,7 @@ import { getClientUuid } from '../../../../modules/cart/service';
 import { queryParamsFromObject } from '../../../../common/utils/utils';
 
 import './phoneCheckForm.less';
+import ChecloutTimer from '../../components/ChecloutTimer/ChecloutTimer';
 
 const { Item } = Form;
 
@@ -25,11 +26,6 @@ function PhoneCheckForm() {
   const { item } = useStore($itemStore);
 
   console.log(234234234234, item);
-
-  const { seconds, minutes } = useTimer({
-    expiryTimestamp: item?.expiredAt || new Date(),
-    onExpire: () => alert('onExpire called'),
-  });
 
   const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({ phoneNumber: undefined });
 
@@ -93,12 +89,7 @@ function PhoneCheckForm() {
           >
             <MaskedInput mask='+7 111 111 11 11' size='middle' />
           </Item>
-          <div className='ordering-form__phone-info'>
-            Вы сможете отправить код еще раз через
-            <span className='code_mins'>{minutes}</span>
-            <span>:</span>
-            <span className='code_secs'>{seconds}</span>
-          </div>
+          <ChecloutTimer expiryTimestamp={new Date(new Date().getTime() + 15 * 1000)} />
           <div className='input-phone-wrapper--ok' />
         </div>
         <div className='check-oh-hidden'>

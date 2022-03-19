@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post, Query, UseInterceptors } from '@nestjs/common';
+import * as moment from 'moment';
 import { AbstractController } from 'src/abstract/crud/abstractController';
 import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
 import { uuid } from 'src/common/random';
@@ -24,8 +25,9 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
     if (res) {
       return res;
     }
-    const dateWithoutTimezone = new Date();
-    const expiredAt = new Date(dateWithoutTimezone.getTime() + EXPIRE_1_MINUTE);
+    const dateWithoutTimezone = getDateWithoutTimeZone();
+    // const expiredAt = new Date(dateWithoutTimezone.getTime() + EXPIRE_1_MINUTE);
+    const expiredAt = moment(dateWithoutTimezone.getTime() + EXPIRE_1_MINUTE).format('YYYY-MM-DD HH:mm')
     const code = Math.floor(1000 + Math.random() * 9000).toString();
     return this.checkService.create({ ...item, code, uuid: uuid(), expiredAt });
   }
