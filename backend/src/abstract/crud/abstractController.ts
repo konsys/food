@@ -33,7 +33,6 @@ export class AbstractController<E> {
 
   @Get(':uuid')
   findOne(@Param('uuid') uuid: TUuid) {
-    z
     return this.service.findOne(uuid);
   }
 

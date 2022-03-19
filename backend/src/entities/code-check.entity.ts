@@ -38,7 +38,8 @@ export class CodeCheck {
 
 
   @Column({
-    type: 'timestamp with time zone', default: () => 'CURRENT_TIMESTAMP',
+    type: 'timestamp with time zone',
+    default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt?: Date;
 

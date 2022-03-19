@@ -21,14 +21,13 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
 
   @Post()
   async generateCode(@Body() item: DeepPartial<CodeCheck>) {
-    const res = await this.checkService.findOneByFilter({ clientUuid: item.clientUuid });
+    const res = await this.checkService.findOneByFilter({ uuid: item.uuid });
     if (res) {
       return res;
     }
-    const createdAt = new Date();
-    const expiredAt = moment(createdAt.getTime() + EXPIRE_1_MINUTE + 2000 * 6000).format(DATE_FORMAT)
+    const expiredAt = new Date(new Date().getTime() + EXPIRE_1_MINUTE + 1000 * 600);
     const code = Math.floor(1000 + Math.random() * 9000).toString();
-    return this.checkService.create({ ...item, code, uuid: uuid(), expiredAt, createdAt });
+    return this.checkService.create({ ...item, code, expiredAt });
   }
 
   @Get('filter-one')
