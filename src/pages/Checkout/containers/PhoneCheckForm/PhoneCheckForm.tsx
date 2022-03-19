@@ -1,9 +1,11 @@
-import { Button, Form, Input } from 'antd';
-import React, { memo, useState } from 'react';
+import { Button, Form } from 'antd';
+import React, { memo, useEffect, useState } from 'react';
+import { useTimer } from 'react-timer-hook';
 import { useGate, useStore } from 'effector-react';
 import moment from 'moment';
-import MaskedInput from 'antd-mask-input';
 import { useParams } from 'react-router-dom';
+import MaskedInput from 'antd-mask-input';
+import CheckoutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 import { CodeCheckModel } from '../../../../store';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
@@ -12,7 +14,6 @@ import { getClientUuid } from '../../../../modules/cart/service';
 import { queryParamsFromObject } from '../../../../common/utils/utils';
 
 import './phoneCheckForm.less';
-import ChecloutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 
 const { Item } = Form;
 
@@ -67,6 +68,18 @@ function PhoneCheckForm() {
     return Promise.resolve();
   }
 
+  const { seconds, minutes, isRunning, restart } = useTimer({
+    expiryTimestamp: item?.expiredAt || new Date(),
+    onExpire: () => console.log('onExpire called'),
+  });
+
+  useEffect(() => {
+    if (item) {
+      const localTime = moment(item.expiredAt).local().toDate();
+      restart(localTime);
+    }
+  }, [item?.expiredAt]);
+
   return (
     <MForm>
       <div className='ordering-form__phone'>
@@ -82,7 +95,7 @@ function PhoneCheckForm() {
           >
             <MaskedInput mask='+7 111 111 11 11' size='middle' />
           </Item>
-          <ChecloutTimer expiryTimestamp={item?.expiredAt || new Date()} />
+          <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
           <div className='input-phone-wrapper--ok' />
         </div>
         <div className='check-oh-hidden'>

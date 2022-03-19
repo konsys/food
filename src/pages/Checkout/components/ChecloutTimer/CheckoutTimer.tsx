@@ -1,25 +1,13 @@
-import moment from 'moment';
-import React, { memo, useEffect } from 'react';
-import { useTimer } from 'react-timer-hook';
-import { DATE_FORMAT } from '../../../../common/constants/constants';
+import React, { memo } from 'react';
 
 interface Props {
-  expiryTimestamp: Date;
+  minutes: number;
+  seconds: number;
+  isRunning: boolean;
 }
 
-function ChecloutTimer(props: Props) {
-  const { expiryTimestamp } = props;
-
-  const { seconds, minutes, isRunning, restart } = useTimer({
-    expiryTimestamp: new Date(),
-    onExpire: () => console.log('onExpire called'),
-  });
-
-  useEffect(() => {
-    const localTime = moment(expiryTimestamp).local().toDate();
-    restart(localTime);
-    console.log(234234234, localTime);
-  }, [expiryTimestamp]);
+function CheckoutTimer(props: Props) {
+  const { minutes, seconds, isRunning } = props;
 
   return (
     <div className='ordering-form__phone-info'>
@@ -37,4 +25,4 @@ function ChecloutTimer(props: Props) {
   );
 }
 
-export default memo(ChecloutTimer);
+export default memo(CheckoutTimer);

@@ -8,7 +8,7 @@ export type CodeCheckDto = {
   code?: string;
   description?: string;
   createdAt?: Date;
-  expiredAt?: Date;
+  expiredAt: Date;
 };
 
 export enum ESmsCodeStatus {
