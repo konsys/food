@@ -7,7 +7,7 @@ describe('menu tests', () => {
   const generateNewItem = () => restaurantMenuFactory.build();
 
   it('should create menu', async () => {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       const item = generateNewItem();
       await Promise.all(new Array(20).fill(await createItemFx(item)));
     }
