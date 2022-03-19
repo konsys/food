@@ -33,7 +33,7 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
 
   @Get('filter-one')
   async checkCode(@Query() filter: DeepPartial<CodeCheck>) {
-    if (filter?.code && filter?.clientUuid && filter?.uuid) {
+    if (filter?.code && filter?.uuid) {
       const res = await this.checkService.findOneByFilter(filter);
 
       if (res) {

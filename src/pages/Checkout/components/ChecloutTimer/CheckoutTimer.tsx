@@ -11,8 +11,6 @@ function ChecloutTimer(props: Props) {
   const testDateUtc = moment.utc(expiryTimestamp);
   const localTime = moment(testDateUtc).local().toDate();
 
-  console.log(11111111111, new Date(expiryTimestamp));
-
   const { seconds, minutes, isRunning } = useTimer({
     expiryTimestamp: new Date(expiryTimestamp),
     onExpire: () => console.log('onExpire called'),

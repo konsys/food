@@ -1,8 +1,8 @@
 import { Button, Form, Input } from 'antd';
 import React, { memo, useState } from 'react';
-import { useStore } from 'effector-react';
+import { useGate, useStore } from 'effector-react';
 import MaskedInput from 'antd-mask-input';
-
+import { useParams } from 'react-router-dom';
 import { CodeCheckModel } from '../../../../store';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
@@ -15,12 +15,15 @@ import ChecloutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 
 const { Item } = Form;
 
-const { createItemWithoutFetchingListFx, $itemPending, getItemByFilterFx, $itemStore } =
+const { createItemWithoutFetchingListFx, $itemPending, getItemByFilterFx, $itemStore, ItemGate } =
   CodeCheckModel;
 
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm() {
+  const { uuid } = useParams<{ uuid: string }>();
+  useGate(ItemGate, uuid);
+
   const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
   const { item } = useStore($itemStore);
@@ -47,7 +50,7 @@ function PhoneCheckForm() {
   const createCode = (code: CodeCheckDto) => {
     createItemWithoutFetchingListFx({
       phoneNumber: code.phoneNumber,
-      clientUuid: getClientUuid(),
+      uuid: getClientUuid(),
     }).then((v) => {
       formInstance.setFieldsValue(v);
       setIsCodeSent(true);
@@ -64,13 +67,12 @@ function PhoneCheckForm() {
     return Promise.resolve();
   }
 
+  console.log(11111111111, item);
+
   return (
     <MForm>
       <div style={{ display: 'none' }}>
         <Item name={dataName('uuid')}>
-          <Input type='text' />
-        </Item>
-        <Item name={dataName('clientUuid')}>
           <Input type='text' />
         </Item>
       </div>

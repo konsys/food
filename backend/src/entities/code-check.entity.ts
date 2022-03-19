@@ -25,9 +25,6 @@ export class CodeCheck {
   @Column()
   phoneNumber: string;
 
-  @Column()
-  clientUuid: string;
-
   @Column({ default: ECodeStatus.CREATED })
   status: ECodeStatus;
 
