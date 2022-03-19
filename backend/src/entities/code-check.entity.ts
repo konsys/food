@@ -41,12 +41,12 @@ export class CodeCheck {
     type: 'timestamp with time zone',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  createdAt?: Date;
+  createdAt: Date;
 
   @Column({
     type: 'timestamp with time zone',
     default: () => 'CURRENT_TIMESTAMP'
   })
-  expiredAt?: Date;
+  expiredAt: Date;
 }
 

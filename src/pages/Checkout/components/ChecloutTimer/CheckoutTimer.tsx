@@ -18,6 +18,7 @@ function ChecloutTimer(props: Props) {
   useEffect(() => {
     const localTime = moment(expiryTimestamp).local().toDate();
     restart(localTime);
+    console.log(234234234, localTime);
   }, [expiryTimestamp]);
 
   return (
