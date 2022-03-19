@@ -25,10 +25,10 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
     if (res) {
       return res;
     }
-    const dateWithoutTimezone = new Date();
-    const expiredAt = moment(dateWithoutTimezone.getTime() + EXPIRE_1_MINUTE).format(DATE_FORMAT)
+    const createdAt = new Date();
+    const expiredAt = moment(createdAt.getTime() + EXPIRE_1_MINUTE + 2000 * 6000).format(DATE_FORMAT)
     const code = Math.floor(1000 + Math.random() * 9000).toString();
-    return this.checkService.create({ ...item, code, uuid: uuid(), expiredAt, createdAt: new Date() });
+    return this.checkService.create({ ...item, code, uuid: uuid(), expiredAt, createdAt });
   }
 
   @Get('filter-one')

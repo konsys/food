@@ -11,11 +11,11 @@ function ChecloutTimer(props: Props) {
   const testDateUtc = moment.utc(expiryTimestamp);
   const localTime = moment(testDateUtc).local().toDate();
 
-  console.log(11111111111, localTime, expiryTimestamp);
+  console.log(11111111111, new Date(expiryTimestamp));
 
   const { seconds, minutes, isRunning } = useTimer({
-    expiryTimestamp: localTime,
-    onExpire: () => alert('onExpire called'),
+    expiryTimestamp: new Date(expiryTimestamp),
+    onExpire: () => console.log('onExpire called'),
   });
 
   return (
