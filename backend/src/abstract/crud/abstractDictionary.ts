@@ -1,5 +1,5 @@
-import { Exclude, Expose } from 'class-transformer';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import { Column, Entity, Index, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @Entity()
 export class AbstractDictionary {
@@ -10,6 +10,7 @@ export class AbstractDictionary {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Index({ unique: true, fulltext: true })
   @Column()
   uuid: string;
 

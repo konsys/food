@@ -1,5 +1,5 @@
 import { Exclude } from "class-transformer";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, PrimaryGeneratedColumn, Unique } from "typeorm";
 
 
 export enum ECodeStatus {
@@ -19,6 +19,7 @@ export class CodeCheck {
   id: number;
 
   @Column()
+  @Index({ unique: true, fulltext: true })
   uuid: string;
 
   @Exclude()

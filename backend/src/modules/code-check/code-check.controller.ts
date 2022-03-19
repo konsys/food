@@ -5,7 +5,7 @@ import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
 import { EXPIRE_1_MINUTE } from 'src/common/constants/constants';
 import { addTime } from 'src/common/utils/dateTime';
 import { CodeCheck, ECodeStatus } from 'src/entities/code-check.entity';
-import { DeepPartial } from 'typeorm';
+import { DeepPartial, Not } from 'typeorm';
 import { CodeCheckService } from './code-check.service';
 
 @UseInterceptors(ExtractInterceptor)
@@ -24,21 +24,23 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
       let expiredAt = addTime(EXPIRE_1_MINUTE * 2);
       const code = Math.floor(1000 + Math.random() * 9000).toString();
 
-      const res = await this.checkService.findOneByFilter({ uuid: item.uuid, phoneNumber: item.phoneNumber });
+      const res = await this.checkService.findOne(item.uuid);
 
       if (res) {
+        expiredAt = addTime(EXPIRE_1_MINUTE * 2);
+        if (item.phoneNumber !== res.phoneNumber) {
+          return this.checkService.update({ ...res, phoneNumber: item.phoneNumber, code, expiredAt });
+        }
+
         const isExpired = moment(res.expiredAt).isBefore(new Date());
         if (!isExpired) {
           return res;
         } else {
-          await this.checkService.removeItem(item.uuid);
-          expiredAt = addTime(EXPIRE_1_MINUTE * 2);
-          await this.checkService.update({ ...res, code, expiredAt });
-          return this.checkService.findOneByFilter({ uuid: item.uuid, phoneNumber: item.phoneNumber });
+          return this.checkService.update({ ...res, code, expiredAt });
         }
       }
-      await this.checkService.create({ ...item, code, expiredAt });
-      return this.checkService.findOneByFilter({ uuid: item.uuid, phoneNumber: item.phoneNumber });
+
+      return this.checkService.create({ ...item, code, expiredAt });
     }
     return false
   }
