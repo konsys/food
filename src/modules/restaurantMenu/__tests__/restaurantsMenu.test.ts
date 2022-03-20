@@ -8,12 +8,11 @@ describe('menu tests', () => {
   it('should create menu', async () => {
     for (let i = 0; i < 10; i++) {
 
-      // for (let i1 = 1; i1 < 11; i1++) {
-      // const item = restaurantMenuFactory.build({ restaurantId: i1 });
-      const restaraunt = await getItemByFilterFx({})
-      const item = restaurantMenuFactory.build();
-      await createItemFx(item);
-      // }
+      for (let i1 = 1; i1 < 11; i1++) {
+        const restaurant = await getItemByFilterFx({ id: i1 })
+        const item = restaurantMenuFactory.build({ restaurant, restaurantId: restaurant.id! });
+        await createItemFx(item);
+      }
     }
     expect(1).toBe(1);
   });
