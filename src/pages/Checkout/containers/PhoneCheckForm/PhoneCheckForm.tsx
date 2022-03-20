@@ -12,6 +12,7 @@ import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGener
 import { getClientUuid } from '../../../../modules/cart/service';
 
 import './phoneCheckForm.less';
+import SendCodeButton from '../../components/SendCodeButton/SendCodeButton';
 
 const { Item } = Form;
 
@@ -25,6 +26,13 @@ const {
 
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
+function phoneValidator(rule: any, value: string) {
+  const pattern = /^\+[\d]{1} [\d]{3} [\d]{3} [\d]{2} [\d]{2}$/;
+  if (!pattern.test(value)) {
+    return Promise.reject(new Error('Пожалуйста, введите номер телефона'));
+  }
+  return Promise.resolve();
+}
 function PhoneCheckForm() {
   useGate(CodeCheckGate, getClientUuid());
 
@@ -60,14 +68,6 @@ function PhoneCheckForm() {
 
   const sendCode = () => formInstance.validateFields().then(createCode);
 
-  function phoneValidator(rule: any, value: string) {
-    const pattern = /^\+[\d]{1} [\d]{3} [\d]{3} [\d]{2} [\d]{2}$/;
-    if (!pattern.test(value)) {
-      return Promise.reject(new Error('Пожалуйста, введите номер телефона'));
-    }
-    return Promise.resolve();
-  }
-
   const { seconds, minutes, isRunning, restart } = useTimer({
     expiryTimestamp: item?.expiredAt || new Date(),
     onExpire: () => console.log('onExpire called'),
@@ -98,20 +98,7 @@ function PhoneCheckForm() {
           <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
           <div className='input-phone-wrapper--ok' />
         </div>
-        <div className='check-oh-hidden'>
-          <label>&nbsp;</label>
-          <Item>
-            <Button
-              type='primary'
-              className='order-form-send-code'
-              loading={loading}
-              onClick={sendCode}
-              disabled={isRunning}
-            >
-              Получить код
-            </Button>
-          </Item>
-        </div>
+        <SendCodeButton sendCode={sendCode} loading={loading} isRunning={isRunning} />
         <div className='check-oh-hidden'>
           <label htmlFor='sms-code' className='label-sms-code'>
             Код из СМС
