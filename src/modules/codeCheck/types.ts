@@ -14,6 +14,7 @@ export type CodeCheckDto = {
 export enum ESmsCodeStatus {
   CREATED = 'CREATED',
   SMS_SENT = 'SMS_SENT',
-  SMS_IS_OLD = 'SMS_IS_OLD',
+  SMS_IS_OLD = 'SMS_IS_OUTDATED',
+  PHONE_NUMBER_CONFIRMED = 'PHONE_NUMBER_CONFIRMED',
   COMPLETED = 'COMPLETED'
 }

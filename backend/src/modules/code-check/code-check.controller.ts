@@ -21,13 +21,13 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
   @Post()
   async generateCode(@Body() item: DeepPartial<CodeCheck>) {
     if (item.phoneNumber && item.uuid && item.phoneNumber) {
-      let expiredAt = addTime(EXPIRE_1_MINUTE * 2);
+      let expiredAt = addTime(EXPIRE_1_MINUTE);
       const code = Math.floor(1000 + Math.random() * 9000).toString();
 
       const res = await this.checkService.findOne(item.uuid);
 
       if (res) {
-        expiredAt = addTime(EXPIRE_1_MINUTE * 2);
+        expiredAt = addTime(EXPIRE_1_MINUTE);
         if (item.phoneNumber !== res.phoneNumber) {
           return this.checkService.update({ ...res, phoneNumber: item.phoneNumber, code, expiredAt });
         }
@@ -40,7 +40,7 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
         }
       }
 
-      return this.checkService.create({ ...item, code, expiredAt });
+      return this.checkService.create({ ...item, code, expiredAt, status: ECodeStatus.SMS_SENT });
     }
     return false
   }
@@ -51,7 +51,7 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
       const res = await this.checkService.findOneByFilter(filter);
 
       if (res) {
-        const updated = await this.checkService.update({ ...res, status: ECodeStatus.SMS_SENT });
+        const updated = await this.checkService.update({ ...res, status: ECodeStatus.PHONE_NUMBER_CONFIRMED });
         return updated;
       }
 

@@ -5,7 +5,8 @@ import { Column, Entity, Index, PrimaryGeneratedColumn, Unique } from "typeorm";
 export enum ECodeStatus {
   CREATED = 'CREATED',
   SMS_SENT = 'SMS_SENT',
-  SMS_IS_OLD = 'SMS_IS_OLD',
+  SMS_IS_OLD = 'SMS_IS_OUTDATED',
+  PHONE_NUMBER_CONFIRMED = 'PHONE_NUMBER_CONFIRMED',
   COMPLETED = 'COMPLETED'
 }
 @Entity()

@@ -1,40 +1,14 @@
-import { Radio, Select } from 'antd';
+import { DatePicker, Radio, TimePicker } from 'antd';
 import React, { memo } from 'react';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { TItemWithUuid, TSelectOptions } from '../../../../common/types';
+import { TItemWithUuid } from '../../../../common/types';
 import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
-import { createOptionsList } from '../../../../common/utils/selectUtils';
+
 import PhoneCheckForm from '../PhoneCheckForm/PhoneCheckForm';
 
 import './checkoutForm.less';
-
-const deliveryOptions: TSelectOptions = [
-  {
-    id: 'wefwef',
-    value: 'Сейчас',
-  },
-  {
-    id: '',
-    value: '20:15',
-  },
-  {
-    id: '',
-    value: '20:30',
-  },
-  {
-    id: '',
-    value: '20:45',
-  },
-  {
-    id: '',
-    value: '21:00',
-  },
-  {
-    id: '',
-    value: '21:15',
-  },
-];
 
 interface Props {
   item: Nullable<TItemWithUuid<CartDto>>;
@@ -83,9 +57,21 @@ function CheckoutForm({ item }: Props) {
           {/* TIME --------------------------- */}
           <div className='ordering-form__time ordering-form__item--disabled'>
             <div className='ordering-form__time--input'>
-              <label>Время доставки</label>
+              <label>Время бронирования</label>
               <div className='order-options-time'>
-                <Select style={{ width: '100%' }}>{createOptionsList(deliveryOptions)}</Select>
+                <DatePicker
+                  className='order-options-time_select-date'
+                  mode='date'
+                  defaultValue={moment()}
+                  bordered={false}
+                />
+                <TimePicker
+                  className='order-options-time__select-time'
+                  defaultOpenValue={moment('00:00', 'HH:mm')}
+                  minuteStep={30}
+                  secondStep={60}
+                  bordered={false}
+                />
               </div>
             </div>
             <div className='form-checkout-promocode'>
