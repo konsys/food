@@ -3,7 +3,6 @@ import React, { memo, useEffect, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
 import { useGate, useStore } from 'effector-react';
 import moment from 'moment';
-import { useParams } from 'react-router-dom';
 import MaskedInput from 'antd-mask-input';
 import CheckoutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 import { CodeCheckModel } from '../../../../store';
@@ -11,20 +10,23 @@ import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { getClientUuid } from '../../../../modules/cart/service';
-import { queryParamsFromObject } from '../../../../common/utils/utils';
 
 import './phoneCheckForm.less';
 
 const { Item } = Form;
 
-const { createItemWithoutFetchingListFx, $itemPending, getItemByFilterFx, $itemStore, ItemGate } =
-  CodeCheckModel;
+const {
+  createItemWithoutFetchingListFx,
+  $itemPending,
+  getItemByFilterFx,
+  $itemStore,
+  ItemGate: CodeCheckGate,
+} = CodeCheckModel;
 
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function PhoneCheckForm() {
-  const { uuid } = useParams<{ uuid: string }>();
-  useGate(ItemGate, uuid);
+  useGate(CodeCheckGate, getClientUuid());
 
   const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
@@ -104,6 +106,7 @@ function PhoneCheckForm() {
               className='order-form-send-code'
               loading={loading}
               onClick={sendCode}
+              disabled={isRunning}
             >
               Получить код
             </Button>
