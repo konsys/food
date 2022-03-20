@@ -37,12 +37,10 @@ function PhoneCheckForm() {
   const codeHandler = () => {
     const code = formInstance.getFieldValue(dataName('code'));
     if (!Number.isNaN(+code)) {
-      getItemByFilterFx(
-        queryParamsFromObject({
-          code,
-          uuid: getClientUuid(),
-        })
-      ).then((v) => {
+      getItemByFilterFx({
+        code,
+        uuid: getClientUuid(),
+      }).then((v) => {
         setIsWrongCode(!!v);
       });
     }

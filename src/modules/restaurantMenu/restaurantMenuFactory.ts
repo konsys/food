@@ -9,7 +9,8 @@ export const restaurantMenuFactory = factory.Sync.makeFactory<RestaurantMenuDto>
   description: factory.each(() => faker.commerce.productDescription()),
   price: factory.each(() => faker.datatype.number(500)),
   weight: factory.each(() => faker.datatype.number(300)),
-  imageId: factory.each(() => 1),
-  restaurantId: factory.each(() => faker.datatype.number(6) + 1),
-  foodCategoryId: factory.each(() => faker.datatype.number(6) + 1),
+  imageId: 1,
+  restaurantId: 1,
+  foodCategoryId: 1,
+
 });

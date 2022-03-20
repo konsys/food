@@ -24,7 +24,7 @@ import {
 import { TUuid, TItemWithUuid } from '../../types/index';
 
 export type TGetOneByFilterFx<FullEntity> = Effect<
-  string,
+  Partial<FullEntity>,
   FullEntity,
   Error
 >;
@@ -67,7 +67,7 @@ export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = Create
 export class CrudStore<
   CreateEntity extends { uuid: TUuid },
   FullEntity = TItemWithUuid<CreateEntity>
-> {
+  > {
   private url: string;
 
   constructor(url: string) {
@@ -95,8 +95,8 @@ export class CrudStore<
       handler: (uuid) => service.getOne(uuid),
     });
 
-    const getItemByFilterFx = createEffect<TUuid, FullEntity, Error>({
-      handler: (uuid) => service.getOneByFilter(uuid),
+    const getItemByFilterFx = createEffect<Partial<FullEntity>, FullEntity, Error>({
+      handler: (filter) => service.getOneByFilter(filter),
     });
 
     const updateItemFx = createEffect<FullEntity, FullEntity, Error>({

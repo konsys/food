@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { axiosClient } from '../../http/Clients';
 import { TUuid } from '../types';
+import { queryParamsFromObject } from '../utils/utils';
 import { TListRequest, TListResponce, TypeOrmDeleteResult } from './types';
 
 export class CrudService<CreateEntity, FullEntity> {
@@ -22,8 +23,8 @@ export class CrudService<CreateEntity, FullEntity> {
     return data;
   }
 
-  async getOneByFilter(filter: string): Promise<FullEntity> {
-    return (await axiosClient.get<FullEntity>(`${this.url}/filter-one/${filter}`)).data;
+  async getOneByFilter(filter: Partial<FullEntity>): Promise<FullEntity> {
+    return (await axiosClient.get<FullEntity>(`${this.url}/filter-one/${queryParamsFromObject(filter)}`)).data;
   }
 
   async getOne(uuid: TUuid): Promise<FullEntity> {
@@ -37,4 +38,6 @@ export class CrudService<CreateEntity, FullEntity> {
   async deleteOne(uuid: TUuid): Promise<TypeOrmDeleteResult> {
     return (await axiosClient.delete(`${this.url}/${uuid}`)).data;
   }
+
+
 }
