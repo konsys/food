@@ -22,7 +22,6 @@
             margin-bottom: 15px;
         }
 
-        element.style {}
 
         .form-checkout-promocode {
             position: relative;
@@ -31,6 +30,11 @@
         .order-form-send-code,
         .order-form-sms-code {
             width: 160px;
+
+            &[disabled] {
+                pointer-events  : none;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
         }
 
         .input-phone-wrapper {
