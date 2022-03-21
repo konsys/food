@@ -6,7 +6,7 @@ import { TItemWithUuid } from '../../../../common/types';
 import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 
-import PhoneCheckForm from '../PhoneCheckForm/PhoneCheckForm';
+import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 
 import './checkoutForm.less';
 
@@ -25,7 +25,7 @@ function CheckoutForm({ item }: Props) {
 
           {/* PHONE --------------------------- */}
 
-          <PhoneCheckForm />
+          <PhoneCheckoutForm />
 
           {/* ADDRESS --------------------------- */}
           <div className='ordering-form__address address ordering-form__item--disabled'>
@@ -67,7 +67,6 @@ function CheckoutForm({ item }: Props) {
                 />
                 <TimePicker
                   className='order-options-time__select-time'
-                  defaultOpenValue={moment('00:00', 'HH:mm')}
                   minuteStep={30}
                   secondStep={60}
                   bordered={false}

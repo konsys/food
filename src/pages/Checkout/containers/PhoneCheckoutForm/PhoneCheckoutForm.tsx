@@ -1,18 +1,18 @@
-import { Button, Form } from 'antd';
+import { Form } from 'antd';
 import React, { memo, useEffect, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
 import { useGate, useStore } from 'effector-react';
 import moment from 'moment';
-import MaskedInput from 'antd-mask-input';
+import InputMask from 'react-input-mask';
 import CheckoutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 import { CodeCheckModel } from '../../../../store';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { getClientUuid } from '../../../../modules/cart/service';
-
-import './phoneCheckForm.less';
 import SendCodeButton from '../../components/SendCodeButton/SendCodeButton';
+
+import './PhoneCheckoutForm.less';
 
 const { Item } = Form;
 
@@ -27,20 +27,24 @@ const {
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function phoneValidator(rule: any, value: string) {
-  const pattern = /^\+[\d]{1} [\d]{3} [\d]{3} [\d]{2} [\d]{2}$/;
+  const pattern = /^\+[\d]{1} [(]{1}[\d]{3}[)]{1} [\d]{3}-[\d]{2}-[\d]{2}$/;
   if (!pattern.test(value)) {
     return Promise.reject(new Error('Пожалуйста, введите номер телефона'));
   }
   return Promise.resolve();
 }
-function PhoneCheckForm() {
+
+function PhoneCheckoutForm() {
   useGate(CodeCheckGate, getClientUuid());
 
-  const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
+  const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
   const { item } = useStore($itemStore);
 
-  const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({ phoneNumber: undefined });
+  const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({
+    phoneNumber: '1111',
+    code: '1111',
+  });
 
   const loading = useStore($itemPending);
 
@@ -60,17 +64,13 @@ function PhoneCheckForm() {
     createItemWithoutFetchingListFx({
       phoneNumber: code.phoneNumber,
       uuid: getClientUuid(),
-    }).then((v) => {
-      formInstance.setFieldsValue(v);
-      setIsCodeSent(true);
-    });
+    }).then(() => setIsCodeSent(true));
   };
 
   const sendCode = () => formInstance.validateFields().then(createCode);
 
   const { seconds, minutes, isRunning, restart } = useTimer({
     expiryTimestamp: item?.expiredAt || new Date(),
-    onExpire: () => console.log('onExpire called'),
   });
 
   useEffect(() => {
@@ -93,7 +93,7 @@ function PhoneCheckForm() {
               },
             ]}
           >
-            <MaskedInput mask='+7 111 111 11 11' size='middle' />
+            <InputMask mask='+7 (999) 999-99-99' />
           </Item>
           <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
           <div className='input-phone-wrapper--ok' />
@@ -104,8 +104,8 @@ function PhoneCheckForm() {
             Код из СМС
           </label>
           <Item name={dataName('code')}>
-            <MaskedInput
-              mask='1111'
+            <InputMask
+              mask='9999'
               disabled={!isCodeSent}
               className='order-form-sms-code'
               onChange={codeHandler}
@@ -118,4 +118,4 @@ function PhoneCheckForm() {
   );
 }
 
-export default memo(PhoneCheckForm);
+export default memo(PhoneCheckoutForm);
