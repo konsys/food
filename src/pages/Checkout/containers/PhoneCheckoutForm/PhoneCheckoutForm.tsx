@@ -41,7 +41,7 @@ function PhoneCheckoutForm() {
   const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
   const { item } = useStore($itemStore);
 
-  const { Form: MForm, formInstance } = useValidatedForm<CodeCheckDto>({
+  const { Form: PhoneCheckForm, formInstance } = useValidatedForm<CodeCheckDto>({
     phoneNumber: '1111',
     code: '1111',
   });
@@ -81,7 +81,7 @@ function PhoneCheckoutForm() {
   }, [item?.expiredAt]);
 
   return (
-    <MForm>
+    <PhoneCheckForm>
       <div className='ordering-form__phone'>
         <div className='input-phone-wrapper'>
           <label htmlFor='order-phone'>Телефон</label>
@@ -114,7 +114,7 @@ function PhoneCheckoutForm() {
           {!isWrongCode ? <div className='input-code-error'>Неверный код</div> : ''}
         </div>
       </div>
-    </MForm>
+    </PhoneCheckForm>
   );
 }
 
