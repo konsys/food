@@ -9,6 +9,10 @@ import { CartDto } from '../../../../modules/cart/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 
 import './checkoutForm.less';
+import AddressCheckoutForm from '../AddressCheckoutForm/AddressCheckoutForm';
+import PromocodeCheckoutForm from '../PromocodeCheckoutForm/PromocodeCheckoutForm';
+import DateCheckoutForm from '../DateCheckoutForm/DateCheckoutForm';
+import PaymentsCheckoutForm from '../PaymentsCheckoutForm/PaymentsCheckoutForm';
 
 interface Props {
   item: Nullable<TItemWithUuid<CartDto>>;
@@ -28,87 +32,15 @@ function CheckoutForm({ item }: Props) {
           <PhoneCheckoutForm />
 
           {/* ADDRESS --------------------------- */}
-          <div className='ordering-form__address address ordering-form__item--disabled'>
-            <div className='address__title'>
-              <span>Мои адреса</span>
-              <button className='address__update-button' disabled type='button'>
-                <svg
-                  width={12}
-                  height={12}
-                  viewBox='0 0 12 12'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <rect y='5.53845' width={12} height='0.923077' fill='#F37021' />
-                  <rect
-                    x='6.46155'
-                    width={12}
-                    height='0.923077'
-                    transform='rotate(90 6.46155 0)'
-                    fill='#F37021'
-                  />
-                </svg>
-                Добавить новый адрес
-              </button>
-            </div>
-            <ul className='custom-input-buttons address__list' data-validate-address />
-          </div>
+          <AddressCheckoutForm />
 
           {/* TIME --------------------------- */}
           <div className='ordering-form__time ordering-form__item--disabled'>
-            <div className='ordering-form__time--input'>
-              <label>Время бронирования</label>
-              <div className='order-options-time'>
-                <DatePicker
-                  className='order-options-time_select-date'
-                  mode='date'
-                  defaultValue={moment()}
-                  bordered={false}
-                />
-                <TimePicker
-                  className='order-options-time__select-time'
-                  minuteStep={30}
-                  secondStep={60}
-                  bordered={false}
-                />
-              </div>
-            </div>
-            <div className='form-checkout-promocode'>
-              <label htmlFor='order-promocode'>Промокод</label>
-              <input
-                type='text'
-                name='promocode'
-                disabled
-                className='form-checkout-promocode__input'
-              />
-              <div className='form-checkout-promocode__button-wrapper'>
-                <button
-                  className='form-checkout-promocode__button'
-                  data-cancel='false'
-                  disabled
-                  type='button'
-                >
-                  Применить
-                </button>
-              </div>
-              <div className='input-promocode-error'>Неверный промокод</div>
-            </div>
+            <DateCheckoutForm />
+            <PromocodeCheckoutForm />
           </div>
-          <div className='ordering-form__payments'>
-            <div className='page-title page-title--checkout'>
-              <h2>Оплата</h2>
-            </div>
-            <div className='custom-input-buttons'>
-              <Radio.Group onChange={() => null} value={1}>
-                <Radio value={1}>Картой онлайн</Radio>
-              </Radio.Group>
+          <PaymentsCheckoutForm />
 
-              <span className='ordering-form__payments--info'>
-                Мы заблокируем средства и спишем после завершения заказа.
-              </span>
-            </div>
-            <input type='hidden' name='binding_id' />
-          </div>
           <div className='ordering-form__finish'>
             <div className='container'>
               <div className='order-finish__wrapper'>
