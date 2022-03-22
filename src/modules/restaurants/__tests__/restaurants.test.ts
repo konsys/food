@@ -9,8 +9,6 @@ describe('restaurant tests', () => {
     for (let i = 0; i < 10; i++) {
       const item = restaurantFactory.build();
       await createItemFx(item);
-      expect(item).toBe(1);
-
     }
 
     expect(1).toBe(1);

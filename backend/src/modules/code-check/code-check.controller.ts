@@ -5,7 +5,7 @@ import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
 import { EXPIRE_1_MINUTE } from 'src/common/constants/constants';
 import { addTime } from 'src/common/utils/dateTime';
 import { CodeCheck, ECodeStatus } from 'src/entities/code-check.entity';
-import { DeepPartial, Not } from 'typeorm';
+import { DeepPartial } from 'typeorm';
 import { CodeCheckService } from './code-check.service';
 
 @UseInterceptors(ExtractInterceptor)
