@@ -17,6 +17,7 @@ export class AbstractController<E> {
 
   @Post()
   create(@Body() item: DeepPartial<E>) {
+    console.log(234234234, item)
     return this.service.create(item);
   }
 

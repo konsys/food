@@ -1,11 +1,11 @@
 import { RestaurantMenuModel, RestaurantModel } from '../../../store';
 import { restaurantMenuFactory } from '../restaurantMenuFactory';
 
-describe('menu tests', () => {
+describe('restaurant tests', () => {
   const { createItemFx } = RestaurantMenuModel;
   const { getItemByFilterFx } = RestaurantModel;
 
-  it('should create menu', async () => {
+  it.skip('should create restaurant', async () => {
     for (let i = 0; i < 10; i++) {
 
       for (let i1 = 1; i1 < 11; i1++) {

@@ -4,8 +4,8 @@ import { restaurantFactory } from '../restaurantFactory';
 const { createItemFx } = RestaurantModel;
 
 
-describe('menu tests', () => {
-  it('should create menu', async () => {
+describe('restaurant tests', () => {
+  it('should create restaurant', async () => {
     for (let i = 0; i < 10; i++) {
       const item = restaurantFactory.build();
       await createItemFx(item);
