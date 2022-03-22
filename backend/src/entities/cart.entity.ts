@@ -6,11 +6,8 @@ import { TRestaurantMenuOrder } from "./order.enrity";
 @Entity()
 export class Cart {
 
-  @PrimaryGeneratedColumn()
-  @Column()
-  id: number;
 
-  @Column()
+  @PrimaryColumn()
   @Index({ unique: true, fulltext: true })
   uuid: TUuid;
 
