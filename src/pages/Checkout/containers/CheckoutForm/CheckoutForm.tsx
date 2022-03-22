@@ -35,8 +35,10 @@ function CheckoutForm({ item }: Props) {
           <AddressCheckoutForm />
 
           {/* TIME --------------------------- */}
-          <div className='ordering-form__time ordering-form__item--disabled'>
+          <div className='ordering-form__time'>
             <DateCheckoutForm />
+          </div>
+          <div className='ordering-form__time'>
             <PromocodeCheckoutForm />
           </div>
           <PaymentsCheckoutForm />

@@ -41,10 +41,7 @@ function PhoneCheckoutForm() {
   const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
   const { item } = useStore($itemStore);
 
-  const { Form: PhoneCheckForm, formInstance } = useValidatedForm<CodeCheckDto>({
-    phoneNumber: '1111',
-    code: '1111',
-  });
+  const { Form: PhoneCheckForm, formInstance } = useValidatedForm<CodeCheckDto>();
 
   const loading = useStore($itemPending);
 
@@ -106,7 +103,7 @@ function PhoneCheckoutForm() {
           <Item name={dataName('code')}>
             <InputMask
               mask='9999'
-              disabled={!isCodeSent}
+              disabled={!isCodeSent || loading}
               className='order-form-sms-code'
               onChange={codeHandler}
             />
