@@ -1,5 +1,5 @@
 import { Exclude } from "class-transformer";
-import { Column, Entity, Index, PrimaryColumn } from "typeorm";
+import { Column, Entity, Index, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity()
@@ -9,7 +9,10 @@ export class Promo {
         Object.assign(this, partial);
     }
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column()
     @Index({ unique: true, fulltext: true })
     uuid: string;
 
