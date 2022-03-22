@@ -6,9 +6,10 @@ const { createItemFx } = RestaurantModel;
 const generateNewItem = () => restaurantFactory.build();
 
 describe('menu tests', () => {
-  it.skip('should create menu', async () => {
+  it('should create menu', async () => {
     for (let i = 0; i < 10; i++) {
       const item = generateNewItem();
+      expect(item).toBe(1);
       await Promise.all(new Array(10).fill(await createItemFx(item)));
     }
 

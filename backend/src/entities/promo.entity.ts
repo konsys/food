@@ -1,5 +1,5 @@
 import { Exclude } from "class-transformer";
-import { Column, Entity, Index, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity()

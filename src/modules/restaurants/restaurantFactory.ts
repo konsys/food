@@ -10,7 +10,7 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   rating: factory.each(() => 5),
   priceRating: factory.each(() => 1),
   foodType: factory.each(() => EFoodType.EUROPIAN),
-  description: factory.each(() => faker.commerce.productDescription()),
+  description: factory.each(() => faker.commerce.productName()),
   closeTime: factory.each(() => new Date()),
   openTime: factory.each(() => new Date()),
   createdAt: factory.each(() => new Date()),
@@ -18,5 +18,5 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   imageId: factory.each(() => 1),
   legalId: factory.each(() => 1),
   logoId: factory.each(() => 1),
-  restaurantMenu: restaurantMenuFactory.buildList(4),
+  restaurantMenu: restaurantMenuFactory.buildList(1),
 });
