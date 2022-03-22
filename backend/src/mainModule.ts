@@ -13,6 +13,7 @@ import { RestarauntMenuModule } from './modules/restaurant-menu/restaurant-menu.
 import { FoodCategoryModule } from './modules/food-category/food-category.module';
 import { CartModule } from './modules/cart/cart.module';
 import { CodeCheckModule } from './modules/code-check/code-check.module';
+import { PromoModule } from './modules/promo/promo.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { CodeCheckModule } from './modules/code-check/code-check.module';
     FoodCategoryModule,
     CartModule,
     CodeCheckModule,
+    PromoModule,
     ServeStaticModule.forRoot({
       rootPath: `${FULL_UPLOAD_PATH}`,
     }),

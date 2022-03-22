@@ -26,3 +26,4 @@ export const FoodCategoryModel = new CrudStore<FoodCategoryDto>(
 ).createCrudStore();
 export const CartModel = new CrudStore<CartDto>(apiUrls.cart.main).createCrudStore();
 export const CodeCheckModel = new CrudStore<CodeCheckDto>(apiUrls.checkCode.main).createCrudStore();
+export const PromoModel = new CrudStore<CodeCheckDto>(apiUrls.checkCode.main).createCrudStore();

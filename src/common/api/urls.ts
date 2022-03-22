@@ -33,4 +33,7 @@ export const apiUrls = {
   checkCode: {
     main: '/code-check',
   },
+  promo: {
+    main: '/promo',
+  },
 };
