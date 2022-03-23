@@ -1,10 +1,10 @@
-import { RestaurantMenuModel } from '../../../store';
+import { PromoModel, RestaurantMenuModel } from '../../../store';
 import { promoFactory } from '../promoFactory';
 
 describe('promo tests', () => {
-  const { createItemFx } = RestaurantMenuModel;
+  const { createItemFx } = PromoModel;
 
-  it.skip('should create promo', async () => {
+  it('should create promo', async () => {
 
     for (let i1 = 1; i1 < 11; i1++) {
       const item = promoFactory.build();
