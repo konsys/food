@@ -29,7 +29,11 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
       if (res) {
         expiredAt = addTime(EXPIRE_1_MINUTE);
         if (item.phoneNumber !== res.phoneNumber) {
-          return this.checkService.update({ ...res, phoneNumber: item.phoneNumber, code, expiredAt });
+          return this.checkService.update({ ...res, phoneNumber: item.phoneNumber, code, expiredAt, status: ECodeStatus.CREATED });
+        }
+
+        if (res.status !== ECodeStatus.COMPLETED) {
+          return this.checkService.update({ ...res, phoneNumber: item.phoneNumber, code, status: ECodeStatus.CREATED });
         }
 
         const isExpired = moment(res.expiredAt).isBefore(new Date());

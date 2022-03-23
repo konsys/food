@@ -2,7 +2,7 @@ import { DatePicker, Radio, TimePicker } from 'antd';
 import React, { memo } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { TItemWithUuid } from '../../../../common/types';
+import { TItemWithUuid, TVoidFn } from '../../../../common/types';
 import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 
@@ -16,9 +16,11 @@ import PaymentsCheckoutForm from '../PaymentsCheckoutForm/PaymentsCheckoutForm';
 
 interface Props {
   item: Nullable<TItemWithUuid<CartDto>>;
+  setIsPhoneConfirmed: TVoidFn<boolean>;
+  isPhoneConfirmed: boolean;
 }
 
-function CheckoutForm({ item }: Props) {
+function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed }: Props) {
   return (
     <section className='ordering__mobile'>
       <div className='container ordering-form__container'>
@@ -29,7 +31,10 @@ function CheckoutForm({ item }: Props) {
 
           {/* PHONE --------------------------- */}
 
-          <PhoneCheckoutForm />
+          <PhoneCheckoutForm
+            setIsPhoneConfirmed={setIsPhoneConfirmed}
+            isPhoneConfirmed={isPhoneConfirmed}
+          />
 
           {/* ADDRESS --------------------------- */}
           <AddressCheckoutForm />

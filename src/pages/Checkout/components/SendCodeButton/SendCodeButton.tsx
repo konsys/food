@@ -1,27 +1,26 @@
-import { Button, Form } from 'antd';
+import { Button, ButtonProps, Form } from 'antd';
 import React, { memo, MouseEventHandler } from 'react';
 
 const { Item } = Form;
 
-interface Props {
+interface Props extends ButtonProps {
   loading: boolean;
   sendCode: MouseEventHandler<HTMLElement>;
-  isRunning: boolean;
 }
 
 function SendCodeButton(props: Props) {
-  const { loading, isRunning, sendCode } = props;
+  const { loading, sendCode, ...restProps } = props;
 
   return (
     <div className='check-oh-hidden'>
       <label>&nbsp;</label>
       <Item>
         <Button
+          {...restProps}
           type='primary'
           className='order-form-send-code'
           loading={loading}
           onClick={sendCode}
-          disabled={isRunning}
         >
           Получить код
         </Button>

@@ -13,6 +13,7 @@ import { getClientUuid } from '../../../../modules/cart/service';
 import SendCodeButton from '../../components/SendCodeButton/SendCodeButton';
 
 import './PhoneCheckoutForm.less';
+import { TVoidFn } from '../../../../common/types';
 
 const { Item } = Form;
 
@@ -34,11 +35,17 @@ function phoneValidator(rule: any, value: string) {
   return Promise.resolve();
 }
 
-function PhoneCheckoutForm() {
+type Props = {
+  setIsPhoneConfirmed: TVoidFn<boolean>;
+  isPhoneConfirmed: boolean;
+};
+
+function PhoneCheckoutForm({ setIsPhoneConfirmed, isPhoneConfirmed }: Props) {
   useGate(CodeCheckGate, getClientUuid());
 
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
   const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
+
   const { item } = useStore($itemStore);
 
   const { Form: PhoneCheckForm, formInstance } = useValidatedForm<CodeCheckDto>();
@@ -53,6 +60,7 @@ function PhoneCheckoutForm() {
         uuid: getClientUuid(),
       }).then((v) => {
         setIsWrongCode(!!v);
+        setIsPhoneConfirmed(!!v);
       });
     }
   };
@@ -90,12 +98,16 @@ function PhoneCheckoutForm() {
               },
             ]}
           >
-            <InputMask mask='+7 (999) 999-99-99' />
+            <InputMask mask='+7 (999) 999-99-99' disabled={isPhoneConfirmed} />
           </Item>
           <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
           <div className='input-phone-wrapper--ok' />
         </div>
-        <SendCodeButton sendCode={sendCode} loading={loading} isRunning={isRunning} />
+        <SendCodeButton
+          sendCode={sendCode}
+          loading={loading}
+          disabled={isPhoneConfirmed || isRunning}
+        />
         <div className='check-oh-hidden'>
           <label htmlFor='sms-code' className='label-sms-code'>
             Код из СМС
@@ -103,12 +115,13 @@ function PhoneCheckoutForm() {
           <Item name={dataName('code')}>
             <InputMask
               mask='9999'
-              disabled={!isCodeSent || loading}
+              disabled={!isRunning && (!isCodeSent || loading || isPhoneConfirmed)}
               className='order-form-sms-code'
               onChange={codeHandler}
             />
           </Item>
           {!isWrongCode ? <div className='input-code-error'>Неверный код</div> : ''}
+          {isPhoneConfirmed ? <div className='input-code-success'>Телефон подтвержден</div> : ''}
         </div>
       </div>
     </PhoneCheckForm>
