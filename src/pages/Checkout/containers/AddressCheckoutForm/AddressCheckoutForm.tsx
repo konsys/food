@@ -1,15 +1,17 @@
 import React, { memo } from 'react';
 
-interface Props {}
+interface Props {
+  disabled: boolean;
+}
 
 function AddressCheckoutForm(props: Props) {
-  const {} = props;
+  const { disabled } = props;
 
   return (
     <div className='ordering-form__address address ordering-form__item--disabled'>
       <div className='address__title'>
         <span>Мои адреса</span>
-        <button className='address__update-button' disabled type='button'>
+        <button className='address__update-button' disabled={disabled} type='button'>
           <svg
             width={12}
             height={12}
@@ -29,7 +31,7 @@ function AddressCheckoutForm(props: Props) {
           Добавить новый адрес
         </button>
       </div>
-      <ul className='custom-input-buttons address__list' data-validate-address />
+      <ul className='custom-input-buttons address__list' />
     </div>
   );
 }

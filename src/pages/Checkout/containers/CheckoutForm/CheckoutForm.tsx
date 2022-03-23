@@ -37,14 +37,14 @@ function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed }: Props) {
           />
 
           {/* ADDRESS --------------------------- */}
-          <AddressCheckoutForm />
+          <AddressCheckoutForm disabled={!isPhoneConfirmed} />
 
           {/* TIME --------------------------- */}
           <div className='ordering-form__time'>
-            <DateCheckoutForm />
+            <DateCheckoutForm disabled={!isPhoneConfirmed} />
           </div>
           <div className='ordering-form__time'>
-            <PromocodeCheckoutForm />
+            <PromocodeCheckoutForm disabled={!isPhoneConfirmed} />
           </div>
           <PaymentsCheckoutForm />
 

@@ -1,19 +1,26 @@
 import React, { memo } from 'react';
 
-interface Props {}
+interface Props {
+  disabled: boolean;
+}
 
 function PromocodeCheckoutForm(props: Props) {
-  const {} = props;
+  const { disabled } = props;
 
   return (
     <div className='form-checkout-promocode'>
       <label htmlFor='order-promocode'>Промокод</label>
-      <input type='text' name='promocode' disabled className='form-checkout-promocode__input' />
+      <input
+        type='text'
+        name='promocode'
+        disabled={disabled}
+        className='form-checkout-promocode__input'
+      />
       <div className='form-checkout-promocode__button-wrapper'>
         <button
           className='form-checkout-promocode__button'
           data-cancel='false'
-          disabled
+          disabled={disabled}
           type='button'
         >
           Применить

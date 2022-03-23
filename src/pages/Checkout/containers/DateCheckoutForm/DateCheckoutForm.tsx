@@ -2,10 +2,12 @@ import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 import React, { memo, useState } from 'react';
 
-interface Props {}
+interface Props {
+  disabled: boolean;
+}
 
 function DateCheckoutForm(props: Props) {
-  const {} = props;
+  const { disabled } = props;
 
   const [time, setTime] = useState<Date>(moment().toDate());
 
@@ -13,7 +15,7 @@ function DateCheckoutForm(props: Props) {
     <div className='ordering-form__time--input'>
       <label>Время бронирования</label>
       <div className='order-options-time'>
-        <DateTimePicker onChange={setTime} value={time} />
+        <DateTimePicker disabled={disabled} onChange={setTime} value={time} />
       </div>
     </div>
   );
