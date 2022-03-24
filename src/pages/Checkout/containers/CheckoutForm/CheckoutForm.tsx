@@ -25,7 +25,7 @@ function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed, promo }: Pr
       <div className='container ordering-form__container'>
         <section className='ordering-form'>
           <div className='page-title page-title--checkout'>
-            <h2>Оформление заказа {item?.orderSum}</h2>
+            <h2>Оформление заказа</h2>
           </div>
 
           {/* PHONE --------------------------- */}
@@ -59,7 +59,9 @@ function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed, promo }: Pr
                     <div className='order-finish__title'>Итого</div>
                     <div className='order-finish__value'>
                       <span className='cart-price-total'>
-                        {380 - (380 / 100) * (promo?.percentDiscount || 0)} ₽
+                        {(item?.orderSum || 0) -
+                          ((item?.orderSum || 0) / 100) * (promo?.percentDiscount || 0)}
+                        ₽
                       </span>
                     </div>
                   </div>
