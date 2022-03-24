@@ -1,26 +1,25 @@
-import { DatePicker, Radio, TimePicker } from 'antd';
 import React, { memo } from 'react';
-import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { TItemWithUuid, TVoidFn } from '../../../../common/types';
 import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
-
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
-
-import './checkoutForm.less';
 import AddressCheckoutForm from '../AddressCheckoutForm/AddressCheckoutForm';
-import PromocodeCheckoutForm from '../PromocodeCheckoutForm/PromocodeCheckoutForm';
+import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';
 import DateCheckoutForm from '../DateCheckoutForm/DateCheckoutForm';
 import PaymentsCheckoutForm from '../PaymentsCheckoutForm/PaymentsCheckoutForm';
+import { PromoDto } from '../../../../modules/promo/types';
+
+import './checkoutForm.less';
 
 interface Props {
   item: Nullable<TItemWithUuid<CartDto>>;
   setIsPhoneConfirmed: TVoidFn<boolean>;
   isPhoneConfirmed: boolean;
+  promo: Nullable<PromoDto>;
 }
 
-function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed }: Props) {
+function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed, promo }: Props) {
   return (
     <section className='ordering__mobile'>
       <div className='container ordering-form__container'>
@@ -44,7 +43,7 @@ function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed }: Props) {
             <DateCheckoutForm disabled={!isPhoneConfirmed} />
           </div>
           <div className='ordering-form__time'>
-            <PromocodeCheckoutForm disabled={!isPhoneConfirmed} />
+            <PromoCodeCheckoutForm disabled={!isPhoneConfirmed} />
           </div>
           <PaymentsCheckoutForm />
 
@@ -59,7 +58,9 @@ function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed }: Props) {
                   <div className='order-finish__item order-finish__item--total'>
                     <div className='order-finish__title'>Итого</div>
                     <div className='order-finish__value'>
-                      <span className='cart-price-total'>380 ₽</span>
+                      <span className='cart-price-total'>
+                        {380 - (380 / 100) * (promo?.percentDiscount || 0)} ₽
+                      </span>
                     </div>
                   </div>
                   <div className='order-finish__item'>

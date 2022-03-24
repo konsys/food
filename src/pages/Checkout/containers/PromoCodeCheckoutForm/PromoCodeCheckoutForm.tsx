@@ -8,7 +8,7 @@ interface Props {
 
 const { getItemByFilterFx, $itemStore } = PromoModel;
 
-function PromocodeCheckoutForm(props: Props) {
+function PromoCodeCheckoutForm(props: Props) {
   const { disabled } = props;
   const [code, setCode] = useState<string>();
 
@@ -40,4 +40,4 @@ function PromocodeCheckoutForm(props: Props) {
   );
 }
 
-export default memo(PromocodeCheckoutForm);
+export default memo(PromoCodeCheckoutForm);

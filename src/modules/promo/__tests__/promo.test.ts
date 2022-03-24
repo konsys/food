@@ -1,4 +1,4 @@
-import { PromoModel, RestaurantMenuModel } from '../../../store';
+import { PromoModel } from '../../../store';
 import { promoFactory } from '../promoFactory';
 
 describe('promo tests', () => {

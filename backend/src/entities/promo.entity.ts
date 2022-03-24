@@ -33,6 +33,6 @@ export class Promo {
     expiredAt: Date;
 
     @Column()
-    percentDIscount: number
+    percentDiscount: number
 }
 

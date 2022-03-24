@@ -5,7 +5,7 @@ const { createItemFx } = RestaurantModel;
 
 
 describe('restaurant tests', () => {
-  it('should create restaurant', async () => {
+  it.skip('should create restaurant', async () => {
     for (let i = 0; i < 10; i++) {
       const item = restaurantFactory.build();
       await createItemFx(item);
