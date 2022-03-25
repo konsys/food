@@ -1,5 +1,5 @@
 import { DeepPartial } from 'typeorm';
-import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors, Query, HttpException, BadRequestException, HttpStatus } from '@nestjs/common';
 import { TUuid } from 'src/common/types';
 
 import { TListRequest } from 'src/common/types/paginationTypes';
@@ -26,9 +26,15 @@ export class AbstractController<E> {
   }
 
   @Get('filter-one')
-  filterOne(@Query() filter: DeepPartial<E>) {
+  async filterOne(@Query() filter: DeepPartial<E>) {
+    console.log(234234234, filter)
     const instance = instanceToInstance<DeepPartial<E>>(filter);
-    return this.service.findOneByFilter(instance);
+    const res = await this.service.findOneByFilter(instance);
+    if (res) {
+      return res;
+    }
+    throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+
   }
 
   @Get(':uuid')

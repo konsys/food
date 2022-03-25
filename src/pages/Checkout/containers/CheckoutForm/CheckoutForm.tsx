@@ -61,7 +61,7 @@ function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed, promo }: Pr
                       <span className='cart-price-total'>
                         {(item?.orderSum || 0) -
                           ((item?.orderSum || 0) / 100) * (promo?.percentDiscount || 0)}
-                        ₽
+                        <span className='cart-price-total__money-sign'>₽</span>
                       </span>
                     </div>
                   </div>
