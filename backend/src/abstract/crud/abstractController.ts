@@ -27,13 +27,12 @@ export class AbstractController<E> {
 
   @Get('filter-one')
   async filterOne(@Query() filter: DeepPartial<E>) {
-    console.log(234234234, filter)
     const instance = instanceToInstance<DeepPartial<E>>(filter);
     const res = await this.service.findOneByFilter(instance);
     if (res) {
       return res;
     }
-    throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+    throw new HttpException('Resource not found', HttpStatus.NOT_FOUND);
 
   }
 

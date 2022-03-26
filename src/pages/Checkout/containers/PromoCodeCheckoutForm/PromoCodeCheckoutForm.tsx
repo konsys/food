@@ -12,7 +12,7 @@ function PromoCodeCheckoutForm(props: Props) {
   const { disabled } = props;
   const [code, setCode] = useState<string>();
 
-  const { item } = useStore($itemStore);
+  const { item, error } = useStore($itemStore);
   return (
     <div className='form-checkout-promocode'>
       <label htmlFor='order-promocode'>Промокод</label>
@@ -35,7 +35,12 @@ function PromoCodeCheckoutForm(props: Props) {
           Применить
         </button>
       </div>
-      {!item ? <div className='input-promocode-error'>Неверный промокод</div> : ''}
+      {error ? <div className='input-promocode-error'>Неверный промокод</div> : ''}
+      {item ? (
+        <div className='input-promocode-success'>{`Скидка ${item.percentDiscount}%`}</div>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

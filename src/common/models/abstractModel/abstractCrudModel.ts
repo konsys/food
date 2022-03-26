@@ -15,13 +15,14 @@ import { CrudService } from '../../api';
 import {
   createInitItem,
   createInitItemsWithPagination,
-  nullableResult,
   TListRequest,
   TListResponce,
   TItemStore,
   TypeOrmDeleteResult,
 } from '../../api/types';
 import { TUuid, TItemWithUuid } from '../../types/index';
+import { NullableNumber } from '../../../core/types';
+import { nullableResult, requestErrorHandler } from './utils';
 
 export type TGetOneByFilterFx<FullEntity> = Effect<
   Partial<FullEntity>,
@@ -41,6 +42,11 @@ export type TGetAllFx<FullEntity> = Effect<
   TListResponce<FullEntity>,
   Error
 >;
+
+export type ErrorStore = {
+  code: NullableNumber,
+  message: string
+}
 
 export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = CreateEntity> = {
   resetList: Event<void>;
@@ -117,6 +123,7 @@ export class CrudStore<
     const setFilter = createEvent<any>();
     const setItem = createEvent<FullEntity>();
 
+
     const $itemStore = createStore<TItemStore<FullEntity>>(createInitItem());
     const $itemPending = createStore<boolean>(false);
     const $listStore = createStore<TListResponce<FullEntity>>(
@@ -152,14 +159,12 @@ export class CrudStore<
       .on(getItemByFilterFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(updateItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(deleteItemFx.pending, (prev, pending) => ({ ...prev, pending }))
-      .on(createItemFx.fail, () => notification.error({ message: 'Ошибка создания' }))
-      .on(createItemWithoutFetchingListFx.fail, () => notification.error({ message: 'Ошибка создания' }))
-      .on(getItemFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
-      .on(getItemByFilterFx.fail, () => notification.error({ message: 'Ошибка запроса' }))
-      .on(updateItemFx.fail, () => notification.error({ message: 'Ошибка обновления' }))
-      .on(deleteItemFx.fail, () =>
-        notification.error({ message: `Ошибка удаления`, duration: 1000 })
-      )
+      .on(createItemFx.fail, requestErrorHandler)
+      .on(createItemWithoutFetchingListFx.fail, requestErrorHandler)
+      .on(getItemFx.fail, requestErrorHandler)
+      .on(getItemByFilterFx.fail, requestErrorHandler)
+      .on(updateItemFx.fail, requestErrorHandler)
+      .on(deleteItemFx.fail, requestErrorHandler)
       .reset(resetOne);
 
     sample({
