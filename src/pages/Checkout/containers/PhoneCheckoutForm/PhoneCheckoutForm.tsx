@@ -3,6 +3,7 @@ import React, { memo, useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 import moment from 'moment';
 import InputMask from 'react-input-mask';
+import { val } from 'factory.ts/lib/async';
 import CheckoutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
@@ -12,10 +13,11 @@ import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import { TItem } from '../../../../common/api/types';
 
 import './PhoneCheckoutForm.less';
+import { TCheckoutForm } from '../../../../modules/checkout/types';
 
 const { Item } = Form;
 
-const dataName = columnsNamesGenerator<CodeCheckDto>();
+const dataName = columnsNamesGenerator<TCheckoutForm>();
 
 function phoneValidator(rule: any, value: string) {
   const pattern = /^\+[\d]{1} [(]{1}[\d]{3}[)]{1} [\d]{3}-[\d]{2}-[\d]{2}$/;
@@ -32,7 +34,7 @@ type Props = {
   formInstance: any;
   setIsWrongCode: TVoidFn<boolean>;
   setIsCodeSent: TVoidFn<boolean>;
-  getCheckCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
+  getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   isCodeSent: boolean;
   isWrongCode: boolean;
@@ -45,7 +47,7 @@ function PhoneCheckoutForm({
   formInstance,
   setIsWrongCode,
   setIsCodeSent,
-  getCheckCode,
+  getCheckoutCode,
   createCheckoutCode,
   isCodeSent,
   isWrongCode,
@@ -54,7 +56,7 @@ function PhoneCheckoutForm({
     const codeInput = formInstance.getFieldValue('code');
 
     if (!Number.isNaN(+codeInput)) {
-      getCheckCode({
+      getCheckoutCode({
         code: codeInput,
         uuid: getClientUuid(),
       }).then((v) => {
@@ -64,14 +66,13 @@ function PhoneCheckoutForm({
     }
   };
 
-  const createCode = (code: CodeCheckDto) => {
-    createCheckoutCode({
-      phoneNumber: code.phoneNumber,
-      uuid: getClientUuid(),
-    }).then(() => setIsCodeSent(true));
-  };
-
-  const sendCode = () => formInstance.validateFields().then(createCode);
+  const createCodeSms = () =>
+    formInstance.validateFields().then((v: CodeCheckDto) =>
+      createCheckoutCode({
+        phoneNumber: v.phoneNumber,
+        uuid: getClientUuid(),
+      }).then(() => setIsCodeSent(true))
+    );
 
   const { seconds, minutes, isRunning, restart } = useTimer({
     expiryTimestamp: code?.item?.expiredAt || new Date(),
@@ -104,7 +105,7 @@ function PhoneCheckoutForm({
         <div className='input-phone-wrapper--ok' />
       </div>
       <SendCodeButton
-        sendCode={sendCode}
+        createCodeSms={createCodeSms}
         loading={loading}
         disabled={isPhoneConfirmed || isRunning}
       />

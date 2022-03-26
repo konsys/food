@@ -1,18 +1,18 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { TPromiseFn, TVoidFn } from '../../../../common/types';
-import { Nullable } from '../../../../core/types';
-import { CartDto } from '../../../../modules/cart/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 import AddressCheckoutForm from '../AddressCheckoutForm/AddressCheckoutForm';
 import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';
 import DateCheckoutForm from '../DateCheckoutForm/DateCheckoutForm';
 import PaymentsCheckoutForm from '../PaymentsCheckoutForm/PaymentsCheckoutForm';
 import { PromoDto } from '../../../../modules/promo/types';
-
-import './checkoutForm.less';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { TItem } from '../../../../common/api/types';
+import { CartDto } from '../../../../modules/cart/types';
+
+import './checkoutForm.less';
+import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 
 interface Props {
   cart: TItem<CartDto>;
@@ -20,10 +20,9 @@ interface Props {
   promo: TItem<PromoDto>;
   setIsPhoneConfirmed: TVoidFn<boolean>;
   isPhoneConfirmed: boolean;
-  formInstance: any;
   setIsWrongCode: TVoidFn<boolean>;
   setIsCodeSent: TVoidFn<boolean>;
-  getCheckCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
+  getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   isCodeSent: boolean;
   isWrongCode: boolean;
@@ -35,15 +34,16 @@ function CheckoutForm({
   setIsPhoneConfirmed,
   isPhoneConfirmed,
   promo,
-  formInstance,
   setIsWrongCode,
   setIsCodeSent,
-  getCheckCode,
+  getCheckoutCode,
   createCheckoutCode,
   isCodeSent,
   isWrongCode,
 }: Props) {
   const cartItem = cart?.item;
+  const { Form: PhoneForm, formInstance: phoneInstanceForm } = useValidatedForm<CodeCheckDto>();
+
   return (
     <section className='ordering__mobile'>
       <div className='container ordering-form__container'>
@@ -53,19 +53,20 @@ function CheckoutForm({
           </div>
 
           {/* PHONE --------------------------- */}
-
-          <PhoneCheckoutForm
-            setIsPhoneConfirmed={setIsPhoneConfirmed}
-            isPhoneConfirmed={isPhoneConfirmed}
-            formInstance={formInstance}
-            code={code}
-            setIsWrongCode={setIsWrongCode}
-            setIsCodeSent={setIsCodeSent}
-            getCheckCode={getCheckCode}
-            createCheckoutCode={createCheckoutCode}
-            isCodeSent={isCodeSent}
-            isWrongCode={isWrongCode}
-          />
+          <PhoneForm>
+            <PhoneCheckoutForm
+              setIsPhoneConfirmed={setIsPhoneConfirmed}
+              isPhoneConfirmed={isPhoneConfirmed}
+              formInstance={phoneInstanceForm}
+              code={code}
+              setIsWrongCode={setIsWrongCode}
+              setIsCodeSent={setIsCodeSent}
+              getCheckoutCode={getCheckoutCode}
+              createCheckoutCode={createCheckoutCode}
+              isCodeSent={isCodeSent}
+              isWrongCode={isWrongCode}
+            />
+          </PhoneForm>
 
           {/* ADDRESS --------------------------- */}
           <AddressCheckoutForm disabled={!isPhoneConfirmed} />

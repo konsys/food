@@ -5,11 +5,11 @@ const { Item } = Form;
 
 interface Props extends ButtonProps {
   loading: boolean;
-  sendCode: MouseEventHandler<HTMLElement>;
+  createCodeSms: MouseEventHandler<HTMLElement>;
 }
 
 function SendCodeButton(props: Props) {
-  const { loading, sendCode, ...restProps } = props;
+  const { loading, createCodeSms, ...restProps } = props;
 
   return (
     <div className='check-oh-hidden'>
@@ -20,7 +20,7 @@ function SendCodeButton(props: Props) {
           type='primary'
           className='order-form-send-code'
           loading={loading}
-          onClick={sendCode}
+          onClick={createCodeSms}
         >
           Получить код
         </Button>

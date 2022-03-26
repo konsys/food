@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { getClientUuid } from '../../modules/cart/service';
 import { TCheckoutForm } from '../../modules/checkout/types';
+import { CodeCheckDto } from '../../modules/codeCheck/types';
 import { CartModel, CodeCheckModel, PromoModel } from '../../store';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
 
@@ -11,7 +12,7 @@ const { $itemStore: cartStore, ItemGate } = CartModel;
 const { $itemStore: promoStore } = PromoModel;
 const {
   createItemWithoutFetchingListFx: createCheckoutCode,
-  getItemByFilterFx: getCheckCode,
+  getItemByFilterFx: getCheckoutCode,
   $itemStore: codeCheckStore,
   ItemGate: CodeCheckGate,
 } = CodeCheckModel;
@@ -25,7 +26,6 @@ function Checkout() {
 
   const [isPhoneConfirmed, setIsPhoneConfirmed] = useState<boolean>(false);
 
-  const { Form: OrderChekoutForm, formInstance } = useValidatedForm<TCheckoutForm>();
   useGate(CodeCheckGate, getClientUuid());
   useGate(CodeCheckGate, getClientUuid());
 
@@ -33,22 +33,19 @@ function Checkout() {
   const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
 
   return (
-    <OrderChekoutForm>
-      <CheckoutForm
-        code={code}
-        cart={cart}
-        isPhoneConfirmed={isPhoneConfirmed}
-        setIsPhoneConfirmed={setIsPhoneConfirmed}
-        promo={promo}
-        formInstance={formInstance}
-        createCheckoutCode={createCheckoutCode}
-        getCheckCode={getCheckCode}
-        isCodeSent={isCodeSent}
-        isWrongCode={isWrongCode}
-        setIsCodeSent={setIsCodeSent}
-        setIsWrongCode={setIsWrongCode}
-      />
-    </OrderChekoutForm>
+    <CheckoutForm
+      code={code}
+      cart={cart}
+      isPhoneConfirmed={isPhoneConfirmed}
+      setIsPhoneConfirmed={setIsPhoneConfirmed}
+      promo={promo}
+      createCheckoutCode={createCheckoutCode}
+      getCheckoutCode={getCheckoutCode}
+      isCodeSent={isCodeSent}
+      isWrongCode={isWrongCode}
+      setIsCodeSent={setIsCodeSent}
+      setIsWrongCode={setIsWrongCode}
+    />
   );
 }
 
