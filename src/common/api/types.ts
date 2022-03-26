@@ -42,6 +42,7 @@ export const createInitItemsWithPagination = <T>(): TListResponce<T> => ({
   page: 1,
   totalRecords: 0,
   pending: false,
+  error: null
 });
 
 
