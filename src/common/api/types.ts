@@ -1,4 +1,5 @@
 import { Nullable } from '../../core/types';
+import { TItemWithUuid } from '../types';
 
 export type TSort = 'asc' | 'desc';
 
@@ -29,6 +30,8 @@ export type TItemStore<T> = {
   pending?: boolean;
   error: Nullable<TResponseError>
 };
+
+export type TItem<T> = Nullable<TItemStore<TItemWithUuid<T>>>
 
 export const createInitItem = <T>(): TItemStore<T> => ({
   item: null,

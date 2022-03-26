@@ -1,29 +1,19 @@
 import { Form } from 'antd';
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
-import { useGate, useStore } from 'effector-react';
 import moment from 'moment';
 import InputMask from 'react-input-mask';
 import CheckoutTimer from '../../components/ChecloutTimer/CheckoutTimer';
-import { CodeCheckModel } from '../../../../store';
-import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { getClientUuid } from '../../../../modules/cart/service';
 import SendCodeButton from '../../components/SendCodeButton/SendCodeButton';
+import { TPromiseFn, TVoidFn } from '../../../../common/types';
+import { TItem } from '../../../../common/api/types';
 
 import './PhoneCheckoutForm.less';
-import { TVoidFn } from '../../../../common/types';
 
 const { Item } = Form;
-
-const {
-  createItemWithoutFetchingListFx,
-  $itemPending,
-  getItemByFilterFx,
-  $itemStore,
-  ItemGate: CodeCheckGate,
-} = CodeCheckModel;
 
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
@@ -36,27 +26,36 @@ function phoneValidator(rule: any, value: string) {
 }
 
 type Props = {
+  code: TItem<CodeCheckDto>;
   setIsPhoneConfirmed: TVoidFn<boolean>;
   isPhoneConfirmed: boolean;
+  formInstance: any;
+  setIsWrongCode: TVoidFn<boolean>;
+  setIsCodeSent: TVoidFn<boolean>;
+  getCheckCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
+  createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
+  isCodeSent: boolean;
+  isWrongCode: boolean;
 };
 
-function PhoneCheckoutForm({ setIsPhoneConfirmed, isPhoneConfirmed }: Props) {
-  useGate(CodeCheckGate, getClientUuid());
-
-  const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
-  const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
-
-  const { item } = useStore($itemStore);
-
-  const { Form: PhoneCheckForm, formInstance } = useValidatedForm<CodeCheckDto>();
-
-  const loading = useStore($itemPending);
-
+function PhoneCheckoutForm({
+  code,
+  setIsPhoneConfirmed,
+  isPhoneConfirmed,
+  formInstance,
+  setIsWrongCode,
+  setIsCodeSent,
+  getCheckCode,
+  createCheckoutCode,
+  isCodeSent,
+  isWrongCode,
+}: Props) {
   const codeHandler = () => {
-    const code = formInstance.getFieldValue(dataName('code'));
-    if (!Number.isNaN(+code)) {
-      getItemByFilterFx({
-        code,
+    const codeInput = formInstance.getFieldValue(['phoneCheckout', 'code']);
+
+    if (!Number.isNaN(+codeInput)) {
+      getCheckCode({
+        code: codeInput,
         uuid: getClientUuid(),
       }).then((v) => {
         setIsWrongCode(!!v);
@@ -66,7 +65,7 @@ function PhoneCheckoutForm({ setIsPhoneConfirmed, isPhoneConfirmed }: Props) {
   };
 
   const createCode = (code: CodeCheckDto) => {
-    createItemWithoutFetchingListFx({
+    createCheckoutCode({
       phoneNumber: code.phoneNumber,
       uuid: getClientUuid(),
     }).then(() => setIsCodeSent(true));
@@ -75,56 +74,56 @@ function PhoneCheckoutForm({ setIsPhoneConfirmed, isPhoneConfirmed }: Props) {
   const sendCode = () => formInstance.validateFields().then(createCode);
 
   const { seconds, minutes, isRunning, restart } = useTimer({
-    expiryTimestamp: item?.expiredAt || new Date(),
+    expiryTimestamp: code?.item?.expiredAt || new Date(),
   });
 
   useEffect(() => {
-    if (item) {
-      const localTime = moment(item.expiredAt).local().toDate();
+    if (code?.item?.expiredAt) {
+      const localTime = moment(code.item.expiredAt).local().toDate();
       restart(localTime);
     }
-  }, [item?.expiredAt]);
+  }, [code?.item?.expiredAt]);
+
+  const loading = code?.pending ?? false;
 
   return (
-    <PhoneCheckForm>
-      <div className='ordering-form__phone'>
-        <div className='input-phone-wrapper'>
-          <label htmlFor='order-phone'>Телефон</label>
-          <Item
-            name={dataName('phoneNumber')}
-            rules={[
-              {
-                validator: phoneValidator,
-              },
-            ]}
-          >
-            <InputMask mask='+7 (999) 999-99-99' disabled={isPhoneConfirmed} />
-          </Item>
-          <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
-          <div className='input-phone-wrapper--ok' />
-        </div>
-        <SendCodeButton
-          sendCode={sendCode}
-          loading={loading}
-          disabled={isPhoneConfirmed || isRunning}
-        />
-        <div className='check-oh-hidden'>
-          <label htmlFor='sms-code' className='label-sms-code'>
-            Код из СМС
-          </label>
-          <Item name={dataName('code')}>
-            <InputMask
-              mask='9999'
-              disabled={!isRunning && (!isCodeSent || loading || isPhoneConfirmed)}
-              className='order-form-sms-code'
-              onChange={codeHandler}
-            />
-          </Item>
-          {!isWrongCode ? <div className='input-code-error'>Неверный код</div> : ''}
-          {isPhoneConfirmed ? <div className='input-code-success'>Телефон подтвержден</div> : ''}
-        </div>
+    <div className='ordering-form__phone'>
+      <div className='input-phone-wrapper'>
+        <label htmlFor='order-phone'>Телефон</label>
+        <Item
+          name={dataName('phoneNumber')}
+          rules={[
+            {
+              validator: phoneValidator,
+            },
+          ]}
+        >
+          <InputMask mask='+7 (999) 999-99-99' disabled={isPhoneConfirmed} />
+        </Item>
+        <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
+        <div className='input-phone-wrapper--ok' />
       </div>
-    </PhoneCheckForm>
+      <SendCodeButton
+        sendCode={sendCode}
+        loading={loading}
+        disabled={isPhoneConfirmed || isRunning}
+      />
+      <div className='check-oh-hidden'>
+        <label htmlFor='sms-code' className='label-sms-code'>
+          Код из СМС
+        </label>
+        <Item name={dataName('code')}>
+          <InputMask
+            mask='9999'
+            disabled={!isRunning && (!isCodeSent || loading || isPhoneConfirmed)}
+            className='order-form-sms-code'
+            onChange={codeHandler}
+          />
+        </Item>
+        {!isWrongCode ? <div className='input-code-error'>Неверный код</div> : ''}
+        {isPhoneConfirmed ? <div className='input-code-success'>Телефон подтвержден</div> : ''}
+      </div>
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { TItemWithUuid, TVoidFn } from '../../../../common/types';
+import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
@@ -11,15 +11,39 @@ import PaymentsCheckoutForm from '../PaymentsCheckoutForm/PaymentsCheckoutForm';
 import { PromoDto } from '../../../../modules/promo/types';
 
 import './checkoutForm.less';
+import { CodeCheckDto } from '../../../../modules/codeCheck/types';
+import { TItem } from '../../../../common/api/types';
 
 interface Props {
-  item: Nullable<TItemWithUuid<CartDto>>;
+  cart: TItem<CartDto>;
+  code: TItem<CodeCheckDto>;
+  promo: TItem<PromoDto>;
   setIsPhoneConfirmed: TVoidFn<boolean>;
   isPhoneConfirmed: boolean;
-  promo: Nullable<PromoDto>;
+  formInstance: any;
+  setIsWrongCode: TVoidFn<boolean>;
+  setIsCodeSent: TVoidFn<boolean>;
+  getCheckCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
+  createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
+  isCodeSent: boolean;
+  isWrongCode: boolean;
 }
 
-function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed, promo }: Props) {
+function CheckoutForm({
+  cart,
+  code,
+  setIsPhoneConfirmed,
+  isPhoneConfirmed,
+  promo,
+  formInstance,
+  setIsWrongCode,
+  setIsCodeSent,
+  getCheckCode,
+  createCheckoutCode,
+  isCodeSent,
+  isWrongCode,
+}: Props) {
+  const cartItem = cart?.item;
   return (
     <section className='ordering__mobile'>
       <div className='container ordering-form__container'>
@@ -33,6 +57,14 @@ function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed, promo }: Pr
           <PhoneCheckoutForm
             setIsPhoneConfirmed={setIsPhoneConfirmed}
             isPhoneConfirmed={isPhoneConfirmed}
+            formInstance={formInstance}
+            code={code}
+            setIsWrongCode={setIsWrongCode}
+            setIsCodeSent={setIsCodeSent}
+            getCheckCode={getCheckCode}
+            createCheckoutCode={createCheckoutCode}
+            isCodeSent={isCodeSent}
+            isWrongCode={isWrongCode}
           />
 
           {/* ADDRESS --------------------------- */}
@@ -59,8 +91,8 @@ function CheckoutForm({ item, setIsPhoneConfirmed, isPhoneConfirmed, promo }: Pr
                     <div className='order-finish__title'>Итого</div>
                     <div className='order-finish__value'>
                       <span className='cart-price-total'>
-                        {(item?.orderSum || 0) -
-                          ((item?.orderSum || 0) / 100) * (promo?.percentDiscount || 0)}
+                        {(cartItem?.orderSum || 0) -
+                          ((cartItem?.orderSum || 0) / 100) * (promo?.item?.percentDiscount || 0)}
                         <span className='cart-price-total__money-sign'>₽</span>
                       </span>
                     </div>
