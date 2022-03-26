@@ -22,9 +22,13 @@ function DateCheckoutForm(props: Props) {
   const [dateSet, isDateSet] = useState<boolean>(false);
 
   const saveDate = () =>
-    dateFormInstance
-      .validateFields()
-      .then((v: OrderDto) => onSaveDate(v).then(() => isDateSet(true)));
+    dateFormInstance.validateFields().then((v: OrderDto) => {
+      console.log(234234234, v);
+      return onSaveDate(v).then(() => isDateSet(true));
+    });
+
+  const onDateSelect = (e: any) => console.log(234234234, e);
+
   return (
     <div className='ordering-form__time--input'>
       <label>Время бронирования</label>
@@ -38,7 +42,7 @@ function DateCheckoutForm(props: Props) {
           ]}
         >
           {/* <DateTimePicker disabled={disabled} onChange={setTime} value={time} /> */}
-          <DateTimePicker disabled={disabled} onCalendarClose={saveDate} />
+          <DateTimePicker disabled={disabled} onChange={onDateSelect} />
           {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}
         </Item>
       </div>
