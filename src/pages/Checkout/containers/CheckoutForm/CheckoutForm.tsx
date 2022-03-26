@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { TPromiseFn, TVoidFn } from '../../../../common/types';
+import { TItemWithUuid, TPromiseFn, TVoidFn } from '../../../../common/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 import AddressCheckoutForm from '../AddressCheckoutForm/AddressCheckoutForm';
 import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';
@@ -13,6 +13,9 @@ import { CartDto } from '../../../../modules/cart/types';
 
 import './checkoutForm.less';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
+import { TDateCheckoutForm } from '../../../../modules/checkout/types';
+import { OrderDto } from '../../../../modules/order/types';
+import { TCreateItemFx } from '../../../../common/models/abstractModel/abstractCrudModel';
 
 interface Props {
   cart: TItem<CartDto>;
@@ -26,6 +29,7 @@ interface Props {
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   isCodeSent: boolean;
   isWrongCode: boolean;
+  onSaveDate: TCreateItemFx<Partial<OrderDto>, TItemWithUuid<OrderDto>>;
 }
 
 function CheckoutForm({
@@ -40,10 +44,11 @@ function CheckoutForm({
   createCheckoutCode,
   isCodeSent,
   isWrongCode,
+  onSaveDate,
 }: Props) {
   const cartItem = cart?.item;
   const { Form: PhoneForm, formInstance: phoneInstanceForm } = useValidatedForm<CodeCheckDto>();
-
+  const { Form: DateForm, formInstance: dateFormInstance } = useValidatedForm<TDateCheckoutForm>();
   return (
     <section className='ordering__mobile'>
       <div className='container ordering-form__container'>
@@ -69,11 +74,17 @@ function CheckoutForm({
           </PhoneForm>
 
           {/* ADDRESS --------------------------- */}
-          <AddressCheckoutForm disabled={!isPhoneConfirmed} />
+          <DateForm>
+            <AddressCheckoutForm disabled={!isPhoneConfirmed} />
+          </DateForm>
 
           {/* TIME --------------------------- */}
           <div className='ordering-form__time'>
-            <DateCheckoutForm disabled={!isPhoneConfirmed} />
+            <DateCheckoutForm
+              disabled={!isPhoneConfirmed}
+              onSaveDate={onSaveDate}
+              dateFormInstance={dateFormInstance}
+            />
           </div>
           <div className='ordering-form__time'>
             <PromoCodeCheckoutForm disabled={!isPhoneConfirmed} />

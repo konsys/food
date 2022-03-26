@@ -1,19 +1,30 @@
 import DateTimePicker from 'react-datetime-picker';
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { Form } from 'antd';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
-import { TCheckoutForm } from '../../../../modules/checkout/types';
+import { TDateCheckoutForm } from '../../../../modules/checkout/types';
+import { TItemWithUuid } from '../../../../common/types';
+import { OrderDto } from '../../../../modules/order/types';
+import { TCreateItemFx } from '../../../../common/models/abstractModel/abstractCrudModel';
 
 interface Props {
   disabled: boolean;
+  onSaveDate: TCreateItemFx<Partial<OrderDto>, TItemWithUuid<OrderDto>>;
+  dateFormInstance: any;
 }
 const { Item } = Form;
 
-const dataName = columnsNamesGenerator<TCheckoutForm>();
+const dataName = columnsNamesGenerator<TDateCheckoutForm>();
 
 function DateCheckoutForm(props: Props) {
-  const { disabled } = props;
+  const { disabled, onSaveDate, dateFormInstance } = props;
 
+  const [dateSet, isDateSet] = useState<boolean>(false);
+
+  const saveDate = () =>
+    dateFormInstance
+      .validateFields()
+      .then((v: OrderDto) => onSaveDate(v).then(() => isDateSet(true)));
   return (
     <div className='ordering-form__time--input'>
       <label>Время бронирования</label>
@@ -27,7 +38,8 @@ function DateCheckoutForm(props: Props) {
           ]}
         >
           {/* <DateTimePicker disabled={disabled} onChange={setTime} value={time} /> */}
-          <DateTimePicker disabled={disabled} />
+          <DateTimePicker disabled={disabled} onCalendarClose={saveDate} />
+          {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}
         </Item>
       </div>
     </div>

@@ -10,6 +10,7 @@ import { FoodCategoryDto } from './modules/foodCatefory/legal/types';
 import { CartDto } from './modules/cart/types';
 import { CodeCheckDto } from './modules/codeCheck/types';
 import { PromoDto } from './modules/promo/types';
+import { OrderDto } from './modules/order/types';
 
 export const RestaurantModel = new CrudStore<RestaurantDto>(
   apiUrls.restaurants.main
@@ -28,3 +29,4 @@ export const FoodCategoryModel = new CrudStore<FoodCategoryDto>(
 export const CartModel = new CrudStore<CartDto>(apiUrls.cart.main).createCrudStore();
 export const CodeCheckModel = new CrudStore<CodeCheckDto>(apiUrls.checkCode.main).createCrudStore();
 export const PromoModel = new CrudStore<PromoDto>(apiUrls.promo.main).createCrudStore();
+export const OrderModel = new CrudStore<OrderDto>(apiUrls.order.main).createCrudStore();

@@ -36,4 +36,7 @@ export const apiUrls = {
   promo: {
     main: '/promo',
   },
+  order: {
+    main: '/order',
+  },
 };

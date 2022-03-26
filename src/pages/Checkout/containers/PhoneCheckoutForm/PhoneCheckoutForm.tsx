@@ -13,11 +13,10 @@ import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import { TItem } from '../../../../common/api/types';
 
 import './PhoneCheckoutForm.less';
-import { TCheckoutForm } from '../../../../modules/checkout/types';
 
 const { Item } = Form;
 
-const dataName = columnsNamesGenerator<TCheckoutForm>();
+const dataName = columnsNamesGenerator<CodeCheckDto>();
 
 function phoneValidator(rule: any, value: string) {
   const pattern = /^\+[\d]{1} [(]{1}[\d]{3}[)]{1} [\d]{3}-[\d]{2}-[\d]{2}$/;
