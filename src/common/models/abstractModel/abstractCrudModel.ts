@@ -22,7 +22,7 @@ import {
 } from '../../api/types';
 import { TUuid, TItemWithUuid } from '../../types/index';
 import { NullableNumber } from '../../../core/types';
-import { nullableResult, requestErrorHandler } from './utils';
+import { nullableResult, requestItemErrorHandler, requestListErrorHandler } from './utils';
 
 export type TGetOneByFilterFx<FullEntity> = Effect<
   Partial<FullEntity>,
@@ -140,7 +140,7 @@ export class CrudStore<
       .on(setPage, (prev, page) => ({ ...prev, page }))
       .on(setPageSize, (prev, limit) => ({ ...prev, limit }))
       .on(setFilter, (prev, filter) => ({ ...prev, filter }))
-      .on(getAllFx.fail, () => notification.error({ message: 'Ошибка получения данных' }))
+      .on(getAllFx.fail, requestListErrorHandler)
       .reset(resetList);
 
     $itemStore
@@ -159,12 +159,12 @@ export class CrudStore<
       .on(getItemByFilterFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(updateItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(deleteItemFx.pending, (prev, pending) => ({ ...prev, pending }))
-      .on(createItemFx.fail, requestErrorHandler)
-      .on(createItemWithoutFetchingListFx.fail, requestErrorHandler)
-      .on(getItemFx.fail, requestErrorHandler)
-      .on(getItemByFilterFx.fail, requestErrorHandler)
-      .on(updateItemFx.fail, requestErrorHandler)
-      .on(deleteItemFx.fail, requestErrorHandler)
+      .on(createItemFx.fail, requestItemErrorHandler)
+      .on(createItemWithoutFetchingListFx.fail, requestItemErrorHandler)
+      .on(getItemFx.fail, requestItemErrorHandler)
+      .on(getItemByFilterFx.fail, requestItemErrorHandler)
+      .on(updateItemFx.fail, requestItemErrorHandler)
+      .on(deleteItemFx.fail, requestItemErrorHandler)
       .reset(resetOne);
 
     sample({

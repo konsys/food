@@ -1,4 +1,3 @@
-import { NumericDictionaryIteratee } from 'lodash';
 import { Nullable } from '../../core/types';
 
 export type TSort = 'asc' | 'desc';
@@ -17,6 +16,7 @@ export type TListRequest<T> = TPaginationRequestParams & {
 export type TListResponce<T> = TListRequest<T> & {
   items: T[];
   totalRecords: number;
+  error: Nullable<TResponseError>
 };
 
 export type TResponseError = {
