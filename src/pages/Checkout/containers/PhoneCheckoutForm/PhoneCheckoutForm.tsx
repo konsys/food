@@ -51,7 +51,7 @@ function PhoneCheckoutForm({
   isWrongCode,
 }: Props) {
   const codeHandler = () => {
-    const codeInput = formInstance.getFieldValue(['phoneCheckout', 'code']);
+    const codeInput = formInstance.getFieldValue('code');
 
     if (!Number.isNaN(+codeInput)) {
       getCheckCode({
