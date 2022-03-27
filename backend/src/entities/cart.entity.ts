@@ -1,7 +1,8 @@
 
 import { TUuid } from "src/common/types";
 import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
-import { TRestaurantMenuOrder } from "./order.enrity";
+import { RestaurantMenu } from "./restaraunt-menu.entity";
+// import { TRestaurantMenuOrder } from "./order.entity";
 
 @Entity()
 export class Cart {
@@ -44,3 +45,9 @@ export enum EOrderStatus {
   COMPLETED = 'COMPLETED',
   PAID = 'PAID'
 }
+
+export type TRestaurantMenuOrder = {
+  restaurantMenu: RestaurantMenu;
+  quantity: number;
+  id: number;
+};
