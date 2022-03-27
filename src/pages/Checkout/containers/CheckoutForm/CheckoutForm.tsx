@@ -48,7 +48,7 @@ function CheckoutForm({
 }: Props) {
   const cartItem = cart?.item;
   const { Form: PhoneForm, formInstance: phoneInstanceForm } = useValidatedForm<CodeCheckDto>();
-  const { Form: DateForm, formInstance: dateFormInstance } = useValidatedForm<TDateCheckoutForm>();
+
   return (
     <section className='ordering__mobile'>
       <div className='container ordering-form__container'>
@@ -74,17 +74,12 @@ function CheckoutForm({
           </PhoneForm>
 
           {/* ADDRESS --------------------------- */}
-          <DateForm>
-            <AddressCheckoutForm disabled={!isPhoneConfirmed} />
-          </DateForm>
+
+          <AddressCheckoutForm disabled={!isPhoneConfirmed} />
 
           {/* TIME --------------------------- */}
           <div className='ordering-form__time'>
-            <DateCheckoutForm
-              disabled={!isPhoneConfirmed}
-              onSaveDate={onSaveDate}
-              dateFormInstance={dateFormInstance}
-            />
+            <DateCheckoutForm disabled={!isPhoneConfirmed} onSaveDate={onSaveDate} cart={cart} />
           </div>
           <div className='ordering-form__time'>
             <PromoCodeCheckoutForm disabled={!isPhoneConfirmed} />
