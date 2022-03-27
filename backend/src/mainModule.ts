@@ -14,6 +14,7 @@ import { FoodCategoryModule } from './modules/food-category/food-category.module
 import { CartModule } from './modules/cart/cart.module';
 import { CodeCheckModule } from './modules/code-check/code-check.module';
 import { PromoModule } from './modules/promo/promo.module';
+import { OrderModule } from './modules/order/order.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { PromoModule } from './modules/promo/promo.module';
     CartModule,
     CodeCheckModule,
     PromoModule,
+    OrderModule,
     ServeStaticModule.forRoot({
       rootPath: `${FULL_UPLOAD_PATH}`,
     }),
