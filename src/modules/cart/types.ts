@@ -1,4 +1,5 @@
 import { TId, TUuid } from '../../common/types';
+import { EOrderStatus } from '../order/types';
 import { RestaurantMenuDto } from '../restaurantMenu/types';
 
 export type CartDto = {
@@ -16,10 +17,4 @@ export type TRestaurantMenuOrder = {
   restaurantMenu: RestaurantMenuDto;
   quantity: number;
   id: number;
-};
-
-export enum EOrderStatus {
-  IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED',
-  PAID = 'PAID',
-}
+}; 

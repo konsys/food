@@ -1,11 +1,10 @@
 import { Exclude } from 'class-transformer';
-import { AbstractDictionary } from 'src/abstract/crud/abstractDictionary';
 import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN_PROGRESS', CLOSED = 'CLOSED' }
 
 @Entity()
-export class Order extends AbstractDictionary {
+export class Order {
 
   @PrimaryGeneratedColumn()
   id: number;

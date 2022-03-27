@@ -3,10 +3,9 @@ import React, { memo, useState } from 'react';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { TDateCheckoutForm } from '../../../../modules/checkout/types';
 import { TItemWithUuid } from '../../../../common/types';
-import { OrderDto } from '../../../../modules/order/types';
+import { EOrderStatus, OrderDto } from '../../../../modules/order/types';
 import { TCreateItemFx } from '../../../../common/models/abstractModel/abstractCrudModel';
 import { Nullable } from '../../../../core/types';
-import { uuid } from '../../../../common/utils/utils';
 import { CartDto } from '../../../../modules/cart/types';
 import { TItem } from '../../../../common/api/types';
 
@@ -32,6 +31,17 @@ function DateCheckoutForm(props: Props) {
     return null;
   };
 
+  const onDateChange = (date: Date) => {
+    setOrderDate(date);
+    onSaveDate({
+      date,
+      uuid: cart?.item?.uuid,
+      places: 1,
+      status: EOrderStatus.CREATED,
+      price: cart?.item?.orderSum,
+    }).then(() => isDateSet(true));
+  };
+
   return (
     <div className='ordering-form__time--input'>
       <label>Время бронирования</label>
@@ -40,7 +50,7 @@ function DateCheckoutForm(props: Props) {
           name={dataName('orderDate')}
           disabled={disabled}
           onClockClose={saveDate}
-          onChange={setOrderDate}
+          onChange={onDateChange}
           value={orderDate ?? undefined}
         />
         {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}

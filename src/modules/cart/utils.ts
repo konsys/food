@@ -1,9 +1,10 @@
 import { TItemWithUuid, TUuid } from '../../common/types';
 import { Nullable } from '../../core/types';
 import { CartModel } from '../../store';
+import { EOrderStatus } from '../order/types';
 import { RestaurantMenuDto } from '../restaurantMenu/types';
 import { getClientUuid } from './service';
-import { CartDto, TRestaurantMenuOrder, EOrderStatus } from './types';
+import { CartDto, TRestaurantMenuOrder } from './types';
 
 const { createItemFx, updateItemFx, deleteItemFx } = CartModel;
 
