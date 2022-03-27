@@ -4,7 +4,7 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN_PROGRESS', CLOSED = 'CLOSED' }
 
 @Entity()
-export class Order {
+export class FoodOrder {
 
   @PrimaryGeneratedColumn()
   id: number;
