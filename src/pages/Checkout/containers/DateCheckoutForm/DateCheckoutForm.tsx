@@ -48,7 +48,6 @@ function DateCheckoutForm(props: Props) {
 
   const options = createOptionsList([{ id: '19-30', value: '19-30' }]);
 
-  console.log(234234234, options);
   return (
     <div className='ordering-form__time--input'>
       <div className='order-options-time__date-select'>
