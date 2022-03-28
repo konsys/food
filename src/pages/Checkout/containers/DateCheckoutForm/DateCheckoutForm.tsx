@@ -50,25 +50,23 @@ function DateCheckoutForm(props: Props) {
 
   console.log(234234234, options);
   return (
-    <>
-      <div className='ordering-form__time--input'>
-        <div className='order-options-time__date-select'>
-          <label>Дата бронирования</label>
-          <DatePicker
-            name={dataName('orderDate')}
-            disabled={disabled}
-            onChange={onDateChange}
-            value={orderDate ?? undefined}
-            minDate={new Date()}
-          />
-        </div>
-        <div className='order-options-time__time-select'>
-          <label>Время бронирования</label>
-          <Select style={{ width: '100%' }}>{options}</Select>
-        </div>
+    <div className='ordering-form__time--input'>
+      <div className='order-options-time__date-select'>
+        <label>Дата бронирования</label>
+        <DatePicker
+          name={dataName('orderDate')}
+          disabled={disabled}
+          onChange={onDateChange}
+          value={orderDate ?? undefined}
+          minDate={new Date()}
+        />
+        {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}
       </div>
-      {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}
-    </>
+      <div className='order-options-time__time-select'>
+        <label>Время бронирования</label>
+        <Select style={{ width: '100%' }}>{options}</Select>
+      </div>
+    </div>
   );
 }
 
