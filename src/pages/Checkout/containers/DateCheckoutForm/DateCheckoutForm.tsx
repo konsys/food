@@ -1,4 +1,4 @@
-import DateTimePicker from 'react-datetime-picker';
+import DatePicker from 'react-date-picker';
 import React, { memo, useState } from 'react';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { TDateCheckoutForm } from '../../../../modules/checkout/types';
@@ -8,6 +8,7 @@ import { TCreateItemFx } from '../../../../common/models/abstractModel/abstractC
 import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 import { TItem } from '../../../../common/api/types';
+import './dateCheckoutForm.less';
 
 interface Props {
   disabled: boolean;
@@ -44,17 +45,14 @@ function DateCheckoutForm(props: Props) {
 
   return (
     <div className='ordering-form__time--input'>
-      <label>Время бронирования</label>
+      <label>Дата бронирования</label>
       <div className='order-options-time'>
-        {/* <DateTimePicker
+        <DatePicker
           name={dataName('orderDate')}
           disabled={disabled}
-          onClockClose={saveDate}
           onChange={onDateChange}
           value={orderDate ?? undefined}
-          showLeadingZeros
-        /> */}
-        <DateTimePicker onChange={onDateChange} value={orderDate ?? undefined} />
+        />
       </div>
       {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}
     </div>
