@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { useStore } from 'effector-react';
 import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 import AddressCheckoutForm from '../AddressCheckoutForm/AddressCheckoutForm';
@@ -9,10 +10,12 @@ import { PromoDto } from '../../../../modules/promo/types';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { TItem } from '../../../../common/api/types';
 import { CartDto } from '../../../../modules/cart/types';
-
-import './checkoutForm.less';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import OrderDescription from '../../components/OrderDescription/OrderDescription';
+import { $orderStore } from '../../../../modules/order/model';
+
+import './checkoutForm.less';
+import { OrderDto } from '../../../../modules/order/types';
 
 interface Props {
   cart: TItem<CartDto>;
@@ -26,6 +29,7 @@ interface Props {
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   isCodeSent: boolean;
   isWrongCode: boolean;
+  createOrder: TPromiseFn<Partial<OrderDto>, Partial<OrderDto>>;
 }
 
 function CheckoutForm({
@@ -40,9 +44,13 @@ function CheckoutForm({
   createCheckoutCode,
   isCodeSent,
   isWrongCode,
+  createOrder,
 }: Props) {
   const cartItem = cart?.item;
   const { Form: PhoneForm, formInstance: phoneInstanceForm } = useValidatedForm<CodeCheckDto>();
+
+  const order = useStore($orderStore);
+  const { date, price, time, phone } = order;
 
   return (
     <section className='ordering__mobile'>
@@ -101,9 +109,10 @@ function CheckoutForm({
                 <div className='confirm-order'>
                   <button
                     type='button'
-                    disabled
+                    disabled={!(!!date && !!price && !!time && !!phone)}
                     className='confirm-order__button'
                     title='Оформить заказ'
+                    onClick={() => createOrder(order)}
                   >
                     Оформить заказ
                   </button>

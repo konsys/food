@@ -3,6 +3,7 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN_PROGRESS', CLOSED = 'CLOSED' }
 
+
 @Entity()
 export class FoodOrder {
 
@@ -13,11 +14,26 @@ export class FoodOrder {
   @Column()
   uuid: string;
 
+  @Column()
+  promoCodeUuid: string;
+
   @Column({ default: EOrderStatus.CREATED })
   status: EOrderStatus
 
   @Column()
   date: Date
+
+  @Column()
+  percentDiscount: number
+
+  @Column()
+  time: string
+
+  @Column()
+  phone: string
+
+  @Column()
+  description: string
 
   @Column()
   price: number;

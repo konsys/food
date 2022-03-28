@@ -22,10 +22,10 @@ export class OrderController extends AbstractController<FoodOrder> {
       const res = await this.orderService.findOne(item.uuid);
 
       if (res) {
-        return this.orderService.update({ ...res, date: item.date });
+        return this.orderService.update({ ...res, ...item });
       }
 
-      return this.orderService.create({ ...res, status: EOrderStatus.CREATED });
+      return this.orderService.create({ ...item, status: EOrderStatus.CREATED });
     }
     return false
   }
