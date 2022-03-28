@@ -46,15 +46,17 @@ function DateCheckoutForm(props: Props) {
     <div className='ordering-form__time--input'>
       <label>Время бронирования</label>
       <div className='order-options-time'>
-        <DateTimePicker
+        {/* <DateTimePicker
           name={dataName('orderDate')}
           disabled={disabled}
           onClockClose={saveDate}
           onChange={onDateChange}
           value={orderDate ?? undefined}
-        />
-        {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}
+          showLeadingZeros
+        /> */}
+        <DateTimePicker onChange={onDateChange} value={orderDate ?? undefined} />
       </div>
+      {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}
     </div>
   );
 }
