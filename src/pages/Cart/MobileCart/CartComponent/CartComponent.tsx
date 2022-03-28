@@ -54,9 +54,6 @@ function CartComponent(props: Props) {
       </div>
       <div className='cart-bottom'>
         <div className='cart-bottom__info'>
-          <div>
-            Время доставки <span>55-65 мин</span>
-          </div>
           <div className='cart-bottom__total'>
             Итого <span>{cartOrder?.orderSum} ₽</span>
           </div>

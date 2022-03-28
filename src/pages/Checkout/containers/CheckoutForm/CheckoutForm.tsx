@@ -14,7 +14,6 @@ import { CartDto } from '../../../../modules/cart/types';
 
 import './checkoutForm.less';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
-import { TDateCheckoutForm } from '../../../../modules/checkout/types';
 import { OrderDto } from '../../../../modules/order/types';
 import { TCreateItemFx } from '../../../../common/models/abstractModel/abstractCrudModel';
 import OrderDescription from '../../components/OrderDescription/OrderDescription';
@@ -31,7 +30,6 @@ interface Props {
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   isCodeSent: boolean;
   isWrongCode: boolean;
-  onSaveDate: TCreateItemFx<Partial<OrderDto>, TItemWithUuid<OrderDto>>;
 }
 
 function CheckoutForm({
@@ -46,7 +44,6 @@ function CheckoutForm({
   createCheckoutCode,
   isCodeSent,
   isWrongCode,
-  onSaveDate,
 }: Props) {
   const cartItem = cart?.item;
   const { Form: PhoneForm, formInstance: phoneInstanceForm } = useValidatedForm<CodeCheckDto>();
@@ -81,7 +78,7 @@ function CheckoutForm({
 
           {/* TIME --------------------------- */}
           <div className='ordering-form__time'>
-            <DateCheckoutForm disabled={!isPhoneConfirmed} onSaveDate={onSaveDate} cart={cart} />
+            <DateCheckoutForm disabled={!isPhoneConfirmed} cart={cart} />
           </div>
           <div className='ordering-form__time'>
             <PromoCodeCheckoutForm disabled={!isPhoneConfirmed} />

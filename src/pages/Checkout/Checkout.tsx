@@ -2,7 +2,7 @@ import { useGate, useStore } from 'effector-react';
 import React, { memo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getClientUuid } from '../../modules/cart/service';
-import { CartModel, CodeCheckModel, OrderModel, PromoModel } from '../../store';
+import { CartModel, CodeCheckModel, PromoModel } from '../../store';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
 
 const { $itemStore: cartStore, ItemGate } = CartModel;
@@ -13,7 +13,6 @@ const {
   $itemStore: codeCheckStore,
   ItemGate: CodeCheckGate,
 } = CodeCheckModel;
-const { createItemFx: saveOrderDate } = OrderModel;
 
 function Checkout() {
   const { uuid } = useParams<{ uuid: string }>();
@@ -43,7 +42,6 @@ function Checkout() {
       isWrongCode={isWrongCode}
       setIsCodeSent={setIsCodeSent}
       setIsWrongCode={setIsWrongCode}
-      onSaveDate={saveOrderDate}
     />
   );
 }

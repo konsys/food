@@ -6,6 +6,7 @@ export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN
 export type OrderDto = {
     id: TId;
     date: Date;
+    time: string;
     uuid: TUuid;
     status: EOrderStatus;
     price: number;

@@ -1,16 +1,14 @@
 import DatePicker from 'react-date-picker';
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { Select } from 'antd';
+import { useStore } from 'effector-react';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { TDateCheckoutForm } from '../../../../modules/checkout/types';
-import { TItemWithUuid } from '../../../../common/types';
-import { EOrderStatus, OrderDto } from '../../../../modules/order/types';
-import { TCreateItemFx } from '../../../../common/models/abstractModel/abstractCrudModel';
-import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 import { TItem } from '../../../../common/api/types';
 import { createOptionsList } from '../../../../common/utils/selectUtils';
 import './dateCheckoutForm.less';
+import { $orderStore, updateOrderStore } from '../../../../modules/order/model';
 
 // TODO add order time
 const options = createOptionsList([
@@ -22,29 +20,23 @@ const options = createOptionsList([
 
 interface Props {
   disabled: boolean;
-  onSaveDate: TCreateItemFx<Partial<OrderDto>, TItemWithUuid<OrderDto>>;
   cart: TItem<CartDto>;
 }
 
 const dataName = columnsNamesGenerator<TDateCheckoutForm>();
 
 function DateCheckoutForm(props: Props) {
-  const { disabled, onSaveDate, cart } = props;
-
-  const [orderDate, setOrderDate] = useState<Nullable<Date>>(null);
-
-  const [dateSet, isDateSet] = useState<boolean>(false);
+  const { disabled, cart } = props;
 
   const onDateChange = (date: Date) => {
-    setOrderDate(date);
-    onSaveDate({
-      date,
-      uuid: cart?.item?.uuid,
-      places: 1,
-      status: EOrderStatus.CREATED,
-      price: cart?.item?.orderSum,
-    }).then(() => isDateSet(true));
+    updateOrderStore({ date, uuid: cart?.item?.uuid });
   };
+
+  const onTimeChange = (time: string) => {
+    updateOrderStore({ time, uuid: cart?.item?.uuid });
+  };
+
+  const orderStore = useStore($orderStore);
 
   return (
     <div className='ordering-form__time--input'>
@@ -54,14 +46,18 @@ function DateCheckoutForm(props: Props) {
           name={dataName('orderDate')}
           disabled={disabled}
           onChange={onDateChange}
-          value={orderDate ?? undefined}
+          value={orderStore.date}
           minDate={new Date()}
         />
-        {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}
       </div>
       <div className='order-options-time__time-select'>
         <label>Время бронирования</label>
-        <Select disabled={disabled} style={{ width: '100%' }}>
+        <Select
+          disabled={disabled}
+          style={{ width: '100%' }}
+          onChange={onTimeChange}
+          value={orderStore.time}
+        >
           {options}
         </Select>
       </div>
