@@ -18,7 +18,7 @@ function RestaurantMobileHeader({ restaurant }: Props) {
       <div className='restaurant-descr--mobile'>
         <div>
           <div className='restaurant-descr__delivery_info--mobile delivery_type--long_distance--mobile'>
-            <img src='/img/icons/long_distance.svg' alt='Дальняя доставка' />
+            <img src='http://localhost:8000/img/icons/long_distance.svg' alt='Дальняя доставка' />
             60-70 мин{' '}
           </div>
         </div>

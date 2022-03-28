@@ -163,7 +163,7 @@ function Footer(props: Props) {
             </div>
             <div className='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
               <a href='/' rel='nofollow'>
-                <img src='/img/icons/sk_resident2ru.jpg' alt='' />
+                <img src='http://localhost:8000/img/icons/sk_resident2ru.jpg' alt='' />
               </a>
             </div>
           </div>

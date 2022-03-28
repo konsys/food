@@ -49,7 +49,7 @@ function Welcome(props: Props) {
           <Link to='/restaurants/' className='welcome__category' title='Рестораны и кафе'>
             <div>
               <img
-                src='/img/icons/903e685a5a63111e79e352c1cd59bae0.png'
+                src='http://localhost:8000/img/icons/903e685a5a63111e79e352c1cd59bae0.png'
                 title='Рестораны и кафе'
                 alt='Рестораны и кафе'
               />
@@ -59,7 +59,7 @@ function Welcome(props: Props) {
           <Link to='/grocery/' className='welcome__category' title='Продукты'>
             <div>
               <img
-                src='/img/icons/edd70e9ee8a1a5d2451f82753f6fb33f.png'
+                src='http://localhost:8000/img/icons/edd70e9ee8a1a5d2451f82753f6fb33f.png'
                 title='Продукты'
                 alt='Продукты'
               />
@@ -69,7 +69,7 @@ function Welcome(props: Props) {
           <Link to='/pharmacy/' className='welcome__category' title='Аптеки'>
             <div>
               <img
-                src='/img/icons/6e71648a0b866e7520b85ded4e92a4aa.png'
+                src='http://localhost:8000/img/icons/6e71648a0b866e7520b85ded4e92a4aa.png'
                 title='Аптеки'
                 alt='Аптеки'
               />
