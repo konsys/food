@@ -1,5 +1,7 @@
 import DatePicker from 'react-date-picker';
+import TimePicker from 'react-time-picker';
 import React, { memo, useState } from 'react';
+import { Select } from 'antd';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { TDateCheckoutForm } from '../../../../modules/checkout/types';
 import { TItemWithUuid } from '../../../../common/types';
@@ -9,6 +11,7 @@ import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 import { TItem } from '../../../../common/api/types';
 import './dateCheckoutForm.less';
+import { createOptionsList } from '../../../../common/utils/selectUtils';
 
 interface Props {
   disabled: boolean;
@@ -43,19 +46,29 @@ function DateCheckoutForm(props: Props) {
     }).then(() => isDateSet(true));
   };
 
+  const options = createOptionsList([{ id: '19-30', value: '19-30' }]);
+
+  console.log(234234234, options);
   return (
-    <div className='ordering-form__time--input'>
-      <label>Дата бронирования</label>
-      <div className='order-options-time'>
-        <DatePicker
-          name={dataName('orderDate')}
-          disabled={disabled}
-          onChange={onDateChange}
-          value={orderDate ?? undefined}
-        />
+    <>
+      <div className='ordering-form__time--input'>
+        <div className='order-options-time__date-select'>
+          <label>Дата бронирования</label>
+          <DatePicker
+            name={dataName('orderDate')}
+            disabled={disabled}
+            onChange={onDateChange}
+            value={orderDate ?? undefined}
+            minDate={new Date()}
+          />
+        </div>
+        <div className='order-options-time__time-select'>
+          <label>Время бронирования</label>
+          <Select style={{ width: '100%' }}>{options}</Select>
+        </div>
       </div>
       {dateSet ? <div className='input-code-success'>Дата сохранена</div> : ''}
-    </div>
+    </>
   );
 }
 

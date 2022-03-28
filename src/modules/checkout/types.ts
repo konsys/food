@@ -1,4 +1,5 @@
 
 export type TDateCheckoutForm = {
-    orderDate: Date
+    orderDate: Date;
+    orderTime: string;
 }
