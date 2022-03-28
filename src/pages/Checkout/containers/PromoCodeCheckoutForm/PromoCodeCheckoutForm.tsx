@@ -1,5 +1,6 @@
 import { useStore } from 'effector-react';
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
+import { updateOrderStore } from '../../../../modules/order/model';
 import { PromoModel } from '../../../../store';
 
 interface Props {
@@ -13,6 +14,11 @@ function PromoCodeCheckoutForm(props: Props) {
   const [code, setCode] = useState<string>();
 
   const { item, error } = useStore($itemStore);
+
+  useEffect(() => {
+    item?.uuid && updateOrderStore({ promoCodeUuid: item?.uuid });
+  }, [item, updateOrderStore]);
+
   return (
     <div className='form-checkout-promocode'>
       <label htmlFor='order-promocode'>Промокод</label>

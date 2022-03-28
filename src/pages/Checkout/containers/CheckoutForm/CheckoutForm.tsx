@@ -1,7 +1,5 @@
 import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
-import TextArea from 'antd/lib/input/TextArea';
-import { TItemWithUuid, TPromiseFn, TVoidFn } from '../../../../common/types';
+import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 import AddressCheckoutForm from '../AddressCheckoutForm/AddressCheckoutForm';
 import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';
@@ -14,8 +12,6 @@ import { CartDto } from '../../../../modules/cart/types';
 
 import './checkoutForm.less';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
-import { OrderDto } from '../../../../modules/order/types';
-import { TCreateItemFx } from '../../../../common/models/abstractModel/abstractCrudModel';
 import OrderDescription from '../../components/OrderDescription/OrderDescription';
 
 interface Props {

@@ -6,4 +6,6 @@ export const updateOrderStore = createEvent<Partial<OrderDto>>();
 
 
 export const $orderStore = createStore<Partial<OrderDto>>({
-}).on(updateOrderStore, (prev, item) => ({ ...prev, ...item })); 
+}).on(updateOrderStore, (prev, item) => ({ ...prev, ...item }));
+
+$orderStore.watch(console.log)

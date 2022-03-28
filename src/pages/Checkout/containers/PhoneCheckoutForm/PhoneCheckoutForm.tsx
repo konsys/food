@@ -13,6 +13,7 @@ import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import { TItem } from '../../../../common/api/types';
 
 import './PhoneCheckoutForm.less';
+import { updateOrderStore } from '../../../../modules/order/model';
 
 const { Item } = Form;
 
@@ -52,7 +53,7 @@ function PhoneCheckoutForm({
   isWrongCode,
 }: Props) {
   const codeHandler = () => {
-    const codeInput = formInstance.getFieldValue('code');
+    const codeInput = formInstance.getFieldValue(dataName('code'));
 
     if (!Number.isNaN(+codeInput)) {
       getCheckoutCode({
@@ -61,6 +62,7 @@ function PhoneCheckoutForm({
       }).then((v) => {
         setIsWrongCode(!!v);
         setIsPhoneConfirmed(!!v);
+        v.uuid && updateOrderStore({ phone: formInstance.getFieldValue(dataName('phoneNumber')) });
       });
     }
   };
