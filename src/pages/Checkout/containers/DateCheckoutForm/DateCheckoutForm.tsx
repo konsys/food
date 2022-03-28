@@ -1,5 +1,4 @@
 import DatePicker from 'react-date-picker';
-import TimePicker from 'react-time-picker';
 import React, { memo, useState } from 'react';
 import { Select } from 'antd';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
@@ -10,8 +9,16 @@ import { TCreateItemFx } from '../../../../common/models/abstractModel/abstractC
 import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 import { TItem } from '../../../../common/api/types';
-import './dateCheckoutForm.less';
 import { createOptionsList } from '../../../../common/utils/selectUtils';
+import './dateCheckoutForm.less';
+
+// TODO add order time
+const options = createOptionsList([
+  { id: '19-00', value: '19-00' },
+  { id: '18-00', value: '18-30' },
+  { id: '19-30', value: '19-00' },
+  { id: '19-30', value: '19-30' },
+]);
 
 interface Props {
   disabled: boolean;
@@ -28,13 +35,6 @@ function DateCheckoutForm(props: Props) {
 
   const [dateSet, isDateSet] = useState<boolean>(false);
 
-  const saveDate = () => {
-    if (orderDate) {
-      return onSaveDate({ date: orderDate, uuid: cart?.item?.uuid }).then(() => isDateSet(true));
-    }
-    return null;
-  };
-
   const onDateChange = (date: Date) => {
     setOrderDate(date);
     onSaveDate({
@@ -45,8 +45,6 @@ function DateCheckoutForm(props: Props) {
       price: cart?.item?.orderSum,
     }).then(() => isDateSet(true));
   };
-
-  const options = createOptionsList([{ id: '19-30', value: '19-30' }]);
 
   return (
     <div className='ordering-form__time--input'>
