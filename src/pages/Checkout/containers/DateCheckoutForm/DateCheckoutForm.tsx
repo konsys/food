@@ -61,7 +61,9 @@ function DateCheckoutForm(props: Props) {
       </div>
       <div className='order-options-time__time-select'>
         <label>Время бронирования</label>
-        <Select style={{ width: '100%' }}>{options}</Select>
+        <Select disabled={disabled} style={{ width: '100%' }}>
+          {options}
+        </Select>
       </div>
     </div>
   );
