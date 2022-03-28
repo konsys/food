@@ -1,4 +1,4 @@
-import { Form } from 'antd';
+import { Col, Form, Row } from 'antd';
 import React, { memo, useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 import moment from 'moment';
@@ -87,8 +87,8 @@ function PhoneCheckoutForm({
   const loading = code?.pending ?? false;
 
   return (
-    <div className='ordering-form__phone'>
-      <div className='input-phone-wrapper'>
+    <Row className='ordering-form__phone'>
+      <Col className='input-phone-wrapper'>
         <label htmlFor='order-phone'>Телефон</label>
         <Item
           name={dataName('phoneNumber')}
@@ -102,13 +102,13 @@ function PhoneCheckoutForm({
         </Item>
         <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
         <div className='input-phone-wrapper--ok' />
-      </div>
+      </Col>
       <SendCodeButton
         createCodeSms={createCodeSms}
         loading={loading}
         disabled={isPhoneConfirmed || isRunning}
       />
-      <div className='check-oh-hidden'>
+      <div>
         <label htmlFor='sms-code' className='label-sms-code'>
           Код из СМС
         </label>
@@ -123,7 +123,7 @@ function PhoneCheckoutForm({
         {!isWrongCode ? <div className='input-code-error'>Неверный код</div> : ''}
         {isPhoneConfirmed ? <div className='input-code-success'>Телефон подтвержден</div> : ''}
       </div>
-    </div>
+    </Row>
   );
 }
 

@@ -12,7 +12,7 @@ function SendCodeButton(props: Props) {
   const { loading, createCodeSms, ...restProps } = props;
 
   return (
-    <div className='check-oh-hidden'>
+    <div>
       <label>&nbsp;</label>
       <Item>
         <Button
