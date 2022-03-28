@@ -154,11 +154,10 @@
                 border-radius   : 0 3px 3px 0;
                 background-color: #fff;
 
-                &:disabled {
-                    color       : rgba(0, 0, 0, .2);
-                    border-color: rgba(0, 0, 0, .2);
-                }
+
             }
+
+
         }
 
         .ordering-form__payments {
@@ -233,13 +232,12 @@
                 height          : 42px;
                 background-color: #f37021;
                 color           : #fff;
-                border          : 0;
 
-                &__disabled {
+
+                &[disabled] {
                     background-color: #ccc;
                     border-color    : #ccc;
                 }
-
 
 
                 a {

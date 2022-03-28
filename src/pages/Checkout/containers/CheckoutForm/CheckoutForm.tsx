@@ -99,7 +99,12 @@ function CheckoutForm({
                 </div>
 
                 <div className='confirm-order'>
-                  <button type='button' className='confirm-order__button' title='Оформить заказ'>
+                  <button
+                    type='button'
+                    disabled
+                    className='confirm-order__button'
+                    title='Оформить заказ'
+                  >
                     Оформить заказ
                   </button>
                 </div>

@@ -1,6 +1,6 @@
 import { useStore } from 'effector-react';
 import React, { memo, useEffect, useState } from 'react';
-import { updateOrderStore } from '../../../../modules/order/model';
+import { $orderStore, updateOrderStore } from '../../../../modules/order/model';
 import { PromoModel } from '../../../../store';
 
 interface Props {
@@ -14,10 +14,14 @@ function PromoCodeCheckoutForm(props: Props) {
   const [code, setCode] = useState<string>();
 
   const { item, error } = useStore($itemStore);
+  const order = useStore($orderStore);
 
   useEffect(() => {
-    item?.uuid && updateOrderStore({ promoCodeUuid: item?.uuid });
-  }, [item, updateOrderStore]);
+    item?.uuid &&
+      item?.percentDiscount &&
+      updateOrderStore({ promoCodeUuid: item?.uuid, percentDiscount: item?.percentDiscount });
+    error && updateOrderStore({ promoCodeUuid: undefined, percentDiscount: undefined });
+  }, [item, updateOrderStore, error]);
 
   return (
     <div className='form-checkout-promocode'>
@@ -42,8 +46,8 @@ function PromoCodeCheckoutForm(props: Props) {
         </button>
       </div>
       {error ? <div className='input-promocode-error'>Неверный промокод</div> : ''}
-      {item ? (
-        <div className='input-promocode-success'>{`Скидка ${item.percentDiscount}%`}</div>
+      {order.percentDiscount ? (
+        <div className='input-promocode-success'>{`Скидка ${order.percentDiscount}%`}</div>
       ) : (
         ''
       )}
