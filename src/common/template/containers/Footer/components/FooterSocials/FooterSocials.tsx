@@ -11,7 +11,7 @@ export const FooterSocials = () => (
   <div className='social-links'>
     <div className='d-flex'>
       <Link
-        to='https://broniboy.ru'
+        to='/'
         title='Главная'
         className='social-links__logo-link d-flex flex-column flex-md-row align-items-center'
       >

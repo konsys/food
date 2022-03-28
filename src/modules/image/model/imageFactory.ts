@@ -9,15 +9,15 @@ export const imageFactory = factory.Sync.makeFactory<ImageDto>({
   visible: factory.each(() => Math.random() > 0.5),
   largeImg: factory.each(
     () =>
-      'https://images.broniboy.ru/4UiIg3EIrcJH8PBSJHDEENXZ5eM=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/b5362afa-49d0-4713-a130-f004946d320f/b43177e0f6e970765bfd8eb4d4e46336.jpg'
+      '/img/food/b43177e0f6e970765bfd8eb4d4e46336.jpg'
   ),
   averageImg: factory.each(
     () =>
-      'https://images.broniboy.ru/4UiIg3EIrcJH8PBSJHDEENXZ5eM=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/b5362afa-49d0-4713-a130-f004946d320f/b43177e0f6e970765bfd8eb4d4e46336.jpg'
+      '/img/food/b43177e0f6e970765bfd8eb4d4e46336.jpg'
   ),
   smallImg: factory.each(
     () =>
-      'https://images.broniboy.ru/4UiIg3EIrcJH8PBSJHDEENXZ5eM=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/b5362afa-49d0-4713-a130-f004946d320f/b43177e0f6e970765bfd8eb4d4e46336.jpg'
+      '/img/food/b43177e0f6e970765bfd8eb4d4e46336.jpg'
   ),
   destination: factory.each(() => faker.datatype.uuid()),
   encoding: factory.each(() => faker.datatype.uuid()),
@@ -30,7 +30,7 @@ export const imageFactory = factory.Sync.makeFactory<ImageDto>({
   mimetype: factory.each(() => faker.datatype.uuid()),
   original: factory.each(
     () =>
-      'https://images.broniboy.ru/4UiIg3EIrcJH8PBSJHDEENXZ5eM=/600x0/smart/filters:smart_sharpen():allow_webp(false)/own/b5362afa-49d0-4713-a130-f004946d320f/b43177e0f6e970765bfd8eb4d4e46336.jpg'
+      '/img/food/b43177e0f6e970765bfd8eb4d4e46336.jpg'
   ),
   originalname: factory.each(() => faker.datatype.uuid()),
   updatedAt: factory.each(() => faker.datatype.datetime()),

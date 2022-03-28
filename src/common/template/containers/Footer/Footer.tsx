@@ -162,8 +162,8 @@ function Footer(props: Props) {
               />
             </div>
             <div className='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-              <a href='https://sk.ru' rel='nofollow'>
-                <img src='https://broniboy.ru/images/sk_resident2ru.jpg' alt='' />
+              <a href='/' rel='nofollow'>
+                <img src='/img/icons/sk_resident2ru.jpg' alt='' />
               </a>
             </div>
           </div>

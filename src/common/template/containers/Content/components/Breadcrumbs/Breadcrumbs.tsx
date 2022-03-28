@@ -11,7 +11,7 @@ function Breadcrumbs(props: Props) {
       <div className='container'>
         <ul className='list-clear'>
           <li>
-            <a href='https://broniboy.ru' title='Главная'>
+            <a href='/' title='Главная'>
               <span>Главная</span>
             </a>
           </li>

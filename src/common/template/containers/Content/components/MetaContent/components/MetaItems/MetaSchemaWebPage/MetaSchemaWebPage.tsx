@@ -7,7 +7,7 @@ function MetaSchemaWebPage(props: Props) {
 
   return (
     <div itemScope itemType='https://schema.org/WebPage' className='hidden'>
-      <a itemProp='url' href='https://broniboy.ru/nn/' />
+      <a itemProp='url' href='/' />
     </div>
   );
 }

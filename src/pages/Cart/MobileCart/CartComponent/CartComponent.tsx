@@ -28,10 +28,7 @@ function CartComponent(props: Props) {
             <div className='cart-service__name'>
               Доставка от Broniboy
               <i className='delivery_type_cart delivery_type--default'>
-                <img
-                  src='https://broniboy.ru/img/icons/delivery/default.svg'
-                  alt='Доставка от Broniboy'
-                />
+                <img src='/img/icons/default.svg' alt='Доставка от Broniboy' />
               </i>
             </div>
             <div className='cart-service__description cart-service__description--delivery'>

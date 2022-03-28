@@ -11,13 +11,9 @@ function Promo(props: Props) {
       <div className='container d-flex'>
         <div className='promo-block__info d-flex justify-content-center align-items-center'>
           <picture>
-            <source
-              srcSet='https://broniboy.ru/img/content/mobile-app.webp, /img/content/mobile-app@2x.webp 2x'
-              type='image/webp'
-            />
+            <source srcSet='https://bro.ru, /img/content/mobile-app@2x.webp 2x' type='image/webp' />
             <img
-              src='https://broniboy.ru/img/content/mobile-app.png'
-              srcSet='https://broniboy.ru/img/content/mobile-app@2x.png 2x'
+              src='img/content/mobile-app.png'
               alt='Приложение Broniboy'
               className='img-responsive'
             />

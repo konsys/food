@@ -17,7 +17,7 @@ function Welcome(props: Props) {
           курьера.
         </div>
         <div className='welcome-search'>
-          <form className='welcome-search-form' method='post' action='https://broniboy.ru/nn/'>
+          <form className='welcome-search-form' method='post' action='/'>
             <div className='welcome-search-form-content clearfix'>
               <label htmlFor='search-address-form-input' />
               <input
@@ -49,7 +49,7 @@ function Welcome(props: Props) {
           <Link to='/restaurants/' className='welcome__category' title='Рестораны и кафе'>
             <div>
               <img
-                src='https://images.broniboy.ru/dYmsVauYReBn3X4yMeOaC_5WBaQ=/fit-in/200x200/smart/filters:smart_sharpen():allow_webp(false)/own/4b3418a2-7df5-4fcb-883c-4b010de59b2f/903e685a5a63111e79e352c1cd59bae0.png'
+                src='/img/icons/903e685a5a63111e79e352c1cd59bae0.png'
                 title='Рестораны и кафе'
                 alt='Рестораны и кафе'
               />
@@ -59,17 +59,17 @@ function Welcome(props: Props) {
           <Link to='/grocery/' className='welcome__category' title='Продукты'>
             <div>
               <img
-                src='https://images.broniboy.ru/XjA1KerjXXBoCkL9JDHhbV-apmA=/fit-in/200x200/smart/filters:smart_sharpen():allow_webp(false)/own/1e67b208-40ed-415c-bdc0-c654f27ff01e/edd70e9ee8a1a5d2451f82753f6fb33f.png'
+                src='/img/icons/edd70e9ee8a1a5d2451f82753f6fb33f.png'
                 title='Продукты'
                 alt='Продукты'
               />
             </div>
             <div className='welcome__category-title'>Продукты</div>
           </Link>
-          <Link to='https://broniboy.ru/nn/pharmacy/' className='welcome__category' title='Аптеки'>
+          <Link to='/pharmacy/' className='welcome__category' title='Аптеки'>
             <div>
               <img
-                src='https://images.broniboy.ru/B-F0b_RcjpWbruAj5fYyAKZLk5Q=/200x200/smart/filters:smart_sharpen():allow_webp(false)/own/f194e20d-2ed7-4b4e-872a-df0edaba60c2/6e71648a0b866e7520b85ded4e92a4aa.png'
+                src='/img/icons/6e71648a0b866e7520b85ded4e92a4aa.png'
                 title='Аптеки'
                 alt='Аптеки'
               />

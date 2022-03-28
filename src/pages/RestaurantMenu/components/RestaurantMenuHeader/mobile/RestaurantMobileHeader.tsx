@@ -8,7 +8,7 @@ interface Props {
 }
 
 function RestaurantMobileHeader({ restaurant }: Props) {
-  const { name, image, rating, priceRating, closeTime, openTime } = restaurant;
+  const { name, image, rating } = restaurant;
 
   return (
     <>
@@ -18,10 +18,7 @@ function RestaurantMobileHeader({ restaurant }: Props) {
       <div className='restaurant-descr--mobile'>
         <div>
           <div className='restaurant-descr__delivery_info--mobile delivery_type--long_distance--mobile'>
-            <img
-              src='https://broniboy.ru/img/icons/delivery/long_distance.svg'
-              alt='Дальняя доставка'
-            />
+            <img src='/img/icons/long_distance.svg' alt='Дальняя доставка' />
             60-70 мин{' '}
           </div>
         </div>

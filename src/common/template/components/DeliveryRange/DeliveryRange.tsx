@@ -37,7 +37,7 @@ function DeliveryRange(props: Props) {
       <div className='restaurant-info__delivery d-flex'>
         <div className='restaurant-info__delivery-icon delivery_type--default'>
           <img
-            src='https://broniboy.ru/img/icons/delivery/default.svg'
+            src='/img/icons/delivery/default.svg'
             alt='Доставка от Broniboy'
           />
         </div>

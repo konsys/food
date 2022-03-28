@@ -131,5 +131,5 @@ export enum smallImageSize {
 }
 
 const FILE_DESTINATION_PATH = '/home/ska/projects/food/backend';
-const FILE_UPLOAD_DIR = 'upload';
+const FILE_UPLOAD_DIR = 'static';
 export const FULL_UPLOAD_PATH = `${FILE_DESTINATION_PATH}/${FILE_UPLOAD_DIR}`
