@@ -1,3 +1,4 @@
+import { Spin } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { memo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -41,21 +42,23 @@ function Checkout() {
   };
 
   return (
-    <CheckoutForm
-      code={code}
-      cart={cart}
-      isPhoneConfirmed={isPhoneConfirmed}
-      setIsPhoneConfirmed={setIsPhoneConfirmed}
-      promo={promo}
-      createCheckoutCode={createCheckoutCode}
-      getCheckoutCode={getCheckoutCode}
-      isCodeSent={isCodeSent}
-      isWrongCode={isWrongCode}
-      setIsCodeSent={setIsCodeSent}
-      setIsWrongCode={setIsWrongCode}
-      createOrder={createOrder}
-      orderModel={order}
-    />
+    <Spin spinning={cart.pending || order.pending || code.pending || promo.pending}>
+      <CheckoutForm
+        code={code}
+        cart={cart}
+        isPhoneConfirmed={isPhoneConfirmed}
+        setIsPhoneConfirmed={setIsPhoneConfirmed}
+        promo={promo}
+        createCheckoutCode={createCheckoutCode}
+        getCheckoutCode={getCheckoutCode}
+        isCodeSent={isCodeSent}
+        isWrongCode={isWrongCode}
+        setIsCodeSent={setIsCodeSent}
+        setIsWrongCode={setIsWrongCode}
+        createOrder={createOrder}
+        orderModel={order}
+      />
+    </Spin>
   );
 }
 

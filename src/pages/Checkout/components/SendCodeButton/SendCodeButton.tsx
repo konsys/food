@@ -4,13 +4,11 @@ import React, { memo, MouseEventHandler } from 'react';
 const { Item } = Form;
 
 interface Props extends ButtonProps {
-  loading: boolean;
   createCodeSms: MouseEventHandler<HTMLElement>;
 }
 
 function SendCodeButton(props: Props) {
-  const { loading, createCodeSms, ...restProps } = props;
-
+  const { createCodeSms, ...restProps } = props;
   return (
     <div>
       <label>&nbsp;</label>
@@ -19,7 +17,6 @@ function SendCodeButton(props: Props) {
           {...restProps}
           type='primary'
           className='order-form-send-code'
-          loading={loading}
           onClick={createCodeSms}
         >
           Получить код

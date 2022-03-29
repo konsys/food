@@ -107,7 +107,6 @@ function CheckoutForm({
                   className='confirm-order__button'
                   title='Оформить заказ'
                   onClick={() => createOrder(order)}
-                  loading={orderModel?.pending}
                 >
                   Оформить заказ
                 </Button>

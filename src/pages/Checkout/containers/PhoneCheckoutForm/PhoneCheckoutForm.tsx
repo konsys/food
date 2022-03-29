@@ -85,8 +85,6 @@ function PhoneCheckoutForm({
     }
   }, [code?.item?.expiredAt]);
 
-  const loading = code?.pending ?? false;
-
   return (
     <Row className='ordering-form__phone'>
       <Col className='input-phone-wrapper'>
@@ -104,11 +102,7 @@ function PhoneCheckoutForm({
         <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
         <div className='input-phone-wrapper--ok' />
       </Col>
-      <SendCodeButton
-        createCodeSms={createCodeSms}
-        loading={loading}
-        disabled={isPhoneConfirmed || isRunning}
-      />
+      <SendCodeButton createCodeSms={createCodeSms} disabled={isPhoneConfirmed || isRunning} />
       <div>
         <label htmlFor='sms-code' className='label-sms-code'>
           Код из СМС
@@ -116,7 +110,7 @@ function PhoneCheckoutForm({
         <Item name={dataName('code')}>
           <InputMask
             mask='9999'
-            disabled={!isRunning && (!isCodeSent || loading || isPhoneConfirmed)}
+            disabled={!isRunning && (!isCodeSent || isPhoneConfirmed)}
             className='order-form-sms-code'
             onChange={codeHandler}
           />
