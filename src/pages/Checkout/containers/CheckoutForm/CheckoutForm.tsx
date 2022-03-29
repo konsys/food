@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { useStore } from 'effector-react';
+import { Button } from 'antd';
 import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';
@@ -29,6 +30,7 @@ interface Props {
   isCodeSent: boolean;
   isWrongCode: boolean;
   createOrder: TPromiseFn<Partial<OrderDto>>;
+  orderModel: TItem<OrderDto>;
 }
 
 function CheckoutForm({
@@ -44,6 +46,7 @@ function CheckoutForm({
   isCodeSent,
   isWrongCode,
   createOrder,
+  orderModel,
 }: Props) {
   const cartItem = cart?.item;
   const { Form: PhoneForm, formInstance: phoneInstanceForm } = useValidatedForm<CodeCheckDto>();
@@ -102,15 +105,15 @@ function CheckoutForm({
                 </div>
 
                 <div className='confirm-order'>
-                  <button
-                    type='button'
+                  <Button
                     disabled={!(!!date && !!price && !!time && !!phone)}
                     className='confirm-order__button'
                     title='Оформить заказ'
                     onClick={() => createOrder(order)}
+                    loading={orderModel?.pending}
                   >
                     Оформить заказ
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
