@@ -5,7 +5,6 @@ import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';
 import DateCheckoutForm from '../DateCheckoutForm/DateCheckoutForm';
-import PaymentsCheckoutForm from '../PaymentsCheckoutForm/PaymentsCheckoutForm';
 import { PromoDto } from '../../../../modules/promo/types';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { TItem } from '../../../../common/api/types';
@@ -85,36 +84,33 @@ function CheckoutForm({
           <div className='ordering-form__time'>
             <PromoCodeCheckoutForm disabled={!isPhoneConfirmed} />
           </div>
-          <PaymentsCheckoutForm />
 
           <div className='ordering-form__finish'>
-            <div className='container'>
-              <div className='order-finish__wrapper'>
-                <OrderDescription />
-                <div className='order-finish__price'>
-                  <div className='order-finish__item order-finish__item--total'>
-                    <div className='order-finish__title'>Итого</div>
-                    <div className='order-finish__value'>
-                      <span className='cart-price-total'>
-                        {(cartItem?.orderSum || 0) -
-                          ((cartItem?.orderSum || 0) / 100) * (promo?.item?.percentDiscount || 0)}
-                        <span className='cart-price-total__money-sign'>₽</span>
-                      </span>
-                    </div>
+            <div className='order-finish__wrapper'>
+              <OrderDescription />
+              <div className='order-finish__price'>
+                <div className='order-finish__item order-finish__item--total'>
+                  <div className='order-finish__title'>Итого</div>
+                  <div className='order-finish__value'>
+                    <span className='cart-price-total'>
+                      {(cartItem?.orderSum || 0) -
+                        ((cartItem?.orderSum || 0) / 100) * (promo?.item?.percentDiscount || 0)}
+                      <span className='cart-price-total__money-sign'>₽</span>
+                    </span>
                   </div>
                 </div>
+              </div>
 
-                <div className='confirm-order'>
-                  <Button
-                    disabled={!(!!date && !!price && !!time && !!phone)}
-                    className='confirm-order__button'
-                    title='Оформить заказ'
-                    onClick={() => createOrder(order)}
-                    loading={orderModel?.pending}
-                  >
-                    Оформить заказ
-                  </Button>
-                </div>
+              <div className='confirm-order'>
+                <Button
+                  disabled={!(!!date && !!price && !!time && !!phone)}
+                  className='confirm-order__button'
+                  title='Оформить заказ'
+                  onClick={() => createOrder(order)}
+                  loading={orderModel?.pending}
+                >
+                  Оформить заказ
+                </Button>
               </div>
             </div>
           </div>

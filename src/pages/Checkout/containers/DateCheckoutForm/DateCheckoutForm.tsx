@@ -1,6 +1,6 @@
 import DatePicker from 'react-date-picker';
 import React, { memo } from 'react';
-import { Select } from 'antd';
+import { Col, Row, Select } from 'antd';
 import { useStore } from 'effector-react';
 import { CartDto } from '../../../../modules/cart/types';
 import { TItem } from '../../../../common/api/types';
@@ -35,8 +35,8 @@ function DateCheckoutForm(props: Props) {
   const orderStore = useStore($orderStore);
 
   return (
-    <div className='ordering-form__time--input'>
-      <div className='order-options-time__date-select'>
+    <Row gutter={[8, 8]}>
+      <Col className='order-options-time__date-select' flex={3}>
         <label>Дата бронирования</label>
         <DatePicker
           disabled={disabled}
@@ -44,8 +44,8 @@ function DateCheckoutForm(props: Props) {
           value={orderStore.date}
           minDate={new Date()}
         />
-      </div>
-      <div className='order-options-time__time-select'>
+      </Col>
+      <Col flex={2}>
         <label>Время бронирования</label>
         <Select
           disabled={disabled}
@@ -55,8 +55,8 @@ function DateCheckoutForm(props: Props) {
         >
           {options}
         </Select>
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 }
 
