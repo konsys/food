@@ -5,7 +5,7 @@ import RestaurantMenu from '../pages/RestaurantMenu/RestaurantMenu';
 import Restaurants from '../pages/Restaurants/Restaurants';
 import { EPathName, TPath } from './types';
 import Cart from '../pages/Cart/Cart';
-import OrderCompleted from '../pages/Checkout/containers/OrderCompleted/OrderCompleted';
+import OrderCompletedPage from '../pages/Order/OrderCompleted/OrderCompletedPage';
 
 export const pathNames: Record<EPathName, TPath> = {
   HOME: { path: '/', name: 'Главная', basePath: '/' },
@@ -36,7 +36,7 @@ export const paths: Record<EPathName, RouteProps> = {
 
   ORDER_COMPLETED: {
     path: ORDER_COMPLETED.path,
-    element: OrderCompleted,
+    element: OrderCompletedPage,
   },
 
   CART: {
