@@ -12,9 +12,8 @@ import { CartDto } from '../../../../modules/cart/types';
 import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import OrderDescription from '../../components/OrderDescription/OrderDescription';
 import { $orderStore } from '../../../../modules/order/model';
-
-import './checkoutForm.less';
 import { OrderDto } from '../../../../modules/order/types';
+import './checkoutForm.less';
 
 interface Props {
   cart: TItem<CartDto>;
@@ -22,12 +21,10 @@ interface Props {
   promo: TItem<PromoDto>;
   setIsPhoneConfirmed: TVoidFn<boolean>;
   isPhoneConfirmed: boolean;
-  setIsWrongCode: TVoidFn<boolean>;
   setIsCodeSent: TVoidFn<boolean>;
   getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   isCodeSent: boolean;
-  isWrongCode: boolean;
   createOrder: TPromiseFn<Partial<OrderDto>>;
   orderModel: TItem<OrderDto>;
 }
@@ -38,12 +35,10 @@ function CheckoutForm({
   setIsPhoneConfirmed,
   isPhoneConfirmed,
   promo,
-  setIsWrongCode,
   setIsCodeSent,
   getCheckoutCode,
   createCheckoutCode,
   isCodeSent,
-  isWrongCode,
   createOrder,
   orderModel,
 }: Props) {
@@ -68,12 +63,10 @@ function CheckoutForm({
               isPhoneConfirmed={isPhoneConfirmed}
               formInstance={phoneInstanceForm}
               code={code}
-              setIsWrongCode={setIsWrongCode}
               setIsCodeSent={setIsCodeSent}
               getCheckoutCode={getCheckoutCode}
               createCheckoutCode={createCheckoutCode}
               isCodeSent={isCodeSent}
-              isWrongCode={isWrongCode}
             />
           </PhoneForm>
 

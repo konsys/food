@@ -52,9 +52,7 @@ function Checkout() {
         createCheckoutCode={createCheckoutCode}
         getCheckoutCode={getCheckoutCode}
         isCodeSent={isCodeSent}
-        isWrongCode={isWrongCode}
         setIsCodeSent={setIsCodeSent}
-        setIsWrongCode={setIsWrongCode}
         createOrder={createOrder}
         orderModel={order}
       />
