@@ -26,7 +26,6 @@ interface Props {
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   isCodeSent: boolean;
   createOrder: TPromiseFn<Partial<OrderDto>>;
-  orderModel: TItem<OrderDto>;
 }
 
 function CheckoutForm({
@@ -40,7 +39,6 @@ function CheckoutForm({
   createCheckoutCode,
   isCodeSent,
   createOrder,
-  orderModel,
 }: Props) {
   const cartItem = cart?.item;
   const { Form: PhoneForm, formInstance: phoneInstanceForm } = useValidatedForm<CodeCheckDto>();

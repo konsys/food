@@ -55,7 +55,7 @@ function PhoneCheckoutForm({
         formInstance.setFields([
           {
             name: dataName('code'),
-            errors: ['Неверный код'],
+            errors: !v ? ['Неверный код'] : [],
           },
         ]);
 

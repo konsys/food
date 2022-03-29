@@ -34,7 +34,6 @@ function Checkout() {
   useGate(CodeCheckGate, getClientUuid());
 
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
-  const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
 
   const createOrder = async (order: Partial<OrderDto>) => {
     const { uuid: orderUuid } = await createOrderFx(order);
@@ -54,7 +53,6 @@ function Checkout() {
         isCodeSent={isCodeSent}
         setIsCodeSent={setIsCodeSent}
         createOrder={createOrder}
-        orderModel={order}
       />
     </Spin>
   );
