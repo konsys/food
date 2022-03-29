@@ -28,7 +28,7 @@ interface Props {
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   isCodeSent: boolean;
   isWrongCode: boolean;
-  createOrder: TPromiseFn<Partial<OrderDto>, Partial<OrderDto>>;
+  createOrder: TPromiseFn<Partial<OrderDto>>;
 }
 
 function CheckoutForm({

@@ -1,11 +1,14 @@
 export enum EPathName {
   HOME = 'HOME',
-  MENU = 'MENU',
+  RESTAURANTS = 'RESTAURANTS',
   CHECKOUT = 'CHECKOUT',
   CART = 'CART',
   NOT_FOUND = 'NOT_FOUND',
+  ORDER_COMPLETED = 'ORDER_COMPLETED'
 }
+
 export type TPath = {
   path: string;
   name: string;
+  basePath: string
 };

@@ -1,11 +1,13 @@
 import { useGate, useStore } from 'effector-react';
 import React, { memo, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getClientUuid } from '../../modules/cart/service';
+import { OrderDto } from '../../modules/order/types';
+import { pathNames, paths } from '../../routes/paths';
 import { CartModel, CodeCheckModel, OrderModel, PromoModel } from '../../store';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
 
-const { createItemFx: createOrder } = OrderModel;
+const { createItemFx: createOrderFx } = OrderModel;
 const { $itemStore: cartStore, ItemGate } = CartModel;
 const { $itemStore: promoStore } = PromoModel;
 const {
@@ -22,6 +24,8 @@ function Checkout() {
   const promo = useStore(promoStore);
   const code = useStore(codeCheckStore);
 
+  const navigate = useNavigate();
+
   const [isPhoneConfirmed, setIsPhoneConfirmed] = useState<boolean>(false);
 
   useGate(CodeCheckGate, getClientUuid());
@@ -29,6 +33,11 @@ function Checkout() {
 
   const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
   const [isWrongCode, setIsWrongCode] = useState<boolean>(true);
+
+  const createOrder = async (order: Partial<OrderDto>) => {
+    const { uuid } = await createOrderFx(order);
+    navigate(`${pathNames.ORDER_COMPLETED.basePath}/${uuid}`);
+  };
 
   return (
     <CheckoutForm

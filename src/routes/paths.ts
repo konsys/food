@@ -5,31 +5,38 @@ import RestaurantMenu from '../pages/RestaurantMenu/RestaurantMenu';
 import Restaurants from '../pages/Restaurants/Restaurants';
 import { EPathName, TPath } from './types';
 import Cart from '../pages/Cart/Cart';
+import OrderCompleted from '../pages/Checkout/containers/OrderCompleted/OrderCompleted';
 
 export const pathNames: Record<EPathName, TPath> = {
-  HOME: { path: '/', name: 'Главная' },
-  MENU: { path: '/restaurants/:uuid', name: 'Меню' },
-  CHECKOUT: { path: '/checkout/:uuid', name: 'Заказ' },
-  CART: { path: '/cart/:uuid', name: 'Корзина' },
-  NOT_FOUND: { path: '/', name: 'Страница не найдена' },
+  HOME: { path: '/', name: 'Главная', basePath: '/' },
+  RESTAURANTS: { path: '/restaurants/:uuid', name: 'Меню', basePath: '/restaurants' },
+  CHECKOUT: { path: '/checkout/:uuid', name: 'Заказ', basePath: '/checkout' },
+  ORDER_COMPLETED: { path: '/order-completed/:uuid', name: 'Заказ оформлен', basePath: '/order-completed' },
+  CART: { path: '/cart/:uuid', name: 'Корзина', basePath: '/cart' },
+  NOT_FOUND: { path: '/', name: 'Страница не найдена', basePath: '/' },
 };
 
-const { HOME, MENU, CHECKOUT, CART } = pathNames;
+const { HOME, RESTAURANTS, CHECKOUT, CART, ORDER_COMPLETED } = pathNames;
 
 export const paths: Record<EPathName, RouteProps> = {
   HOME: {
     path: HOME.path,
-    element: Restaurants,
+    element: Restaurants
   },
 
-  MENU: {
-    path: MENU.path,
+  RESTAURANTS: {
+    path: RESTAURANTS.path,
     element: RestaurantMenu,
   },
 
   CHECKOUT: {
     path: CHECKOUT.path,
     element: Order,
+  },
+
+  ORDER_COMPLETED: {
+    path: ORDER_COMPLETED.path,
+    element: OrderCompleted,
   },
 
   CART: {
