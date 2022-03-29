@@ -55,7 +55,6 @@ export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = Create
   setPageSize: Event<number>;
   $listStore: Store<TListResponce<FullEntity>>;
   $itemStore: Store<TItemStore<FullEntity>>;
-  $itemPending: Store<boolean>;
   ListGate: Gate<TListRequest<FullEntity>>;
   ItemGate: Gate<TUuid>;
   setItem: Event<FullEntity>;
@@ -124,7 +123,6 @@ export class CrudStore<
 
 
     const $itemStore = createStore<TItemStore<FullEntity>>(createInitItem());
-    const $itemPending = createStore<boolean>(false);
     const $listStore = createStore<TListResponce<FullEntity>>(
       createInitItemsWithPagination<FullEntity>()
     );
@@ -204,7 +202,6 @@ export class CrudStore<
       setPageSize,
       $listStore,
       $itemStore,
-      $itemPending,
       ListGate,
       ItemGate,
       setItem,
