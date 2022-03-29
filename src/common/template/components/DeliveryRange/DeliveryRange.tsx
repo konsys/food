@@ -21,9 +21,14 @@ interface Props {
 function DeliveryRange(props: Props) {
   const { deliveryPrice, minDeliveryMinutes, maxDeliveryMinutes, range } = props;
 
-  let rangeText = range === DeliveryRangeDto.LONG && 'Дальняя доставка';
-  rangeText = range === DeliveryRangeDto.HIGHT_DEMAND && 'Экспресс доставка';
-  rangeText = range === DeliveryRangeDto.STANDARD && 'Стандартная доставка';
+  let rangeText = 'Дальняя доставка';
+
+  if (range === DeliveryRangeDto.HIGHT_DEMAND) {
+    rangeText = 'Экспресс доставка';
+  }
+  if (range === DeliveryRangeDto.STANDARD) {
+    rangeText = 'Стандартная доставка';
+  }
 
   return (
     <Tooltip

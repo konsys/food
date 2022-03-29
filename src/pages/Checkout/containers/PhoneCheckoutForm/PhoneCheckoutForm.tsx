@@ -3,7 +3,6 @@ import React, { memo, useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 import moment from 'moment';
 import InputMask from 'react-input-mask';
-import { val } from 'factory.ts/lib/async';
 import CheckoutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';

@@ -10,7 +10,6 @@ import {
 } from 'effector';
 import isEmpty from 'lodash/isEmpty';
 import { createGate, Gate } from 'effector-react';
-import { notification } from 'antd';
 import { CrudService } from '../../api';
 import {
   createInitItem,

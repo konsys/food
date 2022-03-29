@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import { useStore } from 'effector-react';
 import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
-import AddressCheckoutForm from '../AddressCheckoutForm/AddressCheckoutForm';
 import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';
 import DateCheckoutForm from '../DateCheckoutForm/DateCheckoutForm';
 import PaymentsCheckoutForm from '../PaymentsCheckoutForm/PaymentsCheckoutForm';
@@ -76,10 +75,6 @@ function CheckoutForm({
             />
           </PhoneForm>
 
-          {/* ADDRESS --------------------------- */}
-
-          <AddressCheckoutForm disabled={!isPhoneConfirmed} />
-
           {/* TIME --------------------------- */}
           <div className='ordering-form__time'>
             <DateCheckoutForm disabled={!isPhoneConfirmed} cart={cart} />
@@ -93,7 +88,7 @@ function CheckoutForm({
             <div className='container'>
               <div className='order-finish__wrapper'>
                 <OrderDescription />
-                <div className='order-finish'>
+                <div className='order-finish__price'>
                   <div className='order-finish__item order-finish__item--total'>
                     <div className='order-finish__title'>Итого</div>
                     <div className='order-finish__value'>

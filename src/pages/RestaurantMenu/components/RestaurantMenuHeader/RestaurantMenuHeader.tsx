@@ -13,7 +13,7 @@ interface Props {
 }
 
 function RestaurantMenuHeader({ restaurant, delivery }: Props) {
-  const { name, image, rating, priceRating, closeTime, openTime } = restaurant;
+  const { name, image, rating } = restaurant;
   const { price, maxTimeMinutes, minTimeMinutes } = delivery;
 
   return (
