@@ -79,6 +79,8 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
     updateOrderStore({ phone: e.target.value, isPhoneValid: true });
   };
 
+  console.log(234234, order);
+
   return (
     <Row gutter={[8, 8]} className='phone-code__chekout'>
       <Col span={24}>

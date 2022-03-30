@@ -21,6 +21,7 @@ const {
 function Checkout() {
   const { uuid } = useParams<{ uuid: string }>();
   useGate(ItemGate, uuid);
+
   const cart = useStore(cartStore);
   const promo = useStore(promoStore);
   const code = useStore(codeCheckStore);
