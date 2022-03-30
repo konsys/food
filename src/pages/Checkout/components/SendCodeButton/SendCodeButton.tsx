@@ -9,6 +9,7 @@ interface Props extends ButtonProps {
 
 function SendCodeButton(props: Props) {
   const { createCodeSms, ...restProps } = props;
+
   return (
     <div>
       <label>&nbsp;</label>

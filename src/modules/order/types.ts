@@ -15,7 +15,8 @@ export type OrderDto = {
     places: number;
     phone: string;
     description: string;
-    checkoutCode: string;
+    confirmationCode: string;
     phoneConfirmed: boolean;
-    codeSent: boolean
+    codeSent: boolean;
+    isPhoneValid: boolean
 }

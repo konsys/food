@@ -15,7 +15,7 @@ function CheckoutTimer(props: Props) {
     <div>
       {isRunning ? (
         <Row className='ordering-form__phone-info' gutter={8}>
-          <Col> Отправить код повторно можно через</Col>
+          <Col className='ordering-form__resend-code-info'> Отправить код повторно можно через</Col>
           <Col>
             <span className='code_mins'>{minutes}</span>
             <span>:</span>

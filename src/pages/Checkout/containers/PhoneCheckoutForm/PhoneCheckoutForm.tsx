@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
 import moment from 'moment';
 import InputMask from 'react-input-mask';
@@ -17,12 +17,12 @@ import './phoneCodeCheckoutForm.less';
 
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
-function phoneValidator(rule: any, value: string) {
+function phoneValidator(value?: string) {
   const pattern = /^\+[\d]{1} [(]{1}[\d]{3}[)]{1} [\d]{3}-[\d]{2}-[\d]{2}$/;
-  if (!pattern.test(value)) {
-    return Promise.reject(new Error('Пожалуйста, введите номер телефона'));
+  if (!value || !pattern.test(value)) {
+    return false;
   }
-  return Promise.resolve();
+  return true;
 }
 
 type Props = {
@@ -42,8 +42,9 @@ function PhoneCheckoutForm({
 }: Props) {
   const order = useStore($orderStore);
 
-  const codeHandler = () => {
-    const codeInput = order.checkoutCode;
+  const codeHandler = (e: any) => {
+    const codeInput = e.target.value;
+    updateOrderStore({ confirmationCode: codeInput });
 
     if (codeInput && !Number.isNaN(+codeInput)) {
       getCheckoutCode({
@@ -56,11 +57,17 @@ function PhoneCheckoutForm({
     }
   };
 
-  const createCodeSms = () =>
-    createCheckoutCode({
-      phoneNumber: order.phone,
-      uuid: getClientUuid(),
-    }).then(() => updateOrderStore({ codeSent: true }));
+  const createCodeSms = () => {
+    const isPhoneValid = phoneValidator(order.phone);
+    updateOrderStore({ confirmationCode: '____', isPhoneValid });
+
+    if (isPhoneValid) {
+      createCheckoutCode({
+        phoneNumber: order.phone,
+        uuid: getClientUuid(),
+      }).then(() => updateOrderStore({ codeSent: true }));
+    }
+  };
 
   const { seconds, minutes, isRunning, restart } = useTimer({
     expiryTimestamp: code?.item?.expiredAt || new Date(),
@@ -73,23 +80,32 @@ function PhoneCheckoutForm({
     }
   }, [code?.item?.expiredAt]);
 
+  const handlePhone = (e: any) => {
+    updateOrderStore({ phone: e.target.value, isPhoneValid: true });
+  };
+
   return (
     <Row gutter={[8, 8]} className='phone-code__chekout'>
-      <Col sm={24} span={14}>
+      <Col span={24}>
         <label htmlFor='order-phone'>Телефон</label>
 
         <InputMask
           mask='+7 (999) 999-99-99'
           disabled={isPhoneConfirmed}
           name={dataName('phoneNumber')}
+          value={order.phone}
+          onChange={handlePhone}
         />
+        {!order.isPhoneValid && (
+          <div className='input-promocode-error '>Неверный номер телефона</div>
+        )}
 
         <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
       </Col>
-      <Col sm={24} span={10}>
+      <Col span={24}>
         <SendCodeButton createCodeSms={createCodeSms} disabled={isPhoneConfirmed || isRunning} />
       </Col>
-      <Col sm={24} span={24}>
+      <Col span={24}>
         <label htmlFor='sms-code' className='label-sms-code'>
           Код из СМС
         </label>
@@ -99,6 +115,7 @@ function PhoneCheckoutForm({
           disabled={!isRunning && (!order.codeSent || isPhoneConfirmed)}
           className='order-form-sms-code'
           onChange={codeHandler}
+          value={order.confirmationCode}
         />
       </Col>
     </Row>
