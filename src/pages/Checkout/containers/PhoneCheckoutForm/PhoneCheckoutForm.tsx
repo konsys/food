@@ -65,8 +65,6 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
   });
 
   useEffect(() => {
-    console.log(234234234, code?.item?.expiredAt);
-
     if (code?.item?.expiredAt) {
       const localTime = moment(code.item.expiredAt).local().toDate();
       restart(localTime);
@@ -88,7 +86,7 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
 
         <InputMask
           mask='+7 (999) 999-99-99'
-          disabled={order.phoneConfirmed}
+          disabled={order.phoneConfirmed || order.isTimerRunning}
           name={dataName('phoneNumber')}
           value={order.phone}
           onChange={handlePhone}

@@ -23,7 +23,6 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
     if (item.phoneNumber && item.uuid && item.phoneNumber) {
       let expiredAt = addTime(EXPIRE_1_MINUTE);
       const code = Math.floor(1000 + Math.random() * 9000).toString();
-
       const res = await this.checkService.findOne(item.uuid);
 
       if (res) {
@@ -33,7 +32,7 @@ export class CodeCheckController extends AbstractController<CodeCheck> {
         }
 
         if (res.status !== ECodeStatus.COMPLETED) {
-          return this.checkService.update({ ...res, phoneNumber: item.phoneNumber, code, status: ECodeStatus.CREATED });
+          return this.checkService.update({ ...res, phoneNumber: item.phoneNumber, code, expiredAt, status: ECodeStatus.CREATED });
         }
 
         const isExpired = moment(res.expiredAt).isBefore(new Date());
