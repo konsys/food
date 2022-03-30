@@ -13,6 +13,9 @@ export type OrderDto = {
     status: EOrderStatus;
     price: number;
     places: number;
-    phone: string
-    description: string
+    phone: string;
+    description: string;
+    checkoutCode: string;
+    phoneConfirmed: boolean;
+    codeSent: boolean
 }

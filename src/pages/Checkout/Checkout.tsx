@@ -33,8 +33,6 @@ function Checkout() {
   useGate(CodeCheckGate, getClientUuid());
   useGate(CodeCheckGate, getClientUuid());
 
-  const [isCodeSent, setIsCodeSent] = useState<boolean>(false);
-
   const createOrder = async (order: Partial<OrderDto>) => {
     const { uuid: orderUuid } = await createOrderFx(order);
     navigate(`${pathNames.ORDER_COMPLETED.basePath}/${orderUuid}`);
@@ -50,8 +48,6 @@ function Checkout() {
         promo={promo}
         createCheckoutCode={createCheckoutCode}
         getCheckoutCode={getCheckoutCode}
-        isCodeSent={isCodeSent}
-        setIsCodeSent={setIsCodeSent}
         createOrder={createOrder}
       />
     </Spin>

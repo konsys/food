@@ -23,7 +23,7 @@ export class CodeCheck {
   @Index({ unique: true, fulltext: true })
   uuid: string;
 
-  @Exclude()
+  // @Exclude()
   @Column()
   phoneNumber: string;
 

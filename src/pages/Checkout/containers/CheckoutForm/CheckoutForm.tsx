@@ -9,7 +9,6 @@ import { PromoDto } from '../../../../modules/promo/types';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { TItem } from '../../../../common/api/types';
 import { CartDto } from '../../../../modules/cart/types';
-import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import OrderDescription from '../../components/OrderDescription/OrderDescription';
 import { $orderStore } from '../../../../modules/order/model';
 import { OrderDto } from '../../../../modules/order/types';
@@ -21,10 +20,8 @@ interface Props {
   promo: TItem<PromoDto>;
   setIsPhoneConfirmed: TVoidFn<boolean>;
   isPhoneConfirmed: boolean;
-  setIsCodeSent: TVoidFn<boolean>;
   getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
-  isCodeSent: boolean;
   createOrder: TPromiseFn<Partial<OrderDto>>;
 }
 
@@ -34,14 +31,11 @@ function CheckoutForm({
   setIsPhoneConfirmed,
   isPhoneConfirmed,
   promo,
-  setIsCodeSent,
   getCheckoutCode,
   createCheckoutCode,
-  isCodeSent,
   createOrder,
 }: Props) {
   const cartItem = cart?.item;
-  const { Form: PhoneForm, formInstance: phoneInstanceForm } = useValidatedForm<CodeCheckDto>();
 
   const order = useStore($orderStore);
   const { date, price, time, phone } = order;
@@ -55,18 +49,13 @@ function CheckoutForm({
           </div>
 
           {/* PHONE --------------------------- */}
-          <PhoneForm>
-            <PhoneCheckoutForm
-              setIsPhoneConfirmed={setIsPhoneConfirmed}
-              isPhoneConfirmed={isPhoneConfirmed}
-              formInstance={phoneInstanceForm}
-              code={code}
-              setIsCodeSent={setIsCodeSent}
-              getCheckoutCode={getCheckoutCode}
-              createCheckoutCode={createCheckoutCode}
-              isCodeSent={isCodeSent}
-            />
-          </PhoneForm>
+          <PhoneCheckoutForm
+            setIsPhoneConfirmed={setIsPhoneConfirmed}
+            isPhoneConfirmed={isPhoneConfirmed}
+            code={code}
+            getCheckoutCode={getCheckoutCode}
+            createCheckoutCode={createCheckoutCode}
+          />
 
           {/* TIME --------------------------- */}
           <div className='ordering-form__time'>
