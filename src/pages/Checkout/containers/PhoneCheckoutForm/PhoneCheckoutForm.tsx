@@ -36,14 +36,14 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
 
   const codeHandler = (e: any) => {
     const codeInput = e.target.value;
-    updateOrderStore({ confirmationCode: codeInput });
+    updateOrderStore({ confirmationCode: codeInput, isCodeValid: true });
 
     if (codeInput && !Number.isNaN(+codeInput)) {
       getCheckoutCode({
         code: codeInput,
         uuid: getClientUuid(),
       }).then((v) => {
-        v.uuid && updateOrderStore({ phoneConfirmed: true });
+        updateOrderStore({ phoneConfirmed: !!v.uuid, isCodeValid: !!v.uuid });
       });
     }
   };
