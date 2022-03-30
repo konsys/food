@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 import moment from 'moment';
 import InputMask from 'react-input-mask';
@@ -65,11 +65,17 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
   });
 
   useEffect(() => {
+    console.log(234234234, code?.item?.expiredAt);
+
     if (code?.item?.expiredAt) {
       const localTime = moment(code.item.expiredAt).local().toDate();
       restart(localTime);
     }
-  }, [code?.item?.expiredAt]);
+  }, [code?.item?.expiredAt, moment]);
+
+  useEffect(() => {
+    updateOrderStore({ isTimerRunning: isRunning });
+  }, [updateOrderStore, isRunning]);
 
   const handlePhone = (e: any) => {
     updateOrderStore({ phone: e.target.value, isPhoneValid: true });
@@ -82,7 +88,7 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
 
         <InputMask
           mask='+7 (999) 999-99-99'
-          disabled={!order.phoneConfirmed}
+          disabled={order.phoneConfirmed}
           name={dataName('phoneNumber')}
           value={order.phone}
           onChange={handlePhone}
@@ -91,7 +97,7 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
           <div className='input-promocode-error '>Неверный номер телефона</div>
         )}
 
-        <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
+        <CheckoutTimer isRunning={!!order.isTimerRunning} minutes={minutes} seconds={seconds} />
       </Col>
       <Col span={24}>
         <SendCodeButton
@@ -106,12 +112,12 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
         <InputMask
           name={dataName('code')}
           mask='9999'
-          disabled={!isRunning && (!order.codeSent || order.phoneConfirmed)}
+          disabled={!isRunning || order.phoneConfirmed}
           className='order-form-sms-code'
           onChange={codeHandler}
           value={order.confirmationCode}
         />
-        {!order.isCodeValid && <div className='input-promocode-error '>Код неверный</div>}
+        {!order.isCodeValid && <div className='input-promocode-error'>Код неверный</div>}
       </Col>
     </Row>
   );

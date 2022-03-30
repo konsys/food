@@ -19,5 +19,6 @@ export type OrderDto = {
     phoneConfirmed: boolean;
     codeSent: boolean;
     isPhoneValid: boolean;
-    isCodeValid: boolean
+    isCodeValid: boolean;
+    isTimerRunning: boolean
 }
