@@ -1,6 +1,6 @@
 import { Spin } from 'antd';
 import { useGate, useStore } from 'effector-react';
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getClientUuid } from '../../modules/cart/service';
 import { OrderDto } from '../../modules/order/types';
@@ -28,8 +28,6 @@ function Checkout() {
 
   const navigate = useNavigate();
 
-  const [isPhoneConfirmed, setIsPhoneConfirmed] = useState<boolean>(false);
-
   useGate(CodeCheckGate, getClientUuid());
   useGate(CodeCheckGate, getClientUuid());
 
@@ -43,8 +41,6 @@ function Checkout() {
       <CheckoutForm
         code={code}
         cart={cart}
-        isPhoneConfirmed={isPhoneConfirmed}
-        setIsPhoneConfirmed={setIsPhoneConfirmed}
         promo={promo}
         createCheckoutCode={createCheckoutCode}
         getCheckoutCode={getCheckoutCode}

@@ -18,8 +18,6 @@ interface Props {
   cart: TItem<CartDto>;
   code: TItem<CodeCheckDto>;
   promo: TItem<PromoDto>;
-  setIsPhoneConfirmed: TVoidFn<boolean>;
-  isPhoneConfirmed: boolean;
   getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createOrder: TPromiseFn<Partial<OrderDto>>;
@@ -28,8 +26,6 @@ interface Props {
 function CheckoutForm({
   cart,
   code,
-  setIsPhoneConfirmed,
-  isPhoneConfirmed,
   promo,
   getCheckoutCode,
   createCheckoutCode,
@@ -50,8 +46,6 @@ function CheckoutForm({
 
           {/* PHONE --------------------------- */}
           <PhoneCheckoutForm
-            setIsPhoneConfirmed={setIsPhoneConfirmed}
-            isPhoneConfirmed={isPhoneConfirmed}
             code={code}
             getCheckoutCode={getCheckoutCode}
             createCheckoutCode={createCheckoutCode}
@@ -59,10 +53,10 @@ function CheckoutForm({
 
           {/* TIME --------------------------- */}
           <div className='ordering-form__time'>
-            <DateCheckoutForm disabled={!isPhoneConfirmed} cart={cart} />
+            <DateCheckoutForm disabled={!order.phoneConfirmed} cart={cart} />
           </div>
           <div className='ordering-form__time'>
-            <PromoCodeCheckoutForm disabled={!isPhoneConfirmed} />
+            <PromoCodeCheckoutForm disabled={!order.phoneConfirmed} />
           </div>
 
           <div className='ordering-form__finish'>

@@ -18,5 +18,6 @@ export type OrderDto = {
     confirmationCode: string;
     phoneConfirmed: boolean;
     codeSent: boolean;
-    isPhoneValid: boolean
+    isPhoneValid: boolean;
+    isCodeValid: boolean
 }

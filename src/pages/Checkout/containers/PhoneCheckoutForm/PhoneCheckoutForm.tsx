@@ -9,7 +9,7 @@ import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { getClientUuid } from '../../../../modules/cart/service';
 import SendCodeButton from '../../components/SendCodeButton/SendCodeButton';
-import { TPromiseFn, TVoidFn } from '../../../../common/types';
+import { TPromiseFn } from '../../../../common/types';
 import { TItem } from '../../../../common/api/types';
 import { $orderStore, updateOrderStore } from '../../../../modules/order/model';
 
@@ -27,19 +27,11 @@ function phoneValidator(value?: string) {
 
 type Props = {
   code: TItem<CodeCheckDto>;
-  setIsPhoneConfirmed: TVoidFn<boolean>;
-  isPhoneConfirmed: boolean;
   getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
 };
 
-function PhoneCheckoutForm({
-  code,
-  setIsPhoneConfirmed,
-  isPhoneConfirmed,
-  getCheckoutCode,
-  createCheckoutCode,
-}: Props) {
+function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props) {
   const order = useStore($orderStore);
 
   const codeHandler = (e: any) => {
@@ -51,7 +43,6 @@ function PhoneCheckoutForm({
         code: codeInput,
         uuid: getClientUuid(),
       }).then((v) => {
-        setIsPhoneConfirmed(!!v);
         v.uuid && updateOrderStore({ phoneConfirmed: true });
       });
     }
@@ -91,7 +82,7 @@ function PhoneCheckoutForm({
 
         <InputMask
           mask='+7 (999) 999-99-99'
-          disabled={isPhoneConfirmed}
+          disabled={!order.phoneConfirmed}
           name={dataName('phoneNumber')}
           value={order.phone}
           onChange={handlePhone}
@@ -103,7 +94,10 @@ function PhoneCheckoutForm({
         <CheckoutTimer isRunning={isRunning} minutes={minutes} seconds={seconds} />
       </Col>
       <Col span={24}>
-        <SendCodeButton createCodeSms={createCodeSms} disabled={isPhoneConfirmed || isRunning} />
+        <SendCodeButton
+          createCodeSms={createCodeSms}
+          disabled={order.phoneConfirmed || isRunning}
+        />
       </Col>
       <Col span={24}>
         <label htmlFor='sms-code' className='label-sms-code'>
@@ -112,11 +106,12 @@ function PhoneCheckoutForm({
         <InputMask
           name={dataName('code')}
           mask='9999'
-          disabled={!isRunning && (!order.codeSent || isPhoneConfirmed)}
+          disabled={!isRunning && (!order.codeSent || order.phoneConfirmed)}
           className='order-form-sms-code'
           onChange={codeHandler}
           value={order.confirmationCode}
         />
+        {!order.isCodeValid && <div className='input-promocode-error '>Код неверный</div>}
       </Col>
     </Row>
   );
