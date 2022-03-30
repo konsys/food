@@ -35,7 +35,7 @@ function DateCheckoutForm(props: Props) {
   const orderStore = useStore($orderStore);
 
   return (
-    <Row gutter={[8, 8]}>
+    <Row gutter={[8, 8]} className='date-order__chekout'>
       <Col className='order-options-time__date-select' flex={3}>
         <label>Дата бронирования</label>
         <DatePicker
@@ -49,7 +49,7 @@ function DateCheckoutForm(props: Props) {
         <label>Время бронирования</label>
         <Select
           disabled={disabled}
-          style={{ width: '100%' }}
+          style={{ maxWidth: '215px', width: '100%' }}
           onChange={onTimeChange}
           value={orderStore.time}
         >

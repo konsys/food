@@ -4,7 +4,7 @@ import React, { memo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getClientUuid } from '../../modules/cart/service';
 import { OrderDto } from '../../modules/order/types';
-import { pathNames, paths } from '../../routes/paths';
+import { pathNames } from '../../routes/paths';
 import { CartModel, CodeCheckModel, OrderModel, PromoModel } from '../../store';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
 

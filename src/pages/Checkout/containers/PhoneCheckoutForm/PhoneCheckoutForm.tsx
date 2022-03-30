@@ -12,6 +12,8 @@ import { TPromiseFn, TVoidFn } from '../../../../common/types';
 import { TItem } from '../../../../common/api/types';
 import { updateOrderStore } from '../../../../modules/order/model';
 
+import './phoneCodeCheckoutForm.less';
+
 const { Item } = Form;
 
 const dataName = columnsNamesGenerator<CodeCheckDto>();
@@ -46,6 +48,13 @@ function PhoneCheckoutForm({
   isCodeSent,
 }: Props) {
   const codeHandler = () => {
+    formInstance.setFields([
+      {
+        name: dataName('code'),
+        errors: [],
+      },
+    ]);
+
     const codeInput = formInstance.getFieldValue(dataName('code'));
     if (!Number.isNaN(+codeInput)) {
       getCheckoutCode({
@@ -85,7 +94,7 @@ function PhoneCheckoutForm({
   }, [code?.item?.expiredAt]);
 
   return (
-    <Row gutter={[8, 8]}>
+    <Row gutter={[8, 8]} className='phone-code__chekout'>
       <Col>
         <label htmlFor='order-phone'>Телефон</label>
         <Item
@@ -95,6 +104,7 @@ function PhoneCheckoutForm({
               validator: phoneValidator,
             },
           ]}
+          validateTrigger='onBlur'
         >
           <InputMask mask='+7 (999) 999-99-99' disabled={isPhoneConfirmed} />
         </Item>
@@ -115,7 +125,6 @@ function PhoneCheckoutForm({
             onChange={codeHandler}
           />
         </Item>
-        {isPhoneConfirmed ? <div className='input-code-success'>Телефон подтвержден</div> : ''}
       </Col>
     </Row>
   );

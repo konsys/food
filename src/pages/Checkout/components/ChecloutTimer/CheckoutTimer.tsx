@@ -1,4 +1,7 @@
+import { Row, Col } from 'antd';
 import React, { memo } from 'react';
+
+import './checkoutTimer.less';
 
 interface Props {
   minutes: number;
@@ -8,16 +11,17 @@ interface Props {
 
 function CheckoutTimer(props: Props) {
   const { minutes, seconds, isRunning } = props;
-
   return (
-    <div className='ordering-form__phone-info'>
+    <div>
       {isRunning ? (
-        <>
-          Вы сможете отправить код еще раз через
-          <span className='code_mins'>{minutes}</span>
-          <span>:</span>
-          <span className='code_secs'>{seconds < 10 ? `0${seconds}` : seconds}</span>
-        </>
+        <Row className='ordering-form__phone-info' gutter={8}>
+          <Col> Отправить код повторно можно через</Col>
+          <Col>
+            <span className='code_mins'>{minutes}</span>
+            <span>:</span>
+            <span className='code_mins'>{seconds < 10 ? `0${seconds}` : seconds}</span>
+          </Col>
+        </Row>
       ) : (
         ''
       )}
