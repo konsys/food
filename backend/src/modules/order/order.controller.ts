@@ -31,7 +31,8 @@ export class OrderController extends AbstractController<FoodOrder> {
         order.places = item.places;
         order.phone = item.phone;
         order.uuid = cart.uuid;
-        // order.date = item.date;
+        // TODO add date from order
+        order.date = new Date();
         order.time = item.time;
       } else {
         throw new BadRequestException('Заказ не найден');
@@ -43,11 +44,9 @@ export class OrderController extends AbstractController<FoodOrder> {
         order.percentDiscount = promo.percentDiscount;
       }
 
-      console.log(1111111, cart);
-
-
-
-      return this.orderService.create(order);
+      const resultOrder = await this.orderService.create(order);
+      await this.orderService.deleteCartByUuid(cart.uuid);
+      return resultOrder;
     }
     return false
   }

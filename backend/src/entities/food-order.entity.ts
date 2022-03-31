@@ -40,8 +40,8 @@ export class FoodOrder {
   @Column()
   phone: string
 
-  @Column()
-  description: string
+  @Column({ default: null })
+  description?: string
 
   @Column()
   price: number;

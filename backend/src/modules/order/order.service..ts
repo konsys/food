@@ -34,4 +34,9 @@ export class OrderService extends AbstractService<FoodOrder> {
     return this.promoRepository.findOne({ where: { uuid } });
   }
 
+  async deleteCartByUuid(uuid: TUuid) {
+    const cart = await this.cartRepository.find({ where: { uuid } });
+    return this.cartRepository.remove(cart);
+  }
+
 }
