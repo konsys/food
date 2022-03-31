@@ -66,7 +66,7 @@ function CartComponent(props: Props) {
             </Link>
           </div>
         ) : (
-          <div className='cart-bottom__checkout-button--disabled'>Оформить заказ</div>
+          <div className='cart-bottom__checkout-button--disabled'>Корзина пуста</div>
         )}
       </div>
     </div>
