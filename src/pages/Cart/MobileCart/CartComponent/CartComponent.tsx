@@ -55,7 +55,7 @@ function CartComponent(props: Props) {
       <div className='cart-bottom'>
         <div className='cart-bottom__info'>
           <div className='cart-bottom__total'>
-            Итого <span>{cartOrder?.orderSum} ₽</span>
+            Итого <span>{cartOrder?.orderSum || 0} ₽</span>
           </div>
         </div>
 
