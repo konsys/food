@@ -1,11 +1,13 @@
-import { Exclude } from 'class-transformer';
 import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import { TRestaurantMenuOrder } from './cart.entity';
 
 export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN_PROGRESS', CLOSED = 'CLOSED' }
 
 
 @Entity()
 export class FoodOrder {
+
 
   @PrimaryGeneratedColumn()
   id: number;
@@ -14,13 +16,19 @@ export class FoodOrder {
   @Column()
   uuid: string;
 
+  @Index({ fulltext: true })
+  @Column()
+  restaurantUuid: string;
+
   @Column()
   promoCodeUuid: string;
 
   @Column({ default: EOrderStatus.CREATED })
   status: EOrderStatus
 
-  @Column()
+  @Column({
+    type: 'timestamp with time zone',
+  })
   date: Date
 
   @Column()
@@ -38,6 +46,7 @@ export class FoodOrder {
   @Column()
   price: number;
 
+
   @Column({ default: 1 })
   places: number;
 
@@ -53,6 +62,12 @@ export class FoodOrder {
     onUpdate: 'CURRENT_TIMESTAMP',
   })
   updatedAt?: Date;
+
+
+  @Column({
+    type: 'jsonb'
+  })
+  order: TRestaurantMenuOrder[];
 }
 
 
