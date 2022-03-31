@@ -50,7 +50,7 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
 
   const createCodeSms = () => {
     const isPhoneValid = phoneValidator(order.phone);
-    updateOrderStore({ confirmationCode: '____', isPhoneValid });
+    updateOrderStore({ confirmationCode: '____', isPhoneValid, isCodeValid: true });
 
     if (isPhoneValid) {
       createCheckoutCode({

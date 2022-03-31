@@ -14,7 +14,7 @@ function OrderCompletedPage() {
 
   return (
     <Spin spinning={order.pending}>
-      <div className='container'>Заказ успешно оформлен {uuid}</div>;
+      <div className='container'>Заказ успешно оформлен {JSON.stringify(order)}</div>;
     </Spin>
   );
 }
