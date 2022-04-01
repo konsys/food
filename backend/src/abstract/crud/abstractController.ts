@@ -1,5 +1,5 @@
 import { DeepPartial } from 'typeorm';
-import { Controller, Get, Post, Body, Param, Delete, Put, UseInterceptors, Query, HttpException, BadRequestException, HttpStatus } from '@nestjs/common';
+import { Get, Post, Body, Param, Delete, Put, UseInterceptors, Query, HttpException, HttpStatus } from '@nestjs/common';
 import { TUuid } from 'src/common/types';
 
 import { TListRequest } from 'src/common/types/paginationTypes';
@@ -16,38 +16,62 @@ export class AbstractController<E> {
   }
 
   @Post()
-  create(@Body() item: DeepPartial<E>) {
-    return this.service.create(item);
+  async create(@Body() item: DeepPartial<E>) {
+    try {
+      return await this.service.create(item);
+    } catch (e) {
+      throw new HttpException('Unknown error1', HttpStatus.I_AM_A_TEAPOT);
+    }
+
   }
 
   @Post('filter')
   filter(@Body() params: TListRequest<E>) {
-    return (this.service.findAll(params));
+    try {
+      return (this.service.findAll(params));
+    } catch (e) {
+      throw new HttpException('Unknown error2', HttpStatus.I_AM_A_TEAPOT);
+    }
   }
 
   @Get('filter-one')
   async filterOne(@Query() filter: DeepPartial<E>) {
-    const instance = instanceToInstance<DeepPartial<E>>(filter);
-    const res = await this.service.findOneByFilter(instance);
-    if (res) {
-      return res;
+    try {
+      const instance = instanceToInstance<DeepPartial<E>>(filter);
+      const res = await this.service.findOneByFilter(instance);
+      if (res) {
+        return res;
+      }
+      throw new HttpException('Resource not found', HttpStatus.NOT_FOUND);
+    } catch (e) {
+      throw new HttpException('Unknown error3', HttpStatus.I_AM_A_TEAPOT);
     }
-    throw new HttpException('Resource not found', HttpStatus.NOT_FOUND);
-
   }
 
   @Get(':uuid')
-  findOne(@Param('uuid') uuid: TUuid) {
-    return this.service.findOne(uuid);
+  async findOne(@Param('uuid') uuid: TUuid) {
+    try {
+      const res = await this.service.findOne(uuid);
+      if (res) {
+        return res;
+      }
+      throw new HttpException('Resource not found', HttpStatus.NOT_FOUND);
+    } catch (e) {
+      throw new HttpException('Unknown error4', HttpStatus.I_AM_A_TEAPOT);
+    }
   }
 
   @Put()
-  update(@Body() updateMenuTimeDto: DeepPartial<E>) {
-    return this.service.update(updateMenuTimeDto);
+  async update(@Body() updateMenuTimeDto: DeepPartial<E>) {
+    try { return await this.service.update(updateMenuTimeDto) } catch (e) {
+      throw new HttpException('Unknown error5', HttpStatus.I_AM_A_TEAPOT);
+    }
   }
 
   @Delete(':uuid')
-  remove(@Param('uuid') uuid: TUuid) {
-    return this.service.removeItem(uuid);
+  async remove(@Param('uuid') uuid: TUuid) {
+    try { return await this.service.removeItem(uuid); } catch (e) {
+      throw new HttpException('Unknown error6', HttpStatus.I_AM_A_TEAPOT);
+    }
   }
 }

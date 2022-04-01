@@ -31,7 +31,11 @@ type Props = {
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
 };
 
-function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props) {
+function PhoneCheckoutForm({
+  code,
+  getCheckoutCode,
+  createCheckoutCode,
+}: Props) {
   const order = useStore($orderStore);
 
   const codeHandler = (e: any) => {
@@ -50,7 +54,11 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
 
   const createCodeSms = () => {
     const isPhoneValid = phoneValidator(order.phone);
-    updateOrderStore({ confirmationCode: '____', isPhoneValid, isCodeValid: true });
+    updateOrderStore({
+      confirmationCode: '____',
+      isPhoneValid,
+      isCodeValid: true,
+    });
 
     if (isPhoneValid) {
       createCheckoutCode({
@@ -79,25 +87,27 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
     updateOrderStore({ phone: e.target.value, isPhoneValid: true });
   };
 
-  console.log(234234, order);
-
   return (
-    <Row gutter={[8, 8]} className='phone-code__chekout'>
+    <Row gutter={[8, 8]} className="phone-code__chekout">
       <Col span={24}>
-        <label htmlFor='order-phone'>Телефон</label>
+        <label htmlFor="order-phone">Телефон</label>
 
         <InputMask
-          mask='+7 (999) 999-99-99'
+          mask="+7 (999) 999-99-99"
           disabled={order.phoneConfirmed || order.isTimerRunning}
           name={dataName('phoneNumber')}
           value={order.phone}
           onChange={handlePhone}
         />
         {!order.isPhoneValid && (
-          <div className='input-promocode-error '>Неверный номер телефона</div>
+          <div className="input-promocode-error ">Неверный номер телефона</div>
         )}
 
-        <CheckoutTimer isRunning={!!order.isTimerRunning} minutes={minutes} seconds={seconds} />
+        <CheckoutTimer
+          isRunning={!!order.isTimerRunning}
+          minutes={minutes}
+          seconds={seconds}
+        />
       </Col>
       <Col span={24}>
         <SendCodeButton
@@ -106,18 +116,20 @@ function PhoneCheckoutForm({ code, getCheckoutCode, createCheckoutCode }: Props)
         />
       </Col>
       <Col span={24}>
-        <label htmlFor='sms-code' className='label-sms-code'>
+        <label htmlFor="sms-code" className="label-sms-code">
           Код из СМС
         </label>
         <InputMask
           name={dataName('code')}
-          mask='9999'
+          mask="9999"
           disabled={!isRunning || order.phoneConfirmed}
-          className='order-form-sms-code'
+          className="order-form-sms-code"
           onChange={codeHandler}
           value={order.confirmationCode}
         />
-        {!order.isCodeValid && <div className='input-promocode-error'>Код неверный</div>}
+        {!order.isCodeValid && (
+          <div className="input-promocode-error">Код неверный</div>
+        )}
       </Col>
     </Row>
   );

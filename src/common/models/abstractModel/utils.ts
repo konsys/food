@@ -7,6 +7,7 @@ export const nullableResult = <D>(_: TItemStore<D>, { result }: { result: D }) =
 });
 
 export const requestItemErrorHandler = <D>(_: TItemStore<D>, { error }: { error: any }): TItemStore<D> => {
+
     if (error?.response?.data?.statusCode && error?.response?.data?.message) {
         const responseError = error.response.data
         return {

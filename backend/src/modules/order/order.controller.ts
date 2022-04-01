@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Post, UseInterceptors } from '@nestjs/common';
+import { BadRequestException, Body, Controller, HttpException, HttpStatus, Post, UseInterceptors } from '@nestjs/common';
 import { AbstractController } from 'src/abstract/crud/abstractController';
 import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
 import { uuid } from 'src/common/random';
@@ -19,39 +19,44 @@ export class OrderController extends AbstractController<FoodOrder> {
 
   @Post()
   async generateCode(@Body() item: DeepPartial<OrderDto>) {
-    if (item.date && item.price && item.uuid) {
-      const order: Partial<FoodOrder> = {};
+    try {
+      if (item.date && item.price && item.uuid) {
 
-      const cart = await this.orderService.getCartByUuid(item.uuid);
+        const order: Partial<FoodOrder> = {};
 
-      if (cart) {
-        order.order = cart.order;
-        order.priceWithousDiscount = cart.orderSum;
-        order.description = item.description;
-        order.restaurantUuid = cart.restaurantUuid;
-        order.places = item.places;
-        order.phone = item.phone;
-        // order.uuid = uuid();
-        order.uuid = item.uuid;
-        order.userUuid = item.uuid;
-        // TODO add date from order
-        order.date = new Date();
-        order.time = item.time;
-      } else {
-        throw new BadRequestException('Заказ не найден');
+        const cart = await this.orderService.getCartByUuid(item.uuid);
+
+        if (cart) {
+          order.order = cart.order;
+          order.priceWithousDiscount = cart.orderSum;
+          order.description = item.description;
+          order.restaurantUuid = cart.restaurantUuid;
+          order.places = item.places;
+          order.phone = item.phone;
+          // order.uuid = uuid();
+          order.uuid = item.uuid;
+          order.userUuid = item.uuid;
+          // TODO add date from order
+          order.date = new Date();
+          order.time = item.time;
+        } else {
+          throw new BadRequestException('Заказ не найден. Попробуйте заказать снова');
+        }
+
+        if (item.promoCodeUuid) {
+          const promo = await this.orderService.getPromoByUuid(item.promoCodeUuid);
+          order.promoCodeUuid = promo.uuid;
+          order.percentDiscount = promo.percentDiscount;
+          order.priceWithDiscount = cart.orderSum - cart.orderSum / 100 * promo.percentDiscount;
+        }
+
+        const resultOrder = await this.orderService.create(order);
+        await this.orderService.deleteCartByUuid(cart.uuid);
+        return resultOrder;
       }
-
-      if (item.promoCodeUuid) {
-        const promo = await this.orderService.getPromoByUuid(item.promoCodeUuid);
-        order.promoCodeUuid = promo.uuid;
-        order.percentDiscount = promo.percentDiscount;
-        order.priceWithDiscount = cart.orderSum - cart.orderSum / 100 * promo.percentDiscount;
-      }
-
-      const resultOrder = await this.orderService.create(order);
-      await this.orderService.deleteCartByUuid(cart.uuid);
-      return resultOrder;
+      return false
+    } catch (e) {
+      throw new HttpException('Произошла неизвестная ошибка. Наши специалисты уже чинят ее. Попробуйте повторить заказ позже', HttpStatus.I_AM_A_TEAPOT);
     }
-    return false
   }
 }

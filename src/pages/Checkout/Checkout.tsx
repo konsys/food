@@ -38,7 +38,9 @@ function Checkout() {
   };
 
   return (
-    <Spin spinning={cart.pending || order.pending || code.pending || promo.pending}>
+    <Spin
+      spinning={cart.pending || order.pending || code.pending || promo.pending}
+    >
       <CheckoutForm
         code={code}
         cart={cart}
