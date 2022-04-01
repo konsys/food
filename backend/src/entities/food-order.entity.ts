@@ -18,6 +18,10 @@ export class FoodOrder {
 
   @Index({ fulltext: true })
   @Column()
+  userUuid: string;
+
+  @Index({ fulltext: true })
+  @Column()
   restaurantUuid: string;
 
   @Column()
@@ -43,9 +47,11 @@ export class FoodOrder {
   @Column({ default: null })
   description?: string
 
-  @Column()
-  price: number;
+  @Column({ type: 'float' })
+  priceWithousDiscount: number;
 
+  @Column({ type: 'float' })
+  priceWithDiscount: number;
 
   @Column({ default: 1 })
   places: number;
@@ -62,7 +68,6 @@ export class FoodOrder {
     onUpdate: 'CURRENT_TIMESTAMP',
   })
   updatedAt?: Date;
-
 
   @Column({
     type: 'jsonb'

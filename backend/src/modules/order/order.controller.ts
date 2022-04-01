@@ -1,6 +1,7 @@
 import { BadRequestException, Body, Controller, Post, UseInterceptors } from '@nestjs/common';
 import { AbstractController } from 'src/abstract/crud/abstractController';
 import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
+import { uuid } from 'src/common/random';
 import { EOrderStatus, FoodOrder } from 'src/entities/food-order.entity';
 import { DeepPartial } from 'typeorm';
 import { OrderService } from './order.service.';
@@ -25,12 +26,14 @@ export class OrderController extends AbstractController<FoodOrder> {
 
       if (cart) {
         order.order = cart.order;
-        order.price = cart.orderSum;
+        order.priceWithousDiscount = cart.orderSum;
         order.description = item.description;
         order.restaurantUuid = cart.restaurantUuid;
         order.places = item.places;
         order.phone = item.phone;
-        order.uuid = cart.uuid;
+        // order.uuid = uuid();
+        order.uuid = item.uuid;
+        order.userUuid = item.uuid;
         // TODO add date from order
         order.date = new Date();
         order.time = item.time;
@@ -42,6 +45,7 @@ export class OrderController extends AbstractController<FoodOrder> {
         const promo = await this.orderService.getPromoByUuid(item.promoCodeUuid);
         order.promoCodeUuid = promo.uuid;
         order.percentDiscount = promo.percentDiscount;
+        order.priceWithDiscount = cart.orderSum - cart.orderSum / 100 * promo.percentDiscount;
       }
 
       const resultOrder = await this.orderService.create(order);
