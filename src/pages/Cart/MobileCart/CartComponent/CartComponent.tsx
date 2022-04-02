@@ -17,10 +17,6 @@ interface Props {
 function CartComponent(props: Props) {
   const { cartOrder, changeQuantity, deleteFromCart } = props;
 
-  const promoDiscount = cartOrder?.promoDiscount ?? 0;
-  const orderSum = cartOrder?.orderSum || 0;
-  const discountSum = (orderSum / 100) * promoDiscount;
-
   return (
     <div className="cart-section__body">
       <div className="cart-section d-flex flex-column">
@@ -60,61 +56,33 @@ function CartComponent(props: Props) {
           ))}
         </div>
       </div>
-      {promoDiscount ? (
-        <>
-          <Row gutter={[8, 8]} className="cart-bottom__info">
-            <Col className="cart-bottom__info-title" span={12}>
-              Сума без скидки
-            </Col>
-            <Col className="cart-bottom__info-sum" span={12}>
-              {orderSum} ₽
-            </Col>
-          </Row>
-          <Row gutter={[8, 8]} className="cart-bottom__info">
-            <Col className="cart-bottom__info-title" span={12}>
-              Скидка, %
-            </Col>
-            <Col className="cart-bottom__info-sum" span={12}>
-              {promoDiscount} ₽
-            </Col>
-          </Row>
-          <Row gutter={[8, 8]} className="cart-bottom__info">
-            <Col className="cart-bottom__info-title" span={12}>
-              Скидка
-            </Col>
-            <Col className="cart-bottom__info-sum" span={12}>
-              {discountSum} ₽
-            </Col>
-          </Row>
-        </>
-      ) : (
-        ''
-      )}
 
       <Row gutter={[8, 8]} className="cart-bottom__info">
         <Col className="cart-bottom__info-title" span={12}>
           Итого
         </Col>
         <Col className="cart-bottom__info-sum" span={12}>
-          {orderSum - discountSum} ₽
+          {cartOrder?.orderSum ?? 0} ₽
         </Col>
       </Row>
 
-      {cartOrder?.orderSum ? (
-        <div className="cart-bottom__checkout-button">
-          <Link
-            to={`/checkout/${cartOrder?.uuid}`}
-            title="Оформить заказ"
-            rel="nofollow"
-          >
-            Оформить заказ
-          </Link>
-        </div>
-      ) : (
-        <div className="cart-bottom__checkout-button--disabled">
-          Корзина пуста
-        </div>
-      )}
+      <Row gutter={[8, 8]} className="cart-bottom__info">
+        {cartOrder?.orderSum ? (
+          <Col className="cart-bottom__checkout-button">
+            <Link
+              to={`/checkout/${cartOrder?.uuid}`}
+              title="Оформить заказ"
+              rel="nofollow"
+            >
+              Оформить заказ
+            </Link>
+          </Col>
+        ) : (
+          <Col className="cart-bottom__checkout-button--disabled">
+            Корзина пуста
+          </Col>
+        )}
+      </Row>
     </div>
   );
 }

@@ -21,12 +21,6 @@ export class Cart {
   @Column({ default: null })
   description: string;
 
-  @Column({ default: null, type: 'float' })
-  promoDiscount: number;
-
-  @Column({ default: null })
-  promoUuid: string;
-
   @Column({
     type: 'jsonb'
   })

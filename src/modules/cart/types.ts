@@ -1,13 +1,10 @@
 import { TId, TUuid } from '../../common/types';
-import { Nullable, NullableNumber } from '../../core/types';
 import { EOrderStatus } from '../order/types';
 import { RestaurantMenuDto } from '../restaurantMenu/types';
 
 export type CartDto = {
   id: TId;
   uuid: TUuid;
-  promoUuid: Nullable<TUuid>;
-  promoDiscount: NullableNumber;
   restaurantUuid: TUuid;
   description: string;
   order: TRestaurantMenuOrder[];
