@@ -56,7 +56,7 @@ export class OrderController extends AbstractController<FoodOrder> {
       }
       return false
     } catch (e) {
-      throw new HttpException('Произошла неизвестная ошибка. Наши специалисты уже чинят ее. Попробуйте повторить заказ позже', HttpStatus.I_AM_A_TEAPOT);
+      throw new HttpException('Неизвестная ошибка. Попробуйте повторить заказ позже', HttpStatus.I_AM_A_TEAPOT);
     }
   }
 }
