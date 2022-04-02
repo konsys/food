@@ -1,11 +1,11 @@
 import { createEvent, createStore } from "effector";
-import { OrderDto } from "./types";
+import { TOrder } from "./types";
 
 
-export const updateOrderStore = createEvent<Partial<OrderDto>>();
+export const updateOrderStore = createEvent<Partial<TOrder>>();
 
 
-export const $orderStore = createStore<Partial<OrderDto>>({
+export const $orderStore = createStore<Partial<TOrder>>({
     codeSent: false,
     isCodeValid: true,
     phoneConfirmed: false,

@@ -4,7 +4,7 @@ import React, { memo, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { notifyError } from '../../core/errors';
 import { getClientUuid } from '../../modules/cart/service';
-import { OrderDto } from '../../modules/order/types';
+import { TOrder } from '../../modules/order/types';
 import { pathNames } from '../../routes/paths';
 import { CartModel, CodeCheckModel, OrderModel, PromoModel } from '../../store';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
@@ -36,7 +36,7 @@ function Checkout() {
   const code = useStore(codeCheckStore);
   const order = useStore(orderStore);
 
-  const createOrder = async (newOrder: Partial<OrderDto>) => {
+  const createOrder = async (newOrder: Partial<TOrder>) => {
     const { uuid: orderUuid } = await createOrderFx(newOrder);
     navigate(`${pathNames.ORDER_COMPLETED.basePath}/${orderUuid}`);
   };

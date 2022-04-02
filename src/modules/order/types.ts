@@ -1,9 +1,10 @@
 import { TId, TUuid } from "../../common/types";
+import { TRestaurantMenuOrder } from "../cart/types";
 
 export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN_PROGRESS', COMPLETED = 'COMPLETED', CLOSED = 'CLOSED' }
 
 
-export type OrderDto = {
+export type TOrder = {
     id: TId;
     orderDate: Date;
     time: string;
@@ -22,4 +23,22 @@ export type OrderDto = {
     isPhoneValid: boolean;
     isCodeValid: boolean;
     isTimerRunning: boolean
+}
+
+export type OrderDto = {
+    id: number;
+    uuid: string;
+    userUuid: TUuid;
+    restaurantUuid: TUuid;
+    promoCodeUuid: string;
+    status: EOrderStatus
+    date: Date
+    percentDiscount: number
+    time: string
+    phone: string
+    description?: string
+    priceWithoutDiscount: number;
+    priceWithDiscount: number;
+    places: number;
+    order: TRestaurantMenuOrder[];
 }

@@ -28,7 +28,7 @@ export class OrderController extends AbstractController<FoodOrder> {
 
         if (cart) {
           order.order = cart.order;
-          order.priceWithousDiscount = cart.orderSum;
+          order.priceWithoutDiscount = cart.orderSum;
           order.description = item.description;
           order.restaurantUuid = cart.restaurantUuid;
           order.places = item.places;

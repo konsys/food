@@ -48,7 +48,7 @@ export class FoodOrder {
   description?: string
 
   @Column({ type: 'float' })
-  priceWithousDiscount: number;
+  priceWithoutDiscount: number;
 
   @Column({ type: 'float' })
   priceWithDiscount: number;

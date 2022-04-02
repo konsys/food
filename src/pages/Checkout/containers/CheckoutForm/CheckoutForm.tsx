@@ -12,7 +12,7 @@ import { TItem } from '../../../../common/api/types';
 import { CartDto } from '../../../../modules/cart/types';
 import OrderDescription from '../../components/OrderDescription/OrderDescription';
 import { $orderStore } from '../../../../modules/order/model';
-import { OrderDto } from '../../../../modules/order/types';
+import { TOrder } from '../../../../modules/order/types';
 import './checkoutForm.less';
 
 interface Props {
@@ -21,7 +21,7 @@ interface Props {
   promo: TItem<PromoDto>;
   getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
-  createOrder: TPromiseFn<Partial<OrderDto>>;
+  createOrder: TPromiseFn<Partial<TOrder>>;
 }
 
 function CheckoutForm({
