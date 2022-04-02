@@ -48,7 +48,6 @@ function Checkout() {
     }
   }, [order, notifyError]);
 
-  console.log(2342343234);
   return (
     <Spin
       spinning={cart.pending || order.pending || code.pending || promo.pending}
