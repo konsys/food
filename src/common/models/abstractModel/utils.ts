@@ -27,6 +27,8 @@ export const requestItemErrorHandler = <D>(_: TItemStore<D>, { error }: { error:
     }
 };
 
+export const clearItemErrorHandler = <D>(store: TItemStore<D>): TItemStore<D> => ({ ...store, error: null });
+
 
 export const requestListErrorHandler = <D>({ limit, page, filter, sort }: TListRequest<D>, { error }: { error: any }): TListResponce<D> => {
     if (error?.response?.data?.statusCode && error?.response?.data?.message) {

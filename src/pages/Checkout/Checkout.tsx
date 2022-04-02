@@ -9,7 +9,11 @@ import { pathNames } from '../../routes/paths';
 import { CartModel, CodeCheckModel, OrderModel, PromoModel } from '../../store';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
 
-const { createItemFx: createOrderFx, $itemStore: orderStore } = OrderModel;
+const {
+  createItemFx: createOrderFx,
+  $itemStore: orderStore,
+  clearItemError: clearOrdeError,
+} = OrderModel;
 const { $itemStore: cartStore, ItemGate } = CartModel;
 const { $itemStore: promoStore } = PromoModel;
 const {
@@ -38,10 +42,13 @@ function Checkout() {
   };
 
   useEffect(() => {
-    order.error && notifyError(order.error.message);
+    if (order.error) {
+      notifyError(order.error.message);
+      clearOrdeError();
+    }
   }, [order, notifyError]);
 
-  console.log(234234234);
+  console.log(2342343234);
   return (
     <Spin
       spinning={cart.pending || order.pending || code.pending || promo.pending}
