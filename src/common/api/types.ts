@@ -31,7 +31,9 @@ export type TItemStore<T> = {
   error: Nullable<TResponseError>
 };
 
-export type TItem<T> = Nullable<TItemStore<TItemWithUuid<T>>>
+export type TItem<T> = Nullable<TItemStore<TItemWithUuid<T>>>;
+
+export type TNullableItem<T> = Nullable<TItemWithUuid<T>>;
 
 export const createInitItem = <T>(): TItemStore<T> => ({
   item: null,

@@ -22,6 +22,7 @@ import {
 import { TUuid, TItemWithUuid } from '../../types/index';
 import { NullableNumber } from '../../../core/types';
 import { nullableResult, requestItemErrorHandler, requestListErrorHandler } from './utils';
+import { notifyError } from '../../../core/errors';
 
 export type TGetOneByFilterFx<FullEntity> = Effect<
   Partial<FullEntity>,
@@ -190,9 +191,10 @@ export class CrudStore<
       target: getAllDefault,
     });
 
+
     sample({
-      clock: getItem,
-      target: getItemFx,
+      clock: $itemStore.map(v => v.error),
+      target: []
     });
 
     return {

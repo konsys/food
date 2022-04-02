@@ -1,8 +1,11 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useStore } from 'effector-react';
 import { TUuid } from '../../common/types';
-import { changeOrderQuantity, deleteItemFromCart } from '../../modules/cart/utils';
-import { CartModel } from '../../store';
+import {
+  changeOrderQuantity,
+  deleteItemFromCart,
+} from '../../modules/cart/utils';
+import { CartModel, PromoModel } from '../../store';
 import CartComponent from './MobileCart/CartComponent/CartComponent';
 
 const { $itemStore: cartStore } = CartModel;
@@ -16,7 +19,8 @@ function Cart({ sideView }: Props) {
 
   const changeQuantity = (uuidToChange: TUuid, delta: number) =>
     changeOrderQuantity(cartOrder, uuidToChange, delta);
-  const deleteFromCart = (uuidToDelete: TUuid) => deleteItemFromCart(cartOrder, uuidToDelete);
+  const deleteFromCart = (uuidToDelete: TUuid) =>
+    deleteItemFromCart(cartOrder, uuidToDelete);
 
   const [stickyClass, setStickyClass] = useState<string>('');
 
@@ -31,7 +35,9 @@ function Cart({ sideView }: Props) {
   const stickNavbar = () => {
     if (window !== undefined) {
       const windowHeight = window.scrollY;
-      windowHeight > 76 ? setStickyClass('fixed-cart') : setStickyClass('relative-cart');
+      windowHeight > 76
+        ? setStickyClass('fixed-cart')
+        : setStickyClass('relative-cart');
     }
   };
 
@@ -46,8 +52,8 @@ function Cart({ sideView }: Props) {
           />
         </div>
       ) : (
-        <div className='container'>
-          <div className=' cart-section-wrapper '>
+        <div className="container">
+          <div className=" cart-section-wrapper ">
             <CartComponent
               cartOrder={cartOrder}
               changeQuantity={changeQuantity}

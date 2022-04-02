@@ -9,6 +9,8 @@ export const cartFactory = factory.Sync.makeFactory<CartDto>({
   uuid: factory.each(() => faker.datatype.uuid()),
   restaurantUuid: factory.each(() => faker.datatype.uuid()),
   description: factory.each(() => faker.lorem.words(5)),
+  promoDiscount: factory.each(() => faker.datatype.number(14) + 1),
+  promoUuid: factory.each(() => faker.datatype.uuid()),
   order: factory.each((e) => [
     {
       restaurantMenu: restaurantMenuFactory.build(),
