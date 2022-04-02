@@ -53,7 +53,7 @@ export class OrderController extends AbstractController<FoodOrder> {
         await this.orderService.deleteCartByUuid(cart.uuid);
         return resultOrder;
       }
-      return false
+      throw new HttpException('Неизвестная ошибка. Попробуйте повторить заказ позже', HttpStatus.I_AM_A_TEAPOT);
     } catch (e) {
       throw new HttpException('Неизвестная ошибка. Попробуйте повторить заказ позже', HttpStatus.I_AM_A_TEAPOT);
     }

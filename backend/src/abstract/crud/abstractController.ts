@@ -26,9 +26,9 @@ export class AbstractController<E> {
   }
 
   @Post('filter')
-  filter(@Body() params: TListRequest<E>) {
+  async filter(@Body() params: TListRequest<E>) {
     try {
-      return (this.service.findAll(params));
+      return await this.service.findAll(params);
     } catch (e) {
       throw new HttpException('Unknown error2', HttpStatus.I_AM_A_TEAPOT);
     }

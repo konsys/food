@@ -35,7 +35,7 @@ function CheckoutForm({
   const cartItem = cart?.item;
 
   const order = useStore($orderStore);
-  const { date, price, time, phone } = order;
+  const { orderDate, price, time, phone } = order;
 
   const orderPrice = cart?.item?.orderSum ?? 0;
   const percentDiscount = promo?.item?.percentDiscount ?? 0;
@@ -126,7 +126,7 @@ function CheckoutForm({
               </div>
               <div className="confirm-order">
                 <Button
-                  disabled={!(!!date && !!price && !!time && !!phone)}
+                  disabled={!(!!orderDate && !!price && !!time && !!phone)}
                   className="confirm-order__button"
                   title="Оформить заказ"
                   onClick={() => createOrder(order)}

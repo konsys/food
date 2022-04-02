@@ -24,9 +24,9 @@ interface Props {
 function DateCheckoutForm(props: Props) {
   const { disabled, cart } = props;
 
-  const onDateChange = (date: Date) => {
+  const onDateChange = (orderDate: Date) => {
     updateOrderStore({
-      date,
+      orderDate,
       uuid: cart?.item?.uuid,
       price: cart?.item?.orderSum,
     });
@@ -49,7 +49,7 @@ function DateCheckoutForm(props: Props) {
         <DatePicker
           disabled={disabled}
           onChange={onDateChange}
-          value={orderStore.date}
+          value={orderStore.orderDate}
           minDate={new Date()}
         />
       </Col>
