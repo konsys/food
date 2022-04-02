@@ -39,7 +39,7 @@ function CheckoutForm({
 
   const orderPrice = cart?.item?.orderSum ?? 0;
   const percentDiscount = promo?.item?.percentDiscount ?? 0;
-  const discount = (orderPrice / 100) * percentDiscount;
+  const discount = Math.round((orderPrice / 100) * percentDiscount * 100) / 100;
   return (
     <section className="ordering__mobile">
       <div className="container ordering-form__container">
@@ -82,19 +82,7 @@ function CheckoutForm({
                         </span>
                       </Col>
                     </Row>
-                    <Row>
-                      <Col span={12} className="order-finish__title">
-                        Скидка
-                      </Col>
-                      <Col span={12}>
-                        <span className="cart-price-total">
-                          {order.percentDiscount ?? 0}
-                          <span className="cart-price-total__money-sign">
-                            %
-                          </span>
-                        </span>
-                      </Col>
-                    </Row>
+
                     <Row>
                       <Col span={12} className="order-finish__title">
                         Скидка

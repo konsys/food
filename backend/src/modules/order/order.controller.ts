@@ -18,7 +18,7 @@ export class OrderController extends AbstractController<FoodOrder> {
   }
 
   @Post()
-  async generateCode(@Body() item: DeepPartial<OrderDto>) {
+  async generateCode(@Body() item: Partial<OrderDto>) {
     try {
       if (item.orderDate && item.price && item.uuid) {
 
@@ -35,11 +35,10 @@ export class OrderController extends AbstractController<FoodOrder> {
           order.phone = item.phone;
           order.uuid = uuid();
           order.userUuid = cart.uuid;
-          // TODO выяснить почему надо приводить типы
-          order.date = item.orderDate as Date;
+          order.date = item.orderDate;
           order.time = item.time;
         } else {
-          throw new BadRequestException('Заказ не найден. Попробуйте заказать снова');
+          throw new HttpException('Заказ не найден. Попробуйте заказать снова', HttpStatus.NOT_FOUND);
         }
 
         if (item.promoCodeUuid) {
