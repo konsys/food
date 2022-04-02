@@ -33,8 +33,7 @@ export class OrderController extends AbstractController<FoodOrder> {
           order.restaurantUuid = cart.restaurantUuid;
           order.places = item.places;
           order.phone = item.phone;
-          // order.uuid = uuid();
-          order.uuid = item.uuid;
+          order.uuid = uuid();
           order.userUuid = item.uuid;
           // TODO add date from order
           order.date = new Date();
