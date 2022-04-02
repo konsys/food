@@ -8,6 +8,7 @@ export type OrderDto = {
     orderDate: Date;
     time: string;
     uuid: TUuid;
+    userUuid: TUuid;
     promoCodeUuid: TUuid;
     percentDiscount: number;
     status: EOrderStatus;

@@ -34,7 +34,7 @@ export class OrderController extends AbstractController<FoodOrder> {
           order.places = item.places;
           order.phone = item.phone;
           order.uuid = uuid();
-          // order.userUuid = item.uuid;
+          order.userUuid = cart.uuid;
           // TODO выяснить почему надо приводить типы
           order.date = item.orderDate as Date;
           order.time = item.time;

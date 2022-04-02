@@ -84,7 +84,11 @@ function PhoneCheckoutForm({
   }, [updateOrderStore, isRunning]);
 
   const handlePhone = (e: any) => {
-    updateOrderStore({ phone: e.target.value, isPhoneValid: true });
+    updateOrderStore({
+      phone: e.target.value,
+      isPhoneValid: true,
+      userUuid: getClientUuid(),
+    });
   };
 
   return (
