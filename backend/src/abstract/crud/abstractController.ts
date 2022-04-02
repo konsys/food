@@ -50,15 +50,13 @@ export class AbstractController<E> {
 
   @Get(':uuid')
   async findOne(@Param('uuid') uuid: TUuid) {
-    try {
-      const res = await this.service.findOne(uuid);
-      if (res) {
-        return res;
-      }
-      throw new HttpException('Resource not found', HttpStatus.NOT_FOUND);
-    } catch (e) {
-      throw new HttpException('Unknown error4', HttpStatus.I_AM_A_TEAPOT);
+
+    const res = await this.service.findOne(uuid);
+    if (res) {
+      return res;
     }
+    throw new HttpException('Resource not found', HttpStatus.NOT_FOUND);
+
   }
 
   @Put()

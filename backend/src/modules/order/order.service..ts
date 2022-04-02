@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { AbstractService } from 'src/abstract/crud/abstractService';
 import { TUuid } from 'src/common/types';
 import { Cart } from 'src/entities/cart.entity';
+import { CodeCheck } from 'src/entities/code-check.entity';
 import { FoodOrder } from 'src/entities/food-order.entity';
 import { Promo } from 'src/entities/promo.entity';
 import { Repository } from 'typeorm';
@@ -12,6 +13,7 @@ export class OrderService extends AbstractService<FoodOrder> {
 
   private cartRepository: Repository<Cart> = null;
   private promoRepository: Repository<Promo> = null;
+  private codecheckRepository: Repository<CodeCheck> = null;
 
   constructor(
     @InjectRepository(FoodOrder)
@@ -20,9 +22,12 @@ export class OrderService extends AbstractService<FoodOrder> {
     cartRepository: Repository<Cart>,
     @InjectRepository(Promo)
     promoRepository: Repository<Promo>,
+    @InjectRepository(CodeCheck)
+    codecheckRepository: Repository<CodeCheck>,
   ) {
     super(repository);
     this.cartRepository = cartRepository;
+    this.codecheckRepository = codecheckRepository;
     this.promoRepository = promoRepository;
   }
 
@@ -35,6 +40,8 @@ export class OrderService extends AbstractService<FoodOrder> {
   }
 
   async deleteCartByUuid(uuid: TUuid) {
+    const checkCode = await this.codecheckRepository.find({ where: { uuid } });
+    this.codecheckRepository.remove(checkCode);
     const cart = await this.cartRepository.find({ where: { uuid } });
     return this.cartRepository.remove(cart);
   }

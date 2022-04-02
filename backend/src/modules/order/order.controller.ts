@@ -20,7 +20,7 @@ export class OrderController extends AbstractController<FoodOrder> {
   @Post()
   async generateCode(@Body() item: DeepPartial<OrderDto>) {
     try {
-      if (item.date && item.price && item.uuid) {
+      if (item.orderDate && item.price && item.uuid) {
 
         const order: Partial<FoodOrder> = {};
 
@@ -34,9 +34,9 @@ export class OrderController extends AbstractController<FoodOrder> {
           order.places = item.places;
           order.phone = item.phone;
           order.uuid = uuid();
-          order.userUuid = item.uuid;
-          // TODO add date from order
-          order.date = new Date();
+          // order.userUuid = item.uuid;
+          // TODO выяснить почему надо приводить типы
+          order.date = item.orderDate as Date;
           order.time = item.time;
         } else {
           throw new BadRequestException('Заказ не найден. Попробуйте заказать снова');

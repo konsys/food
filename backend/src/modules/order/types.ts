@@ -3,7 +3,7 @@ import { EOrderStatus } from "src/entities/food-order.entity";
 
 export type OrderDto = {
     id: number | null;
-    date: Date;
+    orderDate: Date;
     time: string;
     uuid: TUuid;
     promoCodeUuid: TUuid;
