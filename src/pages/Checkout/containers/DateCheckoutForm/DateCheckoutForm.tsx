@@ -25,18 +25,26 @@ function DateCheckoutForm(props: Props) {
   const { disabled, cart } = props;
 
   const onDateChange = (date: Date) => {
-    updateOrderStore({ date, uuid: cart?.item?.uuid, price: cart?.item?.orderSum });
+    updateOrderStore({
+      date,
+      uuid: cart?.item?.uuid,
+      price: cart?.item?.orderSum,
+    });
   };
 
   const onTimeChange = (time: string) => {
-    updateOrderStore({ time, uuid: cart?.item?.uuid, price: cart?.item?.orderSum });
+    updateOrderStore({
+      time,
+      uuid: cart?.item?.uuid,
+      price: cart?.item?.orderSum,
+    });
   };
 
   const orderStore = useStore($orderStore);
 
   return (
-    <Row gutter={[8, 8]} className='date-order__chekout'>
-      <Col className='order-options-time__date-select' flex={3}>
+    <Row gutter={[8, 8]} className="date-order__chekout">
+      <Col className="order-options-time__date-select" flex={3}>
         <label>Дата бронирования</label>
         <DatePicker
           disabled={disabled}
@@ -49,7 +57,7 @@ function DateCheckoutForm(props: Props) {
         <label>Время бронирования</label>
         <Select
           disabled={disabled}
-          style={{ maxWidth: '215px', width: '100%' }}
+          style={{ maxWidth: '205px', width: '100%' }}
           onChange={onTimeChange}
           value={orderStore.time}
         >

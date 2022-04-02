@@ -46,6 +46,16 @@
             line-height  : normal;
             border       : 1px solid rgba(0, 0, 0, .1);
             padding      : 0 10px;
+
+        }
+
+        input {
+            color: rgba(0, 0, 0, .6);
+
+            &:focus {
+                border : 1px solid rgba(0, 0, 0, .6);
+                outline: none;
+            }
         }
 
         label {
@@ -177,11 +187,6 @@
             margin-top: 40px;
             padding   : 25px 0;
 
-            .order-finish__price {
-                display        : flex;
-                margin-bottom  : 10px;
-                justify-content: center;
-            }
 
             .order-finish__wrapper {
                 display        : flex;
@@ -208,6 +213,16 @@
 
             .order-finish__item--total {
                 min-width: auto;
+            }
+
+            .order-finish__discount {
+                position: relative;
+
+                .cart-price-total {
+                    position   : absolute;
+                    right      : 10px;
+                    font-weight: 600;
+                }
             }
 
             .order-options-guests-numbers-nav {

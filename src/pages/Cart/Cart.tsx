@@ -5,7 +5,7 @@ import {
   changeOrderQuantity,
   deleteItemFromCart,
 } from '../../modules/cart/utils';
-import { CartModel, PromoModel } from '../../store';
+import { CartModel } from '../../store';
 import CartComponent from './MobileCart/CartComponent/CartComponent';
 
 const { $itemStore: cartStore } = CartModel;
