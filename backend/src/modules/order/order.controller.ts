@@ -1,9 +1,8 @@
-import { BadRequestException, Body, Controller, HttpException, HttpStatus, Post, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, HttpException, HttpStatus, Post, UseInterceptors } from '@nestjs/common';
 import { AbstractController } from 'src/abstract/crud/abstractController';
 import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
 import { uuid } from 'src/common/random';
-import { EOrderStatus, FoodOrder } from 'src/entities/food-order.entity';
-import { DeepPartial } from 'typeorm';
+import { FoodOrder } from 'src/entities/food-order.entity';
 import { OrderService } from './order.service.';
 import { OrderDto } from './types';
 

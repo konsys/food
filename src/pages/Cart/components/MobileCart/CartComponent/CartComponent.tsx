@@ -1,9 +1,9 @@
 import { Col, Row } from 'antd';
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { TNullableItem } from '../../../../common/api/types';
-import { TUuid, TVoidFn } from '../../../../common/types';
-import { CartDto } from '../../../../modules/cart/types';
+import { TNullableItem } from '../../../../../common/api/types';
+import { TUuid, TVoidFn } from '../../../../../common/types';
+import { CartDto } from '../../../../../modules/cart/types';
 import CartItem from '../../CartItem/CartItem';
 
 import './cartComponent.less';

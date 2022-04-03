@@ -1,12 +1,14 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useStore } from 'effector-react';
+import { Spin } from 'antd';
 import { TUuid } from '../../common/types';
 import {
   changeOrderQuantity,
   deleteItemFromCart,
 } from '../../modules/cart/utils';
 import { CartModel } from '../../store';
-import CartComponent from './MobileCart/CartComponent/CartComponent';
+import CartComponent from './components/MobileCart/CartComponent/CartComponent';
+import CartView from './components/CartView';
 
 const { $itemStore: cartStore } = CartModel;
 
@@ -15,7 +17,7 @@ type Props = {
 };
 
 function Cart({ sideView }: Props) {
-  const { item: cartOrder } = useStore(cartStore);
+  const { item: cartOrder, pending } = useStore(cartStore);
 
   const changeQuantity = (uuidToChange: TUuid, delta: number) =>
     changeOrderQuantity(cartOrder, uuidToChange, delta);
@@ -42,27 +44,15 @@ function Cart({ sideView }: Props) {
   };
 
   return (
-    <div>
-      {sideView ? (
-        <div className={`cart-section-wrapper ${stickyClass}`}>
-          <CartComponent
-            cartOrder={cartOrder}
-            changeQuantity={changeQuantity}
-            deleteFromCart={deleteFromCart}
-          />
-        </div>
-      ) : (
-        <div className="container">
-          <div className=" cart-section-wrapper ">
-            <CartComponent
-              cartOrder={cartOrder}
-              changeQuantity={changeQuantity}
-              deleteFromCart={deleteFromCart}
-            />
-          </div>
-        </div>
-      )}
-    </div>
+    <Spin spinning={pending}>
+      <CartView
+        cartOrder={cartOrder}
+        changeQuantity={changeQuantity}
+        deleteFromCart={deleteFromCart}
+        sideView={sideView}
+        stickyClass={stickyClass}
+      />
+    </Spin>
   );
 }
 

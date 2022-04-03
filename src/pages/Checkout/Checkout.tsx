@@ -1,12 +1,14 @@
 import { Spin } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { memo, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Navigate, useRoutes } from 'react-router-dom';
+import { HttpStatus } from '../../common/utils/constants';
 import { notifyError } from '../../core/errors';
 import { getClientUuid } from '../../modules/cart/service';
 import { TOrder } from '../../modules/order/types';
 import { pathNames } from '../../routes/paths';
 import { CartModel, CodeCheckModel, OrderModel, PromoModel } from '../../store';
+import { NotFound } from '../NotFound';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
 
 const {
@@ -41,6 +43,8 @@ function Checkout() {
     navigate(`${pathNames.ORDER_COMPLETED.basePath}/${orderUuid}`);
   };
 
+  const router = useParams();
+
   useEffect(() => {
     if (order.error) {
       notifyError(order.error.message);
@@ -52,14 +56,23 @@ function Checkout() {
     <Spin
       spinning={cart.pending || order.pending || code.pending || promo.pending}
     >
-      <CheckoutForm
-        code={code}
-        cart={cart}
-        promo={promo}
-        createCheckoutCode={createCheckoutCode}
-        getCheckoutCode={getCheckoutCode}
-        createOrder={createOrder}
-      />
+      {cart?.error?.statusCode === HttpStatus.NOT_FOUND ? (
+        <Navigate
+          to={{
+            pathname: '/not-found',
+            search: `?page=cart&uuid=${uuid}`,
+          }}
+        />
+      ) : (
+        <CheckoutForm
+          code={code}
+          cart={cart}
+          promo={promo}
+          createCheckoutCode={createCheckoutCode}
+          getCheckoutCode={getCheckoutCode}
+          createOrder={createOrder}
+        />
+      )}
     </Spin>
   );
 }

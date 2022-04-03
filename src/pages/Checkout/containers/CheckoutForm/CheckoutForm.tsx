@@ -106,7 +106,7 @@ function CheckoutForm({
                   </Col>
                   <Col span={12}>
                     <span className="cart-price-total">
-                      {orderPrice - discount}
+                      {Math.round((orderPrice - discount) * 100) / 100}
                       <span className="cart-price-total__money-sign">₽</span>
                     </span>
                   </Col>

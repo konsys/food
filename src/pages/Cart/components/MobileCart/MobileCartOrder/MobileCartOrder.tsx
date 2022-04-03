@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import { TItem, TNullableItem } from '../../../../common/api/types';
-import { TUuid, TVoidFn } from '../../../../common/types';
-import { CartDto } from '../../../../modules/cart/types';
-import { PromoDto } from '../../../../modules/promo/types';
+import { TItem, TNullableItem } from '../../../../../common/api/types';
+import { TUuid, TVoidFn } from '../../../../../common/types';
+import { CartDto } from '../../../../../modules/cart/types';
+import { PromoDto } from '../../../../../modules/promo/types';
 import CartComponent from '../CartComponent/CartComponent';
 
 interface Props {
