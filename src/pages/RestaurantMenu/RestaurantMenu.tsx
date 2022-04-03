@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { useParams } from 'react-router-dom';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
@@ -40,6 +40,23 @@ function RestaurantMenu() {
   const addMenuToCart = (menuItem: RestaurantMenuDto, restaurantUuid: TUuid) =>
     addToCart(cartOrder, menuItem, restaurantUuid);
 
+  const cartView = useMemo(
+    () =>
+      cartOrder ? (
+        <>
+          <div className="d-none d-lg-flex col-lg-3">
+            <Cart sideView />
+          </div>
+          <div className="d-flex d-lg-none col-lg-3">
+            <MobileCartButton cartOrder={cartOrder} />
+          </div>
+        </>
+      ) : (
+        ''
+      ),
+    [cartOrder],
+  );
+
   return (
     <div className="container">
       {restaurant ? (
@@ -62,12 +79,7 @@ function RestaurantMenu() {
               <RestaurantMenuBottomLinks />
             </section>
           </div>
-          <div className="d-none d-lg-flex col-lg-3">
-            <Cart sideView />
-          </div>
-          <div className="d-flex d-lg-none col-lg-3">
-            <MobileCartButton cartOrder={cartOrder} />
-          </div>
+          {cartView}
         </div>
       ) : (
         ''

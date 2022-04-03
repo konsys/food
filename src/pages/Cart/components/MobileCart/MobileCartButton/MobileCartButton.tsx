@@ -9,7 +9,7 @@ interface Props {
   cartOrder: Nullable<TItemWithUuid<CartDto>>;
 }
 
-function MobileCart({ cartOrder }: Props) {
+function MobileCartButton({ cartOrder }: Props) {
   return (
     <div className="cart-button-shop-mobile">
       {cartOrder ? (
@@ -27,4 +27,4 @@ function MobileCart({ cartOrder }: Props) {
   );
 }
 
-export default memo(MobileCart);
+export default memo(MobileCartButton);
