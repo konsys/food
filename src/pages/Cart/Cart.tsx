@@ -1,14 +1,15 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useStore } from 'effector-react';
 import { Spin } from 'antd';
+import { Navigate, useParams } from 'react-router-dom';
 import { TUuid } from '../../common/types';
 import {
   changeOrderQuantity,
   deleteItemFromCart,
 } from '../../modules/cart/utils';
 import { CartModel } from '../../store';
-import CartComponent from './components/MobileCart/CartComponent/CartComponent';
 import CartView from './components/CartView';
+import { HttpStatus } from '../../common/utils/constants';
 
 const { $itemStore: cartStore } = CartModel;
 
@@ -17,7 +18,8 @@ type Props = {
 };
 
 function Cart({ sideView }: Props) {
-  const { item: cartOrder, pending } = useStore(cartStore);
+  const { item: cartOrder, pending, error } = useStore(cartStore);
+  const { uuid } = useParams<{ uuid: string }>();
 
   const changeQuantity = (uuidToChange: TUuid, delta: number) =>
     changeOrderQuantity(cartOrder, uuidToChange, delta);
@@ -45,13 +47,22 @@ function Cart({ sideView }: Props) {
 
   return (
     <Spin spinning={pending}>
-      <CartView
-        cartOrder={cartOrder}
-        changeQuantity={changeQuantity}
-        deleteFromCart={deleteFromCart}
-        sideView={sideView}
-        stickyClass={stickyClass}
-      />
+      {error?.statusCode === HttpStatus.NOT_FOUND ? (
+        <Navigate
+          to={{
+            pathname: '/not-found',
+            search: `?page=cart&uuid=${uuid}`,
+          }}
+        />
+      ) : (
+        <CartView
+          cartOrder={cartOrder}
+          changeQuantity={changeQuantity}
+          deleteFromCart={deleteFromCart}
+          sideView={sideView}
+          stickyClass={stickyClass}
+        />
+      )}
     </Spin>
   );
 }

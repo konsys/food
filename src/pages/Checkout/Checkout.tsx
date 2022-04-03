@@ -43,8 +43,6 @@ function Checkout() {
     navigate(`${pathNames.ORDER_COMPLETED.basePath}/${orderUuid}`);
   };
 
-  const router = useParams();
-
   useEffect(() => {
     if (order.error) {
       notifyError(order.error.message);
@@ -60,7 +58,7 @@ function Checkout() {
         <Navigate
           to={{
             pathname: '/not-found',
-            search: `?page=cart&uuid=${uuid}`,
+            search: `?page=checkout&uuid=${uuid}`,
           }}
         />
       ) : (
