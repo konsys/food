@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import { useStore } from 'effector-react';
+import { useGate, useStore } from 'effector-react';
 import { Spin } from 'antd';
 import { Navigate, useParams } from 'react-router-dom';
 import { TUuid } from '../../common/types';
@@ -11,7 +11,7 @@ import { CartModel } from '../../store';
 import CartView from './components/CartView';
 import { HttpStatus } from '../../common/utils/constants';
 
-const { $itemStore: cartStore } = CartModel;
+const { $itemStore: cartStore, ItemGate } = CartModel;
 
 type Props = {
   sideView?: boolean;
@@ -20,6 +20,8 @@ type Props = {
 function Cart({ sideView }: Props) {
   const { item: cartOrder, pending, error } = useStore(cartStore);
   const { uuid } = useParams<{ uuid: string }>();
+
+  useGate(ItemGate, uuid);
 
   const changeQuantity = (uuidToChange: TUuid, delta: number) =>
     changeOrderQuantity(cartOrder, uuidToChange, delta);
