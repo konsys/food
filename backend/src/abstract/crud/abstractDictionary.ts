@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class AbstractDictionary {
@@ -7,12 +7,9 @@ export class AbstractDictionary {
     Object.assign(this, partial);
   }
 
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Index({ unique: true, fulltext: true })
-  @Column()
-  uuid: string;
+  @PrimaryGeneratedColumn('uuid')
+  @Generated('uuid')
+  uuid: number;
 
   @Column()
   name: string;

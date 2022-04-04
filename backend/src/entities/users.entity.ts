@@ -1,11 +1,12 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
 
 @Entity()
 export class UsersEntity {
-  @PrimaryGeneratedColumn()
-  userId?: number;
+  @PrimaryGeneratedColumn('uuid')
+  @Generated('uuid')
+  uuid: number;
 
   @Column({ default: false })
   vip?: boolean;

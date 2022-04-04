@@ -1,17 +1,14 @@
 
 import { TUuid } from "src/common/types";
-import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Generated, Index, PrimaryGeneratedColumn } from "typeorm";
 import { EOrderStatus } from "./food-order.entity";
 import { RestaurantMenu } from "./restaraunt-menu.entity";
 
 @Entity()
 export class Cart {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
-  @Index({ unique: true, fulltext: true })
-  uuid: TUuid;
+  @PrimaryGeneratedColumn('uuid')
+  @Generated('uuid')
+  uuid: number;
 
   @Column()
   restaurantUuid: TUuid;

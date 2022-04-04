@@ -2,6 +2,7 @@ import { Column, Entity, Index, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class TokensEntity {
+
   @Column()
   @PrimaryColumn()
   @Index({ unique: true })

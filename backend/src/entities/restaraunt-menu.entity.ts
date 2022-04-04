@@ -29,8 +29,10 @@ export class RestaurantMenu extends AbstractDictionary {
     @Column({ default: null })
     amount?: number;
 
+
     @Column({ type: "int", nullable: true, default: null })
-    restaurantId: number;
+    restaurantUuid: number;
+
 
     @ManyToOne(() => Restaurant, restaurant => restaurant.restaurantMenu)
     @JoinColumn({ name: "restaurantId" })

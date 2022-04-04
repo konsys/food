@@ -1,4 +1,4 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, Index, PrimaryGeneratedColumn } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { TRestaurantMenuOrder } from './cart.entity';
 
@@ -9,12 +9,9 @@ export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN
 export class FoodOrder {
 
 
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Index({ unique: true, fulltext: true })
-  @Column()
-  uuid: string;
+  @PrimaryGeneratedColumn('uuid')
+  @Generated('uuid')
+  uuid: number;
 
   @Index({ fulltext: true })
   @Column()
