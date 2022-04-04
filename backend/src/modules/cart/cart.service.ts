@@ -34,8 +34,6 @@ export class CartService extends AbstractService<Cart> {
 
   async update(entity: DeepPartial<Cart>) {
     const cart = await this.cartRepository.findOne({ where: { uuid: entity.uuid } });
-    console.log(1111111111111, cart.restaurantUuid);
-    console.log(222222222222222, entity.restaurantUuid);
     if (cart && cart.restaurantUuid !== entity.restaurantUuid) {
       const restaurant = await this.restaurantRepository.findOne(cart.uuid);
       throw new BadRequestException({ message: `Вы уже начали создавать заказ в ${restaurant.name}` })

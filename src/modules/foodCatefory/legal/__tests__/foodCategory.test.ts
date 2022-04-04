@@ -4,13 +4,13 @@ import { FoodCategoryModel } from '../../../../store';
 const { createItemFx } = FoodCategoryModel;
 
 const generateNewItem = () => {
-  let newItem = foodCategoryFactory.build();
+  const newItem = foodCategoryFactory.build();
 
   return newItem;
 };
 
 describe('menu tests', () => {
-  it.skip('should create menu', async () => {
+  it.skip('should create food category', async () => {
     for (let i = 0; i < 100; i++) {
       await Promise.all(new Array(20).fill(await createItemFx(generateNewItem())));
     }

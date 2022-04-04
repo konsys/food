@@ -28,7 +28,6 @@ export class AbstractController<E> {
   @Post('filter')
   async filter(@Body() params: TListRequest<E>) {
     try {
-      console.log(params)
       return await this.service.findAll(params);
     } catch (e) {
       throw new HttpException(`Unknown error2 ${JSON.stringify(e)}`, HttpStatus.INTERNAL_SERVER_ERROR);

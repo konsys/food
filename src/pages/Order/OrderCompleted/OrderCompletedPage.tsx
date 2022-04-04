@@ -18,7 +18,6 @@ function OrderCompletedPage() {
 
   useGate(RestaurantGate, order?.restaurantUuid);
 
-  console.log(order);
   return (
     <Spin spinning={pending}>
       <div className="container">

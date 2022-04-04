@@ -14,7 +14,7 @@ describe('restaurant tests', () => {
         const restaurant = await getRestaurant({});
         const foodCategory = await getFoodCategory({});
         const image = await getImage({});
-        expect(1).toBe(3);
+
         const item = restaurantMenuFactory.build({
           restaurant,
           restaurantUuid: restaurant.uuid,
@@ -22,6 +22,7 @@ describe('restaurant tests', () => {
           imageUuid: image.uuid,
 
         });
+
         await createItemFx(item);
       }
     }
