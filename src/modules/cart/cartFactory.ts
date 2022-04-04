@@ -5,7 +5,6 @@ import { restaurantMenuFactory } from "../restaurantMenu/restaurantMenuFactory";
 import { CartDto } from './types';
 
 export const cartFactory = factory.Sync.makeFactory<CartDto>({
-  id: factory.each(() => null),
   uuid: factory.each(() => faker.datatype.uuid()),
   restaurantUuid: factory.each(() => faker.datatype.uuid()),
   description: factory.each(() => faker.lorem.words(5)),

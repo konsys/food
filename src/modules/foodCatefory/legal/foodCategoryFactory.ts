@@ -3,7 +3,7 @@ import faker from 'faker';
 import { FoodCategoryDto } from './types';
 
 export const foodCategoryFactory = factory.Sync.makeFactory<FoodCategoryDto>({
-  id: factory.each(() => null),
+
   name: factory.each(() => faker.commerce.product()),
   uuid: factory.each(() => faker.datatype.uuid()),
   description: factory.each(() => faker.commerce.productDescription()),

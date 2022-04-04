@@ -1,9 +1,8 @@
-import { TId, TUuid } from '../../common/types';
+import { TUuid } from '../../common/types';
 import { EOrderStatus } from '../order/types';
 import { RestaurantMenuDto } from '../restaurantMenu/types';
 
 export type CartDto = {
-  id: TId;
   uuid: TUuid;
   restaurantUuid: TUuid;
   description: string;

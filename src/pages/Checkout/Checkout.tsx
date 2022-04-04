@@ -2,6 +2,7 @@ import { Spin } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { memo, useEffect } from 'react';
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
+import { TUuid } from '../../common/types';
 import { HttpStatus } from '../../common/utils/constants';
 import { notifyError } from '../../core/errors';
 import { getClientUuid } from '../../modules/cart/service';

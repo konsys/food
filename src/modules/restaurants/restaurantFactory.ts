@@ -1,10 +1,9 @@
-import { restaurantMenuFactory } from './../restaurantMenu/restaurantMenuFactory';
 import * as factory from 'factory.ts';
 import faker from 'faker';
+import { restaurantMenuFactory } from "../restaurantMenu/restaurantMenuFactory";
 import { RestaurantDto, EFoodType } from './types';
 
 export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
-  id: factory.each(() => null),
   name: factory.each(() => faker.commerce.productName()),
   uuid: factory.each(() => faker.datatype.uuid()),
   rating: factory.each(() => 5),

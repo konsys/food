@@ -1,7 +1,7 @@
-import { TId, TUuid } from '../../common/types';
+import { TUuid } from '../../common/types';
 
 export type CodeCheckDto = {
-  id: TId;
+
   uuid: TUuid;
   phoneNumber: string;
   status: ESmsCodeStatus;

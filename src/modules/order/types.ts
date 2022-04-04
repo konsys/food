@@ -1,11 +1,10 @@
-import { TId, TUuid } from "../../common/types";
+import { TUuid } from "../../common/types";
 import { TRestaurantMenuOrder } from "../cart/types";
 
 export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN_PROGRESS', COMPLETED = 'COMPLETED', CLOSED = 'CLOSED' }
 
 
 export type TOrder = {
-    id: TId;
     orderDate: Date;
     time: string;
     uuid: TUuid;

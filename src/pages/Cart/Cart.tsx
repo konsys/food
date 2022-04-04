@@ -10,6 +10,7 @@ import { CartModel } from '../../store';
 import CartView from './components/CartView';
 import { HttpStatus } from '../../common/utils/constants';
 import { getClientUuid } from '../../modules/cart/service';
+import { TUuid } from '../../common/types';
 
 const { $itemStore: cartStore, ItemGate } = CartModel;
 

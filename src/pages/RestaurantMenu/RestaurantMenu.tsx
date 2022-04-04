@@ -15,6 +15,7 @@ import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
 import { addToCart } from '../../modules/cart/utils';
 import { deliveryFactory } from '../../modules/delivery/deliveryFactory';
 import MobileCartButton from '../Cart/components/MobileCart/MobileCartButton/MobileCartButton';
+import { TUuid } from '../../common/types';
 
 const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { $itemStore: cartStore } = CartModel;

@@ -1,7 +1,6 @@
-import { TId } from '../../common/types';
+import { TUuid } from '../../common/types';
 
 export type DictionaryDto = {
-  id: TId;
   name: string;
   description: string;
   uuid: TUuid;

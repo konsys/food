@@ -2,6 +2,7 @@ import { Col, Row, Spin } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { memo } from 'react';
 import { useParams } from 'react-router-dom';
+import { TUuid } from '../../../common/types';
 import { OrderModel, RestaurantModel } from '../../../store';
 
 const { ItemGate, $itemStore: orderStore } = OrderModel;

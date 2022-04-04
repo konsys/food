@@ -1,3 +1,5 @@
+import { TUuid } from "../../common/types";
+
 export type PromoDto = {
     uuid: TUuid;
     code: string;
