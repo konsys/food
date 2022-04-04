@@ -5,7 +5,7 @@ const { createItemFx } = LegalModel;
 
 
 describe('legal tests', () => {
-  it.skip('should create legal', async () => {
+  it('should create legal', async () => {
     for (let i = 0; i < 10; i++) {
       await createItemFx(legalFactory.build());
     }

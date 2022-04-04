@@ -1,5 +1,5 @@
 export type PromoDto = {
-    uuid: string;
+    uuid: TUuid;
     code: string;
     createdAt: Date;
     expiredAt: Date;

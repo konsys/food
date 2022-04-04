@@ -27,7 +27,7 @@ export type TOrder = {
 
 export type OrderDto = {
     id: number;
-    uuid: string;
+    uuid: TUuid;
     userUuid: TUuid;
     restaurantUuid: TUuid;
     promoCodeUuid: string;

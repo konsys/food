@@ -4,7 +4,7 @@ export type DictionaryDto = {
   id: TId;
   name: string;
   description: string;
-  uuid: string;
+  uuid: TUuid;
   createdAt?: Date;
   updatedAt?: Date;
   visible?: boolean;

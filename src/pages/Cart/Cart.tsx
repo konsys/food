@@ -19,7 +19,7 @@ type Props = {
 
 function Cart({ sideView }: Props) {
   const { item: cartOrder, pending, error } = useStore(cartStore);
-  const { uuid } = useParams<{ uuid: string }>();
+  const { uuid } = useParams<{ uuid: TUuid }>();
 
   useGate(ItemGate, getClientUuid());
 

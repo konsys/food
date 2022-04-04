@@ -1,6 +1,7 @@
 import { Column, Entity, Generated, Index, PrimaryGeneratedColumn } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { TRestaurantMenuOrder } from './cart.entity';
+import { TUuid } from 'src/common/types';
 
 export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN_PROGRESS', CLOSED = 'CLOSED' }
 
@@ -11,7 +12,7 @@ export class FoodOrder {
 
   @PrimaryGeneratedColumn('uuid')
   @Generated('uuid')
-  uuid: string;
+  uuid: TUuid;
 
   @Index({ fulltext: true })
   @Column()

@@ -25,7 +25,7 @@ const {
 } = CodeCheckModel;
 
 function Checkout() {
-  const { uuid } = useParams<{ uuid: string }>();
+  const { uuid } = useParams<{ uuid: TUuid }>();
   const navigate = useNavigate();
 
   useGate(ItemGate, uuid);

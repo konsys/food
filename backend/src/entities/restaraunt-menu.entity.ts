@@ -6,15 +6,15 @@ import { Restaurant } from "./restaurant.entity";
 
 @Entity()
 export class RestaurantMenu extends AbstractDictionary {
-    @Column({ type: "int", nullable: true, default: null })
-    imageUuid: number;
+    @Column({ nullable: true, default: null })
+    imageUuid: string;
 
     @ManyToOne(() => Images, { eager: true })
     @JoinColumn({ name: "imageUuid" })
     image: Images;
 
-    @Column({ type: "int", nullable: true, default: null })
-    foodCategoryUuid: number;
+    @Column({ nullable: true, default: null })
+    foodCategoryUuid: string;
 
     @ManyToOne(() => FoodCategory, { eager: true })
     @JoinColumn({ name: "foodCategoryUuid" })
@@ -30,8 +30,8 @@ export class RestaurantMenu extends AbstractDictionary {
     amount?: number;
 
 
-    @Column({ type: "int", nullable: true, default: null })
-    restaurantUuid: number;
+    @Column({ nullable: true, default: null })
+    restaurantUuid: string;
 
 
     @ManyToOne(() => Restaurant, restaurant => restaurant.restaurantMenu)

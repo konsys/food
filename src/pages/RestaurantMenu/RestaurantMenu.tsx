@@ -20,7 +20,7 @@ const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { $itemStore: cartStore } = CartModel;
 
 function RestaurantMenu() {
-  const { uuid } = useParams<{ uuid: string }>();
+  const { uuid } = useParams<{ uuid: TUuid }>();
 
   useGate(ItemGate, uuid);
   const { item: cartOrder } = useStore(cartStore);

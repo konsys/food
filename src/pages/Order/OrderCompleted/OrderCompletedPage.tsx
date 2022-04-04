@@ -9,7 +9,7 @@ const { ItemGate: RestaurantGate, $itemStore: restaurantStore } =
   RestaurantModel;
 
 function OrderCompletedPage() {
-  const { uuid } = useParams<{ uuid: string }>();
+  const { uuid } = useParams<{ uuid: TUuid }>();
   useGate(ItemGate, uuid);
 
   const { item: order, pending } = useStore(orderStore);

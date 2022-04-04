@@ -1,4 +1,5 @@
 import { Exclude } from "class-transformer";
+import { TUuid } from "src/common/types";
 import { Column, Entity, Generated, PrimaryGeneratedColumn } from "typeorm";
 
 
@@ -11,7 +12,7 @@ export class Promo {
 
     @PrimaryGeneratedColumn('uuid')
     @Generated('uuid')
-    uuid: string;
+    uuid: TUuid;
 
     @Exclude()
     @Column()
