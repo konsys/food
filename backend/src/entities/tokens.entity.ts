@@ -1,3 +1,4 @@
+import { TUuid } from 'src/common/types';
 import { Column, Entity, Index, PrimaryColumn } from 'typeorm';
 
 @Entity()
@@ -6,7 +7,7 @@ export class TokensEntity {
   @Column()
   @PrimaryColumn()
   @Index({ unique: true })
-  userUuid: number;
+  userUuid: TUuid;
 
   @Column()
   name: string;

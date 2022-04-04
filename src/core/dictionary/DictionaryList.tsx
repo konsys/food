@@ -4,14 +4,17 @@ import React, { ReactElement } from 'react';
 import { ColumnsType, TItemWithUuid } from '../../common/types';
 import { columnsNamesGenerator } from '../../common/form/columnsNamesGenerator';
 import { DictionaryDto } from './types';
-import { TCrudStore, TDeleteItemFx } from '../../common/models/abstractModel/abstractCrudModel';
+import {
+  TCrudStore,
+  TDeleteItemFx,
+} from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
 import { isNumber } from '../../common/utils/utils';
 import { DeleteButton } from '../../common/components/buttons/DeleteButton/DeleteButton';
 
 function getColumns<T extends DictionaryDto>(
   model: TCrudStore<T>,
-  onDelete: TDeleteItemFx
+  onDelete: TDeleteItemFx,
 ): ColumnsType<T> {
   const name = columnsNamesGenerator<T>();
   return [
@@ -19,7 +22,12 @@ function getColumns<T extends DictionaryDto>(
       title: 'Название',
       dataIndex: name('name'),
       render: (v, row) => (
-        <DictionaryModal model={model} buttonText={v} uuid={row.uuid} buttonType='link' />
+        <DictionaryModal
+          model={model}
+          buttonText={v}
+          uuid={row.uuid}
+          buttonType="link"
+        />
       ),
     },
     {
@@ -29,7 +37,9 @@ function getColumns<T extends DictionaryDto>(
     {
       title: 'Удалить',
       render: (_, row) =>
-        isNumber(row.uuid) && <DeleteButton uuid={row.uuid} onDelete={onDelete} />,
+        isNumber(row.uuid) && (
+          <DeleteButton uuid={row.uuid} onDelete={onDelete} />
+        ),
     },
   ];
 }
@@ -38,25 +48,27 @@ interface Props<T> {
   model: TCrudStore<TItemWithUuid<T>>;
 }
 
-export function DictionaryList<T extends DictionaryDto>({ model }: Props<T>): ReactElement {
+export function DictionaryList<T extends DictionaryDto>({
+  model,
+}: Props<T>): ReactElement {
   const { $listStore, ListGate, deleteItemFx } = model;
 
   const list = useStore($listStore);
   useGate(ListGate);
 
   return (
-    <div className='menu-box'>
-      <div className='container'>
+    <div className="menu-box">
+      <div className="container">
         <Row gutter={[16, 16]}>
           <Col span={24}>
             <Space>
-              <DictionaryModal model={model} uuid={''} />
+              <DictionaryModal model={model} uuid="" />
             </Space>
           </Col>
 
           <Col span={24}>
             <Table
-              rowKey='id'
+              rowKey="uuid"
               columns={getColumns<T>(model, deleteItemFx)}
               dataSource={list.items}
             />

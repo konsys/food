@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { TUuid } from 'src/common/types';
 import { IJwtPayload } from 'src/config';
 import { UsersEntity } from 'src/entities/users.entity';
 import { TTokens, TUserCreds } from '../users/types';
@@ -24,7 +25,7 @@ export class AuthService {
     return user && user.name ? user : undefined;
   }
 
-  createPayload(username: string, userUuid: number): IJwtPayload {
+  createPayload(username: string, userUuid: TUuid): IJwtPayload {
     return {
       username,
       sub: userUuid,

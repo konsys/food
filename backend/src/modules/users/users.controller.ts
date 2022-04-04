@@ -18,6 +18,7 @@ import { AuthService } from 'src/modules/auth/auth.service';
 import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
 import { IRequestWithUser, TTokens, TVkLoginRequest } from './types';
 import { IJwtPayload, jwtConstants } from 'src/config';
+import { TUuid } from 'src/common/types';
 
 @Controller('users')
 export class UsersController {
@@ -89,11 +90,9 @@ export class UsersController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @UseGuards(JwtAuthGuard)
-  @Get('profile/:id')
-  async getProfileById(@Param('id') userUuid: number): Promise<UsersEntity> {
-    const res = new UsersEntity(await this.service.getUser(userUuid));
-
-    return res;
+  @Get('profile/:uuid')
+  async getProfileById(@Param('uuid') userUuid: TUuid): Promise<UsersEntity> {
+    return new UsersEntity(await this.service.getUser(userUuid));
   }
 
   @UseInterceptors(ClassSerializerInterceptor)

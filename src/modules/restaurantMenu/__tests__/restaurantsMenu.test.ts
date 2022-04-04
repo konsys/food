@@ -7,18 +7,20 @@ describe('restaurant tests', () => {
   const { getItemByFilterFx: getFoodCategory } = FoodCategoryModel;
   const { getItemByFilterFx: getImage } = ImageModel;
 
-  it('should create restaurant', async () => {
+  it('should create restaurant menu', async () => {
     for (let i = 0; i < 10; i++) {
 
       for (let i1 = 1; i1 < 11; i1++) {
         const restaurant = await getRestaurant({});
         const foodCategory = await getFoodCategory({});
         const image = await getImage({});
+        expect(1).toBe(3);
         const item = restaurantMenuFactory.build({
           restaurant,
           restaurantUuid: restaurant.uuid,
           foodCategoryUuid: foodCategory.uuid,
-          imageUuid: image.uuid
+          imageUuid: image.uuid,
+
         });
         await createItemFx(item);
       }

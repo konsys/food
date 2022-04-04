@@ -13,6 +13,7 @@ import {
 } from 'src/config';
 import { axiosClient } from 'src/http/client';
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
+import { TUuid } from 'src/common/types';
 
 // rCd8cviaoYS9AV1CyA8h
 @Injectable()
@@ -36,7 +37,7 @@ export class UsersService {
     }
   }
 
-  async getUser(userUuid: number): Promise<UsersEntity | undefined> {
+  async getUser(userUuid: string): Promise<UsersEntity | undefined> {
     const user: UsersEntity = await this.users.findOne(userUuid);
 
     return new UsersEntity(user);
@@ -138,7 +139,7 @@ export class UsersService {
       await axiosClient.get<TVkGetUserResponce>(userGetLink)
     ).data.response.pop();
 
-    const isUser = await this.users.findOne({ vkId: user.id });
+    const isUser = await this.users.findOne({ vkId: user.userUuid });
     let savedUser = null;
     if (user) {
       if (!isUser) {
@@ -152,12 +153,12 @@ export class UsersService {
           isBlocked: false,
           sex: user.sex,
           vip: false,
-          vkId: user.id,
+          vkId: user.userUuid,
           email: null,
         });
       } else if (isUser && isUser.uuid) {
         await this.users.update(
-          { vkId: user.id },
+          { vkId: user.userUuid },
           {
             avatar: user.photo_100,
             firstName: user.first_name,
@@ -171,7 +172,7 @@ export class UsersService {
             email: null,
           },
         );
-        savedUser = await this.users.findOne({ vkId: user.id });
+        savedUser = await this.users.findOne({ vkId: user.userUuid });
       }
     }
 
@@ -189,7 +190,7 @@ export class UsersService {
     name,
   }: {
     token: string;
-    userUuid: number;
+    userUuid: TUuid;
     name: string;
   }): Promise<TokensEntity> {
     const expires = new Date();
@@ -207,7 +208,7 @@ export class UsersService {
     try {
       res = await this.tokens.save(tokenToSave);
     } catch (err) {
-      res = await this.tokens.update({ userUuid }, { expires, token });
+      res = await this.tokens.update(userUuid, { expires, token });
     }
 
     return res;

@@ -81,7 +81,7 @@ export class UsersEntity {
   @Exclude()
   @Column({ default: null })
   @Index({ unique: true })
-  vkId?: number;
+  vkId?: TUuid;
 
   constructor(partial: Partial<UsersEntity>) {
     Object.assign(this, partial);

@@ -1,8 +1,9 @@
 import { Request as ExpressRequest } from 'express';
+import { TUuid } from 'src/common/types';
 
 export interface IRequestWithUser extends ExpressRequest {
   user: {
-    userUuid: number;
+    userUuid: TUuid;
     name: string;
   };
 }
@@ -11,11 +12,11 @@ export type TUserCreds = {
   email?: string;
   name?: string;
   password?: string;
-  userUuid?: number;
+  userUuid?: TUuid;
 };
 
 export type TVkUserResponce = {
-  id: number;
+  userUuid: TUuid;
   email?: string;
   sex: number;
   bdate: string;
@@ -54,7 +55,7 @@ export enum EVkSex {
 
 export type TVkGetUser = {
   first_name: string;
-  id: number;
+  userUuid: TUuid;
   last_name: string;
   can_access_closed: boolean;
   is_closed: boolean;

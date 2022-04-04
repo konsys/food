@@ -1,3 +1,5 @@
+import { TUuid } from "src/common/types";
+
 export interface IJwtSettings {
   secret: string;
   expires: string;
@@ -6,7 +8,7 @@ export interface IJwtSettings {
 
 export interface IJwtPayload {
   username: string;
-  sub: number;
+  sub: TUuid;
 }
 
 export const CLIENT_ID = 7988646;

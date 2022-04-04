@@ -17,29 +17,34 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
     }
 
     async findAll({ limit, page, filter }: TListRequest<E>): Promise<TListResponce<E>> {
+        try {
 
-        page = +(page && page >= 1 ? page : 1);
-        const take = limit = +limit;
-        const skip = take * (page - 1);
-        const whereFilter = filter ? { where: filter } : null;
-        const totalRecords = await this.repository.count(whereFilter);
+            page = +(page && page >= 1 ? page : 1);
+            const take = limit = +limit;
+            const skip = take * (page - 1);
+            const whereFilter = filter ? { where: filter } : null;
+            const totalRecords = await this.repository.count(whereFilter);
 
-        let allFilters: FindManyOptions = {
-            take: limit,
-            skip,
-            order: { id: "ASC" },
-        }
-        if (whereFilter) {
-            allFilters = { ...allFilters, ...whereFilter };
-        }
+            let allFilters: FindManyOptions = {
+                take: limit,
+                skip,
+                order: { id: "ASC" },
+            }
+            if (whereFilter) {
+                allFilters = { ...allFilters, ...whereFilter };
+            }
 
-        const items = await this.repository.find(allFilters);
-        return {
-            items,
-            limit,
-            page,
-            filter,
-            totalRecords
+            const items = await this.repository.find(allFilters);
+            return {
+                items,
+                limit,
+                page,
+                filter,
+                totalRecords
+            }
+        } catch (e) {
+            console.log(e)
+            throw new Error(e);
         }
     }
 
