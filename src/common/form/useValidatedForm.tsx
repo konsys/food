@@ -24,32 +24,34 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
     (fields?: NamePath[]) => {
       setInitialFieldsValue(fields);
     },
-    [setInitialFieldsValue]
+    [setInitialFieldsValue],
   );
 
-  const setFields: (fields: FieldData[], toValidate?: boolean) => void = useCallback(
-    (field, toValidate = true) => {
-      validateAndSetFields(field);
-      toValidate && validate(field.map(({ name }) => name));
-    },
-    [validateAndSetFields, validate]
-  );
+  const setFields: (fields: FieldData[], toValidate?: boolean) => void =
+    useCallback(
+      (field, toValidate = true) => {
+        validateAndSetFields(field);
+        toValidate && validate(field.map(({ name }) => name));
+      },
+      [validateAndSetFields, validate],
+    );
 
   const setFieldsValue: TSetFieldsValue<T> = useCallback(
     (values: any) => {
       validateAndSetFieldsValue(values);
     },
-    [validateAndSetFieldsValue]
+    [validateAndSetFieldsValue],
   );
 
-  const setField: (field: FieldData, toValidate?: boolean) => void = useCallback(
-    (field, toValidate = true) => setFields([field], toValidate),
-    [setFields]
-  );
+  const setField: (field: FieldData, toValidate?: boolean) => void =
+    useCallback(
+      (field, toValidate = true) => setFields([field], toValidate),
+      [setFields],
+    );
 
   const returnedFormInstance = useMemo(
     () => ({ ...form, setFieldsValue, setFields, resetFields, setField }),
-    [form, resetFields, setFields, setFieldsValue, setField]
+    [form, resetFields, setFields, setFieldsValue, setField],
   );
 
   const ReturnedForm = useCallback(
@@ -62,7 +64,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         }}
       />
     ),
-    [form]
+    [form],
   );
 
   const useFormOnModal: FC<TModalWithFormProps<TItemWithUuid<T>>> = useCallback(
@@ -106,8 +108,8 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
               fd.append('file', imageBlob, `${generateUuid()}.jpg`);
 
               const res = await createImage(fd);
-              const imgId = res.id;
-              returnValue = { ...validatedFormItem, imgId };
+              const imgUuid = res.uuid;
+              returnValue = { ...validatedFormItem, imgUuid };
             }
             return returnValue;
           })
@@ -152,7 +154,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             <ReturnedForm
               initialValues={initialValues}
               isEdit
-              layout='vertical'
+              layout="vertical"
               onKeyPress={(e: any) => {
                 if (enterKeyPressed(e) && !disabledOkBtn) {
                   modalOnOk();
@@ -165,7 +167,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         </>
       );
     },
-    [ReturnedForm, form, initialValues]
+    [ReturnedForm, form, initialValues],
   );
 
   return {

@@ -52,7 +52,6 @@ export const addToCart = (
     createItemFx({
       restaurantUuid: restaurantMenu.restaurant?.uuid,
       description: '',
-      id: null,
       orderSum: sumAll(order),
       order,
       status: EOrderStatus.IN_PROGRESS,

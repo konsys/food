@@ -9,13 +9,21 @@ const names = columnsNamesGenerator<DictionaryDto>();
 export function DictionaryFields() {
   return (
     <>
-      <Form.Item label='Название' name={names('name')} rules={[{ required: true }]}>
+      <Form.Item
+        label="Название"
+        name={names('name')}
+        rules={[{ required: true }]}
+      >
         <Input />
       </Form.Item>
-      <Form.Item label='Описание' name={names('description')} rules={[{ required: true }]}>
+      <Form.Item
+        label="Описание"
+        name={names('description')}
+        rules={[{ required: true }]}
+      >
         <TextArea />
       </Form.Item>
-      <Form.Item name={names('id')} hidden>
+      <Form.Item name={names('uuid')} hidden>
         <Input />
       </Form.Item>
     </>
