@@ -10,7 +10,7 @@ describe('image tests', () => {
     }
   });
 
-  it('should image', async () => {
+  it.skip('should image', async () => {
     const image = imageFactory.build();
     await Promise.all(new Array(20).fill(await createItemFx(image)));
     expect(1).toBe(1);
