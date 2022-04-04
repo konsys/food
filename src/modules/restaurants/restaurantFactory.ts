@@ -15,8 +15,8 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   openTime: factory.each(() => new Date()),
   createdAt: factory.each(() => new Date()),
   updatedAt: factory.each(() => new Date()),
-  imageId: factory.each(() => 1),
-  legalId: factory.each(() => 1),
-  logoId: factory.each(() => 1),
+  imageUuid: factory.each(() => 1),
+  legalUuid: factory.each(() => 1),
+  logoUuid: factory.each(() => 1),
   restaurantMenu: restaurantMenuFactory.buildList(1),
 });

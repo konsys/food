@@ -60,7 +60,7 @@ export type TVkUserGetRequest = {
 export type TVkGetUserParams = {
   fields: string;
   access_token: string;
-  userId: number;
+  userUuid: number;
 };
 
 export const jwtConstants: IJwtSettings = {
@@ -104,13 +104,13 @@ export const getVkAccessTokenRequest = (
 export const getVkGetUserRequest = ({
   access_token,
   fields,
-  userId,
+  userUuid,
 }: TVkGetUserParams): TVkUserGetRequest => {
   return {
     access_token,
     client_id: CLIENT_ID,
     fields,
-    user_ids: userId,
+    user_ids: userUuid,
     v: VK_API_VERSION,
   };
 };

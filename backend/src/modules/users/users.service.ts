@@ -36,8 +36,8 @@ export class UsersService {
     }
   }
 
-  async getUser(userId: number): Promise<UsersEntity | undefined> {
-    const user: UsersEntity = await this.users.findOne(userId);
+  async getUser(userUuid: number): Promise<UsersEntity | undefined> {
+    const user: UsersEntity = await this.users.findOne(userUuid);
 
     return new UsersEntity(user);
   }
@@ -129,7 +129,7 @@ export class UsersService {
       getVkGetUserRequest({
         access_token: tokenData.access_token,
         fields: 'sex,bdate,photo_100,email',
-        userId: tokenData.user_id,
+        userUuid: tokenData.user_id,
       }),
     )}`;
 
@@ -185,18 +185,18 @@ export class UsersService {
 
   async saveToken({
     token,
-    userId,
+    userUuid,
     name,
   }: {
     token: string;
-    userId: number;
+    userUuid: number;
     name: string;
   }): Promise<TokensEntity> {
     const expires = new Date();
     expires.setSeconds(expires.getSeconds() + jwtConstants.refreshExpires);
 
     const tokenToSave: TokensEntity = {
-      userId,
+      userUuid,
       name,
       expires,
       token,
@@ -207,7 +207,7 @@ export class UsersService {
     try {
       res = await this.tokens.save(tokenToSave);
     } catch (err) {
-      res = await this.tokens.update({ userId }, { expires, token });
+      res = await this.tokens.update({ userUuid }, { expires, token });
     }
 
     return res;
@@ -233,13 +233,13 @@ export class UsersService {
     }
   }
 
-  async deleteUser(userId: number): Promise<boolean> {
+  async deleteUser(userUuid: number): Promise<boolean> {
     // TODO delete
 
     throw new HttpException('Not implemented', 500)
     // try {
     // 
-    //   // const res = await this.users.delete({ userId, isTestUser: true });
+    //   // const res = await this.users.delete({   userUuid, isTestUser: true });
     //   // return res.affected > 0;
     // } catch (err) {
     //   console.log('Error deleting user', err);

@@ -2,7 +2,7 @@ import { Request as ExpressRequest } from 'express';
 
 export interface IRequestWithUser extends ExpressRequest {
   user: {
-    userId: number;
+    userUuid: number;
     name: string;
   };
 }
@@ -11,7 +11,7 @@ export type TUserCreds = {
   email?: string;
   name?: string;
   password?: string;
-  userId?: number;
+  userUuid?: number;
 };
 
 export type TVkUserResponce = {

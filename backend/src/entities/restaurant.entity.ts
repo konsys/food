@@ -8,17 +8,17 @@ import { Legal } from "./legal.entity";
 export class Restaurant extends AbstractDictionary {
 
   @Column({ type: "int", nullable: true, default: null })
-  logoId: number;
+  logoUuid: number;
 
   @ManyToOne(() => Images, { eager: true })
-  @JoinColumn({ name: "logoId" })
+  @JoinColumn({ name: "logoUuid" })
   logo?: Images;
 
   @Column({ type: "int", nullable: true, default: null })
-  imageId: number;
+  imageUuid: number;
 
   @ManyToOne(() => Images, { eager: true })
-  @JoinColumn({ name: "imageId" })
+  @JoinColumn({ name: "imageUuid" })
   image: Images;
 
   @Column()
@@ -37,10 +37,10 @@ export class Restaurant extends AbstractDictionary {
   rating: RatingDto;
 
   @Column({ type: "int", nullable: true, default: null })
-  legalId: number;
+  legalUuid: number;
 
   @ManyToOne(() => Legal, { eager: true })
-  @JoinColumn({ name: "legalId" })
+  @JoinColumn({ name: "legalUuid" })
   legal: Legal;
 
 

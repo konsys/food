@@ -6,7 +6,7 @@ export class TokensEntity {
   @Column()
   @PrimaryColumn()
   @Index({ unique: true })
-  userId: number;
+  userUuid: number;
 
   @Column()
   name: string;

@@ -10,7 +10,7 @@ describe('restaurant tests', () => {
 
       for (let i1 = 1; i1 < 11; i1++) {
         const restaurant = await getItemByFilterFx({ id: i1 })
-        const item = restaurantMenuFactory.build({ restaurant, restaurantId: restaurant.id! });
+        const item = restaurantMenuFactory.build({ restaurant, restaurantUuid: restaurant.id! });
         await createItemFx(item);
       }
     }

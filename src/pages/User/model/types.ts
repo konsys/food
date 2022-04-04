@@ -4,7 +4,7 @@ export interface IRegistrationResponce {
 }
 
 export interface IUser {
-  userId: number;
+  userUuid: string;
   vip: boolean;
   registrationType?: string;
   name: string;
@@ -17,7 +17,7 @@ export interface IUser {
 }
 
 export interface IUserRegistration {
-  userId?: number;
+  userUuid?: number;
   isTestUser?: boolean;
   vip: boolean;
   name: string;

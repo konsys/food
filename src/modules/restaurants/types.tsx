@@ -7,15 +7,15 @@ import { RestaurantMenuDto } from '../restaurantMenu/types';
 
 export type RestaurantDto = {
   image?: ImageDto;
-  imageId: number;
+  imageUuid: number;
   logo?: ImageDto;
-  logoId: number;
+  logoUuid: number;
   openTime: Date;
   closeTime: Date;
   priceRating: RatingDto;
   rating: RatingDto;
   legal?: LegalDto;
-  legalId: number;
+  legalUuid: number;
   foodType: EFoodType;
   restaurantMenu: RestaurantMenuDto[];
 } & DictionaryDto;

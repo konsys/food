@@ -24,10 +24,10 @@ export class AuthService {
     return user && user.name ? user : undefined;
   }
 
-  createPayload(username: string, userId: number): IJwtPayload {
+  createPayload(username: string, userUuid: number): IJwtPayload {
     return {
       username,
-      sub: userId,
+      sub: userUuid,
     };
   }
 
@@ -38,14 +38,14 @@ export class AuthService {
   }
 
   async login(user: TUserCreds): Promise<TTokens> {
-    const payload: IJwtPayload = this.createPayload(user.name, user.userId);
+    const payload: IJwtPayload = this.createPayload(user.name, user.userUuid);
 
     const accessToken = await this.signJwt(payload);
     const refreshToken = await this.signJwt(payload, '60000s');
 
     await this.usersService.saveToken({
       token: refreshToken,
-      userId: user.userId,
+      userUuid: user.userUuid,
       name: user.name,
     });
 

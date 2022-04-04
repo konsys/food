@@ -34,7 +34,7 @@ export class UsersController {
 
     return this.authService.login({
       name: req.user.name,
-      userId: req.user.userId,
+      userUuid: req.user.userUuid,
     });
   }
 
@@ -55,7 +55,7 @@ export class UsersController {
     if (token && new Date(token.expires).getTime() >= dt) {
       const payload: IJwtPayload = this.authService.createPayload(
         token.name,
-        token.userId,
+        token.userUuid,
       );
       const accessToken = await this.authService.signJwt(payload);
 
@@ -64,7 +64,7 @@ export class UsersController {
       token.expires = expires;
       await this.service.saveToken({
         token: token.token,
-        userId: token.userId,
+        userUuid: token.userUuid,
         name: token.name,
       });
 
@@ -82,7 +82,7 @@ export class UsersController {
   @Get('profile')
   async getProfile(@Request() req: IRequestWithUser): Promise<UsersEntity> {
     const profile = new UsersEntity(
-      await this.service.getUser(req.user.userId),
+      await this.service.getUser(req.user.userUuid),
     );
     return profile;
   }
@@ -90,8 +90,8 @@ export class UsersController {
   @UseInterceptors(ClassSerializerInterceptor)
   @UseGuards(JwtAuthGuard)
   @Get('profile/:id')
-  async getProfileById(@Param('id') userId: number): Promise<UsersEntity> {
-    const res = new UsersEntity(await this.service.getUser(userId));
+  async getProfileById(@Param('id') userUuid: number): Promise<UsersEntity> {
+    const res = new UsersEntity(await this.service.getUser(userUuid));
 
     return res;
   }
@@ -132,12 +132,12 @@ export class UsersController {
     return this.authService.login(user);
   }
 
-  @Delete('/:userId')
+  @Delete('/:  userUuid')
   async deleteUser(
     @Param()
-    { userId }: { userId: number },
+    { userUuid }: { userUuid: number },
   ): Promise<any> {
-    const res = await this.service.deleteUser(userId);
+    const res = await this.service.deleteUser(userUuid);
     return res;
   }
 

@@ -4,12 +4,12 @@ import { RestaurantDto } from '../restaurants/types';
 
 export type RestaurantMenuDto = {
   image?: ImageDto;
-  imageId?: number;
+  imageUuid?: number;
   price: number;
   weight: number;
   amount?: number;
   restaurant?: RestaurantDto;
-  restaurantId: number;
+  restaurantUuid: number;
   foodCategory?: string;
-  foodCategoryId: number;
+  foodCategoryUuid: number;
 } & DictionaryDto;
