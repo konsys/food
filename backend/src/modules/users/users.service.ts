@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, HttpCode, HttpException, Injectable, Logger } from '@nestjs/common';
 import { FindManyOptions, In, Repository } from 'typeorm';
 import { UsersEntity } from 'src/entities/users.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -12,6 +12,7 @@ import {
   VkAppParams,
 } from 'src/config';
 import { axiosClient } from 'src/http/client';
+import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
 
 // rCd8cviaoYS9AV1CyA8h
 @Injectable()
@@ -41,14 +42,15 @@ export class UsersService {
     return new UsersEntity(user);
   }
 
-  async getUsersByIds(userIds: number[]): Promise<UsersEntity[]> {
+  async getUsersByIds(uuids: string[]): Promise<UsersEntity[]> {
     // https://github.com/typeorm/typeorm/blob/master/docs/find-options.md
-    const users: UsersEntity[] = await this.users.find({
-      userId: In(userIds),
-    });
+    // const users: UsersEntity[] = await this.users.find({
+    //   uuid: In(uuids),
+    // });
 
-    const filtered = users.map((v) => new UsersEntity(v));
-    return filtered;
+    // const filtered = users.map((v) => new UsersEntity(v));
+    // return filtered;
+    throw new HttpException('Not implemented', 500)
   }
 
   async getUserByCredentials({
@@ -66,7 +68,7 @@ export class UsersService {
 
   async updateUser(user: UsersEntity): Promise<boolean> {
     user = new UsersEntity(user);
-    const update = await this.users.update({ userId: user.userId }, user);
+    const update = await this.users.update({ uuid: user.uuid }, user);
 
     return update && update.affected > 0 ? true : false;
   }
@@ -153,7 +155,7 @@ export class UsersService {
           vkId: user.id,
           email: null,
         });
-      } else if (isUser && isUser.userId) {
+      } else if (isUser && isUser.uuid) {
         await this.users.update(
           { vkId: user.id },
           {
@@ -232,12 +234,16 @@ export class UsersService {
   }
 
   async deleteUser(userId: number): Promise<boolean> {
-    try {
-      const res = await this.users.delete({ userId, isTestUser: true });
-      return res.affected > 0;
-    } catch (err) {
-      console.log('Error deleting user', err);
-      return false;
-    }
+    // TODO delete
+
+    throw new HttpException('Not implemented', 500)
+    // try {
+    // 
+    //   // const res = await this.users.delete({ userId, isTestUser: true });
+    //   // return res.affected > 0;
+    // } catch (err) {
+    //   console.log('Error deleting user', err);
+    //   return false;
+    // }
   }
 }

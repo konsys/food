@@ -18,7 +18,7 @@ export class CodeCheck {
 
   @PrimaryGeneratedColumn('uuid')
   @Generated('uuid')
-  uuid: number;
+  uuid: string;
 
   // @Exclude()
   @Column()

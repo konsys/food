@@ -6,7 +6,7 @@ import { Exclude } from 'class-transformer';
 export class UsersEntity {
   @PrimaryGeneratedColumn('uuid')
   @Generated('uuid')
-  uuid: number;
+  uuid: string;
 
   @Column({ default: false })
   vip?: boolean;

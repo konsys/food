@@ -9,7 +9,7 @@ export class AbstractDictionary {
 
   @PrimaryGeneratedColumn('uuid')
   @Generated('uuid')
-  uuid: number;
+  uuid: string;
 
   @Column()
   name: string;

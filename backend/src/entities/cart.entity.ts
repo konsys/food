@@ -8,7 +8,7 @@ import { RestaurantMenu } from "./restaraunt-menu.entity";
 export class Cart {
   @PrimaryGeneratedColumn('uuid')
   @Generated('uuid')
-  uuid: number;
+  uuid: string;
 
   @Column()
   restaurantUuid: TUuid;
