@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TPromiseFn, TUuid } from 'src/common/types';
 import { TListRequest, TListResponce } from 'src/common/types/paginationTypes';
-import { DeepPartial, FindManyOptions, FindOneOptions, Repository } from 'typeorm';
+import { DeepPartial, FindManyOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class AbstractService<E extends { uuid: TUuid }> implements IAbstractService<E>{
@@ -28,7 +28,7 @@ export class AbstractService<E extends { uuid: TUuid }> implements IAbstractServ
             let allFilters: FindManyOptions = {
                 take: limit,
                 skip,
-                order: { id: "ASC" },
+                order: { uuid: "ASC" },
             }
             if (whereFilter) {
                 allFilters = { ...allFilters, ...whereFilter };
