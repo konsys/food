@@ -6,7 +6,7 @@ const { getItemByFilterFx: getLegal } = LegalModel;
 const { getItemByFilterFx: getImage } = ImageModel;
 
 describe('restaurant tests', () => {
-  it('should create restaurant', async () => {
+  it.skip('should create restaurant', async () => {
     const legal = await getLegal({});
     const image = await getImage({})
     for (let i = 0; i < 10; i++) {

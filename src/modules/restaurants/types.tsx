@@ -1,4 +1,4 @@
-import { TLinkWithText } from '../../common/types/utilTypes';
+import { TUuid } from '../../common/types';
 import { DictionaryDto } from '../../core/dictionary/types';
 import { ImageDto } from '../image/model/types';
 import { LegalDto } from '../legal/types';
@@ -7,15 +7,15 @@ import { RestaurantMenuDto } from '../restaurantMenu/types';
 
 export type RestaurantDto = {
   image?: ImageDto;
-  imageUuid: number;
+  imageUuid: TUuid;
   logo?: ImageDto;
-  logoUuid: number;
+  logoUuid: TUuid;
   openTime: Date;
   closeTime: Date;
   priceRating: RatingDto;
   rating: RatingDto;
   legal?: LegalDto;
-  legalUuid: number;
+  legalUuid: TUuid;
   foodType: EFoodType;
   restaurantMenu: RestaurantMenuDto[];
 } & DictionaryDto;
