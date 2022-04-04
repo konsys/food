@@ -13,7 +13,6 @@ import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigatio
 import { TLinkWithText } from '../../common/types/utilTypes';
 import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
 import { addToCart } from '../../modules/cart/utils';
-import { TUuid } from '../../common/types';
 import { deliveryFactory } from '../../modules/delivery/deliveryFactory';
 import MobileCartButton from '../Cart/components/MobileCart/MobileCartButton/MobileCartButton';
 
@@ -37,8 +36,8 @@ function RestaurantMenu() {
       )
     : [];
 
-  const addMenuToCart = (menuItem: RestaurantMenuDto, restaurantUuid: TUuid) =>
-    addToCart(cartOrder, menuItem, restaurantUuid);
+  const addMenuToCart = (menuItem: RestaurantMenuDto) =>
+    addToCart(cartOrder, menuItem);
 
   const cartView = useMemo(
     () =>
@@ -73,7 +72,6 @@ function RestaurantMenu() {
                 menu={restaurant.restaurantMenu}
                 addToCart={addMenuToCart}
                 cartOrder={cartOrder?.order}
-                restaurantUuid={restaurant.uuid}
               />
               <RestaurantMenuBottomPartnerInfo legal={restaurant.legal} />
               <RestaurantMenuBottomLinks />

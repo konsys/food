@@ -1,5 +1,4 @@
-import { TItemWithUuid, TUuid } from '../../common/types';
-import { uuid } from '../../common/utils/utils';
+import { TItemWithUuid } from '../../common/types';
 import { Nullable } from '../../core/types';
 import { CartModel } from '../../store';
 import { EOrderStatus } from '../order/types';
@@ -15,12 +14,11 @@ const sumAll = (order: TRestaurantMenuOrder[]) =>
 export const addToCart = (
   item: Nullable<TItemWithUuid<CartDto>>,
   restaurantMenu: RestaurantMenuDto,
-  restaurantUuid: TUuid
 ) => {
   let newOrder: CartDto;
   let order: TRestaurantMenuOrder[];
   if (item) {
-    update(item, restaurantMenu.uuid, 0);
+    update(item, 0);
     const existedItem = item.order.find((v) => v.restaurantMenu.uuid === restaurantMenu.uuid);
     const filteredOrder = item.order.filter((v) => v.restaurantMenu.uuid !== restaurantMenu.uuid);
     if (existedItem) {
@@ -52,31 +50,29 @@ export const addToCart = (
     ];
 
     createItemFx({
-      restaurantUuid,
+      restaurantUuid: restaurantMenu.restaurant?.uuid,
       description: '',
       id: null,
       orderSum: sumAll(order),
       order,
       status: EOrderStatus.IN_PROGRESS,
-      uuid: uuid(),
-      clientUuid: getClientUuid(),
+      uuid: getClientUuid(),
     });
   }
 };
 
 export const changeOrderQuantity = (
   cartOrder: Nullable<TItemWithUuid<CartDto>>,
-  uuid: TUuid,
   delta: number
 ) => {
   if (cartOrder) {
-    update(cartOrder, uuid, delta);
+    update(cartOrder, delta);
   }
 };
 
-const update = (cartOrder: TItemWithUuid<CartDto>, uuid: TUuid, delta: number) => {
-  const existedItem = cartOrder.order.find((v) => v.restaurantMenu.uuid === uuid);
-  const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== uuid);
+const update = (cartOrder: TItemWithUuid<CartDto>, delta: number) => {
+  const existedItem = cartOrder.order.find((v) => v.restaurantMenu.uuid === cartOrder.uuid);
+  const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== cartOrder.uuid);
   let updatedOrder: TRestaurantMenuOrder[] = [];
 
   if (existedItem) {
@@ -98,9 +94,9 @@ const update = (cartOrder: TItemWithUuid<CartDto>, uuid: TUuid, delta: number) =
   }
 };
 
-export const deleteItemFromCart = (cartOrder: Nullable<TItemWithUuid<CartDto>>, uuid: TUuid) => {
+export const deleteItemFromCart = (cartOrder: Nullable<TItemWithUuid<CartDto>>) => {
   if (cartOrder) {
-    const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== uuid);
+    const filteredOrder = cartOrder.order.filter((v) => v.restaurantMenu.uuid !== cartOrder.uuid);
     updateItemFx({ ...cartOrder, orderSum: sumAll(filteredOrder), order: filteredOrder });
     if (!filteredOrder.length) {
       deleteItemFx(cartOrder.uuid);

@@ -12,7 +12,7 @@ interface Props {
   modificators?: TModidificator[];
   item: RestaurantMenuDto;
   quiantity: number;
-  changeQuantity: (uuid: TUuid, delta: number) => void;
+  changeQuantity: (delta: number) => void;
   deleteFromCart: TVoidFn<TUuid>;
 }
 
@@ -51,7 +51,7 @@ function CartItem(props: Props) {
             className="cart-service__count-button cart-service__count-button--minus"
             disabled={quiantity < 2}
             type="button"
-            onClick={() => changeQuantity(item.uuid, -1)}
+            onClick={() => changeQuantity(-1)}
           >
             <svg
               width="13"
@@ -74,7 +74,7 @@ function CartItem(props: Props) {
           <button
             className="cart-service__count-button"
             type="button"
-            onClick={() => changeQuantity(item.uuid, 1)}
+            onClick={() => changeQuantity(1)}
           >
             <svg
               width="13"

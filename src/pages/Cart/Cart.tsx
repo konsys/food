@@ -2,7 +2,6 @@ import React, { memo, useEffect, useState } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { Spin } from 'antd';
 import { Navigate, useParams } from 'react-router-dom';
-import { TUuid } from '../../common/types';
 import {
   changeOrderQuantity,
   deleteItemFromCart,
@@ -10,6 +9,7 @@ import {
 import { CartModel } from '../../store';
 import CartView from './components/CartView';
 import { HttpStatus } from '../../common/utils/constants';
+import { getClientUuid } from '../../modules/cart/service';
 
 const { $itemStore: cartStore, ItemGate } = CartModel;
 
@@ -21,12 +21,11 @@ function Cart({ sideView }: Props) {
   const { item: cartOrder, pending, error } = useStore(cartStore);
   const { uuid } = useParams<{ uuid: string }>();
 
-  useGate(ItemGate, uuid);
+  useGate(ItemGate, getClientUuid());
 
-  const changeQuantity = (uuidToChange: TUuid, delta: number) =>
-    changeOrderQuantity(cartOrder, uuidToChange, delta);
-  const deleteFromCart = (uuidToDelete: TUuid) =>
-    deleteItemFromCart(cartOrder, uuidToDelete);
+  const changeQuantity = (delta: number) =>
+    changeOrderQuantity(cartOrder, delta);
+  const deleteFromCart = () => deleteItemFromCart(cartOrder);
 
   const [stickyClass, setStickyClass] = useState<string>('');
 

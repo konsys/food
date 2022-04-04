@@ -6,18 +6,12 @@ import { RestaurantMenu } from "./restaraunt-menu.entity";
 
 @Entity()
 export class Cart {
-
-
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   @Index({ unique: true, fulltext: true })
   uuid: TUuid;
-
-  @Column()
-  @Index({ fulltext: true })
-  clientUuid: TUuid;
 
   @Column()
   restaurantUuid: TUuid;

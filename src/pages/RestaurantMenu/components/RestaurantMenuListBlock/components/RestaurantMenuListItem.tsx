@@ -1,17 +1,15 @@
 import React, { memo, useEffect, useState } from 'react';
-import { TUuid } from '../../../../../common/types';
 import { TRestaurantMenuOrder } from '../../../../../modules/cart/types';
 import { RestaurantMenuDto } from '../../../../../modules/restaurantMenu/types';
 import './restaurantMenuListItem.less';
 
 type Props = {
   item: RestaurantMenuDto;
-  addToCart: (item: RestaurantMenuDto, restaurantUuid: TUuid) => void;
-  restaurantUuid: TUuid;
+  addToCart: (item: RestaurantMenuDto) => void;
   cartOrder?: TRestaurantMenuOrder[];
 };
 
-function RestaurantMenuListItem({ item, addToCart, cartOrder, restaurantUuid }: Props) {
+function RestaurantMenuListItem({ item, addToCart, cartOrder }: Props) {
   const { name, image, description, price, amount, weight } = item;
   const [orderNumber, setOrderNumber] = useState<number | undefined>();
 
@@ -21,39 +19,41 @@ function RestaurantMenuListItem({ item, addToCart, cartOrder, restaurantUuid }: 
   }, [cartOrder]);
 
   return (
-    <div className='service-list__item col-lg-4 col-md-6 col-sm-6 col-xs-12'>
+    <div className="service-list__item col-lg-4 col-md-6 col-sm-6 col-xs-12">
       <button
-        type='button'
-        onClick={() => addToCart(item, restaurantUuid)}
-        className='service-list__item-add-to-cart-button'
+        type="button"
+        onClick={() => addToCart(item)}
+        className="service-list__item-add-to-cart-button"
       >
-        <div className='restaurant-menu-item clearfix'>
-          <div className='restaurant-menu-item__image restaurant-menu-item__image--full restaurant-menu-item__image--fill'>
+        <div className="restaurant-menu-item clearfix">
+          <div className="restaurant-menu-item__image restaurant-menu-item__image--full restaurant-menu-item__image--fill">
             <img
               alt={name}
-              className=' lazyloaded'
+              className=" lazyloaded"
               src={image?.averageImg ? image.averageImg : ''}
             />
           </div>
-          <div className='restaurant-menu-item-info'>
-            <div className='restaurant-menu-item-info__title'>
+          <div className="restaurant-menu-item-info">
+            <div className="restaurant-menu-item-info__title">
               <h3>
                 {orderNumber ? (
-                  <span className='service-list__item-count'>{orderNumber}&nbsp;•&nbsp;</span>
+                  <span className="service-list__item-count">
+                    {orderNumber}&nbsp;•&nbsp;
+                  </span>
                 ) : (
                   ''
                 )}
                 {name}
               </h3>
               {(amount || weight) && (
-                <span className='restaurant-menu-item-info__amount'>
+                <span className="restaurant-menu-item-info__amount">
                   {amount ? `${amount} шт.` : `${weight} гр.`}
                 </span>
               )}
             </div>
             <p>{description}</p>
             <div>
-              <span className='restaurant-menu-item__price'>{price} ₽</span>
+              <span className="restaurant-menu-item__price">{price} ₽</span>
             </div>
           </div>
         </div>

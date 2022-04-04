@@ -10,7 +10,7 @@ import './cartComponent.less';
 
 interface Props {
   cartOrder: TNullableItem<CartDto>;
-  changeQuantity: (uuid: TUuid, delta: number) => void;
+  changeQuantity: (delta: number) => void;
   deleteFromCart: TVoidFn<TUuid>;
 }
 

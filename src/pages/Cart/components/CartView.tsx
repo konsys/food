@@ -7,7 +7,7 @@ import CartComponent from './MobileCart/CartComponent/CartComponent';
 interface Props {
   cartOrder: TNullableItem<CartDto>;
   stickyClass: string;
-  changeQuantity: (uuid: string, delta: number) => void;
+  changeQuantity: (delta: number) => void;
   deleteFromCart: TVoidFn<string>;
   sideView?: boolean;
 }
