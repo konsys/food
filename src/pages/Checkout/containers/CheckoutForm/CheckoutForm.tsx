@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import { useStore } from 'effector-react';
 import { Button, Col, Row } from 'antd';
-import Item from 'antd/lib/list/Item';
 import { TPromiseFn } from '../../../../common/types';
 import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';

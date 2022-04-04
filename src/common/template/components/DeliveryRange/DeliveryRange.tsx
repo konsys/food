@@ -5,7 +5,7 @@ import { DeliveryRangeDto } from '../../../../modules/delivery/types';
 import './deliveryRange.less';
 
 const longRangeText = (
-  minutes: number
+  minutes: number,
 ) => ` Ваш заказ будет доставлен курьерами. Ресторан находится далеко от вашего адреса, поэтому
 доставка может занять более ${minutes} минут.`;
 const standardRangeText = (minutes: number) =>
@@ -19,36 +19,29 @@ interface Props {
 }
 
 function DeliveryRange(props: Props) {
-  const { deliveryPrice, minDeliveryMinutes, maxDeliveryMinutes, range } = props;
-
-  let rangeText = 'Дальняя доставка';
-
-  if (range === DeliveryRangeDto.HIGHT_DEMAND) {
-    rangeText = 'Экспресс доставка';
-  }
-  if (range === DeliveryRangeDto.STANDARD) {
-    rangeText = 'Стандартная доставка';
-  }
+  const { deliveryPrice, minDeliveryMinutes, maxDeliveryMinutes, range } =
+    props;
 
   return (
     <Tooltip
-      placement='topLeft'
+      placement="topLeft"
       title={`${
         range === DeliveryRangeDto.LONG
           ? longRangeText(maxDeliveryMinutes)
           : standardRangeText(maxDeliveryMinutes)
       }`}
     >
-      <div className='restaurant-info__delivery d-flex'>
-        <div className='restaurant-info__delivery-icon delivery_type--default'>
+      <div className="restaurant-info__delivery d-flex">
+        <div className="restaurant-info__delivery-icon delivery_type--default">
           <img
-            src='http://localhost:8000/img/icons/delivery/default.svg'
-            alt='Доставка от Broniboy'
+            src="http://localhost:8000/img/icons/delivery/default.svg"
+            alt="Доставка от Broniboy"
           />
         </div>
-        <div className='restaurant-info__delivery-info '>
+        <div className="restaurant-info__delivery-info ">
           <span>
-            {minDeliveryMinutes}-{maxDeliveryMinutes} мин&nbsp;•&nbsp;{deliveryPrice} ₽&nbsp;
+            {minDeliveryMinutes}-{maxDeliveryMinutes} мин&nbsp;•&nbsp;
+            {deliveryPrice} ₽&nbsp;
           </span>
 
           <br />

@@ -22,7 +22,7 @@ import {
 import { TUuid, TItemWithUuid } from '../../types/index';
 import { NullableNumber } from '../../../core/types';
 import { clearItemErrorHandler, nullableResult, requestItemErrorHandler, requestListErrorHandler } from './utils';
-import { notifyError } from '../../../core/errors';
+
 
 export type TGetOneByFilterFx<FullEntity> = Effect<
   Partial<FullEntity>,
