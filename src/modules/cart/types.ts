@@ -5,6 +5,7 @@ import { RestaurantMenuDto } from '../restaurantMenu/types';
 export type CartDto = {
   id: TId;
   uuid: TUuid;
+  clientUuid: TUuid;
   restaurantUuid: TUuid;
   description: string;
   order: TRestaurantMenuOrder[];

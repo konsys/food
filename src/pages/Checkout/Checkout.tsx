@@ -1,14 +1,13 @@
 import { Spin } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { memo, useEffect } from 'react';
-import { useParams, useNavigate, Navigate, useRoutes } from 'react-router-dom';
+import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { HttpStatus } from '../../common/utils/constants';
 import { notifyError } from '../../core/errors';
 import { getClientUuid } from '../../modules/cart/service';
 import { TOrder } from '../../modules/order/types';
 import { pathNames } from '../../routes/paths';
 import { CartModel, CodeCheckModel, OrderModel, PromoModel } from '../../store';
-import { NotFound } from '../NotFound';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
 
 const {

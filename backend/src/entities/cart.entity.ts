@@ -16,6 +16,10 @@ export class Cart {
   uuid: TUuid;
 
   @Column()
+  @Index({ fulltext: true })
+  clientUuid: TUuid;
+
+  @Column()
   restaurantUuid: TUuid;
 
   @Column({ default: null })

@@ -1,4 +1,5 @@
 import { TItemWithUuid, TUuid } from '../../common/types';
+import { uuid } from '../../common/utils/utils';
 import { Nullable } from '../../core/types';
 import { CartModel } from '../../store';
 import { EOrderStatus } from '../order/types';
@@ -57,7 +58,8 @@ export const addToCart = (
       orderSum: sumAll(order),
       order,
       status: EOrderStatus.IN_PROGRESS,
-      uuid: getClientUuid(),
+      uuid: uuid(),
+      clientUuid: getClientUuid(),
     });
   }
 };
