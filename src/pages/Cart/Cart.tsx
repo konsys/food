@@ -19,7 +19,9 @@ type Props = {
 };
 
 function Cart({ sideView }: Props) {
-  const { item: cartOrder, pending, error } = useStore(cartStore);
+  const cartItem = useStore(cartStore);
+
+  const { item: cartOrder, pending, error } = cartItem;
   const { uuid } = useParams<{ uuid: TUuid }>();
 
   useGate(ItemGate, getClientUuid());
@@ -59,12 +61,11 @@ function Cart({ sideView }: Props) {
         />
       ) : (
         <CartView
-          cartOrder={cartOrder}
+          cartItem={cartItem}
           changeQuantity={changeQuantity}
           deleteFromCart={deleteFromCart}
           sideView={sideView}
           stickyClass={stickyClass}
-          error={error}
         />
       )}
     </Spin>

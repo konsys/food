@@ -23,8 +23,8 @@ export type TModalWithFormProps<T> = ModalProps & {
   onCreate: TCreateItemFx<T>;
   onUpdate: TUpdateItemFx<TItemWithUuid<T>>;
   getList: Event<void>;
+  pending: boolean;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
-  pending?: boolean;
   buttonText?: string;
   buttonType?: ButtonType;
   itemState?: TItemStore<T>;

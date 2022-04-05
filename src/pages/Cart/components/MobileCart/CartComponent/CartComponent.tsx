@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { TNullableItem } from '../../../../../common/api/types';
+import { TItem } from '../../../../../common/api/types';
 import { TUuid, TVoidFn } from '../../../../../common/types';
 import { CartDto } from '../../../../../modules/cart/types';
 import CartItem from '../../CartItem/CartItem';
@@ -9,13 +9,13 @@ import CartItem from '../../CartItem/CartItem';
 import './cartComponent.less';
 
 interface Props {
-  cartOrder: TNullableItem<CartDto>;
+  cartItem: TItem<CartDto>;
   changeQuantity: (delta: number) => void;
   deleteFromCart: TVoidFn<TUuid>;
 }
 
 function CartComponent(props: Props) {
-  const { cartOrder, changeQuantity, deleteFromCart } = props;
+  const { cartItem, changeQuantity, deleteFromCart } = props;
 
   return (
     <div className="cart-section__body">
@@ -45,7 +45,7 @@ function CartComponent(props: Props) {
           </div>
         </div>
         <div className="cart-service__list">
-          {cartOrder?.order?.map((v, k) => (
+          {cartItem?.item?.order?.map((v: any, k: any) => (
             <CartItem
               key={k}
               item={v.restaurantMenu}
@@ -62,15 +62,15 @@ function CartComponent(props: Props) {
           Итого
         </Col>
         <Col className="cart-bottom__info-sum" span={12}>
-          {cartOrder?.orderSum ?? 0} ₽
+          {cartItem?.item?.orderSum ?? 0} ₽
         </Col>
       </Row>
 
       <Row gutter={[8, 8]} className="cart-bottom__info">
-        {cartOrder?.orderSum ? (
+        {cartItem?.item?.orderSum ? (
           <Col className="cart-bottom__checkout-button">
             <Link
-              to={`/checkout/${cartOrder?.uuid}`}
+              to={`/checkout/${cartItem?.item?.uuid}`}
               title="Оформить заказ"
               rel="nofollow"
             >

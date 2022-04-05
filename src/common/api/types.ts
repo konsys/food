@@ -11,8 +11,8 @@ export type TPaginationRequestParams = {
 };
 
 export type TListRequest<T> = TPaginationRequestParams & {
+  pending: boolean;
   filter?: Partial<Record<keyof T, any>>;
-  pending?: boolean;
 };
 
 export type TListResponce<T> = TListRequest<T> & {
@@ -28,7 +28,7 @@ export type THttpResponseError = {
 
 export type TItemStore<T> = {
   item: Nullable<T>;
-  pending?: boolean;
+  pending: boolean;
   error: Nullable<THttpResponseError>
 };
 

@@ -1,22 +1,22 @@
 import React, { memo } from 'react';
-import { TNullableItem } from '../../../../../common/api/types';
+import { TItem } from '../../../../../common/api/types';
 import { TUuid, TVoidFn } from '../../../../../common/types';
 import { CartDto } from '../../../../../modules/cart/types';
 import CartComponent from '../CartComponent/CartComponent';
 
 interface Props {
-  cartOrder: TNullableItem<CartDto>;
+  cartItem: TItem<CartDto>;
   changeQuantity: (delta: number) => void;
   deleteFromCart: TVoidFn<TUuid>;
 }
 
 function MobileCartOrder(props: Props) {
-  const { cartOrder, changeQuantity, deleteFromCart } = props;
+  const { cartItem, changeQuantity, deleteFromCart } = props;
 
   return (
     <div className="container">
       <CartComponent
-        cartOrder={cartOrder}
+        cartItem={cartItem}
         changeQuantity={changeQuantity}
         deleteFromCart={deleteFromCart}
       />

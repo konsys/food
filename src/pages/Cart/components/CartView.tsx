@@ -1,35 +1,28 @@
 import React, { memo } from 'react';
-import { THttpResponseError, TNullableItem } from '../../../common/api/types';
+import { TItem } from '../../../common/api/types';
 import { TVoidFn } from '../../../common/types';
-import { Nullable } from '../../../core/types';
 import { CartDto } from '../../../modules/cart/types';
 import CartComponent from './MobileCart/CartComponent/CartComponent';
 
 interface Props {
-  cartOrder: TNullableItem<CartDto>;
+  cartItem: TItem<CartDto>;
   stickyClass: string;
   changeQuantity: (delta: number) => void;
   deleteFromCart: TVoidFn<string>;
-  error: Nullable<THttpResponseError>;
   sideView?: boolean;
 }
 
 function CartView(props: Props) {
-  const {
-    sideView,
-    cartOrder,
-    stickyClass,
-    changeQuantity,
-    deleteFromCart,
-    error,
-  } = props;
+  const { sideView, cartItem, stickyClass, changeQuantity, deleteFromCart } =
+    props;
 
+  console.log(12312313, cartItem);
   return (
     <div>
       {sideView ? (
         <div className={`cart-section-wrapper ${stickyClass}`}>
           <CartComponent
-            cartOrder={cartOrder}
+            cartItem={cartItem}
             changeQuantity={changeQuantity}
             deleteFromCart={deleteFromCart}
           />
@@ -37,9 +30,8 @@ function CartView(props: Props) {
       ) : (
         <div className="container">
           <div className=" cart-section-wrapper ">
-            {error ? <div>{JSON.stringify(error)}</div> : ''}
             <CartComponent
-              cartOrder={cartOrder}
+              cartItem={cartItem}
               changeQuantity={changeQuantity}
               deleteFromCart={deleteFromCart}
             />
