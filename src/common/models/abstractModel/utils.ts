@@ -6,18 +6,18 @@ export const nullableResult = <D>(_: TItemStore<D>, { result }: { result: D }) =
     error: null
 });
 
-export const requestItemErrorHandler = <D>(_: TItemStore<D>, { error }: { error: any }): TItemStore<D> => {
+export const requestItemErrorHandler = <D>(state: TItemStore<D>, { error }: { error: any }): TItemStore<D> => {
 
     if (error?.response?.data?.statusCode && error?.response?.data?.message) {
         const responseError = error.response.data
         return {
-            item: null,
+            item: state.item,
             pending: false,
             error: responseError
         }
     }
     return {
-        item: null,
+        item: state.item,
         pending: false,
         error: {
             message: 'Unknown error',
@@ -27,7 +27,7 @@ export const requestItemErrorHandler = <D>(_: TItemStore<D>, { error }: { error:
     }
 };
 
-export const clearItemErrorHandler = <D>(store: TItemStore<D>): TItemStore<D> => ({ ...store, error: null });
+export const clearItemErrorHandler = <D>(state: TItemStore<D>): TItemStore<D> => ({ ...state, error: null });
 
 
 export const requestListErrorHandler = <D>({ limit, page, filter, sort }: TListRequest<D>, { error }: { error: any }): TListResponce<D> => {
