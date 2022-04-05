@@ -15,6 +15,7 @@ export const addToCart = (
   item: Nullable<TItemWithUuid<CartDto>>,
   restaurantMenu: RestaurantMenuDto,
 ) => {
+
   let newOrder: CartDto;
   let order: TRestaurantMenuOrder[];
   if (item) {
@@ -38,10 +39,11 @@ export const addToCart = (
       ...item,
       orderSum: sumAll(order),
       order,
+      restaurantUuid: restaurantMenu.restaurantUuid
     };
     updateItemFx(newOrder);
   } else {
-    const order = [
+    const initialOrder = [
       {
         restaurantMenu,
         quantity: 1,
@@ -52,8 +54,8 @@ export const addToCart = (
     createItemFx({
       restaurantUuid: restaurantMenu.restaurantUuid,
       description: '',
-      orderSum: sumAll(order),
-      order,
+      orderSum: sumAll(initialOrder),
+      order: initialOrder,
       status: EOrderStatus.IN_PROGRESS,
       uuid: getClientUuid(),
     });
