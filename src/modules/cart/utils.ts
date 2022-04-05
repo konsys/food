@@ -50,7 +50,7 @@ export const addToCart = (
     ];
 
     createItemFx({
-      restaurantUuid: restaurantMenu.restaurant?.uuid,
+      restaurantUuid: restaurantMenu.restaurantUuid,
       description: '',
       orderSum: sumAll(order),
       order,
