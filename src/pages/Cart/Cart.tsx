@@ -64,6 +64,7 @@ function Cart({ sideView }: Props) {
           deleteFromCart={deleteFromCart}
           sideView={sideView}
           stickyClass={stickyClass}
+          error={error}
         />
       )}
     </Spin>

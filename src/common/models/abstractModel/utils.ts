@@ -1,4 +1,5 @@
-import { TItemStore, TListRequest, TListResponce } from "../../api/types";
+import { THttpResponseError, TItemStore, TListRequest, TListResponce } from "../../api/types";
+import { HttpStatus } from "../../utils/constants";
 
 export const nullableResult = <D>(_: TItemStore<D>, { result }: { result: D }) => ({
     item: result ?? null,
@@ -9,20 +10,19 @@ export const nullableResult = <D>(_: TItemStore<D>, { result }: { result: D }) =
 export const requestItemErrorHandler = <D>(state: TItemStore<D>, { error }: { error: any }): TItemStore<D> => {
 
     if (error?.response?.data?.statusCode && error?.response?.data?.message) {
-        const responseError = error.response.data
+        const responseError: THttpResponseError = error.response.data
         return {
             item: state.item,
             pending: false,
             error: responseError
         }
     }
-    console.log(3333333, error.response);
     return {
         item: state.item,
         pending: false,
         error: {
             message: 'Unknown error',
-            statusCode: 400
+            statusCode: HttpStatus.BAD_REQUEST
 
         }
     }

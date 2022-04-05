@@ -1,5 +1,6 @@
 import { Nullable } from '../../core/types';
 import { TItemWithUuid } from '../types';
+import { HttpStatus } from '../utils/constants';
 
 export type TSort = 'asc' | 'desc';
 
@@ -17,18 +18,18 @@ export type TListRequest<T> = TPaginationRequestParams & {
 export type TListResponce<T> = TListRequest<T> & {
   items: T[];
   totalRecords: number;
-  error: Nullable<TResponseError>
+  error: Nullable<THttpResponseError>
 };
 
-export type TResponseError = {
-  statusCode: number,
+export type THttpResponseError = {
+  statusCode: HttpStatus,
   message: string
 }
 
 export type TItemStore<T> = {
   item: Nullable<T>;
   pending?: boolean;
-  error: Nullable<TResponseError>
+  error: Nullable<THttpResponseError>
 };
 
 export type TItem<T> = Nullable<TItemStore<TItemWithUuid<T>>>;

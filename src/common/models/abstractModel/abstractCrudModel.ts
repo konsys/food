@@ -22,6 +22,7 @@ import {
 import { TUuid, TItemWithUuid } from '../../types/index';
 import { NullableNumber } from '../../../core/types';
 import { clearItemErrorHandler, nullableResult, requestItemErrorHandler, requestListErrorHandler } from './utils';
+import { HttpStatus } from '../../utils/constants';
 
 
 export type TGetOneByFilterFx<FullEntity> = Effect<
@@ -42,11 +43,6 @@ export type TGetAllFx<FullEntity> = Effect<
   TListResponce<FullEntity>,
   Error
 >;
-
-export type ErrorStore = {
-  code: NullableNumber,
-  message: string
-}
 
 export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = CreateEntity> = {
   resetList: Event<void>;
