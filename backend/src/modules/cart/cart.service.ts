@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpCode, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AbstractService } from 'src/abstract/crud/abstractService';
 import { Cart } from 'src/entities/cart.entity';
@@ -26,8 +26,8 @@ export class CartService extends AbstractService<Cart> {
     const cart = await this.cartRepository.findOne({ where: { uuid: entity.uuid } });
     if (cart && cart.restaurantUuid !== entity.restaurantUuid) {
       console.log(234234234234)
-      const restaurant = await this.restaurantRepository.findOne(cart.uuid);
-      throw new BadRequestException({ message: `Вы уже начали создавать заказ в ${restaurant.name}` })
+      const restaurant = await this.restaurantRepository.findOne(cart.restaurantUuid);
+      throw new HttpException({ message: `Вы уже начали создавать заказ в ${restaurant.name}` }, HttpStatus.BAD_REQUEST)
     }
     const res = await this.cartRepository.save(entity);
     return this.cartRepository.findOne({ where: { uuid: res.uuid } });
@@ -37,8 +37,8 @@ export class CartService extends AbstractService<Cart> {
     const cart = await this.cartRepository.findOne({ where: { uuid: entity.uuid } });
     if (cart && cart.restaurantUuid !== entity.restaurantUuid) {
       console.log(333333333333)
-      const restaurant = await this.restaurantRepository.findOne(cart.uuid);
-      throw new BadRequestException({ message: `Вы уже начали создавать заказ в ${restaurant.name}` })
+      const restaurant = await this.restaurantRepository.findOne(cart.restaurantUuid);
+      throw new HttpException({ message: `Вы уже начали создавать заказ в ${restaurant.name}` }, HttpStatus.BAD_REQUEST)
     }
     const newEntity = { ...cart, ...entity }
     const res = await this.cartRepository.save(newEntity);
