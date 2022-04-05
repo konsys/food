@@ -68,6 +68,7 @@ export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = Create
   updateItemFx: TUpdateItemFx<FullEntity>;
   deleteItemFx: TDeleteItemFx;
   getAll: Event<TListRequest<FullEntity>>;
+  getAllFx: Effect<TListRequest<FullEntity>, TListResponce<FullEntity>, Error>
 };
 
 export class CrudStore<
@@ -219,7 +220,8 @@ export class CrudStore<
       deleteItemFx,
       updateItemFx,
       getAll,
-      clearItemError
+      clearItemError,
+      getAllFx
     };
   }
 }
