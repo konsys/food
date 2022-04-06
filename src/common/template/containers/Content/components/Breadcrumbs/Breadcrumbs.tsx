@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import './breadcrumbs.less';
 
 interface Props {}
@@ -7,16 +8,16 @@ function Breadcrumbs(props: Props) {
   const {} = props;
 
   return (
-    <div className='breadcrumbs'>
-      <div className='container'>
-        <ul className='list-clear'>
+    <div className="breadcrumbs">
+      <div className="container">
+        <ul className="list-clear">
           <li>
-            <a href='/' title='Главная'>
+            <Link to="/" title="Главная">
               <span>Главная</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='/' title='Нижний Новгород' className='disabled'>
+            <a href="/" title="Нижний Новгород" className="disabled">
               <span>Москва</span>
             </a>
           </li>
