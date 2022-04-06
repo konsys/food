@@ -18,4 +18,6 @@ export const restaurantFactory = factory.Sync.makeFactory<RestaurantDto>({
   legalUuid: factory.each(() => ''),
   logoUuid: factory.each(() => ''),
   restaurantMenu: restaurantMenuFactory.buildList(1),
+  address: factory.each(() => faker.address.city()),
+  phone: factory.each(() => faker.phone.phoneNumberFormat()),
 });

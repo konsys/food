@@ -17,6 +17,12 @@ export class Restaurant extends AbstractDictionary {
   @Column({ nullable: true, default: null })
   imageUuid: string;
 
+  @Column()
+  address: string;
+
+  @Column()
+  phone: string;
+
   @ManyToOne(() => Images, { eager: true })
   @JoinColumn({ name: "imageUuid" })
   image: Images;

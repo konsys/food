@@ -10,6 +10,8 @@ export type RestaurantDto = {
   imageUuid: TUuid;
   logo?: ImageDto;
   logoUuid: TUuid;
+  address: string;
+  phone: string;
   openTime: Date;
   closeTime: Date;
   priceRating: RatingDto;
