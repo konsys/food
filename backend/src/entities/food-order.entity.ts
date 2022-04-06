@@ -1,7 +1,8 @@
-import { Column, Entity, Generated, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { TRestaurantMenuOrder } from './cart.entity';
 import { TUuid } from 'src/common/types';
+import { Restaurant } from './restaurant.entity';
 
 export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN_PROGRESS', CLOSED = 'CLOSED' }
 
@@ -21,6 +22,10 @@ export class FoodOrder {
   @Index({ fulltext: true })
   @Column()
   restaurantUuid: string;
+
+  @ManyToOne(() => Restaurant, { eager: true })
+  @JoinColumn({ name: "restaurantUuid" })
+  restaurant: Restaurant;
 
   @Column()
   promoCodeUuid: string;

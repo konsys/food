@@ -1,17 +1,15 @@
 
 import { TUuid } from "src/common/types";
-import { Column, Entity, Generated, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Generated, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { EOrderStatus } from "./food-order.entity";
 import { RestaurantMenu } from "./restaraunt-menu.entity";
+import { Restaurant } from "./restaurant.entity";
 
 @Entity()
 export class Cart {
   @PrimaryGeneratedColumn('uuid')
   @Generated('uuid')
   uuid: TUuid;
-
-  @Column()
-  restaurantUuid: TUuid;
 
   @Column({ default: null })
   description: string;
@@ -31,6 +29,13 @@ export class Cart {
 
   @Column()
   orderSum: number
+
+  @Column()
+  restaurantUuid: TUuid;
+
+  @ManyToOne(() => Restaurant, { eager: true })
+  @JoinColumn({ name: "restaurantUuid" })
+  restaurant: Restaurant;
 }
 
 
