@@ -2,7 +2,7 @@ import { Col, Row, Spin } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { memo } from 'react';
 import moment from 'moment';
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { TUuid } from '../../../common/types';
 import { OrderModel, RestaurantModel } from '../../../store';
 
@@ -41,9 +41,11 @@ function OrderCompletedPage() {
               {`Мы ждем Вас  ${moment(order?.date).format('DD MMMM YYYY')} в
             ${order?.time}`}
             </Col>
-            <Col span={24}>По адресу {restaurant?.legalUuid}</Col>
-            <Col span={24}>{order?.priceWithoutDiscount}</Col>
-            <Col span={24}>{restaurant?.name}</Col>
+            <Col span={24}>По адресу: {restaurant?.address}</Col>
+            <Col span={24}>Телефон для справок: {restaurant?.phone}</Col>
+            <Col span={24}>
+              <Link to="/">На главную</Link>
+            </Col>
           </Row>
         </div>
       )}
