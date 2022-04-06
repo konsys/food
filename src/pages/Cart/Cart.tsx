@@ -49,7 +49,6 @@ function Cart({ sideView }: Props) {
     }
   };
 
-  console.log(234234, error);
   return (
     <Spin spinning={pending}>
       {error?.statusCode === HttpStatus.NOT_FOUND ? (
