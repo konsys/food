@@ -1,6 +1,7 @@
 import React, { memo, useMemo } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { useParams } from 'react-router-dom';
+import { Col, Row, Spin } from 'antd';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
 import RestaurantMenuBottomLinks from './RestaurantMenuBottomLinks/RestaurantMenuBottomLinks';
 import RestaurantMenuBottomPartnerInfo from './components/RestaurantMenuBottomPartnerInfo/RestaurantMenuBottomPartnerInfo';
@@ -24,9 +25,10 @@ function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: TUuid }>();
 
   useGate(ItemGate, uuid);
-  const { item: cartOrder } = useStore(cartStore);
+  const { item: cartOrder, pending: cartPending } = useStore(cartStore);
 
-  const { item: restaurant } = useStore(restaurantStore);
+  const { item: restaurant, pending: restaurantPending } =
+    useStore(restaurantStore);
 
   const items: TLinkWithText[] = restaurant
     ? grouppedByCategory(restaurant?.restaurantMenu, 'foodCategory.name').map(
@@ -43,14 +45,16 @@ function RestaurantMenu() {
   const cartView = useMemo(
     () =>
       cartOrder ? (
-        <>
-          <div className="d-none d-lg-flex col-lg-3">
-            <Cart sideView />
-          </div>
-          <div className="d-flex d-lg-none col-lg-3">
-            <MobileCartButton cartOrder={cartOrder} />
-          </div>
-        </>
+        <Spin spinning={cartPending}>
+          <Row>
+            <Col span={24}>
+              <Cart sideView />
+            </Col>
+            <Col span={0}>
+              <MobileCartButton cartOrder={cartOrder} />
+            </Col>
+          </Row>
+        </Spin>
       ) : (
         ''
       ),
@@ -59,30 +63,32 @@ function RestaurantMenu() {
 
   return (
     <div className="container">
-      {restaurant ? (
-        <div className="page-restaurant d-flex">
-          <div className="restaurant-section col-lg-9 col-md-12 col-sm-12">
-            <RestaurantMenuHeader
-              restaurant={restaurant}
-              delivery={deliveryFactory.build()}
-            />
-            <RestaurantMenuTopNavigation menuItems={items} />
-
-            <section className="restaurant-menu">
-              <RestaurantMenuListBlock
-                menu={restaurant.restaurantMenu}
-                addToCart={addMenuToCart}
-                cartOrder={cartOrder?.order}
+      <Spin spinning={restaurantPending}>
+        {restaurant ? (
+          <div className="page-restaurant d-flex">
+            <div className="restaurant-section col-lg-9 col-md-12 col-sm-12">
+              <RestaurantMenuHeader
+                restaurant={restaurant}
+                delivery={deliveryFactory.build()}
               />
-              <RestaurantMenuBottomPartnerInfo legal={restaurant.legal} />
-              <RestaurantMenuBottomLinks />
-            </section>
+              <RestaurantMenuTopNavigation menuItems={items} />
+
+              <section className="restaurant-menu">
+                <RestaurantMenuListBlock
+                  menu={restaurant.restaurantMenu}
+                  addToCart={addMenuToCart}
+                  cartOrder={cartOrder?.order}
+                />
+                <RestaurantMenuBottomPartnerInfo legal={restaurant.legal} />
+                <RestaurantMenuBottomLinks />
+              </section>
+            </div>
+            {cartView}
           </div>
-          {cartView}
-        </div>
-      ) : (
-        ''
-      )}
+        ) : (
+          ''
+        )}
+      </Spin>
     </div>
   );
 }
