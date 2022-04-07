@@ -2,6 +2,7 @@ import React, { memo, useEffect, useState } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { Spin } from 'antd';
 import { Navigate, useParams } from 'react-router-dom';
+import Modal from 'antd/lib/modal/Modal';
 import {
   changeOrderQuantity,
   deleteItemFromCart,
@@ -19,6 +20,7 @@ type Props = {
 };
 
 function Cart({ sideView }: Props) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const cartItem = useStore(cartStore);
 
   const { item: cartOrder, pending, error } = cartItem;
@@ -49,6 +51,24 @@ function Cart({ sideView }: Props) {
     }
   };
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  useEffect(() => {
+    if (error) {
+      showModal();
+    }
+  }, [error, showModal]);
+
   return (
     <Spin spinning={pending}>
       {error?.statusCode === HttpStatus.NOT_FOUND ? (
@@ -67,6 +87,14 @@ function Cart({ sideView }: Props) {
           stickyClass={stickyClass}
         />
       )}
+      <Modal
+        title="Удалить предыдущий заказ?"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>{error?.message}</p>
+      </Modal>
     </Spin>
   );
 }
