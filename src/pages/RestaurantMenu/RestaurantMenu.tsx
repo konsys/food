@@ -47,10 +47,10 @@ function RestaurantMenu() {
       cartOrder ? (
         <Spin spinning={cartPending}>
           <Row>
-            <Col span={24}>
+            <Col xs={{ span: 0 }} lg={{ span: 24 }}>
               <Cart sideView />
             </Col>
-            <Col span={0}>
+            <Col xs={{ span: 24 }} lg={{ span: 0 }}>
               <MobileCartButton cartOrder={cartOrder} />
             </Col>
           </Row>

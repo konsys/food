@@ -13,17 +13,17 @@ function RestaurantsList(props: Props) {
   const { items } = props;
 
   return (
-    <section className='restaurants'>
-      <div className='container restaurants-list'>
+    <section className="restaurants">
+      <div className="container restaurants-list">
         <header>
-          <div className='restaurants-header-title'>
-            <div className='page-title'>
+          <div className="restaurants-header-title">
+            <div className="page-title">
               <h2>Самые популярные места</h2>
             </div>
           </div>
         </header>
-        <div className='restaurants-body'>
-          <div className='row'>
+        <div className="restaurants-body">
+          <div className="row">
             {/* TODO add delivery */}
             {items.map((restarauntItem, index) => (
               <RestaurantItem
@@ -35,11 +35,11 @@ function RestaurantsList(props: Props) {
           </div>
           <noscript />
         </div>
-        <div className='restaurants-list__show-more'>
+        <div className="restaurants-list__show-more">
           <Link
-            to='/'
-            title='Показать еще рестораны'
-            className='restaurants-list__upload-button main-btn'
+            to="/"
+            title="Показать еще рестораны"
+            className="restaurants-list__upload-button main-btn"
           >
             <span>Показать еще рестораны</span>
           </Link>
