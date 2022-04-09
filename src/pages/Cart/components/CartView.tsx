@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
 import { TItem } from '../../../common/api/types';
-import { TVoidFn } from '../../../common/types';
+import { TUuid, TVoidFn } from '../../../common/types';
 import { CartDto } from '../../../modules/cart/types';
 import CartComponent from './MobileCart/CartComponent/CartComponent';
 
 interface Props {
   cartItem: TItem<CartDto>;
   stickyClass: string;
-  changeQuantity: (delta: number) => void;
+  changeQuantity: (uuid: TUuid, delta: number) => void;
   deleteFromCart: TVoidFn<string>;
   sideView?: boolean;
 }

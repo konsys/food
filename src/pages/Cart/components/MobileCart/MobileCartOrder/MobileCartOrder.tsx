@@ -6,7 +6,7 @@ import CartComponent from '../CartComponent/CartComponent';
 
 interface Props {
   cartItem: TItem<CartDto>;
-  changeQuantity: (delta: number) => void;
+  changeQuantity: (uuid: TUuid, delta: number) => void;
   deleteFromCart: TVoidFn<TUuid>;
 }
 
