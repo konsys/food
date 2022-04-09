@@ -3,6 +3,7 @@ import { Nullable } from '../../core/types';
 import { CartModel } from '../../store';
 import { EOrderStatus } from '../order/types';
 import { RestaurantMenuDto } from '../restaurantMenu/types';
+import { updateCartStore } from './model';
 import { getClientUuid } from './service';
 import { CartDto, TRestaurantMenuOrder } from './types';
 
