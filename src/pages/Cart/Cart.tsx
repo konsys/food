@@ -2,7 +2,6 @@ import React, { memo, useEffect, useState } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { Spin } from 'antd';
 import { Navigate, useParams } from 'react-router-dom';
-import Modal from 'antd/lib/modal/Modal';
 import {
   changeOrderQuantity,
   deleteItemFromCart,
@@ -58,7 +57,7 @@ function Cart({ sideView }: Props) {
     }
   };
 
-  console.log(23423423423, cartItem);
+  console.log('cartItem cartItem cartItem', cartItem);
   useEffect(() => {
     if (error) {
       setIsModalVisible(true);
