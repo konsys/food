@@ -3,6 +3,7 @@ import { useGate, useStore } from 'effector-react';
 import { Spin } from 'antd';
 import { Navigate, useParams } from 'react-router-dom';
 import {
+  addToCart,
   changeOrderQuantity,
   deleteItemFromCart,
 } from '../../modules/cart/utils';
@@ -12,6 +13,7 @@ import { HttpStatus } from '../../common/utils/constants';
 import { getClientUuid } from '../../modules/cart/service';
 import { TUuid } from '../../common/types';
 import StandardModal from '../../common/components/modal/StandardModal';
+import { $selectedMenuItemStore } from '../../modules/restaurantMenu/model';
 
 const {
   $itemStore: cartStore,
@@ -28,6 +30,7 @@ function Cart({ sideView }: Props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const cartItem = useStore(cartStore);
+  const addedRestaurantItem = useStore($selectedMenuItemStore);
 
   const { item: cartOrder, pending, error } = cartItem;
   const { uuid } = useParams<{ uuid: TUuid }>();
@@ -36,6 +39,7 @@ function Cart({ sideView }: Props) {
 
   const changeQuantity = (uuid: TUuid, delta: number) =>
     changeOrderQuantity(cartOrder, uuid, delta);
+
   const deleteFromCart = (itemUuid: TUuid) =>
     deleteItemFromCart(cartOrder, itemUuid);
 
@@ -67,6 +71,7 @@ function Cart({ sideView }: Props) {
   const onDelete = async () => {
     if (cartOrder) {
       await deleteItemFx(cartOrder.uuid);
+      addedRestaurantItem && addToCart(null, addedRestaurantItem);
     }
     resetItemError();
   };

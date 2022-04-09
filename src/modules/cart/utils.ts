@@ -3,7 +3,7 @@ import { Nullable } from '../../core/types';
 import { CartModel } from '../../store';
 import { EOrderStatus } from '../order/types';
 import { RestaurantMenuDto } from '../restaurantMenu/types';
-import { RestaurantDto } from '../restaurants/types';
+import { updatSelectedMenuItem } from '../restaurantMenu/model';
 import { getClientUuid } from './service';
 import { CartDto, TRestaurantMenuOrder } from './types';
 
@@ -16,6 +16,8 @@ export const addToCart = (
   item: Nullable<TItemWithUuid<CartDto>>,
   restaurantMenu: RestaurantMenuDto,
 ) => {
+  updatSelectedMenuItem(restaurantMenu);
+
   let newOrder: CartDto;
   let order: TRestaurantMenuOrder[];
   if (item) {
