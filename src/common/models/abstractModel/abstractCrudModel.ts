@@ -20,9 +20,8 @@ import {
   TypeOrmDeleteResult,
 } from '../../api/types';
 import { TUuid, TItemWithUuid } from '../../types/index';
-import { NullableNumber } from '../../../core/types';
 import { clearItemErrorHandler, nullableResult, requestItemErrorHandler, requestListErrorHandler } from './utils';
-import { HttpStatus } from '../../utils/constants';
+
 
 
 export type TGetOneByFilterFx<FullEntity> = Effect<

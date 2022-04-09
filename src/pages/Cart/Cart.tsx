@@ -59,6 +59,7 @@ function Cart({ sideView }: Props) {
   };
 
   useEffect(() => {
+    console.log(23423423423, error);
     if (error) {
       setIsModalVisible(true);
     }
