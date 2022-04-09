@@ -147,9 +147,7 @@ export class CrudStore<
       .on(getItemFx.done, nullableResult)
       .on(getItemByFilterFx.done, nullableResult)
       .on(updateItemFx.done, nullableResult)
-      .on(deleteItemFx.done, (prev, { result }: { result: TypeOrmDeleteResult }) =>
-        result.affected ? createInitItem<FullEntity>() : prev
-      )
+      .on(deleteItemFx.done, () => createInitItem<FullEntity>())
       .on(createItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(createItemWithoutFetchingListFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(getItemFx.pending, (prev, pending) => ({ ...prev, pending }))
