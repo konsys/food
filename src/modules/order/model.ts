@@ -12,5 +12,3 @@ export const $orderStore = createStore<Partial<TOrder>>({
     isTimerRunning: false,
     isPhoneValid: true,
 }).on(updateOrderStore, (prev, item) => ({ ...prev, ...item }));
-
-$orderStore.watch(console.log)

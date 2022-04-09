@@ -16,7 +16,6 @@ function CartView(props: Props) {
   const { sideView, cartItem, stickyClass, changeQuantity, deleteFromCart } =
     props;
 
-  console.log(12312313, cartItem);
   return (
     <div>
       {sideView ? (
