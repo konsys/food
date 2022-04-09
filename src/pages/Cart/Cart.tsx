@@ -12,8 +12,14 @@ import CartView from './components/CartView';
 import { HttpStatus } from '../../common/utils/constants';
 import { getClientUuid } from '../../modules/cart/service';
 import { TUuid } from '../../common/types';
+import StandardModal from '../../common/components/modal/StandardModal';
 
-const { $itemStore: cartStore, ItemGate } = CartModel;
+const {
+  $itemStore: cartStore,
+  ItemGate,
+  resetItemError,
+  deleteItemFx,
+} = CartModel;
 
 type Props = {
   sideView?: boolean;
@@ -21,6 +27,7 @@ type Props = {
 
 function Cart({ sideView }: Props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+
   const cartItem = useStore(cartStore);
 
   const { item: cartOrder, pending, error } = cartItem;
@@ -51,23 +58,18 @@ function Cart({ sideView }: Props) {
     }
   };
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
   useEffect(() => {
     if (error) {
-      showModal();
+      setIsModalVisible(true);
     }
-  }, [error, showModal]);
+  }, [error, setIsModalVisible]);
+
+  const onDelete = async () => {
+    if (cartOrder) {
+      await deleteItemFx(cartOrder.uuid);
+    }
+    resetItemError();
+  };
 
   return (
     <Spin spinning={pending}>
@@ -87,14 +89,15 @@ function Cart({ sideView }: Props) {
           stickyClass={stickyClass}
         />
       )}
-      <Modal
+      <StandardModal
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+        onOk={onDelete}
+        onCancel={resetItemError}
+        text={error?.message ?? ''}
         title="Удалить предыдущий заказ?"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>{error?.message}</p>
-      </Modal>
+        loading={pending}
+      />
     </Spin>
   );
 }

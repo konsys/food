@@ -50,7 +50,7 @@ export type TCrudStore<CreateEntity extends { uuid: TUuid }, FullEntity = Create
   setFilter: Event<any>;
   setPage: Event<number>;
   setPageSize: Event<number>;
-  clearItemError: Event<void>;
+  resetItemError: Event<void>;
   $listStore: Store<TListResponce<FullEntity>>;
   $itemStore: Store<TItemStore<FullEntity>>;
   ListGate: Gate<TListRequest<FullEntity>>;
@@ -110,7 +110,7 @@ export class CrudStore<
       handler: (uuid) => service.deleteOne(uuid),
     });
 
-    const clearItemError = createEvent();
+    const resetItemError = createEvent();
     const getItem = createEvent<TUuid>();
     const getAllDefault = createEvent();
     const getAll = createEvent<TListRequest<FullEntity>>();
@@ -163,7 +163,7 @@ export class CrudStore<
       .on(getItemByFilterFx.fail, requestItemErrorHandler)
       .on(updateItemFx.fail, requestItemErrorHandler)
       .on(deleteItemFx.fail, requestItemErrorHandler)
-      .on(clearItemError, clearItemErrorHandler)
+      .on(resetItemError, clearItemErrorHandler)
       .reset(resetOne);
 
     sample({
@@ -216,7 +216,7 @@ export class CrudStore<
       deleteItemFx,
       updateItemFx,
       getAll,
-      clearItemError,
+      resetItemError,
       getAllFx
     };
   }

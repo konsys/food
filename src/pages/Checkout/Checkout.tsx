@@ -14,7 +14,7 @@ import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
 const {
   createItemFx: createOrderFx,
   $itemStore: orderStore,
-  clearItemError: clearOrdeError,
+  resetItemError: clearOrdeError,
 } = OrderModel;
 const { $itemStore: cartStore, ItemGate } = CartModel;
 const { $itemStore: promoStore } = PromoModel;

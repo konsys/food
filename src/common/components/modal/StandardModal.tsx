@@ -1,47 +1,49 @@
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
 import React, { memo } from 'react';
+import { TPromiseFn, TVoidFn } from '../../types';
 
-interface Props {}
+interface Props {
+  title: string;
+  text: string;
+  onOk: TPromiseFn;
+  setIsModalVisible: TVoidFn<boolean>;
+  isModalVisible: boolean;
+  onCancel?: TVoidFn;
+  loading?: boolean;
+}
 
 function StandardModal(props: Props) {
-  const {} = props;
-
-  const [visible, setVisible] = React.useState(false);
-  const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [modalText, setModalText] = React.useState('Content of the modal');
-
-  const showModal = () => {
-    setVisible(true);
-  };
+  const {
+    title,
+    text,
+    onOk,
+    setIsModalVisible,
+    isModalVisible,
+    onCancel,
+    loading,
+  } = props;
 
   const handleOk = () => {
-    setModalText('The modal will be closed after two seconds');
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setVisible(false);
-      setConfirmLoading(false);
-    }, 2000);
+    onOk().then(() => setIsModalVisible(false));
   };
 
   const handleCancel = () => {
-    console.log('Clicked cancel button');
-    setVisible(false);
+    if (onCancel) {
+      onCancel();
+    }
+    setIsModalVisible(false);
   };
+
   return (
-    <>
-      <Button type='primary' onClick={showModal}>
-        Open Modal with async logic
-      </Button>
-      <Modal
-        title='Title'
-        visible={visible}
-        onOk={handleOk}
-        confirmLoading={confirmLoading}
-        onCancel={handleCancel}
-      >
-        <p>{modalText}</p>
-      </Modal>
-    </>
+    <Modal
+      title={title}
+      visible={isModalVisible}
+      onOk={handleOk}
+      onCancel={handleCancel}
+      confirmLoading={loading}
+    >
+      <p>{text}</p>
+    </Modal>
   );
 }
 
