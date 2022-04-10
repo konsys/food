@@ -1,4 +1,5 @@
 export type TBreadcrumb = {
     path: string,
-    title: string
+    title: string,
+    key: string;
 }

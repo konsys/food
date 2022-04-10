@@ -7,6 +7,7 @@ export const updateBreadcrumbsStore = createEvent<TBreadcrumb[]>();
 
 export const $breadcrumsStore = createStore<TBreadcrumb[]>([{
     path: '/',
-    title: 'Главная'
+    title: 'Главная',
+    key: ''
 }
 ]).on(updateBreadcrumbsStore, (prev, item) => ({ ...prev, ...item }));
