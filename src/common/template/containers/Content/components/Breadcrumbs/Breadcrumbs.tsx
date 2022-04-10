@@ -1,26 +1,23 @@
+import { useStore } from 'effector-react';
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { $breadcrumsStore } from '../../../../../../modules/breadcrumbs/model';
 import './breadcrumbs.less';
 
-interface Props {}
-
-function Breadcrumbs(props: Props) {
-  const {} = props;
+function Breadcrumbs() {
+  const breadcrumbs = useStore($breadcrumsStore);
 
   return (
     <div className="breadcrumbs">
       <div className="container">
         <ul className="list-clear">
-          <li>
-            <Link to="/" title="Главная">
-              <span>Главная</span>
-            </Link>
-          </li>
-          <li>
-            <a href="/" title="Нижний Новгород" className="disabled">
-              <span>Москва</span>
-            </a>
-          </li>
+          {breadcrumbs.map(({ title, path }) => (
+            <li>
+              <Link to={path} title={title}>
+                <span>{title}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
