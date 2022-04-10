@@ -1,5 +1,7 @@
+import { TUuid } from "../../common/types";
+
 export type TBreadcrumb = {
     path: string,
     title: string,
-    key: string;
+    uuid: TUuid;
 }

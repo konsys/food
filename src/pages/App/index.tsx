@@ -1,20 +1,21 @@
-import React from 'react';
-import { BrowserRouter, Routes } from 'react-router-dom';
+import React, { memo } from 'react';
+import { BrowserRouter, Routes, useLocation } from 'react-router-dom';
 import { Template } from '../../common/template';
 import { getRoutes } from '../../routes';
 import '../../config/theme/antd-theme.less';
 import 'moment/locale/ru';
 
 import './style/app.style.less';
+import { useBreadcrumbs } from '../../modules/breadcrumbs/useBreadcrumbs';
 
-function App() {
+const App = () => {
+  useBreadcrumbs();
+
   return (
-    <BrowserRouter>
-      <Template>
-        <Routes>{getRoutes()}</Routes>
-      </Template>
-    </BrowserRouter>
+    <Template>
+      <Routes>{getRoutes()}</Routes>
+    </Template>
   );
-}
+};
 
-export default App;
+export default memo(App);
