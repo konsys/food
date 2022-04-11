@@ -22,6 +22,7 @@ type TRouterTypes = RouteProps & {
 
 const { HOME, RESTAURANTS, CHECKOUT, CART, ORDER_COMPLETED } = pathNames;
 
+
 export const paths: Record<EPathName, TRouterTypes> = {
   HOME: {
     path: HOME.path,
@@ -71,3 +72,4 @@ export const getRouteByPath = (path: string): TPath | null => {
   });
   return result;
 };
+
