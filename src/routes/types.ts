@@ -9,6 +9,5 @@ export enum EPathName {
 
 export type TPath = {
   path: string;
-  name: string;
   basePath: string
 };

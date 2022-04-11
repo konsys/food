@@ -1,6 +1,7 @@
 import { useStore } from "effector-react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom"
+import { pathNames } from "../../routes/paths";
 import { $breadcrumsStore } from "./model";
 
 export const useBreadcrumbs = () => {
@@ -12,7 +13,8 @@ export const useBreadcrumbs = () => {
 
     useEffect(() => {
 
-        splitted.map(v => store.find)
+        // pathNames.
+        // splitted.map(v => store.find)
         console.log(111111111111, splitted);
     }, [splitted, store])
 

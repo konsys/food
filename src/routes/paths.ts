@@ -8,45 +8,55 @@ import Cart from '../pages/Cart/Cart';
 import OrderCompletedPage from '../pages/Order/OrderCompleted/OrderCompletedPage';
 
 export const pathNames: Record<EPathName, TPath> = {
-  HOME: { path: '/', name: 'Главная', basePath: '/' },
-  RESTAURANTS: { path: '/restaurants/:uuid', name: 'Меню', basePath: '/restaurants' },
-  CHECKOUT: { path: '/checkout/:uuid', name: 'Заказ', basePath: '/checkout' },
-  ORDER_COMPLETED: { path: '/order-completed/:uuid', name: 'Заказ оформлен', basePath: '/order-completed' },
-  CART: { path: '/cart/:uuid', name: 'Корзина', basePath: '/cart' },
-  NOT_FOUND: { path: '/', name: 'Страница не найдена', basePath: '/' },
+  HOME: { path: '/', basePath: '/' },
+  RESTAURANTS: { path: '/restaurants/:uuid', basePath: '/restaurants' },
+  CHECKOUT: { path: '/checkout/:uuid', basePath: '/checkout' },
+  ORDER_COMPLETED: { path: '/order-completed/:uuid', basePath: '/order-completed' },
+  CART: { path: '/cart/:uuid', basePath: '/cart' },
+  NOT_FOUND: { path: '/', basePath: '/' },
 };
+
+type TRouterTypes = RouteProps & {
+  name: string
+}
 
 const { HOME, RESTAURANTS, CHECKOUT, CART, ORDER_COMPLETED } = pathNames;
 
-export const paths: Record<EPathName, RouteProps> = {
+export const paths: Record<EPathName, TRouterTypes> = {
   HOME: {
     path: HOME.path,
-    element: Restaurants
+    element: Restaurants,
+    name: 'Главная'
   },
 
   RESTAURANTS: {
     path: RESTAURANTS.path,
     element: RestaurantMenu,
+    name: 'Рестораны'
   },
 
   CHECKOUT: {
     path: CHECKOUT.path,
     element: Order,
+    name: 'Заказ'
   },
 
   ORDER_COMPLETED: {
     path: ORDER_COMPLETED.path,
     element: OrderCompletedPage,
+    name: 'Заказ'
   },
 
   CART: {
     path: CART.path,
     element: Cart,
+    name: 'Корзина'
   },
 
   NOT_FOUND: {
     path: '*',
     element: NotFound,
+    name: 'Не найдена'
   },
 };
 

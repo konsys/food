@@ -9,6 +9,7 @@ const { $listStore, ListGate } = RestaurantModel;
 function Restaurant() {
   const { items, pending } = useStore($listStore);
   useGate(ListGate);
+
   return (
     <Spin spinning={pending}>
       <RestaurantsList items={items} />

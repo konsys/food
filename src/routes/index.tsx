@@ -8,7 +8,9 @@ export const getRoutes = (): ReactElement<EPathName, string>[] => {
 
   for (const k in paths) {
     const { element, path } = paths[k as unknown as EPathName];
-    routes.push(<Route key={k} path={path} element={createComponent(element)} />);
+    routes.push(
+      <Route key={k} path={path} element={createComponent(element)} />,
+    );
   }
   return routes;
 };
