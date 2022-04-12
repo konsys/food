@@ -13,9 +13,7 @@ function Content(props: Props) {
   return (
     <main className="page-content">
       <Breadcrumbs />
-      <Row>
-        <Col span={24}>{children}</Col>
-      </Row>
+      {children}
     </main>
   );
 }

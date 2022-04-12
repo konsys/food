@@ -6,31 +6,27 @@ import FooterCities from './components/FooterCities/FooterCities';
 import FooterCopyright from './components/FooterCopyright/FooterCopyright';
 import './footer.less';
 
-interface Props {}
-
-function Footer(props: Props) {
-  const {} = props;
-
+function Footer() {
   return (
-    <footer className='footer'>
-      <div className='footer-top'>
-        <div className='container'>
-          <div className='row flex-md-row '>
-            <div className='col-sm'>
+    <footer className="footer">
+      <div className="footer-top">
+        <div className="container">
+          <div className="row flex-md-row ">
+            <div className="col-sm">
               <FooterSocials />
             </div>
-            <div className='col-sm'>
+            <div className="col-sm">
               <FooterContacts />
             </div>
           </div>
         </div>
       </div>
-      <div className='footer-bottom'>
-        <div className='container'>
-          <div className='row d-flex footer__cities'>
-            <div className='col-lg-3 col-md-3 col-sm-3 col-xs-12'>
+      <div className="footer-bottom">
+        <div className="container">
+          <div className="row d-flex footer__cities">
+            <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12">
               <FooterMenu
-                title='Категории'
+                title="Категории"
                 links={[
                   {
                     link: '/',
@@ -55,9 +51,9 @@ function Footer(props: Props) {
                 ]}
               />
             </div>
-            <div className='col-lg-2 col-md-2 col-sm-2 col-xs-12'>
+            <div className="col-lg-2 col-md-2 col-sm-2 col-xs-12">
               <FooterMenu
-                title='Еда'
+                title="Еда"
                 links={[
                   {
                     link: '/',
@@ -82,9 +78,9 @@ function Footer(props: Props) {
                 ]}
               />
             </div>
-            <div className='col-lg-3 col-md-3 col-sm-3 col-xs-12'>
+            <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12">
               <FooterMenu
-                title='Популярные места'
+                title="Популярные места"
                 links={[
                   {
                     link: '/',
@@ -109,9 +105,9 @@ function Footer(props: Props) {
                 ]}
               />
             </div>
-            <div className='col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+            <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <FooterMenu
-                title='О компании'
+                title="О компании"
                 links={[
                   {
                     link: '/',
@@ -137,10 +133,10 @@ function Footer(props: Props) {
               />
             </div>
           </div>
-          <div className='row'>
-            <div className='col-lg-8 col-md-8 col-sm-8 col-xs-8'>
+          <div className="row">
+            <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
               <FooterCities
-                title='Города'
+                title="Города"
                 links={[
                   {
                     text: 'Нижний Новгород',
@@ -161,9 +157,12 @@ function Footer(props: Props) {
                 ]}
               />
             </div>
-            <div className='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-              <a href='/' rel='nofollow'>
-                <img src='http://localhost:8000/img/icons/sk_resident2ru.jpg' alt='' />
+            <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+              <a href="/" rel="nofollow">
+                <img
+                  src="http://localhost:8000/img/icons/sk_resident2ru.jpg"
+                  alt=""
+                />
               </a>
             </div>
           </div>

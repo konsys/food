@@ -15,19 +15,13 @@ export function Template({ children }: Props) {
   return (
     <Row>
       <Col span={24}>
-        <Row>
-          <Col span={24}>
-            <Header />
-          </Col>
-          <Col span={24}>
-            <Content>{children}</Content>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
-            <Footer />
-          </Col>
-        </Row>
+        <Header />
+      </Col>
+      <Col span={24}>
+        <Content>{children}</Content>
+      </Col>
+      <Col span={24}>
+        <Footer />
       </Col>
     </Row>
   );
