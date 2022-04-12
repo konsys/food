@@ -5,7 +5,7 @@ import { RcFile } from 'antd/lib/upload';
 import { UploadOutlined } from '@ant-design/icons';
 import { noop } from 'lodash';
 import { TVoidFn } from '../../types';
-import { IDragDropProps } from '../drag/DragDrop';
+import { IDragDropProps } from '../Drag/DragDrop';
 import { apiUrls } from '../../api/urls';
 import { Params } from '../../../config/params';
 import { Nullable } from '../../../core/types';

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { RatingDto } from '../../../../modules/rating/types';
+import { RatingDto } from '../../../modules/rating/types';
 
 interface Props {
   rating: RatingDto;

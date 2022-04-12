@@ -10,7 +10,7 @@ import {
 } from '../../common/models/abstractModel/abstractCrudModel';
 import { DictionaryModal } from './DictionaryModal';
 import { isNumber } from '../../common/utils/utils';
-import { DeleteButton } from '../../common/components/buttons/DeleteButton/DeleteButton';
+import { DeleteButton } from '../../common/components/Buttons/DeleteButton/DeleteButton';
 
 function getColumns<T extends DictionaryDto>(
   model: TCrudStore<T>,

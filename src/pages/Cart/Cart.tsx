@@ -12,7 +12,7 @@ import CartView from './components/CartView';
 import { HttpStatus } from '../../common/utils/constants';
 import { getClientUuid } from '../../modules/cart/service';
 import { TUuid } from '../../common/types';
-import StandardModal from '../../common/components/modal/StandardModal';
+import StandardModal from '../../common/components/Modal/StandardModal';
 import { $selectedMenuItemStore } from '../../modules/restaurantMenu/model';
 
 const {
