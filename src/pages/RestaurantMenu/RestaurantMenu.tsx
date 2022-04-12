@@ -2,7 +2,6 @@ import React, { memo, useMemo } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Col, Row, Spin } from 'antd';
-import { WindowsFilled } from '@ant-design/icons';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
 import RestaurantMenuBottomLinks from './RestaurantMenuBottomLinks/RestaurantMenuBottomLinks';
 import RestaurantMenuBottomPartnerInfo from './components/RestaurantMenuBottomPartnerInfo/RestaurantMenuBottomPartnerInfo';
@@ -15,7 +14,6 @@ import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigatio
 import { TLinkWithText } from '../../common/types/utilTypes';
 import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
 import { addToCart } from '../../modules/cart/utils';
-import { deliveryFactory } from '../../modules/delivery/deliveryFactory';
 import MobileCartButton from '../Cart/components/MobileCart/MobileCartButton/MobileCartButton';
 import { TUuid } from '../../common/types';
 import { useBreadcrumbs } from '../../modules/breadcrumbs/useBreadcrumbs';
@@ -80,10 +78,7 @@ function RestaurantMenu() {
         {restaurant ? (
           <div className="page-restaurant d-flex">
             <div className="restaurant-section col-lg-9 col-md-12 col-sm-12">
-              <RestaurantMenuHeader
-                restaurant={restaurant}
-                delivery={deliveryFactory.build()}
-              />
+              <RestaurantMenuHeader restaurant={restaurant} />
               <RestaurantMenuTopNavigation menuItems={items} />
 
               <section className="restaurant-menu">

@@ -1,23 +1,17 @@
 import React from 'react';
-import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 import { RestaurantDto } from '../../../../modules/restaurants/types';
-import {
-  DeliveryDto,
-  DeliveryRangeDto,
-} from '../../../../modules/delivery/types';
+import { DeliveryDto } from '../../../../modules/delivery/types';
 import RestaurantMobileHeader from './mobile/RestaurantMobileHeader';
+import RatingComponent from '../../../../common/template/components/RatingComponent/RatingComponent';
 
 import './restaurantMenuHeader.less';
-import RatingComponent from '../../../../common/template/components/RatingComponent/RatingComponent';
 
 interface Props {
   restaurant: RestaurantDto;
-  delivery: DeliveryDto;
 }
 
-function RestaurantMenuHeader({ restaurant, delivery }: Props) {
+function RestaurantMenuHeader({ restaurant }: Props) {
   const { name, image, rating } = restaurant;
-  const { price, maxTimeMinutes, minTimeMinutes } = delivery;
 
   return (
     <section className="restaurant restaurant--shop">
@@ -35,15 +29,6 @@ function RestaurantMenuHeader({ restaurant, delivery }: Props) {
             <div className="restaurant-descr__header--bull">&nbsp;•&nbsp;</div>
 
             <RatingComponent rating={rating} />
-          </div>
-
-          <div className="restaurant-info--shop d-flex justify-content-between">
-            <DeliveryRange
-              range={DeliveryRangeDto.STANDARD}
-              deliveryPrice={price}
-              maxDeliveryMinutes={maxTimeMinutes}
-              minDeliveryMinutes={minTimeMinutes}
-            />
           </div>
         </div>
       </div>
