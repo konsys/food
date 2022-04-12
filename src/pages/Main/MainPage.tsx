@@ -4,8 +4,10 @@ import MetaContent from '../../common/template/components/MetaContent/MetaConten
 import Promo from '../../common/template/components/Promo/Promo';
 import PromoPartners from '../../common/template/components/PromoPartners/PromoPartners';
 import Welcome from '../../common/template/components/Welcome/Welcome';
+import { useBreadcrumbs } from '../../modules/breadcrumbs/useBreadcrumbs';
 
 function MainPage() {
+  useBreadcrumbs([]);
   return (
     <Row>
       <Col span={24}>
