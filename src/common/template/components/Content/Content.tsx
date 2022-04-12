@@ -11,16 +11,8 @@ function Content(props: Props) {
 
   return (
     <main className="page-content">
-      {/* <Breadcrumbs /> */}
-      {/* <MetaContent /> */}
-      11111111111111111111111111111111111111111111
-      {/* TODO add for main page */}
-      {/* <Welcome /> */}
+      <Breadcrumbs />
       {children}
-      {/* TODO add for main page */}
-      {/* <Promo /> */}
-      {/* TODO add for main page */}
-      {/* <PromoPartners /> */}
     </main>
   );
 }
