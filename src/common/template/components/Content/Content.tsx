@@ -10,10 +10,10 @@ function Content(props: Props) {
   const { children } = props;
 
   return (
-    <main className='page-content'>
-      <Breadcrumbs />
+    <main className="page-content">
+      {/* <Breadcrumbs /> */}
       {/* <MetaContent /> */}
-
+      11111111111111111111111111111111111111111111
       {/* TODO add for main page */}
       {/* <Welcome /> */}
       {children}
