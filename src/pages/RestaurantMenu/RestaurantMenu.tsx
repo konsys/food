@@ -17,6 +17,11 @@ import { addToCart } from '../../modules/cart/utils';
 import { deliveryFactory } from '../../modules/delivery/deliveryFactory';
 import MobileCartButton from '../Cart/components/MobileCart/MobileCartButton/MobileCartButton';
 import { TUuid } from '../../common/types';
+import {
+  restaurantBreabcrums,
+  useBreadcrumbs,
+} from '../../modules/breadcrumbs/useBreadcrumbs';
+import { paths } from '../../routes/paths';
 
 const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { $itemStore: cartStore } = CartModel;
@@ -29,6 +34,14 @@ function RestaurantMenu() {
 
   const { item: restaurant, pending: restaurantPending } =
     useStore(restaurantStore);
+
+  useBreadcrumbs([
+    restaurantBreabcrums,
+    {
+      path: `/${restaurant?.uuid}`,
+      title: restaurant?.name ?? '',
+    },
+  ]);
 
   const items: TLinkWithText[] = restaurant
     ? grouppedByCategory(restaurant?.restaurantMenu, 'foodCategory.name').map(

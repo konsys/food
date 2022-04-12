@@ -16,6 +16,6 @@ export const restaurantBreabcrums: TBreadcrumb = {
 export const useBreadcrumbs = (params: TBreadcrumb[]) => {
     useEffect(() => {
         updateBreadcrumbsStore([homeBreabcrums, ...params]);
-    }, []);
+    }, [params, updateBreadcrumbsStore, homeBreabcrums]);
 
 }
