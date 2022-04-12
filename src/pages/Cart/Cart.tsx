@@ -37,11 +37,11 @@ function Cart({ sideView }: Props) {
 
   useGate(ItemGate, getClientUuid());
 
-  const changeQuantity = (uuid: TUuid, delta: number) =>
-    changeOrderQuantity(cartOrder, uuid, delta);
+  const changeQuantity = (restaurantMenuUuid: TUuid, delta: number) =>
+    changeOrderQuantity(cartOrder, restaurantMenuUuid, delta);
 
-  const deleteFromCart = (itemUuid: TUuid) =>
-    deleteItemFromCart(cartOrder, itemUuid);
+  const deleteFromCart = (restaurantMenuUuid: TUuid) =>
+    deleteItemFromCart(cartOrder, restaurantMenuUuid);
 
   const [stickyClass, setStickyClass] = useState<string>('');
 
