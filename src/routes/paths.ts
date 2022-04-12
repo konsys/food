@@ -1,7 +1,6 @@
 import { RouteProps } from 'react-router-dom';
 import { NotFound } from '../pages/NotFound';
 import Order from '../pages/Checkout/Checkout';
-import RestaurantMenu from '../pages/RestaurantMenu/RestaurantMenu';
 import Restaurants from '../pages/Restaurants/Restaurants';
 import { EPathName, TPath } from './types';
 import Cart from '../pages/Cart/Cart';
@@ -33,7 +32,7 @@ export const paths: Record<EPathName, TRouterTypes> = {
 
   RESTAURANTS: {
     path: RESTAURANTS.path,
-    element: RestaurantMenu,
+    element: Restaurants,
     name: 'Рестораны'
   },
 
