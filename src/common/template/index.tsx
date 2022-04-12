@@ -13,7 +13,7 @@ interface Props {
 
 export function Template({ children }: Props) {
   return (
-    <Row>
+    <Row gutter={[8, 8]}>
       <Col span={24}>
         <Header />
       </Col>

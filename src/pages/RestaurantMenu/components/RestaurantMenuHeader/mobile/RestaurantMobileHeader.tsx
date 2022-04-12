@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import RatingComponent from '../../../../../common/components/RatingComponent/RatingComponent';
+import RatingComponent from '../../../../../common/template/components/RatingComponent/RatingComponent';
 import { RestaurantDto } from '../../../../../modules/restaurants/types';
 import './restaurantMenuMobileHeader.less';
 

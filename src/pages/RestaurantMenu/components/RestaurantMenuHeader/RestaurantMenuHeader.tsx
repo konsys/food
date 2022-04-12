@@ -1,5 +1,4 @@
 import React from 'react';
-import RatingComponent from '../../../../common/components/RatingComponent/RatingComponent';
 import DeliveryRange from '../../../../common/template/components/DeliveryRange/DeliveryRange';
 import { RestaurantDto } from '../../../../modules/restaurants/types';
 import {
@@ -9,6 +8,7 @@ import {
 import RestaurantMobileHeader from './mobile/RestaurantMobileHeader';
 
 import './restaurantMenuHeader.less';
+import RatingComponent from '../../../../common/template/components/RatingComponent/RatingComponent';
 
 interface Props {
   restaurant: RestaurantDto;
