@@ -1,7 +1,10 @@
 import { Spin } from 'antd';
 import { useGate, useStore } from 'effector-react';
-import React, { memo, useEffect } from 'react';
-import { updateBreadcrumbsStore } from '../../modules/breadcrumbs/model';
+import React, { memo } from 'react';
+import {
+  restaurantBreabcrums,
+  useBreadcrumbs,
+} from '../../modules/breadcrumbs/useBreadcrumbs';
 import { RestaurantModel } from '../../store';
 import RestaurantsList from './containters/RestaurantsList/RestaurantsList';
 
@@ -11,18 +14,8 @@ function Restaurant() {
   const { items, pending } = useStore($listStore);
   useGate(ListGate);
 
-  useEffect(() => {
-    updateBreadcrumbsStore([
-      {
-        path: '/',
-        title: 'Главная',
-      },
-      {
-        path: '/restaurants',
-        title: 'Рестораны',
-      },
-    ]);
-  });
+  useBreadcrumbs([restaurantBreabcrums]);
+
   return (
     <Spin spinning={pending}>
       <RestaurantsList items={items} />
