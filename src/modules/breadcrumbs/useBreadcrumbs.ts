@@ -12,7 +12,6 @@ export const useBreadcrumbs = (params: TBreadcrumb[]) => {
         } else {
             updateBreadcrumbsStore([]);
         }
-        () => updateBreadcrumbsStore([]);
 
     }, [params, updateBreadcrumbsStore, homeBreabcrums]);
 
