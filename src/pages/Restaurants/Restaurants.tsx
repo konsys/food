@@ -1,10 +1,8 @@
 import { Spin } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import React, { memo } from 'react';
-import {
-  restaurantBreabcrums,
-  useBreadcrumbs,
-} from '../../modules/breadcrumbs/useBreadcrumbs';
+import { useBreadcrumbs } from '../../modules/breadcrumbs/useBreadcrumbs';
+import { restaurantBreabcrums } from '../../routes/paths';
 import { RestaurantModel } from '../../store';
 import RestaurantsList from './containters/RestaurantsList/RestaurantsList';
 

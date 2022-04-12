@@ -18,10 +18,8 @@ import { addToCart } from '../../modules/cart/utils';
 import { deliveryFactory } from '../../modules/delivery/deliveryFactory';
 import MobileCartButton from '../Cart/components/MobileCart/MobileCartButton/MobileCartButton';
 import { TUuid } from '../../common/types';
-import {
-  restaurantBreabcrums,
-  useBreadcrumbs,
-} from '../../modules/breadcrumbs/useBreadcrumbs';
+import { useBreadcrumbs } from '../../modules/breadcrumbs/useBreadcrumbs';
+import { restaurantBreabcrums } from '../../routes/paths';
 
 const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { $itemStore: cartStore } = CartModel;

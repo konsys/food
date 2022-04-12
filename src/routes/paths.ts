@@ -7,6 +7,7 @@ import Cart from '../pages/Cart/Cart';
 import OrderCompletedPage from '../pages/Order/OrderCompleted/OrderCompletedPage';
 import MainPage from '../pages/Main/MainPage';
 import RestaurantMenu from '../pages/RestaurantMenu/RestaurantMenu';
+import { TBreadcrumb } from '../modules/breadcrumbs/types';
 
 export const pathNames: Record<EPathName, TPath> = {
   HOME: { path: '/', basePath: '/' },
@@ -81,3 +82,13 @@ export const getRouteByPath = (path: string): TPath | null => {
   return result;
 };
 
+
+export const homeBreabcrums: TBreadcrumb = {
+  path: paths.HOME.path ?? '',
+  title: paths.HOME.name
+}
+
+export const restaurantBreabcrums: TBreadcrumb = {
+  path: paths.RESTAURANTS.path ?? '',
+  title: paths.RESTAURANTS.name
+}
