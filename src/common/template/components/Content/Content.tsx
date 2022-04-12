@@ -1,6 +1,6 @@
 import { Row, Col } from 'antd';
 import React, { memo, ReactNode } from 'react';
-import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import './content.less';
 
 interface Props {

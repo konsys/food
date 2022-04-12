@@ -1,9 +1,9 @@
 import { Row, Col } from 'antd';
 import React, { memo } from 'react';
-import MetaContent from '../../common/template/components/Content/components/MetaContent/MetaContent';
-import Promo from '../../common/template/components/Content/Promo/Promo';
-import PromoPartners from '../../common/template/components/Content/PromoPartners/PromoPartners';
-import Welcome from '../../common/template/components/Content/Welcome/Welcome';
+import MetaContent from '../../common/template/components/MetaContent/MetaContent';
+import Promo from '../../common/template/components/Promo/Promo';
+import PromoPartners from '../../common/template/components/PromoPartners/PromoPartners';
+import Welcome from '../../common/template/components/Welcome/Welcome';
 
 function MainPage() {
   return (
