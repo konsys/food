@@ -1,7 +1,8 @@
 import React, { memo, useMemo } from 'react';
 import { useGate, useStore } from 'effector-react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { Col, Row, Spin } from 'antd';
+import { WindowsFilled } from '@ant-design/icons';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
 import RestaurantMenuBottomLinks from './RestaurantMenuBottomLinks/RestaurantMenuBottomLinks';
 import RestaurantMenuBottomPartnerInfo from './components/RestaurantMenuBottomPartnerInfo/RestaurantMenuBottomPartnerInfo';
@@ -21,13 +22,14 @@ import {
   restaurantBreabcrums,
   useBreadcrumbs,
 } from '../../modules/breadcrumbs/useBreadcrumbs';
-import { paths } from '../../routes/paths';
 
 const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { $itemStore: cartStore } = CartModel;
 
 function RestaurantMenu() {
   const { uuid } = useParams<{ uuid: TUuid }>();
+
+  const location = useLocation();
 
   useGate(ItemGate, uuid);
   const { item: cartOrder, pending: cartPending } = useStore(cartStore);
@@ -38,7 +40,7 @@ function RestaurantMenu() {
   useBreadcrumbs([
     restaurantBreabcrums,
     {
-      path: `/${restaurant?.uuid}`,
+      path: location.pathname,
       title: restaurant?.name ?? '',
     },
   ]);
