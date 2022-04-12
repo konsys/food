@@ -1,3 +1,4 @@
+import { Row, Col } from 'antd';
 import React, { memo, ReactNode } from 'react';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
 import './content.less';
@@ -12,7 +13,9 @@ function Content(props: Props) {
   return (
     <main className="page-content">
       <Breadcrumbs />
-      {children}
+      <Row>
+        <Col span={24}>{children}</Col>
+      </Row>
     </main>
   );
 }
