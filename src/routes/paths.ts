@@ -6,10 +6,11 @@ import Restaurants from '../pages/Restaurants/Restaurants';
 import { EPathName, TPath } from './types';
 import Cart from '../pages/Cart/Cart';
 import OrderCompletedPage from '../pages/Order/OrderCompleted/OrderCompletedPage';
+import MainPage from '../pages/Main/MainPage';
 
 export const pathNames: Record<EPathName, TPath> = {
   HOME: { path: '/', basePath: '/' },
-  RESTAURANTS: { path: '/restaurants/:uuid', basePath: '/restaurants' },
+  RESTAURANTS: { path: '/restaurants', basePath: '/restaurants' },
   CHECKOUT: { path: '/checkout/:uuid', basePath: '/checkout' },
   ORDER_COMPLETED: { path: '/order-completed/:uuid', basePath: '/order-completed' },
   CART: { path: '/cart/:uuid', basePath: '/cart' },
@@ -26,7 +27,7 @@ const { HOME, RESTAURANTS, CHECKOUT, CART, ORDER_COMPLETED } = pathNames;
 export const paths: Record<EPathName, TRouterTypes> = {
   HOME: {
     path: HOME.path,
-    element: Restaurants,
+    element: MainPage,
     name: 'Главная'
   },
 
