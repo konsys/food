@@ -21,9 +21,9 @@ export type TModalWithFormProps<T> = ModalProps & {
   setModalVisible: TVoidFn<boolean>;
   modalVisible: boolean;
   onCreate: TCreateItemFx<T>;
-  onUpdate: TUpdateItemFx<TItemWithUuid<T>>;
-  getList: Event<void>;
   pending: boolean;
+  onUpdate?: TUpdateItemFx<TItemWithUuid<T>>;
+  getList?: Event<void>;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
   buttonText?: string;
   buttonType?: ButtonType;

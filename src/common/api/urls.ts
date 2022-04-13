@@ -39,4 +39,7 @@ export const apiUrls = {
   order: {
     main: '/order',
   },
+  login: {
+    main: '/login',
+  },
 };

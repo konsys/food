@@ -19,7 +19,14 @@ export function DictionaryModal<CreateEntity extends { uuid: TUuid }>({
   buttonType,
   uuid,
 }: Props<CreateEntity>) {
-  const { $itemStore, createItemFx, updateItemFx, getAllDefault, resetOne, ItemGate } = model;
+  const {
+    $itemStore,
+    createItemFx,
+    updateItemFx,
+    getAllDefault,
+    resetOne,
+    ItemGate,
+  } = model;
   const { ModalForm } = useValidatedForm<CreateEntity>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const item = useStore($itemStore);

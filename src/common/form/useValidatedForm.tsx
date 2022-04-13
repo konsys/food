@@ -113,7 +113,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             }
             return returnValue;
           })
-          .then((v) => (v?.id ? onUpdate(v) : onCreate(v)))
+          .then((v) => (v?.id && onUpdate ? onUpdate(v) : onCreate(v)))
           .then(() => setModalVisible(false))
           .finally(() => setIsFormPending(false));
       };
