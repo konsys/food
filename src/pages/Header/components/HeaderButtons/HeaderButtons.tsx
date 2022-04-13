@@ -7,6 +7,7 @@ import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
 import { LoginDto } from '../../../../modules/login/types';
 import { LoginModel } from '../../../../store';
+import LoginFields from '../LoginFields/LoginFields';
 import './headerButtons.less';
 
 type Props = {
@@ -39,9 +40,6 @@ const HeaderButtons = ({ cart }: Props) => {
           )}
         </li>
         <li>
-          {/* <Button className="header-nav-item-link__login" title="Войти">
-            <span>Войти</span>
-          </Button> */}
           <ModalForm
             modalVisible={isVisible}
             setModalVisible={setIsVisible}
@@ -51,7 +49,7 @@ const HeaderButtons = ({ cart }: Props) => {
             buttonText="Войти"
             title="Войти"
           >
-            111
+            <LoginFields />
           </ModalForm>
         </li>
       </ul>
