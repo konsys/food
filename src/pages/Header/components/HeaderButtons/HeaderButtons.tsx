@@ -39,19 +39,22 @@ const HeaderButtons = ({ cart }: Props) => {
           )}
         </li>
         <li>
-          <Button className="header-nav-item-link__login" title="Войти">
+          {/* <Button className="header-nav-item-link__login" title="Войти">
             <span>Войти</span>
-          </Button>
+          </Button> */}
+          <ModalForm
+            modalVisible={isVisible}
+            setModalVisible={setIsVisible}
+            pending={false}
+            onCreate={createItemFx}
+            buttonClassName="header-nav-item-link__login"
+            buttonText="Войти"
+            title="Войти"
+          >
+            111
+          </ModalForm>
         </li>
       </ul>
-      <ModalForm
-        modalVisible={isVisible}
-        setModalVisible={setIsVisible}
-        pending={false}
-        onCreate={createItemFx}
-      >
-        111
-      </ModalForm>
     </nav>
   );
 };

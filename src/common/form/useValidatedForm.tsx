@@ -81,6 +81,8 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         afterClose,
         itemState,
         buttonType = 'primary',
+        buttonClassName,
+        title,
       } = props;
 
       const uuid = itemState?.item?.uuid;
@@ -132,11 +134,17 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
         afterClose && afterClose();
       };
 
+      const mopdalTitle = title ?? (uuid ? 'Редактировать' : 'Создать');
+
       return (
         <>
           <Row gutter={8}>
             <Col span={24} style={{ textAlign: 'left' }}>
-              <Button type={buttonType} onClick={onOpen}>
+              <Button
+                type={buttonType}
+                onClick={onOpen}
+                className={buttonClassName ?? ''}
+              >
                 {buttonText || (itemState?.item ? 'Редактировать' : 'Создать')}
               </Button>
             </Col>
@@ -149,7 +157,7 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
             onCancel={onClose}
             visible={modalVisible}
             onOk={modalOnOk}
-            title={uuid ? 'Редактировать' : 'Создать'}
+            title={mopdalTitle}
           >
             <ReturnedForm
               initialValues={initialValues}

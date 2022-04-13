@@ -27,6 +27,7 @@ export type TModalWithFormProps<T> = ModalProps & {
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
   buttonText?: string;
   buttonType?: ButtonType;
+  buttonClassName?: string;
   itemState?: TItemStore<T>;
 };
 
