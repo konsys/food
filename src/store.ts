@@ -12,7 +12,7 @@ import { CodeCheckDto } from './modules/codeCheck/types';
 import { PromoDto } from './modules/promo/types';
 import { OrderDto, TOrder } from './modules/order/types';
 import { LoginDto } from './modules/login/types';
-import { RegistrationDto, RegstrationDto } from './modules/registration/types';
+import { RegistrationDto } from './modules/registration/types';
 
 export const RestaurantModel = new CrudStore<RestaurantDto>(
   apiUrls.restaurants.main

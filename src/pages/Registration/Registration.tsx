@@ -6,7 +6,7 @@ import RegistrationFields from './components/RegistrationFields';
 const { createItemFx } = RegistrationModel;
 
 function Registration() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const { ModalForm } = useValidatedForm<any>();
 
   return (
