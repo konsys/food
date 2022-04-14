@@ -12,6 +12,7 @@ import { CodeCheckDto } from './modules/codeCheck/types';
 import { PromoDto } from './modules/promo/types';
 import { OrderDto, TOrder } from './modules/order/types';
 import { LoginDto } from './modules/login/types';
+import { RegistrationDto, RegstrationDto } from './modules/registration/types';
 
 export const RestaurantModel = new CrudStore<RestaurantDto>(
   apiUrls.restaurants.main
@@ -32,3 +33,4 @@ export const CodeCheckModel = new CrudStore<CodeCheckDto>(apiUrls.checkCode.main
 export const PromoModel = new CrudStore<PromoDto>(apiUrls.promo.main).createCrudStore();
 export const OrderModel = new CrudStore<TOrder, OrderDto>(apiUrls.order.main).createCrudStore();
 export const LoginModel = new CrudStore<LoginDto>(apiUrls.login.main).createCrudStore();
+export const RegistrationModel = new CrudStore<RegistrationDto>(apiUrls.registration.main).createCrudStore();

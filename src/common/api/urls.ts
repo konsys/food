@@ -42,4 +42,7 @@ export const apiUrls = {
   login: {
     main: '/login',
   },
+  registration: {
+    main: '/registration',
+  },
 };

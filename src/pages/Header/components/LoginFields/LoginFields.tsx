@@ -1,6 +1,7 @@
 import { Form, Input } from 'antd';
 import Password from 'antd/lib/input/Password';
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { LoginDto } from '../../../../modules/login/types';
 
@@ -27,6 +28,7 @@ function LoginFields(props: Props) {
       >
         <Password />
       </Form.Item>
+      Не зарегистрированы? <Link to="/registration">Зарегистрироваться</Link>
     </>
   );
 }
