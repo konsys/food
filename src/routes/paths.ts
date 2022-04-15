@@ -85,10 +85,12 @@ export const getRouteByPath = (path: string): TPath | null => {
 
 export const homeBreabcrums: TBreadcrumb = {
   path: paths.HOME.path ?? '',
-  title: paths.HOME.name
+  title: paths.HOME.name,
+  key: 'home'
 }
 
 export const restaurantBreabcrums: TBreadcrumb = {
   path: paths.RESTAURANTS.path ?? '',
-  title: paths.RESTAURANTS.name
+  title: paths.RESTAURANTS.name,
+  key: paths.RESTAURANTS.path ?? 'restauranntsKey'
 }

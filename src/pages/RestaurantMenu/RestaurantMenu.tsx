@@ -38,6 +38,7 @@ function RestaurantMenu() {
     {
       path: location.pathname,
       title: restaurant?.name ?? '',
+      key: restaurant?.uuid ?? '',
     },
   ]);
 

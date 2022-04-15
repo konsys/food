@@ -11,8 +11,8 @@ function Breadcrumbs() {
     <div className="breadcrumbs">
       <div className="container">
         <ul className="list-clear">
-          {breadcrumbs.map(({ title, path }) => (
-            <li>
+          {breadcrumbs.map(({ title, path, key }) => (
+            <li key={key}>
               <Link to={path} title={title}>
                 <span>{title}</span>
               </Link>

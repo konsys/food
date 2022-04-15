@@ -5,12 +5,14 @@ import { LoginDto } from '../../modules/login/types';
 import { LoginModel } from '../../store';
 import LoginFields from '../Header/components/LoginFields/LoginFields';
 import { $user } from '../User/model/store';
+import RegistrationFields from './Registration/components/RegistrationFields';
 
 const { createItemFx } = LoginModel;
 
 export function LoginPage() {
   const user = useStore($user);
   const [isVisible, setIsVisible] = useState(false);
+  const [isRegistration, setIsRegistration] = useState(false);
   const { ModalForm } = useValidatedForm<LoginDto>();
   return (
     <ModalForm
@@ -22,8 +24,11 @@ export function LoginPage() {
       buttonText="Войти"
       title="Войти"
     >
-      {JSON.stringify(user)}
-      <LoginFields />
+      {isRegistration ? (
+        <RegistrationFields />
+      ) : (
+        <LoginFields setIsRegistration={setIsRegistration} />
+      )}
     </ModalForm>
   );
 }
