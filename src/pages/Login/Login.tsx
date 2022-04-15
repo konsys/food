@@ -1,6 +1,7 @@
 import { useStore } from 'effector-react';
 import React, { useEffect, useState } from 'react';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
+import { uuid } from '../../common/utils/utils';
 import { LoginDto } from '../../modules/login/types';
 import { AuthModel } from '../../store';
 import LoginFields from '../Header/components/LoginFields/LoginFields';
@@ -13,7 +14,7 @@ export function LoginPage() {
   const user = useStore($user);
   const [isVisible, setIsVisible] = useState(false);
   const [isRegistration, setIsRegistration] = useState(false);
-  const { ModalForm } = useValidatedForm<LoginDto>();
+  const { ModalForm } = useValidatedForm<LoginDto>({ uuid: uuid() });
 
   useEffect(() => {
     if (!isVisible) {

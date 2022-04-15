@@ -15,16 +15,19 @@ function RegistrationFields(props: Props) {
       <Form.Item
         label="Логин"
         name={names('login')}
-        rules={[{ required: true }]}
+        rules={[{ required: true, message: 'Введите логин!' }]}
       >
         <Input />
       </Form.Item>
       <Form.Item
         label="Пароль"
         name={names('password')}
-        rules={[{ required: true }]}
+        rules={[{ required: true, message: 'Введите пароль!' }]}
       >
         <Password />
+      </Form.Item>
+      <Form.Item label="uuid" name={names('uuid')} hidden>
+        <Input />
       </Form.Item>
     </>
   );

@@ -30,6 +30,9 @@ function LoginFields(props: Props) {
       >
         <Password />
       </Form.Item>
+      <Form.Item label="uuid" name={names('uuid')} hidden>
+        <Input />
+      </Form.Item>
       Не зарегистрированы?
       <Button type="link" onClick={() => setIsRegistration(true)}>
         Зарегистрироваться
