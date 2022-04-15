@@ -1,11 +1,8 @@
-import { Button } from 'antd';
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { useValidatedForm } from '../../../../common/form/useValidatedForm';
 import { TItemWithUuid } from '../../../../common/types';
 import { Nullable } from '../../../../core/types';
 import { CartDto } from '../../../../modules/cart/types';
-import { LoginModel } from '../../../../store';
 import { LoginPage } from '../../../Login/Login';
 import './headerButtons.less';
 

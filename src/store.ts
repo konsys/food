@@ -32,5 +32,5 @@ export const CartModel = new CrudStore<CartDto>(apiUrls.cart.main).createCrudSto
 export const CodeCheckModel = new CrudStore<CodeCheckDto>(apiUrls.checkCode.main).createCrudStore();
 export const PromoModel = new CrudStore<PromoDto>(apiUrls.promo.main).createCrudStore();
 export const OrderModel = new CrudStore<TOrder, OrderDto>(apiUrls.order.main).createCrudStore();
-export const LoginModel = new CrudStore<LoginDto>(apiUrls.login.main).createCrudStore();
+export const AuthModel = new CrudStore<LoginDto>(apiUrls.auth.main).createCrudStore();
 export const RegistrationModel = new CrudStore<RegistrationDto>(apiUrls.registration.main).createCrudStore();

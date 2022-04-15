@@ -39,8 +39,8 @@ export const apiUrls = {
   order: {
     main: '/order',
   },
-  login: {
-    main: '/login',
+  auth: {
+    main: '/auth',
   },
   registration: {
     main: '/registration',
