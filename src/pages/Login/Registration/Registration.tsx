@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react';
-import { useValidatedForm } from '../../common/form/useValidatedForm';
-import { RegistrationModel } from '../../store';
+import { useValidatedForm } from '../../../common/form/useValidatedForm';
+import { RegistrationModel } from '../../../store';
 import RegistrationFields from './components/RegistrationFields';
 
 const { createItemFx } = RegistrationModel;

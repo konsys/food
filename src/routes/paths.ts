@@ -8,14 +8,12 @@ import OrderCompletedPage from '../pages/Order/OrderCompleted/OrderCompletedPage
 import MainPage from '../pages/Main/MainPage';
 import RestaurantMenu from '../pages/RestaurantMenu/RestaurantMenu';
 import { TBreadcrumb } from '../modules/breadcrumbs/types';
-import Registration from '../pages/Registration/Registration';
 
 export const pathNames: Record<EPathName, TPath> = {
   HOME: { path: '/', basePath: '/' },
   RESTAURANTS: { path: '/restaurants', basePath: '/restaurants' },
   RESTAURANT_MENU: { path: '/restaurants/:uuid', basePath: '/restaurants' },
   CHECKOUT: { path: '/checkout/:uuid', basePath: '/checkout' },
-  REGISTRATION: { path: '/registration', basePath: '/registration' },
   ORDER_COMPLETED: { path: '/order-completed/:uuid', basePath: '/order-completed' },
   CART: { path: '/cart/:uuid', basePath: '/cart' },
   NOT_FOUND: { path: '/', basePath: '/' },
@@ -25,7 +23,7 @@ type TRouterTypes = RouteProps & {
   name: string
 }
 
-const { HOME, RESTAURANTS, RESTAURANT_MENU, CHECKOUT, CART, ORDER_COMPLETED, REGISTRATION } = pathNames;
+const { HOME, RESTAURANTS, RESTAURANT_MENU, CHECKOUT, CART, ORDER_COMPLETED } = pathNames;
 
 
 export const paths: Record<EPathName, TRouterTypes> = {
@@ -57,12 +55,6 @@ export const paths: Record<EPathName, TRouterTypes> = {
     path: ORDER_COMPLETED.path,
     element: OrderCompletedPage,
     name: 'Заказ'
-  },
-
-  REGISTRATION: {
-    path: REGISTRATION.path,
-    element: Registration,
-    name: 'Регистрация'
   },
 
   CART: {

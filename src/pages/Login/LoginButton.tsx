@@ -10,8 +10,16 @@ export default function LoginButton() {
   const code = queryObj.code ? queryObj.code.toString() : '';
 
   const handleRedirect = () => {
-    const { client_id, display, redirect_uri, response_type, revoke, scope, v, oauthURL } =
-      VkOAuthParams;
+    const {
+      client_id,
+      display,
+      redirect_uri,
+      response_type,
+      revoke,
+      scope,
+      v,
+      oauthURL,
+    } = VkOAuthParams;
 
     const params = {
       redirect_uri,
@@ -29,7 +37,7 @@ export default function LoginButton() {
   useGate(LoginGate, { code });
 
   const comp = (
-    <Button type='primary' onClick={handleRedirect}>
+    <Button type="primary" onClick={handleRedirect}>
       Войти через ВКонтакте
     </Button>
   );

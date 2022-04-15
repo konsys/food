@@ -6,7 +6,6 @@ export enum EPathName {
   CART = 'CART',
   NOT_FOUND = 'NOT_FOUND',
   ORDER_COMPLETED = 'ORDER_COMPLETED',
-  REGISTRATION = 'REGISTRATION'
 }
 
 export type TPath = {
