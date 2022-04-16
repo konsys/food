@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { TUuid } from 'src/common/types';
 import { IJwtPayload } from 'src/config';
-import { UsersEntity } from 'src/entities/users.entity';
+import { Users } from 'src/entities/users.entity';
 import { TTokens, TUserCreds } from '../users/types';
 import { UsersService } from '../users/users.service';
 @Injectable()
@@ -15,7 +15,7 @@ export class AuthService {
   async validateUser(
     email: string,
     password: string,
-  ): Promise<UsersEntity | undefined> {
+  ): Promise<Users | undefined> {
     const user = await this.usersService.getUserByCredentials({
       email,
       password,

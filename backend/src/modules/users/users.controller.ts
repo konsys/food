@@ -11,7 +11,7 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { UsersEntity } from 'src/entities/users.entity';
+import { Users } from 'src/entities/users.entity';
 import { UsersService } from './users.service';
 import { LocalAuthGuard } from 'src/modules/auth/local-auth.guard';
 import { AuthService } from 'src/modules/auth/auth.service';
@@ -81,8 +81,8 @@ export class UsersController {
   @UseInterceptors(ClassSerializerInterceptor)
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  async getProfile(@Request() req: IRequestWithUser): Promise<UsersEntity> {
-    const profile = new UsersEntity(
+  async getProfile(@Request() req: IRequestWithUser): Promise<Users> {
+    const profile = new Users(
       await this.service.getUser(req.user.userUuid),
     );
     return profile;
@@ -91,14 +91,14 @@ export class UsersController {
   @UseInterceptors(ClassSerializerInterceptor)
   @UseGuards(JwtAuthGuard)
   @Get('profile/:uuid')
-  async getProfileById(@Param('uuid') userUuid: TUuid): Promise<UsersEntity> {
-    return new UsersEntity(await this.service.getUser(userUuid));
+  async getProfileById(@Param('uuid') userUuid: TUuid): Promise<Users> {
+    return new Users(await this.service.getUser(userUuid));
   }
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('creds')
-  async getProfileByEmail(@Query('email') email: string): Promise<UsersEntity> {
-    const res = new UsersEntity(await this.service.getUserByEmail(email));
+  async getProfileByEmail(@Query('email') email: string): Promise<Users> {
+    const res = new Users(await this.service.getUserByEmail(email));
     return res;
   }
 
@@ -127,7 +127,7 @@ export class UsersController {
     @Body()
     { code }: TVkLoginRequest,
   ): Promise<TTokens> {
-    const user = new UsersEntity(await this.service.loginVK(code));
+    const user = new Users(await this.service.loginVK(code));
     return this.authService.login(user);
   }
 
@@ -144,12 +144,12 @@ export class UsersController {
   @Post('email/:email')
   async getUserByEmail(
     @Param() email: string,
-  ): Promise<UsersEntity | undefined> {
+  ): Promise<Users | undefined> {
     return this.service.getUserByEmail(email);
   }
 
   @Post()
-  async saveUsers(@Param() users: UsersEntity[]): Promise<UsersEntity[]> {
+  async saveUsers(@Param() users: Users[]): Promise<Users[]> {
     return this.service.saveUsers(users);
   }
 }

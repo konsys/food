@@ -40,7 +40,7 @@ export const apiUrls = {
     main: '/order',
   },
   auth: {
-    main: '/auth',
+    main: '/users/auth/login',
   },
   registration: {
     main: '/registration',

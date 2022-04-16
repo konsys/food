@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { uuid } from '../../common/utils/utils';
 import { LoginDto } from '../../modules/login/types';
+import { AuthModel } from '../../store';
 import LoginFields from '../Header/components/LoginFields/LoginFields';
-import { loginFx } from './model/store';
 import RegistrationFields from './Registration/components/RegistrationFields';
+
+const { createItemFx } = AuthModel;
 
 export function LoginPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,7 +24,7 @@ export function LoginPage() {
       modalVisible={isVisible}
       setModalVisible={setIsVisible}
       pending={false}
-      onCreate={loginFx}
+      onCreate={createItemFx}
       buttonClassName="header-nav-item-link__login"
       buttonText="Войти"
       title={isRegistration ? 'Зарегистрироваться' : 'Войти'}

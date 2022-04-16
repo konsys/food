@@ -2,7 +2,7 @@ import { TUuid } from 'src/common/types';
 import { Column, Entity, Index, PrimaryColumn } from 'typeorm';
 
 @Entity()
-export class TokensEntity {
+export class Tokens {
 
   @Column()
   @PrimaryColumn()
