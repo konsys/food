@@ -15,6 +15,8 @@ import { CartModule } from './modules/cart/cart.module';
 import { CodeCheckModule } from './modules/code-check/code-check.module';
 import { PromoModule } from './modules/promo/promo.module';
 import { OrderModule } from './modules/order/order.module';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './modules/auth/components/roles.guard';
 
 @Module({
   imports: [
@@ -34,6 +36,12 @@ import { OrderModule } from './modules/order/order.module';
     ServeStaticModule.forRoot({
       rootPath: `${FULL_UPLOAD_PATH}`,
     }),
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
   ],
 })
 export class MainModule { }

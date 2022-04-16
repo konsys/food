@@ -6,6 +6,7 @@ import { TListRequest } from 'src/common/types/paginationTypes';
 import { IAbstractService } from './abstractService';
 import { ExtractInterceptor } from './ExtractInterceptor';
 import { instanceToInstance } from 'class-transformer';
+import { Permission, Role, Roles } from 'src/modules/auth/components/roles.decorator';
 
 @UseInterceptors(ExtractInterceptor)
 export class AbstractController<E> {
@@ -15,6 +16,7 @@ export class AbstractController<E> {
     this.service = service;
   }
 
+  @Roles(Role.Admin)
   @Post()
   async create(@Body() item: DeepPartial<E>) {
     return await this.service.create(item);

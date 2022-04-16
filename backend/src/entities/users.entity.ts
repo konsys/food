@@ -2,6 +2,7 @@ import { Column, Entity, Generated, Index, PrimaryGeneratedColumn } from 'typeor
 
 import { Exclude } from 'class-transformer';
 import { TUuid } from 'src/common/types';
+import { Role } from 'src/modules/auth/components/roles.decorator';
 
 @Entity()
 export class UsersEntity {
@@ -82,6 +83,9 @@ export class UsersEntity {
   @Column({ default: null })
   @Index({ unique: true })
   vkId?: TUuid;
+
+  @Column({ type: 'jsonb', default: [Role.User] })
+  roles: Role[];
 
   constructor(partial: Partial<UsersEntity>) {
     Object.assign(this, partial);

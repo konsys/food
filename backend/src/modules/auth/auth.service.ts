@@ -5,7 +5,6 @@ import { IJwtPayload } from 'src/config';
 import { UsersEntity } from 'src/entities/users.entity';
 import { TTokens, TUserCreds } from '../users/types';
 import { UsersService } from '../users/users.service';
-
 @Injectable()
 export class AuthService {
   constructor(
