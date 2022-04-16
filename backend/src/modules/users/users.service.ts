@@ -42,16 +42,6 @@ export class UsersService {
     return new Users(user);
   }
 
-  async getUsersByIds(uuids: string[]): Promise<Users[]> {
-    // https://github.com/typeorm/typeorm/blob/master/docs/find-options.md
-    // const users: Users[] = await this.users.find({
-    //   uuid: In(uuids),
-    // });
-
-    // const filtered = users.map((v) => new Users(v));
-    // return filtered;
-    throw new HttpException('Not implemented', 500)
-  }
 
   async getUserByCredentials({
     email,
@@ -75,12 +65,7 @@ export class UsersService {
 
   async saveUser(user: Users): Promise<Users> {
     user = new Users(user);
-    const savedUser = await this.users.save({
-      ...user,
-      vip: !!user.vip,
-    });
-
-    return savedUser;
+    return await this.users.save(user);
   }
 
   async activateUser(
@@ -167,7 +152,6 @@ export class UsersService {
             isActive: true,
             isBlocked: false,
             sex: user.sex,
-            vip: false,
             email: null,
           },
         );

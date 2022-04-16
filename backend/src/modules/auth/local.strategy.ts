@@ -6,11 +6,13 @@ import { Strategy } from 'passport-local';
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
+
     // http://www.passportjs.org/docs/configure/
     super({ usernameField: 'email', passReqToCallback: true });
   }
 
   async validate(_: Request, email: string, password: string): Promise<any> {
+
     const user = await this.authService.validateUser(email, password);
 
     if (!user) {

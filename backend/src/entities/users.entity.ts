@@ -10,8 +10,6 @@ export class Users {
   @Generated('uuid')
   uuid: TUuid;
 
-  @Column({ default: false })
-  vip?: boolean;
 
   @Exclude()
   @Column({ default: null })
@@ -38,19 +36,12 @@ export class Users {
   email?: string;
 
   @Exclude()
-  @Column({ default: false })
-  isTestUser: boolean;
-
-  @Exclude()
   @Column({ default: null })
   password?: string;
 
   @Exclude()
   @Column({ default: null })
   repeatPassword?: string;
-
-  @Column({ default: null })
-  team?: string;
 
   @Column({ default: null })
   avatar?: string;
