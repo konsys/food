@@ -1,30 +1,27 @@
 import { notification } from 'antd';
-import { createDomain, sample } from 'effector';
+import { createDomain } from 'effector';
 import { createGate } from 'effector-react';
+import { CrudService } from '../../../common/api';
 import { clearToken, saveRefreshToken, saveToken } from '../../../http/AuthService/model';
 import { LoginDto } from '../../../modules/login/types';
 import { getMyProfile } from '../../User/model/store';
-import { loginFetch, loginVkFetch } from './api';
+import { loginVkFetch } from './api';
 import { ILoginResponce, TTokens, TVkCode } from './types';
+
+const URL = `users/auth/login`;
+const crudService = new CrudService<LoginDto, LoginDto>(URL);
 
 const AuthDomain = createDomain('AuthDomain');
 export const clearTokenStore = AuthDomain.event();
 
-// Login
-export const login = AuthDomain.event<LoginDto>();
-const loginFx = AuthDomain.effect<LoginDto, boolean, Error>({
-  handler: loginFetch,
+export const loginFx = AuthDomain.effect<Partial<LoginDto>, LoginDto, Error>({
+  handler: (mt) => crudService.create(mt),
 });
 
-sample({
-  clock: login,
-  fn: (lg: LoginDto) => lg,
-  target: loginFx,
-});
+
 
 // TODO add fail handler
 // loginFx.fail.watch((error: string) => setError(error));
-
 const loginVkFx = AuthDomain.effect<TVkCode, TVkCode, Error>({
   handler: loginVkFetch,
 });
@@ -37,12 +34,8 @@ LoginGate.state.updates.watch((code) => {
 });
 
 // Store
-export const $$login = AuthDomain.store<ILoginResponce | null>(null)
+export const $loginStore = AuthDomain.store<ILoginResponce | null>(null)
   .on(loginFx.done, (_, { result }: { result: any }) => {
-    auth({ ...result });
-    return result;
-  })
-  .on(loginVkFx.done, (_, { result }: { result: any }) => {
     auth({ ...result });
     return result;
   })
@@ -59,4 +52,3 @@ const auth = (tokens: TTokens) => {
   getMyProfile();
 };
 
-$$login.updates.watch((v) => console.log('LoginStoreWatch', v));

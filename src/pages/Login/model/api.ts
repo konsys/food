@@ -2,7 +2,7 @@ import { axiosClient } from '../../../http/Clients';
 import { LoginDto } from '../../../modules/login/types';
 import { TVkCode } from './types';
 
-const URL = `/login`;
+const URL = `users/auth/login`;
 
 export const loginFetch = async (params: LoginDto): Promise<boolean> =>
   (await axiosClient.get<boolean>(URL, { params })).data;
