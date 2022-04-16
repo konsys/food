@@ -45,7 +45,6 @@ function Checkout() {
 
   useEffect(() => {
     if (order.error) {
-      notifyError(order.error.message);
       clearOrdeError();
     }
   }, [order, notifyError]);

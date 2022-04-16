@@ -1,27 +1,24 @@
 import { notification } from 'antd';
 import { createDomain, sample } from 'effector';
 import { createGate } from 'effector-react';
-import { clearError } from '../../../core/errors';
 import { clearToken, saveRefreshToken, saveToken } from '../../../http/AuthService/model';
+import { LoginDto } from '../../../modules/login/types';
 import { getMyProfile } from '../../User/model/store';
 import { loginFetch, loginVkFetch } from './api';
-import { ILoginForm, ILoginResponce, TTokens, TVkCode } from './types';
+import { ILoginResponce, TTokens, TVkCode } from './types';
 
 const AuthDomain = createDomain('AuthDomain');
 export const clearTokenStore = AuthDomain.event();
 
 // Login
-export const login = AuthDomain.event<ILoginForm>();
-const loginFx = AuthDomain.effect<ILoginForm, boolean, Error>({
+export const login = AuthDomain.event<LoginDto>();
+const loginFx = AuthDomain.effect<LoginDto, boolean, Error>({
   handler: loginFetch,
 });
 
 sample({
   clock: login,
-  fn: (lg: ILoginForm) => {
-    clearError();
-    return lg;
-  },
+  fn: (lg: LoginDto) => lg,
   target: loginFx,
 });
 
@@ -34,9 +31,6 @@ const loginVkFx = AuthDomain.effect<TVkCode, TVkCode, Error>({
 
 // LoginGate
 export const LoginGate = createGate<TVkCode>('LoginGate');
-LoginGate.open.watch(() => {
-  clearError();
-});
 
 LoginGate.state.updates.watch((code) => {
   code.code && loginVkFx(code);

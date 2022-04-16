@@ -24,7 +24,7 @@ export class AuthService {
     return user && user.name ? user : undefined;
   }
 
-  private createPayload(username: string, userUuid: TUuid): IJwtPayload {
+  createPayload(username: string, userUuid: TUuid): IJwtPayload {
     return {
       username,
       sub: userUuid,

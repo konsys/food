@@ -6,7 +6,6 @@ import {
   getRefreshToken,
   saveToken,
 } from '../../../http/AuthService/model';
-import { setError } from '../../../core/errors';
 import {
   fetchLogout,
   fetchMyProfile,
@@ -87,9 +86,6 @@ export const $user = UserDomain.store<IUser | null>(null)
   .on(getUserFx.done, (_, { result }) => result)
   .reset(logout);
 
-getUserFx.fail.watch(({ error }) => {
-  setError(error.message);
-});
 
 sample({
   clock: logout,
