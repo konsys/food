@@ -13,9 +13,9 @@ import {
 } from '@nestjs/common';
 import { Users } from 'src/entities/users.entity';
 import { UsersService } from './users.service';
-import { LocalAuthGuard } from 'src/modules/auth/local-auth.guard';
-import { AuthService } from 'src/modules/auth/auth.service';
-import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
+import { LocalAuthGuard } from 'src/modules/auth1/local-auth.guard';
+import { AuthService } from 'src/modules/auth1/auth.service';
+import { JwtAuthGuard } from 'src/modules/auth1/jwt-auth.guard';
 import { IRequestWithUser, TTokens, TVkLoginRequest } from './types';
 import { IJwtPayload, jwtConstants } from 'src/config';
 import { TUuid } from 'src/common/types';

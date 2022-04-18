@@ -2,7 +2,6 @@ import { TUuid } from "../../common/types";
 
 export type LoginDto = {
     uuid: TUuid;
-    login: string;
+    username: string;
     password: string;
-    expiredAt: Date;
 }

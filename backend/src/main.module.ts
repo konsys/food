@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/modules/auth/auth.module';
-import { UsersModule } from './modules/users/users.module';
-import { OrmConfig } from './ormConfig';
+import { OrmConfig } from './orm.config';
 import { ImageModule } from './modules/image/image.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -16,7 +15,8 @@ import { CodeCheckModule } from './modules/code-check/code-check.module';
 import { PromoModule } from './modules/promo/promo.module';
 import { OrderModule } from './modules/order/order.module';
 import { APP_GUARD } from '@nestjs/core';
-import { RolesGuard } from './modules/auth/components/roles.guard';
+import { RolesGuard } from './modules/auth1/components/roles.guard';
+import { UsersModule } from './modules/auth/users.module';
 
 @Module({
   imports: [

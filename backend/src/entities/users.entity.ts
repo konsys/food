@@ -2,7 +2,7 @@ import { Column, Entity, Generated, Index, PrimaryGeneratedColumn } from 'typeor
 
 import { Exclude } from 'class-transformer';
 import { TUuid } from 'src/common/types';
-import { Role } from 'src/modules/auth/components/roles.decorator';
+import { Role } from 'src/modules/auth1/components/roles.decorator';
 
 @Entity()
 export class Users {
