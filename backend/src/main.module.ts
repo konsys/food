@@ -17,6 +17,7 @@ import { OrderModule } from './modules/order/order.module';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './modules/auth1/components/roles.guard';
 import { UsersModule } from './modules/auth/users.module';
+import { JwtAuthGuard } from './modules/auth/jwt.auth.guard';
 
 @Module({
   imports: [
@@ -37,10 +38,16 @@ import { UsersModule } from './modules/auth/users.module';
       rootPath: `${FULL_UPLOAD_PATH}`,
     }),
   ],
+  // providers: [
+  //   {
+  //     provide: APP_GUARD,
+  //     useClass: RolesGuard,
+  //   },
+  // ],
   providers: [
     {
       provide: APP_GUARD,
-      useClass: RolesGuard,
+      useClass: JwtAuthGuard,
     },
   ],
 })
