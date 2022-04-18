@@ -17,8 +17,8 @@ function LoginFields(props: Props) {
   return (
     <>
       <Form.Item
-        label="Логин"
-        name={names('username')}
+        label="email"
+        name={names('email')}
         rules={[{ required: true }]}
       >
         <Input />

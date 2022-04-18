@@ -44,11 +44,11 @@ import { JwtAuthGuard } from './modules/auth/jwt.auth.guard';
   //     useClass: RolesGuard,
   //   },
   // ],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard,
-    },
-  ],
+  // providers: [
+  //   {
+  //     provide: APP_GUARD,
+  //     useClass: JwtAuthGuard,
+  //   },
+  // ],
 })
 export class MainModule { }

@@ -13,6 +13,7 @@ export class LoginController {
     @UseGuards(AuthGuard('local'))
     @Post('/users/auth/login')
     async login(@Request() req) {
+
         return this.authService.login({
             name: req.user.name,
             userUuid: req.user.userUuid,

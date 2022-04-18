@@ -20,7 +20,7 @@ import { IRequestWithUser, TTokens, TVkLoginRequest } from './types';
 import { IJwtPayload, jwtConstants } from 'src/config';
 import { TUuid } from 'src/common/types';
 
-@Controller('users')
+@Controller('auth')
 export class UsersController {
   constructor(
     private readonly service: UsersService,
@@ -32,7 +32,6 @@ export class UsersController {
   async login(
     @Request() req: IRequestWithUser,
   ): Promise<{ accessToken: string }> {
-
     return this.authService.login({
       name: req.user.name,
       userUuid: req.user.userUuid,
