@@ -1,6 +1,6 @@
 import { BadRequestException, HttpException, Injectable, Logger } from '@nestjs/common';
 import { FindManyOptions, Repository } from 'typeorm';
-import { Users } from 'src/entities/users.entity';
+import { User } from 'src/entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TUserCreds, TVkAuthResponse, TVkGetUserResponce } from './types';
 import { stringify } from 'query-string';
@@ -20,13 +20,13 @@ export class UsersService {
   private logger: Logger = new Logger('UsersService');
 
   constructor(
-    @InjectRepository(Users)
-    private readonly users: Repository<Users>,
+    @InjectRepository(User)
+    private readonly users: Repository<User>,
     @InjectRepository(Tokens)
     private readonly tokens: Repository<Tokens>,
   ) { }
 
-  async getAllUsers(filter?: FindManyOptions): Promise<Users[]> {
+  async getAllUsers(filter?: FindManyOptions): Promise<User[]> {
     try {
       filter = { ...filter, skip: 1 };
       const users: any = await this.users.find(filter);
@@ -36,35 +36,35 @@ export class UsersService {
     }
   }
 
-  async getUser(userUuid: string): Promise<Users | undefined> {
-    const user: Users = await this.users.findOne(userUuid);
+  async getUser(userUuid: string): Promise<User | undefined> {
+    const user: User = await this.users.findOne(userUuid);
 
-    return new Users(user);
+    return new User(user);
   }
 
 
   async getUserByCredentials({
     email,
     password,
-  }: Partial<TUserCreds>): Promise<Users> {
-    const user: Users = await this.users.findOne({ email, password });
+  }: Partial<TUserCreds>): Promise<User> {
+    const user: User = await this.users.findOne({ email, password });
     return user;
   }
 
-  async getUserByEmail(email: string): Promise<Users> {
-    const user: Users = await this.users.findOne({ email });
+  async getUserByEmail(email: string): Promise<User> {
+    const user: User = await this.users.findOne({ email });
     return user;
   }
 
-  async updateUser(user: Users): Promise<boolean> {
-    user = new Users(user);
+  async updateUser(user: User): Promise<boolean> {
+    user = new User(user);
     const update = await this.users.update({ uuid: user.uuid }, user);
 
     return update && update.affected > 0 ? true : false;
   }
 
-  async saveUser(user: Users): Promise<Users> {
-    user = new Users(user);
+  async saveUser(user: User): Promise<User> {
+    user = new User(user);
     return await this.users.save(user);
   }
 
@@ -72,7 +72,7 @@ export class UsersService {
     registrationCode: string,
     email: string,
   ): Promise<boolean> {
-    const user: Users = await this.users.findOne({
+    const user: User = await this.users.findOne({
       registrationCode,
       email,
     });
@@ -88,12 +88,12 @@ export class UsersService {
 
     return res && res.affected > 0 ? true : false;
   }
-  async saveUsers(users: Users[]): Promise<Users[]> {
-    const allUsers: Users[] = await this.users.save(users);
+  async saveUsers(users: User[]): Promise<User[]> {
+    const allUsers: User[] = await this.users.save(users);
     return allUsers;
   }
 
-  async loginVK(code: string): Promise<Users | null> {
+  async loginVK(code: string): Promise<User | null> {
     const { serviceKey } = VkAppParams;
 
     const link = `${VkAppParams.tokenURL}${stringify(
