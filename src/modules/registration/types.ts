@@ -2,6 +2,7 @@ import { TUuid } from "../../common/types"
 
 export type RegistrationDto = {
     uuid: TUuid
-    login: string
+    email: string
     password: string
+    name: string;
 }

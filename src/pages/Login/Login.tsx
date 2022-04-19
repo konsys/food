@@ -1,18 +1,22 @@
-import { useStore } from 'effector-react';
 import React, { useEffect, useState } from 'react';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
 import { uuid } from '../../common/utils/utils';
 import { LoginDto } from '../../modules/login/types';
-import { AuthModel } from '../../store';
+import { RegistrationDto } from '../../modules/registration/types';
+import { AuthModel, RegistrationModel } from '../../store';
 import LoginFields from '../Header/components/LoginFields/LoginFields';
 import RegistrationFields from './Registration/components/RegistrationFields';
 
-const { createItemFx } = AuthModel;
+const { createItemFx: login } = AuthModel;
+const { createItemFx: registration } = RegistrationModel;
 
 export function LoginPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [isRegistration, setIsRegistration] = useState(false);
-  const { ModalForm } = useValidatedForm<LoginDto>({
+  const { ModalForm: LoginForm } = useValidatedForm<LoginDto>({
+    uuid: uuid(),
+  });
+  const { ModalForm: RegistrationForm } = useValidatedForm<RegistrationDto>({
     uuid: uuid(),
   });
 
@@ -28,23 +32,33 @@ export function LoginPage() {
     }
   }, [setIsRegistration, isVisible]);
 
-  // const loginStore = useStore($itemStore);
-
   return (
-    <ModalForm
-      modalVisible={isVisible}
-      setModalVisible={setIsVisible}
-      pending={false}
-      onCreate={createItemFx}
-      buttonClassName="header-nav-item-link__login"
-      buttonText="Войти"
-      title={isRegistration ? 'Зарегистрироваться' : 'Войти'}
-    >
+    <div>
       {isRegistration ? (
-        <RegistrationFields />
+        <RegistrationForm
+          modalVisible={isVisible}
+          setModalVisible={setIsVisible}
+          pending={false}
+          onCreate={registration}
+          buttonClassName="header-nav-item-link__login"
+          buttonText="Войти"
+          title="Зарегистрироваться"
+        >
+          <RegistrationFields />
+        </RegistrationForm>
       ) : (
-        <LoginFields setIsRegistration={setIsRegistration} />
+        <LoginForm
+          modalVisible={isVisible}
+          setModalVisible={setIsVisible}
+          pending={false}
+          onCreate={login}
+          buttonClassName="header-nav-item-link__login"
+          buttonText="Войти"
+          title="Войти"
+        >
+          <LoginFields setIsRegistration={setIsRegistration} />
+        </LoginForm>
       )}
-    </ModalForm>
+    </div>
   );
 }

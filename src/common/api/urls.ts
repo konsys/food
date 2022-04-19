@@ -43,6 +43,6 @@ export const apiUrls = {
     main: '/users/auth/login',
   },
   registration: {
-    main: '/registration',
+    main: '/users/auth/registration',
   },
 };

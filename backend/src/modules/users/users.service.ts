@@ -63,9 +63,8 @@ export class UsersService {
     return update && update.affected > 0 ? true : false;
   }
 
-  async saveUser(user: User): Promise<User> {
-    user = new User(user);
-    return await this.users.save(user);
+  saveUser(user: User): Promise<User> {
+    return this.users.save(new User(user));
   }
 
   async activateUser(

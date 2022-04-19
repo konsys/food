@@ -38,15 +38,12 @@ export class UsersController {
     });
   }
 
-  @Post('auth/register')
+  @Post('auth/registration')
   async register(
-    @Body() user: Partial<User>
-  ): Promise<void> {
+    @Body() user: User
+  ): Promise<User> {
     console.log(11111111111, user);
-    // return this.authService.login({
-    //   name: req.user.name,
-    //   userUuid: req.user.userUuid,
-    // });
+    return this.service.saveUser(user)
   }
 
 
