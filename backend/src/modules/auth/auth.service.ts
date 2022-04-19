@@ -1,24 +1,58 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from './users.service';
-
+import { TUuid } from 'src/common/types';
+import { IJwtPayload } from 'src/config';
+import { User } from 'src/entities/user.entity';
+import { TTokens, TUserCreds } from '../users/types';
+import { UsersService } from '../users/users.service';
 @Injectable()
 export class AuthService {
-    constructor(private usersService: UsersService, private jwtService: JwtService) { }
+  constructor(
+    private usersService: UsersService,
+    private jwtService: JwtService,
+  ) { }
 
-    async validateUser(username: string, password: string): Promise<any> {
-        const user = await this.usersService.findOne(username, password);
-        if (user && user.password === password) {
-            const { password, ...result } = user;
-            return result;
-        }
-        return null;
-    }
+  async validateUser(
+    email: string,
+    password: string,
+  ): Promise<User | undefined> {
 
-    async login(user: any) {
-        const payload = { username: user.username, sub: user.userId };
-        return {
-            access_token: this.jwtService.sign(payload),
-        };
-    }
+    const user = await this.usersService.getUserByCredentials({
+      email,
+      password,
+    });
+
+    return user?.name ? user : undefined;
+  }
+
+  createPayload(username: string, userUuid: TUuid): IJwtPayload {
+    return {
+      username,
+      sub: userUuid,
+    };
+  }
+
+  async signJwt(payload: IJwtPayload, expiresIn?: string): Promise<string> {
+    return expiresIn
+      ? this.jwtService.sign(payload, { expiresIn })
+      : this.jwtService.sign(payload);
+  }
+
+  async login(user: TUserCreds): Promise<TTokens> {
+    const payload: IJwtPayload = this.createPayload(user.name, user.userUuid);
+
+    const accessToken = await this.signJwt(payload);
+    const refreshToken = await this.signJwt(payload, '60000s');
+
+    await this.usersService.saveToken({
+      token: refreshToken,
+      userUuid: user.userUuid,
+      name: user.name,
+    });
+
+    return {
+      accessToken,
+      refreshToken,
+    };
+  }
 }

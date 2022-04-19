@@ -6,7 +6,7 @@ import { TListRequest } from 'src/common/types/paginationTypes';
 import { IAbstractService } from './abstractService';
 import { ExtractInterceptor } from './ExtractInterceptor';
 import { instanceToInstance } from 'class-transformer';
-import { Permission, Role, Roles } from 'src/modules/auth1/components/roles.decorator';
+import { Permission, Role, Roles } from 'src/modules/auth/components/roles.decorator';
 
 @UseInterceptors(ExtractInterceptor)
 export class AbstractController<E> {

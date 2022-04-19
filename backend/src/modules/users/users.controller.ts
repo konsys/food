@@ -13,14 +13,14 @@ import {
 } from '@nestjs/common';
 import { User } from 'src/entities/user.entity';
 import { UsersService } from './users.service';
-import { LocalAuthGuard } from 'src/modules/auth1/local-auth.guard';
-import { AuthService } from 'src/modules/auth1/auth.service';
-import { JwtAuthGuard } from 'src/modules/auth1/jwt-auth.guard';
+import { LocalAuthGuard } from 'src/modules/auth/local-auth.guard';
+import { AuthService } from 'src/modules/auth/auth.service';
+import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
 import { IRequestWithUser, TTokens, TVkLoginRequest } from './types';
 import { IJwtPayload, jwtConstants } from 'src/config';
 import { TUuid } from 'src/common/types';
 
-@Controller('auth')
+@Controller('users')
 export class UsersController {
   constructor(
     private readonly service: UsersService,
@@ -37,6 +37,18 @@ export class UsersController {
       userUuid: req.user.userUuid,
     });
   }
+
+  @Post('auth/register')
+  async register(
+    @Body() user: Partial<User>
+  ): Promise<void> {
+    console.log(11111111111, user);
+    // return this.authService.login({
+    //   name: req.user.name,
+    //   userUuid: req.user.userUuid,
+    // });
+  }
+
 
   @Post('auth/logout')
   logout(
@@ -130,7 +142,7 @@ export class UsersController {
     return this.authService.login(user);
   }
 
-  @Delete('/:  userUuid')
+  @Delete('/:userUuid')
   async deleteUser(
     @Param()
     { userUuid }: { userUuid: number },

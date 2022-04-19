@@ -14,10 +14,7 @@ import { CartModule } from './modules/cart/cart.module';
 import { CodeCheckModule } from './modules/code-check/code-check.module';
 import { PromoModule } from './modules/promo/promo.module';
 import { OrderModule } from './modules/order/order.module';
-import { APP_GUARD } from '@nestjs/core';
-import { RolesGuard } from './modules/auth1/components/roles.guard';
-import { UsersModule } from './modules/auth/users.module';
-import { JwtAuthGuard } from './modules/auth/jwt.auth.guard';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
