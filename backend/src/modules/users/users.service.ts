@@ -13,6 +13,7 @@ import {
 } from 'src/config';
 import { axiosClient } from 'src/http/client';
 import { TUuid } from 'src/common/types';
+import { getTokenExpire } from '../auth/utils';
 
 // rCd8cviaoYS9AV1CyA8h
 @Injectable()
@@ -167,24 +168,16 @@ export class UsersService {
   }
 
   async saveToken(
-    {
-      token,
-      userUuid,
-      email,
-    }: {
-      token: string;
-      userUuid: TUuid;
-      email: string;
-    }): Promise<Tokens> {
-    console.log(11111111111, token);
-    const expires = new Date();
-    expires.setSeconds(expires.getSeconds() + jwtConstants.refreshExpires);
+    data: Tokens): Promise<Tokens> {
+    const expires = getTokenExpire();
 
+    const { token, email, userUuid, name } = data
     const tokenToSave: Tokens = {
       userUuid,
+      name,
       email,
       expires,
-      token,
+      token
     };
 
     const isToken = await this.tokens.findOne({ where: { email } });

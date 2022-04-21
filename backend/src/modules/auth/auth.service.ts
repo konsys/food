@@ -5,6 +5,7 @@ import { IJwtPayload } from 'src/config';
 import { User } from 'src/entities/user.entity';
 import { TTokens, TUserCreds } from '../users/types';
 import { UsersService } from '../users/users.service';
+import { getTokenExpire } from './utils';
 @Injectable()
 export class AuthService {
   constructor(
@@ -24,10 +25,10 @@ export class AuthService {
     return user?.name ? user : undefined;
   }
 
-  createPayload(username: string, userUuid: TUuid): IJwtPayload {
+  createPayload(username: string, uuid: string): IJwtPayload {
     return {
       username,
-      sub: userUuid,
+      sub: uuid,
     };
   }
 
@@ -37,16 +38,19 @@ export class AuthService {
       : this.jwtService.sign(payload);
   }
 
-  async login(user: TUserCreds): Promise<TTokens> {
-    const payload: IJwtPayload = this.createPayload(user.email, user.userUuid);
+  async login(user: Partial<User>): Promise<TTokens> {
+    const payload: IJwtPayload = this.createPayload(user.email, user.uuid);
 
     const accessToken = await this.signJwt(payload);
     const refreshToken = await this.signJwt(payload, '60000s');
 
+    console.log(11111111111, user);
     await this.usersService.saveToken({
       token: refreshToken,
-      userUuid: user.userUuid,
+      userUuid: user.uuid,
       email: user.email,
+      expires: getTokenExpire(),
+      name: user.name
     });
 
     return {

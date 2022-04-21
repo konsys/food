@@ -34,7 +34,7 @@ export class UsersController {
   ): Promise<{ accessToken: string }> {
     return this.authService.login({
       name: req.user.name,
-      userUuid: req.user.userUuid,
+      uuid: req.user.uuid,
     });
   }
 
@@ -59,26 +59,30 @@ export class UsersController {
     @Body() { accessToken }: { accessToken: string },
   ): Promise<{ accessToken: string | null }> {
     const token = await this.service.getToken(accessToken);
-    const dt = new Date().getTime();
-    if (token && new Date(token.expires).getTime() >= dt) {
-      const payload: IJwtPayload = this.authService.createPayload(
-        token.email,
-        token.userUuid,
-      );
-      const newAccessToken = await this.authService.signJwt(payload);
 
-      const expires = new Date();
-      expires.setSeconds(expires.getSeconds() + jwtConstants.refreshExpires);
-      token.expires = expires;
-      await this.service.saveToken({
-        token: token.token,
-        userUuid: token.userUuid,
-        email: token.email,
-      });
-
-      return { accessToken: newAccessToken };
-    }
     if (token) {
+      const dt = new Date().getTime();
+      if (new Date(token.expires).getTime() >= dt) {
+        const payload: IJwtPayload = this.authService.createPayload(
+          token.email,
+          token.name,
+        );
+        const newAccessToken = await this.authService.signJwt(payload);
+
+        const expires = new Date();
+        expires.setSeconds(expires.getSeconds() + jwtConstants.refreshExpires);
+        token.expires = expires;
+        await this.service.saveToken({
+          token: token.token,
+          email: token.email,
+          expires,
+          name: token.name,
+          userUuid: token.userUuid
+        });
+
+        return { accessToken: newAccessToken };
+      }
+
       await this.service.deleteToken(accessToken);
     }
 
@@ -90,7 +94,7 @@ export class UsersController {
   @Get('profile')
   async getProfile(@Request() req: IRequestWithUser): Promise<User> {
     const profile = new User(
-      await this.service.getUser(req.user.userUuid),
+      await this.service.getUser(req.user.uuid),
     );
     return profile;
   }

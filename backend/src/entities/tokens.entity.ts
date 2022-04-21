@@ -3,9 +3,10 @@ import { Column, Entity, Index, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Tokens {
+  @Column()
+  name: string;
 
   @Column()
-  @PrimaryColumn()
   @Index({ unique: true })
   userUuid: TUuid;
 
@@ -14,6 +15,7 @@ export class Tokens {
   email: string;
 
   @Column()
+  @PrimaryColumn()
   @Index({ unique: true })
   token: string;
 

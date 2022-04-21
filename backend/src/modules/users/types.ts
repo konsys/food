@@ -3,15 +3,15 @@ import { TUuid } from 'src/common/types';
 
 export interface IRequestWithUser extends ExpressRequest {
   user: {
-    userUuid: TUuid;
+    uuid: TUuid;
     name: string;
   };
 }
 
 export type TUserCreds = {
-  email?: string;
+  email: string;
+  password: string;
   name?: string;
-  password?: string;
   userUuid?: TUuid;
 };
 
