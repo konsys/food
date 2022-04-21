@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { TUuid } from 'src/common/types';
 import { IJwtPayload } from 'src/config';
@@ -38,13 +38,16 @@ export class AuthService {
       : this.jwtService.sign(payload);
   }
 
-  async login(user: Partial<User>): Promise<TTokens> {
-    const payload: IJwtPayload = this.createPayload(user.email, user.uuid);
+  async login(userCreds: Partial<User>): Promise<TTokens> {
 
+    const user = await this.usersService.getUser(userCreds.uuid);
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+    const payload: IJwtPayload = this.createPayload(user.email, user.uuid);
     const accessToken = await this.signJwt(payload);
     const refreshToken = await this.signJwt(payload, '60000s');
 
-    console.log(11111111111, user);
     await this.usersService.saveToken({
       token: refreshToken,
       userUuid: user.uuid,

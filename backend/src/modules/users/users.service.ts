@@ -39,7 +39,6 @@ export class UsersService {
 
   async getUser(userUuid: string): Promise<User | undefined> {
     const user: User = await this.users.findOne(userUuid);
-
     return new User(user);
   }
 
