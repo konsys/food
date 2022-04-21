@@ -10,7 +10,8 @@ export class Tokens {
   userUuid: TUuid;
 
   @Column()
-  name: string;
+  @Index({ unique: true })
+  email: string;
 
   @Column()
   @Index({ unique: true })

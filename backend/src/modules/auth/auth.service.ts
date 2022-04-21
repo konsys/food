@@ -16,7 +16,6 @@ export class AuthService {
     email: string,
     password: string,
   ): Promise<User | undefined> {
-
     const user = await this.usersService.getUserByCredentials({
       email,
       password,
@@ -39,7 +38,7 @@ export class AuthService {
   }
 
   async login(user: TUserCreds): Promise<TTokens> {
-    const payload: IJwtPayload = this.createPayload(user.name, user.userUuid);
+    const payload: IJwtPayload = this.createPayload(user.email, user.userUuid);
 
     const accessToken = await this.signJwt(payload);
     const refreshToken = await this.signJwt(payload, '60000s');
@@ -47,7 +46,7 @@ export class AuthService {
     await this.usersService.saveToken({
       token: refreshToken,
       userUuid: user.userUuid,
-      name: user.name,
+      email: user.email,
     });
 
     return {
@@ -56,3 +55,4 @@ export class AuthService {
     };
   }
 }
+

@@ -42,7 +42,6 @@ export class UsersController {
   async register(
     @Body() user: User
   ): Promise<User> {
-    console.log(11111111111, user);
     return this.service.saveUser(user)
   }
 
@@ -63,10 +62,10 @@ export class UsersController {
     const dt = new Date().getTime();
     if (token && new Date(token.expires).getTime() >= dt) {
       const payload: IJwtPayload = this.authService.createPayload(
-        token.name,
+        token.email,
         token.userUuid,
       );
-      const accessToken = await this.authService.signJwt(payload);
+      const newAccessToken = await this.authService.signJwt(payload);
 
       const expires = new Date();
       expires.setSeconds(expires.getSeconds() + jwtConstants.refreshExpires);
@@ -74,10 +73,10 @@ export class UsersController {
       await this.service.saveToken({
         token: token.token,
         userUuid: token.userUuid,
-        name: token.name,
+        email: token.email,
       });
 
-      return { accessToken };
+      return { accessToken: newAccessToken };
     }
     if (token) {
       await this.service.deleteToken(accessToken);

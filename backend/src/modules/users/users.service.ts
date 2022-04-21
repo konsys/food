@@ -166,31 +166,33 @@ export class UsersService {
     return res;
   }
 
-  async saveToken({
-    token,
-    userUuid,
-    name,
-  }: {
-    token: string;
-    userUuid: TUuid;
-    name: string;
-  }): Promise<Tokens> {
+  async saveToken(
+    {
+      token,
+      userUuid,
+      email,
+    }: {
+      token: string;
+      userUuid: TUuid;
+      email: string;
+    }): Promise<Tokens> {
+    console.log(11111111111, token);
     const expires = new Date();
     expires.setSeconds(expires.getSeconds() + jwtConstants.refreshExpires);
 
     const tokenToSave: Tokens = {
       userUuid,
-      name,
+      email,
       expires,
       token,
     };
 
+    const isToken = await this.tokens.findOne({ where: { email } });
     let res = null;
-
-    try {
-      res = await this.tokens.save(tokenToSave);
-    } catch (err) {
+    if (isToken) {
       res = await this.tokens.update(userUuid, { expires, token });
+    } else {
+      res = await this.tokens.save(tokenToSave);
     }
 
     return res;
