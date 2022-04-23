@@ -81,7 +81,7 @@ export class CrudStore<
     const ItemGate = createGate<TUuid>();
     const service = new CrudService<CreateEntity, FullEntity>(this.url);
 
-    const createNewItemFx = createEffect<Partial<CreateEntity>, FullEntity, Error>({
+    const createItemFetchListFx = createEffect<Partial<CreateEntity>, FullEntity, Error>({
       handler: (mt) => service.create(mt),
     });
 
@@ -143,19 +143,19 @@ export class CrudStore<
     $itemStore
       .on(setItem, (prev, item) => ({ ...prev, item }))
       .on(createNewItemFx.done, nullableResult)
-      .on(createNewItemFx.done, nullableResult)
+      .on(createItemFetchListFx.done, nullableResult)
       .on(getItemFx.done, nullableResult)
       .on(getItemByFilterFx.done, nullableResult)
       .on(updateItemFx.done, nullableResult)
       .on(deleteItemFx.done, () => createInitItem<FullEntity>())
       .on(createNewItemFx.pending, (prev, pending) => ({ ...prev, pending }))
-      .on(createNewItemFx.pending, (prev, pending) => ({ ...prev, pending }))
+      .on(createItemFetchListFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(getItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(getItemByFilterFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(updateItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(deleteItemFx.pending, (prev, pending) => ({ ...prev, pending }))
       .on(createNewItemFx.fail, requestItemErrorHandler)
-      .on(createNewItemFx.fail, requestItemErrorHandler)
+      .on(createItemFetchListFx.fail, requestItemErrorHandler)
       .on(getItemFx.fail, requestItemErrorHandler)
       .on(getItemByFilterFx.fail, requestItemErrorHandler)
       .on(updateItemFx.fail, requestItemErrorHandler)
@@ -170,7 +170,7 @@ export class CrudStore<
         filter ? { limit, page, filter, pending } : { limit, page, pending },
       target: getAllFx,
     });
-    createItemFetchListFx
+
     guard({
       clock: ItemGate.state,
       source: ItemGate.state.map((state) => state),
