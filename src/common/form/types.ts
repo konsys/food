@@ -17,12 +17,13 @@ export type TActionOnRemove<T> = TPromiseFn<T, unknown>;
 export type TActionAfterCancel<T> = TPromiseFn<void, T>;
 export type TResetFields = (fields?: any[]) => void;
 
-export type TModalWithFormProps<T> = ModalProps & {
+export type TModalWithFormProps<T, ReturnType = T> = ModalProps & {
   setModalVisible: TVoidFn<boolean>;
   modalVisible: boolean;
-  onCreate: TCreateItemFx<T>;
+  onCreate: TCreateItemFx<T, ReturnType>;
   pending: boolean;
   onUpdate?: TUpdateItemFx<TItemWithUuid<T>>;
+  afterCreate?: TPromiseFn<ReturnType>;
   getList?: Event<void>;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
   buttonText?: string;

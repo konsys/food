@@ -7,7 +7,7 @@ import { updatSelectedMenuItem } from '../restaurantMenu/model';
 import { getClientUuid } from './service';
 import { CartDto, TRestaurantMenuOrder } from './types';
 
-const { createItemFx, updateItemFx, deleteItemFx } = CartModel;
+const { createNewItemFx, updateItemFx, deleteItemFx } = CartModel;
 
 const sumAll = (order: TRestaurantMenuOrder[]) =>
   order.reduce((acc, v) => acc + v.quantity * v.restaurantMenu.price, 0);
@@ -53,7 +53,7 @@ export const addToCart = (
       },
     ];
 
-    createItemFx({
+    createNewItemFx({
       restaurantUuid: restaurantMenu.restaurantUuid,
       description: '',
       orderSum: sumAll(initialOrder),

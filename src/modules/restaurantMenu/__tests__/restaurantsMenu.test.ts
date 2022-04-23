@@ -3,7 +3,7 @@ import { FoodCategoryModel, ImageModel, RestaurantMenuModel, RestaurantModel } f
 import { restaurantMenuFactory } from '../restaurantMenuFactory';
 
 describe('restaurant tests', () => {
-  const { createItemFx, } = RestaurantMenuModel;
+  const { createNewItemFx, } = RestaurantMenuModel;
   const { getAllFx } = RestaurantModel;
   const { getItemByFilterFx: getFoodCategory } = FoodCategoryModel;
   const { getItemByFilterFx: getImage } = ImageModel;
@@ -24,7 +24,7 @@ describe('restaurant tests', () => {
             foodCategoryUuid: foodCategory.uuid,
             imageUuid: image.uuid,
           });
-          await createItemFx(item);
+          await createNewItemFx(item);
         }
       }
     }

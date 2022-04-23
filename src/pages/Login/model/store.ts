@@ -3,10 +3,10 @@ import { createDomain } from 'effector';
 import { createGate } from 'effector-react';
 import { CrudService } from '../../../common/api';
 import { clearToken, saveRefreshToken, saveToken } from '../../../http/AuthService/model';
-import { LoginDto } from '../../../modules/login/types';
+import { LoginDto, TTokens } from '../../../modules/login/types';
 import { getMyProfile } from '../../User/model/store';
 import { loginVkFetch } from './api';
-import { ILoginResponce, TTokens, TVkCode } from './types';
+import { ILoginResponce, TVkCode } from './types';
 
 const URL = `users/auth/login`;
 const crudService = new CrudService<LoginDto, LoginDto>(URL);
@@ -36,7 +36,7 @@ LoginGate.state.updates.watch((code) => {
 // Store
 export const $loginStore = AuthDomain.store<ILoginResponce | null>(null)
   .on(loginFx.done, (_, { result }: { result: any }) => {
-    auth({ ...result });
+    onSuccessLogin({ ...result });
     return result;
   })
   .on(loginFx.fail, () => {
@@ -45,7 +45,7 @@ export const $loginStore = AuthDomain.store<ILoginResponce | null>(null)
   })
   .reset(clearTokenStore);
 
-const auth = (tokens: TTokens) => {
+export const onSuccessLogin = (tokens: TTokens) => {
   clearToken();
   saveToken(tokens.accessToken);
   saveRefreshToken(tokens.refreshToken);

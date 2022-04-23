@@ -10,7 +10,9 @@ import { $imageBlob, resetImageBlob } from '../../modules/image/model/store';
 import { generateUuid } from '../utils/utils';
 import { TItemWithUuid } from '../types';
 
-export function useValidatedForm<T>(initialValues?: Partial<T>) {
+export function useValidatedForm<T, ReturnType = T>(
+  initialValues?: Partial<T>,
+) {
   const [form] = Form.useForm();
 
   const {
@@ -67,116 +69,120 @@ export function useValidatedForm<T>(initialValues?: Partial<T>) {
     [form],
   );
 
-  const useFormOnModal: FC<TModalWithFormProps<TItemWithUuid<T>>> = useCallback(
-    (props) => {
-      const {
-        modalVisible,
-        setModalVisible,
-        children,
-        buttonText,
-        onCreate,
-        onUpdate,
-        createImage,
-        pending,
-        afterClose,
-        itemState,
-        buttonType = 'primary',
-        buttonClassName,
-        title,
-      } = props;
+  const useFormOnModal: FC<TModalWithFormProps<TItemWithUuid<T>, ReturnType>> =
+    useCallback(
+      (props) => {
+        const {
+          modalVisible,
+          setModalVisible,
+          children,
+          buttonText,
+          onCreate,
+          onUpdate,
+          createImage,
+          pending,
+          afterClose,
+          itemState,
+          buttonType = 'primary',
+          buttonClassName,
+          title,
+          afterCreate,
+        } = props;
 
-      const uuid = itemState?.item?.uuid;
-      const [isFormPending, setIsFormPending] = useState<boolean>(false);
+        const uuid = itemState?.item?.uuid;
+        const [isFormPending, setIsFormPending] = useState<boolean>(false);
 
-      const imageBlob = useStore($imageBlob);
+        const imageBlob = useStore($imageBlob);
 
-      useEffect(() => {
-        if (itemState?.item) {
-          returnedFormInstance.setFieldsValue(itemState?.item);
-        } else {
-          resetImageBlob();
+        useEffect(() => {
+          if (itemState?.item) {
+            returnedFormInstance.setFieldsValue(itemState?.item);
+          } else {
+            resetImageBlob();
+            returnedFormInstance.resetFields();
+          }
+        }, [itemState]);
+
+        const modalOnOk = () => {
+          setIsFormPending(true);
+          form
+            .validateFields()
+            .then(async (validatedFormItem) => {
+              let returnValue = { ...validatedFormItem };
+              if (imageBlob && createImage) {
+                const fd = new FormData();
+                fd.append('file', imageBlob, `${generateUuid()}.jpg`);
+
+                const res = await createImage(fd);
+                const imgUuid = res.uuid;
+                returnValue = { ...validatedFormItem, imgUuid };
+              }
+              return returnValue;
+            })
+            .then((v) => (onUpdate ? onUpdate(v) : onCreate(v)))
+            .then((v) => afterCreate && afterCreate(v))
+            .then(() => setModalVisible(false))
+            .finally(() => setIsFormPending(false));
+        };
+
+        const disabledOkBtn = isFormPending;
+
+        const onOpen = () => {
+          onClose();
+          setModalVisible(true);
+        };
+
+        const onClose = () => {
+          setModalVisible(false);
           returnedFormInstance.resetFields();
-        }
-      }, [itemState]);
+          resetImageBlob();
+          afterClose && afterClose();
+        };
 
-      const modalOnOk = () => {
-        setIsFormPending(true);
-        form
-          .validateFields()
-          .then(async (validatedFormItem) => {
-            let returnValue = { ...validatedFormItem };
-            if (imageBlob && createImage) {
-              const fd = new FormData();
-              fd.append('file', imageBlob, `${generateUuid()}.jpg`);
+        const mopdalTitle = title ?? (uuid ? 'Редактировать' : 'Создать');
 
-              const res = await createImage(fd);
-              const imgUuid = res.uuid;
-              returnValue = { ...validatedFormItem, imgUuid };
-            }
-            return returnValue;
-          })
-          .then((v) => (v?.id && onUpdate ? onUpdate(v) : onCreate(v)))
-          .then(() => setModalVisible(false))
-          .finally(() => setIsFormPending(false));
-      };
-
-      const disabledOkBtn = isFormPending;
-
-      const onOpen = () => {
-        onClose();
-        setModalVisible(true);
-      };
-
-      const onClose = () => {
-        setModalVisible(false);
-        returnedFormInstance.resetFields();
-        resetImageBlob();
-        afterClose && afterClose();
-      };
-
-      const mopdalTitle = title ?? (uuid ? 'Редактировать' : 'Создать');
-
-      return (
-        <>
-          <Row gutter={8}>
-            <Col span={24} style={{ textAlign: 'left' }}>
-              <Button
-                type={buttonType}
-                onClick={onOpen}
-                className={buttonClassName ?? ''}
-              >
-                {buttonText || (itemState?.item ? 'Редактировать' : 'Создать')}
-              </Button>
-            </Col>
-          </Row>
-          <MainModal
-            okButtonProps={{
-              disabled: disabledOkBtn,
-              loading: isFormPending || pending,
-            }}
-            onCancel={onClose}
-            visible={modalVisible}
-            onOk={modalOnOk}
-            title={mopdalTitle}
-          >
-            <ReturnedForm
-              initialValues={initialValues}
-              isEdit
-              layout="vertical"
-              onKeyPress={(e: any) => {
-                if (enterKeyPressed(e) && !disabledOkBtn) {
-                  modalOnOk();
-                }
+        return (
+          <>
+            <Row gutter={8}>
+              <Col span={24} style={{ textAlign: 'left' }}>
+                <Button
+                  type={buttonType}
+                  onClick={onOpen}
+                  className={buttonClassName ?? ''}
+                >
+                  {buttonText ||
+                    (itemState?.item ? 'Редактировать' : 'Создать')}
+                </Button>
+              </Col>
+            </Row>
+            <MainModal
+              okButtonProps={{
+                disabled: disabledOkBtn,
+                loading: isFormPending || pending,
               }}
+              onCancel={onClose}
+              visible={modalVisible}
+              onOk={modalOnOk}
+              title={mopdalTitle}
             >
-              {children}
-            </ReturnedForm>
-          </MainModal>
-        </>
-      );
-    },
-    [ReturnedForm, form, initialValues],
-  );
+              <ReturnedForm
+                initialValues={initialValues}
+                isEdit
+                layout="vertical"
+                onKeyPress={(e: any) => {
+                  if (enterKeyPressed(e) && !disabledOkBtn) {
+                    modalOnOk();
+                  }
+                }}
+              >
+                {children}
+              </ReturnedForm>
+            </MainModal>
+          </>
+        );
+      },
+      [ReturnedForm, form, initialValues],
+    );
 
   return {
     formInstance: returnedFormInstance,

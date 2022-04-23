@@ -12,14 +12,14 @@ import { CartModel, CodeCheckModel, OrderModel, PromoModel } from '../../store';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
 
 const {
-  createItemFx: createOrderFx,
+  createNewItemFx: createOrderFx,
   $itemStore: orderStore,
   resetItemError: clearOrdeError,
 } = OrderModel;
 const { $itemStore: cartStore, ItemGate } = CartModel;
 const { $itemStore: promoStore } = PromoModel;
 const {
-  createItemWithoutFetchingListFx: createCheckoutCode,
+  createNewItemFx: createCheckoutCode,
   getItemByFilterFx: getCheckoutCode,
   $itemStore: codeCheckStore,
   ItemGate: CodeCheckGate,

@@ -38,7 +38,6 @@ export type TVkLoginRequest = {
   code: string;
 };
 
-export type TTokens = { accessToken: string; refreshToken: string };
 
 export type TVkAuthResponse = {
   access_token: string;

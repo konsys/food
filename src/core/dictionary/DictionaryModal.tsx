@@ -21,7 +21,7 @@ export function DictionaryModal<CreateEntity extends { uuid: TUuid }>({
 }: Props<CreateEntity>) {
   const {
     $itemStore,
-    createItemFx,
+    createNewItemFx,
     updateItemFx,
     getAllDefault,
     resetOne,
@@ -35,7 +35,7 @@ export function DictionaryModal<CreateEntity extends { uuid: TUuid }>({
 
   return (
     <ModalForm
-      onCreate={createItemFx}
+      onCreate={createNewItemFx}
       onUpdate={updateItemFx}
       width={600}
       getList={getAllDefault}

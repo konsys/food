@@ -14,11 +14,6 @@ export const Login = () => {
   return user ? 1 : 2;
 };
 
-export type TTokens = {
-  accessToken: string;
-  refreshToken: string;
-};
-
 export type TVkCode = {
   code: string;
 };

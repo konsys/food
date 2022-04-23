@@ -11,7 +11,7 @@ import { CartDto } from './modules/cart/types';
 import { CodeCheckDto } from './modules/codeCheck/types';
 import { PromoDto } from './modules/promo/types';
 import { OrderDto, TOrder } from './modules/order/types';
-import { LoginDto } from './modules/login/types';
+import { LoginDto, TTokens } from './modules/login/types';
 import { RegistrationDto } from './modules/registration/types';
 
 export const RestaurantModel = new CrudStore<RestaurantDto>(
@@ -32,5 +32,5 @@ export const CartModel = new CrudStore<CartDto>(apiUrls.cart.main).createCrudSto
 export const CodeCheckModel = new CrudStore<CodeCheckDto>(apiUrls.checkCode.main).createCrudStore();
 export const PromoModel = new CrudStore<PromoDto>(apiUrls.promo.main).createCrudStore();
 export const OrderModel = new CrudStore<TOrder, OrderDto>(apiUrls.order.main).createCrudStore();
-export const AuthModel = new CrudStore<LoginDto>(apiUrls.auth.main).createCrudStore();
+export const AuthModel = new CrudStore<LoginDto, TTokens>(apiUrls.auth.main).createCrudStore();
 export const RegistrationModel = new CrudStore<RegistrationDto>(apiUrls.registration.main).createCrudStore();
