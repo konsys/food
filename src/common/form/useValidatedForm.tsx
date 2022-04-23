@@ -13,7 +13,7 @@ import { TItemWithUuid } from '../types';
 export function useValidatedForm<T, ReturnType = T>(
   initialValues?: Partial<T>,
 ) {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm<TItemWithUuid<T>>();
 
   const {
     setFields: validateAndSetFields,
@@ -119,8 +119,21 @@ export function useValidatedForm<T, ReturnType = T>(
               }
               return returnValue;
             })
-            .then((v) => (onUpdate ? onUpdate(v) : onCreate(v)))
-            .then((v) => afterCreate && afterCreate(v))
+            .then(async (v) => {
+              if (onUpdate) {
+                const res = await onUpdate(v);
+
+                return res;
+              }
+              if (onCreate) {
+                const res = await onCreate(v);
+                if (afterCreate) {
+                  afterCreate(res);
+                }
+                return res;
+              }
+              return v;
+            })
             .then(() => setModalVisible(false))
             .finally(() => setIsFormPending(false));
         };

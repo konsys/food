@@ -20,9 +20,9 @@ export type TResetFields = (fields?: any[]) => void;
 export type TModalWithFormProps<T, ReturnType = T> = ModalProps & {
   setModalVisible: TVoidFn<boolean>;
   modalVisible: boolean;
-  onCreate: TCreateItemFx<T, ReturnType>;
   pending: boolean;
-  onUpdate?: TUpdateItemFx<TItemWithUuid<T>>;
+  onCreate?: TCreateItemFx<T, ReturnType>;
+  onUpdate?: TUpdateItemFx<T>;
   afterCreate?: TPromiseFn<ReturnType>;
   getList?: Event<void>;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
