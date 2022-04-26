@@ -16,9 +16,10 @@ import { UsersService } from './users.service';
 import { LocalAuthGuard } from 'src/modules/auth/local-auth.guard';
 import { AuthService } from 'src/modules/auth/auth.service';
 import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
-import { IRequestWithUser, TTokens, TVkLoginRequest } from './types';
-import { IJwtPayload, jwtConstants } from 'src/config';
+import { IRequestWithUser, TVkLoginRequest } from './types';
+import { ETokenType, IJwtPayload, jwtConstants } from 'src/config';
 import { TUuid } from 'src/common/types';
+import { TTokens } from '../auth/types';
 
 @Controller('users')
 export class UsersController {
@@ -66,6 +67,7 @@ export class UsersController {
         const payload: IJwtPayload = this.authService.createPayload(
           token.email,
           token.name,
+          ETokenType.ACCESS
         );
         const newAccessToken = await this.authService.signJwt(payload);
 

@@ -1,10 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { TUuid } from 'src/common/types';
-import { IJwtPayload } from 'src/config';
+import { ETokenType, IJwtPayload } from 'src/config';
 import { User } from 'src/entities/user.entity';
-import { TTokens, TUserCreds } from '../users/types';
 import { UsersService } from '../users/users.service';
+import { TTokens } from './types';
 import { getTokenExpire } from './utils';
 @Injectable()
 export class AuthService {
@@ -25,10 +24,11 @@ export class AuthService {
     return user?.name ? user : undefined;
   }
 
-  createPayload(username: string, uuid: string): IJwtPayload {
+  createPayload(username: string, uuid: string, tokenType: ETokenType): IJwtPayload {
     return {
       username,
       sub: uuid,
+      tokenType
     };
   }
 
@@ -44,9 +44,10 @@ export class AuthService {
     if (!user) {
       throw new UnauthorizedException('User not found');
     }
-    const payload: IJwtPayload = this.createPayload(user.email, user.uuid);
-    const accessToken = await this.signJwt(payload);
-    const refreshToken = await this.signJwt(payload, '60000s');
+    const accessPayload: IJwtPayload = this.createPayload(user.email, user.uuid, ETokenType.ACCESS);
+    const refreshPayload: IJwtPayload = this.createPayload(user.email, user.uuid, ETokenType.REFRESH);
+    const accessToken = await this.signJwt(accessPayload);
+    const refreshToken = await this.signJwt(refreshPayload, '60000s');
 
     await this.usersService.saveToken({
       token: refreshToken,

@@ -6,9 +6,15 @@ export interface IJwtSettings {
   refreshExpires: number;
 }
 
+export enum ETokenType {
+  ACCESS = 'ACCESS',
+  REFRESH = 'REFRESH'
+}
+
 export interface IJwtPayload {
   username: string;
   sub: TUuid;
+  tokenType: ETokenType
 }
 
 export const CLIENT_ID = 7988646;
