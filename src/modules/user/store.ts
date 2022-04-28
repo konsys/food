@@ -27,7 +27,7 @@ export const getUserByEmailFx = UserDomain.effect<string, IUser, Error>({
 
 export const clearProfile = UserDomain.event();
 
-export const $$profile = UserDomain.store<IUser | null>(null)
+export const $profile = UserDomain.store<IUser | null>(null)
   .on(getProfileFx.done, (_, { result }) => result || null)
   .reset(clearProfile);
 
@@ -77,7 +77,7 @@ export const setUser = UserDomain.event<Nullable<IUser>>();
 
 export const registerFx = UserDomain.effect<IUserRegistration, IRegistrationResponce, Error>({
   handler: fetchRegister,
-}); 1
+});
 
 export const $registerStore = UserDomain.store<Nullable<IRegistrationResponce>>(null).on(
   registerFx.done,
