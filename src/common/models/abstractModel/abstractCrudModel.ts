@@ -184,7 +184,7 @@ export class CrudStore<
     });
 
     sample({
-      clock: [deleteItemFx.done, updateItemFx.done, createNewItemFx.done],
+      clock: [deleteItemFx.done, updateItemFx.done, createItemFetchListFx.done],
       target: getAllDefault,
     });
 

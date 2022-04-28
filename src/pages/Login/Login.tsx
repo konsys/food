@@ -29,7 +29,6 @@ export function LoginPage() {
 
   const afterCreate = (v: TTokens) => {
     onSuccessLogin(v);
-    console.log(11111111111, v);
     return Promise.resolve();
   };
 
