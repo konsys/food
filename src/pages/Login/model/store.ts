@@ -4,7 +4,7 @@ import { createGate } from 'effector-react';
 import { CrudService } from '../../../common/api';
 import { clearToken, saveRefreshToken, saveToken } from '../../../modules/auth/model';
 import { LoginDto, TTokens } from '../../../modules/login/types';
-import { getMyProfile } from '../../User/model/store';
+import { getMyProfile } from '../../../modules/user/store';
 import { loginVkFetch } from './api';
 import { ILoginResponce, TVkCode } from './types';
 

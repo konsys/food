@@ -1,5 +1,5 @@
 import { useStore } from 'effector-react';
-import { $user } from '../../User/model/store';
+import { $user } from '../../../modules/user/store';
 
 export const REDIRECT_URI = 'http://127.0.0.1:3000/login';
 
