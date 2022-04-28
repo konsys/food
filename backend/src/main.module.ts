@@ -15,6 +15,8 @@ import { CodeCheckModule } from './modules/code-check/code-check.module';
 import { PromoModule } from './modules/promo/promo.module';
 import { OrderModule } from './modules/order/order.module';
 import { UsersModule } from './modules/users/users.module';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './modules/auth/jwt-auth.guard';
 
 @Module({
   imports: [

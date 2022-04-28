@@ -47,6 +47,15 @@ export const refreshTokenFx = UserDomain.effect<string, { accessToken: string },
   handler: fetchRefreshToken,
 });
 
+// sample({
+//   clock: refreshTokenFx.done,
+//   source: refreshTokenFx.done,
+//   fn: (result) => {
+//     saveToken(result.accessToken);
+//   },
+//   target: logoutFx,
+// });
+
 refreshTokenFx.done.watch(({ result }) => {
   if (!result.accessToken) {
     clearToken();
@@ -74,9 +83,9 @@ export const setUser = UserDomain.event<IUser | null>();
 
 export const registerFx = UserDomain.effect<IUserRegistration, IRegistrationResponce, Error>({
   handler: fetchRegister,
-});
+}); 1
 
-export const $$register = UserDomain.store<IRegistrationResponce | null>(null).on(
+export const $registerStore = UserDomain.store<IRegistrationResponce | null>(null).on(
   registerFx.done,
   (_, { result }) => result
 );

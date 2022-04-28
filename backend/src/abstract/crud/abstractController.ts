@@ -1,12 +1,13 @@
 import { DeepPartial } from 'typeorm';
-import { Get, Post, Body, Param, Delete, Put, UseInterceptors, Query, HttpException, HttpStatus } from '@nestjs/common';
+import { Get, Post, Body, Param, Delete, Put, UseInterceptors, Query, HttpException, HttpStatus, UseGuards } from '@nestjs/common';
 import { TUuid } from 'src/common/types';
 
 import { TListRequest } from 'src/common/types/paginationTypes';
 import { IAbstractService } from './abstractService';
 import { ExtractInterceptor } from './ExtractInterceptor';
 import { instanceToInstance } from 'class-transformer';
-import { Permission, Role, Roles } from 'src/modules/auth/components/roles.decorator';
+import { Role, Roles } from 'src/modules/auth/components/roles.decorator';
+import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
 
 @UseInterceptors(ExtractInterceptor)
 export class AbstractController<E> {
@@ -27,6 +28,7 @@ export class AbstractController<E> {
     return this.service.findAll(params);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('filter-one')
   async filterOne(@Query() filter: DeepPartial<E>) {
 
