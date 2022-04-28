@@ -7,6 +7,7 @@ import { RegistrationDto } from '../../modules/registration/types';
 import { $user } from '../../modules/user/store';
 import { AuthModel, RegistrationModel } from '../../store';
 import LoginFields from '../Header/components/LoginFields/LoginFields';
+import UserAvatarIcon from '../UserPage/UserAvatarIcon';
 import { onSuccessLogin } from './model/store';
 import RegistrationFields from './Registration/components/RegistrationFields';
 
@@ -61,5 +62,5 @@ export function LoginPage() {
       <LoginFields setIsRegistration={setIsRegistration} />
     </LoginForm>
   );
-  return <div>{user ? formComponent : 'нету'}</div>;
+  return <div>{user ? <UserAvatarIcon user={user} /> : formComponent}</div>;
 }

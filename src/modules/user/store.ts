@@ -10,6 +10,7 @@ import {
 } from './api';
 import { IRegistrationResponce, IUser, IUserRegistration } from './types';
 import { clearToken, clearRefreshToken, saveToken, getRefreshToken } from '../auth/model';
+import { Nullable } from '../../core/types';
 
 const UserDomain = createDomain('UserDomain');
 
@@ -72,18 +73,18 @@ sample({
 });
 
 
-export const setUser = UserDomain.event<IUser | null>();
+export const setUser = UserDomain.event<Nullable<IUser>>();
 
 export const registerFx = UserDomain.effect<IUserRegistration, IRegistrationResponce, Error>({
   handler: fetchRegister,
 }); 1
 
-export const $registerStore = UserDomain.store<IRegistrationResponce | null>(null).on(
+export const $registerStore = UserDomain.store<Nullable<IRegistrationResponce>>(null).on(
   registerFx.done,
   (_, { result }) => result
 );
 
-export const $user = UserDomain.store<IUser | null>(null)
+export const $user = UserDomain.store<Nullable<IUser>>(null)
   .on(setUser, (_, data) => data)
   .on(getUserFx.done, (_, { result }) => result)
   .reset(logout);
