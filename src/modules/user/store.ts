@@ -1,12 +1,6 @@
 import { createGate } from 'effector-react';
 import { createDomain, sample } from 'effector';
 import {
-  clearRefreshToken,
-  clearToken,
-  getRefreshToken,
-  saveToken,
-} from '../../../http/AuthService/model';
-import {
   fetchLogout,
   fetchMyProfile,
   fetchRefreshToken,
@@ -15,6 +9,7 @@ import {
   fetchUserProfile,
 } from './api';
 import { IRegistrationResponce, IUser, IUserRegistration } from './types';
+import { clearToken, clearRefreshToken, saveToken, getRefreshToken } from '../../http/AuthService/model';
 
 const UserDomain = createDomain('UserDomain');
 

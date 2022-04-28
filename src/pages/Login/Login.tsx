@@ -41,7 +41,7 @@ export function LoginPage() {
           pending={false}
           onCreate={registration}
           buttonClassName="header-nav-item-link__login"
-          buttonText="Войти"
+          buttonText=""
           title="Зарегистрироваться"
         >
           <RegistrationFields />

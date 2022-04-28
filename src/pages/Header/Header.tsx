@@ -15,17 +15,17 @@ function Header() {
   const { item } = useStore(cartStore);
   return (
     <>
-      <header className='header header_sticky'>
-        <div className='header-content d-flex'>
+      <header className="header header_sticky">
+        <div className="header-content d-flex">
           <HeaderNavigationToggle />
-          <div className='header-container container'>
+          <div className="header-container container">
             <HeaderLogo />
             <HeaderCity />
             <HeaderButtons cart={item} />
           </div>
         </div>
       </header>
-      <div className='fake-header' />
+      <div className="fake-header" />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { axiosClient } from '../../../http/Clients';
+import { axiosClient } from '../../http/Clients';
 import { IRegistrationResponce, IUser, IUserRegistration } from './types';
 
 const usersUrl = `/users`;
