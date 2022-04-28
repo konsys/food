@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { Params } from '../../config/params';
-import { getToken } from '../AuthService/model';
+import { getToken } from '../../modules/auth/model';
 
 export const axiosClient: AxiosInstance = axios.create({
   baseURL: Params.BASE_URL,

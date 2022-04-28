@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
-import { IUser, LoginRequest } from '../../pages/User/model/types';
-import { axiosClient } from '../Clients';
-import { Paths } from '../Clients/paths';
+import { axiosClient } from '../../http/Clients';
+import { Paths } from '../../http/Clients/paths';
+import { IUser, LoginRequest } from '../user/types';
 
 export const authTokenName = 'Authorization';
 

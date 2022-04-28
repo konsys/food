@@ -2,7 +2,7 @@ import { notification } from 'antd';
 import { createDomain } from 'effector';
 import { createGate } from 'effector-react';
 import { CrudService } from '../../../common/api';
-import { clearToken, saveRefreshToken, saveToken } from '../../../http/AuthService/model';
+import { clearToken, saveRefreshToken, saveToken } from '../../../modules/auth/model';
 import { LoginDto, TTokens } from '../../../modules/login/types';
 import { getMyProfile } from '../../User/model/store';
 import { loginVkFetch } from './api';

@@ -9,7 +9,7 @@ import {
   fetchUserProfile,
 } from './api';
 import { IRegistrationResponce, IUser, IUserRegistration } from './types';
-import { clearToken, clearRefreshToken, saveToken, getRefreshToken } from '../../http/AuthService/model';
+import { clearToken, clearRefreshToken, saveToken, getRefreshToken } from '../auth/model';
 
 const UserDomain = createDomain('UserDomain');
 
