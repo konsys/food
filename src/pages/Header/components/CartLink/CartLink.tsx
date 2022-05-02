@@ -1,3 +1,4 @@
+import { Row, Col } from 'antd';
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { TItem } from '../../../../common/api/types';
@@ -12,14 +13,13 @@ function CartLink(props: Props) {
   const { cart } = props;
 
   return (
-    <Link
-      to={`/cart/${cart?.item?.uuid}`}
-      title="Корзина"
-      rel="nofollow"
-      className="cart-link_active"
-    >
-      <b>{cart?.item?.orderSum} ₽</b>
-    </Link>
+    <Row className="cart-link_active">
+      <Col>
+        <Link to={`/cart/${cart?.item?.uuid}`} title="Корзина" rel="nofollow">
+          <b>{cart?.item?.orderSum} ₽</b>
+        </Link>
+      </Col>
+    </Row>
   );
 }
 
