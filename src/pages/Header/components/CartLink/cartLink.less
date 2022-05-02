@@ -1,0 +1,33 @@
+.cart-link_active {
+    -webkit-animation    : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    animation            : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
+    background-color     : #f37021;
+    background-image     : url(http://localhost:8000/img/icons/basket-icon-white.svg);
+    background-position-x: 17px;
+    background-repeat    : no-repeat;
+    border-color         : #f37021;
+    position             : relative;
+    padding-left         : 42px;
+    padding-top          : 8px;
+
+    &:before {
+        -webkit-animation: addToCart 1s cubic-bezier(.42, 0, 1, 1) forwards;
+        animation        : addToCart 1s cubic-bezier(.42, 0, 1, 1) forwards;
+        background       : #f37021;
+        background       : radial-gradient(transparent, rgba(238, 129, 97, .6));
+        border-radius    : 20px;
+        content          : "";
+        height           : 150%;
+        left             : 50%;
+        position         : absolute;
+        top              : 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform        : translate(-50%, -50%);
+        width            : 110%;
+    }
+
+    b {
+        font-size: 1rem;
+        color    : #fff;
+    }
+}

@@ -6,9 +6,7 @@ interface Props {}
 function CartStub(props: Props) {
   const {} = props;
 
-  return (
-    <span title="Корзина пуста" className="header-nav-item-link-basket-stub" />
-  );
+  return <span title="Корзина пуста" className="cart-stub" />;
 }
 
 export default memo(CartStub);

@@ -13,7 +13,7 @@ type Props = {
 };
 
 const HeaderButtons = ({ cart }: Props) => (
-  <Row gutter={8} className="header-nav header-buttons d-flex float-end">
+  <Row gutter={8} className="d-flex float-end">
     <Col className="d-none d-md-flex ">
       {cart?.item?.orderSum ? <CartLink cart={cart} /> : <CartStub />}
     </Col>

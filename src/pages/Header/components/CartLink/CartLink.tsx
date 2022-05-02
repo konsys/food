@@ -16,7 +16,7 @@ function CartLink(props: Props) {
       to={`/cart/${cart?.item?.uuid}`}
       title="Корзина"
       rel="nofollow"
-      className="header-nav-item-link-basket header-nav-item-link-basket_active header-nav-item-link-basket_active-animate"
+      className="cart-link_active"
     >
       <b>{cart?.item?.orderSum} ₽</b>
     </Link>
