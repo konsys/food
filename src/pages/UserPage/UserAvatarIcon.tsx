@@ -1,5 +1,6 @@
-import { Row, Col } from 'antd';
+import { Row, Col, Avatar, Image } from 'antd';
 import React, { memo } from 'react';
+import { UserOutlined } from '@ant-design/icons';
 import { Nullable } from '../../core/types';
 import { IUser } from '../../modules/user/types';
 
@@ -12,7 +13,15 @@ function UserAvatarIcon(props: Props) {
 
   return (
     <Row>
-      <Col>UserAvatarIcon {user?.name}</Col>
+      <Col>
+        <div>
+          {user?.avatar ? (
+            <Avatar src={<Image src={user.avatar} style={{ width: 32 }} />} />
+          ) : (
+            <Avatar size="large" icon={<UserOutlined />} />
+          )}
+        </div>
+      </Col>
     </Row>
   );
 }

@@ -1,18 +1,7 @@
 @import '../../../../common/template/config/theme/vars.less';
 
-.header-nav-item-link-basket-stub {
-    background   : url(http://localhost:8000/img/icons/basket-icon.svg) no-repeat center center;
-    border-radius: 20px;
-    opacity      : .4;
-    padding      : 19px;
-}
 
-.header-nav a.header-nav-item-link,
-.header-nav .header-nav-item-link__login {
-    border-radius: 20px;
-    padding      : 8px 19px;
-    text-align   : center
-}
+
 
 .header-nav a:hover,
 .header-nav .header-nav-item-link__login {
@@ -28,20 +17,12 @@
     display          : block;
     font-size        : 14px;
     height           : 40px;
-    transition       : border-color .3s
 }
 
 
-.header-nav .list-clear {
-    display: flex
-}
 
 .header-nav .list-clear li {
     margin-right: 10px
-}
-
-.header-nav .list-clear li:last-child {
-    margin-right: 0
 }
 
 
@@ -51,7 +32,7 @@
 
 
 
-.header-nav a.header-nav-item-link-basket.header-nav-item-link-basket_active {
+.header-nav a.header-nav-item-link-basket .header-nav-item-link-basket_active {
     -webkit-animation    : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
     animation            : colorChange 1s cubic-bezier(.42, 0, 1, 1) forwards;
     background-color     : #f37021;

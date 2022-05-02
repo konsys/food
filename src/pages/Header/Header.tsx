@@ -12,7 +12,7 @@ const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
 
 function Header() {
   useGate(CartGate, getClientUuid());
-  const { item } = useStore(cartStore);
+  const cart = useStore(cartStore);
   return (
     <>
       <header className="header header_sticky">
@@ -21,7 +21,7 @@ function Header() {
           <div className="header-container container">
             <HeaderLogo />
             <HeaderCity />
-            <HeaderButtons cart={item} />
+            <HeaderButtons cart={cart} />
           </div>
         </div>
       </header>
