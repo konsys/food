@@ -7,6 +7,7 @@ export interface IRegistrationResponce {
 
 export type UserDto = {
   userUuid: string;
+  phone: string;
   vip: boolean;
   registrationType?: string;
   name: string;

@@ -7,6 +7,7 @@ import { HttpStatus } from '../../common/utils/constants';
 import { notifyError } from '../../core/errors';
 import { getClientUuid } from '../../modules/cart/service';
 import { TOrder } from '../../modules/order/types';
+import { $user } from '../../modules/user/store';
 import { pathNames } from '../../routes/paths';
 import { CartModel, CodeCheckModel, OrderModel, PromoModel } from '../../store';
 import CheckoutForm from './containers/CheckoutForm/CheckoutForm';
@@ -37,6 +38,7 @@ function Checkout() {
   const promo = useStore(promoStore);
   const code = useStore(codeCheckStore);
   const order = useStore(orderStore);
+  const user = useStore($user);
 
   const createOrder = async (newOrder: Partial<TOrder>) => {
     const { uuid: orderUuid } = await createOrderFx(newOrder);
@@ -68,6 +70,7 @@ function Checkout() {
           createCheckoutCode={createCheckoutCode}
           getCheckoutCode={getCheckoutCode}
           createOrder={createOrder}
+          user={user}
         />
       )}
     </Spin>

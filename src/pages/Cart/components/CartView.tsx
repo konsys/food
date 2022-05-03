@@ -1,9 +1,7 @@
 import React, { memo } from 'react';
 import { TItem } from '../../../common/api/types';
 import { TUuid, TVoidFn } from '../../../common/types';
-import { Nullable } from '../../../core/types';
 import { CartDto } from '../../../modules/cart/types';
-import { UserDto } from '../../../modules/user/types';
 import CartComponent from './MobileCart/CartComponent/CartComponent';
 
 interface Props {
@@ -11,19 +9,12 @@ interface Props {
   stickyClass: string;
   changeQuantity: (uuid: TUuid, delta: number) => void;
   deleteFromCart: TVoidFn<string>;
-  user: Nullable<UserDto>;
   sideView?: boolean;
 }
 
 function CartView(props: Props) {
-  const {
-    sideView,
-    cartItem,
-    stickyClass,
-    changeQuantity,
-    deleteFromCart,
-    user,
-  } = props;
+  const { sideView, cartItem, stickyClass, changeQuantity, deleteFromCart } =
+    props;
 
   return (
     <div>
@@ -33,7 +24,6 @@ function CartView(props: Props) {
             cartItem={cartItem}
             changeQuantity={changeQuantity}
             deleteFromCart={deleteFromCart}
-            user={user}
           />
         </div>
       ) : (
@@ -43,7 +33,6 @@ function CartView(props: Props) {
               cartItem={cartItem}
               changeQuantity={changeQuantity}
               deleteFromCart={deleteFromCart}
-              user={user}
             />
           </div>
         </div>

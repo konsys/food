@@ -3,9 +3,7 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { TItem } from '../../../../../common/api/types';
 import { TUuid, TVoidFn } from '../../../../../common/types';
-import { Nullable } from '../../../../../core/types';
 import { CartDto } from '../../../../../modules/cart/types';
-import { UserDto } from '../../../../../modules/user/types';
 import CartItem from '../../CartItem/CartItem';
 
 import './cartComponent.less';
@@ -14,11 +12,10 @@ interface Props {
   cartItem: TItem<CartDto>;
   changeQuantity: (uuid: TUuid, delta: number) => void;
   deleteFromCart: TVoidFn<TUuid>;
-  user: Nullable<UserDto>;
 }
 
 function CartComponent(props: Props) {
-  const { cartItem, changeQuantity, deleteFromCart, user } = props;
+  const { cartItem, changeQuantity, deleteFromCart } = props;
 
   return (
     <div className="cart-section__body">
@@ -72,17 +69,13 @@ function CartComponent(props: Props) {
       <Row gutter={[8, 8]} className="cart-bottom__info">
         {cartItem?.item?.orderSum ? (
           <Col className="cart-bottom__checkout-button">
-            {user ? (
-              'Юзер есть'
-            ) : (
-              <Link
-                to={`/checkout/${cartItem?.item?.uuid}`}
-                title="Оформить заказ"
-                rel="nofollow"
-              >
-                Оформить заказ
-              </Link>
-            )}
+            <Link
+              to={`/checkout/${cartItem?.item?.uuid}`}
+              title="Оформить заказ"
+              rel="nofollow"
+            >
+              Оформить заказ
+            </Link>
           </Col>
         ) : (
           <Col className="cart-bottom__checkout-button--disabled">

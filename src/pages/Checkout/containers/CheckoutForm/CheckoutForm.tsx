@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useStore } from 'effector-react';
 import { Button, Col, Row } from 'antd';
 import { TPromiseFn } from '../../../../common/types';
@@ -10,9 +10,13 @@ import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { TItem } from '../../../../common/api/types';
 import { CartDto } from '../../../../modules/cart/types';
 import OrderDescription from '../../components/OrderDescription/OrderDescription';
-import { $orderStore } from '../../../../modules/order/model';
+import { $orderStore, updateOrderStore } from '../../../../modules/order/model';
 import { TOrder } from '../../../../modules/order/types';
+import { Nullable } from '../../../../core/types';
+import { UserDto } from '../../../../modules/user/types';
+
 import './checkoutForm.less';
+import { getClientUuid } from '../../../../modules/cart/service';
 
 interface Props {
   cart: TItem<CartDto>;
@@ -21,6 +25,7 @@ interface Props {
   getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createOrder: TPromiseFn<Partial<TOrder>>;
+  user: Nullable<UserDto>;
 }
 
 function CheckoutForm({
@@ -30,7 +35,18 @@ function CheckoutForm({
   getCheckoutCode,
   createCheckoutCode,
   createOrder,
+  user,
 }: Props) {
+  useEffect(() => {
+    if (user) {
+      updateOrderStore({
+        phone: user.phone,
+        isPhoneValid: true,
+        userUuid: getClientUuid(),
+      });
+    }
+  }, [user, updateOrderStore]);
+
   const cartItem = cart?.item;
 
   const order = useStore($orderStore);
@@ -48,6 +64,7 @@ function CheckoutForm({
           </div>
 
           {/* PHONE --------------------------- */}
+
           <PhoneCheckoutForm
             code={code}
             getCheckoutCode={getCheckoutCode}
@@ -56,15 +73,18 @@ function CheckoutForm({
 
           {/* TIME --------------------------- */}
           <div className="ordering-form__time">
-            <DateCheckoutForm disabled={!order.phoneConfirmed} cart={cart} />
+            <DateCheckoutForm
+              disabled={!order.phoneConfirmed && !user}
+              cart={cart}
+            />
           </div>
           <div className="ordering-form__time">
-            <PromoCodeCheckoutForm disabled={!order.phoneConfirmed} />
+            <PromoCodeCheckoutForm disabled={!order.phoneConfirmed && !user} />
           </div>
 
           <div className="ordering-form__finish">
             <div className="order-finish__wrapper">
-              <OrderDescription />{' '}
+              <OrderDescription />
               <div className="order-finish__discount">
                 {order.percentDiscount ? (
                   <>
