@@ -2,10 +2,11 @@ import { ModalProps } from 'antd';
 import { ButtonType } from 'antd/lib/button';
 import { Event } from 'effector';
 import { FieldData, ValidateFields } from 'rc-field-form/es/interface';
+import React, { ReactNode } from 'react';
 import { ImageDto } from '../../modules/image/model/types';
 import { TItemStore } from '../api/types';
 import { TCreateItemFx, TUpdateItemFx } from '../models/abstractModel/abstractCrudModel';
-import { TItemWithUuid, TPromiseFn, TVoidFn } from '../types';
+import { TPromiseFn, TVoidFn } from '../types';
 import { AbstractFormProps } from './AbstractForm';
 
 export type TSetFieldsValue<T> = (item: Partial<T> | null) => void;
@@ -30,6 +31,7 @@ export type TModalWithFormProps<T, ReturnType = T> = ModalProps & {
   buttonType?: ButtonType;
   buttonClassName?: string;
   itemState?: TItemStore<T>;
+
 };
 
 export type TReturnedForm = AbstractFormProps;

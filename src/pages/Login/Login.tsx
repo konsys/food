@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import { useStore } from 'effector-react';
 import React, { useEffect, useState } from 'react';
 import { useValidatedForm } from '../../common/form/useValidatedForm';

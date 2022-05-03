@@ -4,9 +4,7 @@ import { ModalProps, Modal } from 'antd';
 type Props = PropsWithChildren<ModalProps>;
 
 export function MainModal(props: Props) {
-  return (
-    <Modal {...props} />
-  );
+  return <Modal {...props} />;
 }
 
 MainModal.confirm = Modal.confirm;
