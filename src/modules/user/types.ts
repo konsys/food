@@ -1,9 +1,11 @@
+import { type } from "os";
+
 export interface IRegistrationResponce {
   registrationCode: string;
   email: string;
 }
 
-export interface IUser {
+export type UserDto = {
   userUuid: string;
   vip: boolean;
   registrationType?: string;

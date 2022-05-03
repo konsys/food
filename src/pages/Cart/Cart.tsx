@@ -14,6 +14,7 @@ import { getClientUuid } from '../../modules/cart/service';
 import { TUuid } from '../../common/types';
 import StandardModal from '../../common/components/Modal/StandardModal';
 import { $selectedMenuItemStore } from '../../modules/restaurantMenu/model';
+import { $user } from '../../modules/user/store';
 
 const {
   $itemStore: cartStore,
@@ -31,6 +32,7 @@ function Cart({ sideView }: Props) {
 
   const cartItem = useStore(cartStore);
   const addedRestaurantItem = useStore($selectedMenuItemStore);
+  const user = useStore($user);
 
   const { item: cartOrder, pending, error } = cartItem;
   const { uuid } = useParams<{ uuid: TUuid }>();
@@ -92,6 +94,7 @@ function Cart({ sideView }: Props) {
           deleteFromCart={deleteFromCart}
           sideView={sideView}
           stickyClass={stickyClass}
+          user={user}
         />
       )}
       <StandardModal

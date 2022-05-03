@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { axiosClient } from '../../http/Clients';
 import { Paths } from '../../http/Clients/paths';
-import { IUser, LoginRequest } from '../user/types';
+import { LoginRequest, UserDto } from '../user/types';
 
 export const authTokenName = 'Authorization';
 
@@ -18,12 +18,12 @@ interface AuthResponse {
   tokenExpireIn: string;
   refreshToken: string;
   refreshTokenExpiresIn: string | null;
-  profile: IUser;
+  profile: UserDto;
 }
 
 export class Auth {
 
-  public static initialize(): Promise<IUser> {
+  public static initialize(): Promise<UserDto> {
     if (!Auth.accessToken) {
       return Promise.reject(new Error());
     }
@@ -34,7 +34,7 @@ export class Auth {
     return Auth.loadUser();
   }
 
-  public static async login({ username, password, saveCredentials }: LoginRequest): Promise<IUser> {
+  public static async login({ username, password, saveCredentials }: LoginRequest): Promise<UserDto> {
     const req = { username, password };
     const authResponse = await axiosClient.post(`${Paths.auth}/pwd`, req);
     const auth = authResponse.data as AuthResponse;
@@ -50,7 +50,7 @@ export class Auth {
     Auth.cleanAuthHeaders();
   }
 
-  public static async loadUser(): Promise<IUser> {
+  public static async loadUser(): Promise<UserDto> {
     return axiosClient.get(Paths.user);
   }
 

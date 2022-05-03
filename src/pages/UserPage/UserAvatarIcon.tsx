@@ -2,10 +2,10 @@ import { Row, Col, Avatar, Image } from 'antd';
 import React, { memo } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { Nullable } from '../../core/types';
-import { IUser } from '../../modules/user/types';
+import { UserDto } from '../../modules/user/types';
 
 interface Props {
-  user: Nullable<IUser>;
+  user: Nullable<UserDto>;
 }
 
 function UserAvatarIcon(props: Props) {

@@ -1,5 +1,5 @@
 import { axiosClient } from '../../http/Clients';
-import { IRegistrationResponce, IUser, IUserRegistration } from './types';
+import { IRegistrationResponce, IUserRegistration, UserDto } from './types';
 
 const usersUrl = `/users`;
 const initUsersUrl = `/users/init`;
@@ -9,25 +9,25 @@ export const initUsersFetch = async ({
 }: {
   ids: number[];
   gameId: string;
-}): Promise<IUser[]> =>
-  (await axiosClient.get<IUser[]>(initUsersUrl, { params: { ids, gameId } })).data;
+}): Promise<UserDto[]> =>
+  (await axiosClient.get<UserDto[]>(initUsersUrl, { params: { ids, gameId } })).data;
 
-export const usersFetch = async (ids: number[]): Promise<IUser[]> =>
-  (await axiosClient.get<IUser[]>(usersUrl, { params: { ids } })).data;
+export const usersFetch = async (ids: number[]): Promise<UserDto[]> =>
+  (await axiosClient.get<UserDto[]>(usersUrl, { params: { ids } })).data;
 
 const profileUrl = `/users/profile`;
 
-export async function fetchMyProfile(): Promise<IUser> {
-  return (await axiosClient.get<IUser>(profileUrl)).data;
+export async function fetchMyProfile(): Promise<UserDto> {
+  return (await axiosClient.get<UserDto>(profileUrl)).data;
 }
 
-export async function fetchUserProfile(id: number): Promise<IUser> {
+export async function fetchUserProfile(id: number): Promise<UserDto> {
   const url = `${profileUrl}/${id}`;
-  return (await axiosClient.get<IUser>(url)).data;
+  return (await axiosClient.get<UserDto>(url)).data;
 }
 
-export async function fetchUserEmail(email: string): Promise<IUser> {
-  return (await axiosClient.get<IUser>('/users/creds', { params: { email } })).data;
+export async function fetchUserEmail(email: string): Promise<UserDto> {
+  return (await axiosClient.get<UserDto>('/users/creds', { params: { email } })).data;
 }
 
 const refreshUrl = `/users/auth/refresh`;
