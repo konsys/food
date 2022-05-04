@@ -4,9 +4,10 @@ import HeaderButtons from './HeaderButtons/HeaderButtons';
 import { HeaderNavigationToggle } from './components/HeaderNavigationToggle/HeaderNavigationToggle';
 import { HeaderLogo } from './components/HeaderLogo/HeaderLogo';
 import { HeaderCity } from './components/HeaderCity/HeaderCity';
-import './header.less';
 import { CartModel } from '../../store';
 import { getClientUuid } from '../../modules/cart/service';
+
+import './header.less';
 
 const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
 

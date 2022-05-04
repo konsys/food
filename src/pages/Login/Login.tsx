@@ -1,36 +1,42 @@
-import { useStore } from 'effector-react';
-import React, { useEffect, useState } from 'react';
-import { useValidatedForm } from '../../common/form/useValidatedForm';
-import { uuid } from '../../common/utils/utils';
+import React from 'react';
+import { TCreateItemFx } from '../../common/models/abstractModel/abstractCrudModel';
+import { TItemWithUuid, TVoidFn } from '../../common/types';
+import { Nullable } from '../../core/types';
 import { LoginDto, TTokens } from '../../modules/login/types';
 import { RegistrationDto } from '../../modules/registration/types';
-import { $user } from '../../modules/user/store';
-import { AuthModel, RegistrationModel } from '../../store';
+import { UserDto } from '../../modules/user/types';
 import LoginFields from '../Header/components/LoginFields/LoginFields';
 import UserAvatarIcon from '../UserPage/UserAvatarIcon';
-import { onSuccessLogin } from './model/store';
 import RegistrationFields from './Registration/components/RegistrationFields';
 
-const { createNewItemFx: login } = AuthModel;
-const { createNewItemFx: registration } = RegistrationModel;
+interface Props {
+  isVisible: boolean;
+  setIsVisible: TVoidFn<boolean>;
+  RegistrationForm: any;
+  isRegistration: boolean;
+  setIsRegistration: TVoidFn<boolean>;
+  registration: TCreateItemFx<
+    Partial<RegistrationDto>,
+    TItemWithUuid<RegistrationDto>
+  >;
+  login: TCreateItemFx<Partial<LoginDto>, TTokens>;
+  LoginForm: any;
+  afterLogin: TVoidFn<TTokens>;
+  user: Nullable<UserDto>;
+}
 
-export function LoginPage() {
-  const user = useStore($user);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isRegistration, setIsRegistration] = useState(false);
-  const { ModalForm: LoginForm } = useValidatedForm<LoginDto, TTokens>({
-    uuid: uuid(),
-  });
-  const { ModalForm: RegistrationForm } = useValidatedForm<RegistrationDto>({
-    uuid: uuid(),
-  });
-
-  useEffect(() => {
-    if (!isVisible) {
-      setIsRegistration(false);
-    }
-  }, [setIsRegistration, isVisible]);
-
+export function LoginPage({
+  isVisible,
+  setIsVisible,
+  RegistrationForm,
+  isRegistration,
+  setIsRegistration,
+  registration,
+  login,
+  LoginForm,
+  afterLogin,
+  user,
+}: Props) {
   // useEffect(() => {
   //   if (loginStore.error) {
   //     loginFormInstanse.setFields([
@@ -61,6 +67,7 @@ export function LoginPage() {
       setModalVisible={setIsVisible}
       pending={false}
       onCreate={login}
+      afterCreate={afterLogin}
       buttonClassName="header-nav-item-link__login"
       buttonText="Войти"
       title="Войти"
