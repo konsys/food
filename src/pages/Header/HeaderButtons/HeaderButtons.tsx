@@ -9,8 +9,7 @@ import { LoginDto, TTokens } from '../../../modules/login/types';
 import { RegistrationDto } from '../../../modules/registration/types';
 import { $user } from '../../../modules/user/store';
 import { AuthModel, RegistrationModel } from '../../../store';
-import { LoginPage } from '../../Login/Login';
-import { onSuccessLogin } from '../../Login/model/store';
+import LoginPage from '../../Login/Login';
 import CartLink from '../components/CartLink/CartLink';
 import CartStub from '../components/CartStub/CartStub';
 import './headerButtons.less';
@@ -19,14 +18,13 @@ type Props = {
   cart?: TItem<CartDto>;
 };
 
-const { createNewItemFx: login, $itemStore: $loginStore } = AuthModel;
+const { createNewItemFx: login } = AuthModel;
 const { createNewItemFx: registration } = RegistrationModel;
 
 const HeaderButtons = ({ cart }: Props) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const user = useStore($user);
-  const loginStore = useStore($loginStore);
 
   const [isRegistration, setIsRegistration] = useState(false);
   const { ModalForm: LoginForm, formInstance: loginFormInstanse } =
@@ -43,22 +41,24 @@ const HeaderButtons = ({ cart }: Props) => {
     }
   }, [setIsRegistration, isVisible]);
 
-  const afterLogin = (v: TTokens) => {
-    onSuccessLogin(v);
-    return Promise.resolve();
-  };
+  const onLogin = async () =>
+    loginFormInstanse.validateFields().then(async (loginForm) => {
+      await login(loginForm);
+      // onSuccessLogin(loginForm);
+      console.log(1111111111, loginForm);
+    });
 
-  useEffect(() => {
-    if (loginStore?.error) {
-      loginFormInstanse.setFields([
-        {
-          name: 'password',
-          errors: [loginStore.error?.message ?? ''],
-          // value: 'wefwef',
-        },
-      ]);
-    }
-  }, [loginStore, loginFormInstanse]);
+  // useEffect(() => {
+  //   if (!loginStore?.error) {
+  //     loginFormInstanse.setFields([
+  //       {
+  //         name: 'password',
+  //         errors: [loginStore.error?.message ?? ''],
+  //         value: 'wefwef',
+  //       },
+  //     ]);
+  //   }
+  // }, [loginStore, loginFormInstanse]);
 
   return (
     <Row gutter={8} className="d-flex float-end">
@@ -76,7 +76,8 @@ const HeaderButtons = ({ cart }: Props) => {
           setIsRegistration={setIsRegistration}
           LoginForm={LoginForm}
           RegistrationForm={RegistrationForm}
-          afterLogin={afterLogin}
+          onLogin={onLogin}
+          loginError="wefwg"
         />
       </Col>
     </Row>

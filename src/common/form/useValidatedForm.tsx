@@ -87,6 +87,7 @@ export function useValidatedForm<T, ReturnType = T>(
           buttonClassName,
           title,
           afterCreate,
+          modalOnOk,
         } = props;
 
         const uuid = itemState?.item?.uuid;
@@ -103,7 +104,7 @@ export function useValidatedForm<T, ReturnType = T>(
           }
         }, [itemState]);
 
-        const modalOnOk = () => {
+        const modalOnOkInner = () => {
           setIsFormPending(true);
           form
             .validateFields()
@@ -175,7 +176,7 @@ export function useValidatedForm<T, ReturnType = T>(
               }}
               onCancel={onClose}
               visible={modalVisible}
-              onOk={modalOnOk}
+              onOk={modalOnOk || modalOnOkInner}
               title={mopdalTitle}
             >
               <ReturnedForm

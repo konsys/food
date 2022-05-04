@@ -31,7 +31,8 @@ export type TModalWithFormProps<T, ReturnType = T> = ModalProps & {
   buttonType?: ButtonType;
   buttonClassName?: string;
   itemState?: TItemStore<T>;
-
+  // TODO add type
+  modalOnOk?: any
 };
 
 export type TReturnedForm = AbstractFormProps;
