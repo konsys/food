@@ -20,6 +20,7 @@ function LoginFields(props: Props) {
         label="email"
         name={names('email')}
         rules={[{ required: true }]}
+        validateFirst
       >
         <Input />
       </Form.Item>

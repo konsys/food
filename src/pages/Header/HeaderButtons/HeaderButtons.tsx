@@ -1,11 +1,10 @@
 import { Row, Col } from 'antd';
 import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
-import { TItem } from '../../../../common/api/types';
-import { CartDto } from '../../../../modules/cart/types';
-import { LoginPage } from '../../../Login/Login';
-import CartLink from '../CartLink/CartLink';
-import CartStub from '../CartStub/CartStub';
+import { TItem } from '../../../common/api/types';
+import { CartDto } from '../../../modules/cart/types';
+import { LoginPage } from '../../Login/Login';
+import CartLink from '../components/CartLink/CartLink';
+import CartStub from '../components/CartStub/CartStub';
 import './headerButtons.less';
 
 type Props = {

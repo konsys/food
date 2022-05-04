@@ -1,4 +1,3 @@
-import { Button } from 'antd';
 import { useStore } from 'effector-react';
 import React, { useEffect, useState } from 'react';
 import { useValidatedForm } from '../../common/form/useValidatedForm';
@@ -32,10 +31,17 @@ export function LoginPage() {
     }
   }, [setIsRegistration, isVisible]);
 
-  const afterCreate = (v: TTokens) => {
-    onSuccessLogin(v);
-    return Promise.resolve();
-  };
+  // useEffect(() => {
+  //   if (loginStore.error) {
+  //     loginFormInstanse.setFields([
+  //       {
+  //         name: 'password',
+  //         errors: [loginStore.error?.message ?? ''],
+  //         // value: 'wefwef',
+  //       },
+  //     ]);
+  //   }
+  // }, [loginStore.error, loginFormInstanse]);
 
   const formComponent = isRegistration ? (
     <RegistrationForm
@@ -55,7 +61,6 @@ export function LoginPage() {
       setModalVisible={setIsVisible}
       pending={false}
       onCreate={login}
-      afterCreate={afterCreate}
       buttonClassName="header-nav-item-link__login"
       buttonText="Войти"
       title="Войти"

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { useGate, useStore } from 'effector-react';
-import HeaderButtons from './components/HeaderButtons/HeaderButtons';
+import HeaderButtons from './HeaderButtons/HeaderButtons';
 import { HeaderNavigationToggle } from './components/HeaderNavigationToggle/HeaderNavigationToggle';
 import { HeaderLogo } from './components/HeaderLogo/HeaderLogo';
 import { HeaderCity } from './components/HeaderCity/HeaderCity';
