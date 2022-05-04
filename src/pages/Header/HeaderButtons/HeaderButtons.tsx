@@ -18,7 +18,7 @@ type Props = {
   cart?: TItem<CartDto>;
 };
 
-const { createNewItemFx: login } = AuthModel;
+const { createNewItemFx: login, $itemStore: $loginStore } = AuthModel;
 const { createNewItemFx: registration } = RegistrationModel;
 
 const HeaderButtons = ({ cart }: Props) => {
@@ -26,6 +26,7 @@ const HeaderButtons = ({ cart }: Props) => {
 
   const user = useStore($user);
 
+  const { error } = useStore($loginStore);
   const [isRegistration, setIsRegistration] = useState(false);
   const { ModalForm: LoginForm, formInstance: loginFormInstanse } =
     useValidatedForm<LoginDto, TTokens>({
@@ -48,17 +49,19 @@ const HeaderButtons = ({ cart }: Props) => {
       console.log(1111111111, loginForm);
     });
 
+  console.log(1111111111, error);
+
   // useEffect(() => {
   //   if (!loginStore?.error) {
   //     loginFormInstanse.setFields([
   //       {
-  //         name: 'password',
+  //         name: 'email',
   //         errors: [loginStore.error?.message ?? ''],
   //         value: 'wefwef',
   //       },
   //     ]);
   //   }
-  // }, [loginStore, loginFormInstanse]);
+  // }, [loginStore?.error]);
 
   return (
     <Row gutter={8} className="d-flex float-end">
