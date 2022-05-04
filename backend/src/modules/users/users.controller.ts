@@ -11,7 +11,7 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { User } from 'src/entities/user.entity';
+import { Users } from 'src/entities/users.entity';
 import { UsersService } from './users.service';
 import { LocalAuthGuard } from 'src/modules/auth/local-auth.guard';
 import { AuthService } from 'src/modules/auth/auth.service';
@@ -41,8 +41,8 @@ export class UsersController {
 
   @Post('auth/registration')
   async register(
-    @Body() user: User
-  ): Promise<User> {
+    @Body() user: Users
+  ): Promise<Users> {
     return this.service.saveUser(user)
   }
 
@@ -94,8 +94,8 @@ export class UsersController {
   @UseInterceptors(ClassSerializerInterceptor)
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  async getProfile(@Request() req: IRequestWithUser): Promise<User> {
-    const profile = new User(
+  async getProfile(@Request() req: IRequestWithUser): Promise<Users> {
+    const profile = new Users(
       await this.service.getUser(req.user.uuid),
     );
     return profile;
@@ -104,14 +104,14 @@ export class UsersController {
   @UseInterceptors(ClassSerializerInterceptor)
   @UseGuards(JwtAuthGuard)
   @Get('profile/:uuid')
-  async getProfileById(@Param('uuid') userUuid: TUuid): Promise<User> {
-    return new User(await this.service.getUser(userUuid));
+  async getProfileById(@Param('uuid') userUuid: TUuid): Promise<Users> {
+    return new Users(await this.service.getUser(userUuid));
   }
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('creds')
-  async getProfileByEmail(@Query('email') email: string): Promise<User> {
-    const res = new User(await this.service.getUserByEmail(email));
+  async getProfileByEmail(@Query('email') email: string): Promise<Users> {
+    const res = new Users(await this.service.getUserByEmail(email));
     return res;
   }
 
@@ -140,7 +140,7 @@ export class UsersController {
     @Body()
     { code }: TVkLoginRequest,
   ): Promise<TTokens> {
-    const user = new User(await this.service.loginVK(code));
+    const user = new Users(await this.service.loginVK(code));
     return this.authService.login(user);
   }
 
@@ -157,12 +157,12 @@ export class UsersController {
   @Post('email/:email')
   async getUserByEmail(
     @Param() email: string,
-  ): Promise<User | undefined> {
+  ): Promise<Users | undefined> {
     return this.service.getUserByEmail(email);
   }
 
   @Post()
-  async saveUsers(@Param() users: User[]): Promise<User[]> {
+  async saveUsers(@Param() users: Users[]): Promise<Users[]> {
     return this.service.saveUsers(users);
   }
 }

@@ -5,7 +5,7 @@ import { TUuid } from 'src/common/types';
 import { Role } from 'src/modules/auth/components/roles.decorator';
 
 @Entity()
-export class User {
+export class Users {
   @PrimaryGeneratedColumn('uuid')
   @Generated('uuid')
   uuid: TUuid;
@@ -21,6 +21,9 @@ export class User {
 
   @Column()
   name: string;
+
+  @Column({ default: null })
+  phone: string;
 
   @Exclude()
   @Column({ default: null })
@@ -78,7 +81,7 @@ export class User {
   @Column({ type: 'jsonb', default: [Role.User] })
   roles: Role[];
 
-  constructor(partial: Partial<User>) {
+  constructor(partial: Partial<Users>) {
     Object.assign(this, partial);
   }
 }

@@ -64,12 +64,15 @@ function CheckoutForm({
           </div>
 
           {/* PHONE --------------------------- */}
-
-          <PhoneCheckoutForm
-            code={code}
-            getCheckoutCode={getCheckoutCode}
-            createCheckoutCode={createCheckoutCode}
-          />
+          {user ? (
+            user.phone
+          ) : (
+            <PhoneCheckoutForm
+              code={code}
+              getCheckoutCode={getCheckoutCode}
+              createCheckoutCode={createCheckoutCode}
+            />
+          )}
 
           {/* TIME --------------------------- */}
           <div className="ordering-form__time">

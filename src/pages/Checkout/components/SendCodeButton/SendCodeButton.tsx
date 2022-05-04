@@ -16,8 +16,8 @@ function SendCodeButton(props: Props) {
       <Item>
         <Button
           {...restProps}
-          type='primary'
-          className='order-form-send-code'
+          type="primary"
+          className="order-form-send-code"
           onClick={createCodeSms}
         >
           Получить код
