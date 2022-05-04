@@ -14,9 +14,9 @@ import { $orderStore, updateOrderStore } from '../../../../modules/order/model';
 import { TOrder } from '../../../../modules/order/types';
 import { Nullable } from '../../../../core/types';
 import { UserDto } from '../../../../modules/user/types';
+import { getClientUuid } from '../../../../modules/cart/service';
 
 import './checkoutForm.less';
-import { getClientUuid } from '../../../../modules/cart/service';
 
 interface Props {
   cart: TItem<CartDto>;
