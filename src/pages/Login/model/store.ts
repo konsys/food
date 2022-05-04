@@ -1,12 +1,12 @@
-import { notification } from 'antd';
+
 import { createDomain } from 'effector';
 import { createGate } from 'effector-react';
 import { CrudService } from '../../../common/api';
-import { clearToken, saveRefreshToken, saveToken } from '../../../modules/auth/model';
+import { clearToken, saveToken, saveRefreshToken } from '../../../modules/auth/model';
 import { LoginDto, TTokens } from '../../../modules/login/types';
 import { getMyProfile } from '../../../modules/user/store';
 import { loginVkFetch } from './api';
-import { ILoginResponce, TVkCode } from './types';
+import { TVkCode } from './types';
 
 const URL = `users/auth/login`;
 const crudService = new CrudService<LoginDto, LoginDto>(URL);
@@ -21,7 +21,6 @@ export const loginFx = AuthDomain.effect<Partial<LoginDto>, LoginDto, Error>({
 
 
 // TODO add fail handler
-// loginFx.fail.watch((error: string) => setError(error));
 const loginVkFx = AuthDomain.effect<TVkCode, TVkCode, Error>({
   handler: loginVkFetch,
 });
@@ -33,17 +32,7 @@ LoginGate.state.updates.watch((code) => {
   code.code && loginVkFx(code);
 });
 
-// Store
-export const $loginStore = AuthDomain.store<ILoginResponce | null>(null)
-  .on(loginFx.done, (_, { result }: { result: any }) => {
-    onSuccessLogin({ ...result });
-    return result;
-  })
-  .on(loginFx.fail, () => {
-    clearToken();
-    notification.error({ message: 'Ошибка авторизации' });
-  })
-  .reset(clearTokenStore);
+
 
 export const onSuccessLogin = (tokens: TTokens) => {
   clearToken();

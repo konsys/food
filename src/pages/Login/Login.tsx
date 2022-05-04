@@ -37,18 +37,6 @@ export function LoginPage({
   afterLogin,
   user,
 }: Props) {
-  // useEffect(() => {
-  //   if (loginStore.error) {
-  //     loginFormInstanse.setFields([
-  //       {
-  //         name: 'password',
-  //         errors: [loginStore.error?.message ?? ''],
-  //         // value: 'wefwef',
-  //       },
-  //     ]);
-  //   }
-  // }, [loginStore.error, loginFormInstanse]);
-
   const formComponent = isRegistration ? (
     <RegistrationForm
       modalVisible={isVisible}
