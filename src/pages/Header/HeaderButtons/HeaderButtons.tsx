@@ -10,6 +10,7 @@ import { RegistrationDto } from '../../../modules/registration/types';
 import { $user } from '../../../modules/user/store';
 import { AuthModel, RegistrationModel } from '../../../store';
 import LoginPage from '../../Login/Login';
+import { onSuccessLogin } from '../../Login/model/store';
 import CartLink from '../components/CartLink/CartLink';
 import CartStub from '../components/CartStub/CartStub';
 import './headerButtons.less';
@@ -43,8 +44,9 @@ const HeaderButtons = ({ cart }: Props) => {
 
   const onLogin = async () =>
     loginFormInstanse.validateFields().then(async (loginForm) => {
-      await login(loginForm);
-      // onSuccessLogin(loginForm);
+      const res = await login(loginForm);
+      onSuccessLogin(res);
+      setIsVisible(false);
     });
 
   return (

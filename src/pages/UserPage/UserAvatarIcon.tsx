@@ -18,7 +18,7 @@ function UserAvatarIcon(props: Props) {
           {user?.avatar ? (
             <Avatar src={<Image src={user.avatar} style={{ width: 32 }} />} />
           ) : (
-            <Avatar size="large" icon={<UserOutlined />} />
+            <Avatar size="default" icon={<UserOutlined />} />
           )}
         </div>
       </Col>
