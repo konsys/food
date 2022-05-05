@@ -50,7 +50,7 @@ const HeaderButtons = ({ cart }: Props) => {
     });
 
   return (
-    <Row gutter={8} className="d-flex float-end">
+    <Row gutter={8}>
       <Col className="d-none d-md-flex ">
         {cart?.item?.orderSum ? <CartLink cart={cart} /> : <CartStub />}
       </Col>

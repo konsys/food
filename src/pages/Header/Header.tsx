@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Col, Row } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import HeaderButtons from './HeaderButtons/HeaderButtons';
 import { HeaderNavigationToggle } from './components/HeaderNavigationToggle/HeaderNavigationToggle';
@@ -15,19 +16,23 @@ function Header() {
   useGate(CartGate, getClientUuid());
   const cart = useStore(cartStore);
   return (
-    <>
-      <header className="header header_sticky">
-        <div className="header-content d-flex">
-          <HeaderNavigationToggle />
-          <div className="header-container container">
+    <header className="header">
+      <div className="container">
+        <Row>
+          <Col span={4}>
             <HeaderLogo />
+          </Col>
+          <Col span={8}>
             <HeaderCity />
-            <HeaderButtons cart={cart} />
-          </div>
-        </div>
-      </header>
-      <div className="fake-header" />
-    </>
+          </Col>
+          <Col span={12} className="header_container">
+            <div className="header_container-buttons">
+              <HeaderButtons cart={cart} />
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </header>
   );
 }
 

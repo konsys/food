@@ -3,53 +3,20 @@
 .header {
     background-color: @colorWhite;
     box-shadow      : 0 0.75rem 2rem 0 rgba(0, 0, 0, .1);
+    position        : fixed;
+    width           : 100%;
+    z-index         : 1000;
+    height          : 60px;
+    border          : 2px solid green;
 
-    .header-content {
+
+    .header_container {
         position: relative;
-    }
-
-    .header-buttons {
-        position: absolute;
         right   : 1rem;
-    }
 
-    .header-nav-toggle {
-        height    : 100%;
-        left      : 4rem;
-        left      : 1rem;
-        position  : absolute;
-        transition: opacity .8s;
-        z-index   : 100;
-    }
-
-    .header-container {
-        position: relative;
-    }
-}
-
-
-.header.header_sticky {
-    left    : 0;
-    padding : 0.5rem 0;
-    position: fixed;
-    top     : 0;
-    width   : @width100percent;
-    z-index : 350;
-
-    .header-logo {
-        a {
-            img {
-                max-width: @width38;
-                width    : @width38;
-            }
+        .header_container-buttons {
+            position: absolute;
+            right   : 1rem;
         }
     }
-}
-
-.fake-header.fake-header_active {
-    height: 163px;
-}
-
-.fake-header.fake-header_active-mobile {
-    height: 123px;
 }

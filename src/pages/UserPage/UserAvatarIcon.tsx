@@ -12,16 +12,19 @@ function UserAvatarIcon(props: Props) {
   const { user } = props;
 
   return (
-    <Row>
-      <Col>
-        <div>
-          {user?.avatar ? (
-            <Avatar src={<Image src={user.avatar} style={{ width: 32 }} />} />
-          ) : (
+    <Row justify="center" align="top">
+      {user?.avatar ? (
+        <Col>
+          <Avatar src={<Image src={user.avatar} style={{ width: 32 }} />} />
+        </Col>
+      ) : (
+        <>
+          <Col span={12}>
             <Avatar size="default" icon={<UserOutlined />} />
-          )}
-        </div>
-      </Col>
+          </Col>
+          <Col span={12}> {user?.name}</Col>
+        </>
+      )}
     </Row>
   );
 }
