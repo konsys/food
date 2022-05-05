@@ -19,8 +19,8 @@ function LoginFields(props: Props) {
   return (
     <>
       <Form.Item
-        label="email"
-        name={names('email')}
+        label="Телефон"
+        name={names('phone')}
         rules={[{ required: true }]}
         validateFirst
       >
