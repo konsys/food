@@ -22,7 +22,7 @@ export class Users {
   @Column()
   name: string;
 
-  @Column({ default: null })
+  @Column()
   phone: string;
 
   @Exclude()
