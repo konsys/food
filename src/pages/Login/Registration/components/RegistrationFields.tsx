@@ -1,6 +1,8 @@
 import { Form, Input } from 'antd';
 import Password from 'antd/lib/input/Password';
 import React, { memo } from 'react';
+import ReactInputMask from 'react-input-mask';
+import { PHONE_FORMAT } from '../../../../common/constants/constants';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { RegistrationDto } from '../../../../modules/registration/types';
 
@@ -13,11 +15,11 @@ function RegistrationFields(props: Props) {
   return (
     <>
       <Form.Item
-        label="E-mail"
-        name={names('email')}
-        rules={[{ required: true, message: 'Введите email!' }]}
+        label="Телефон"
+        name={names('phone')}
+        rules={[{ required: true, message: 'Введите телефон!' }]}
       >
-        <Input />
+        <ReactInputMask mask={PHONE_FORMAT} name={names('phone')} />
       </Form.Item>
       <Form.Item
         label="Имя пользователя"

@@ -1,6 +1,8 @@
 import { Button, Col, Form, Input, Row } from 'antd';
 import Password from 'antd/lib/input/Password';
 import React, { memo } from 'react';
+import ReactInputMask from 'react-input-mask';
+import { PHONE_FORMAT } from '../../../../common/constants/constants';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { TVoidFn } from '../../../../common/types';
 import { LoginDto } from '../../../../modules/login/types';
@@ -24,7 +26,7 @@ function LoginFields(props: Props) {
         rules={[{ required: true }]}
         validateFirst
       >
-        <Input />
+        <ReactInputMask mask={PHONE_FORMAT} name={names('phone')} />
       </Form.Item>
       <Form.Item
         label="Пароль"

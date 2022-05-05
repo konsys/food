@@ -14,6 +14,7 @@ import { TItem } from '../../../../common/api/types';
 import { $orderStore, updateOrderStore } from '../../../../modules/order/model';
 
 import './phoneCodeCheckoutForm.less';
+import { PHONE_FORMAT } from '../../../../common/constants/constants';
 
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
@@ -97,7 +98,7 @@ function PhoneCheckoutForm({
         <label htmlFor="order-phone">Телефон</label>
 
         <InputMask
-          mask="+7 (999) 999-99-99"
+          mask={PHONE_FORMAT}
           disabled={order.phoneConfirmed || order.isTimerRunning}
           name={dataName('phoneNumber')}
           value={order.phone}

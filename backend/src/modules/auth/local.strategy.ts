@@ -8,12 +8,12 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
 
     // http://www.passportjs.org/docs/configure/
-    super({ usernameField: 'email', passReqToCallback: true });
+    super({ usernameField: 'phone', passReqToCallback: true });
   }
 
-  async validate(_: Request, email: string, password: string): Promise<any> {
+  async validate(_: Request, phone: string, password: string): Promise<any> {
 
-    const user = await this.authService.validateUser(email, password);
+    const user = await this.authService.validateUser(phone, password);
 
     if (!user) {
       throw new UnauthorizedException();
