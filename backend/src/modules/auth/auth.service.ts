@@ -52,7 +52,7 @@ export class AuthService {
     await this.usersService.saveToken({
       token: refreshToken,
       userUuid: user.uuid,
-      email: user.email,
+      phone: user.phone,
       expires: getTokenExpire(),
       name: user.name
     });

@@ -65,7 +65,7 @@ export class UsersController {
       const dt = new Date().getTime();
       if (new Date(token.expires).getTime() >= dt) {
         const payload: IJwtPayload = this.authService.createPayload(
-          token.email,
+          token.phone,
           token.name,
           ETokenType.ACCESS
         );
@@ -76,7 +76,7 @@ export class UsersController {
         token.expires = expires;
         await this.service.saveToken({
           token: token.token,
-          email: token.email,
+          phone: token.phone,
           expires,
           name: token.name,
           userUuid: token.userUuid

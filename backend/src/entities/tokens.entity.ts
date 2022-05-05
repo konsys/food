@@ -12,7 +12,7 @@ export class Tokens {
 
   @Column()
   @Index({ unique: true })
-  email: string;
+  phone: string;
 
   @Column()
   @PrimaryColumn()

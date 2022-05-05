@@ -169,16 +169,16 @@ export class UsersService {
     data: Tokens): Promise<Tokens> {
     const expires = getTokenExpire();
 
-    const { token, email, userUuid, name } = data
+    const { token, phone, userUuid, name } = data
     const tokenToSave: Tokens = {
       userUuid,
       name,
-      email,
+      phone,
       expires,
       token
     };
 
-    const isToken = await this.tokens.findOne({ where: { email } });
+    const isToken = await this.tokens.findOne({ where: { phone } });
     let res = null;
     if (isToken) {
       res = await this.tokens.update(userUuid, { expires, token });
