@@ -51,7 +51,7 @@ const HeaderButtons = ({ cart }: Props) => {
 
   return (
     <Row gutter={8}>
-      <Col className="d-none d-md-flex ">
+      <Col>
         {cart?.item?.orderSum ? <CartLink cart={cart} /> : <CartStub />}
       </Col>
       <Col>

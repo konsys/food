@@ -17,17 +17,15 @@ function Header() {
   return (
     <header className="header">
       <div className="container">
-        <Row justify="center">
+        <Row justify="center" align="middle">
           <Col span={4}>
             <HeaderLogo />
           </Col>
           <Col span={8}>
             <HeaderCity />
           </Col>
-          <Col span={12} className="header_container">
-            <div className="header_container-buttons">
-              <HeaderButtons cart={cart} />
-            </div>
+          <Col span={12} className=" header_container-buttons">
+            <HeaderButtons cart={cart} />
           </Col>
         </Row>
       </div>
