@@ -43,10 +43,10 @@ export class UsersService {
 
 
   async getUserByCredentials({
-    email,
+    phone,
     password,
   }: Partial<TUserCreds>): Promise<Users> {
-    const user: Users = await this.users.findOne({ email, password });
+    const user: Users = await this.users.findOne({ phone, password });
     return user;
   }
 

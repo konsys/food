@@ -9,7 +9,7 @@ export interface IRequestWithUser extends ExpressRequest {
 }
 
 export type TUserCreds = {
-  email: string;
+  phone: string;
   password: string;
   name?: string;
   userUuid?: TUuid;

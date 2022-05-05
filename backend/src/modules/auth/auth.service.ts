@@ -13,11 +13,11 @@ export class AuthService {
   ) { }
 
   async validateUser(
-    email: string,
+    phone: string,
     password: string,
   ): Promise<Users | undefined> {
     const user = await this.usersService.getUserByCredentials({
-      email,
+      phone,
       password,
     });
 
