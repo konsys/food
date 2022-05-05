@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import { Col, Row } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import HeaderButtons from './HeaderButtons/HeaderButtons';
-import { HeaderNavigationToggle } from './components/HeaderNavigationToggle/HeaderNavigationToggle';
 import { HeaderLogo } from './components/HeaderLogo/HeaderLogo';
 import { HeaderCity } from './components/HeaderCity/HeaderCity';
 import { CartModel } from '../../store';
@@ -18,7 +17,7 @@ function Header() {
   return (
     <header className="header">
       <div className="container">
-        <Row>
+        <Row justify="center">
           <Col span={4}>
             <HeaderLogo />
           </Col>
