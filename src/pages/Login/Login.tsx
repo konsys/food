@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { TCreateItemFx } from '../../common/models/abstractModel/abstractCrudModel';
 import { TItemWithUuid, TPromiseFn, TVoidFn } from '../../common/types';
 import { Nullable } from '../../core/types';
@@ -24,6 +24,7 @@ interface Props {
   user: Nullable<UserDto>;
   onLogin: TPromiseFn;
   loginError: string;
+  resetOne: any;
 }
 
 function LoginPage({
@@ -38,7 +39,15 @@ function LoginPage({
   user,
   onLogin,
   loginError,
+  resetOne,
 }: Props) {
+  useEffect(() => {
+    resetOne();
+    () => {
+      console.log(22222222);
+      resetOne();
+    };
+  }, []);
   const formComponent = isRegistration ? (
     <RegistrationForm
       modalVisible={isVisible}

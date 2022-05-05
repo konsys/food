@@ -18,7 +18,7 @@ type Props = {
   cart?: TItem<CartDto>;
 };
 
-const { createNewItemFx: login, $itemStore: $loginStore } = AuthModel;
+const { createNewItemFx: login, $itemStore: $loginStore, resetOne } = AuthModel;
 const { createNewItemFx: registration } = RegistrationModel;
 
 const HeaderButtons = ({ cart }: Props) => {
@@ -26,7 +26,6 @@ const HeaderButtons = ({ cart }: Props) => {
 
   const user = useStore($user);
 
-  const { error } = useStore($loginStore);
   const [isRegistration, setIsRegistration] = useState(false);
   const { ModalForm: LoginForm, formInstance: loginFormInstanse } =
     useValidatedForm<LoginDto, TTokens>({
@@ -42,14 +41,15 @@ const HeaderButtons = ({ cart }: Props) => {
     }
   }, [setIsRegistration, isVisible]);
 
+  const res = useStore($loginStore);
+
+  console.log(1111111111, res);
+
   const onLogin = async () =>
     loginFormInstanse.validateFields().then(async (loginForm) => {
       await login(loginForm);
       // onSuccessLogin(loginForm);
-      console.log(1111111111, loginForm);
     });
-
-  console.log(1111111111, error);
 
   // useEffect(() => {
   //   if (!loginStore?.error) {
@@ -81,6 +81,7 @@ const HeaderButtons = ({ cart }: Props) => {
           RegistrationForm={RegistrationForm}
           onLogin={onLogin}
           loginError="wefwg"
+          resetOne={resetOne}
         />
       </Col>
     </Row>

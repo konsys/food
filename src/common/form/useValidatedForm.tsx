@@ -185,7 +185,7 @@ export function useValidatedForm<T, ReturnType = T>(
                 layout="vertical"
                 onKeyPress={(e: any) => {
                   if (enterKeyPressed(e) && !disabledOkBtn) {
-                    modalOnOk();
+                    modalOnOk && modalOnOk();
                   }
                 }}
               >
