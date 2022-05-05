@@ -2,6 +2,7 @@ import { useStore } from 'effector-react';
 import React, { memo, useEffect } from 'react';
 import { TCreateItemFx } from '../../common/models/abstractModel/abstractCrudModel';
 import { TItemWithUuid, TPromiseFn, TVoidFn } from '../../common/types';
+import { HttpStatus } from '../../common/utils/constants';
 import { Nullable } from '../../core/types';
 import { LoginDto, TTokens } from '../../modules/login/types';
 import { RegistrationDto } from '../../modules/registration/types';
@@ -42,7 +43,8 @@ function LoginPage({
   onLogin,
 }: Props) {
   const { error } = useStore($loginStore);
-  const loginError = error?.statusCode === 401 ? 'Неверный пароль' : '';
+  const loginError =
+    error?.statusCode === HttpStatus.UNAUTHORIZED ? 'Неверный пароль' : '';
   useEffect(() => {
     resetOne();
   }, [isVisible]);

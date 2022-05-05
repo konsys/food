@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
+import { HttpStatus } from '../../common/utils/constants';
 import { Params } from '../../config/params';
 import { getToken } from '../../modules/auth/model';
 
@@ -17,7 +18,7 @@ axiosClient.interceptors.request.use((config) => {
 axiosClient.interceptors.response.use(
   (response: AxiosResponse) => response,
   async (error: AxiosError) => {
-    if (error.response && error.response.status === 401) {
+    if (error.response && error.response.status === HttpStatus.UNAUTHORIZED) {
       const originalRequest = error.config;
 
       if (originalRequest.headers && !originalRequest.headers._retry) {
