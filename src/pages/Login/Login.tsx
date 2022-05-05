@@ -1,3 +1,4 @@
+import { useStore } from 'effector-react';
 import React, { memo, useEffect } from 'react';
 import { TCreateItemFx } from '../../common/models/abstractModel/abstractCrudModel';
 import { TItemWithUuid, TPromiseFn, TVoidFn } from '../../common/types';
@@ -5,9 +6,12 @@ import { Nullable } from '../../core/types';
 import { LoginDto, TTokens } from '../../modules/login/types';
 import { RegistrationDto } from '../../modules/registration/types';
 import { UserDto } from '../../modules/user/types';
+import { AuthModel } from '../../store';
 import LoginFields from '../Header/components/LoginFields/LoginFields';
 import UserAvatarIcon from '../UserPage/UserAvatarIcon';
 import RegistrationFields from './Registration/components/RegistrationFields';
+
+const { $itemStore: $loginStore, resetOne } = AuthModel;
 
 interface Props {
   isVisible: boolean;
@@ -23,8 +27,6 @@ interface Props {
   LoginForm: any;
   user: Nullable<UserDto>;
   onLogin: TPromiseFn;
-  loginError: string;
-  resetOne: any;
 }
 
 function LoginPage({
@@ -38,16 +40,13 @@ function LoginPage({
   LoginForm,
   user,
   onLogin,
-  loginError,
-  resetOne,
 }: Props) {
+  const { error } = useStore($loginStore);
+
   useEffect(() => {
     resetOne();
-    () => {
-      console.log(22222222);
-      resetOne();
-    };
-  }, []);
+  }, [isVisible]);
+
   const formComponent = isRegistration ? (
     <RegistrationForm
       modalVisible={isVisible}
@@ -73,7 +72,7 @@ function LoginPage({
     >
       <LoginFields
         setIsRegistration={setIsRegistration}
-        loginError={loginError}
+        loginError={error?.statusCode === 401 ? 'Неправильный пароль' : ''}
       />
     </LoginForm>
   );

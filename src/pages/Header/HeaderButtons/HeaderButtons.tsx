@@ -18,7 +18,7 @@ type Props = {
   cart?: TItem<CartDto>;
 };
 
-const { createNewItemFx: login, $itemStore: $loginStore, resetOne } = AuthModel;
+const { createNewItemFx: login } = AuthModel;
 const { createNewItemFx: registration } = RegistrationModel;
 
 const HeaderButtons = ({ cart }: Props) => {
@@ -41,27 +41,11 @@ const HeaderButtons = ({ cart }: Props) => {
     }
   }, [setIsRegistration, isVisible]);
 
-  const res = useStore($loginStore);
-
-  console.log(1111111111, res);
-
   const onLogin = async () =>
     loginFormInstanse.validateFields().then(async (loginForm) => {
       await login(loginForm);
       // onSuccessLogin(loginForm);
     });
-
-  // useEffect(() => {
-  //   if (!loginStore?.error) {
-  //     loginFormInstanse.setFields([
-  //       {
-  //         name: 'email',
-  //         errors: [loginStore.error?.message ?? ''],
-  //         value: 'wefwef',
-  //       },
-  //     ]);
-  //   }
-  // }, [loginStore?.error]);
 
   return (
     <Row gutter={8} className="d-flex float-end">
@@ -80,8 +64,6 @@ const HeaderButtons = ({ cart }: Props) => {
           LoginForm={LoginForm}
           RegistrationForm={RegistrationForm}
           onLogin={onLogin}
-          loginError="wefwg"
-          resetOne={resetOne}
         />
       </Col>
     </Row>

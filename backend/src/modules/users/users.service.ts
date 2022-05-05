@@ -211,15 +211,7 @@ export class UsersService {
 
   async deleteUser(userUuid: number): Promise<boolean> {
     // TODO delete
-
     throw new HttpException('Not implemented', 500)
-    // try {
-    // 
-    //   // const res = await this.users.delete({   userUuid, isTestUser: true });
-    //   // return res.affected > 0;
-    // } catch (err) {
-    //   console.log('Error deleting user', err);
-    //   return false;
-    // }
+
   }
 }
