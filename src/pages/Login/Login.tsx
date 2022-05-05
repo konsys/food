@@ -42,7 +42,7 @@ function LoginPage({
   onLogin,
 }: Props) {
   const { error } = useStore($loginStore);
-
+  const loginError = error?.statusCode === 401 ? 'Неверный пароль' : '';
   useEffect(() => {
     resetOne();
   }, [isVisible]);
@@ -72,7 +72,7 @@ function LoginPage({
     >
       <LoginFields
         setIsRegistration={setIsRegistration}
-        loginError={error?.statusCode === 401 ? 'Неправильный пароль' : ''}
+        loginError={loginError}
       />
     </LoginForm>
   );
