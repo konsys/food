@@ -2,7 +2,7 @@ import React, { memo, useEffect } from 'react';
 import { useStore } from 'effector-react';
 import { Button, Col, Row } from 'antd';
 import { TPromiseFn } from '../../../../common/types';
-import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
+import PhoneCheckout from '../PhoneCheckout/PhoneCheckout';
 import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';
 import DateCheckoutForm from '../DateCheckoutForm/DateCheckoutForm';
 import { PromoDto } from '../../../../modules/promo/types';
@@ -52,7 +52,7 @@ function CheckoutForm({ cart, promo, createOrder, user }: Props) {
           </div>
 
           {/* PHONE --------------------------- */}
-          {user ? user.phone : <PhoneCheckoutForm />}
+          {user ? user.phone : <PhoneCheckout />}
 
           {/* TIME --------------------------- */}
           <div className="ordering-form__time">

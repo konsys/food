@@ -5,6 +5,7 @@ import ReactInputMask from 'react-input-mask';
 import { PHONE_FORMAT } from '../../../../common/constants/constants';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { RegistrationDto } from '../../../../modules/registration/types';
+import PhoneCheckout from '../../../Checkout/containers/PhoneCheckout/PhoneCheckout';
 
 interface Props {}
 const names = columnsNamesGenerator<RegistrationDto>();
@@ -19,11 +20,7 @@ function RegistrationFields(props: Props) {
         name={names('phone')}
         rules={[{ required: true, message: 'Введите телефон!' }]}
       >
-        {/* <PhoneCheckoutForm
-          code="wefwef"
-          getCheckoutCode={getCheckoutCode}
-          createCheckoutCode={createCheckoutCode}
-        /> */}
+        <PhoneCheckout />
         <ReactInputMask mask={PHONE_FORMAT} name={names('phone')} />
       </Form.Item>
       <Form.Item

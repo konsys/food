@@ -32,7 +32,7 @@ function phoneValidator(value?: string) {
   return true;
 }
 
-function PhoneCheckoutForm() {
+function PhoneCheckout() {
   useGate(CodeCheckGate, getClientUuid());
 
   const order = useStore($orderStore);
@@ -139,4 +139,4 @@ function PhoneCheckoutForm() {
   );
 }
 
-export default memo(PhoneCheckoutForm);
+export default memo(PhoneCheckout);
