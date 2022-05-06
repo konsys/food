@@ -19,6 +19,11 @@ function RegistrationFields(props: Props) {
         name={names('phone')}
         rules={[{ required: true, message: 'Введите телефон!' }]}
       >
+        {/* <PhoneCheckoutForm
+          code="wefwef"
+          getCheckoutCode={getCheckoutCode}
+          createCheckoutCode={createCheckoutCode}
+        /> */}
         <ReactInputMask mask={PHONE_FORMAT} name={names('phone')} />
       </Form.Item>
       <Form.Item

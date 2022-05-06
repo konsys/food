@@ -6,7 +6,6 @@ import PhoneCheckoutForm from '../PhoneCheckoutForm/PhoneCheckoutForm';
 import PromoCodeCheckoutForm from '../PromoCodeCheckoutForm/PromoCodeCheckoutForm';
 import DateCheckoutForm from '../DateCheckoutForm/DateCheckoutForm';
 import { PromoDto } from '../../../../modules/promo/types';
-import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { TItem } from '../../../../common/api/types';
 import { CartDto } from '../../../../modules/cart/types';
 import OrderDescription from '../../components/OrderDescription/OrderDescription';
@@ -20,23 +19,12 @@ import './checkoutForm.less';
 
 interface Props {
   cart: TItem<CartDto>;
-  code: TItem<CodeCheckDto>;
   promo: TItem<PromoDto>;
-  getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
-  createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
   createOrder: TPromiseFn<Partial<TOrder>>;
   user: Nullable<UserDto>;
 }
 
-function CheckoutForm({
-  cart,
-  code,
-  promo,
-  getCheckoutCode,
-  createCheckoutCode,
-  createOrder,
-  user,
-}: Props) {
+function CheckoutForm({ cart, promo, createOrder, user }: Props) {
   useEffect(() => {
     if (user) {
       updateOrderStore({
@@ -64,15 +52,7 @@ function CheckoutForm({
           </div>
 
           {/* PHONE --------------------------- */}
-          {user ? (
-            user.phone
-          ) : (
-            <PhoneCheckoutForm
-              code={code}
-              getCheckoutCode={getCheckoutCode}
-              createCheckoutCode={createCheckoutCode}
-            />
-          )}
+          {user ? user.phone : <PhoneCheckoutForm />}
 
           {/* TIME --------------------------- */}
           <div className="ordering-form__time">

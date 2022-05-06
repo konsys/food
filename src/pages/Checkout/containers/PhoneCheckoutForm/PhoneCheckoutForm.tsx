@@ -3,18 +3,24 @@ import React, { memo, useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 import moment from 'moment';
 import InputMask from 'react-input-mask';
-import { useStore } from 'effector-react';
+import { useGate, useStore } from 'effector-react';
 import CheckoutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { getClientUuid } from '../../../../modules/cart/service';
 import SendCodeButton from '../../components/SendCodeButton/SendCodeButton';
-import { TPromiseFn } from '../../../../common/types';
-import { TItem } from '../../../../common/api/types';
 import { $orderStore, updateOrderStore } from '../../../../modules/order/model';
+import { PHONE_FORMAT } from '../../../../common/constants/constants';
 
 import './phoneCodeCheckoutForm.less';
-import { PHONE_FORMAT } from '../../../../common/constants/constants';
+import { CodeCheckModel } from '../../../../store';
+
+const {
+  createNewItemFx: createCheckoutCode,
+  getItemByFilterFx: getCheckoutCode,
+  $itemStore: codeCheckStore,
+  ItemGate: CodeCheckGate,
+} = CodeCheckModel;
 
 const dataName = columnsNamesGenerator<CodeCheckDto>();
 
@@ -26,18 +32,11 @@ function phoneValidator(value?: string) {
   return true;
 }
 
-type Props = {
-  code: TItem<CodeCheckDto>;
-  getCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
-  createCheckoutCode: TPromiseFn<Partial<CodeCheckDto>, Partial<CodeCheckDto>>;
-};
+function PhoneCheckoutForm() {
+  useGate(CodeCheckGate, getClientUuid());
 
-function PhoneCheckoutForm({
-  code,
-  getCheckoutCode,
-  createCheckoutCode,
-}: Props) {
   const order = useStore($orderStore);
+  const code = useStore(codeCheckStore);
 
   const codeHandler = (e: any) => {
     const codeInput = e.target.value;
