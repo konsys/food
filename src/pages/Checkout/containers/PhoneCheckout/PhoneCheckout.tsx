@@ -11,9 +11,9 @@ import { getClientUuid } from '../../../../modules/cart/service';
 import SendCodeButton from '../../components/SendCodeButton/SendCodeButton';
 import { $orderStore, updateOrderStore } from '../../../../modules/order/model';
 import { PHONE_FORMAT } from '../../../../common/constants/constants';
-
-import './phoneCodeCheckoutForm.less';
 import { CodeCheckModel } from '../../../../store';
+
+import './phoneCodeCheckout.less';
 
 const {
   createNewItemFx: createCheckoutCode,
