@@ -1,4 +1,4 @@
-import { REDIRECT_URI } from '../pages/Login/model/types';
+import { REDIRECT_URI } from '../pages/Auth/model/types';
 
 export enum Params {
   BASE_URL = 'http://127.0.0.1:8000',
