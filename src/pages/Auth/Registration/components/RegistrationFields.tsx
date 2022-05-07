@@ -1,8 +1,6 @@
-import { Form, Input } from 'antd';
+import { Divider, Form, Input } from 'antd';
 import Password from 'antd/lib/input/Password';
 import React, { memo } from 'react';
-import ReactInputMask from 'react-input-mask';
-import { PHONE_FORMAT } from '../../../../common/constants/constants';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { RegistrationDto } from '../../../../modules/registration/types';
 import PhoneCheckout from '../../../Checkout/containers/PhoneCheckout/PhoneCheckout';
@@ -16,7 +14,7 @@ function RegistrationFields(props: Props) {
   return (
     <>
       <PhoneCheckout />
-
+      <Divider type="horizontal" />
       <Form.Item
         label="Имя пользователя"
         name={names('name')}
