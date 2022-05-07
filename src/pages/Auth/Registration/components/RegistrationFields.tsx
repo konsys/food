@@ -15,14 +15,8 @@ function RegistrationFields(props: Props) {
 
   return (
     <>
-      <Form.Item
-        label="Телефон"
-        name={names('phone')}
-        rules={[{ required: true, message: 'Введите телефон!' }]}
-      >
-        <PhoneCheckout />
-        <ReactInputMask mask={PHONE_FORMAT} name={names('phone')} />
-      </Form.Item>
+      <PhoneCheckout />
+
       <Form.Item
         label="Имя пользователя"
         name={names('name')}

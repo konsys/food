@@ -11,19 +11,14 @@ function SendCodeButton(props: Props) {
   const { createCodeSms, ...restProps } = props;
 
   return (
-    <div>
-      <label>&nbsp;</label>
-      <Item>
-        <Button
-          {...restProps}
-          type="primary"
-          className="order-form-send-code"
-          onClick={createCodeSms}
-        >
-          Получить код
-        </Button>
-      </Item>
-    </div>
+    <Button
+      {...restProps}
+      type="primary"
+      className="order-form-send-code"
+      onClick={createCodeSms}
+    >
+      Получить код
+    </Button>
   );
 }
 

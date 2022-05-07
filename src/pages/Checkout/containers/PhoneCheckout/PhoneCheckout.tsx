@@ -14,6 +14,7 @@ import { PHONE_FORMAT } from '../../../../common/constants/constants';
 import { CodeCheckModel } from '../../../../store';
 
 import './phoneCodeCheckout.less';
+import UseBreakpointsDemo from '../../../../common/hooks/UseBreakpointsDemo';
 
 const {
   createNewItemFx: createCheckoutCode,
@@ -92,37 +93,34 @@ function PhoneCheckout() {
   };
 
   return (
-    <Row gutter={[8, 8]} className="phone-code__chekout">
+    <Row gutter={[8, 8]} className="phone-code__checkout">
       <Col span={24}>
-        <label htmlFor="order-phone">Телефон</label>
-
-        <InputMask
-          mask={PHONE_FORMAT}
-          disabled={order.phoneConfirmed || order.isTimerRunning}
-          name={dataName('phoneNumber')}
-          value={order.phone}
-          onChange={handlePhone}
-        />
+        <div>Телефон</div>
+        <div>
+          <InputMask
+            mask={PHONE_FORMAT}
+            disabled={order.phoneConfirmed || order.isTimerRunning}
+            name={dataName('phoneNumber')}
+            value={order.phone}
+            onChange={handlePhone}
+          />
+          <SendCodeButton
+            createCodeSms={createCodeSms}
+            disabled={order.phoneConfirmed || isRunning}
+          />
+        </div>
         {!order.isPhoneValid && (
           <div className="input-promocode-error ">Неверный номер телефона</div>
         )}
-
         <CheckoutTimer
           isRunning={!!order.isTimerRunning}
           minutes={minutes}
           seconds={seconds}
         />
       </Col>
+
       <Col span={24}>
-        <SendCodeButton
-          createCodeSms={createCodeSms}
-          disabled={order.phoneConfirmed || isRunning}
-        />
-      </Col>
-      <Col span={24}>
-        <label htmlFor="sms-code" className="label-sms-code">
-          Код из СМС
-        </label>
+        <div>Код из СМС</div>
         <InputMask
           name={dataName('code')}
           mask="9999"
