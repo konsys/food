@@ -1,5 +1,7 @@
 import { useStore } from 'effector-react';
 import React, { memo, useEffect } from 'react';
+import { TItemStore } from '../../common/api/types';
+import { TModalWithFormProps } from '../../common/form/types';
 import { TCreateItemFx } from '../../common/models/abstractModel/abstractCrudModel';
 import { TItemWithUuid, TPromiseFn, TVoidFn } from '../../common/types';
 import { HttpStatus } from '../../common/utils/constants';
@@ -17,7 +19,9 @@ const { $itemStore: $loginStore, resetOne } = AuthModel;
 interface Props {
   isVisible: boolean;
   setIsVisible: TVoidFn<boolean>;
-  RegistrationForm: any;
+  RegistrationForm: React.FC<
+    TModalWithFormProps<TItemWithUuid<RegistrationDto>, RegistrationDto>
+  >;
   isRegistration: boolean;
   setIsRegistration: TVoidFn<boolean>;
   registration: TCreateItemFx<
@@ -25,7 +29,7 @@ interface Props {
     TItemWithUuid<RegistrationDto>
   >;
   login: TCreateItemFx<Partial<LoginDto>, TTokens>;
-  LoginForm: any;
+  LoginForm: React.FC<TModalWithFormProps<TItemWithUuid<LoginDto>, TTokens>>;
   user: Nullable<UserDto>;
   onLogin: TPromiseFn;
 }

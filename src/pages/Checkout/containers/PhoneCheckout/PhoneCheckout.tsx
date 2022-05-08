@@ -4,6 +4,7 @@ import { useTimer } from 'react-timer-hook';
 import moment from 'moment';
 import InputMask from 'react-input-mask';
 import { useGate, useStore } from 'effector-react';
+import { green } from '@ant-design/colors';
 import CheckoutTimer from '../../components/ChecloutTimer/CheckoutTimer';
 import { CodeCheckDto } from '../../../../modules/codeCheck/types';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
@@ -14,7 +15,7 @@ import { PHONE_FORMAT } from '../../../../common/constants/constants';
 import { CodeCheckModel } from '../../../../store';
 
 import './phoneCodeCheckout.less';
-import UseBreakpointsDemo from '../../../../common/hooks/UseBreakpointsDemo';
+import { TVoidFn } from '../../../../common/types';
 
 const {
   createNewItemFx: createCheckoutCode,
@@ -33,7 +34,12 @@ function phoneValidator(value?: string) {
   return true;
 }
 
-function PhoneCheckout() {
+interface Props {
+  setPhoneNumber?: TVoidFn<string>;
+}
+function PhoneCheckout(props: Props) {
+  const { setPhoneNumber } = props;
+
   useGate(CodeCheckGate, getClientUuid());
 
   const order = useStore($orderStore);
@@ -84,6 +90,12 @@ function PhoneCheckout() {
     updateOrderStore({ isTimerRunning: isRunning });
   }, [updateOrderStore, isRunning]);
 
+  useEffect(() => {
+    if (setPhoneNumber && order.phoneConfirmed && order.phone) {
+      setPhoneNumber(order.phone);
+    }
+  }, [setPhoneNumber, order.phoneConfirmed, order.phone]);
+
   const handlePhone = (e: any) => {
     updateOrderStore({
       phone: e.target.value,
@@ -132,6 +144,11 @@ function PhoneCheckout() {
         {!order.isCodeValid && (
           <div className="input-promocode-error">Код неверный</div>
         )}
+      </Col>
+      <Col span={24}>
+        <span style={{ color: green[6] }}>
+          {order.phoneConfirmed ? 'Телефон подтвержден' : ''}
+        </span>
       </Col>
     </Row>
   );

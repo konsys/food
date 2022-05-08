@@ -8,7 +8,7 @@ import { CartDto } from '../../../modules/cart/types';
 import { LoginDto, TTokens } from '../../../modules/login/types';
 import { RegistrationDto } from '../../../modules/registration/types';
 import { $user } from '../../../modules/user/store';
-import { AuthModel, RegistrationModel } from '../../../store';
+import { AuthModel, CodeCheckModel, RegistrationModel } from '../../../store';
 import LoginPage from '../../Auth/Login';
 import { onSuccessLogin } from '../../Auth/model/store';
 import CartLink from '../components/CartLink/CartLink';

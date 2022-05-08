@@ -1,20 +1,28 @@
 import { Divider, Form, Input } from 'antd';
 import Password from 'antd/lib/input/Password';
-import React, { memo } from 'react';
+import { useStore } from 'effector-react';
+import React, { memo, useState } from 'react';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { RegistrationDto } from '../../../../modules/registration/types';
 import PhoneCheckout from '../../../Checkout/containers/PhoneCheckout/PhoneCheckout';
 
-interface Props {}
 const names = columnsNamesGenerator<RegistrationDto>();
 
-function RegistrationFields(props: Props) {
-  const {} = props;
+function RegistrationFields() {
+  const [phoneNumber, setPhoneNumber] = useState<string>('');
 
+  console.log(11111111, phoneNumber);
   return (
     <>
-      <PhoneCheckout />
+      <PhoneCheckout setPhoneNumber={setPhoneNumber} />
       <Divider type="horizontal" />
+      <Form.Item
+        label="Телефон"
+        name={names('phone')}
+        rules={[{ required: true, message: 'Введите телефон!' }]}
+      >
+        <Input />
+      </Form.Item>
       <Form.Item
         label="Имя пользователя"
         name={names('name')}
