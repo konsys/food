@@ -2,10 +2,10 @@ import { Button } from 'antd';
 import React from 'react';
 import queryString from 'query-string';
 import { useGate } from 'effector-react';
-import { VkOAuthParams } from '../../config/params';
-import { LoginGate } from './model/store';
+import { VkOAuthParams } from '../../../config/params';
+import { LoginGate } from '../model/store';
 
-export default function LoginButton() {
+export default function LoginVK() {
   const queryObj = queryString.parse(window.location.search);
   const code = queryObj.code ? queryObj.code.toString() : '';
 

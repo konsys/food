@@ -1,7 +1,5 @@
 import { Divider, Form, Input } from 'antd';
 import Password from 'antd/lib/input/Password';
-import { useStore } from 'effector-react';
-import { phone } from 'faker';
 import React, { memo, useEffect, useState } from 'react';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { RegistrationDto } from '../../../../modules/registration/types';
