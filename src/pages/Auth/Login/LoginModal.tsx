@@ -9,14 +9,17 @@ import LoginFields from '../../Header/components/LoginFields/LoginFields';
 import UserAvatarIcon from '../../UserPage/UserAvatarIcon';
 import { onSuccessLogin } from '../model/store';
 import { $user } from '../../../modules/user/store';
+import { TVoidFn } from '../../../common/types';
 
 const { $itemStore: $loginStore, resetOne } = AuthModel;
 
-interface Props {}
+interface Props {
+  isVisible: boolean;
+  setIsVisible: TVoidFn<boolean>;
+  setIsRegistration: TVoidFn<boolean>;
+}
 
-function LoginModal({}: Props) {
-  const [isVisible, setIsVisible] = useState(false);
-
+function LoginModal({ setIsRegistration, isVisible, setIsVisible }: Props) {
   const { ModalForm: LoginForm, formInstance: loginFormInstanse } =
     useValidatedForm<LoginDto, TTokens>({
       uuid: uuid(),
@@ -50,7 +53,10 @@ function LoginModal({}: Props) {
       title="Войти"
       modalOnOk={onLogin}
     >
-      <LoginFields loginError={loginError} setIsRegistration={() => true} />
+      <LoginFields
+        loginError={loginError}
+        setIsRegistration={setIsRegistration}
+      />
     </LoginForm>
   );
   return <div>{user ? <UserAvatarIcon user={user} /> : formComponent}</div>;

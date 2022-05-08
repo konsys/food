@@ -1,5 +1,6 @@
-import React, { memo, Props, useState } from 'react';
+import React, { memo } from 'react';
 import { useValidatedForm } from '../../../common/form/useValidatedForm';
+import { TVoidFn } from '../../../common/types';
 import { uuid } from '../../../common/utils/utils';
 import { RegistrationDto } from '../../../modules/registration/types';
 import { RegistrationModel } from '../../../store';
@@ -7,8 +8,12 @@ import RegistrationFields from './components/RegistrationFields';
 
 const { createNewItemFx: registration } = RegistrationModel;
 
-function RegistrationModal() {
-  const [isVisible, setIsVisible] = useState(false);
+interface Props {
+  isVisible: boolean;
+  setIsVisible: TVoidFn<boolean>;
+}
+
+function RegistrationModal({ isVisible, setIsVisible }: Props) {
   const {
     ModalForm: RegistrationForm,
     formInstance: registrationFormInstance,
@@ -21,9 +26,6 @@ function RegistrationModal() {
       setModalVisible={setIsVisible}
       pending={false}
       onCreate={registration}
-      buttonClassName="header-nav-item-link__login"
-      buttonText=""
-      title="Зарегистрироваться"
     >
       <RegistrationFields registrationFormInstance={registrationFormInstance} />
     </RegistrationForm>

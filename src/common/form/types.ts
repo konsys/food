@@ -27,12 +27,14 @@ export type TModalWithFormProps<T, ReturnType = T> = ModalProps & {
   afterCreate?: TPromiseFn<ReturnType>;
   getList?: Event<void>;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
+  ShowButton?: React.FC
   buttonText?: string;
   buttonType?: ButtonType;
   buttonClassName?: string;
   itemState?: TItemStore<T>;
   // TODO add type
   modalOnOk?: () => void
+
 };
 
 export type TReturnedForm = AbstractFormProps;

@@ -83,6 +83,7 @@ export function useValidatedForm<T, ReturnType = T>(
           pending,
           afterClose,
           itemState,
+          ShowButton,
           buttonType = 'primary',
           buttonClassName,
           title,
@@ -159,14 +160,18 @@ export function useValidatedForm<T, ReturnType = T>(
           <>
             <Row gutter={8}>
               <Col span={24} style={{ textAlign: 'left' }}>
-                <Button
-                  type={buttonType}
-                  onClick={onOpen}
-                  className={buttonClassName ?? ''}
-                >
-                  {buttonText ||
-                    (itemState?.item ? 'Редактировать' : 'Создать')}
-                </Button>
+                {ShowButton ? (
+                  <ShowButton />
+                ) : (
+                  <Button
+                    type={buttonType}
+                    onClick={onOpen}
+                    className={buttonClassName ?? ''}
+                  >
+                    {buttonText ||
+                      (itemState?.item ? 'Редактировать' : 'Создать')}
+                  </Button>
+                )}
               </Col>
             </Row>
             <MainModal
