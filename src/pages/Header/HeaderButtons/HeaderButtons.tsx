@@ -32,7 +32,10 @@ const HeaderButtons = ({ cart }: Props) => {
     useValidatedForm<LoginDto, TTokens>({
       uuid: uuid(),
     });
-  const { ModalForm: RegistrationForm } = useValidatedForm<RegistrationDto>({
+  const {
+    ModalForm: RegistrationForm,
+    formInstance: registrationFormInstance,
+  } = useValidatedForm<RegistrationDto>({
     uuid: uuid(),
   });
 
@@ -66,6 +69,7 @@ const HeaderButtons = ({ cart }: Props) => {
           LoginForm={LoginForm}
           RegistrationForm={RegistrationForm}
           onLogin={onLogin}
+          registrationFormInstance={registrationFormInstance}
         />
       </Col>
     </Row>

@@ -1,16 +1,22 @@
 import { Divider, Form, Input } from 'antd';
 import Password from 'antd/lib/input/Password';
 import { useStore } from 'effector-react';
-import React, { memo, useState } from 'react';
+import { phone } from 'faker';
+import React, { memo, useEffect, useState } from 'react';
 import { columnsNamesGenerator } from '../../../../common/form/columnsNamesGenerator';
 import { RegistrationDto } from '../../../../modules/registration/types';
 import PhoneCheckout from '../../../Checkout/containers/PhoneCheckout/PhoneCheckout';
 
 const names = columnsNamesGenerator<RegistrationDto>();
 
-function RegistrationFields() {
+type Props = {
+  registrationFormInstance: any;
+};
+function RegistrationFields({ registrationFormInstance }: Props) {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-
+  useEffect(() => {
+    registrationFormInstance.setFields({ name: 'phone', value: phoneNumber });
+  }, [phoneNumber, registrationFormInstance]);
   console.log(11111111, phoneNumber);
   return (
     <>

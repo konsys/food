@@ -32,6 +32,7 @@ interface Props {
   LoginForm: React.FC<TModalWithFormProps<TItemWithUuid<LoginDto>, TTokens>>;
   user: Nullable<UserDto>;
   onLogin: TPromiseFn;
+  registrationFormInstance: any;
 }
 
 function LoginPage({
@@ -45,6 +46,7 @@ function LoginPage({
   LoginForm,
   user,
   onLogin,
+  registrationFormInstance,
 }: Props) {
   const { error } = useStore($loginStore);
   const loginError =
@@ -63,7 +65,7 @@ function LoginPage({
       buttonText=""
       title="Зарегистрироваться"
     >
-      <RegistrationFields />
+      <RegistrationFields registrationFormInstance={registrationFormInstance} />
     </RegistrationForm>
   ) : (
     <LoginForm
