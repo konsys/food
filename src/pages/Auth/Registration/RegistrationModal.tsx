@@ -26,6 +26,8 @@ function RegistrationModal({ isVisible, setIsVisible }: Props) {
       setModalVisible={setIsVisible}
       pending={false}
       onCreate={registration}
+      hideButton
+      title="Регистрация"
     >
       <RegistrationFields registrationFormInstance={registrationFormInstance} />
     </RegistrationForm>

@@ -27,7 +27,7 @@ export type TModalWithFormProps<T, ReturnType = T> = ModalProps & {
   afterCreate?: TPromiseFn<ReturnType>;
   getList?: Event<void>;
   createImage?: TCreateItemFx<Partial<FormData>, ImageDto>;
-  ShowButton?: React.FC
+  hideButton?: boolean
   buttonText?: string;
   buttonType?: ButtonType;
   buttonClassName?: string;

@@ -12,9 +12,7 @@ type Props = {
 };
 function RegistrationFields({ registrationFormInstance }: Props) {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-  useEffect(() => {
-    registrationFormInstance.setFields({ name: 'phone', value: phoneNumber });
-  }, [phoneNumber, registrationFormInstance]);
+
   console.log(11111111, phoneNumber);
   return (
     <>

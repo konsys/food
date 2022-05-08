@@ -83,7 +83,7 @@ export function useValidatedForm<T, ReturnType = T>(
           pending,
           afterClose,
           itemState,
-          ShowButton,
+          hideButton,
           buttonType = 'primary',
           buttonClassName,
           title,
@@ -160,8 +160,8 @@ export function useValidatedForm<T, ReturnType = T>(
           <>
             <Row gutter={8}>
               <Col span={24} style={{ textAlign: 'left' }}>
-                {ShowButton ? (
-                  <ShowButton />
+                {hideButton ? (
+                  ''
                 ) : (
                   <Button
                     type={buttonType}
