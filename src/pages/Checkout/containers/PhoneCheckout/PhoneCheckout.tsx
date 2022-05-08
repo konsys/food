@@ -122,13 +122,17 @@ function PhoneCheckout(props: Props) {
           />
         </div>
         {!order.isPhoneValid && (
-          <div className="input-promocode-error ">Неверный номер телефона</div>
+          <div className="input-promocode-error">Неверный номер телефона</div>
         )}
-        <CheckoutTimer
-          isRunning={!!order.isTimerRunning}
-          minutes={minutes}
-          seconds={seconds}
-        />
+        {order.phoneConfirmed ? (
+          ''
+        ) : (
+          <CheckoutTimer
+            isRunning={!!order.isTimerRunning}
+            minutes={minutes}
+            seconds={seconds}
+          />
+        )}
       </Col>
 
       <Col span={24}>
