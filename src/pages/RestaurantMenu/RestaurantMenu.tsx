@@ -57,7 +57,7 @@ function RestaurantMenu() {
       <Spin spinning={restaurantPending}>
         {restaurant ? (
           <Row>
-            <Col span={cart.item ? 16 : 24}>
+            <Col lg={cart.item ? 16 : 24}>
               <RestaurantMenuHeader restaurant={restaurant} />
               <RestaurantMenuTopNavigation menuItems={items} />
 
@@ -71,7 +71,7 @@ function RestaurantMenu() {
                 <RestaurantMenuBottomLinks />
               </section>
             </Col>
-            <Col span={cart.item ? 8 : 0}>
+            <Col lg={cart.item ? 8 : 0}>
               <CartView cart={cart} />
             </Col>
           </Row>
