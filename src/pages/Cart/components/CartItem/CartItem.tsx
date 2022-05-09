@@ -64,7 +64,7 @@ function CartItem(props: Props) {
             <MinusButton />
           </button>
         </Col>
-        <Col span={8} className="cart-item__quiantity">
+        <Col span={8} className="cart-item__quantity">
           <span>{item.price * quiantity}</span> ₽
         </Col>
       </Row>
