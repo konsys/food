@@ -3,13 +3,13 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { TItem } from '../../../../common/api/types';
 import { CartDto } from '../../../../modules/cart/types';
-import './cartLink.less';
+import './cartHeaderButton.less';
 
 interface Props {
   cart: TItem<CartDto>;
 }
 
-function CartLink(props: Props) {
+function CartHeaderButton(props: Props) {
   const { cart } = props;
 
   return (
@@ -23,4 +23,4 @@ function CartLink(props: Props) {
   );
 }
 
-export default memo(CartLink);
+export default memo(CartHeaderButton);

@@ -2,7 +2,7 @@ import React, { memo, useState } from 'react';
 import { Row, Col } from 'antd';
 import { useGate, useStore } from 'effector-react';
 import LoginModal from '../../Auth/Login/LoginModal';
-import CartLink from '../components/CartLink/CartLink';
+import CartHeaderButton from '../components/CartHeaderButton/CartHeaderButton';
 import CartStub from '../components/CartStub/CartStub';
 import RegistrationModal from '../../Auth/Registration/RegistrationModal';
 import { CartModel } from '../../../store';
@@ -26,7 +26,7 @@ const HeaderButtons = () => {
   return (
     <Row gutter={8}>
       <Col>
-        {cart?.item?.orderSum ? <CartLink cart={cart} /> : <CartStub />}
+        {cart?.item?.orderSum ? <CartHeaderButton cart={cart} /> : <CartStub />}
       </Col>
       <Col>
         <RegistrationModal
