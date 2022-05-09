@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { TItem } from '../../../common/api/types';
 import { TUuid, TVoidFn } from '../../../common/types';
 import { CartDto } from '../../../modules/cart/types';
-import CartComponent from './MobileCart/CartComponent/CartComponent';
+import CartComponent from './MobileCart/CartContentComponent/CartContentComponent';
 
 interface Props {
   cart: TItem<CartDto>;

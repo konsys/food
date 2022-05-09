@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { TItem } from '../../../../../common/api/types';
 import { TUuid, TVoidFn } from '../../../../../common/types';
 import { CartDto } from '../../../../../modules/cart/types';
-import CartComponent from '../CartComponent/CartComponent';
+import CartContentComponent from '../CartContentComponent/CartContentComponent';
 
 interface Props {
   cart: TItem<CartDto>;
@@ -15,7 +15,7 @@ function MobileCartOrder(props: Props) {
 
   return (
     <div className="container">
-      <CartComponent
+      <CartContentComponent
         cart={cart}
         changeQuantity={changeQuantity}
         deleteFromCart={deleteFromCart}
