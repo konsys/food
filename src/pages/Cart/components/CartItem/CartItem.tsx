@@ -27,7 +27,7 @@ function CartItem(props: Props) {
 
   return (
     <div className="cart-item">
-      <Row gutter={8}>
+      <Row>
         <Col span={16} className="cart-item__title">
           {item.name}
         </Col>
@@ -43,8 +43,7 @@ function CartItem(props: Props) {
             <DeleteButton />
           </button>
         </Col>
-      </Row>
-      <Row>
+
         <Col span={16}>
           <button
             className="cart-item__count-button"
@@ -65,7 +64,7 @@ function CartItem(props: Props) {
             <MinusButton />
           </button>
         </Col>
-        <Col span={8} style={{ textAlign: 'right' }}>
+        <Col span={8} className="cart-item__quiantity">
           <span>{item.price * quiantity}</span> ₽
         </Col>
       </Row>
