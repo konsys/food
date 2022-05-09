@@ -7,7 +7,6 @@ import RestaurantMenuBottomLinks from './RestaurantMenuBottomLinks/RestaurantMen
 import RestaurantMenuBottomPartnerInfo from './components/RestaurantMenuBottomPartnerInfo/RestaurantMenuBottomPartnerInfo';
 import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
-import './restaurantMenu.less';
 import { CartModel, RestaurantModel } from '../../store';
 import { grouppedByCategory } from '../../modules/restaurantMenu/utils';
 import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigation/RestaurantMenuTopNavigation';
@@ -18,6 +17,7 @@ import MobileCartButton from '../Cart/components/MobileCart/MobileCartButton/Mob
 import { TUuid } from '../../common/types';
 import { useBreadcrumbs } from '../../modules/breadcrumbs/useBreadcrumbs';
 import { restaurantBreabcrums } from '../../routes/paths';
+import CartSideView from '../Cart/components/CartSideView/CartSideView';
 
 const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { $itemStore: cartStore } = CartModel;
@@ -28,7 +28,7 @@ function RestaurantMenu() {
   const location = useLocation();
 
   useGate(ItemGate, uuid);
-  const { item: cartOrder, pending: cartPending } = useStore(cartStore);
+  const cart = useStore(cartStore);
 
   const { item: restaurant, pending: restaurantPending } =
     useStore(restaurantStore);
@@ -52,33 +52,14 @@ function RestaurantMenu() {
     : [];
 
   const addMenuToCart = (menuItem: RestaurantMenuDto) =>
-    addToCart(cartOrder, menuItem);
-
-  const cartView = useMemo(
-    () =>
-      cartOrder ? (
-        <Spin spinning={cartPending}>
-          <Row>
-            <Col xs={{ span: 0 }} lg={{ span: 24 }}>
-              <Cart sideView />
-            </Col>
-            <Col xs={{ span: 24 }} lg={{ span: 0 }}>
-              <MobileCartButton cartOrder={cartOrder} />
-            </Col>
-          </Row>
-        </Spin>
-      ) : (
-        ''
-      ),
-    [cartOrder],
-  );
+    addToCart(cart.item, menuItem);
 
   return (
     <div className="container">
       <Spin spinning={restaurantPending}>
         {restaurant ? (
-          <div className="page-restaurant d-flex">
-            <div className="restaurant-section col-lg-9 col-md-12 col-sm-12">
+          <Row className="page-restaurant d-flex">
+            <Col>
               <RestaurantMenuHeader restaurant={restaurant} />
               <RestaurantMenuTopNavigation menuItems={items} />
 
@@ -86,14 +67,16 @@ function RestaurantMenu() {
                 <RestaurantMenuListBlock
                   menu={restaurant.restaurantMenu}
                   addToCart={addMenuToCart}
-                  cartOrder={cartOrder?.order}
+                  cartOrder={cart?.item?.order}
                 />
                 <RestaurantMenuBottomPartnerInfo legal={restaurant.legal} />
                 <RestaurantMenuBottomLinks />
               </section>
-            </div>
-            {cartView}
-          </div>
+            </Col>
+            <Col>
+              <CartSideView cart={cart} />
+            </Col>
+          </Row>
         ) : (
           ''
         )}
