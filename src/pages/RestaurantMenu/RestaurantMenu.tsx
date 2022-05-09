@@ -15,7 +15,7 @@ import { addToCart } from '../../modules/cart/utils';
 import { TUuid } from '../../common/types';
 import { useBreadcrumbs } from '../../modules/breadcrumbs/useBreadcrumbs';
 import { restaurantBreabcrums } from '../../routes/paths';
-import CartSideView from '../Cart/components/CartSideView/CartSideView';
+import CartView from '../Cart/components/CartView/CartView';
 
 const { $itemStore: restaurantStore, ItemGate } = RestaurantModel;
 const { $itemStore: cartStore } = CartModel;
@@ -57,7 +57,7 @@ function RestaurantMenu() {
       <Spin spinning={restaurantPending}>
         {restaurant ? (
           <Row>
-            <Col>
+            <Col span={cart.item ? 16 : 24}>
               <RestaurantMenuHeader restaurant={restaurant} />
               <RestaurantMenuTopNavigation menuItems={items} />
 
@@ -71,8 +71,8 @@ function RestaurantMenu() {
                 <RestaurantMenuBottomLinks />
               </section>
             </Col>
-            <Col>
-              <CartSideView cart={cart} />
+            <Col span={cart.item ? 8 : 0}>
+              <CartView cart={cart} />
             </Col>
           </Row>
         ) : (

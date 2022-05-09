@@ -9,7 +9,7 @@ interface Props {
   cart: TItem<CartDto>;
 }
 
-function CartSideView(props: Props) {
+function CartView(props: Props) {
   const { cart } = props;
 
   return (
@@ -26,4 +26,4 @@ function CartSideView(props: Props) {
   );
 }
 
-export default memo(CartSideView);
+export default memo(CartView);
