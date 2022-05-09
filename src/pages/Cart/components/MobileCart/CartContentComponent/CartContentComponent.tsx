@@ -18,12 +18,12 @@ function CartContentComponent(props: Props) {
   const { cart, changeQuantity, deleteFromCart } = props;
 
   return (
-    <Row className="cart-section__body">
-      <Col span={24}>
-        <div className="cart-section__title">Корзина</div>
-      </Col>
-      <Col span={24}>
-        <div className="cart-service__list">
+    <div className="cart-section">
+      <Row className="cart-section__body" gutter={[8, 8]}>
+        <Col span={24} className="cart-section__title">
+          Корзина
+        </Col>
+        <Col span={24}>
           {cart?.item?.order?.map((v: any, k: any) => (
             <CartItem
               key={k}
@@ -33,28 +33,32 @@ function CartContentComponent(props: Props) {
               deleteFromCart={deleteFromCart}
             />
           ))}
-        </div>
-      </Col>
+        </Col>
 
-      <Col span={24}>Итого</Col>
-      <Col span={24}>{cart?.item?.orderSum ?? 0} ₽</Col>
+        <Col span={24}>Итого</Col>
+        <Col span={24}>{cart?.item?.orderSum ?? 0} ₽</Col>
+      </Row>
 
       {cart?.item?.orderSum ? (
-        <Col className="cart-bottom__checkout-button">
-          <Link
-            to={`/checkout/${cart?.item?.uuid}`}
-            title="Оформить заказ"
-            rel="nofollow"
-          >
-            Оформить заказ
-          </Link>
-        </Col>
+        <Row justify="center" align="middle">
+          <Col span={24} className="cart-section__checkout-button">
+            <Link
+              to={`/checkout/${cart?.item?.uuid}`}
+              title="Оформить заказ"
+              rel="nofollow"
+            >
+              Оформить заказ
+            </Link>
+          </Col>
+        </Row>
       ) : (
-        <Col className="cart-bottom__checkout-button--disabled">
-          Корзина пуста
-        </Col>
+        <Row>
+          <Col className="cart-section__checkout-button--disabled">
+            Корзина пуста
+          </Col>
+        </Row>
       )}
-    </Row>
+    </div>
   );
 }
 
