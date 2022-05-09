@@ -12,7 +12,7 @@ function UserAvatarIcon(props: Props) {
   const { user } = props;
 
   return (
-    <Row justify="center" align="top">
+    <Row justify="center" align="middle">
       {user?.avatar ? (
         <Col>
           <Avatar src={<Image src={user.avatar} style={{ width: 32 }} />} />

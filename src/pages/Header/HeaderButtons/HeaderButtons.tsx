@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react';
 import { Row, Col } from 'antd';
 import { useGate, useStore } from 'effector-react';
-import LoginPage from '../../Auth/Login/LoginModal';
+import LoginModal from '../../Auth/Login/LoginModal';
 import CartLink from '../components/CartLink/CartLink';
 import CartStub from '../components/CartStub/CartStub';
 import RegistrationModal from '../../Auth/Registration/RegistrationModal';
@@ -34,7 +34,7 @@ const HeaderButtons = () => {
           setIsVisible={setIsRegistrationVisible}
         />
 
-        <LoginPage
+        <LoginModal
           setIsRegistration={setIsRegistration}
           isVisible={isLoginVisible}
           setIsVisible={setIsLoginVisible}
