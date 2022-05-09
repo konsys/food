@@ -27,23 +27,10 @@ function CartItem(props: Props) {
 
   return (
     <div className="cart-item">
-      <Row>
-        <Col span={10} className="cart-item__title">
-          {item.name}
-        </Col>
-        <Col span={10} className="cart-item__description">
-          {item.weight} г.
-        </Col>
-        <Col span={2}>
-          <button
-            className="cart-item__delete-button"
-            type="button"
-            onClick={() => deleteFromCart(item.uuid)}
-          >
-            <DeleteButton />
-          </button>
-        </Col>
-        <Col span={2}>
+      <Row gutter={8}>
+        <Col className="cart-item__title">{item.name}</Col>
+        <Col className="cart-item__description">{item.weight} г.</Col>
+        <Col span={10}>
           <button
             className="cart-item__count-button"
             type="button"
@@ -51,11 +38,9 @@ function CartItem(props: Props) {
           >
             <PlusButton />
           </button>
-        </Col>
-        <Col span={24}>
+
           <input type="text" value={quiantity} disabled />
-        </Col>
-        <Col span={24}>
+
           <button
             className="cart-item__count-button cart-item__count-button--minus"
             disabled={quiantity < 2}
@@ -63,6 +48,13 @@ function CartItem(props: Props) {
             onClick={() => changeQuantity(item.uuid, -1)}
           >
             <MinusButton />
+          </button>
+          <button
+            className="cart-item__delete-button"
+            type="button"
+            onClick={() => deleteFromCart(item.uuid)}
+          >
+            <DeleteButton />
           </button>
         </Col>
         <Col span={24}>
