@@ -12,7 +12,7 @@ interface Props {
   sideView?: boolean;
 }
 
-function CartView(props: Props) {
+function CartContentView(props: Props) {
   const { sideView, cart, stickyClass, changeQuantity, deleteFromCart } = props;
 
   return (
@@ -40,4 +40,4 @@ function CartView(props: Props) {
   );
 }
 
-export default memo(CartView);
+export default memo(CartContentView);

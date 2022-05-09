@@ -8,7 +8,7 @@ import {
   deleteItemFromCart,
 } from '../../modules/cart/utils';
 import { CartModel } from '../../store';
-import CartView from './components/CartView';
+import CartContentView from './components/CartContentView';
 import { HttpStatus } from '../../common/utils/constants';
 import { getClientUuid } from '../../modules/cart/service';
 import { TUuid } from '../../common/types';
@@ -86,7 +86,7 @@ function Cart({ sideView }: Props) {
           }}
         />
       ) : (
-        <CartView
+        <CartContentView
           cart={cart}
           changeQuantity={changeQuantity}
           deleteFromCart={deleteFromCart}
