@@ -53,7 +53,7 @@
     "editor.quickSuggestions": null,
     "editor.formatOnSave": true,
     "[html]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+        "editor.defaultFormatter": "vscode.html-language-features"
     },
     "vs-kubernetes": {
         "vscode-kubernetes.helm-path.linux": "/home/ksysuev/.vs-kubernetes/tools/helm/linux-amd64/helm",

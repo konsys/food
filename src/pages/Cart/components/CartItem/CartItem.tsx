@@ -2,6 +2,9 @@ import React, { memo } from 'react';
 import { TUuid, TVoidFn } from '../../../../common/types';
 import { NullableNumber } from '../../../../core/types';
 import { RestaurantMenuDto } from '../../../../modules/restaurantMenu/types';
+import { ReactComponent as DeleteButton } from './svg/deleteButton.svg';
+import { ReactComponent as PlusButton } from './svg/plusButton.svg';
+import { ReactComponent as MinusButton } from './svg/minusButton.svg';
 
 export type TModidificator = {
   price: NullableNumber;
@@ -28,12 +31,7 @@ function CartItem(props: Props) {
           type="button"
           onClick={() => deleteFromCart(item.uuid)}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width={12} height={12}>
-            <path
-              d="M1050.726,397.191a.264.264,0,0,1,0-.384l4.109-4.11a.53.53,0,0,0,0-.767l-.767-.767a.59.59,0,0,0-.383-.164.5.5,0,0,0-.384.164l-4.109,4.11a.265.265,0,0,1-.384,0l-4.109-4.11a.53.53,0,0,0-.767,0l-.767.767a.53.53,0,0,0,0,.767l4.11,4.11a.265.265,0,0,1,0,.384l-4.11,4.11a.53.53,0,0,0,0,.767l.767.767a.53.53,0,0,0,.767,0l4.109-4.109a.264.264,0,0,1,.384,0l2.848,2.848,1.262,1.262a.53.53,0,0,0,.767,0l.767-.767a.53.53,0,0,0,0-.767Z"
-              transform="translate(-1043 -391)"
-            />
-          </svg>
+          <DeleteButton />
         </button>
         <div className="cart-service__name">{item.name}</div>
         <div className="cart-service__description">{item.weight} г.</div>
@@ -53,22 +51,7 @@ function CartItem(props: Props) {
             type="button"
             onClick={() => changeQuantity(item.uuid, -1)}
           >
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 13 13"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="7"
-                width="13"
-                height="1"
-                transform="rotate(90 7 0)"
-                fill="#F5F5F5"
-              />
-              <rect y="6" width="13" height="1" fill="#F37021" />
-            </svg>
+            <MinusButton />
           </button>
           <input type="text" value={quiantity} disabled />
           <button
@@ -76,22 +59,7 @@ function CartItem(props: Props) {
             type="button"
             onClick={() => changeQuantity(item.uuid, 1)}
           >
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 13 13"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect y="6" width="13" height="1" fill="#F37021" />
-              <rect
-                x="7"
-                width="13"
-                height="1"
-                transform="rotate(90 7 0)"
-                fill="#F37021"
-              />
-            </svg>
+            <PlusButton />
           </button>
         </div>
         <div className="cart-service__price">
