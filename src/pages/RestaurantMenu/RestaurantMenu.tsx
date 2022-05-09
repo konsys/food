@@ -1,11 +1,10 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo } from 'react';
 import { useGate, useStore } from 'effector-react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Col, Row, Spin } from 'antd';
 import RestaurantMenuListBlock from './components/RestaurantMenuListBlock/RestaurantMenuListBlock';
 import RestaurantMenuBottomLinks from './RestaurantMenuBottomLinks/RestaurantMenuBottomLinks';
 import RestaurantMenuBottomPartnerInfo from './components/RestaurantMenuBottomPartnerInfo/RestaurantMenuBottomPartnerInfo';
-import Cart from '../Cart/Cart';
 import RestaurantMenuHeader from './components/RestaurantMenuHeader/RestaurantMenuHeader';
 import { CartModel, RestaurantModel } from '../../store';
 import { grouppedByCategory } from '../../modules/restaurantMenu/utils';
@@ -13,7 +12,6 @@ import RestaurantMenuTopNavigation from './components/RestaurantMenuTopNavigatio
 import { TLinkWithText } from '../../common/types/utilTypes';
 import { RestaurantMenuDto } from '../../modules/restaurantMenu/types';
 import { addToCart } from '../../modules/cart/utils';
-import MobileCartButton from '../Cart/components/MobileCart/MobileCartButton/MobileCartButton';
 import { TUuid } from '../../common/types';
 import { useBreadcrumbs } from '../../modules/breadcrumbs/useBreadcrumbs';
 import { restaurantBreabcrums } from '../../routes/paths';
@@ -58,7 +56,7 @@ function RestaurantMenu() {
     <div className="container">
       <Spin spinning={restaurantPending}>
         {restaurant ? (
-          <Row className="page-restaurant d-flex">
+          <Row>
             <Col>
               <RestaurantMenuHeader restaurant={restaurant} />
               <RestaurantMenuTopNavigation menuItems={items} />

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useStore } from 'effector-react';
 import { useValidatedForm } from '../../../common/form/useValidatedForm';
 import { HttpStatus } from '../../../common/utils/constants';
