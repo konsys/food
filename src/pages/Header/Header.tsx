@@ -1,31 +1,24 @@
 import React, { memo } from 'react';
 import { Col, Row } from 'antd';
-import { useGate, useStore } from 'effector-react';
 import HeaderButtons from './HeaderButtons/HeaderButtons';
 import { HeaderLogo } from './components/HeaderLogo/HeaderLogo';
 import { HeaderCity } from './components/HeaderCity/HeaderCity';
-import { CartModel } from '../../store';
-import { getClientUuid } from '../../modules/cart/service';
 
 import './header.less';
 
-const { ItemGate: CartGate, $itemStore: cartStore } = CartModel;
-
 function Header() {
-  useGate(CartGate, getClientUuid());
-  const cart = useStore(cartStore);
   return (
     <header className="header">
       <div className="container">
-        <Row justify="center" align="middle">
-          <Col span={4}>
+        <Row justify="center" align="middle" gutter={16}>
+          <Col lg={6} md={4}>
             <HeaderLogo />
           </Col>
-          <Col span={8}>
+          <Col lg={8} md={4}>
             <HeaderCity />
           </Col>
-          <Col span={12} className=" header_container-buttons">
-            <HeaderButtons cart={cart} />
+          <Col lg={10} md={16} className=" header_container-buttons">
+            <HeaderButtons />
           </Col>
         </Row>
       </div>

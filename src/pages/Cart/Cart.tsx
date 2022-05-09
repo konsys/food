@@ -29,10 +29,10 @@ type Props = {
 function Cart({ sideView }: Props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const cartItem = useStore(cartStore);
+  const cart = useStore(cartStore);
   const addedRestaurantItem = useStore($selectedMenuItemStore);
 
-  const { item: cartOrder, pending, error } = cartItem;
+  const { item: cartOrder, pending, error } = cart;
   const { uuid } = useParams<{ uuid: TUuid }>();
 
   useGate(ItemGate, getClientUuid());
@@ -87,7 +87,7 @@ function Cart({ sideView }: Props) {
         />
       ) : (
         <CartView
-          cartItem={cartItem}
+          cart={cart}
           changeQuantity={changeQuantity}
           deleteFromCart={deleteFromCart}
           sideView={sideView}

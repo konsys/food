@@ -9,13 +9,13 @@ import CartItem from '../../CartItem/CartItem';
 import './cartComponent.less';
 
 interface Props {
-  cartItem: TItem<CartDto>;
+  cart: TItem<CartDto>;
   changeQuantity: (uuid: TUuid, delta: number) => void;
   deleteFromCart: TVoidFn<TUuid>;
 }
 
 function CartComponent(props: Props) {
-  const { cartItem, changeQuantity, deleteFromCart } = props;
+  const { cart, changeQuantity, deleteFromCart } = props;
 
   return (
     <div className="cart-section__body">
@@ -45,7 +45,7 @@ function CartComponent(props: Props) {
           </div>
         </div>
         <div className="cart-service__list">
-          {cartItem?.item?.order?.map((v: any, k: any) => (
+          {cart?.item?.order?.map((v: any, k: any) => (
             <CartItem
               key={k}
               item={v.restaurantMenu}
@@ -62,15 +62,15 @@ function CartComponent(props: Props) {
           Итого
         </Col>
         <Col className="cart-bottom__info-sum" span={12}>
-          {cartItem?.item?.orderSum ?? 0} ₽
+          {cart?.item?.orderSum ?? 0} ₽
         </Col>
       </Row>
 
       <Row gutter={[8, 8]} className="cart-bottom__info">
-        {cartItem?.item?.orderSum ? (
+        {cart?.item?.orderSum ? (
           <Col className="cart-bottom__checkout-button">
             <Link
-              to={`/checkout/${cartItem?.item?.uuid}`}
+              to={`/checkout/${cart?.item?.uuid}`}
               title="Оформить заказ"
               rel="nofollow"
             >

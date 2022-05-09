@@ -5,18 +5,18 @@ import { CartDto } from '../../../../../modules/cart/types';
 import CartComponent from '../CartComponent/CartComponent';
 
 interface Props {
-  cartItem: TItem<CartDto>;
+  cart: TItem<CartDto>;
   changeQuantity: (uuid: TUuid, delta: number) => void;
   deleteFromCart: TVoidFn<TUuid>;
 }
 
 function MobileCartOrder(props: Props) {
-  const { cartItem, changeQuantity, deleteFromCart } = props;
+  const { cart, changeQuantity, deleteFromCart } = props;
 
   return (
     <div className="container">
       <CartComponent
-        cartItem={cartItem}
+        cart={cart}
         changeQuantity={changeQuantity}
         deleteFromCart={deleteFromCart}
       />

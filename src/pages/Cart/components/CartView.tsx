@@ -5,7 +5,7 @@ import { CartDto } from '../../../modules/cart/types';
 import CartComponent from './MobileCart/CartComponent/CartComponent';
 
 interface Props {
-  cartItem: TItem<CartDto>;
+  cart: TItem<CartDto>;
   stickyClass: string;
   changeQuantity: (uuid: TUuid, delta: number) => void;
   deleteFromCart: TVoidFn<string>;
@@ -13,15 +13,14 @@ interface Props {
 }
 
 function CartView(props: Props) {
-  const { sideView, cartItem, stickyClass, changeQuantity, deleteFromCart } =
-    props;
+  const { sideView, cart, stickyClass, changeQuantity, deleteFromCart } = props;
 
   return (
     <div>
       {sideView ? (
         <div className={`cart-section-wrapper ${stickyClass}`}>
           <CartComponent
-            cartItem={cartItem}
+            cart={cart}
             changeQuantity={changeQuantity}
             deleteFromCart={deleteFromCart}
           />
@@ -30,7 +29,7 @@ function CartView(props: Props) {
         <div className="container">
           <div className=" cart-section-wrapper ">
             <CartComponent
-              cartItem={cartItem}
+              cart={cart}
               changeQuantity={changeQuantity}
               deleteFromCart={deleteFromCart}
             />
