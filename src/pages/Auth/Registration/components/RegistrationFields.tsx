@@ -13,7 +13,6 @@ type Props = {
 function RegistrationFields({ registrationFormInstance }: Props) {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
 
-  console.log(11111111, phoneNumber);
   return (
     <>
       <PhoneCheckout setPhoneNumber={setPhoneNumber} />

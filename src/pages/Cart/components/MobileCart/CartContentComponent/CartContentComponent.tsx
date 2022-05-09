@@ -1,4 +1,4 @@
-import { Col, Row } from 'antd';
+import { Col, Divider, Row } from 'antd';
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { TItem } from '../../../../../common/api/types';
@@ -34,9 +34,13 @@ function CartContentComponent(props: Props) {
             />
           ))}
         </Col>
-
-        <Col span={24}>Итого</Col>
-        <Col span={24}>{cart?.item?.orderSum ?? 0} ₽</Col>
+        <Divider type="horizontal" />
+        <Col span={12} className="cart-section__sum-name">
+          Итого
+        </Col>
+        <Col span={12} className="cart-section__sum">
+          {cart?.item?.orderSum ?? 0} ₽
+        </Col>
       </Row>
 
       {cart?.item?.orderSum ? (
