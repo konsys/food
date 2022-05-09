@@ -19,7 +19,7 @@ function CartContentComponent(props: Props) {
 
   return (
     <div className="cart-section">
-      <Row className="cart-section__body" gutter={[8, 8]}>
+      <Row className="cart-section__body" gutter={[16, 16]}>
         <Col span={24} className="cart-section__title">
           Корзина
         </Col>
