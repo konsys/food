@@ -22,7 +22,7 @@ const HeaderButtons = () => {
     setIsLoginVisible(false);
     setIsRegistrationVisible(true);
   };
-  console.log(111111111111, cart);
+
   return (
     <Row gutter={8}>
       <Col>
