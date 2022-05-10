@@ -59,7 +59,7 @@ function CartContentComponent(props: Props) {
       ) : (
         <Row>
           <Col className="cart-section__checkout-button--disabled">
-            Корзина пуста
+            <span>Корзина пуста</span>
           </Col>
         </Row>
       )}

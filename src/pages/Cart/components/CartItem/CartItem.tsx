@@ -7,6 +7,7 @@ import { ReactComponent as DeleteButton } from './svg/deleteButton.svg';
 import { ReactComponent as PlusButton } from './svg/plusButton.svg';
 import { ReactComponent as MinusButton } from './svg/minusButton.svg';
 import './cartItem.less';
+import { LOCALE } from '../../../../config/params';
 
 export type TModidificator = {
   price: NullableNumber;
@@ -60,7 +61,7 @@ function CartItem(props: Props) {
           </button>
         </Col>
         <Col span={8} className="cart-item__quantity">
-          <span>{item.price * quiantity}</span> ₽
+          <span>{(item.price * quiantity).toLocaleString(LOCALE)}</span> ₽
         </Col>
       </Row>
     </div>

@@ -23,7 +23,7 @@
         display: block;
         width  : 100%;
 
-        a {
+        >a {
             padding         : 0.5rem;
             display         : block;
             width           : 100%;
@@ -34,6 +34,15 @@
             &:hover {
                 color: #fff;
             }
+        }
+
+        &--disabled>span {
+            padding         : 0.5rem;
+            display         : block;
+            width           : 100%;
+            text-align      : center;
+            color           : white;
+            background-color: @colorGrey;
         }
     }
 
