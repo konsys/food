@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { TItem } from '../../../../../common/api/types';
 import { TUuid, TVoidFn } from '../../../../../common/types';
+import { LOCALE } from '../../../../../config/params';
 import { CartDto } from '../../../../../modules/cart/types';
 import CartItem from '../../CartItem/CartItem';
 
@@ -39,7 +40,7 @@ function CartContentComponent(props: Props) {
           Итого
         </Col>
         <Col span={12} className="cart-section__sum">
-          {cart?.item?.orderSum ?? 0} ₽
+          {cart?.item?.orderSum.toLocaleString(LOCALE) ?? 0} ₽
         </Col>
       </Row>
 

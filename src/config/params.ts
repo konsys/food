@@ -27,3 +27,5 @@ export const VkOAuthParams: TVkConstants = {
   revoke: 1,
   oauthURL: 'http://oauth.vk.com/authorize?',
 };
+
+export const LOCALE = 'ru'
