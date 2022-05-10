@@ -52,6 +52,7 @@ function RestaurantMenu() {
   const addMenuToCart = (menuItem: RestaurantMenuDto) =>
     addToCart(cart.item, menuItem);
 
+  console.log(1111111111, restaurantPending, restaurant);
   return (
     <div className="container">
       <Spin spinning={restaurantPending}>

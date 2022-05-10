@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { RestaurantDto } from '../../../../modules/restaurants/types';
 import RestaurantItem from '../RestaurantItem/RestaurantItem';
-import './restaurantList.less';
 import { deliveryFactory } from '../../../../modules/delivery/deliveryFactory';
+import './restaurantList.less';
 
 interface Props {
   items: RestaurantDto[];
@@ -33,7 +33,6 @@ function RestaurantsList(props: Props) {
               />
             ))}
           </div>
-          <noscript />
         </div>
         <div className="restaurants-list__show-more">
           <Link
