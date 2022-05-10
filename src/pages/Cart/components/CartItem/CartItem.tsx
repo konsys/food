@@ -45,18 +45,13 @@ function CartItem(props: Props) {
         </Col>
 
         <Col span={16}>
-          <button
-            className="cart-item__count-button"
-            type="button"
-            onClick={() => changeQuantity(item.uuid, 1)}
-          >
+          <button type="button" onClick={() => changeQuantity(item.uuid, 1)}>
             <PlusButton />
           </button>
 
           <input type="text" value={quiantity} disabled />
 
           <button
-            className="cart-item__count-button cart-item__count-button--minus"
             disabled={quiantity < 2}
             type="button"
             onClick={() => changeQuantity(item.uuid, -1)}
