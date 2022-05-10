@@ -8,7 +8,7 @@ export enum EOrderStatus { CREATED = 'CREATED', PAID = 'PAID', IN_PROGRESS = 'IN
 
 
 @Entity()
-export class FoodOrder {
+export class Order {
 
 
   @PrimaryGeneratedColumn('uuid')

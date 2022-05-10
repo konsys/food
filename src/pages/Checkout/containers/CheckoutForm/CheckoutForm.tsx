@@ -48,11 +48,11 @@ function CheckoutForm({ cart, promo, createOrder, user }: Props) {
       <div className="container ordering-form__container">
         <section className="ordering-form">
           <div className="page-title page-title--checkout">
-            <h2>Оформление заказа</h2>
+            <h2>Оформление бронирования</h2>
           </div>
 
           {/* PHONE --------------------------- */}
-          {user ? user.phone : <PhoneCheckout />}
+          {user ? '' : <PhoneCheckout />}
 
           {/* TIME --------------------------- */}
           <div className="ordering-form__time">

@@ -2,13 +2,13 @@ import { Body, Controller, HttpException, HttpStatus, Post, UseInterceptors } fr
 import { AbstractController } from 'src/abstract/crud/abstractController';
 import { ExtractInterceptor } from 'src/abstract/crud/ExtractInterceptor';
 import { uuid } from 'src/common/random';
-import { FoodOrder } from 'src/entities/food-order.entity';
+import { Order } from 'src/entities/order.entity';
 import { OrderService } from './order.service.';
 import { OrderDto } from './types';
 
 @UseInterceptors(ExtractInterceptor)
 @Controller('order')
-export class OrderController extends AbstractController<FoodOrder> {
+export class OrderController extends AbstractController<Order> {
 
   private orderService: OrderService;
   constructor(service: OrderService) {
@@ -21,7 +21,7 @@ export class OrderController extends AbstractController<FoodOrder> {
     try {
       if (item.orderDate && item.price && item.uuid) {
 
-        const order: Partial<FoodOrder> = {};
+        const order: Partial<Order> = {};
 
         const cart = await this.orderService.getCartByUuid(item.uuid);
 

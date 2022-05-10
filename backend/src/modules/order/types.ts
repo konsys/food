@@ -1,5 +1,5 @@
 import { TUuid } from "src/common/types";
-import { EOrderStatus } from "src/entities/food-order.entity";
+import { EOrderStatus } from "src/entities/order.entity";
 
 export type OrderDto = {
     id: number | null;

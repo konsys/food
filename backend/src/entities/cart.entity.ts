@@ -1,7 +1,7 @@
 
 import { TUuid } from "src/common/types";
 import { Column, Entity, Generated, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { EOrderStatus } from "./food-order.entity";
+import { EOrderStatus } from "./order.entity";
 import { RestaurantMenu } from "./restaraunt-menu.entity";
 import { Restaurant } from "./restaurant.entity";
 

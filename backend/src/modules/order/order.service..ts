@@ -4,20 +4,20 @@ import { AbstractService } from 'src/abstract/crud/abstractService';
 import { TUuid } from 'src/common/types';
 import { Cart } from 'src/entities/cart.entity';
 import { CodeCheck } from 'src/entities/code-check.entity';
-import { FoodOrder } from 'src/entities/food-order.entity';
+import { Order } from 'src/entities/order.entity';
 import { Promo } from 'src/entities/promo.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class OrderService extends AbstractService<FoodOrder> {
+export class OrderService extends AbstractService<Order> {
 
   private cartRepository: Repository<Cart> = null;
   private promoRepository: Repository<Promo> = null;
   private codecheckRepository: Repository<CodeCheck> = null;
 
   constructor(
-    @InjectRepository(FoodOrder)
-    repository: Repository<FoodOrder>,
+    @InjectRepository(Order)
+    repository: Repository<Order>,
     @InjectRepository(Cart)
     cartRepository: Repository<Cart>,
     @InjectRepository(Promo)
